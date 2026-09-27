@@ -1,0 +1,384 @@
+{
+  "version": "revision-41-response-pattern-matrix-v1",
+  "candidateChecksum": "sha256:5e1a6ce496b93e4fd5d5bafc93caa6f26b68070e0ee103218bf7127f66cac8ab",
+  "sourceArtifact": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r41-evidence-773d3f7/docs/diagnostic/v3-scoped-review-candidate.json",
+  "reports": [
+    {
+      "version": "response-pattern-trace-v1",
+      "profile": "three_correct_high_guess_probability",
+      "candidateChecksum": "sha256:5e1a6ce496b93e4fd5d5bafc93caa6f26b68070e0ee103218bf7127f66cac8ab",
+      "fixedInputs": {
+        "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+        "responses": [
+          "correct",
+          "correct",
+          "correct"
+        ]
+      },
+      "trace": [
+        {
+          "index": 1,
+          "questionId": "v3-on-om:production-ballon",
+          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+          "mode": "production",
+          "selectionReason": "branch_coverage",
+          "difficulty": 0.5,
+          "guessProbability": 0.5,
+          "expectedSeconds": 30,
+          "response": "correct",
+          "elapsedSeconds": 30,
+          "evidence": {
+            "status": "uncertain",
+            "source": "direct",
+            "probability": 0.6428571428571428,
+            "distinctItems": 1,
+            "confirmed": false,
+            "provisionalGap": false,
+            "withinOccasionResolved": false
+          }
+        },
+        {
+          "index": 2,
+          "questionId": "v3-on-om:production-combat",
+          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+          "mode": "production",
+          "selectionReason": "confirmation",
+          "difficulty": 0.5,
+          "guessProbability": 0.5,
+          "expectedSeconds": 30,
+          "response": "correct",
+          "elapsedSeconds": 60,
+          "evidence": {
+            "status": "uncertain",
+            "source": "direct",
+            "probability": 0.7641509433962264,
+            "distinctItems": 2,
+            "confirmed": false,
+            "provisionalGap": false,
+            "withinOccasionResolved": false
+          }
+        },
+        {
+          "index": 3,
+          "questionId": "v3-on-om:production-comble",
+          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+          "mode": "production",
+          "selectionReason": "confirmation",
+          "difficulty": 0.5,
+          "guessProbability": 0.5,
+          "expectedSeconds": 30,
+          "response": "correct",
+          "elapsedSeconds": 90,
+          "evidence": {
+            "status": "uncertain",
+            "source": "direct",
+            "probability": 0.8536299765807963,
+            "distinctItems": 3,
+            "confirmed": false,
+            "provisionalGap": false,
+            "withinOccasionResolved": false
+          }
+        }
+      ],
+      "activeSeconds": 90,
+      "answeredCount": 3,
+      "skippedCount": 0,
+      "result": {
+        "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.8536299765807963,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      },
+      "withinOccasionResolved": false,
+      "followUp": {
+        "kind": "question",
+        "reason": "confirmation",
+        "questionId": "v3-on-om:production-complet",
+        "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+        "mode": "production",
+        "difficulty": 0.5,
+        "guessProbability": 0.5,
+        "expectedSeconds": 30
+      },
+      "nextActivity": null,
+      "missingActivitySkillIds": [
+        "orthographier_nasale_on_om::writing-controlled-production"
+      ],
+      "blockedSkillIds": [
+        "orthographier_nasale_on_om::writing-controlled-production"
+      ],
+      "limitations": [
+        "Synthetic fixed responses; a high guess-probability response space does not establish that a student guessed.",
+        "Focused released-target trace; not a complete assessment sitting or mastery claim."
+      ]
+    },
+    {
+      "version": "response-pattern-trace-v1",
+      "profile": "three_skips",
+      "candidateChecksum": "sha256:5e1a6ce496b93e4fd5d5bafc93caa6f26b68070e0ee103218bf7127f66cac8ab",
+      "fixedInputs": {
+        "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+        "responses": [
+          "skip",
+          "skip",
+          "skip"
+        ]
+      },
+      "trace": [
+        {
+          "index": 1,
+          "questionId": "v3-on-om:production-ballon",
+          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+          "mode": "production",
+          "selectionReason": "branch_coverage",
+          "difficulty": 0.5,
+          "guessProbability": 0.5,
+          "expectedSeconds": 30,
+          "response": "skip",
+          "elapsedSeconds": 30,
+          "evidence": {
+            "status": "unknown",
+            "source": "untested",
+            "probability": 0.5,
+            "distinctItems": 0,
+            "confirmed": false,
+            "provisionalGap": false,
+            "withinOccasionResolved": false
+          }
+        },
+        {
+          "index": 2,
+          "questionId": "v3-on-om:production-combat",
+          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+          "mode": "production",
+          "selectionReason": "branch_coverage",
+          "difficulty": 0.5,
+          "guessProbability": 0.5,
+          "expectedSeconds": 30,
+          "response": "skip",
+          "elapsedSeconds": 60,
+          "evidence": {
+            "status": "unknown",
+            "source": "untested",
+            "probability": 0.5,
+            "distinctItems": 0,
+            "confirmed": false,
+            "provisionalGap": false,
+            "withinOccasionResolved": false
+          }
+        },
+        {
+          "index": 3,
+          "questionId": "v3-on-om:production-comble",
+          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+          "mode": "production",
+          "selectionReason": "branch_coverage",
+          "difficulty": 0.5,
+          "guessProbability": 0.5,
+          "expectedSeconds": 30,
+          "response": "skip",
+          "elapsedSeconds": 90,
+          "evidence": {
+            "status": "unknown",
+            "source": "untested",
+            "probability": 0.5,
+            "distinctItems": 0,
+            "confirmed": false,
+            "provisionalGap": false,
+            "withinOccasionResolved": false
+          }
+        }
+      ],
+      "activeSeconds": 90,
+      "answeredCount": 0,
+      "skippedCount": 3,
+      "result": {
+        "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+        "status": "unknown",
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.5,
+            "distinctItems": 0,
+            "distinctContexts": 0,
+            "distinctOccasions": 0,
+            "accuracy": 0,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ],
+        "resolved": false,
+        "evidence": "untested"
+      },
+      "withinOccasionResolved": false,
+      "followUp": {
+        "kind": "question",
+        "reason": "branch_coverage",
+        "questionId": "v3-on-om:production-complet",
+        "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+        "mode": "production",
+        "difficulty": 0.5,
+        "guessProbability": 0.5,
+        "expectedSeconds": 30
+      },
+      "nextActivity": null,
+      "missingActivitySkillIds": [
+        "orthographier_nasale_on_om::writing-controlled-production"
+      ],
+      "blockedSkillIds": [
+        "orthographier_nasale_on_om::writing-controlled-production"
+      ],
+      "limitations": [
+        "Synthetic fixed responses; a high guess-probability response space does not establish that a student guessed.",
+        "Focused released-target trace; not a complete assessment sitting or mastery claim."
+      ]
+    },
+    {
+      "version": "response-pattern-trace-v1",
+      "profile": "correct_incorrect_correct",
+      "candidateChecksum": "sha256:5e1a6ce496b93e4fd5d5bafc93caa6f26b68070e0ee103218bf7127f66cac8ab",
+      "fixedInputs": {
+        "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+        "responses": [
+          "correct",
+          "incorrect",
+          "correct"
+        ]
+      },
+      "trace": [
+        {
+          "index": 1,
+          "questionId": "v3-on-om:production-ballon",
+          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+          "mode": "production",
+          "selectionReason": "branch_coverage",
+          "difficulty": 0.5,
+          "guessProbability": 0.5,
+          "expectedSeconds": 30,
+          "response": "correct",
+          "elapsedSeconds": 30,
+          "evidence": {
+            "status": "uncertain",
+            "source": "direct",
+            "probability": 0.6428571428571428,
+            "distinctItems": 1,
+            "confirmed": false,
+            "provisionalGap": false,
+            "withinOccasionResolved": false
+          }
+        },
+        {
+          "index": 2,
+          "questionId": "v3-on-om:production-combat",
+          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+          "mode": "production",
+          "selectionReason": "confirmation",
+          "difficulty": 0.5,
+          "guessProbability": 0.5,
+          "expectedSeconds": 30,
+          "response": "incorrect",
+          "elapsedSeconds": 60,
+          "evidence": {
+            "status": "uncertain",
+            "source": "direct",
+            "probability": 0.2647058823529412,
+            "distinctItems": 2,
+            "confirmed": false,
+            "provisionalGap": false,
+            "withinOccasionResolved": false
+          }
+        },
+        {
+          "index": 3,
+          "questionId": "v3-on-om:production-comble",
+          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+          "mode": "production",
+          "selectionReason": "confirmation",
+          "difficulty": 0.5,
+          "guessProbability": 0.5,
+          "expectedSeconds": 30,
+          "response": "correct",
+          "elapsedSeconds": 90,
+          "evidence": {
+            "status": "uncertain",
+            "source": "direct",
+            "probability": 0.3932038834951457,
+            "distinctItems": 3,
+            "confirmed": false,
+            "provisionalGap": false,
+            "withinOccasionResolved": false
+          }
+        }
+      ],
+      "activeSeconds": 90,
+      "answeredCount": 3,
+      "skippedCount": 0,
+      "result": {
+        "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.3932038834951457,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 0.6666666666666666,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      },
+      "withinOccasionResolved": false,
+      "followUp": {
+        "kind": "question",
+        "reason": "confirmation",
+        "questionId": "v3-on-om:production-complet",
+        "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+        "mode": "production",
+        "difficulty": 0.5,
+        "guessProbability": 0.5,
+        "expectedSeconds": 30
+      },
+      "nextActivity": null,
+      "missingActivitySkillIds": [
+        "orthographier_nasale_on_om::writing-controlled-production"
+      ],
+      "blockedSkillIds": [
+        "orthographier_nasale_on_om::writing-controlled-production"
+      ],
+      "limitations": [
+        "Synthetic fixed responses; a high guess-probability response space does not establish that a student guessed.",
+        "Focused released-target trace; not a complete assessment sitting or mastery claim."
+      ]
+    }
+  ],
+  "remainingWork": [
+    "Mixed 35-minute profile across competing released branches",
+    "Separate deployed pause/resume journey",
+    "Learning-driven refinement after unresolved response patterns"
+  ]
+}

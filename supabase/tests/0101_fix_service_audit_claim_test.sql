@@ -11,7 +11,7 @@ insert into auth.users(
   'a3000000-0000-4000-8000-000000000001',
   '00000000-0000-0000-0000-000000000000',
   'authenticated', 'authenticated', 'audit-actor@test.local', '', now(),
-  '{}', '{"role":"teacher","display_name":"Audit Actor"}', now(), now()
+  '{}', '{"role":"parent","display_name":"Audit Actor"}', now(), now()
 );
 
 set local request.jwt.claims = '{"sub":"a3000000-0000-4000-8000-000000000001","role":"service_role"}';

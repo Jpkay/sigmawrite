@@ -1,0 +1,148 @@
+{
+  "method": "Sequential browser navigation with the same paused technical QA account. Waiting for visible Commencer/Reprendre. Only completed requests are included in the timing trace; this is not a complete server trace or controlled performance benchmark.",
+  "public": {
+    "origin": "https://app.trouvetaplume.com",
+    "readyMs": 14686,
+    "slowRequests": [
+      {
+        "method": "GET",
+        "path": "/student/diagnostic",
+        "type": "document",
+        "ms": 2338.057,
+        "waitForResponseMs": 2336.096
+      },
+      {
+        "method": "GET",
+        "path": "/student/dictee",
+        "type": "fetch",
+        "ms": 1135.913,
+        "waitForResponseMs": 1135.265
+      },
+      {
+        "method": "GET",
+        "path": "/student/lessons",
+        "type": "fetch",
+        "ms": 1138.576,
+        "waitForResponseMs": 1138.109
+      },
+      {
+        "method": "POST",
+        "path": "/student/diagnostic",
+        "type": "fetch",
+        "ms": 2430.782,
+        "waitForResponseMs": 2430.119
+      },
+      {
+        "method": "GET",
+        "path": "/student/settings",
+        "type": "fetch",
+        "ms": 1035.351,
+        "waitForResponseMs": 1034.995
+      },
+      {
+        "method": "GET",
+        "path": "/student/progress",
+        "type": "fetch",
+        "ms": 1023.15,
+        "waitForResponseMs": 1022.648
+      },
+      {
+        "method": "GET",
+        "path": "/student/reference/verbe",
+        "type": "fetch",
+        "ms": 4138.71,
+        "waitForResponseMs": 4138.281
+      },
+      {
+        "method": "POST",
+        "path": "/student/diagnostic",
+        "type": "fetch",
+        "ms": 8758.529,
+        "waitForResponseMs": 8756.253
+      }
+    ]
+  },
+  "candidate": {
+    "origin": "https://sigmawrite-onj0ziu6e-jpkays-projects.vercel.app",
+    "readyMs": 17289,
+    "slowRequests": [
+      {
+        "method": "GET",
+        "path": "/student/diagnostic",
+        "type": "document",
+        "ms": 3088.643,
+        "waitForResponseMs": 2986.716
+      },
+      {
+        "method": "GET",
+        "path": "/student/vocabulary",
+        "type": "fetch",
+        "ms": 1436.899,
+        "waitForResponseMs": 1434.165
+      },
+      {
+        "method": "GET",
+        "path": "/student",
+        "type": "fetch",
+        "ms": 1437.466,
+        "waitForResponseMs": 1434.964
+      },
+      {
+        "method": "GET",
+        "path": "/student/memory",
+        "type": "fetch",
+        "ms": 1036.065,
+        "waitForResponseMs": 1032.153
+      },
+      {
+        "method": "GET",
+        "path": "/student/dictee",
+        "type": "fetch",
+        "ms": 1004.696,
+        "waitForResponseMs": 1004.088
+      },
+      {
+        "method": "GET",
+        "path": "/student/vocabulary",
+        "type": "fetch",
+        "ms": 1013.839,
+        "waitForResponseMs": 1013.41
+      },
+      {
+        "method": "GET",
+        "path": "/student/progress",
+        "type": "fetch",
+        "ms": 1038.614,
+        "waitForResponseMs": 1038.052
+      },
+      {
+        "method": "GET",
+        "path": "/student/recueil",
+        "type": "fetch",
+        "ms": 1027.351,
+        "waitForResponseMs": 1026.949
+      },
+      {
+        "method": "GET",
+        "path": "/student/inbox",
+        "type": "fetch",
+        "ms": 1016.2,
+        "waitForResponseMs": 1015.977
+      },
+      {
+        "method": "GET",
+        "path": "/student/frontier",
+        "type": "fetch",
+        "ms": 1026.154,
+        "waitForResponseMs": 1025.85
+      }
+    ]
+  },
+  "pinnedSession": {
+    "sessionId": "30cd8e3f-8489-4014-a678-3ec6bf69ebed",
+    "releaseId": "303f1662-1a34-4ee4-b142-2e7146b2f176",
+    "phase": "assessing",
+    "observations": 0
+  },
+  "conclusion": "No demonstrated browser speed improvement in this comparison. Prior helper measurements do not establish end-to-end benefit. Opening latency remains unresolved."
+}

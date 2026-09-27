@@ -1,0 +1,21 @@
+import {readFileSync} from 'node:fs';
+import {expect,it} from 'vitest';
+import {questionAssessedMaterialKeys,questionMaterialKeys,teachingMaterialKeys} from './material-annotations';
+import {materialIdentity} from './material-identity';
+import {CONJUGATION_TEACHING} from './conjugation-teaching';
+import type {DraftExpansion} from './assemble-drafts';
+const expansion=JSON.parse(readFileSync('generated/french-v3-conjugation-expansion.json','utf8')) as DraftExpansion;
+it('retains verb exposure while distinguishing a new sentence from a taught correction',()=>{
+ const entry=expansion.items.find(e=>e.itemKey.startsWith('v3-granular-forms:present-application-context:prendre:'))!;
+ const item=entry.item,exposed=questionMaterialKeys(item),assessed=questionAssessedMaterialKeys(item);
+ expect(exposed).toContain(materialIdentity('word','prendre'));
+ expect(assessed).not.toContain(materialIdentity('word','prendre'));
+ expect(assessed).toContain(materialIdentity('sentence','Je prends la dernière part de tarte.'));
+ const lesson=structuredClone(CONJUGATION_TEACHING.find(l=>l.facetKey?.endsWith('::verb:prendre'))!);
+ expect(assessed.some(key=>teachingMaterialKeys(lesson).includes(key))).toBe(false);
+ lesson.steps.push({exampleFr:'Je prends la dernière part de tarte.',explanationFr:'Exemple déjà montré.'});
+ lesson.materialExposure!.sentences!.push('Je prends la dernière part de tarte.');
+ expect(assessed.some(key=>teachingMaterialKeys(lesson).includes(key))).toBe(true);
+ const broken=structuredClone(item);broken.validatorConfig!.sentenceApplication='Une autre phrase avec ___.';
+ expect(()=>questionMaterialKeys(broken)).toThrow(/anchored/);
+});

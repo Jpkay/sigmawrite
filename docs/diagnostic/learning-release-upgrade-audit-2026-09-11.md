@@ -1,0 +1,140 @@
+# Existing students and expanded releases
+
+The current runtime always resumes the latest saved session against its pinned release. This correctly protects in-progress diagnostics, but a completed student can remain on an older learning scope indefinitely when new content is published. Full progressive coverage therefore needs a separate, explicit completed-session upgrade path; increasing the default scope alone is insufficient.
+
+A read-only production comparison of v9 (`e7566a20-2a96-4b7a-85fa-cb8883ab39a9`) and v10 (`ca9e03ae-0bae-496b-aeb0-26a5b68f75c0`) verified both published bundle checksums. The taxonomy, existing skills, source bank items, probes including pool assignments, teaching and activities are unchanged. The new supported targets are coordination recognition/controlled production and passive recognition/controlled production. No session was modified.
+
+`inspectLearningReleaseCompatibility` now provides a conservative content preflight. It rejects changed or removed old skills, questions, probes, lessons, activities, taxonomy/facet identities or previously supported assessment scope. It reports new scope targets. It is not an authorization check: callers must still validate live publication, parent releases and the exact serving permission. Four focused tests cover unchanged content, answer/graph/pool changes, expanded versus reduced scope, and changed teaching or activity destinations. TypeScript and source lint passed before the final additional teaching test; that test also passed. The function is not yet wired into runtime transfers.
+
+The transfer implementation must:
+
+1. Only accept a completed session with no active lesson or independent check. Keep an unfinished assessment on its original release.
+2. Create a successor learning session rather than rewriting the original release binding or historical evidence. Keep unsupported/new targets unknown.
+3. Atomically lock the source revision, create one successor and prevent later stale commands from modifying the old session. Select the successor consistently instead of relying on most-recent update time alone.
+4. Preserve answer provenance. Multiple-choice and support-choice IDs are derived from the original session ID; copying them to a new session without recording that origin would break answer review.
+5. Preserve original observation receipts, global material history and validated lesson completions. Never convert guided responses into independent evidence or reset exposure history.
+6. Verify repeated upgrades, concurrent learning commands, changed/withdrawn releases, failed persistence, review of old answers, new activities and reload against the real schema before activation.
+
+No upgrade, reset, migration or new learner assessment was performed by this audit. The full v10 QA journey remains separate and running. The initial-diagnostic discrimination shortfalls remain open; this work addresses access to later coverage, not those initial sampling failures.
+
+## Evidence-preserving preparation implemented
+
+`prepareLearningSuccessor` now prepares a separate learning state only for an idle completed assessment with a matching original release binding and compatible content. It retains observations, refinements, exposure history, elapsed time, lesson completions and historical missing answers. It resets only the new row's optimistic revision and stores its immediate predecessor reference. It rejects unknown historical probes or lesson completions. The old state is not mutated. Actual live authorization, row locking and persistence are intentionally outside this pure function and remain to implement.
+
+Retained responses now carry an optional `sourceSessionId`; review resolves answer and supporting-passage choice IDs using that origin. Repeated upgrades retain the first answer origin instead of overwriting it. Tests verify source immutability, evidence/time/exposure preservation, original choice resolution, repeated-origin preservation, incompatible releases and unfinished/busy sessions. All 522 granular tests across 150 files, TypeScript and scoped ESLint pass. No production transfer has been enabled or performed.
+
+## Atomic persistence preparation
+
+Migration 0150 adds a server-only transaction that creates one learning successor
+from an idle, completed session. It locks the predecessor revision, rejects
+historical-state changes, preserves answer origins, and makes the predecessor
+read-only after linking. An active-session view excludes superseded rows while
+historical session lookup remains available.
+
+The disposable full-schema PostgreSQL test covers cross-student rejection,
+stale revisions, historical answer/evidence preservation, rollback after rejected
+input, idempotent retries, active-session selection, and rejection of writes to
+the predecessor. Browser roles cannot call the successor function. These are
+storage-integrity checks with synthetic fixtures, not pedagogical approval or
+proof of concurrent-upgrade behavior.
+
+This migration is prepared locally only. Store/action integration, overlapping
+upgrade/write tests, remote migration, and a controlled live upgrade remain to
+be completed before enabling the feature. The authenticated server must check
+student access and both live releases, then run full compatibility validation;
+the SQL function deliberately does not substitute for that content validation.
+
+Store integration is now prepared: `createLearningSuccessor` reads the original
+persisted state, revalidates both live bundles, runs compatibility preparation,
+and invokes the atomic RPC using the source revision. Latest-session and
+latest-learning queries use the active-session view; direct history reads keep
+using the original session table. No automatic upgrade or public action is
+activated yet. Deploy migration 0150 before deploying this store version.
+Validation: all 525 granular tests across 151 files and TypeScript passed.
+
+## Concurrent persistence verification
+
+The disposable full-schema harness now opens independent PostgreSQL connections
+and observes an actual lock wait for each of three races: duplicate upgrades,
+upgrade before save, and save before upgrade. Duplicate requests return one
+successor. A save arriving after the upgrade cannot alter the predecessor. A
+save committed first advances the revision and rejects the stale upgrade,
+preserving that save. Final row assertions verify successor counts and source
+revisions. All three cases passed with the full 150-migration schema.
+
+This closes the concurrent-storage check above. Authenticated application
+activation and remote rollout remain pending.
+
+The authenticated `upgradeGranularLearning` action is prepared behind
+`GRANULAR_LEARNING_UPGRADES_ENABLED=true` (disabled unless explicitly enabled).
+It accepts no browser-supplied student or target release, checks role and current
+access, uses the configured published default, and leaves unfinished diagnostics
+and current-release sessions unchanged. Successful upgrades refresh lessons and
+results; the response contains only a changed flag. Four action tests cover
+identity/access, disabled and unfinished cases, and atomic-conflict propagation;
+TypeScript and scoped lint passed. UI integration and remote activation remain.
+
+The lessons page now offers “Ajouter les nouvelles activités” only when the
+flag is enabled and the published default is a compatible successor for an idle,
+completed session. In-progress lessons/checks and unchanged releases show no
+upgrade control. The action rechecks state before persistence; conflicts produce
+an actionable retry message. The legacy demo has no granular session and is not
+offered this upgrade. All 530 relevant tests (152 files), TypeScript and scoped
+lint passed. Browser verification, remote migration and rollout are still due.
+
+## Rollout checkpoint
+
+Migration 0150 was applied transactionally with its migration-history entry to
+the linked deployed database `pwztnrirtrnicywvdbpz`; the successor table was
+verified present and empty before browser testing. Candidate `f8fc1ba` is Ready
+at https://sigmawrite-fnaekixau-jpkays-projects.vercel.app, deployment
+`dpl_7iJ9C5y3YtvZPtLPvWwgv1aePCGs`, with upgrades enabled on that candidate only.
+The public alias has not been promoted. The isolated source checkout excludes
+unrelated working-tree changes. Candidate browser upgrade verification is running.
+
+Candidate verification found two issues before promotion. The lessons route was
+hidden behind legacy client hydration; commit 56e7844 delegates that exact route
+to its existing authenticated server learning guard. The legacy demo then reached
+all 11 lessons on the candidate. Separately, v9→v10 has identical existing
+compiled skills, probes, bank entries, teaching and activities, but a different
+aggregate facet checksum: facet-adapter hashes all annotations and probes, which
+necessarily changes when questions are added. Compatibility now permits that
+aggregate change only with added bank items and matching new probes, while still
+requiring exact equality of every existing compiled object. A checksum-only
+change and any altered existing item or skill remain rejected. Focused regression
+tests passed; the corrected upgrade still needs candidate browser verification.
+
+The expanded-bank browser check exposed one additional case: v10 makes
+`local-grammar-v1:construction_voix_passive:receptive:core` available although
+its unchanged bank entry already existed in v9. Newly compiled probes therefore
+need backing in the target's validated bank, not necessarily a newly inserted
+bank entry. The compatibility check now permits that case while retaining exact
+old-item/probe/skill comparisons. A regression test covers activation of an
+unused bank item and rejects a new probe with no backing bank entry. No source
+QA session was upgraded during either withheld-button test.
+
+The e28b109 candidate renders the eligible upgrade control correctly, but its
+client-only click handler did not run during the browser test (button remained
+unchanged; no successor row was created). Replace the control with a server-
+rendered form and inline authenticated server action, allowing native submission
+before client hydration. The action redirects back to lessons after success.
+This follows the existing native-control fix for answer review. TypeScript and
+scoped lint passed; native browser submission still needs candidate verification.
+
+## Production activation
+
+The server-form candidate `0c859ca` passed the browser upgrade on the existing
+v9 QA student. Successor `d0573294-c792-46ef-94d4-62d4ae3c8fd1` uses published v10;
+source `53a3bcbe-dc7a-4916-b59e-d9f8ee3403ce` remained byte-for-byte unchanged in
+the retrieved database row. All 58 original observations and 14 errors are still
+reviewable after reload. The legacy demo again reached all 11 lessons.
+
+Deployment `dpl_EUcPQ5UwxXuxSnKsKFyhNk7NdzvZ` at
+https://sigmawrite-ajz6bnaf1-jpkays-projects.vercel.app was promoted successfully;
+`GRANULAR_LEARNING_UPGRADES_ENABLED=true` is persisted for production. The public
+demo smoke check passed: onboarding redirects to lessons, 11 lessons available,
+first lesson opens, legacy review retains 48 answers / 17 incorrect. Public
+upgraded-session verification also passed: five activities, with both original
+and successor reviews retaining 58 answers / 14 incorrect. This activates
+compatible learning successors, not completion of the full French coverage or
+educational calibration work.

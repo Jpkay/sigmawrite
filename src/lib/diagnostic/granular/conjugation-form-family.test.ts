@@ -1,0 +1,140 @@
+import {readFileSync} from 'node:fs';
+import {expect,it} from 'vitest';
+import {conjugationFormFamily} from './conjugation-form-family';
+import {assessSkills,selectProbe,DEFAULT_POLICY,type Skill,type Probe,type Observation} from './engine';
+import {inspectAssessmentGraph} from './release-graph';
+import {bindAssessmentRelease} from './release-binding';
+import type {V3Assessment} from './v3-adapter';
+const assessment=JSON.parse(readFileSync('docs/diagnostic/v3-scoped-review-candidate.json','utf8')).assessment as V3Assessment;
+it('surveys forms early while collecting enough evidence before repeatedly switching categories',()=>{
+ const skills:Skill[]=(['simple','compound','periphrastic'] as const).map(formFamily=>({id:formFamily,formFamily,branch:'verb',domain:'conjugation',level:1,prerequisites:[],modes:['production']}));
+ const probes:Probe[]=skills.flatMap(skill=>Array.from({length:6},(_,index)=>({id:`${skill.id}:${index}`,skillId:skill.id,mode:'production',contextId:`context:${index}`,difficulty:.5,expectedSeconds:30,guessProbability:.05})));
+ const history:Observation[]=[];
+ for(let index=0;index<7;index++){
+  const next=selectProbe(skills,probes,history);if(next.kind!=='question')throw Error('Expected available question');
+  history.push({...next.item,itemId:next.item.id,correct:true,activeSeconds:30});
+ }
+ expect(new Set(history.slice(0,3).map(answer=>answer.skillId)).size).toBe(3);
+ expect(assessSkills(skills,history).filter(result=>result.status==='mastered').length).toBeGreaterThanOrEqual(2);
+ expect(history.reduce((sum,answer)=>sum+answer.activeSeconds,0)).toBe(210);
+});
+function simulate(correctFor:(skill:Skill)=>boolean){
+ const history:Observation[]=[];
+ for(let i=0;i<180;i++){
+  const next=selectProbe(assessment.skills,assessment.probes,history,DEFAULT_POLICY,[],assessment.releaseScope);
+  if(next.kind!=='question')return history;
+  const p=next.item,s=assessment.skills.find(s=>s.id===p.skillId)!;
+  const known=new Set(history.flatMap(o=>assessment.probes.find(p=>p.id===o.itemId)?.materialKeys??[]));
+  history.push({...p,itemId:p.id,correct:correctFor(s),unaided:true,activeSeconds:p.expectedSeconds,occasionId:'synthetic-sitting',materialReceipt:{presentationId:`synthetic:${p.id}`,sourceChecksum:'synthetic',historyComplete:true,firstRecordedKeys:(p.materialKeys??[]).filter(k=>!known.has(k)),previouslySeenKeys:(p.materialKeys??[]).filter(k=>known.has(k)),assessedMaterialKeys:p.assessedMaterialKeys}});
+ }
+ throw Error('Unbounded selection');
+}
+it('samples both simple and compound production within the full graph time budget',()=>{
+ const history=simulate(()=>true);
+ const compound=history.findIndex(o=>o.mode==='production'&&assessment.skills.find(s=>s.id===o.skillId)?.formFamily==='compound');
+ expect(compound).toBeGreaterThanOrEqual(0);
+ expect(history.slice(0,compound+1).reduce((sum,o)=>sum+o.activeSeconds,0)).toBeLessThan(DEFAULT_POLICY.activeSeconds/2);
+ expect(history.some(o=>o.mode==='production'&&assessment.skills.find(s=>s.id===o.skillId)?.formFamily==='simple')).toBe(true);
+ expect(history.reduce((sum,o)=>sum+o.activeSeconds,0)).toBeLessThanOrEqual(DEFAULT_POLICY.activeSeconds);
+ expect(new Set(history.map(o=>assessment.skills.find(s=>s.id===o.skillId)!.domain)).size).toBe(4);
+ const verbs=new Set(history.map(o=>assessment.skills.find(s=>s.id===o.skillId)!.branch).filter(branch=>branch.startsWith('conjugation:verb:')));
+ expect(verbs.size).toBeGreaterThanOrEqual(2);
+ const results=assessSkills(assessment.skills,history);
+ expect(results).toHaveLength(assessment.skills.length);
+ for(const r of results)if(!history.some(o=>o.skillId===r.skillId))expect(r.status).toBe('unknown');
+ expect(results.some(r=>r.status==='mastered')).toBe(false);
+});
+it('does not transfer correct simple-form answers into wrong compound-form evidence',()=>{
+ const history=simulate(s=>s.formFamily!=='compound');
+ const sampledCompound=history.filter(o=>assessment.skills.find(s=>s.id===o.skillId)?.formFamily==='compound');
+ expect(sampledCompound.length).toBeGreaterThan(0);
+ const results=assessSkills(assessment.skills,history);
+ for(const id of new Set(sampledCompound.map(o=>o.skillId))){
+  const result=results.find(r=>r.skillId===id)!;
+  expect(result.status).not.toBe('mastered');
+  for(const m of result.modes)expect(m.accuracy).toBe(0);
+ }
+});
+it('follows an actual prerequisite across form categories after a failed challenge',()=>{
+ const skills:Skill[]=[{id:'simple',branch:'verb',domain:'conjugation',level:1,formFamily:'simple',prerequisites:[],modes:['production']},{id:'compound',branch:'verb',domain:'conjugation',level:3,formFamily:'compound',prerequisites:['simple'],modes:['production']}];
+ const bank:Probe[]=skills.flatMap(s=>Array.from({length:5},(_,i)=>({id:`${s.id}:${i}`,skillId:s.id,contextId:`context:${i}`,mode:'production',guessProbability:.05,difficulty:.5,expectedSeconds:30})));
+ const failed:Observation={...bank[5],itemId:bank[5].id,correct:false,activeSeconds:30};
+ expect(selectProbe(skills,bank,[failed])).toMatchObject({kind:'question',reason:'step_down',item:{skillId:'simple'}});
+ expect(assessSkills(skills,[failed])[0].status).toBe('unknown');
+});
+it('pins category changes and rejects a false classification without requiring metadata on old releases',()=>{
+ expect(conjugationFormFamily('produire_passe_compose')).toBe('compound');
+ expect(conjugationFormFamily('produire_futur_proche')).toBe('periphrastic');
+ expect(conjugationFormFamily('produire_conditionnel_present')).toBe('simple');
+ expect(conjugationFormFamily('produire_contraste_pc_imparfait')).toBe('contrast');
+ expect(conjugationFormFamily('identifier_sujet_verbe')).toBeUndefined();
+ expect(inspectAssessmentGraph(assessment.skills)).toBe(true);
+ const legacy=structuredClone(assessment);for(const s of legacy.skills)delete s.formFamily;
+ expect(inspectAssessmentGraph(legacy.skills)).toBe(true);
+ const ids={taxonomyId:'test',bankId:'test'};
+ expect(bindAssessmentRelease(assessment,ids).checksum).not.toBe(bindAssessmentRelease(legacy,ids).checksum);
+ const bad=structuredClone(assessment);bad.skills.find(s=>s.formFamily==='compound')!.formFamily='simple';
+ expect(inspectAssessmentGraph(bad.skills)).toBe(false);
+});
+it('shares the initial form survey across verb families without sharing their evidence',()=>{
+ const skills:Skill[]=['conjugation:verb:aller','conjugation:pattern:regular_er'].flatMap(branch=>
+  (['simple','compound','periphrastic'] as const).map(formFamily=>({id:`${branch}:${formFamily}`,branch,formFamily,domain:'conjugation',samplingGroup:'conjugaison',level:1,prerequisites:[],modes:['production']})));
+ const bank:Probe[]=skills.flatMap(skill=>Array.from({length:6},(_,i)=>({id:`${skill.id}:${i}`,skillId:skill.id,mode:'production',contextId:`context:${i}`,difficulty:.5,expectedSeconds:30,guessProbability:.05})));
+ const history:Observation[]=[];
+ for(let i=0;i<3;i++){
+  const next=selectProbe(skills,bank,history);if(next.kind!=='question')throw Error('Expected survey');
+  history.push({...next.item,itemId:next.item.id,correct:true,activeSeconds:30});
+ }
+ expect(new Set(history.map(o=>skills.find(s=>s.id===o.skillId)!.formFamily)).size).toBe(3);
+ expect(new Set(history.map(o=>skills.find(s=>s.id===o.skillId)!.branch)).size).toBe(2);
+ for(const result of assessSkills(skills,history)){
+  if(!history.some(o=>o.skillId===result.skillId))expect(result.status).toBe('unknown');
+  expect(result.status).not.toBe('mastered');
+ }
+});
+
+it('counts a verb visit across tense categories before rotating to another verb',()=>{
+ const forms=['simple','compound','periphrastic'] as const;
+ const skills:Skill[]=['a','b'].flatMap(verb=>forms.map(form=>({id:`${verb}:${form}`,branch:`conjugation:verb:${verb}`,domain:'conjugation',samplingGroup:'conjugaison',formFamily:form,level:1,prerequisites:[],modes:['production']})));
+ const probes:Probe[]=skills.flatMap(skill=>Array.from({length:6},(_,i)=>({id:`${skill.id}:${i}`,skillId:skill.id,mode:'production',contextId:`${skill.id}:${i}`,difficulty:.5,expectedSeconds:30,guessProbability:.05})));
+ const history:Observation[]=forms.flatMap(form=>probes.filter(p=>p.skillId===`a:${form}`).slice(0,2).map(p=>({...p,itemId:p.id,correct:true,activeSeconds:30})));
+ const next=selectProbe(skills,probes,history,{...DEFAULT_POLICY,itemsPerBranchVisit:6});
+ expect(next.kind).toBe('question');if(next.kind!=='question')throw Error('Expected a fresh verb question');
+ expect(next.item.skillId.startsWith('b:')).toBe(true);
+ expect(assessSkills(skills,history).filter(s=>s.skillId.startsWith('b:')).every(s=>s.status==='unknown')).toBe(true);
+});
+
+it('steps down across tense categories of the same verb and revisits the failed boundary after confirmation',()=>{
+ const skills:Skill[]=[
+  {id:'present',branch:'conjugation:verb:avoir',domain:'conjugation',samplingGroup:'conjugaison',formFamily:'simple',level:1,modes:['production'],prerequisites:[]},
+  {id:'recent',branch:'conjugation:verb:avoir',domain:'conjugation',samplingGroup:'conjugaison',formFamily:'periphrastic',level:2,modes:['production'],prerequisites:[]},
+  {id:'compound',branch:'conjugation:verb:avoir',domain:'conjugation',samplingGroup:'conjugaison',formFamily:'compound',level:3,modes:['production'],prerequisites:[]},
+ ];
+ const probes:Probe[]=skills.flatMap(s=>Array.from({length:6},(_,i)=>({id:`${s.id}:${i}`,skillId:s.id,mode:'production',contextId:`${s.id}:${i}`,guessProbability:.05,difficulty:.5,expectedSeconds:30})));
+ const observation=(id:string,correct:boolean):Observation=>{const p=probes.find(p=>p.id===id)!;return {...p,itemId:p.id,correct,activeSeconds:30};};
+ const history=[observation('compound:0',false)];
+ expect(selectProbe(skills,probes,history)).toMatchObject({kind:'question',reason:'step_down',item:{skillId:'recent'}});
+ expect(assessSkills(skills,history).find(s=>s.skillId==='recent')?.status).toBe('unknown');
+ history.push(observation('recent:0',false));
+ expect(selectProbe(skills,probes,history)).toMatchObject({kind:'question',reason:'step_down',item:{skillId:'present'}});
+ history.push(...[0,1,2].map(i=>observation(`present:${i}`,true)));
+ const next=selectProbe(skills,probes,history);
+ expect(next).toMatchObject({kind:'question',reason:'recheck_boundary',item:{skillId:'recent'}});
+ if(next.kind==='question')expect(history.some(o=>o.itemId===next.item.id)).toBe(false);
+ expect(assessSkills(skills,history).find(s=>s.skillId==='compound')?.status).not.toBe('mastered');
+});
+
+it('confirms family foundations, explores another verb, and verifies its own failed boundary within a bounded visit',()=>{
+ const make=(id:string,branch:string,level:number,formFamily:Skill['formFamily']):Skill=>({id,branch,level,formFamily,domain:'conjugation',samplingGroup:'conjugaison',prerequisites:[],modes:['production']});
+ const skills=[make('concept','conjugation:concept',1,undefined),make('pattern-present','conjugation:pattern:regular_er',1,'simple'),make('pattern-compound','conjugation:pattern:regular_er',3,'compound'),...['a','b'].flatMap(v=>[make(`${v}-present`,`conjugation:verb:${v}`,1,'simple'),make(`${v}-recent`,`conjugation:verb:${v}`,2,'periphrastic')])];
+ const probes:Probe[]=skills.flatMap(s=>Array.from({length:8},(_,i)=>({id:`${s.id}:${i}`,skillId:s.id,mode:'production',contextId:`${s.id}:${i}`,difficulty:.5,guessProbability:.05,expectedSeconds:30})));
+ const history:Observation[]=[];
+ const add=(id:string,count:number,correct=true)=>history.push(...probes.filter(p=>p.skillId===id).slice(0,count).map(p=>({...p,itemId:p.id,correct,activeSeconds:30})));
+ add('concept',4);add('pattern-present',3);add('pattern-compound',1);add('a-present',3);add('a-recent',1);
+ for(let i=0;i<3;i++){const n=selectProbe(skills,probes,history);expect(n).toMatchObject({kind:'question',item:{skillId:'b-present'}});if(n.kind!=='question')throw Error('Missing verb probe');history.push({...n.item,itemId:n.item.id,correct:true,activeSeconds:30});}
+ for(let i=0;i<3;i++){const n=selectProbe(skills,probes,history);expect(n).toMatchObject({kind:'question',reason:i===0?'step_up':'confirmation',item:{skillId:'b-recent'}});if(n.kind!=='question')throw Error('Missing boundary probe');expect(history.some(o=>o.itemId===n.item.id)).toBe(false);history.push({...n.item,itemId:n.item.id,correct:false,activeSeconds:30});}
+ const results=assessSkills(skills,history);expect(results.find(r=>r.skillId==='b-present')?.status).toBe('mastered');expect(results.find(r=>r.skillId==='b-recent')?.status).toBe('missing');expect(results.find(r=>r.skillId==='a-recent')?.status).toBe('uncertain');
+ const contradictory=history.map(o=>o.skillId==='b-recent'?{...o,correct:o.itemId!==history.find(x=>x.skillId==='b-recent')!.itemId}:o);
+ expect(assessSkills(skills,contradictory).find(r=>r.skillId==='b-recent')?.status).toBe('uncertain');
+ const rotated=selectProbe(skills,probes,contradictory);expect(rotated.kind).toBe('question');if(rotated.kind==='question')expect(rotated.item.skillId).not.toBe('b-recent');
+});

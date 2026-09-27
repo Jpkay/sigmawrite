@@ -1,0 +1,31 @@
+{
+  "status": "experimental_envelope_recovery_verified_live_failures_remain",
+  "evaluatorVersion": "french-writing-evaluator-v7",
+  "change": "Recover only the captured duplicate two-byte JSON object prefix. Preserve payload values and require existing grading schema, source anchors and deterministic imperative checks.",
+  "localChecks": {
+    "assessmentAndConjugationTests": 697,
+    "typescript": "passed",
+    "capturedEnvelopeRegression": "passed",
+    "parserFinalCheck": "passed"
+  },
+  "liveSyntheticChecks": {
+    "matched": 4,
+    "total": 6,
+    "failures": [
+      {
+        "id": "imperative-forms-errors",
+        "reason": "provider_or_configuration"
+      },
+      {
+        "id": "imperative-liaison-errors",
+        "reason": "invalid_evidence"
+      }
+    ]
+  },
+  "limitations": [
+    "Live forms-errors failure did not produce a parsed judgment; exact cause was not captured in this run.",
+    "Live liaison-errors response lowercased an excerpt absent from the original answer; strict anchoring rejected it.",
+    "These synthetic cases do not establish educator calibration or reliability across writing targets.",
+    "The experimental evaluator remains outside student releases."
+  ]
+}

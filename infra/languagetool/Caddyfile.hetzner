@@ -1,0 +1,8 @@
+grammar.trouvetaplume.com {
+    header {
+        Strict-Transport-Security "max-age=31536000"
+        X-Content-Type-Options "nosniff"
+        -Server
+    }
+    reverse_proxy sigmawrite-grammar:8080
+}

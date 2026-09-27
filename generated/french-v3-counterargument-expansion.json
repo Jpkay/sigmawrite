@@ -1,0 +1,683 @@
+{
+  "version": "french-v3-counterargument-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-counterargument:manga-club",
+      "item": {
+        "nodeKey": "reconnaitre_contre_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe propose un club manga après les cours pour échanger nos lectures. Plusieurs élèves craignent toutefois de manquer leur bus si le club finit trop tard. Nous pourrions terminer avant le départ des bus.\n\nQuelle difficulté les élèves opposent-ils au projet de club ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-counterargument:manga-club",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je propose un club manga après les cours pour échanger nos lectures. Plusieurs élèves craignent toutefois de manquer leur bus si le club finit trop tard. Nous pourrions terminer avant le départ des bus.",
+            "choices": [
+              {
+                "quoteFr": "Plusieurs élèves craignent toutefois de manquer leur bus si le club finit trop tard.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je propose un club manga après les cours pour échanger nos lectures.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Nous pourrions terminer avant le départ des bus.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Ils risquent de manquer leur bus.",
+            "correct": true
+          },
+          {
+            "text": "Ils pourraient échanger leurs lectures.",
+            "correct": false
+          },
+          {
+            "text": "Le club pourrait terminer plus tôt.",
+            "correct": false
+          },
+          {
+            "text": "Tous les élèves détestent les mangas.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-counterargument:courtyard",
+      "item": {
+        "nodeKey": "reconnaitre_contre_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nDes élèves craignent que des tables de ping-pong réduisent la place pour courir. Je souhaite pourtant en installer dans la cour pour varier les activités. Le conseil des élèves en parlera jeudi.\n\nQuelle raison va contre l’installation des tables ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-counterargument:courtyard",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Des élèves craignent que des tables de ping-pong réduisent la place pour courir. Je souhaite pourtant en installer dans la cour pour varier les activités. Le conseil des élèves en parlera jeudi.",
+            "choices": [
+              {
+                "quoteFr": "Des élèves craignent que des tables de ping-pong réduisent la place pour courir.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je souhaite pourtant en installer dans la cour pour varier les activités.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le conseil des élèves en parlera jeudi.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Il resterait moins de place pour courir.",
+            "correct": true
+          },
+          {
+            "text": "Les activités seraient plus variées.",
+            "correct": false
+          },
+          {
+            "text": "Le conseil se réunira jeudi.",
+            "correct": false
+          },
+          {
+            "text": "Les tables seraient trop chères.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-counterargument:online-paper",
+      "item": {
+        "nodeKey": "reconnaitre_contre_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nPublions le journal du collège uniquement en ligne pour économiser du papier. La prochaine édition parlera des associations du quartier. Certains élèves n’ont cependant pas accès à Internet chez eux.\n\nQuelle objection peut-on opposer à un journal uniquement en ligne d’après le texte ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-counterargument:online-paper",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Publions le journal du collège uniquement en ligne pour économiser du papier. La prochaine édition parlera des associations du quartier. Certains élèves n’ont cependant pas accès à Internet chez eux.",
+            "choices": [
+              {
+                "quoteFr": "Certains élèves n’ont cependant pas accès à Internet chez eux.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Publions le journal du collège uniquement en ligne pour économiser du papier.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La prochaine édition parlera des associations du quartier.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Certains élèves n’ont pas Internet à la maison.",
+            "correct": true
+          },
+          {
+            "text": "On économiserait du papier.",
+            "correct": false
+          },
+          {
+            "text": "Le journal parlera du quartier.",
+            "correct": false
+          },
+          {
+            "text": "Personne ne sait lire au collège.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-counterargument:pets",
+      "item": {
+        "nodeKey": "reconnaitre_contre_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAccueillons un lapin dans la classe pour apprendre à nous en occuper. Qui le nourrira pendant les vacances, demandent plusieurs parents. Un planning pourrait répartir cette tâche entre des familles volontaires.\n\nQuel problème les parents soulèvent-ils contre ce projet ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-counterargument:pets",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Accueillons un lapin dans la classe pour apprendre à nous en occuper. Qui le nourrira pendant les vacances, demandent plusieurs parents. Un planning pourrait répartir cette tâche entre des familles volontaires.",
+            "choices": [
+              {
+                "quoteFr": "Qui le nourrira pendant les vacances, demandent plusieurs parents.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Accueillons un lapin dans la classe pour apprendre à nous en occuper.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Un planning pourrait répartir cette tâche entre des familles volontaires.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Il faut prévoir qui nourrira le lapin pendant les vacances.",
+            "correct": true
+          },
+          {
+            "text": "Les élèves apprendraient à s’occuper du lapin.",
+            "correct": false
+          },
+          {
+            "text": "Des familles volontaires pourraient se partager la tâche.",
+            "correct": false
+          },
+          {
+            "text": "Le lapin ne mange jamais pendant les vacances.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-counterargument:uniform",
+      "item": {
+        "nodeKey": "reconnaitre_contre_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne tenue commune éviterait les comparaisons entre les vêtements des élèves. Je suis donc favorable à cette tenue au collège. Des familles font remarquer qu’il faudrait acheter de nouveaux vêtements alors que les anciens conviennent encore.\n\nQuelle raison les familles donnent-elles contre la tenue commune ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-counterargument:uniform",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Une tenue commune éviterait les comparaisons entre les vêtements des élèves. Je suis donc favorable à cette tenue au collège. Des familles font remarquer qu’il faudrait acheter de nouveaux vêtements alors que les anciens conviennent encore.",
+            "choices": [
+              {
+                "quoteFr": "Des familles font remarquer qu’il faudrait acheter de nouveaux vêtements alors que les anciens conviennent encore.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Une tenue commune éviterait les comparaisons entre les vêtements des élèves.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Je suis donc favorable à cette tenue au collège.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Elle obligerait à acheter des vêtements alors que les anciens conviennent.",
+            "correct": true
+          },
+          {
+            "text": "Elle éviterait les comparaisons entre vêtements.",
+            "correct": false
+          },
+          {
+            "text": "L’auteur y est favorable.",
+            "correct": false
+          },
+          {
+            "text": "Les élèves ne possèdent aucun vêtement.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-counterargument:garden",
+      "item": {
+        "nodeKey": "reconnaitre_contre_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nInstaller un potager me paraît souhaitable pour observer la croissance des plantes. Mais cela demande un arrosage régulier, souligne la gardienne. Nous pourrions organiser des tours d’arrosage.\n\nQuelle contrainte la gardienne oppose-t-elle au projet ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-counterargument:garden",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Installer un potager me paraît souhaitable pour observer la croissance des plantes. Mais cela demande un arrosage régulier, souligne la gardienne. Nous pourrions organiser des tours d’arrosage.",
+            "choices": [
+              {
+                "quoteFr": "Mais cela demande un arrosage régulier, souligne la gardienne.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Installer un potager me paraît souhaitable pour observer la croissance des plantes.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Nous pourrions organiser des tours d’arrosage.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le potager aurait besoin d’un arrosage régulier.",
+            "correct": true
+          },
+          {
+            "text": "Les élèves observeraient la croissance des plantes.",
+            "correct": false
+          },
+          {
+            "text": "On pourrait organiser des tours d’arrosage.",
+            "correct": false
+          },
+          {
+            "text": "Les plantes poussent sans eau.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-counterargument:music",
+      "item": {
+        "nodeKey": "reconnaitre_contre_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nDiffusons de la musique dans le foyer pour le rendre plus accueillant. Même à faible volume, elle pourrait gêner ceux qui souhaitent y lire au calme. Le foyer ouvre à midi.\n\nQuelle raison s’oppose à la diffusion de musique dans ce texte ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-counterargument:music",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Diffusons de la musique dans le foyer pour le rendre plus accueillant. Même à faible volume, elle pourrait gêner ceux qui souhaitent y lire au calme. Le foyer ouvre à midi.",
+            "choices": [
+              {
+                "quoteFr": "Même à faible volume, elle pourrait gêner ceux qui souhaitent y lire au calme.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Diffusons de la musique dans le foyer pour le rendre plus accueillant.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le foyer ouvre à midi.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Elle pourrait déranger les élèves qui veulent lire au calme.",
+            "correct": true
+          },
+          {
+            "text": "Elle rendrait le foyer plus accueillant.",
+            "correct": false
+          },
+          {
+            "text": "Le foyer ouvre à midi.",
+            "correct": false
+          },
+          {
+            "text": "Le foyer est toujours fermé.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-counterargument:trip",
+      "item": {
+        "nodeKey": "reconnaitre_contre_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe trajet en train coûterait davantage que le trajet en car, rappelle le trésorier. Je défends néanmoins le train pour notre sortie, car nous pourrions marcher plus facilement pendant le voyage. Le départ est prévu en avril.\n\nQuelle objection le trésorier donne-t-il au choix du train ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-counterargument:trip",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Le trajet en train coûterait davantage que le trajet en car, rappelle le trésorier. Je défends néanmoins le train pour notre sortie, car nous pourrions marcher plus facilement pendant le voyage. Le départ est prévu en avril.",
+            "choices": [
+              {
+                "quoteFr": "Le trajet en train coûterait davantage que le trajet en car, rappelle le trésorier.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je défends néanmoins le train pour notre sortie, car nous pourrions marcher plus facilement pendant le voyage.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le départ est prévu en avril.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le train coûterait plus cher que le car.",
+            "correct": true
+          },
+          {
+            "text": "On pourrait marcher plus facilement pendant le voyage.",
+            "correct": false
+          },
+          {
+            "text": "Le départ est prévu en avril.",
+            "correct": false
+          },
+          {
+            "text": "Le voyage en train serait gratuit.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-counterargument:manga-club",
+      "itemChecksum": "sha256:6432f11fb82a1ffa23ee691c8fedc7b36942511814e6fa82ca78329cacb5bbc8",
+      "facetKey": "reconnaitre_contre_argument::text_type:argumentative",
+      "contextKey": "passage:v3-counterargument:manga-club",
+      "reason": "Repérer une raison qui s’oppose à la proposition défendue, distincte de sa justification, d’un détail et d’une réponse à l’objection."
+    },
+    {
+      "itemKey": "v3-counterargument:courtyard",
+      "itemChecksum": "sha256:8ac6b7e296bfddb0d892c544643ecedc961e7e4106f6787843d46d34365e6f00",
+      "facetKey": "reconnaitre_contre_argument::text_type:argumentative",
+      "contextKey": "passage:v3-counterargument:courtyard",
+      "reason": "Repérer une raison qui s’oppose à la proposition défendue, distincte de sa justification, d’un détail et d’une réponse à l’objection."
+    },
+    {
+      "itemKey": "v3-counterargument:online-paper",
+      "itemChecksum": "sha256:01c2f22c4441f6246cd0bae3fb931a8a1460110f105954b9e81a7a7bb4e5528d",
+      "facetKey": "reconnaitre_contre_argument::text_type:argumentative",
+      "contextKey": "passage:v3-counterargument:online-paper",
+      "reason": "Repérer une raison qui s’oppose à la proposition défendue, distincte de sa justification, d’un détail et d’une réponse à l’objection."
+    },
+    {
+      "itemKey": "v3-counterargument:pets",
+      "itemChecksum": "sha256:412e8690f4e6fcff52c5b80a8a98f83ce0aa48db7d6d439d122a243124e42cb8",
+      "facetKey": "reconnaitre_contre_argument::text_type:argumentative",
+      "contextKey": "passage:v3-counterargument:pets",
+      "reason": "Repérer une raison qui s’oppose à la proposition défendue, distincte de sa justification, d’un détail et d’une réponse à l’objection."
+    },
+    {
+      "itemKey": "v3-counterargument:uniform",
+      "itemChecksum": "sha256:b8d4e1ecd142e8a29a27ed245663b5f8e807fd5057af5cb6b1af25e8849c52e1",
+      "facetKey": "reconnaitre_contre_argument::text_type:argumentative",
+      "contextKey": "passage:v3-counterargument:uniform",
+      "reason": "Repérer une raison qui s’oppose à la proposition défendue, distincte de sa justification, d’un détail et d’une réponse à l’objection."
+    },
+    {
+      "itemKey": "v3-counterargument:garden",
+      "itemChecksum": "sha256:6c271b6abdc2cd467bf2194160ffde35b6fb7f3125759bd8e5d5e802a1f141f2",
+      "facetKey": "reconnaitre_contre_argument::text_type:argumentative",
+      "contextKey": "passage:v3-counterargument:garden",
+      "reason": "Repérer une raison qui s’oppose à la proposition défendue, distincte de sa justification, d’un détail et d’une réponse à l’objection."
+    },
+    {
+      "itemKey": "v3-counterargument:music",
+      "itemChecksum": "sha256:5b420aa30878c44b1e06bff29d373afc3fc9ea7ab2353a06be458e16b1565cd4",
+      "facetKey": "reconnaitre_contre_argument::text_type:argumentative",
+      "contextKey": "passage:v3-counterargument:music",
+      "reason": "Repérer une raison qui s’oppose à la proposition défendue, distincte de sa justification, d’un détail et d’une réponse à l’objection."
+    },
+    {
+      "itemKey": "v3-counterargument:trip",
+      "itemChecksum": "sha256:0b9b2090ee4465c106c0c4d287633852cd0f662cbe5f71b4c7072f326e4fd01b",
+      "facetKey": "reconnaitre_contre_argument::text_type:argumentative",
+      "contextKey": "passage:v3-counterargument:trip",
+      "reason": "Repérer une raison qui s’oppose à la proposition défendue, distincte de sa justification, d’un détail et d’une réponse à l’objection."
+    }
+  ],
+  "checksum": "sha256:581e7dd204952e1e02f99d4a15a1b1f5cc087ad24dfb3bcbfcd403b35ea10510"
+}

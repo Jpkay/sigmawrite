@@ -1,0 +1,16 @@
+import {config} from 'dotenv';
+import {writeFileSync} from 'node:fs';
+import {createClient} from '@supabase/supabase-js';
+import {SupabaseAssessmentStore} from '../src/lib/diagnostic/granular/store';
+import {checksum} from '../src/lib/taxonomy/validate';
+config({path:'.env.local',quiet:true});
+const releaseId=process.env.PLUME_PROFILE_RELEASE_ID??'ec46e0ac-94b7-425c-903b-d33a82ce0378';
+const output=process.argv[2]??'tmp/published-r41-profile-bundle.json';
+if(!output.startsWith('tmp/'))throw Error('Export must stay in tmp/');
+const db=createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!,process.env.SUPABASE_SERVICE_ROLE_KEY!,{auth:{persistSession:false}});
+const bundle=await new SupabaseAssessmentStore(db).release(releaseId);
+if(!bundle)throw Error('Published release failed runtime availability/provenance checks');
+const bundleChecksum=checksum(bundle);
+writeFileSync(output,JSON.stringify({sourceKind:'runtime_validated_published_bundle',releaseId,checksum:bundleChecksum,...bundle},null,2)+'\n');
+const checks=bundle.activities?.filter(a=>a.kind==='independent_check')??[];
+console.log(JSON.stringify({output,releaseId,bundleChecksum,checks:checks.length,publishedChecks:checks.filter(a=>a.status==='published').length,scope:bundle.assessment.releaseScope?.assessmentSkillIds.length}));

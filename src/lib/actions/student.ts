@@ -1,16 +1,28 @@
 "use server";
+import {dictationCatalogDisplay,dictationSessionDisplay,dictationResultDisplay,dictationJustificationOutcomeDisplay} from "@/lib/diagnostic/granular/dictation-display";
+import {legacyDiagnosticResponseDisplay} from "@/lib/diagnostic/granular/legacy-diagnostic-display";
+import {writingFeedbackDisplay,writingEvaluationDisplay} from "@/lib/diagnostic/granular/writing-feedback-display";
+import {productionTaskDisplay,productionResultDisplay,productionLengthError} from "@/lib/diagnostic/granular/production-player-display";
+import {practiceFeedbackDisplay,practiceCompletionDisplay} from "@/lib/diagnostic/granular/practice-player-display";
+import {gradeRepairSubmission} from "@/lib/diagnostic/granular/repair-submission";
+import {inboxDisplay} from "@/lib/diagnostic/granular/inbox-display";
+import {leagueDisplay} from "@/lib/diagnostic/granular/league-display";
+import {motivationDisplay} from "@/lib/diagnostic/granular/motivation-display";
+import {homeDynamicDisplay} from "@/lib/diagnostic/granular/home-display-text";
+import {journalStudentPayload} from "@/lib/diagnostic/granular/server-delivery-journal";
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { requireRole } from "@/lib/auth";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
-import { getCurrentStudentId, getStudentStateData } from "@/lib/db/student";
-import { FRENCH_BACKGROUNDS } from "@/lib/types";
+import { getCurrentStudentId } from "@/lib/db/student";
+import { getDeliveredStudentState } from "@/lib/diagnostic/granular/student-state-delivery";
+import { onboardingSchema, onboardingTarget } from "@/lib/onboarding";
 import { getContentLibrary, getPublishedReadingText, recommendPublishedTextKey } from "@/lib/db/content";
 import { rankInterestSignals } from "@/lib/content/recommend";
 import { rankByInterestAndVocabulary } from "@/lib/content/vocabulary-fit";
 import { scoreSession } from "@/lib/scoring/session";
-import { updateSkillEstimate, updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
+import { updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
 import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE, type RetrievalResult } from "@/lib/scoring/retrieval";
 import { scheduleFsrs } from "@/lib/scoring/fsrs";
@@ -23,6 +35,7 @@ import { fallbackModeration, moderateStudentText } from "@/lib/safety/moderate-i
 import { logAudit } from "@/lib/audit";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getActivePrompt } from "@/lib/db/ai";
+import { loadCompletedDiagnostic } from "@/lib/diagnostic/completed";
 import { nextDiagnosticItem, frontierForStudent, diagnosticRequirement, type LiveDiagnosticItem } from "@/lib/diagnostic/live";
 import { diagnosticDimensionPatch } from "@/lib/diagnostic/lifecycle";
 import {
@@ -51,6 +64,11 @@ import type { DiagnosticEvidenceExpectation } from "@/lib/diagnostic/item-bank";
 import { nodePracticeEvidenceExpectation } from "@/lib/diagnostic/practice-evidence";
 import { requireStudentAccessAuthorized, requireStudentLearningUnlocked } from "@/lib/diagnostic/access";
 import { bktUpdate, bktUpdateWeighted, guessFromChoices, masteryUncertainty } from "@/lib/scoring/bkt";
+import { SupabaseAssessmentStore } from "@/lib/diagnostic/granular/store";
+import { publicAssessmentView } from "@/lib/diagnostic/granular/service";
+import { gradePracticeResponse } from "@/lib/practice/grade-response";
+import { assessmentFromRow } from "@/lib/linguistic/assessment-policy";
+import { ReadingAssessmentError, READING_RETRY_MESSAGE } from "@/lib/linguistic/reading-ideas";
 import { validateAnswer } from "@/lib/linguistic/validator";
 import { LanguageToolChecker } from "@/lib/linguistic/languagetool";
 import {
@@ -63,6 +81,7 @@ import { getCatchUpPlan } from "@/lib/db/practice";
 import { evaluateWriting } from "@/lib/writing/evaluate";
 import { buildTemplate, publicTemplate, reconstruct, type DictationMode, type SegmentTemplate } from "@/lib/dictation/modes";
 import { classifyDictation, CATEGORY_LABELS, type DictationError, type ErrorCategory } from "@/lib/dictation/classify";
+import { resolveDictationAudioAssets } from "@/lib/dictation/audio-manifest";
 import { signDictationAudio } from "@/lib/dictation/audio";
 import { speakableSegment } from "@/lib/dictation/speech-text";
 import { BADGE_BY_KEY, earnedBadges, type BadgeKey } from "@/lib/badges";
@@ -75,30 +94,14 @@ import { createHash } from "node:crypto";
 import { sanitizeStudentTopic } from "@/lib/safety/topic";
 import { plannedExerciseCount } from "@/lib/practice/session";
 import { hasStudentPathCoverage } from "@/lib/taxonomy/activation";
-import { INTEREST_BY_KEY } from "@/lib/content/interests";
 import { recommendWithCalibratedReuse } from "@/lib/content/reuse/runtime";
 import { captureError } from "@/lib/observability";
+import { DIAGNOSTIC_UNAVAILABLE_MESSAGE } from "@/lib/diagnostic/startup";
 
 const answersSchema = z.record(z.string().min(1), z.number().int().min(0).max(20));
 const uuidSchema = z.string().uuid();
 const dateTimeSchema = z.string().datetime({ offset: true });
 
-const onboardingSchema = z.object({
-  grade: z.number().int().min(5).max(12),
-  frenchBackground: z.enum(FRENCH_BACKGROUNDS),
-  interests: z.array(z.string().min(1).max(64)).min(3).max(20)
-    .refine((values) => values.every((value) => value in INTEREST_BY_KEY), "Centre d’intérêt inconnu."),
-  studentType: z.enum(["french_first_language", "french_second_language", "heritage", "bilingual", "allophone", "immersion"]).optional(),
-  homeLanguage: z.string().trim().max(100).optional(),
-  exposure: z.enum(["home", "school", "class_only", "immersion", "self_study"]).optional(),
-  goalType: z.enum(["catch_up", "improve_writing", "grammar_spelling", "prepare_delf", "prepare_ap_ib", "enter_french_school", "literature_class"]).optional(),
-  targetLevel: z.enum(["A1", "A2", "B1", "B2", "C1", "C2"]).optional(),
-}).superRefine((value, context) => {
-  const studentType = value.studentType ?? (value.frenchBackground === "native" ? "french_first_language" : value.frenchBackground === "bilingual" ? "bilingual" : "french_second_language");
-  if (["french_second_language", "allophone", "immersion"].includes(studentType) && !value.targetLevel) {
-    context.addIssue({ code: "custom", path: ["targetLevel"], message: "Choisis explicitement un objectif CECRL." });
-  }
-});
 const startSessionSchema = z.object({ textKey: z.string().min(1).max(100), startedAt: dateTimeSchema });
 const answerSchema = z.object({
   sessionId: uuidSchema, textKey: z.string().min(1).max(100), questionKey: z.string().min(1).max(40), choiceIndex: z.number().int().min(0).max(20), nextPhase: z.enum(["questions", "summary"]).optional(),
@@ -115,7 +118,6 @@ const completeSessionSchema = z.object({
   completedAt: dateTimeSchema,
 });
 const retrievalSchema = z.object({ cardId: uuidSchema, answerText: z.string().trim().min(1).max(5000), attemptedAt: dateTimeSchema });
-const skillPracticeSchema = z.object({ skillKey: z.string().min(1).max(100), corrects: z.array(z.boolean()).min(1).max(30) });
 const textKeySchema = z.object({ textKey: z.string().min(1).max(100) });
 const emptySchema = z.object({}).strict();
 const adaptiveProbeSchema = z.object({
@@ -123,7 +125,7 @@ const adaptiveProbeSchema = z.object({
   selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(),
   startedAt: dateTimeSchema,
 }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
-const practiceAttemptSchema = z.object({ nodeId: uuidSchema, itemId: uuidSchema, selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(), startedAt: dateTimeSchema, hintsUsed: z.number().int().min(0).max(2).optional() }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
+const practiceAttemptSchema = z.object({ nodeId: uuidSchema, itemId: uuidSchema, selectedChoiceId: uuidSchema.optional(), answerText: z.string().trim().max(2000).optional(), startedAt: dateTimeSchema, hintsUsed: z.number().int().min(0).max(3).optional() }).refine((value) => value.selectedChoiceId || value.answerText, "Réponse requise");
 const timedPracticeAttemptSchema = practiceAttemptSchema.and(z.object({ practiceSessionId: uuidSchema, exercisePosition: z.number().int().min(0).max(5) }));
 const startPracticeSessionSchema = z.object({ nodeId: uuidSchema, clientRequestId: uuidSchema });
 const completePracticeSessionSchema = z.object({ practiceSessionId: uuidSchema });
@@ -505,10 +507,16 @@ async function recordDirectCompetencyEvidence(input: {
 async function evaluateAndStoreWriting(input: {
   service: SupabaseClient; studentId: string; summaryId: string; revisionNumber: number;
   sourceText: string; studentText: string; keywords: string[]; systemPrompt: string;
+  delivery?: "evaluation" | "rubric";
 }) {
   const { data: rows } = await input.service.from("error_node_mappings").select("rule_id,node_id,explanation_fr,evidence_weight,competency_nodes!inner(key,label_fr)");
   const mappings = (rows ?? []).map((row) => { const node = row.competency_nodes as unknown as { key: string; label_fr: string }; return { ruleId: row.rule_id as string, nodeId: row.node_id as string, nodeKey: node.key, nodeLabel: node.label_fr, explanationFr: row.explanation_fr as string, evidenceWeight: Number(row.evidence_weight) }; });
   const evaluation = await evaluateWriting({ textBody: input.sourceText, studentText: input.studentText, keywords: input.keywords, mappings, systemPrompt: input.systemPrompt });
+  // Only callers returning this feedback request delivery capture. Background
+  // scoring is not exposure. Record before persistence so a failed journal
+  // does not consume a revision the student has not received.
+  if (input.delivery) await journalStudentPayload(input.studentId, "legacy:summary-feedback",
+    input.delivery === "rubric" ? evaluation.rubric : {evaluation,display:writingEvaluationDisplay({revision_number:input.revisionNumber,submitted_text:input.studentText,rubric:evaluation.rubric,annotations:evaluation.annotations,revision_plan:evaluation.revisionPlan,degraded:evaluation.degraded},input.revisionNumber)});
   const { error } = await input.service.from("writing_evaluations").upsert({ student_summary_id: input.summaryId, student_id: input.studentId, revision_number: input.revisionNumber, submitted_text: input.studentText, rubric: evaluation.rubric, annotations: evaluation.annotations, revision_plan: evaluation.revisionPlan, degraded: evaluation.degraded }, { onConflict: "student_summary_id,revision_number" });
   if (error) throw new Error(error.message);
   const evaluatedAt = new Date().toISOString();
@@ -650,7 +658,7 @@ async function contentIds(
   }
   if (textError || !text) throw new Error("Texte introuvable.");
   const { data: version, error: versionError } = await supabase.from("text_versions").select("id").eq("text_id", text.id)
-    .in("review_status", ["human_approved", "benchmark_locked"]).order("version_number", { ascending: false }).limit(1).single();
+    .in("review_status", ["human_approved", "benchmark_locked", "auto_approved"]).order("version_number", { ascending: false }).limit(1).single();
   if (versionError || !version) throw new Error("Version du texte introuvable.");
   if (questionKey === undefined) return { textVersionId: version.id as string };
   const { data: question, error: questionError } = await supabase.from("questions").select("id").eq("text_version_id", version.id).eq("question_key", questionKey).single();
@@ -663,15 +671,15 @@ async function contentIds(
 
 export async function loadStudentState() {
   const { supabase, studentId } = await context();
-  return getStudentStateData(studentId, supabase);
+  return getDeliveredStudentState(studentId, supabase);
 }
 
 export async function loadReadingText(input: unknown) {
   const data = checked(textKeySchema, input);
-  const { supabase } = await context();
+  const { supabase, studentId } = await context();
   const text = await getPublishedReadingText(data.textKey, supabase);
   if (!text) throw new Error("Texte introuvable.");
-  return text;
+  return journalStudentPayload(studentId,"legacy:reading-text",text);
 }
 
 export async function recommendReadingText(input: unknown) {
@@ -681,7 +689,7 @@ export async function recommendReadingText(input: unknown) {
   const key = await recommendPublishedTextKey((data ?? []).map((row) => row.interest_key as string), supabase);
   const text = await getPublishedReadingText(key, supabase);
   if (!text) throw new Error("Aucun texte disponible.");
-  return text;
+  return journalStudentPayload(studentId,"legacy:reading-recommendation",text);
 }
 
 export async function recommendReadingTexts(input: unknown) {
@@ -708,11 +716,12 @@ export async function recommendReadingTexts(input: unknown) {
     captureError(error, { operation: "calibrated_reuse_recommendation", studentId });
   }
   return Promise.all(selected.map((item) => getPublishedReadingText(item.slug, supabase)))
-    .then((rows) => rows.filter((row): row is NonNullable<typeof row> => !!row));
+    .then((rows) => journalStudentPayload(studentId,"legacy:reading-recommendations",rows.filter((row): row is NonNullable<typeof row> => !!row)));
 }
 
 export async function selectInterests(input: unknown) {
   const data = checked(onboardingSchema, input);
+  const target = onboardingTarget(data);
   const { supabase, studentId } = await context();
   const studentType = data.studentType ?? (data.frenchBackground === "native" ? "french_first_language" : data.frenchBackground === "bilingual" ? "bilingual" : "french_second_language");
   const fsl = ["french_second_language", "allophone", "immersion"].includes(studentType);
@@ -720,35 +729,46 @@ export async function selectInterests(input: unknown) {
       ? ["grammaire_syntaxe", "conjugaison", "orthographe_lexicale", "orthographe_grammaticale", "lexique", "comprehension_ecrite", "expression_ecrite"]
       : ["grammaire_syntaxe", "conjugaison", "orthographe_lexicale", "orthographe_grammaticale", "comprehension_ecrite", "expression_ecrite"],
       modalities: ["reading", "writing", "grammar_analysis"], mastery_threshold: 0.85 };
-  const { error } = await supabase.rpc("complete_student_onboarding", {
+  const { error } = await supabase.rpc("complete_student_onboarding_with_exposures", {
     p_student_id: studentId,
     p_grade: data.grade,
     p_french_background: data.frenchBackground,
     p_interests: [...new Set(data.interests)],
     p_student_type: studentType,
     p_home_language: data.homeLanguage ?? "",
-    p_exposure: data.exposure ?? (studentType === "french_first_language" ? "home" : "school"),
+    p_exposures: [...new Set(data.exposures ?? [data.exposure ?? (studentType === "french_first_language" ? "home" : "school")])],
     p_goal_type: data.goalType ?? "catch_up",
-    p_target_framework: fsl ? "cefr" : "native_grade",
-    p_target_level: fsl ? data.targetLevel : String(data.grade),
-    p_target_grade: fsl ? null : data.grade,
+    p_target_framework: target.framework,
+    p_target_level: target.level,
+    p_target_grade: target.grade,
     p_scope: scope,
   });
   if (error) throw new Error(error.message);
   await logAudit("student.onboarding_completed", {
     targetType: "student",
     targetId: studentId,
-    metadata: { studentType, targetFramework: fsl ? "cefr" : "native_grade", targetLevel: fsl ? data.targetLevel : String(data.grade) },
+    metadata: { studentType, targetFramework: target.framework, targetLevel: target.level },
   });
   revalidatePath("/student");
-  return getStudentStateData(studentId, supabase);
+  return getDeliveredStudentState(studentId, supabase);
 }
 
 export async function startAdaptiveDiagnostic(input: unknown) {
-  checked(emptySchema, input);
+  const { restart } = checked(z.object({ restart: z.boolean().optional() }).strict(), input);
   if (process.env.ADAPTIVE_DIAGNOSTIC_ENABLED === "false") throw new Error("Diagnostic adaptatif désactivé pour cet environnement.");
   const { supabase, studentId } = await context();
+  const deliver = async <T>(result: T): Promise<T> => {
+    await journalStudentPayload(studentId, "legacy:diagnostic-start", {
+      result,
+      display: legacyDiagnosticResponseDisplay(result),
+    });
+    return result;
+  };
   const service = createServiceClient();
+  if (!restart) {
+    const completed = await loadCompletedDiagnostic(studentId, service);
+    if (completed) return deliver({ done: true as const, ...completed, state: await getDeliveredStudentState(studentId, service) });
+  }
   const { data: existingRun } = await supabase.from("diagnostic_runs")
     .select("id,started_at,current_section,taxonomy_release_id,item_bank_release_id,is_pilot")
     .eq("student_id", studentId)
@@ -799,7 +819,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
             completedAt: new Date().toISOString(),
             probeCount: currentProgress.reduce((total, section) => total + section.probeCount, 0),
           });
-          return { done: true as const, ...completed };
+          return deliver({ done: true as const, ...completed });
         }
         const reconciledAt = new Date().toISOString();
         const reconciled = await reconcileDiagnosticSection({
@@ -821,7 +841,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
             await abandonDiagnosticRun(service, existingRun.id as string);
             throw new Error("La banque ne permet pas de reprendre cette section.");
           }
-          return {
+          return deliver({
             runId: existingRun.id as string,
             startedAt: existingRun.started_at as string,
             item,
@@ -831,7 +851,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
             resumed: true,
             isPilot: Boolean(existingRun.is_pilot),
             done: false as const,
-          };
+          });
         }
         if (reconciled.decision.reason === "insufficient_items") {
           throw new Error("Ce diagnostic est suspendu : une section manque encore de questions validées.");
@@ -888,8 +908,9 @@ export async function startAdaptiveDiagnostic(input: unknown) {
     : null;
   const release = isPilot ? pilotReleaseLookup?.data : publishedReleaseLookup.data;
   const releaseError = isPilot ? pilotReleaseLookup?.error : publishedReleaseLookup.error;
-  if (releaseError || !release?.id) {
-    throw new Error(`La taxonomie ${DIAGNOSTIC_TAXONOMY_RELEASE_KEY} n’est pas publiée.`);
+  if (releaseError) throw new Error(releaseError.message);
+  if (!release?.id) {
+    return deliver({ startupError: DIAGNOSTIC_UNAVAILABLE_MESSAGE });
   }
   const [itemBankLookup, priorRunLookup] = await Promise.all([
     (pilotContext
@@ -922,9 +943,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
     throw new Error(itemBankError?.message ?? priorRunError?.message);
   }
   if (!itemBank) {
-    throw new Error(isPilot
-      ? "La banque pilote n’est plus disponible. Contacte l’équipe de test."
-      : `La banque ${DIAGNOSTIC_ITEM_BANK_RELEASE_KEY} n’est pas publiée pour la taxonomie v2.`);
+    return deliver({ startupError: DIAGNOSTIC_UNAVAILABLE_MESSAGE });
   }
   const { data: priorDiagnosticRows, error: priorDiagnosticError } = latestCompatibleRun
     ? await service.from("diagnostic_node_results")
@@ -954,10 +973,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
   const rawReadiness = readinessResult.data as { ready?: boolean; sections?: DiagnosticBankSectionReadiness[] } | null;
   const readiness = assessDiagnosticBankReadiness(rawReadiness?.sections ?? []);
   if (!rawReadiness?.ready || !readiness.ready) {
-    const missing = readiness.sections.filter((section) => !section.ready)
-      .map((section) => diagnosticSection(section.key).labelFr)
-      .join(", ");
-    throw new Error(`Le diagnostic n’est pas encore prêt pour : ${missing}.`);
+    return deliver({ startupError: DIAGNOSTIC_UNAVAILABLE_MESSAGE });
   }
   const { data: memberships, error: membershipError } = await service
     .from("taxonomy_release_memberships")
@@ -1106,7 +1122,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
     await abandonDiagnosticRun(service, run.id as string);
     throw new Error("La banque d’items ne contient pas encore assez de questions.");
   }
-  return {
+  return deliver({
     runId: run.id as string,
     startedAt: run.started_at as string,
     item,
@@ -1116,7 +1132,7 @@ export async function startAdaptiveDiagnostic(input: unknown) {
     resumed: false,
     isPilot,
     done: false as const,
-  };
+  });
 }
 
 export async function loadDiagnosticRequirement(input: unknown) {
@@ -1293,6 +1309,22 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
   });
   // A short dictée sits after the first review so the plan opens with due work (roadmap 1.7).
   if (dictationEntry) entries.splice(Math.min(1, entries.length), 0, dictationEntry);
+  if (process.env.GRANULAR_DIAGNOSTIC_ENABLED === "true") {
+    await requireStudentLearningUnlocked(supabase, studentId);
+    const granular = await new SupabaseAssessmentStore(service).latestLearning(studentId);
+    if (granular) {
+      const view = publicAssessmentView(granular.session, granular.bundle);
+      const targeted: SessionPlanEntry[] = view.learningActivities.map(activity => ({
+        type: "practice", role: "new", label: activity.action === "verify" ? `Vérifier : ${activity.titleFr}` : activity.titleFr,
+        href: activity.href, estimatedMinutes: activity.estimatedMinutes,
+      }));
+      // Broad node exercises must not replace missing facet-specific activities.
+      // Retain due reading retrieval alongside the precise granular targets.
+      const candidates = [...entries.filter(entry => entry.type === "review_card").slice(0, 1), ...targeted];
+      let minutes = 0;
+      return candidates.filter(entry => { if (minutes + entry.estimatedMinutes > 28) return false; minutes += entry.estimatedMinutes; return true; });
+    }
+  }
   return entries;
 }
 
@@ -1359,7 +1391,7 @@ export async function loadIndependentProductionTask(input: unknown) {
   const service = createServiceClient();
   const node = await independentProductionNode(service, studentId, data.nodeId);
   const { genres, genre, spec } = await productionGenreContext(service, studentId, data.genre);
-  return {
+  const task = {
     nodeId: node.id,
     nodeKey: node.key,
     label: node.label_fr,
@@ -1372,6 +1404,8 @@ export async function loadIndependentProductionTask(input: unknown) {
     minimumWords: spec.minimumWords,
     maximumWords: spec.maximumWords,
   };
+  await journalStudentPayload(studentId, "legacy:production-task", {task,display:productionTaskDisplay(task)});
+  return task;
 }
 
 export async function submitIndependentProduction(input: unknown) {
@@ -1382,7 +1416,7 @@ export async function submitIndependentProduction(input: unknown) {
   const words = data.text.trim().split(/\s+/u).filter(Boolean).length;
   const service = createServiceClient();
   const { spec } = await productionGenreContext(service, studentId, data.genre);
-  if (words < spec.minimumWords || words > spec.maximumWords) throw new Error(`Écris entre ${spec.minimumWords} et ${spec.maximumWords} mots pour que la production soit vérifiable.`);
+  if (words < spec.minimumWords || words > spec.maximumWords) throw new Error(productionLengthError(spec));
   const node = await independentProductionNode(service, studentId, data.nodeId);
   const target = detectIndependentProduction(node.key, data.text);
   let grammarMatches: Awaited<ReturnType<LanguageToolChecker["check"]>>["matches"] = [];
@@ -1402,6 +1436,16 @@ export async function submitIndependentProduction(input: unknown) {
     const lesson = lessonForPracticeNode({ key: node.key, label: node.label_fr, description: node.description_fr, strand: node.strand });
     rubric = await scoreProductionWithAI({ text: data.text, genreLabel: spec.label, genreBrief: spec.brief, nodeLabel: node.label_fr, rulePattern: lesson.pattern, demonstrated, grammarErrorCount: grammarMatches.length, words, minimumWords: spec.minimumWords, maximumWords: spec.maximumWords });
   }
+  const feedback = !verified
+    ? "La vérification linguistique est momentanément indisponible. Ton texte est conservé, mais il ne compte pas encore comme preuve de maîtrise."
+    : !target.demonstrated
+      ? "Utilise au moins deux formes différentes de la compétence demandée."
+      : grammarErrorRate > 0.05
+        ? "Le texte utilise bien la compétence, mais corrige encore les erreurs signalées avant qu’il compte comme preuve."
+        : "Cette production compte comme une preuve autonome. Une seconde production réussie, dans un autre texte, confirmera la maîtrise.";
+  // Record linguistic feedback before committing the submission. A journal
+  // failure must leave the student able to retry the same text.
+  await journalStudentPayload(studentId, "legacy:production-feedback", { rubric, matchedForms: target.matchedForms, feedback, display:productionResultDisplay({demonstrated,feedback,matchedForms:target.matchedForms,rubric}) });
   const { data: submission, error: submissionError } = await service.from("independent_production_submissions")
     .insert({
       student_id: studentId,
@@ -1455,13 +1499,7 @@ export async function submitIndependentProduction(input: unknown) {
     mastery,
     matchedForms: target.matchedForms,
     grammarErrorCount: grammarMatches.length,
-    feedback: !verified
-      ? "La vérification linguistique est momentanément indisponible. Ton texte est conservé, mais il ne compte pas encore comme preuve de maîtrise."
-      : !target.demonstrated
-        ? "Utilise au moins deux formes différentes de la compétence demandée."
-        : grammarErrorRate > 0.05
-          ? "Le texte utilise bien la compétence, mais corrige encore les erreurs signalées avant qu’il compte comme preuve."
-          : "Cette production compte comme une preuve autonome. Une seconde production réussie, dans un autre texte, confirmera la maîtrise.",
+    feedback,
   };
 }
 
@@ -1516,11 +1554,13 @@ export async function completeNodePracticeSession(input: unknown) {
     p_session_id: data.practiceSessionId, p_student_id: studentId, p_completed_at: new Date().toISOString(),
   });
   if (error) throw new Error(error.message);
-  revalidatePath("/student");
-  return result as {
+  const completion = result as {
     completed: boolean; expired: boolean; exercisesCompleted: number; plannedExercises: number;
     firstTryCorrect: number; baseXp: number; bonusXp: number; totalXp: number;
   };
+  await journalStudentPayload(studentId,"legacy:practice-completion",practiceCompletionDisplay(completion));
+  revalidatePath("/student");
+  return completion;
 }
 
 export async function submitNodePractice(input: unknown) {
@@ -1532,52 +1572,32 @@ export async function submitNodePractice(input: unknown) {
     .select("id,node_id,status,expires_at").eq("id", data.practiceSessionId).eq("student_id", studentId).single();
   if (!practiceSession || practiceSession.node_id !== data.nodeId || practiceSession.status !== "active") throw new Error("Cette leçon n’est plus active.");
   if (Date.parse(practiceSession.expires_at as string) <= Date.now()) throw new Error("Les sept minutes sont écoulées.");
-  const { data: item } = await service.from("competency_items").select("id,primary_node_id,learner_mode,modality,response_type,validator_type,validator_config,correct_answer,acceptable_answers,competency_item_choices(id,is_correct,feedback_fr)").eq("id", data.itemId).eq("primary_node_id", data.nodeId).in("review_status", ["auto_approved", "human_approved"]).in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).single();
+  const { data: item } = await service.from("competency_items").select("id,primary_node_id,prompt_fr,instructions_fr,learner_mode,modality,response_type,validator_type,validator_config,correct_answer,acceptable_answers,competency_nodes(key,strand),competency_item_choices(id,is_correct,feedback_fr)").eq("id", data.itemId).eq("primary_node_id", data.nodeId).in("review_status", ["auto_approved", "human_approved"]).in("validator_type", ["exact", "regex", "conjugator", "agreement", "grammalecte"]).single();
   if (!item) throw new Error("Exercice introuvable.");
   const choices = item.competency_item_choices as unknown as Array<{ id: string; is_correct: boolean; feedback_fr: string | null }>;
-  let correct = false; let feedbackFr: string | null = null;
-  const responseType = item.response_type as string;
-  const validatorConfig = (item.validator_config ?? {}) as Record<string, unknown>;
-  if (responseType === "justified") {
-    // Both halves are required: the right form and the rule that proves it (roadmap 2.3).
-    const selected = choices.find((choice) => choice.id === data.selectedChoiceId); if (!selected) throw new Error("Choix invalide.");
-    const ruleKey = String(validatorConfig.ruleKey ?? ""); const chosenRule = (data.answerText ?? "").trim();
-    const formCorrect = selected.is_correct; const ruleCorrect = chosenRule.length > 0 && chosenRule === ruleKey;
-    correct = formCorrect && ruleCorrect;
-    const rules = (validatorConfig.rules as { key: string; label: string }[] | undefined) ?? [];
-    const ruleLabel = rules.find((rule) => rule.key === ruleKey)?.label ?? ruleKey;
-    feedbackFr = correct ? (selected.feedback_fr ?? `Bonne forme et bonne justification : ${ruleLabel}.`) : !formCorrect ? (selected.feedback_fr ?? "La forme choisie n’est pas la bonne.") : `La forme est juste, mais la règle qui la justifie est : ${ruleLabel}.`;
-  }
-  else if (data.selectedChoiceId) { const selected = choices.find((choice) => choice.id === data.selectedChoiceId); if (!selected) throw new Error("Choix invalide."); correct = selected.is_correct; feedbackFr = selected.feedback_fr; }
-  else if (responseType === "error_hunt") {
-    const target = String(item.correct_answer ?? "");
-    // Position-aware when the key lists "index:word" (a sentence may repeat the word); otherwise compare the word.
-    const indexedKeys = (item.acceptable_answers as string[]).filter((entry) => /^\d+:/u.test(entry));
-    const given = (data.answerText ?? "").trim();
-    correct = indexedKeys.length > 0
-      ? indexedKeys.some((entry) => entry.split(":")[0] === given.split(":")[0] && normalizeAnswerWord(entry) === normalizeAnswerWord(given))
-      : normalizeAnswerWord(given) === normalizeAnswerWord(target);
-    feedbackFr = correct ? String(validatorConfig.correctionFr ?? "C’est bien ce mot qui était mal écrit.") : `Le mot fautif était « ${target} ». ${String(validatorConfig.correctionFr ?? "")}`.trim();
-  }
-  else if (responseType === "combine") {
-    // Sentence combining (roadmap 2.4): any listed merge, or a clean single sentence that keeps every content word.
-    const validation = await validateAnswer(data.answerText ?? "", { validatorType: "exact", config: { ignorePunctuation: true }, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] });
-    correct = validation.pass;
-    if (!correct) {
-      const sentences = (validatorConfig.sentences as string[] | undefined) ?? [];
-      const contentWords = sentences.flatMap((sentence) => sentence.toLocaleLowerCase("fr").match(/[\p{L}’']{4,}/gu) ?? []).map((word) => word.replace(/^[a-zçdjlmnst]’/u, ""));
-      const answer = (data.answerText ?? "").toLocaleLowerCase("fr");
-      const coversContent = contentWords.every((word) => answer.includes(word));
-      const singleSentence = (data.answerText ?? "").trim().split(/[.!?]\s+/u).filter(Boolean).length === 1;
-      if (coversContent && singleSentence) {
-        try { const check = await new LanguageToolChecker().check(data.answerText ?? "", { language: "fr", level: "picky" }); correct = check.matches.length === 0; feedbackFr = correct ? "Phrase unique, complète et correcte." : `Une phrase unique, mais ${check.matches.length} erreur(s) de langue : ${check.matches[0]?.message ?? ""}`; }
-        catch { feedbackFr = "La vérification grammaticale est indisponible ; seules les combinaisons attendues sont acceptées pour l’instant."; }
-      } else feedbackFr = !singleSentence ? "Il faut une seule phrase." : "Ta phrase oublie une information des phrases de départ.";
-    } else feedbackFr = "Phrase bien combinée.";
-  }
-  else { const validatorType=item.validator_type as ValidatorType; const grammarChecker=validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined; const validation = await validateAnswer(data.answerText ?? "", { validatorType, config: item.validator_config as Record<string, unknown> | undefined, correctAnswer: item.correct_answer as string | undefined, acceptableAnswers: item.acceptable_answers as string[] },{grammarChecker}); correct = validation.pass; feedbackFr = validation.reason ?? null; }
+  const { correct, feedbackFr } = await gradePracticeResponse({
+    ...item, response_type: item.response_type, validator_type: item.validator_type,
+    validator_config: item.validator_config, correct_answer: item.correct_answer,
+    acceptable_answers: item.acceptable_answers ?? [],
+  }, choices, data);
+  // Validator explanations can contain new corrected forms not present in the
+  // lesson payload. Capture them before consuming the attempt or its evidence.
+  await journalStudentPayload(studentId, "legacy:practice-feedback", {itemId: item.id, feedbackFr});
   const now = new Date().toISOString();
   const hintsUsed = data.hintsUsed ?? 0;
+  // Failure protocol: a second consecutive miss on this node routes the
+  // student to its weakest prerequisite (graph-guided remediation).
+  let remediation: { nodeId: string; label: string } | null = null;
+  if (!correct) {
+    const { data: previousAttempts } = await service.from("competency_attempts")
+      .select("is_correct").eq("student_id", studentId).eq("node_id", data.nodeId)
+      .eq("context", "practice").lt("attempted_at", now)
+      .order("attempted_at", { ascending: false }).limit(1);
+    if (previousAttempts?.length && previousAttempts[0].is_correct === false) {
+      remediation = await weakestPrerequisite(service, studentId, data.nodeId);
+    }
+  }
+  await journalStudentPayload(studentId,"legacy:practice-feedback-display",{itemId:item.id,...practiceFeedbackDisplay({correct,feedbackFr,remediation,conjugation:(item.competency_nodes as unknown as {strand?:string}|null)?.strand==="conjugaison"})});
   const { data: attempt, error: attemptError } = await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, practice_session_id: data.practiceSessionId, exercise_position: data.exercisePosition, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), hints_used: hintsUsed, context: "practice", attempted_at: now }).select("id").single();
   if (attemptError || !attempt) throw new Error(attemptError?.message ?? "La réponse n’a pas pu être enregistrée.");
   const { mastery } = await recordDirectCompetencyEvidence({
@@ -1606,25 +1626,13 @@ export async function submitNodePractice(input: unknown) {
   const{error:scaffoldError}=await service.from("student_competency_estimates").update({scaffold_level:scaffoldState.level,unaided_success_streak:scaffoldState.unaidedSuccessStreak}).eq("student_id",studentId).eq("node_id",data.nodeId);if(scaffoldError)throw new Error(scaffoldError.message);
   await propagateImplicitRepetitions(service, studentId, data.nodeId, correct, now);
   await updateEloRatings(service, studentId, item.id, data.nodeId, correct, now);
-  // Failure protocol: a second consecutive miss on this node routes the
-  // student to its weakest prerequisite (graph-guided remediation).
-  let remediation: { nodeId: string; label: string } | null = null;
-  if (!correct) {
-    const { data: previousAttempts } = await service.from("competency_attempts")
-      .select("is_correct").eq("student_id", studentId).eq("node_id", data.nodeId)
-      .eq("context", "practice").lt("attempted_at", now)
-      .order("attempted_at", { ascending: false }).limit(1);
-    if (previousAttempts?.length && previousAttempts[0].is_correct === false) {
-      remediation = await weakestPrerequisite(service, studentId, data.nodeId);
-    }
-  }
   if (mastery >= 0.85) {
     const { data: node } = await service.from("competency_nodes").select("label_fr").eq("id", data.nodeId).single();
     const { data: card } = await service.from("retrieval_cards").upsert({ student_id: studentId, node_id: data.nodeId, card_type: "competency_node", prompt_fr: `Explique avec tes mots : ${node?.label_fr ?? "cette compétence"}.`, rubric: { node_id: data.nodeId } }, { onConflict: "student_id,node_id" }).select("id").single();
     if (card) await service.from("retrieval_schedules").upsert({ retrieval_card_id: card.id, due_at: dueAtFrom(Date.now(), 1), interval_days: 1, ease_factor: 2.5, repetitions: 0, status: "due" }, { onConflict: "retrieval_card_id" });
   }
   revalidatePath("/student"); revalidatePath("/student/frontier");
-  return { correct, feedbackFr, mastery, mastered: mastery >= 0.85, remediation, scaffoldLevel: scaffoldState.level };
+  return { correct, feedbackFr, attemptId: attempt.id as string, mastery, mastered: mastery >= 0.85, remediation, scaffoldLevel: scaffoldState.level };
 }
 
 /** Online Elo/1PL calibration: the answer is a match between learner and
@@ -1689,8 +1697,15 @@ async function weakestPrerequisite(service: SupabaseClient, studentId: string, n
 
 export async function loadWritingFeedback(input: unknown) {
   const data = checked(writingFeedbackSchema, input); const { supabase, studentId } = await context();
+  const feedback = await readWritingFeedback(data.textKey, supabase, studentId);
+  await journalStudentPayload(studentId, "legacy:summary-feedback-history", {feedback,display:writingFeedbackDisplay(feedback)});
+  return feedback;
+}
+
+// Internal revision lookup is not a separate content delivery.
+async function readWritingFeedback(textKey: string, supabase: SupabaseClient, studentId: string) {
   if (process.env.WRITING_EVALUATION_ENABLED === "false") return null;
-  const { textVersionId } = await contentIds(supabase, data.textKey);
+  const { textVersionId } = await contentIds(supabase, textKey);
   const { data: session } = await supabase.from("reading_sessions").select("id").eq("student_id", studentId).eq("text_version_id", textVersionId).not("completed_at", "is", null).order("completed_at", { ascending: false }).limit(1).maybeSingle();
   if (!session) return null;
   const { data: summary } = await supabase.from("student_summaries").select("id,summary_text,teacher_score").eq("session_id", session.id).maybeSingle();
@@ -1707,7 +1722,7 @@ export async function reviseSummary(input: unknown) {
   const data = checked(writingRevisionSchema, input); const { supabase, studentId } = await context();
   await requireStudentLearningUnlocked(supabase, studentId);
   await moderateOrReject({ supabase, studentId, text: data.revisedText, field: "reading_summary" });
-  const current = await loadWritingFeedback({ textKey: data.textKey });
+  const current = await readWritingFeedback(data.textKey, supabase, studentId);
   if (!current) throw new Error("Résumé introuvable.");
   const revisionNumber = Math.max(0, ...current.evaluations.map((evaluation) => Number(evaluation.revision_number))) + 1;
   if (revisionNumber > MAX_WRITING_REVISIONS) throw new Error("Tu as déjà fait trois révisions. Passe à la suite : ton dernier texte est conservé.");
@@ -1715,7 +1730,7 @@ export async function reviseSummary(input: unknown) {
   if (previous && previous.submitted_text.trim() === data.revisedText.trim()) throw new Error("Modifie ton texte avant de le renvoyer.");
   const text = await getPublishedReadingText(data.textKey, supabase); if (!text) throw new Error("Texte introuvable.");
   const service = createServiceClient(); const prompt = await getActivePrompt("summary_scoring", service);
-  const evaluation = await evaluateAndStoreWriting({ service, studentId, summaryId: current.summaryId, revisionNumber, sourceText: text.body.join("\n\n"), studentText: data.revisedText, keywords: text.concepts, systemPrompt: prompt.promptText });
+  const evaluation = await evaluateAndStoreWriting({ service, studentId, summaryId: current.summaryId, revisionNumber, sourceText: text.body.join("\n\n"), studentText: data.revisedText, keywords: text.concepts, systemPrompt: prompt.promptText, delivery: "evaluation" });
   revalidatePath(`/student/results/${data.textKey}`); revalidatePath("/student/frontier");
   return evaluation;
 }
@@ -2087,7 +2102,7 @@ async function finalizeAdaptiveDiagnostic(input: {
     grade,
     placement: summaryPayload.system.placement,
     progress,
-    state: await getStudentStateData(input.studentId, input.service),
+    state: await getDeliveredStudentState(input.studentId, input.service),
     learningPath: {
       id: persistedPath.id as string,
       stepCount: path.steps.length,
@@ -2100,6 +2115,13 @@ async function finalizeAdaptiveDiagnostic(input: {
 export async function submitAdaptiveDiagnosticProbe(input: unknown) {
   const data = checked(adaptiveProbeSchema, input);
   const { supabase, studentId } = await context();
+  const deliver = async <T>(result: T): Promise<T> => {
+    await journalStudentPayload(studentId, "legacy:diagnostic-response", {
+      result,
+      display: legacyDiagnosticResponseDisplay(result),
+    });
+    return result;
+  };
   const service = createServiceClient();
   const { data: run } = await supabase.from("diagnostic_runs")
     .select("id,probe_count,status,current_section,taxonomy_release_id,is_pilot")
@@ -2114,7 +2136,7 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
   const [{ data: assignment, error: assignmentError }, { data: item, error: itemError }] = await Promise.all([
     service.from("diagnostic_run_items").select("id,item_id,node_id,section_key,item_snapshot,answered_at").eq("id", data.runItemId).eq("run_id", data.runId).single(),
     service.from("competency_items")
-      .select("id,primary_node_id,validator_type,validator_config,correct_answer,acceptable_answers,learner_mode,modality,competency_item_choices(id,is_correct)")
+      .select("id,primary_node_id,prompt_fr,instructions_fr,response_type,validator_type,validator_config,correct_answer,acceptable_answers,learner_mode,modality,competency_nodes(key),competency_item_choices(id,is_correct)")
       .eq("id", data.itemId).in("review_status", allowedReviewStatuses).single(),
   ]);
   if (itemError || !item) throw new Error("Question introuvable.");
@@ -2145,13 +2167,19 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
     correct = choice.is_correct;
   } else if (!existingResponse) {
     const validatorType=item.validator_type as ValidatorType;
-    const validation = await validateAnswer(data.answerText ?? "", {
-      validatorType,
-      config: (item.validator_config ?? undefined) as Record<string, unknown> | undefined,
-      correctAnswer: item.correct_answer as string | undefined,
-      acceptableAnswers: item.acceptable_answers as string[] | undefined,
-    },{grammarChecker:validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined});
-    correct = validation.pass;
+    try {
+      const validation = await validateAnswer(data.answerText ?? "", {
+        validatorType,
+        assessment: assessmentFromRow(item),
+        config: (item.validator_config ?? undefined) as Record<string, unknown> | undefined,
+        correctAnswer: item.correct_answer as string | undefined,
+        acceptableAnswers: item.acceptable_answers as string[] | undefined,
+      },{grammarChecker:validatorType==="agreement"||validatorType==="grammalecte"?new LanguageToolChecker():undefined});
+      correct = validation.pass;
+    } catch (error) {
+      if (error instanceof ReadingAssessmentError) return deliver({ submissionError: READING_RETRY_MESSAGE });
+      throw error;
+    }
   }
   const attemptedAt = new Date().toISOString();
   const latencyMs = Math.max(0, Date.now() - Date.parse(data.startedAt));
@@ -2201,24 +2229,24 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
   if (!decision.stop) {
     const nextItem = await assignDiagnosticItem({ db: service, studentId, runId: data.runId, sectionKey, candidate });
     if (!nextItem) throw new Error("Aucune question adaptée n’est disponible.");
-    return {
+    return deliver({
       correct,
       done: false as const,
       item: nextItem,
       probeCount,
       progress: await loadDiagnosticProgress(data.runId, service),
       sectionTransition: false,
-    };
+    });
   }
   if (decision.reason === "insufficient_items") {
-    return {
+    return deliver({
       correct,
       done: false as const,
       blocked: true as const,
       reason: "insufficient_items" as const,
       probeCount,
       progress: await loadDiagnosticProgress(data.runId, service),
-    };
+    });
   }
   const progress = await loadDiagnosticProgress(data.runId, service);
   const nextSectionKey = nextDiagnosticSection(progress);
@@ -2232,18 +2260,18 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
     }
     const nextItem = await assignDiagnosticItem({ db: service, studentId, runId: data.runId, sectionKey: nextSectionKey });
     if (!nextItem) throw new Error(`La section ${diagnosticSection(nextSectionKey).labelFr} manque de questions.`);
-    return {
+    return deliver({
       correct,
       done: false as const,
       item: nextItem,
       probeCount,
       progress: await loadDiagnosticProgress(data.runId, service),
       sectionTransition: true,
-    };
+    });
   }
   const completed = await finalizeAdaptiveDiagnostic({ service, studentId, runId: data.runId, completedAt: attemptedAt, probeCount });
   revalidatePath("/student"); revalidatePath("/student/frontier"); revalidatePath("/parent");
-  return { correct, done: true as const, probeCount, ...completed };
+  return deliver({ correct, done: true as const, probeCount, ...completed });
 }
 
 export async function startReadingSession(input: unknown) {
@@ -2296,7 +2324,7 @@ export async function submitSummary(input: unknown) {
   if (!session) throw new Error("Séance introuvable.");
   const { data: summaryRow, error } = await service.from("student_summaries").upsert({ session_id: data.sessionId, summary_text: data.summaryText, ai_score: {} }, { onConflict: "session_id" }).select("id").single();
   if (error || !summaryRow) throw new Error(error?.message ?? "Résumé non enregistré.");
-  const writing = await evaluateAndStoreWriting({ service, studentId, summaryId: summaryRow.id as string, revisionNumber: 0, sourceText: text.body.join("\n\n"), studentText: data.summaryText, keywords: text.concepts, systemPrompt: prompt.promptText });
+  const writing = await evaluateAndStoreWriting({ service, studentId, summaryId: summaryRow.id as string, revisionNumber: 0, sourceText: text.body.join("\n\n"), studentText: data.summaryText, keywords: text.concepts, systemPrompt: prompt.promptText, delivery: "rubric" });
   const evaluation = writing.rubric;
   await service.from("student_summaries").update({ ai_score: evaluation }).eq("id", summaryRow.id);
   await supabase.from("reading_sessions").update({ current_phase: "retrieval" }).eq("id", data.sessionId);
@@ -2318,7 +2346,7 @@ export async function completeReadingSession(input: unknown) {
   if(claimError)throw new Error(claimError.message);
   const claim=claims?.[0] as{claimed:boolean;status:string;result_payload:unknown}|undefined;
   if(!claim?.claimed){
-    if(claim?.status==="completed"&&claim.result_payload){const state=await getStudentStateData(studentId,supabase);return{result:claim.result_payload as ReturnType<typeof scoreSession>,state};}
+    if(claim?.status==="completed"&&claim.result_payload){const state=await getDeliveredStudentState(studentId,supabase);return{result:claim.result_payload as ReturnType<typeof scoreSession>,state};}
     throw new Error("Cette séance est déjà en cours de finalisation. Contacte le support si elle reste bloquée.");
   }
 
@@ -2457,7 +2485,7 @@ export async function completeReadingSession(input: unknown) {
   if (sessionsThisWeek === 3) await trackServer(studentId, "three_sessions_week_1", { window_days: 7 });
   const{error:finishError}=await service.rpc("finish_reading_completion",{p_session_id:data.sessionId,p_result:result});if(finishError)throw new Error(finishError.message);
   revalidatePath("/student"); revalidatePath("/parent"); revalidatePath("/teacher");
-  return { result, xp: readingXp, state: await getStudentStateData(studentId, supabase) };
+  return { result, xp: readingXp, state: await getDeliveredStudentState(studentId, supabase) };
   } catch(error) { const message=error instanceof Error?error.message:"Erreur inconnue";await service.rpc("fail_reading_completion",{p_session_id:data.sessionId,p_error:message});throw error; }
 }
 
@@ -2496,7 +2524,7 @@ export async function submitRetrievalAttempt(input: unknown) {
   if (updateError) throw new Error(updateError.message);
   await recordDailyActivity(service,studentId,data.attemptedAt,"retrieval");
   const xp = await awardXp(service,{studentId,eventKey:`retrieval_review:${data.cardId}:${data.attemptedAt.slice(0,10)}`,sourceType:"retrieval_review",sourceId:data.cardId,baseXp:XP_AWARDS.retrievalReview,at:data.attemptedAt});
-  return { result, xp, state: await getStudentStateData(studentId, supabase) };
+  return { result, xp, state: await getDeliveredStudentState(studentId, supabase) };
 }
 
 export async function loadReadingResume(input: unknown) {
@@ -2629,21 +2657,16 @@ export async function loadStudentWeeklyRecap(input: unknown) {
 }
 
 export async function submitSkillPractice(input: unknown) {
-  const data = checked(skillPracticeSchema, input);
+  const data = gradeRepairSubmission(input);
   const { supabase, studentId } = await context();
   await requireStudentLearningUnlocked(supabase, studentId);
-  const { data: skill, error: skillError } = await supabase.from("skills").select("id").eq("key", data.skillKey).single();
-  if (skillError || !skill) throw new Error("Compétence introuvable.");
-  const { data: current } = await supabase.from("student_skill_estimates").select("ability,uncertainty,evidence_count").eq("student_id", studentId).eq("skill_id", skill.id).maybeSingle();
-  let estimate = current ? { ability: Number(current.ability), uncertainty: Number(current.uncertainty), evidenceCount: current.evidence_count as number } : undefined;
-  for (const correct of data.corrects) estimate = updateSkillEstimate(estimate, correct);
-  const { error } = await supabase.from("student_skill_estimates").upsert({
-    student_id: studentId, skill_id: skill.id, ability: estimate!.ability,
-    uncertainty: estimate!.uncertainty, evidence_count: estimate!.evidenceCount,
-    last_evidence_at: new Date().toISOString(),
-  }, { onConflict: "student_id,skill_id" });
+  const { error } = await createServiceClient().rpc("record_student_repair_completion", {
+    p_student_id: studentId, p_submission_id: data.submissionId,
+    p_skill_key: data.skillKey, p_lesson_checksum: data.lessonChecksum,
+    p_answers: data.answers, p_corrects: data.corrects,
+  });
   if (error) throw new Error(error.message);
-  return { state: await getStudentStateData(studentId, supabase) };
+  return { state: await getDeliveredStudentState(studentId, supabase) };
 }
 
 const studentPasswordSchema=z.object({password:z.string().min(12).max(128)});
@@ -2655,6 +2678,7 @@ export async function updateStudentPassword(input:unknown){const data=checked(st
  */
 export async function loadStudentHome(input: unknown) {
   checked(emptySchema, input);
+  const {studentId}=await context();
   const settle = async <T,>(promise: Promise<T>): Promise<T | null> => { try { return await promise; } catch { return null; } };
   const [texts, plan, motivation, resume, assessment, recap, classGoal, league] = await Promise.all([
     settle(recommendReadingTexts({})),
@@ -2667,7 +2691,9 @@ export async function loadStudentHome(input: unknown) {
     settle(loadStudentLeague({})),
   ]);
   const fallbackPlan = plan ? null : await settle(loadStudentCatchUpPlan({}));
-  return { texts, plan, fallbackPlan, motivation, resume, assessment, recap, classGoal, league };
+  const result={texts,plan,fallbackPlan,motivation,resume,assessment,recap,classGoal,league};
+  await journalStudentPayload(studentId,"student:home",{...result,displayText:homeDynamicDisplay(result),motivationDisplay:motivationDisplay(result),leagueDisplay:result.motivation?leagueDisplay(result.league):null});
+  return result;
 }
 
 export type StudentNotification = { id: string; kind: string; message: string; payload: Record<string, unknown>; readAt: string | null; createdAt: string };
@@ -2677,7 +2703,9 @@ export async function loadStudentNotifications(input: unknown): Promise<StudentN
   checked(emptySchema, input); const { supabase, studentId } = await context();
   const { data, error } = await supabase.from("student_notifications").select("id,kind,message_fr,payload,read_at,created_at").eq("student_id", studentId).order("created_at", { ascending: false }).limit(50);
   if (error) throw new Error(error.message);
-  return (data ?? []).map((row) => ({ id: row.id as string, kind: row.kind as string, message: row.message_fr as string, payload: (row.payload ?? {}) as Record<string, unknown>, readAt: row.read_at as string | null, createdAt: row.created_at as string }));
+  const rows=(data ?? []).map((row) => ({ id: row.id as string, kind: row.kind as string, message: row.message_fr as string, payload: (row.payload ?? {}) as Record<string, unknown>, readAt: row.read_at as string | null, createdAt: row.created_at as string }));
+  await journalStudentPayload(studentId,"legacy:notifications",{rows,display:inboxDisplay(rows)});
+  return rows;
 }
 
 export async function countUnreadStudentNotifications(): Promise<number> {
@@ -2705,10 +2733,10 @@ export async function markStudentNotificationsRead(input: unknown) {
 const DICTATION_MODES = ["flash", "trous", "choix", "negociee", "brevet"] as const;
 const browserTtsFallbackAllowed = () => process.env.DICTATION_BROWSER_TTS_FALLBACK === "true" && process.env.NODE_ENV !== "production";
 
-type DictationRow = { id: string; key: string; title_fr: string; kind: DictationMode; text_fr: string; segments: { text: string; audioPath: string | null }[]; word_count: number; grade_min: number; grade_max: number; target_node_keys: string[]; focus_fr: string | null; review_status: string; audio_status: string };
+type DictationRow = { id: string; key: string; title_fr: string; kind: DictationMode; text_fr: string; segments: { text: string; audioPath: string | null }[]; word_count: number; grade_min: number; grade_max: number; target_node_keys: string[]; focus_fr: string | null; review_status: string; audio_status: string; audio_manifest?: unknown };
 
 async function visibleDictations(service: SupabaseClient, filter?: { id?: string }) {
-  let query = service.from("dictations").select("id,key,title_fr,kind,text_fr,segments,word_count,grade_min,grade_max,target_node_keys,focus_fr,review_status,audio_status").eq("review_status", "human_approved");
+  let query = service.from("dictations").select("id,key,title_fr,kind,text_fr,segments,word_count,grade_min,grade_max,target_node_keys,focus_fr,review_status,audio_status,audio_manifest").eq("review_status", "human_approved");
   if (!browserTtsFallbackAllowed()) query = query.eq("audio_status", "ready");
   if (filter?.id) query = query.eq("id", filter.id);
   const { data, error } = await query.order("grade_min").order("word_count");
@@ -2731,12 +2759,14 @@ export async function loadDictationCatalog(input: unknown): Promise<DictationCat
     const id = attempt.dictation_id as string; const existing = byDictation.get(id);
     if (existing) existing.count++; else byDictation.set(id, { score: attempt.score == null ? null : Number(attempt.score), at: attempt.submitted_at as string, count: 1 });
   }
-  return rows.map((row) => ({
+  const catalog: DictationCatalogEntry[] = rows.map((row) => ({
     id: row.id, key: row.key, title: row.title_fr, kind: row.kind, wordCount: row.word_count, gradeMin: row.grade_min, gradeMax: row.grade_max, focus: row.focus_fr,
     estimatedMinutes: row.kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(row.word_count / 8))),
     lastScore: byDictation.get(row.id)?.score ?? null, lastAt: byDictation.get(row.id)?.at ?? null, attempts: byDictation.get(row.id)?.count ?? 0,
     audioMode: row.audio_status === "ready" ? "server" : "browser",
   }));
+  await journalStudentPayload(studentId,"legacy:dictation-catalog",{rows:catalog,display:dictationCatalogDisplay(catalog)});
+  return catalog;
 }
 
 const startDictationSchema = z.object({ dictationId: z.string().uuid(), mode: z.enum(DICTATION_MODES).optional(), clientRequestId: z.string().uuid() });
@@ -2759,10 +2789,16 @@ export async function startDictation(input: unknown): Promise<DictationSession> 
   if (error || !attempt) throw new Error(error?.message ?? "La dictée n’a pas pu démarrer.");
   if (attempt.submitted_at) throw new Error("Cette dictée est déjà terminée. Relance-la pour recommencer.");
   const audioMode: "server" | "browser" = row.audio_status === "ready" ? "server" : "browser";
-  const paths = audioMode === "server" ? [...row.segments.map((segment) => segment.audioPath), `${row.key}/full.mp3`] : [];
+  const audioAssets=audioMode === "server" ? resolveDictationAudioAssets({id:row.id,key:row.key,segments:row.segments,audioManifest:row.audio_manifest}) : null;
+  const paths = audioAssets ? [...audioAssets.segmentPaths, audioAssets.fullPath] : [];
   const urls = audioMode === "server" ? await signDictationAudio(service, paths) : [];
+  if(audioAssets?.manifest){
+    if(urls.length!==paths.length||urls.some(url=>!url))throw Error('Audio de la dictée indisponible. Réessaie.');
+    // Server-only provenance: never return the expected transcript to the player.
+    await journalStudentPayload(studentId,"legacy:dictation-audio-offered",audioAssets.manifest);
+  }
   const withTemplates = mode === "trous" || mode === "choix";
-  return {
+  const session: DictationSession = {
     attemptId: attempt.id as string, dictationId: row.id, title: row.title_fr, mode, focus: row.focus_fr, wordCount: row.word_count, audioMode,
     fullAudioUrl: audioMode === "server" ? urls[urls.length - 1] ?? null : null,
     segments: row.segments.map((segment, index) => ({
@@ -2772,6 +2808,8 @@ export async function startDictation(input: unknown): Promise<DictationSession> 
       template: withTemplates ? publicTemplate(buildTemplate(segment.text, index), mode === "choix") : null,
     })),
   };
+  await journalStudentPayload(studentId,"legacy:dictation",{session,display:dictationSessionDisplay(session)});
+  return session;
 }
 
 const submitDictationSchema = z.object({
@@ -2807,7 +2845,9 @@ export async function submitDictation(input: unknown): Promise<DictationResult> 
   const joined = answers.join(" ").trim();
   if (joined.length > 0) await moderateOrReject({ supabase, studentId, text: joined, field: "memory_retrieval" });
   if (attempt.submitted_at) {
-    return buildDictationResult(attempt.id as string, row, attempt.answers as string[], attempt.errors as DictationError[], Number(attempt.score), Number(attempt.accuracy), null);
+    const result=buildDictationResult(attempt.id as string, row, attempt.answers as string[], attempt.errors as DictationError[], Number(attempt.score), Number(attempt.accuracy), null);
+    await journalStudentPayload(studentId,"legacy:dictation-result",{result,display:dictationResultDisplay(result)});
+    return result;
   }
   const outcome = classifyDictation(row.segments.map((segment) => segment.text), answers);
   const submittedAt = new Date().toISOString();
@@ -2834,7 +2874,9 @@ export async function submitDictation(input: unknown): Promise<DictationResult> 
   const xp = await awardXp(service, { studentId, eventKey: `dictation:${attempt.id as string}`, sourceType: "dictation", sourceId: attempt.id as string, baseXp: mode === "brevet" ? XP_AWARDS.dictationBase * 2 : XP_AWARDS.dictationBase, bonusXp: outcome.errors.length === 0 ? XP_AWARDS.dictationCleanBonus : 0, at: submittedAt });
   await service.from("dictation_attempts").update({ xp_awarded: xp.xp }).eq("id", attempt.id);
   revalidatePath("/student"); revalidatePath("/student/dictee");
-  return buildDictationResult(attempt.id as string, row, answers, outcome.errors, outcome.score, outcome.accuracy, xp);
+  const result=buildDictationResult(attempt.id as string, row, answers, outcome.errors, outcome.score, outcome.accuracy, xp);
+  await journalStudentPayload(studentId,"legacy:dictation-result",{result,display:dictationResultDisplay(result)});
+  return result;
 }
 
 function buildDictationResult(attemptId: string, row: DictationRow, answers: string[], errors: DictationError[], score: number, accuracy: number, xp: XpAward | null): DictationResult {
@@ -2855,7 +2897,6 @@ function buildDictationResult(attemptId: string, row: DictationRow, answers: str
   };
 }
 
-const normalizeAnswerWord = (word: string) => word.normalize("NFC").trim().replace(/^\d+:/u, "").replace(/[.,;:!?«»"()\[\]…]/gu, "").toLocaleLowerCase("fr");
 
 function hashString(text: string): number { let h = 2166136261; for (const char of text) { h ^= char.codePointAt(0)!; h = Math.imul(h, 16777619) >>> 0; } return h; }
 
@@ -2865,9 +2906,13 @@ const justifySchema = z.object({ attemptId: z.string().uuid(), choices: z.array(
 export async function submitDictationJustifications(input: unknown) {
   const data = checked(justifySchema, input); const { studentId } = await context();
   const service = createServiceClient();
-  const { data: attempt, error } = await service.from("dictation_attempts").select("id,errors,submitted_at,justifications").eq("id", data.attemptId).eq("student_id", studentId).single();
+  const { data: attempt, error } = await service.from("dictation_attempts").select("id,errors,submitted_at,justifications,justification_correct").eq("id", data.attemptId).eq("student_id", studentId).single();
   if (error || !attempt || !attempt.submitted_at) throw new Error("Tentative introuvable.");
-  if ((attempt.justifications as unknown[]).length > 0) return { correct: Number((attempt as { justification_correct?: number }).justification_correct ?? 0), total: (attempt.justifications as unknown[]).length };
+  if ((attempt.justifications as unknown[]).length > 0) {
+    const outcome={correct:Number(attempt.justification_correct??0),total:(attempt.justifications as unknown[]).length};
+    await journalStudentPayload(studentId,"legacy:dictation-justification-result",{outcome,display:dictationJustificationOutcomeDisplay(outcome)});
+    return outcome;
+  }
   const errors = attempt.errors as DictationError[];
   const results = data.choices.map((choice) => ({ ...choice, correct: errors[choice.errorIndex]?.category === choice.category }));
   const correct = results.filter((r) => r.correct).length;
@@ -2880,7 +2925,9 @@ export async function submitDictationJustifications(input: unknown) {
       await recordDirectCompetencyEvidence({ service, studentId, nodeId: node.id as string, at, evidenceExpectation: "receptive", occurrenceKey: `dictation:${attempt.id as string}:justified`, sourceType: "dictation", sourceId: attempt.id as string, hintsUsed: 1, updateMastery: (prior) => bktUpdateWeighted(prior, true, 0.5), correct: true, memoryResult: "hard", pathMastery: (value) => Math.min(value, 0.84) });
     }
   }
-  return { correct, total: results.length };
+  const outcome={correct,total:results.length};
+  await journalStudentPayload(studentId,"legacy:dictation-justification-result",{outcome,display:dictationJustificationOutcomeDisplay(outcome)});
+  return outcome;
 }
 
 /** Class aggregate for the cooperative goal; no per-student figures leave the server (roadmap 6.5). */
@@ -2920,7 +2967,7 @@ export async function loadStudentRecueil(input: unknown): Promise<{ since: strin
     ...(productions ?? []).filter((row) => row.demonstrated).map((row) => ({ kind: "production" as const, id: row.id as string, at: row.submitted_at as string, title: (row.competency_nodes as unknown as { label_fr: string }).label_fr, text: row.content as string, note: "Production libre · maîtrise démontrée" })),
     ...[...lastBySummary.values()].map((entry) => ({ kind: "summary" as const, id: entry.id, at: entry.at, title: `Résumé de lecture (version ${entry.revision + 1})`, text: entry.text, note: entry.score != null ? `Rubrique ${entry.score}/100` : null })),
   ].sort((a, b) => Date.parse(a.at) - Date.parse(b.at));
-  return { since: since.slice(0, 10), entries };
+  return journalStudentPayload(studentId, "legacy:recueil", { since: since.slice(0, 10), entries });
 }
 
 const justificationEventSchema = z.object({ sessionId: uuidSchema, questionKey: z.string().min(1).max(120), correct: z.boolean(), answerCorrect: z.boolean() });

@@ -29,6 +29,9 @@ export type Tense =
   | "plus_que_parfait";
 export type Gender = "m" | "f";
 export type Agreement = { gender?: Gender; number?: "s" | "p" };
+export type CompoundContext = { gender?: Gender; codBefore?: Agreement; auxiliaryUse?: "transitive" | "intransitive" };
+export class InvalidConjugationContextError extends Error {}
+const VARIABLE_AUXILIARY = new Set(["sortir", "monter", "descendre", "rentrer", "retourner"]);
 
 const PERSON_INDEX: Record<Person, number> = {
   "1s": 0, "2s": 1, "3s": 2, "1p": 3, "2p": 4, "3p": 5,
@@ -50,13 +53,23 @@ const IRREGULAR_PRESENT: Record<string, string[]> = {
   vouloir: ["veux", "veux", "veut", "voulons", "voulez", "veulent"],
   savoir: ["sais", "sais", "sait", "savons", "savez", "savent"],
   devoir: ["dois", "dois", "doit", "devons", "devez", "doivent"],
+  dormir: ["dors", "dors", "dort", "dormons", "dormez", "dorment"],
+  courir: ["cours", "cours", "court", "courons", "courez", "courent"],
+  découvrir: ["découvre", "découvres", "découvre", "découvrons", "découvrez", "découvrent"],
+  mettre: ["mets", "mets", "met", "mettons", "mettez", "mettent"],
+  attendre: ["attends", "attends", "attend", "attendons", "attendez", "attendent"],
+  rejoindre: ["rejoins", "rejoins", "rejoint", "rejoignons", "rejoignez", "rejoignent"],
 };
 
 const IRREGULAR_PP: Record<string, string> = {
   être: "été", avoir: "eu", aller: "allé", faire: "fait", prendre: "pris",
-  venir: "venu", partir: "parti", sortir: "sorti", dire: "dit",
+  venir: "venu", partir: "parti", sortir: "sorti", descendre: "descendu", dire: "dit",
   voir: "vu", pouvoir: "pu", vouloir: "voulu", savoir: "su", devoir: "dû",
+  dormir: "dormi", courir: "couru", découvrir: "découvert", cueillir: "cueilli",
 };
+// An -ir suffix does not establish membership in the finir family. Unsupported
+// lemmas must not silently acquire -iss- forms or a past participle in -i.
+const GROUP_TWO_IR=new Set(["blanchir","finir","choisir","réussir","grandir","ralentir","rougir","applaudir","obéir","remplir","réfléchir","nourrir","punir","bâtir","agir"]);
 
 // Verbs taking être as the passé-composé auxiliary (the slice's core set).
 const ETRE_AUX = new Set([
@@ -76,6 +89,7 @@ const FUTUR_STEMS: Record<string, string> = {
   être: "ser", avoir: "aur", aller: "ir", faire: "fer", venir: "viendr",
   voir: "verr", pouvoir: "pourr", vouloir: "voudr", savoir: "saur",
   devoir: "devr",
+  courir: "courr",
 };
 
 // Fully irregular subjonctif paradigms [je, tu, il, nous, vous, ils].
@@ -91,6 +105,7 @@ const IRREGULAR_SUBJONCTIF: Record<string, string[]> = {
 
 // Irregular impératif [tu, nous, vous].
 const IRREGULAR_IMPERATIF: Record<string, string[]> = {
+  écrire: ["écris", "écrivons", "écrivez"],
   être: ["sois", "soyons", "soyez"],
   avoir: ["aie", "ayons", "ayez"],
   savoir: ["sache", "sachons", "sachez"],
@@ -108,6 +123,10 @@ export function present(infinitive: string, person: Person): string {
 
   if (verb.endsWith("er")) {
     const rad = verb.slice(0, -2);
+    if((verb==="célébrer"||verb==="protéger")&&i!==3&&i!==4){
+      const lastAccent=rad.lastIndexOf("é");
+      return rad.slice(0,lastAccent)+"è"+rad.slice(lastAccent+1)+PRESENT_ENDINGS_ER[i];
+    }
     if (i === 3) {
       // nous: -ger keeps e (mangeons), -cer softens c→ç (commençons)
       if (rad.endsWith("g")) return rad + "eons";
@@ -122,8 +141,7 @@ export function present(infinitive: string, person: Person): string {
     throw new UnsupportedVerbError(`present: unsupported -oir verb "${infinitive}"`);
   }
 
-  if (verb.endsWith("ir")) {
-    // Treated as group 2 (finir-type); group-3 -ir verbs live in the table.
+  if (GROUP_TWO_IR.has(verb)) {
     const rad = verb.slice(0, -2);
     return rad + PRESENT_ENDINGS_IR2[i];
   }
@@ -168,7 +186,7 @@ export function participePasse(infinitive: string): string {
   const verb = infinitive.toLowerCase();
   if (IRREGULAR_PP[verb]) return IRREGULAR_PP[verb];
   if (verb.endsWith("er")) return verb.slice(0, -2) + "é";
-  if (verb.endsWith("ir")) return verb.slice(0, -2) + "i";
+  if (GROUP_TWO_IR.has(verb)) return verb.slice(0, -2) + "i";
   throw new UnsupportedVerbError(`participePasse: unsupported "${infinitive}"`);
 }
 
@@ -195,9 +213,13 @@ function compound(
   infinitive: string,
   person: Person,
   auxTense: "present" | "imparfait",
-  opts: { gender?: Gender; codBefore?: Agreement } = {}
+  opts: CompoundContext = {}
 ): string {
-  const aux = auxiliaryOf(infinitive);
+  if (opts.auxiliaryUse !== undefined &&
+      (!["transitive", "intransitive"].includes(opts.auxiliaryUse) || !VARIABLE_AUXILIARY.has(infinitive.toLowerCase()))) {
+    throw new InvalidConjugationContextError("Unsupported auxiliary construction for this verb");
+  }
+  const aux = opts.auxiliaryUse === "transitive" ? "avoir" : auxiliaryOf(infinitive);
   const auxForm =
     auxTense === "present" ? present(aux, person) : imparfait(aux, person);
   let pp = participePasse(infinitive);
@@ -215,7 +237,7 @@ function compound(
 export function passeCompose(
   infinitive: string,
   person: Person,
-  opts: { gender?: Gender; codBefore?: Agreement } = {}
+  opts: CompoundContext = {}
 ): string {
   return compound(infinitive, person, "present", opts);
 }
@@ -224,7 +246,7 @@ export function passeCompose(
 export function plusQueParfait(
   infinitive: string,
   person: Person,
-  opts: { gender?: Gender; codBefore?: Agreement } = {}
+  opts: CompoundContext = {}
 ): string {
   return compound(infinitive, person, "imparfait", opts);
 }
@@ -237,7 +259,7 @@ export function futurStem(infinitive: string): string {
   if (verb.endsWith("oir")) {
     throw new UnsupportedVerbError(`futurStem: unsupported -oir verb "${infinitive}"`);
   }
-  if (verb.endsWith("er") || verb.endsWith("ir")) return verb;
+  if (verb.endsWith("er") || (verb.endsWith("ir")&&(GROUP_TWO_IR.has(verb)||IRREGULAR_PRESENT[verb]))) return verb;
   if (verb.endsWith("re")) return verb.slice(0, -1);
   throw new UnsupportedVerbError(`futurStem: unsupported verb "${infinitive}"`);
 }
@@ -287,7 +309,7 @@ export function imperatifPresent(infinitive: string, person: Person): string {
   if (IRREGULAR_IMPERATIF[verb]) return IRREGULAR_IMPERATIF[verb][idx];
 
   let form = present(verb, person);
-  if (person === "2s" && (verb.endsWith("er") || verb === "aller") && form.endsWith("s")) {
+  if (person === "2s" && (verb.endsWith("er") || verb === "aller" || verb === "découvrir") && form.endsWith("s")) {
     form = form.slice(0, -1);
   }
   return form;
@@ -325,8 +347,18 @@ export function passeSimple(infinitive: string, person: Person): string {
   const verb = infinitive.toLocaleLowerCase("fr");
   const irregular = PASSE_SIMPLE_IRREGULAR[verb];
   if (irregular) return irregular[PERSON_INDEX[person]];
-  if (verb.endsWith("er")) return verb.slice(0, -2) + ["ai", "as", "a", "âmes", "âtes", "èrent"][PERSON_INDEX[person]];
-  if (verb.endsWith("ir")) return verb.slice(0, -2) + ["is", "is", "it", "îmes", "îtes", "irent"][PERSON_INDEX[person]];
+  if (verb.endsWith("er")) {
+    const ending=["ai", "as", "a", "âmes", "âtes", "èrent"][PERSON_INDEX[person]];
+    let stem=verb.slice(0,-2);
+    // Preserve soft g/c before a and â, but not before è: mangeâmes,
+    // commençâmes; mangèrent, commencèrent.
+    if(/^[aâ]/.test(ending)){
+      if(stem.endsWith("g"))stem+="e";
+      else if(stem.endsWith("c"))stem=stem.slice(0,-1)+"ç";
+    }
+    return stem+ending;
+  }
+  if (GROUP_TWO_IR.has(verb)||["partir","sortir","dormir","découvrir"].includes(verb)) return verb.slice(0, -2) + ["is", "is", "it", "îmes", "îtes", "irent"][PERSON_INDEX[person]];
   if (verb.endsWith("re")) return verb.slice(0, -2) + ["is", "is", "it", "îmes", "îtes", "irent"][PERSON_INDEX[person]];
   throw new UnsupportedVerbError(`passeSimple: unsupported verb "${infinitive}"`);
 }
@@ -343,8 +375,11 @@ export function conjugate(
   infinitive: string,
   tense: Tense,
   person: Person,
-  agreement?: { gender?: Gender; codBefore?: Agreement }
+  agreement?: CompoundContext
 ): string {
+  if (agreement?.auxiliaryUse !== undefined && !["passe_compose", "plus_que_parfait"].includes(tense)) {
+    throw new InvalidConjugationContextError("Auxiliary construction requires a compound tense");
+  }
   switch (tense) {
     case "present":
       return present(infinitive, person);

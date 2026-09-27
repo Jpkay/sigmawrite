@@ -1,0 +1,31 @@
+{
+  "status": "experimental_revision_proof_implemented_live_source_failure_remains",
+  "evaluatorVersion": "french-writing-evaluator-v10",
+  "changes": [
+    "Require before/after evidence for corrected, retained and introduced errors.",
+    "Reject unchanged correct text as proof of correction.",
+    "Persist revision source spans and revalidate source and verdict after serialization.",
+    "Require revision proof for saved evidence from evaluator v10 onward; retain compatibility with older evidence."
+  ],
+  "localChecks": {
+    "granularTestsBeforeFinalCapturedRegression": 661,
+    "typescript": "passed",
+    "finalCapturedRegression": "passed",
+    "outOfBoundsFirstDraftEvidenceRejected": true
+  },
+  "liveSyntheticChecks": {
+    "matched": 7,
+    "total": 8,
+    "failures": [
+      {
+        "id": "introduced-revision-errors",
+        "reason": "invalid_evidence"
+      }
+    ]
+  },
+  "remaining": [
+    "The introduced-error response substituted barrière for submitted barière and was rejected. This is captured as a regression, not repaired into a grade.",
+    "Broader provider reliability and educator calibration remain unproven.",
+    "Experimental writing evaluation is not activated for students."
+  ]
+}

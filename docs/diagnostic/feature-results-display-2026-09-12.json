@@ -1,0 +1,20 @@
+{
+  "status": "implemented_verified_not_deployed",
+  "candidateChecksum": "sha256:f6de3b32860818a23e25cc8d77539b82277f35279d4b89b4d777bcc29aa5e681",
+  "engineSourceChecksum": "sha256:a3f55ed946ad1fbc5fef728181a69cdfc8a324ee6a3f668aac9ed578ec70b18d",
+  "behavior": [
+    "Labelled counts for each configured distinction in detailed results.",
+    "Zero eligible answers says Pas encore vérifié; incorrect answers remain visible as zero successes out of attempted questions.",
+    "Counts use the same eligible, deduplicated and assistance-filtered evidence as the assessment engine.",
+    "Counts do not independently claim mastery or alter thresholds.",
+    "Historical results without features retain their existing display."
+  ],
+  "checks": {
+    "suite": 642,
+    "additionalFeatureLabelTest": 1,
+    "typescript": "passed",
+    "constructedProfiles": 8,
+    "componentRendering": "360px fixture, no horizontal overflow; actual component with fixture styling, not a deployed full-page screenshot"
+  },
+  "next": "Include in the next frozen deployment and verify the deployed detailed results."
+}

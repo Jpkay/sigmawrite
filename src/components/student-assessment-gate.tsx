@@ -1,26 +1,37 @@
 "use client";
+import {STUDENT_INTERFACE_COPY as copy} from "@/lib/student-interface-copy";
 
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { hasStudentBackend, useStudentState } from "@/lib/student-store";
+import { hasStudentBackend, retryStudentHydration, useStudentState } from "@/lib/student-store";
 
 const ALWAYS_AVAILABLE = new Set([
   "/student/onboarding",
   "/student/diagnostic",
+  "/student/diagnostic/review",
+  "/student/lessons",
   "/student/settings",
 ]);
-const PILOT_PREVIEW_AVAILABLE = new Set(["/student/frontier"]);
+const RESULT_PREVIEW_AVAILABLE = new Set(["/student/frontier", "/student/progress"]);
 
 export function studentAssessmentRedirect(input: {
   pathname: string;
   onboarded: boolean;
   diagnosticComplete: boolean;
   diagnosticProvisional?: boolean;
+  granularDiagnosticReady?: boolean;
 }) {
   if (ALWAYS_AVAILABLE.has(input.pathname)) return null;
+  // Server-confirmed granular readiness also governs onboarding's redirect.
+  // Honour it first so completed imported/technical accounts are not bounced
+  // from progress to onboarding and immediately back to lessons.
+  if (input.granularDiagnosticReady) return null;
   if (!input.onboarded) return "/student/onboarding";
+  // Read-only evidence pages may show a paused, incomplete assessment. They
+  // do not issue learning commands or mark the diagnostic complete.
+  if (RESULT_PREVIEW_AVAILABLE.has(input.pathname)) return null;
   if (input.diagnosticProvisional) {
-    return PILOT_PREVIEW_AVAILABLE.has(input.pathname) ? null : "/student/diagnostic";
+    return "/student/diagnostic";
   }
   if (!input.diagnosticComplete) return "/student/diagnostic";
   return null;
@@ -40,6 +51,7 @@ export function StudentAssessmentGate({ children, ownerKey }: { children: React.
         ? Object.keys(state.diagnosticSectionProfile).length === 4
         : Boolean(state.diagnostic),
       diagnosticProvisional: state.diagnosticProvisional,
+      granularDiagnosticReady: state.granularDiagnosticReady,
     })
     : null;
 
@@ -47,8 +59,18 @@ export function StudentAssessmentGate({ children, ownerKey }: { children: React.
     if (destination) router.replace(destination);
   }, [destination, router]);
 
+  // These server-rendered routes independently check student access and
+  // learning eligibility. They do not need legacy student-store hydration.
+  if (pathname === "/student/diagnostic/review" || pathname === "/student/lessons") return children;
+
+  if (state.hydrationError) {
+    return <div role="alert" className="space-y-3">
+      <p>{copy.loadError}</p>
+      <button type="button" className="rounded-md border border-input px-4 py-2 text-sm font-medium" onClick={() => void retryStudentHydration()}>{copy.retry}</button>
+    </div>;
+  }
   if (!state.hydrated || destination) {
-    return <p className="text-sm text-muted-foreground">Préparation de ton parcours…</p>;
+    return <p className="text-sm text-muted-foreground">{copy.loading}</p>;
   }
   return children;
 }

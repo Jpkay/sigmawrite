@@ -1,0 +1,539 @@
+{
+  "report": {
+    "version": "profile-trace-v1",
+    "profile": "narrative_explicit_known_local_cause_weak",
+    "candidateChecksum": "sha256:5e1a6ce496b93e4fd5d5bafc93caa6f26b68070e0ee103218bf7127f66cac8ab",
+    "fixedInputs": {
+      "targets": [
+        {
+          "skillId": "localiser_information_explicite::all-receptive::text_type:narrative",
+          "expected": "known"
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+          "expected": "weak"
+        }
+      ],
+      "requireSameBranch": false,
+      "policy": {
+        "activeSeconds": 2100,
+        "minimumItemsPerMode": 3,
+        "minimumContextsPerMode": 2,
+        "maxItemsPerSkill": 12,
+        "startingLevel": 1,
+        "itemsPerBranchVisit": 6
+      },
+      "syntheticPrerequisiteObservationCount": 0
+    },
+    "trace": [
+      {
+        "index": 1,
+        "questionId": "v3-explicit-reading:garden-seeds",
+        "skillId": "localiser_information_explicite::all-receptive::text_type:narrative",
+        "mode": "interpretation",
+        "selectionReason": "branch_coverage",
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "answer": "correct",
+        "elapsedSeconds": 60,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.782608695652174,
+          "distinctItems": 1,
+          "distinctContexts": 1,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 2,
+        "questionId": "v3-short-reading:drawing-window",
+        "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+        "mode": "interpretation",
+        "selectionReason": "branch_coverage",
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "answer": "incorrect",
+        "elapsedSeconds": 120,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.11764705882352941,
+          "distinctItems": 1,
+          "distinctContexts": 1,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 3,
+        "questionId": "v3-short-reading:game-headphones",
+        "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+        "mode": "interpretation",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "answer": "incorrect",
+        "elapsedSeconds": 180,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.017467248908296946,
+          "distinctItems": 2,
+          "distinctContexts": 2,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 4,
+        "questionId": "v3-short-reading:manga-queue",
+        "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+        "mode": "interpretation",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "answer": "incorrect",
+        "elapsedSeconds": 240,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.0023647650014779796,
+          "distinctItems": 3,
+          "distinctContexts": 3,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": true,
+          "withinOccasionResolved": true
+        }
+      },
+      {
+        "index": 5,
+        "questionId": "v3-explicit-reading:lost-glove",
+        "skillId": "localiser_information_explicite::all-receptive::text_type:narrative",
+        "mode": "interpretation",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "answer": "correct",
+        "elapsedSeconds": 300,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.9283667621776505,
+          "distinctItems": 2,
+          "distinctContexts": 2,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 6,
+        "questionId": "v3-explicit-reading:manga-return",
+        "skillId": "localiser_information_explicite::all-receptive::text_type:narrative",
+        "mode": "interpretation",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "answer": "correct",
+        "elapsedSeconds": 360,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.9790162833641095,
+          "distinctItems": 3,
+          "distinctContexts": 3,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 7,
+        "questionId": "v3-explicit-reading:rain-shelter",
+        "skillId": "localiser_information_explicite::all-receptive::text_type:narrative",
+        "mode": "interpretation",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "answer": "correct",
+        "elapsedSeconds": 420,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.9940814954403842,
+          "distinctItems": 4,
+          "distinctContexts": 4,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": true
+        }
+      }
+    ],
+    "activeSeconds": 420,
+    "ending": {
+      "kind": "provisional",
+      "reason": "later_evidence_required",
+      "unresolvedSkillIds": [
+        "localiser_information_explicite::all-receptive::text_type:narrative",
+        "inferer_cause_locale::all-receptive::text_type:narrative"
+      ]
+    },
+    "contrast": {
+      "requiredKnownTargets": 1,
+      "requiredWeakTargets": 1,
+      "knownTargetsWithEvidence": [
+        "localiser_information_explicite::all-receptive::text_type:narrative"
+      ],
+      "weakTargetsWithEvidence": [
+        "inferer_cause_locale::all-receptive::text_type:narrative"
+      ],
+      "knownTargetsUnresolved": [],
+      "weakTargetsUnresolved": [],
+      "sameBranchBoundaries": [],
+      "requireSameBranch": false,
+      "passed": true
+    },
+    "passed": true,
+    "targetResults": [
+      {
+        "skillId": "localiser_information_explicite::all-receptive::text_type:narrative",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "interpretation",
+            "probability": 0.9940814954403842,
+            "distinctItems": 4,
+            "distinctContexts": 4,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [
+              "narrative"
+            ],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      },
+      {
+        "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "interpretation",
+            "probability": 0.0023647650014779796,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 0,
+            "unconfirmedFeatures": [],
+            "textTypes": [
+              "narrative"
+            ],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false,
+            "provisionalGap": true
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      }
+    ],
+    "nextActivity": {
+      "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+      "activityId": "bb273413-624f-581e-b580-af95af1cf69a",
+      "kind": "instruction",
+      "action": "learn",
+      "titleFr": "Comprendre pourquoi un personnage agit",
+      "href": "/student/diagnostic?activity=bb273413-624f-581e-b580-af95af1cf69a",
+      "estimatedMinutes": 4,
+      "contentId": "french-v3-teaching:reading:inferer_cause_locale:narrative",
+      "evidence": {
+        "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "interpretation",
+            "probability": 0.0023647650014779796,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 0,
+            "unconfirmedFeatures": [],
+            "textTypes": [
+              "narrative"
+            ],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false,
+            "provisionalGap": true
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      }
+    },
+    "missingActivitySkillIds": [
+      "localiser_information_explicite::all-receptive::text_type:narrative"
+    ],
+    "blockedSkillIds": [
+      "localiser_information_explicite::all-receptive::text_type:narrative"
+    ],
+    "limitations": [
+      "Synthetic fixed answers and prerequisite history; no student calibration or mastery claim.",
+      "Focused routing trace over released target branches; not a complete 35-minute assessment journey."
+    ]
+  },
+  "omissionCounterexample": {
+    "version": "profile-trace-v1",
+    "profile": "narrative_explicit_known_local_cause_weak_omission_counterexample",
+    "candidateChecksum": "sha256:5e1a6ce496b93e4fd5d5bafc93caa6f26b68070e0ee103218bf7127f66cac8ab",
+    "fixedInputs": {
+      "targets": [
+        {
+          "skillId": "localiser_information_explicite::all-receptive::text_type:narrative",
+          "expected": "known"
+        },
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+          "expected": "weak"
+        }
+      ],
+      "requireSameBranch": false,
+      "policy": {
+        "activeSeconds": 2100,
+        "minimumItemsPerMode": 3,
+        "minimumContextsPerMode": 2,
+        "maxItemsPerSkill": 12,
+        "startingLevel": 1,
+        "itemsPerBranchVisit": 6
+      },
+      "syntheticPrerequisiteObservationCount": 0
+    },
+    "trace": [
+      {
+        "index": 1,
+        "questionId": "v3-explicit-reading:garden-seeds",
+        "skillId": "localiser_information_explicite::all-receptive::text_type:narrative",
+        "mode": "interpretation",
+        "selectionReason": "branch_coverage",
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "answer": "correct",
+        "elapsedSeconds": 60,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.782608695652174,
+          "distinctItems": 1,
+          "distinctContexts": 1,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 2,
+        "questionId": "v3-short-reading:drawing-window",
+        "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+        "mode": "interpretation",
+        "selectionReason": "branch_coverage",
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "answer": "incorrect",
+        "elapsedSeconds": 120,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.11764705882352941,
+          "distinctItems": 1,
+          "distinctContexts": 1,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 3,
+        "questionId": "v3-short-reading:game-headphones",
+        "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+        "mode": "interpretation",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "answer": "incorrect",
+        "elapsedSeconds": 180,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.017467248908296946,
+          "distinctItems": 2,
+          "distinctContexts": 2,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 4,
+        "questionId": "v3-short-reading:manga-queue",
+        "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+        "mode": "interpretation",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 60,
+        "answer": "incorrect",
+        "elapsedSeconds": 240,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.0023647650014779796,
+          "distinctItems": 3,
+          "distinctContexts": 3,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": true,
+          "withinOccasionResolved": true
+        }
+      }
+    ],
+    "activeSeconds": 240,
+    "ending": {
+      "kind": "provisional",
+      "reason": "time_budget",
+      "unresolvedSkillIds": [
+        "localiser_information_explicite::all-receptive::text_type:narrative",
+        "inferer_cause_locale::all-receptive::text_type:narrative"
+      ]
+    },
+    "contrast": {
+      "requiredKnownTargets": 1,
+      "requiredWeakTargets": 1,
+      "knownTargetsWithEvidence": [],
+      "weakTargetsWithEvidence": [
+        "inferer_cause_locale::all-receptive::text_type:narrative"
+      ],
+      "knownTargetsUnresolved": [
+        "localiser_information_explicite::all-receptive::text_type:narrative"
+      ],
+      "weakTargetsUnresolved": [],
+      "sameBranchBoundaries": [],
+      "requireSameBranch": false,
+      "passed": false
+    },
+    "passed": false,
+    "targetResults": [
+      {
+        "skillId": "localiser_information_explicite::all-receptive::text_type:narrative",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "interpretation",
+            "probability": 0.782608695652174,
+            "distinctItems": 1,
+            "distinctContexts": 1,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [
+              "narrative"
+            ],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      },
+      {
+        "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "interpretation",
+            "probability": 0.0023647650014779796,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 0,
+            "unconfirmedFeatures": [],
+            "textTypes": [
+              "narrative"
+            ],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false,
+            "provisionalGap": true
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      }
+    ],
+    "nextActivity": {
+      "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+      "activityId": "bb273413-624f-581e-b580-af95af1cf69a",
+      "kind": "instruction",
+      "action": "learn",
+      "titleFr": "Comprendre pourquoi un personnage agit",
+      "href": "/student/diagnostic?activity=bb273413-624f-581e-b580-af95af1cf69a",
+      "estimatedMinutes": 4,
+      "contentId": "french-v3-teaching:reading:inferer_cause_locale:narrative",
+      "evidence": {
+        "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "interpretation",
+            "probability": 0.0023647650014779796,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 0,
+            "unconfirmedFeatures": [],
+            "textTypes": [
+              "narrative"
+            ],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false,
+            "provisionalGap": true
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      }
+    },
+    "missingActivitySkillIds": [
+      "localiser_information_explicite::all-receptive::text_type:narrative"
+    ],
+    "blockedSkillIds": [
+      "localiser_information_explicite::all-receptive::text_type:narrative"
+    ],
+    "limitations": [
+      "Synthetic fixed answers and prerequisite history; no student calibration or mastery claim.",
+      "Focused routing trace over released target branches; not a complete 35-minute assessment journey."
+    ]
+  },
+  "sourceArtifact": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r41-evidence-773d3f7/docs/diagnostic/v3-scoped-review-candidate.json"
+}

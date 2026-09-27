@@ -28,3 +28,18 @@ select '54000000-0000-4000-8000-000000000001','53000000-0000-4000-8000-000000000
 from public.profiles reviewer cross join public.profiles admin
 where reviewer.auth_user_id='51000000-0000-4000-8000-000000000002' and admin.auth_user_id='51000000-0000-4000-8000-000000000001'
 on conflict(id) do nothing;
+
+-- Exercise preview fixtures and database-owned local roles.
+insert into public.competency_items(id,primary_node_id,strand,modality,response_type,prompt_fr,correct_answer,validator_type,review_status,prompt_version,qc_gates)
+select '55000000-0000-4000-8000-000000000001',id,strand,'reading','mcq','Quel extrait adopte un point de vue interne ?',null,'exact','needs_human_review','diagnostic-bank-v2','{"gate1_schema":true,"gate3_ensemble":{"agrees":true}}' from competency_nodes limit 1
+on conflict(id) do nothing;
+insert into public.competency_item_choices(id,item_id,choice_text,is_correct,position,feedback_fr) values
+('56000000-0000-4000-8000-000000000001','55000000-0000-4000-8000-000000000001','Marie avançait dans la rue sombre et regardait souvent derrière elle.',false,0,'On observe Marie de l’extérieur.'),
+('56000000-0000-4000-8000-000000000002','55000000-0000-4000-8000-000000000001','Marie avait peur ; Paul, lui, savait déjà qu’il ferait demi-tour.',false,1,'Le narrateur connaît les pensées de deux personnages.'),
+('56000000-0000-4000-8000-000000000003','55000000-0000-4000-8000-000000000001','Je sentais mon cœur battre et j’ignorais ce qui m’attendait.',true,2,'On découvre les sensations et les pensées du personnage.')
+on conflict(id) do nothing;
+insert into public.competency_items(id,primary_node_id,strand,modality,response_type,prompt_fr,correct_answer,validator_type,review_status,prompt_version)
+select '55000000-0000-4000-8000-000000000002',id,strand,'writing','short_answer','Complète : Hier, nous ___ au cinéma. (aller)','sommes allés','exact','needs_human_review','diagnostic-bank-v2' from competency_nodes limit 1 on conflict(id) do nothing;
+notify pgrst, 'reload schema';
+update public.profiles set role='platform_admin' where auth_user_id='51000000-0000-4000-8000-000000000001';
+update public.profiles set role='content_reviewer' where auth_user_id='51000000-0000-4000-8000-000000000002';

@@ -1,0 +1,2919 @@
+{
+  "version": "french-v3-written-adjective-agreement-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-written-adjective:recognition-1",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLa rivière est ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "profond",
+                "form": "profond"
+              },
+              {
+                "lemma": "profond",
+                "form": "profonde"
+              },
+              {
+                "lemma": "profond",
+                "form": "profonds"
+              },
+              {
+                "lemma": "profond",
+                "form": "profondes"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "profond"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "profond",
+              "errorKey": "wrong-gender"
+            },
+            {
+              "incorrectChoiceFr": "profonds",
+              "errorKey": "wrong-gender-and-number"
+            },
+            {
+              "incorrectChoiceFr": "profondes",
+              "errorKey": "wrong-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "profonde",
+            "correct": true
+          },
+          {
+            "text": "profond",
+            "correct": false
+          },
+          {
+            "text": "profonds",
+            "correct": false
+          },
+          {
+            "text": "profondes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-2",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLes chemins sont ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "sinueux",
+                "form": "sinueux"
+              },
+              {
+                "lemma": "sinueux",
+                "form": "sinueuse"
+              },
+              {
+                "lemma": "sinueux",
+                "form": "sinueuses"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "sinueux"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "sinueuse",
+              "errorKey": "wrong-gender-and-number"
+            },
+            {
+              "incorrectChoiceFr": "sinueuses",
+              "errorKey": "wrong-gender"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "sinueux",
+            "correct": true
+          },
+          {
+            "text": "sinueuse",
+            "correct": false
+          },
+          {
+            "text": "sinueuses",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-3",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLes habitantes sont ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "attentif",
+                "form": "attentif"
+              },
+              {
+                "lemma": "attentif",
+                "form": "attentive"
+              },
+              {
+                "lemma": "attentif",
+                "form": "attentifs"
+              },
+              {
+                "lemma": "attentif",
+                "form": "attentives"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "attentif"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "attentif",
+              "errorKey": "wrong-gender-and-number"
+            },
+            {
+              "incorrectChoiceFr": "attentive",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "attentifs",
+              "errorKey": "wrong-gender"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "attentives",
+            "correct": true
+          },
+          {
+            "text": "attentif",
+            "correct": false
+          },
+          {
+            "text": "attentive",
+            "correct": false
+          },
+          {
+            "text": "attentifs",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-4",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLe témoin semble ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "inquiet",
+                "form": "inquiet"
+              },
+              {
+                "lemma": "inquiet",
+                "form": "inquiète"
+              },
+              {
+                "lemma": "inquiet",
+                "form": "inquiets"
+              },
+              {
+                "lemma": "inquiet",
+                "form": "inquiètes"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "inquiet"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "inquiète",
+              "errorKey": "wrong-gender"
+            },
+            {
+              "incorrectChoiceFr": "inquiets",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "inquiètes",
+              "errorKey": "wrong-gender-and-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "inquiet",
+            "correct": true
+          },
+          {
+            "text": "inquiète",
+            "correct": false
+          },
+          {
+            "text": "inquiets",
+            "correct": false
+          },
+          {
+            "text": "inquiètes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-5",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLes réponses sont ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "précis",
+                "form": "précis"
+              },
+              {
+                "lemma": "précis",
+                "form": "précise"
+              },
+              {
+                "lemma": "précis",
+                "form": "précises"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "précis"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "précis",
+              "errorKey": "wrong-gender"
+            },
+            {
+              "incorrectChoiceFr": "précise",
+              "errorKey": "wrong-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "précises",
+            "correct": true
+          },
+          {
+            "text": "précis",
+            "correct": false
+          },
+          {
+            "text": "précise",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-6",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLa bergère paraît ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "heureux",
+                "form": "heureux"
+              },
+              {
+                "lemma": "heureux",
+                "form": "heureuse"
+              },
+              {
+                "lemma": "heureux",
+                "form": "heureuses"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "heureux"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "heureux",
+              "errorKey": "wrong-gender"
+            },
+            {
+              "incorrectChoiceFr": "heureuses",
+              "errorKey": "wrong-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "heureuse",
+            "correct": true
+          },
+          {
+            "text": "heureux",
+            "correct": false
+          },
+          {
+            "text": "heureuses",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-7",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLes garçons restent ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "silencieux",
+                "form": "silencieux"
+              },
+              {
+                "lemma": "silencieux",
+                "form": "silencieuse"
+              },
+              {
+                "lemma": "silencieux",
+                "form": "silencieuses"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "silencieux"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "silencieuse",
+              "errorKey": "wrong-gender-and-number"
+            },
+            {
+              "incorrectChoiceFr": "silencieuses",
+              "errorKey": "wrong-gender"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "silencieux",
+            "correct": true
+          },
+          {
+            "text": "silencieuse",
+            "correct": false
+          },
+          {
+            "text": "silencieuses",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-8",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLa ruelle est ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "obscur",
+                "form": "obscur"
+              },
+              {
+                "lemma": "obscur",
+                "form": "obscure"
+              },
+              {
+                "lemma": "obscur",
+                "form": "obscurs"
+              },
+              {
+                "lemma": "obscur",
+                "form": "obscures"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "obscur"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "obscur",
+              "errorKey": "wrong-gender"
+            },
+            {
+              "incorrectChoiceFr": "obscurs",
+              "errorKey": "wrong-gender-and-number"
+            },
+            {
+              "incorrectChoiceFr": "obscures",
+              "errorKey": "wrong-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "obscure",
+            "correct": true
+          },
+          {
+            "text": "obscur",
+            "correct": false
+          },
+          {
+            "text": "obscurs",
+            "correct": false
+          },
+          {
+            "text": "obscures",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-9",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLes routes deviennent ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "dangereux",
+                "form": "dangereux"
+              },
+              {
+                "lemma": "dangereux",
+                "form": "dangereuse"
+              },
+              {
+                "lemma": "dangereux",
+                "form": "dangereuses"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "dangereux"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "dangereux",
+              "errorKey": "wrong-gender"
+            },
+            {
+              "incorrectChoiceFr": "dangereuse",
+              "errorKey": "wrong-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "dangereuses",
+            "correct": true
+          },
+          {
+            "text": "dangereux",
+            "correct": false
+          },
+          {
+            "text": "dangereuse",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-10",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLe discours paraît ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "confus",
+                "form": "confus"
+              },
+              {
+                "lemma": "confus",
+                "form": "confuse"
+              },
+              {
+                "lemma": "confus",
+                "form": "confuses"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "confus"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "confuse",
+              "errorKey": "wrong-gender"
+            },
+            {
+              "incorrectChoiceFr": "confuses",
+              "errorKey": "wrong-gender-and-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "confus",
+            "correct": true
+          },
+          {
+            "text": "confuse",
+            "correct": false
+          },
+          {
+            "text": "confuses",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-11",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLes comédiennes sont ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "expressif",
+                "form": "expressif"
+              },
+              {
+                "lemma": "expressif",
+                "form": "expressive"
+              },
+              {
+                "lemma": "expressif",
+                "form": "expressifs"
+              },
+              {
+                "lemma": "expressif",
+                "form": "expressives"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "expressif"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "expressif",
+              "errorKey": "wrong-gender-and-number"
+            },
+            {
+              "incorrectChoiceFr": "expressive",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "expressifs",
+              "errorKey": "wrong-gender"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "expressives",
+            "correct": true
+          },
+          {
+            "text": "expressif",
+            "correct": false
+          },
+          {
+            "text": "expressive",
+            "correct": false
+          },
+          {
+            "text": "expressifs",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-12",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLa décision semble ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "définitif",
+                "form": "définitif"
+              },
+              {
+                "lemma": "définitif",
+                "form": "définitive"
+              },
+              {
+                "lemma": "définitif",
+                "form": "définitifs"
+              },
+              {
+                "lemma": "définitif",
+                "form": "définitives"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "définitif"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "définitif",
+              "errorKey": "wrong-gender"
+            },
+            {
+              "incorrectChoiceFr": "définitifs",
+              "errorKey": "wrong-gender-and-number"
+            },
+            {
+              "incorrectChoiceFr": "définitives",
+              "errorKey": "wrong-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "définitive",
+            "correct": true
+          },
+          {
+            "text": "définitif",
+            "correct": false
+          },
+          {
+            "text": "définitifs",
+            "correct": false
+          },
+          {
+            "text": "définitives",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-13",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLes coussins sont ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "moelleux",
+                "form": "moelleux"
+              },
+              {
+                "lemma": "moelleux",
+                "form": "moelleuse"
+              },
+              {
+                "lemma": "moelleux",
+                "form": "moelleuses"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "moelleux"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "moelleuse",
+              "errorKey": "wrong-gender-and-number"
+            },
+            {
+              "incorrectChoiceFr": "moelleuses",
+              "errorKey": "wrong-gender"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "moelleux",
+            "correct": true
+          },
+          {
+            "text": "moelleuse",
+            "correct": false
+          },
+          {
+            "text": "moelleuses",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-14",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLa chienne paraît ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "craintif",
+                "form": "craintif"
+              },
+              {
+                "lemma": "craintif",
+                "form": "craintive"
+              },
+              {
+                "lemma": "craintif",
+                "form": "craintifs"
+              },
+              {
+                "lemma": "craintif",
+                "form": "craintives"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "craintif"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "craintif",
+              "errorKey": "wrong-gender"
+            },
+            {
+              "incorrectChoiceFr": "craintifs",
+              "errorKey": "wrong-gender-and-number"
+            },
+            {
+              "incorrectChoiceFr": "craintives",
+              "errorKey": "wrong-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "craintive",
+            "correct": true
+          },
+          {
+            "text": "craintif",
+            "correct": false
+          },
+          {
+            "text": "craintifs",
+            "correct": false
+          },
+          {
+            "text": "craintives",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-15",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLes nageuses sont ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "sportif",
+                "form": "sportif"
+              },
+              {
+                "lemma": "sportif",
+                "form": "sportive"
+              },
+              {
+                "lemma": "sportif",
+                "form": "sportifs"
+              },
+              {
+                "lemma": "sportif",
+                "form": "sportives"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "sportif"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "sportif",
+              "errorKey": "wrong-gender-and-number"
+            },
+            {
+              "incorrectChoiceFr": "sportive",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "sportifs",
+              "errorKey": "wrong-gender"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "sportives",
+            "correct": true
+          },
+          {
+            "text": "sportif",
+            "correct": false
+          },
+          {
+            "text": "sportive",
+            "correct": false
+          },
+          {
+            "text": "sportifs",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:recognition-16",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme de l’adjectif qui convient.\n\nLes tissus sont ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "délicat",
+                "form": "délicat"
+              },
+              {
+                "lemma": "délicat",
+                "form": "délicate"
+              },
+              {
+                "lemma": "délicat",
+                "form": "délicats"
+              },
+              {
+                "lemma": "délicat",
+                "form": "délicates"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "délicat"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "délicat",
+              "errorKey": "wrong-number"
+            },
+            {
+              "incorrectChoiceFr": "délicate",
+              "errorKey": "wrong-gender-and-number"
+            },
+            {
+              "incorrectChoiceFr": "délicates",
+              "errorKey": "wrong-gender"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "délicats",
+            "correct": true
+          },
+          {
+            "text": "délicat",
+            "correct": false
+          },
+          {
+            "text": "délicate",
+            "correct": false
+          },
+          {
+            "text": "délicates",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-17",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « discret » correctement accordé. Écris seulement l’adjectif.\n\nLa voisine semble ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "discrète",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "discret",
+                "form": "discret"
+              },
+              {
+                "lemma": "discret",
+                "form": "discrète"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "discret"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "discrète",
+              "discret",
+              "discrets",
+              "discrètes"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-18",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « curieux » correctement accordé. Écris seulement l’adjectif.\n\nLes randonneuses sont ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "curieuses",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "curieux",
+                "form": "curieux"
+              },
+              {
+                "lemma": "curieux",
+                "form": "curieuses"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "curieux"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "curieuses",
+              "curieux",
+              "curieuse"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-19",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « bref » correctement accordé. Écris seulement l’adjectif.\n\nLes commentaires sont ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "brefs",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "bref",
+                "form": "bref"
+              },
+              {
+                "lemma": "bref",
+                "form": "brefs"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "bref"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "brefs",
+              "bref",
+              "brève",
+              "brèves"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-20",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « vigilant » correctement accordé. Écris seulement l’adjectif.\n\nLa surveillante reste ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "vigilante",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "vigilant",
+                "form": "vigilant"
+              },
+              {
+                "lemma": "vigilant",
+                "form": "vigilante"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "vigilant"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "vigilante",
+              "vigilant",
+              "vigilants",
+              "vigilantes"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-21",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « lointain » correctement accordé. Écris seulement l’adjectif.\n\nLes montagnes paraissent ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "lointaines",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lointain",
+                "form": "lointain"
+              },
+              {
+                "lemma": "lointain",
+                "form": "lointaines"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "lointain"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "lointaines",
+              "lointain",
+              "lointaine",
+              "lointains"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-22",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « patient » correctement accordé. Écris seulement l’adjectif.\n\nLe visiteur est ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "patient",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "patient",
+                "form": "patient"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "patient"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "patient",
+              "patiente",
+              "patients",
+              "patientes"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-23",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « neuf » correctement accordé. Écris seulement l’adjectif.\n\nLes vestes sont ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "neuves",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "neuf",
+                "form": "neuf"
+              },
+              {
+                "lemma": "neuf",
+                "form": "neuves"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "neuf"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "neuves",
+              "neuf",
+              "neuve",
+              "neufs"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-24",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « inventif » correctement accordé. Écris seulement l’adjectif.\n\nLa cuisinière semble ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "inventive",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "inventif",
+                "form": "inventif"
+              },
+              {
+                "lemma": "inventif",
+                "form": "inventive"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "inventif"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "inventive",
+              "inventif",
+              "inventifs",
+              "inventives"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-25",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « majestueux » correctement accordé. Écris seulement l’adjectif.\n\nLes châteaux sont ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "majestueux",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "majestueux",
+                "form": "majestueux"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "majestueux"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "majestueux",
+              "majestueuse",
+              "majestueuses"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-26",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « courageux » correctement accordé. Écris seulement l’adjectif.\n\nLa navigatrice est ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "courageuse",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "courageux",
+                "form": "courageux"
+              },
+              {
+                "lemma": "courageux",
+                "form": "courageuse"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "courageux"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "courageuse",
+              "courageux",
+              "courageuses"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-27",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « abondant » correctement accordé. Écris seulement l’adjectif.\n\nLes récoltes sont ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "abondantes",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "abondant",
+                "form": "abondant"
+              },
+              {
+                "lemma": "abondant",
+                "form": "abondantes"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "abondant"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "abondantes",
+              "abondant",
+              "abondante",
+              "abondants"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-28",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « positif » correctement accordé. Écris seulement l’adjectif.\n\nLe résultat paraît ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "positif",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "positif",
+                "form": "positif"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "positif"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "positif",
+              "positive",
+              "positifs",
+              "positives"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-29",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « important » correctement accordé. Écris seulement l’adjectif.\n\nLes courriers sont ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "importants",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "important",
+                "form": "important"
+              },
+              {
+                "lemma": "important",
+                "form": "importants"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "important"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "importants",
+              "important",
+              "importante",
+              "importantes"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-30",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « spacieux » correctement accordé. Écris seulement l’adjectif.\n\nLa salle semble ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "spacieuse",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "spacieux",
+                "form": "spacieux"
+              },
+              {
+                "lemma": "spacieux",
+                "form": "spacieuse"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "spacieux"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "spacieuse",
+              "spacieux",
+              "spacieuses"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-31",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « mûr » correctement accordé. Écris seulement l’adjectif.\n\nLes pommes sont ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "mûres",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "mûr",
+                "form": "mûr"
+              },
+              {
+                "lemma": "mûr",
+                "form": "mûres"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "mûr"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "mûres",
+              "mûr",
+              "mûre",
+              "mûrs"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-adjective:production-32",
+      "item": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Complète avec « rêveur » correctement accordé. Écris seulement l’adjectif.\n\nLes garçons semblent ___.",
+        "instructionsFr": "Écris seulement l’adjectif accordé.",
+        "correctAnswer": "rêveurs",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "rêveur",
+                "form": "rêveur"
+              },
+              {
+                "lemma": "rêveur",
+                "form": "rêveurs"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "rêveur"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "rêveurs",
+              "rêveur",
+              "rêveuse",
+              "rêveuses"
+            ],
+            "rationaleFr": "Le lemme est fourni. Les formes distinctes de genre et de nombre constituent un espace de réponse restreint ; certaines formes coïncident. Estimation conservatrice sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "adjective-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-1",
+      "itemChecksum": "sha256:68fea1a6dc5daf20bfebb790678da3e934d846b80c3130f829929db9985a967f",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-1",
+      "reason": "La forme attendue dans cette phrase est « profonde ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-2",
+      "itemChecksum": "sha256:2e612eedc658e34c25b94b1da13a349b8ffa9e3a170a29a1c14aafa17332ba04",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-2",
+      "reason": "La forme attendue dans cette phrase est « sinueux ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-3",
+      "itemChecksum": "sha256:85092630c62792adf6e5c8e889861476b8829992af189881f9b5dcb576c5eb77",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-3",
+      "reason": "La forme attendue dans cette phrase est « attentives ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-4",
+      "itemChecksum": "sha256:ea16890dc7534e4bd0149229299e55d82314bd5b5bd6bd0358c62422686730b5",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-4",
+      "reason": "La forme attendue dans cette phrase est « inquiet ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-5",
+      "itemChecksum": "sha256:e6c788b8be57593249a3116c76af65743631eb450a0f26507f9245dacd206a85",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-5",
+      "reason": "La forme attendue dans cette phrase est « précises ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-6",
+      "itemChecksum": "sha256:c60793b2eb056868d16e0b7b6ddb67e19eca2e34c1ba620e8ac80bdf4b7cd146",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-6",
+      "reason": "La forme attendue dans cette phrase est « heureuse ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-7",
+      "itemChecksum": "sha256:53cf1933059bc19f7e9cb2173f64a3957409ef6d71b8220fb60ba5cadcddacc7",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-7",
+      "reason": "La forme attendue dans cette phrase est « silencieux ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-8",
+      "itemChecksum": "sha256:cb81184699e7d8a5047c988ec406d015bb11c5d8c929a3e947c10eb5e77aeb04",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-8",
+      "reason": "La forme attendue dans cette phrase est « obscure ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-9",
+      "itemChecksum": "sha256:aab2066f2d8c6f9a58aae015dc7ccd1d5cce0375965bbda570a37032dc09aa7d",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-9",
+      "reason": "La forme attendue dans cette phrase est « dangereuses ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-10",
+      "itemChecksum": "sha256:0b702da432b8b1584ab7313160bd559c5413512d4f14cc6272f125c48d0f9539",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-10",
+      "reason": "La forme attendue dans cette phrase est « confus ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-11",
+      "itemChecksum": "sha256:f04bb2b741a873beebd652ee4b0711aa4833e24bf255bf4d92cfff9cf469bbb4",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-11",
+      "reason": "La forme attendue dans cette phrase est « expressives ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-12",
+      "itemChecksum": "sha256:b3ca236e1f5d177625e4224f77ae0a004833688e672104b01b01f3c960296b26",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-12",
+      "reason": "La forme attendue dans cette phrase est « définitive ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-13",
+      "itemChecksum": "sha256:34aad0f7cc7fbeca9437ce2253be16c6fe7c4a78bc19932d6ae30b21b4f2e28d",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-13",
+      "reason": "La forme attendue dans cette phrase est « moelleux ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-14",
+      "itemChecksum": "sha256:5673e97156c32055e1414fc2e80f0890f9f0b522545e39ebddd6e0720e8f76d3",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-14",
+      "reason": "La forme attendue dans cette phrase est « craintive ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-15",
+      "itemChecksum": "sha256:0d4e0aacdafd44778b41d9fe57c0ccc223e415176cd4e810d41f28744d8f81a5",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-15",
+      "reason": "La forme attendue dans cette phrase est « sportives ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:recognition-16",
+      "itemChecksum": "sha256:18e4e614bf855fa15daab16e32fcdd6cf53df84124df27bb3c3ca0f7714f62fc",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-adjective:recognition-16",
+      "reason": "La forme attendue dans cette phrase est « délicats ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-17",
+      "itemChecksum": "sha256:49bf736db3bfba85ccc14022bdbf56d247695b26d7322e64ee06d33858f36726",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-17",
+      "reason": "La forme attendue dans cette phrase est « discrète ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-18",
+      "itemChecksum": "sha256:0cd1d6ca8cba219c66495eeb8ed97cae5ce22d349be4213b1082c27112d55560",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-18",
+      "reason": "La forme attendue dans cette phrase est « curieuses ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-19",
+      "itemChecksum": "sha256:76cb823bd3e725d7db954d4e5e8bfb248bbff5c34b5a0f15a631e73ee371e412",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-19",
+      "reason": "La forme attendue dans cette phrase est « brefs ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-20",
+      "itemChecksum": "sha256:4540edeeb36e4739217171166802a0215ed1a8008c65d82d91b892aff4226e3a",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-20",
+      "reason": "La forme attendue dans cette phrase est « vigilante ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-21",
+      "itemChecksum": "sha256:583880a582383a7d8ef2f9869cf4174306738422c2a4399c09bc5e5cbf936977",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-21",
+      "reason": "La forme attendue dans cette phrase est « lointaines ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-22",
+      "itemChecksum": "sha256:839a87feb7bf4cd10bf51b3096c05b7378bc0075519af3cf453a2766f8cf7468",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-22",
+      "reason": "La forme attendue dans cette phrase est « patient ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-23",
+      "itemChecksum": "sha256:c45acf3e58c4cc92799dc2e36e52f10b9e25f183f41b612c2c211909e41e5586",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-23",
+      "reason": "La forme attendue dans cette phrase est « neuves ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-24",
+      "itemChecksum": "sha256:84512f2bdb44a8adf33971e2135cffd00f4981f4245c26b0da67cd80bc52b556",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-24",
+      "reason": "La forme attendue dans cette phrase est « inventive ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-25",
+      "itemChecksum": "sha256:2ccf06534b47af5a006bb9cf81d2355e0631cfa2339ddc882700a745b0e29094",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-25",
+      "reason": "La forme attendue dans cette phrase est « majestueux ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-26",
+      "itemChecksum": "sha256:2f7185b9559242bdf8139e3848d4c6033640f366c0f7cda675b52a26f5411b61",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-26",
+      "reason": "La forme attendue dans cette phrase est « courageuse ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-27",
+      "itemChecksum": "sha256:2987ba816a6176c2f8cb2efb819865e47192b5a65a29e50a16eee79d4025a118",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-27",
+      "reason": "La forme attendue dans cette phrase est « abondantes ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-28",
+      "itemChecksum": "sha256:1f4f5bf0d12f68f3b2c334d77ef4b4584bc8360817dad26466639b8200d96792",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-28",
+      "reason": "La forme attendue dans cette phrase est « positif ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-29",
+      "itemChecksum": "sha256:e61d3bafe3837a2bfbcf1b87a8f591fc5b7f44ac505c048de30d8dab7d9ebfd0",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-29",
+      "reason": "La forme attendue dans cette phrase est « importants ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-30",
+      "itemChecksum": "sha256:775b9f3ba54be6d734315093ac2b16b8ce13a7715b464cf2cb42ce74b8085541",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-30",
+      "reason": "La forme attendue dans cette phrase est « spacieuse ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-31",
+      "itemChecksum": "sha256:7d0e23a9d6737711e21b945e9422b4538391e726836933d2ab96e092d8adccf0",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-31",
+      "reason": "La forme attendue dans cette phrase est « mûres ». Vérifie le genre et le nombre du nom décrit."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-adjective:production-32",
+      "itemChecksum": "sha256:de8d30889e8ac0717d61c8b233e017898e00d4e973b4aab4ba1655591c12c07e",
+      "evidenceTarget": {
+        "nodeKey": "accorder_adjectif_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-adjective:production-32",
+      "reason": "La forme attendue dans cette phrase est « rêveurs ». Vérifie le genre et le nombre du nom décrit."
+    }
+  ],
+  "checksum": "sha256:d87038759cfca58e8d3796a89b82e3c4e7250392aee448746ab47056f7829f97"
+}

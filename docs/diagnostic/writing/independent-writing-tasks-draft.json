@@ -1,0 +1,743 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "taxonomyReleaseKey": "french-taxonomy-v3",
+  "purpose": "Review candidate only; not a published bank or proof of coverage.",
+  "rules": [
+    "A natural correct alternative that avoids the target is unresolved, not failed.",
+    "Prompts must not supply a conjugation model or name the grammatical rule during independent verification.",
+    "Suggested length is guidance, not a mastery threshold.",
+    "Review tasks require both drafts; the current single-response flow is insufficient.",
+    "Evaluator must judge target opportunity, correctness and discourse suitability separately."
+  ],
+  "tasks": [
+    {
+      "id": "writing-draft:produire_contraste_pc_imparfait:1",
+      "status": "draft",
+      "nodeKey": "produire_contraste_pc_imparfait",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Raconte une sortie pendant laquelle quelque chose a interrompu ce que tu faisais. Décris la situation, puis ce qui est arrivé.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Distinguer événements délimités et arrière-plan; évaluer le choix temporel en contexte, pas seulement les terminaisons.",
+      "successCriteria": {
+        "minimumAccuracy": 0.75,
+        "minimumDistinctItems": 3,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:produire_contraste_pc_imparfait:2",
+      "status": "draft",
+      "nodeKey": "produire_contraste_pc_imparfait",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Raconte un match ou un spectacle marqué par un imprévu. Décris ce qui se passait avant et les événements qui ont suivi.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Distinguer événements délimités et arrière-plan; évaluer le choix temporel en contexte, pas seulement les terminaisons.",
+      "successCriteria": {
+        "minimumAccuracy": 0.75,
+        "minimumDistinctItems": 3,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:produire_sequence_temporelle:1",
+      "status": "draft",
+      "nodeKey": "produire_sequence_temporelle",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Raconte comment un objet perdu a été retrouvé. Fais comprendre au lecteur dans quel ordre les choses se sont passées.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Vérifier les relations entre événements et repères; ne pas imposer une seule combinaison de temps correcte.",
+      "successCriteria": {
+        "minimumAccuracy": 0.75,
+        "minimumDistinctItems": 3,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:produire_sequence_temporelle:2",
+      "status": "draft",
+      "nodeKey": "produire_sequence_temporelle",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Raconte une journée qui ne s’est pas passée comme prévu. Explique le projet de départ, les changements et la fin de la journée.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Vérifier les relations entre événements et repères; ne pas imposer une seule combinaison de temps correcte.",
+      "successCriteria": {
+        "minimumAccuracy": 0.75,
+        "minimumDistinctItems": 3,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:maintenir_orthographe_lexicale_phrase:1",
+      "status": "draft",
+      "nodeKey": "maintenir_orthographe_lexicale_phrase",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Présente un lieu que tu aimes et explique ce que tu y fais.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Compter les mots pertinents pour les graphies travaillées; ne pas compter automatiquement tous les mots du texte.",
+      "successCriteria": {
+        "minimumAccuracy": 0.75,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "minimumEligibleTokens": 8,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:maintenir_orthographe_lexicale_phrase:2",
+      "status": "draft",
+      "nodeKey": "maintenir_orthographe_lexicale_phrase",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Décris un personnage inventé et une activité qui lui plaît.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Compter les mots pertinents pour les graphies travaillées; ne pas compter automatiquement tous les mots du texte.",
+      "successCriteria": {
+        "minimumAccuracy": 0.75,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "minimumEligibleTokens": 8,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:reviser_orthographe_lexicale_paragraphe:1",
+      "status": "draft",
+      "nodeKey": "reviser_orthographe_lexicale_paragraphe",
+      "evidenceKey": "writing-independent-production",
+      "format": "draft_and_revision",
+      "promptFr": "Raconte une découverte qui t’a surpris. Une fois ton texte écrit, relis-le et améliore ce qui te semble nécessaire.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Conserver première version et version révisée. Distinguer erreurs détectées, corrections justes, erreurs conservées et nouvelles erreurs. Une version finale seule ne prouve pas la révision.",
+      "successCriteria": {
+        "minimumAccuracy": 0.75,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "minimumEligibleTokens": 8,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:reviser_orthographe_lexicale_paragraphe:2",
+      "status": "draft",
+      "nodeKey": "reviser_orthographe_lexicale_paragraphe",
+      "evidenceKey": "writing-independent-production",
+      "format": "draft_and_revision",
+      "promptFr": "Présente une activité que tu aimerais faire découvrir à un ami. Relis ensuite ton texte et améliore-le si nécessaire.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Conserver première version et version révisée. Distinguer erreurs détectées, corrections justes, erreurs conservées et nouvelles erreurs. Une version finale seule ne prouve pas la révision.",
+      "successCriteria": {
+        "minimumAccuracy": 0.75,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "minimumEligibleTokens": 8,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:maintenir_orthographe_grammaticale_phrase:1",
+      "status": "draft",
+      "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Décris deux personnages très différents qui préparent un projet ensemble.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Identifier les accords et distinctions grammaticales effectivement requis; compter des décisions indépendantes, pas chaque mot comme un accord.",
+      "successCriteria": {
+        "minimumAccuracy": 0.75,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "minimumEligibleTokens": 8,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:maintenir_orthographe_grammaticale_phrase:2",
+      "status": "draft",
+      "nodeKey": "maintenir_orthographe_grammaticale_phrase",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Raconte ce que plusieurs amis organisent pour accueillir une nouvelle personne dans leur groupe.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Identifier les accords et distinctions grammaticales effectivement requis; compter des décisions indépendantes, pas chaque mot comme un accord.",
+      "successCriteria": {
+        "minimumAccuracy": 0.75,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "minimumEligibleTokens": 8,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:reviser_orthographe_grammaticale_paragraphe:1",
+      "status": "draft",
+      "nodeKey": "reviser_orthographe_grammaticale_paragraphe",
+      "evidenceKey": "writing-independent-production",
+      "format": "draft_and_revision",
+      "promptFr": "Raconte comment plusieurs personnes ont préparé une surprise. Relis ton texte et améliore ce qui te semble nécessaire.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Comparer les deux versions pour les accords et homophones, sans signaler les erreurs avant la révision. La correction finale seule est insuffisante.",
+      "successCriteria": {
+        "minimumAccuracy": 0.75,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "minimumEligibleTokens": 8,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:reviser_orthographe_grammaticale_paragraphe:2",
+      "status": "draft",
+      "nodeKey": "reviser_orthographe_grammaticale_paragraphe",
+      "evidenceKey": "writing-independent-production",
+      "format": "draft_and_revision",
+      "promptFr": "Décris une équipe qui rencontre une difficulté pendant un projet. Relis ton texte et améliore-le si nécessaire.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Comparer les deux versions pour les accords et homophones, sans signaler les erreurs avant la révision. La correction finale seule est insuffisante.",
+      "successCriteria": {
+        "minimumAccuracy": 0.75,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "minimumEligibleTokens": 8,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_pronoms_complements_en_contexte:1",
+      "status": "draft",
+      "nodeKey": "employer_pronoms_complements_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Raconte comment tu as prêté un objet à un ami, puis comment tu l’as récupéré. Fais en sorte que ton lecteur sache toujours de qui et de quoi tu parles.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Vérifier référent, fonction, choix et placement des pronoms réellement employés. Les répétitions nominales ne sont pas des pronoms faux.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_pronoms_complements_en_contexte:2",
+      "status": "draft",
+      "nodeKey": "employer_pronoms_complements_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Raconte comment des personnages se répartissent du matériel pour une activité, puis le rangent.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Vérifier référent, fonction, choix et placement des pronoms réellement employés. Les répétitions nominales ne sont pas des pronoms faux.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_present_indicatif_en_contexte:1",
+      "status": "draft",
+      "nodeKey": "employer_present_indicatif_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Présente ton activité préférée à une personne qui ne la connaît pas. Explique comment elle se déroule.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Repérer les présents utilisés pour habitudes, description ou explication; juger forme et adéquation au sens.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_present_indicatif_en_contexte:2",
+      "status": "draft",
+      "nodeKey": "employer_present_indicatif_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Décris une journée habituelle dans un lieu que tu connais bien.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Repérer les présents utilisés pour habitudes, description ou explication; juger forme et adéquation au sens.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_futur_proche_en_contexte:1",
+      "status": "draft",
+      "nodeKey": "employer_futur_proche_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Tu es prêt à partir pour une activité. Envoie un message expliquant à ton ami ce que tu comptes faire dans les prochaines minutes.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Repérer aller conjugué suivi d’un infinitif avec valeur future. Un futur simple acceptable est une alternative, pas une erreur de futur proche.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_futur_proche_en_contexte:2",
+      "status": "draft",
+      "nodeKey": "employer_futur_proche_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Un projet de groupe est prêt à démarrer. Écris un message pour annoncer les prochaines actions.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Repérer aller conjugué suivi d’un infinitif avec valeur future. Un futur simple acceptable est une alternative, pas une erreur de futur proche.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_passe_recent_en_contexte:1",
+      "status": "draft",
+      "nodeKey": "employer_passe_recent_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Tu envoies un message juste après une découverte inattendue. Raconte ce qui arrive à l’instant et ta réaction.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Repérer venir de suivi d’un infinitif et sa valeur temporelle. Un passé composé acceptable ne démontre ni échec ni maîtrise du passé récent.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_passe_recent_en_contexte:2",
+      "status": "draft",
+      "nodeKey": "employer_passe_recent_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Une activité se termine à l’instant. Écris à un ami pour lui annoncer ce qui s’est passé et ce que tu ressens.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Repérer venir de suivi d’un infinitif et sa valeur temporelle. Un passé composé acceptable ne démontre ni échec ni maîtrise du passé récent.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_passe_compose_en_contexte:1",
+      "status": "draft",
+      "nodeKey": "employer_passe_compose_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Raconte à un ami les événements importants de ton dernier week-end réel ou inventé.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Évaluer les formes composées et leur valeur événementielle; ne pas confondre aide lexicale et production autonome.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_passe_compose_en_contexte:2",
+      "status": "draft",
+      "nodeKey": "employer_passe_compose_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Raconte comment tu as réussi une petite mission ou résolu un problème.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Évaluer les formes composées et leur valeur événementielle; ne pas confondre aide lexicale et production autonome.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_imparfait_en_contexte:1",
+      "status": "draft",
+      "nodeKey": "employer_imparfait_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Décris un endroit tel qu’il était quand tu étais plus jeune, ou imagine un lieu dans le passé.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Évaluer les imparfaits descriptifs ou habituels en contexte; les événements délimités peuvent légitimement employer un autre temps.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_imparfait_en_contexte:2",
+      "status": "draft",
+      "nodeKey": "employer_imparfait_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Raconte les habitudes d’un personnage avant un grand changement dans sa vie.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Évaluer les imparfaits descriptifs ou habituels en contexte; les événements délimités peuvent légitimement employer un autre temps.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_futur_simple_en_contexte:1",
+      "status": "draft",
+      "nodeKey": "employer_futur_simple_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Imagine ta ville dans vingt ans. Explique ce qui aura changé dans la vie quotidienne.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Évaluer le futur simple réellement produit et son sens. Les formulations alternatives correctes ne constituent pas des erreurs de conjugaison.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_futur_simple_en_contexte:2",
+      "status": "draft",
+      "nodeKey": "employer_futur_simple_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Écris les prévisions d’un personnage pour la prochaine saison de son équipe.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Évaluer le futur simple réellement produit et son sens. Les formulations alternatives correctes ne constituent pas des erreurs de conjugaison.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_plus_que_parfait_en_contexte:1",
+      "status": "draft",
+      "nodeKey": "employer_plus_que_parfait_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Un personnage arrive à un rendez-vous et découvre un problème. Raconte la scène et explique comment les actions précédentes ont créé cette situation.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Vérifier l’antériorité par rapport à un repère passé et la forme composée; plusieurs organisations narratives restent possibles.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_plus_que_parfait_en_contexte:2",
+      "status": "draft",
+      "nodeKey": "employer_plus_que_parfait_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Un personnage découvre une surprise. Raconte les préparatifs déjà terminés quand il entre dans la pièce.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Vérifier l’antériorité par rapport à un repère passé et la forme composée; plusieurs organisations narratives restent possibles.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_conditionnel_present_en_contexte:1",
+      "status": "draft",
+      "nodeKey": "employer_conditionnel_present_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Imagine que ton école puisse changer une chose importante. Explique ton souhait et ce que ce changement permettrait.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Vérifier les emplois hypothétiques, atténués ou de conseil et leurs formes. Ne pas assimiler toute proposition à une obligation de conditionnel.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_conditionnel_present_en_contexte:2",
+      "status": "draft",
+      "nodeKey": "employer_conditionnel_present_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Un ami cherche une idée de projet. Propose-lui plusieurs possibilités et explique celle que tu choisirais.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Vérifier les emplois hypothétiques, atténués ou de conseil et leurs formes. Ne pas assimiler toute proposition à une obligation de conditionnel.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_subjonctif_present_en_contexte:1",
+      "status": "draft",
+      "nodeKey": "employer_subjonctif_present_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Ton groupe prépare un événement. Écris ce que tu souhaites pour sa réussite et ce que tu trouves indispensable.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Identifier les contextes syntaxiques qui appellent le subjonctif et juger les formes. Une autre construction correcte n’est pas un subjonctif erroné.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_subjonctif_present_en_contexte:2",
+      "status": "draft",
+      "nodeKey": "employer_subjonctif_present_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Un personnage veut convaincre ses amis de l’accompagner dans un projet. Écris son message avec ses souhaits et ses inquiétudes.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Identifier les contextes syntaxiques qui appellent le subjonctif et juger les formes. Une autre construction correcte n’est pas un subjonctif erroné.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_imperatif_en_contexte:1",
+      "status": "draft",
+      "nodeKey": "employer_imperatif_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Écris un petit guide pour aider un nouvel élève à participer à une activité que tu connais. Adresse-toi directement à lui.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Évaluer les impératifs effectivement employés, leur personne et les pronoms associés; distinguer infinitifs de consigne et impératifs.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_imperatif_en_contexte:2",
+      "status": "draft",
+      "nodeKey": "employer_imperatif_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Un personnage guide son équipe pendant une mission. Écris les consignes qu’il lui donne dans leur ordre utile.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Évaluer les impératifs effectivement employés, leur personne et les pronoms associés; distinguer infinitifs de consigne et impératifs.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_passe_simple_en_contexte:1",
+      "status": "draft",
+      "nodeKey": "employer_passe_simple_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Écris un court récit d’aventure destiné à un recueil de contes. Un personnage ouvre une porte et découvre un lieu inconnu.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Repérer les passés simples utilisés pour les événements et juger leurs formes. Un récit cohérent au passé composé reste correct mais ne confirme pas ce temps.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    },
+    {
+      "id": "writing-draft:employer_passe_simple_en_contexte:2",
+      "status": "draft",
+      "nodeKey": "employer_passe_simple_en_contexte",
+      "evidenceKey": "writing-independent-production",
+      "format": "connected_writing",
+      "promptFr": "Écris un court récit pour un recueil de légendes. Un personnage trouve un objet qui change le cours de son voyage.",
+      "instructionsFr": "Écris un court texte avec tes propres mots. Tu peux inventer la situation. N’utilise pas de modèle ni d’aide à la rédaction.",
+      "suggestedSentenceCount": [
+        3,
+        6
+      ],
+      "reviewerFocusFr": "Repérer les passés simples utilisés pour les événements et juger leurs formes. Un récit cohérent au passé composé reste correct mais ne confirme pas ce temps.",
+      "successCriteria": {
+        "minimumAccuracy": 0.8,
+        "minimumDistinctTexts": 2,
+        "minimumOccasions": 2,
+        "unaidedTransferRequired": true
+      }
+    }
+  ]
+}

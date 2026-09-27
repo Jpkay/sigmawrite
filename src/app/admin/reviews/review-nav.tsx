@@ -6,6 +6,7 @@ export function ReviewAdminNav() {
     <Link className="rounded-md px-3 py-2 hover:bg-muted" href="/admin/reviews/assign">Attribution</Link>
     <Link className="rounded-md px-3 py-2 hover:bg-muted" href="/admin/reviews/disagreements">Désaccords</Link>
     <Link className="rounded-md px-3 py-2 hover:bg-muted" href="/admin/reviews/reviewers">Évaluateurs</Link>
+    <Link className="rounded-md px-3 py-2 hover:bg-muted" href="/admin/reviews/teacher-feedback">Observations enseignantes</Link>
     <Link className="rounded-md px-3 py-2 hover:bg-muted" href="/admin/benchmarks">Références</Link>
     <Link className="rounded-md px-3 py-2 hover:bg-muted" href="/admin/reviews/export">Exporter CSV</Link>
   </nav>;

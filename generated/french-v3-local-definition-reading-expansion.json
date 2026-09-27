@@ -1,0 +1,3395 @@
+{
+  "version": "french-v3-local-definition-reading-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-local-definition-reading:narrative-lucarne",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nNora cherche son chat dans le grenier. Une lucarne, petite fenêtre dans le toit, laisse entrer la lumière. Le chat dort près d’une vieille malle.\n\nDans ce texte, que signifie « lucarne » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nora cherche son chat dans le grenier. Une lucarne, petite fenêtre dans le toit, laisse entrer la lumière. Le chat dort près d’une vieille malle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nora cherche son chat dans le grenier. Une lucarne, petite fenêtre dans le toit, laisse entrer la lumière. Le chat dort près d’une vieille malle."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:narrative-lucarne",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Nora cherche son chat dans le grenier. Une lucarne, petite fenêtre dans le toit, laisse entrer la lumière. Le chat dort près d’une vieille malle.",
+            "choices": [
+              {
+                "quoteFr": "Une lucarne, petite fenêtre dans le toit, laisse entrer la lumière.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Nora cherche son chat dans le grenier.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le chat dort près d’une vieille malle.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Une petite fenêtre dans le toit.",
+            "correct": true
+          },
+          {
+            "text": "Une boîte pour ranger les vêtements.",
+            "correct": false
+          },
+          {
+            "text": "Une lampe suspendue au plafond.",
+            "correct": false
+          },
+          {
+            "text": "Une porte au fond du grenier.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-escale",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe bateau de Sami approche d’une île. L’équipage y fait une escale, un arrêt pendant le voyage. Sami descend acheter du pain avant le départ.\n\nDans ce texte, que signifie « escale » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le bateau de Sami approche d’une île. L’équipage y fait une escale, un arrêt pendant le voyage. Sami descend acheter du pain avant le départ."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le bateau de Sami approche d’une île. L’équipage y fait une escale, un arrêt pendant le voyage. Sami descend acheter du pain avant le départ."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:narrative-escale",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Le bateau de Sami approche d’une île. L’équipage y fait une escale, un arrêt pendant le voyage. Sami descend acheter du pain avant le départ.",
+            "choices": [
+              {
+                "quoteFr": "L’équipage y fait une escale, un arrêt pendant le voyage.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le bateau de Sami approche d’une île.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Sami descend acheter du pain avant le départ.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Un arrêt pendant un voyage.",
+            "correct": true
+          },
+          {
+            "text": "Le départ définitif du bateau.",
+            "correct": false
+          },
+          {
+            "text": "Une réparation du moteur.",
+            "correct": false
+          },
+          {
+            "text": "Une traversée sans arrêt.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-recroqueville",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAdam aperçoit un hérisson sous la haie. L’animal est recroquevillé : il a replié son corps sur lui-même. Adam s’éloigne pour le laisser tranquille.\n\nDans ce texte, que signifie « recroquevillé » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Adam aperçoit un hérisson sous la haie. L’animal est recroquevillé : il a replié son corps sur lui-même. Adam s’éloigne pour le laisser tranquille."
+            ],
+            "assessed": {
+              "sentences": [
+                "Adam aperçoit un hérisson sous la haie. L’animal est recroquevillé : il a replié son corps sur lui-même. Adam s’éloigne pour le laisser tranquille."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:narrative-recroqueville",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Adam aperçoit un hérisson sous la haie. L’animal est recroquevillé : il a replié son corps sur lui-même. Adam s’éloigne pour le laisser tranquille.",
+            "choices": [
+              {
+                "quoteFr": "L’animal est recroquevillé : il a replié son corps sur lui-même.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Adam aperçoit un hérisson sous la haie.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Adam s’éloigne pour le laisser tranquille.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Replié sur lui-même.",
+            "correct": true
+          },
+          {
+            "text": "Allongé de tout son long.",
+            "correct": false
+          },
+          {
+            "text": "Caché entièrement sous terre.",
+            "correct": false
+          },
+          {
+            "text": "En train de courir.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-baluchon",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa jeune voyageuse arrive au village. Elle porte un baluchon, un paquet de vêtements enveloppés dans un tissu. Elle le pose avant de demander son chemin.\n\nDans ce texte, que signifie « baluchon » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La jeune voyageuse arrive au village. Elle porte un baluchon, un paquet de vêtements enveloppés dans un tissu. Elle le pose avant de demander son chemin."
+            ],
+            "assessed": {
+              "sentences": [
+                "La jeune voyageuse arrive au village. Elle porte un baluchon, un paquet de vêtements enveloppés dans un tissu. Elle le pose avant de demander son chemin."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:narrative-baluchon",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "La jeune voyageuse arrive au village. Elle porte un baluchon, un paquet de vêtements enveloppés dans un tissu. Elle le pose avant de demander son chemin.",
+            "choices": [
+              {
+                "quoteFr": "Elle porte un baluchon, un paquet de vêtements enveloppés dans un tissu.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La jeune voyageuse arrive au village.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Elle le pose avant de demander son chemin.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Un paquet enveloppé dans un tissu.",
+            "correct": true
+          },
+          {
+            "text": "Une veste qu’on porte sous la pluie.",
+            "correct": false
+          },
+          {
+            "text": "Un grand panier rempli de fruits.",
+            "correct": false
+          },
+          {
+            "text": "Une petite tente pour dormir.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-furtif",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nInès attend que sa sœur ouvre son cadeau. Elle lui lance un regard furtif, bref et discret. Puis elle reprend son livre sans rien dire.\n\nDans ce texte, que signifie « furtif » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Inès attend que sa sœur ouvre son cadeau. Elle lui lance un regard furtif, bref et discret. Puis elle reprend son livre sans rien dire."
+            ],
+            "assessed": {
+              "sentences": [
+                "Inès attend que sa sœur ouvre son cadeau. Elle lui lance un regard furtif, bref et discret. Puis elle reprend son livre sans rien dire."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:narrative-furtif",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Inès attend que sa sœur ouvre son cadeau. Elle lui lance un regard furtif, bref et discret. Puis elle reprend son livre sans rien dire.",
+            "choices": [
+              {
+                "quoteFr": "Elle lui lance un regard furtif, bref et discret.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Inès attend que sa sœur ouvre son cadeau.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Puis elle reprend son livre sans rien dire.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Bref et discret.",
+            "correct": true
+          },
+          {
+            "text": "Long et insistant.",
+            "correct": false
+          },
+          {
+            "text": "Triste et plein de larmes.",
+            "correct": false
+          },
+          {
+            "text": "Brillant et coloré.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-clairiere",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe sentier mène Léo au milieu de la forêt. Il atteint une clairière, un espace sans arbres entouré de bois. Il s’y arrête pour boire.\n\nDans ce texte, que signifie « clairière » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le sentier mène Léo au milieu de la forêt. Il atteint une clairière, un espace sans arbres entouré de bois. Il s’y arrête pour boire."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le sentier mène Léo au milieu de la forêt. Il atteint une clairière, un espace sans arbres entouré de bois. Il s’y arrête pour boire."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:narrative-clairiere",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Le sentier mène Léo au milieu de la forêt. Il atteint une clairière, un espace sans arbres entouré de bois. Il s’y arrête pour boire.",
+            "choices": [
+              {
+                "quoteFr": "Il atteint une clairière, un espace sans arbres entouré de bois.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le sentier mène Léo au milieu de la forêt.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Il s’y arrête pour boire.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Un espace sans arbres dans la forêt.",
+            "correct": true
+          },
+          {
+            "text": "Un chemin très étroit entre des rochers.",
+            "correct": false
+          },
+          {
+            "text": "Un groupe d’arbres très serrés.",
+            "correct": false
+          },
+          {
+            "text": "Une cabane construite dans un arbre.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-tressaillir",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nMaya lit près de la fenêtre ouverte. Un bruit la fait tressaillir, c’est-à-dire sursauter brusquement. Elle découvre que le vent a fermé une porte.\n\nDans ce texte, que signifie « tressaillir » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Maya lit près de la fenêtre ouverte. Un bruit la fait tressaillir, c’est-à-dire sursauter brusquement. Elle découvre que le vent a fermé une porte."
+            ],
+            "assessed": {
+              "sentences": [
+                "Maya lit près de la fenêtre ouverte. Un bruit la fait tressaillir, c’est-à-dire sursauter brusquement. Elle découvre que le vent a fermé une porte."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:narrative-tressaillir",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Maya lit près de la fenêtre ouverte. Un bruit la fait tressaillir, c’est-à-dire sursauter brusquement. Elle découvre que le vent a fermé une porte.",
+            "choices": [
+              {
+                "quoteFr": "Un bruit la fait tressaillir, c’est-à-dire sursauter brusquement.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Maya lit près de la fenêtre ouverte.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Elle découvre que le vent a fermé une porte.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Sursauter brusquement.",
+            "correct": true
+          },
+          {
+            "text": "S’endormir peu à peu.",
+            "correct": false
+          },
+          {
+            "text": "Parler d’une voix très basse.",
+            "correct": false
+          },
+          {
+            "text": "Marcher sans faire de bruit.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-replique",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nIdriss répète une pièce avec ses amis. Il oublie sa réplique, la phrase que son personnage doit prononcer. Une amie lui montre la bonne ligne du texte.\n\nDans ce texte, que signifie « réplique » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Idriss répète une pièce avec ses amis. Il oublie sa réplique, la phrase que son personnage doit prononcer. Une amie lui montre la bonne ligne du texte."
+            ],
+            "assessed": {
+              "sentences": [
+                "Idriss répète une pièce avec ses amis. Il oublie sa réplique, la phrase que son personnage doit prononcer. Une amie lui montre la bonne ligne du texte."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:narrative-replique",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Idriss répète une pièce avec ses amis. Il oublie sa réplique, la phrase que son personnage doit prononcer. Une amie lui montre la bonne ligne du texte.",
+            "choices": [
+              {
+                "quoteFr": "Il oublie sa réplique, la phrase que son personnage doit prononcer.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Idriss répète une pièce avec ses amis.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Une amie lui montre la bonne ligne du texte.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "La phrase que le personnage doit dire.",
+            "correct": true
+          },
+          {
+            "text": "Le vêtement porté sur scène.",
+            "correct": false
+          },
+          {
+            "text": "La place réservée au public.",
+            "correct": false
+          },
+          {
+            "text": "Le geste qui termine la pièce.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-reperer",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAwa cherche son frère dans la foule. Elle finit par le repérer, autrement dit par reconnaître où il se trouve. Elle lève le bras pour lui faire signe.\n\nDans ce texte, que signifie « repérer » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Awa cherche son frère dans la foule. Elle finit par le repérer, autrement dit par reconnaître où il se trouve. Elle lève le bras pour lui faire signe."
+            ],
+            "assessed": {
+              "sentences": [
+                "Awa cherche son frère dans la foule. Elle finit par le repérer, autrement dit par reconnaître où il se trouve. Elle lève le bras pour lui faire signe."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:narrative-reperer",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Awa cherche son frère dans la foule. Elle finit par le repérer, autrement dit par reconnaître où il se trouve. Elle lève le bras pour lui faire signe.",
+            "choices": [
+              {
+                "quoteFr": "Elle finit par le repérer, autrement dit par reconnaître où il se trouve.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Awa cherche son frère dans la foule.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Elle lève le bras pour lui faire signe.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Reconnaître où il se trouve.",
+            "correct": true
+          },
+          {
+            "text": "Le prévenir d’un danger.",
+            "correct": false
+          },
+          {
+            "text": "Lui demander de revenir.",
+            "correct": false
+          },
+          {
+            "text": "Se souvenir de son prénom.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-accalmie",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa pluie retient Zoé sous un abri. Une accalmie arrive : le vent et la pluie se calment pour un moment. Zoé en profite pour rejoindre la maison.\n\nDans ce texte, que signifie « accalmie » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La pluie retient Zoé sous un abri. Une accalmie arrive : le vent et la pluie se calment pour un moment. Zoé en profite pour rejoindre la maison."
+            ],
+            "assessed": {
+              "sentences": [
+                "La pluie retient Zoé sous un abri. Une accalmie arrive : le vent et la pluie se calment pour un moment. Zoé en profite pour rejoindre la maison."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:narrative-accalmie",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "La pluie retient Zoé sous un abri. Une accalmie arrive : le vent et la pluie se calment pour un moment. Zoé en profite pour rejoindre la maison.",
+            "choices": [
+              {
+                "quoteFr": "Une accalmie arrive : le vent et la pluie se calment pour un moment.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La pluie retient Zoé sous un abri.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Zoé en profite pour rejoindre la maison.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Un moment où le mauvais temps se calme.",
+            "correct": true
+          },
+          {
+            "text": "Un orage qui devient plus violent.",
+            "correct": false
+          },
+          {
+            "text": "Une journée entière sans nuages.",
+            "correct": false
+          },
+          {
+            "text": "Un abri contre le vent.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-ebreche",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nNoé sort deux bols du placard. L’un est ébréché : un petit morceau manque sur son bord. Il choisit l’autre pour servir la soupe.\n\nDans ce texte, que signifie « ébréché » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Noé sort deux bols du placard. L’un est ébréché : un petit morceau manque sur son bord. Il choisit l’autre pour servir la soupe."
+            ],
+            "assessed": {
+              "sentences": [
+                "Noé sort deux bols du placard. L’un est ébréché : un petit morceau manque sur son bord. Il choisit l’autre pour servir la soupe."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:narrative-ebreche",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Noé sort deux bols du placard. L’un est ébréché : un petit morceau manque sur son bord. Il choisit l’autre pour servir la soupe.",
+            "choices": [
+              {
+                "quoteFr": "L’un est ébréché : un petit morceau manque sur son bord.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Noé sort deux bols du placard.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Il choisit l’autre pour servir la soupe.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Dont un petit morceau manque sur le bord.",
+            "correct": true
+          },
+          {
+            "text": "Dont le fond est encore humide.",
+            "correct": false
+          },
+          {
+            "text": "Qui est rempli jusqu’en haut.",
+            "correct": false
+          },
+          {
+            "text": "Qui porte un dessin effacé.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-hisser",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nSalma prépare le décor du spectacle. Elle doit hisser la lune en carton, c’est-à-dire la faire monter avec une corde. Son amie attache la corde une fois la lune en place.\n\nDans ce texte, que signifie « hisser » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Salma prépare le décor du spectacle. Elle doit hisser la lune en carton, c’est-à-dire la faire monter avec une corde. Son amie attache la corde une fois la lune en place."
+            ],
+            "assessed": {
+              "sentences": [
+                "Salma prépare le décor du spectacle. Elle doit hisser la lune en carton, c’est-à-dire la faire monter avec une corde. Son amie attache la corde une fois la lune en place."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:narrative-hisser",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Salma prépare le décor du spectacle. Elle doit hisser la lune en carton, c’est-à-dire la faire monter avec une corde. Son amie attache la corde une fois la lune en place.",
+            "choices": [
+              {
+                "quoteFr": "Elle doit hisser la lune en carton, c’est-à-dire la faire monter avec une corde.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Salma prépare le décor du spectacle.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Son amie attache la corde une fois la lune en place.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Faire monter avec une corde.",
+            "correct": true
+          },
+          {
+            "text": "Découper avec des ciseaux.",
+            "correct": false
+          },
+          {
+            "text": "Peindre avec plusieurs couleurs.",
+            "correct": false
+          },
+          {
+            "text": "Faire descendre au sol.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-vestige",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nDes fouilles ont lieu près de la rivière. Un vestige est une trace matérielle laissée par une époque passée. Les fragments de murs découverts seront étudiés.\n\nDans ce texte, que signifie « vestige » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Des fouilles ont lieu près de la rivière. Un vestige est une trace matérielle laissée par une époque passée. Les fragments de murs découverts seront étudiés."
+            ],
+            "assessed": {
+              "sentences": [
+                "Des fouilles ont lieu près de la rivière. Un vestige est une trace matérielle laissée par une époque passée. Les fragments de murs découverts seront étudiés."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:informational-vestige",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Des fouilles ont lieu près de la rivière. Un vestige est une trace matérielle laissée par une époque passée. Les fragments de murs découverts seront étudiés.",
+            "choices": [
+              {
+                "quoteFr": "Un vestige est une trace matérielle laissée par une époque passée.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Des fouilles ont lieu près de la rivière.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les fragments de murs découverts seront étudiés.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Une trace matérielle du passé.",
+            "correct": true
+          },
+          {
+            "text": "Un objet fabriqué pour un spectacle.",
+            "correct": false
+          },
+          {
+            "text": "Une prévision sur l’avenir.",
+            "correct": false
+          },
+          {
+            "text": "Un outil utilisé pour creuser.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-hiberner",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nCertains animaux changent de rythme en hiver. Hiberner signifie passer l’hiver dans un état de vie très ralentie. Leur température et leur activité diminuent alors.\n\nDans ce texte, que signifie « hiberner » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Certains animaux changent de rythme en hiver. Hiberner signifie passer l’hiver dans un état de vie très ralentie. Leur température et leur activité diminuent alors."
+            ],
+            "assessed": {
+              "sentences": [
+                "Certains animaux changent de rythme en hiver. Hiberner signifie passer l’hiver dans un état de vie très ralentie. Leur température et leur activité diminuent alors."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:informational-hiberner",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Certains animaux changent de rythme en hiver. Hiberner signifie passer l’hiver dans un état de vie très ralentie. Leur température et leur activité diminuent alors.",
+            "choices": [
+              {
+                "quoteFr": "Hiberner signifie passer l’hiver dans un état de vie très ralentie.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Certains animaux changent de rythme en hiver.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Leur température et leur activité diminuent alors.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Passer l’hiver avec une activité très ralentie.",
+            "correct": true
+          },
+          {
+            "text": "Partir vers un pays chaud.",
+            "correct": false
+          },
+          {
+            "text": "Chercher de la nourriture toute la nuit.",
+            "correct": false
+          },
+          {
+            "text": "Changer de couleur au printemps.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-affluent",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nCette carte présente les cours d’eau de la région. Un affluent est un cours d’eau qui se jette dans un autre. Des flèches indiquent le sens de l’écoulement.\n\nDans ce texte, que signifie « affluent » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Cette carte présente les cours d’eau de la région. Un affluent est un cours d’eau qui se jette dans un autre. Des flèches indiquent le sens de l’écoulement."
+            ],
+            "assessed": {
+              "sentences": [
+                "Cette carte présente les cours d’eau de la région. Un affluent est un cours d’eau qui se jette dans un autre. Des flèches indiquent le sens de l’écoulement."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:informational-affluent",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Cette carte présente les cours d’eau de la région. Un affluent est un cours d’eau qui se jette dans un autre. Des flèches indiquent le sens de l’écoulement.",
+            "choices": [
+              {
+                "quoteFr": "Un affluent est un cours d’eau qui se jette dans un autre.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Cette carte présente les cours d’eau de la région.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Des flèches indiquent le sens de l’écoulement.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Un cours d’eau qui se jette dans un autre.",
+            "correct": true
+          },
+          {
+            "text": "Un lac fermé de tous les côtés.",
+            "correct": false
+          },
+          {
+            "text": "Un pont construit sur une rivière.",
+            "correct": false
+          },
+          {
+            "text": "L’endroit où un fleuve rejoint la mer.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-opaque",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nL’atelier compare plusieurs matériaux. Un matériau opaque ne laisse pas passer la lumière. On peut tester le carton avec une lampe.\n\nDans ce texte, que signifie « opaque » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "L’atelier compare plusieurs matériaux. Un matériau opaque ne laisse pas passer la lumière. On peut tester le carton avec une lampe."
+            ],
+            "assessed": {
+              "sentences": [
+                "L’atelier compare plusieurs matériaux. Un matériau opaque ne laisse pas passer la lumière. On peut tester le carton avec une lampe."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:informational-opaque",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "L’atelier compare plusieurs matériaux. Un matériau opaque ne laisse pas passer la lumière. On peut tester le carton avec une lampe.",
+            "choices": [
+              {
+                "quoteFr": "Un matériau opaque ne laisse pas passer la lumière.",
+                "correct": true
+              },
+              {
+                "quoteFr": "L’atelier compare plusieurs matériaux.",
+                "correct": false
+              },
+              {
+                "quoteFr": "On peut tester le carton avec une lampe.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Qui ne laisse pas passer la lumière.",
+            "correct": true
+          },
+          {
+            "text": "Qui ne laisse pas passer les sons.",
+            "correct": false
+          },
+          {
+            "text": "Qui laisse voir nettement à travers.",
+            "correct": false
+          },
+          {
+            "text": "Qui se casse très facilement.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-refuge",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe panneau explique les règles de la réserve. Un refuge est un lieu où l’on peut se mettre à l’abri d’un danger. Certaines zones sont réservées aux animaux.\n\nDans ce texte, que signifie « refuge » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le panneau explique les règles de la réserve. Un refuge est un lieu où l’on peut se mettre à l’abri d’un danger. Certaines zones sont réservées aux animaux."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le panneau explique les règles de la réserve. Un refuge est un lieu où l’on peut se mettre à l’abri d’un danger. Certaines zones sont réservées aux animaux."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:informational-refuge",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le panneau explique les règles de la réserve. Un refuge est un lieu où l’on peut se mettre à l’abri d’un danger. Certaines zones sont réservées aux animaux.",
+            "choices": [
+              {
+                "quoteFr": "Un refuge est un lieu où l’on peut se mettre à l’abri d’un danger.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le panneau explique les règles de la réserve.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Certaines zones sont réservées aux animaux.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Un lieu où se mettre à l’abri d’un danger.",
+            "correct": true
+          },
+          {
+            "text": "Un chemin réservé aux voitures.",
+            "correct": false
+          },
+          {
+            "text": "Un endroit où acheter à manger.",
+            "correct": false
+          },
+          {
+            "text": "Un panneau indiquant une direction.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-benevole",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nL’association présente son équipe sur une affiche. Une personne bénévole donne de son temps sans être payée pour cette activité. Les personnes intéressées peuvent proposer leur aide.\n\nDans ce texte, que signifie « bénévole » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "L’association présente son équipe sur une affiche. Une personne bénévole donne de son temps sans être payée pour cette activité. Les personnes intéressées peuvent proposer leur aide."
+            ],
+            "assessed": {
+              "sentences": [
+                "L’association présente son équipe sur une affiche. Une personne bénévole donne de son temps sans être payée pour cette activité. Les personnes intéressées peuvent proposer leur aide."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:informational-benevole",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "L’association présente son équipe sur une affiche. Une personne bénévole donne de son temps sans être payée pour cette activité. Les personnes intéressées peuvent proposer leur aide.",
+            "choices": [
+              {
+                "quoteFr": "Une personne bénévole donne de son temps sans être payée pour cette activité.",
+                "correct": true
+              },
+              {
+                "quoteFr": "L’association présente son équipe sur une affiche.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les personnes intéressées peuvent proposer leur aide.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Qui aide sans être payée pour cette activité.",
+            "correct": true
+          },
+          {
+            "text": "Qui reçoit un salaire pour chaque heure.",
+            "correct": false
+          },
+          {
+            "text": "Qui apprend seule une nouvelle activité.",
+            "correct": false
+          },
+          {
+            "text": "Qui vient obligatoirement tous les jours.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-manuscrit",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne vitrine expose plusieurs textes anciens. Un manuscrit est un texte écrit à la main. La lumière reste faible pour protéger les pages.\n\nDans ce texte, que signifie « manuscrit » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Une vitrine expose plusieurs textes anciens. Un manuscrit est un texte écrit à la main. La lumière reste faible pour protéger les pages."
+            ],
+            "assessed": {
+              "sentences": [
+                "Une vitrine expose plusieurs textes anciens. Un manuscrit est un texte écrit à la main. La lumière reste faible pour protéger les pages."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:informational-manuscrit",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Une vitrine expose plusieurs textes anciens. Un manuscrit est un texte écrit à la main. La lumière reste faible pour protéger les pages.",
+            "choices": [
+              {
+                "quoteFr": "Un manuscrit est un texte écrit à la main.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Une vitrine expose plusieurs textes anciens.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La lumière reste faible pour protéger les pages.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Un texte écrit à la main.",
+            "correct": true
+          },
+          {
+            "text": "Un texte imprimé en plusieurs exemplaires.",
+            "correct": false
+          },
+          {
+            "text": "Une image sans aucune écriture.",
+            "correct": false
+          },
+          {
+            "text": "Un texte enregistré avec un microphone.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-reservoir",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne fiche décrit le circuit de récupération de pluie. Le réservoir est le récipient dans lequel l’eau est conservée. Un tuyau permet ensuite d’arroser le jardin.\n\nDans ce texte, que signifie « réservoir » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Une fiche décrit le circuit de récupération de pluie. Le réservoir est le récipient dans lequel l’eau est conservée. Un tuyau permet ensuite d’arroser le jardin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Une fiche décrit le circuit de récupération de pluie. Le réservoir est le récipient dans lequel l’eau est conservée. Un tuyau permet ensuite d’arroser le jardin."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:informational-reservoir",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Une fiche décrit le circuit de récupération de pluie. Le réservoir est le récipient dans lequel l’eau est conservée. Un tuyau permet ensuite d’arroser le jardin.",
+            "choices": [
+              {
+                "quoteFr": "Le réservoir est le récipient dans lequel l’eau est conservée.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Une fiche décrit le circuit de récupération de pluie.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Un tuyau permet ensuite d’arroser le jardin.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le récipient où l’eau est conservée.",
+            "correct": true
+          },
+          {
+            "text": "Le tuyau par lequel l’eau sort.",
+            "correct": false
+          },
+          {
+            "text": "Le filtre qui enlève les feuilles.",
+            "correct": false
+          },
+          {
+            "text": "Le toit sur lequel tombe la pluie.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-perimetre",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe guide présente le plan du terrain. Le périmètre correspond à la longueur totale de son contour. Toutes les longueurs sont indiquées en mètres.\n\nDans ce texte, que signifie « périmètre » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le guide présente le plan du terrain. Le périmètre correspond à la longueur totale de son contour. Toutes les longueurs sont indiquées en mètres."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le guide présente le plan du terrain. Le périmètre correspond à la longueur totale de son contour. Toutes les longueurs sont indiquées en mètres."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:informational-perimetre",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le guide présente le plan du terrain. Le périmètre correspond à la longueur totale de son contour. Toutes les longueurs sont indiquées en mètres.",
+            "choices": [
+              {
+                "quoteFr": "Le périmètre correspond à la longueur totale de son contour.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le guide présente le plan du terrain.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Toutes les longueurs sont indiquées en mètres.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "La longueur totale du contour.",
+            "correct": true
+          },
+          {
+            "text": "La surface à l’intérieur du terrain.",
+            "correct": false
+          },
+          {
+            "text": "La distance du centre à un angle.",
+            "correct": false
+          },
+          {
+            "text": "La hauteur de la clôture.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-durable",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa fiche compare plusieurs sacs. Ici, durable signifie qui peut être utilisé longtemps sans se détériorer. Les sacs sont soumis aux mêmes essais.\n\nDans ce texte, que signifie « durable » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La fiche compare plusieurs sacs. Ici, durable signifie qui peut être utilisé longtemps sans se détériorer. Les sacs sont soumis aux mêmes essais."
+            ],
+            "assessed": {
+              "sentences": [
+                "La fiche compare plusieurs sacs. Ici, durable signifie qui peut être utilisé longtemps sans se détériorer. Les sacs sont soumis aux mêmes essais."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:informational-durable",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "La fiche compare plusieurs sacs. Ici, durable signifie qui peut être utilisé longtemps sans se détériorer. Les sacs sont soumis aux mêmes essais.",
+            "choices": [
+              {
+                "quoteFr": "Ici, durable signifie qui peut être utilisé longtemps sans se détériorer.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La fiche compare plusieurs sacs.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les sacs sont soumis aux mêmes essais.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Qui peut être utilisé longtemps sans s’abîmer.",
+            "correct": true
+          },
+          {
+            "text": "Qui coûte toujours moins cher.",
+            "correct": false
+          },
+          {
+            "text": "Qui doit être jeté après une utilisation.",
+            "correct": false
+          },
+          {
+            "text": "Qui est forcément fabriqué en bois.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-archives",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa bibliothèque ouvre une nouvelle salle. Les archives sont des documents conservés comme traces d’activités passées. On peut les consulter sur rendez-vous.\n\nDans ce texte, que signifie « archives » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La bibliothèque ouvre une nouvelle salle. Les archives sont des documents conservés comme traces d’activités passées. On peut les consulter sur rendez-vous."
+            ],
+            "assessed": {
+              "sentences": [
+                "La bibliothèque ouvre une nouvelle salle. Les archives sont des documents conservés comme traces d’activités passées. On peut les consulter sur rendez-vous."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:informational-archives",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "La bibliothèque ouvre une nouvelle salle. Les archives sont des documents conservés comme traces d’activités passées. On peut les consulter sur rendez-vous.",
+            "choices": [
+              {
+                "quoteFr": "Les archives sont des documents conservés comme traces d’activités passées.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La bibliothèque ouvre une nouvelle salle.",
+                "correct": false
+              },
+              {
+                "quoteFr": "On peut les consulter sur rendez-vous.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Des documents conservés sur des activités passées.",
+            "correct": true
+          },
+          {
+            "text": "Des livres encore en cours d’écriture.",
+            "correct": false
+          },
+          {
+            "text": "Des objets proposés à la vente.",
+            "correct": false
+          },
+          {
+            "text": "Des formulaires qui doivent rester vides.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-amovible",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa notice décrit une petite lampe. Son support est amovible, c’est-à-dire qu’il peut être retiré. La lampe fonctionne avec une batterie.\n\nDans ce texte, que signifie « amovible » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La notice décrit une petite lampe. Son support est amovible, c’est-à-dire qu’il peut être retiré. La lampe fonctionne avec une batterie."
+            ],
+            "assessed": {
+              "sentences": [
+                "La notice décrit une petite lampe. Son support est amovible, c’est-à-dire qu’il peut être retiré. La lampe fonctionne avec une batterie."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:informational-amovible",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "La notice décrit une petite lampe. Son support est amovible, c’est-à-dire qu’il peut être retiré. La lampe fonctionne avec une batterie.",
+            "choices": [
+              {
+                "quoteFr": "Son support est amovible, c’est-à-dire qu’il peut être retiré.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La notice décrit une petite lampe.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La lampe fonctionne avec une batterie.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Qui peut être retiré.",
+            "correct": true
+          },
+          {
+            "text": "Qui tourne automatiquement.",
+            "correct": false
+          },
+          {
+            "text": "Qui doit rester fixé pour toujours.",
+            "correct": false
+          },
+          {
+            "text": "Qui s’allume dans le noir.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-concertation",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe souhaite que les élèves participent au choix des activités. Organisons une concertation, un échange d’avis avant de décider. La décision tiendrait ainsi compte de plusieurs besoins.\n\nDans ce texte, que signifie « concertation » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je souhaite que les élèves participent au choix des activités. Organisons une concertation, un échange d’avis avant de décider. La décision tiendrait ainsi compte de plusieurs besoins."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je souhaite que les élèves participent au choix des activités. Organisons une concertation, un échange d’avis avant de décider. La décision tiendrait ainsi compte de plusieurs besoins."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:argumentative-concertation",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je souhaite que les élèves participent au choix des activités. Organisons une concertation, un échange d’avis avant de décider. La décision tiendrait ainsi compte de plusieurs besoins.",
+            "choices": [
+              {
+                "quoteFr": "Organisons une concertation, un échange d’avis avant de décider.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je souhaite que les élèves participent au choix des activités.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La décision tiendrait ainsi compte de plusieurs besoins.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Un échange d’avis avant une décision.",
+            "correct": true
+          },
+          {
+            "text": "Un concert organisé par les élèves.",
+            "correct": false
+          },
+          {
+            "text": "Une décision prise sans discussion.",
+            "correct": false
+          },
+          {
+            "text": "Un concours entre plusieurs équipes.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-equitable",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nChaque groupe devrait accéder au matériel de sport. Je propose une répartition équitable, qui traite chacun de façon juste. Les groupes qui attendent pourraient disposer d’un autre créneau.\n\nDans ce texte, que signifie « équitable » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Chaque groupe devrait accéder au matériel de sport. Je propose une répartition équitable, qui traite chacun de façon juste. Les groupes qui attendent pourraient disposer d’un autre créneau."
+            ],
+            "assessed": {
+              "sentences": [
+                "Chaque groupe devrait accéder au matériel de sport. Je propose une répartition équitable, qui traite chacun de façon juste. Les groupes qui attendent pourraient disposer d’un autre créneau."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:argumentative-equitable",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Chaque groupe devrait accéder au matériel de sport. Je propose une répartition équitable, qui traite chacun de façon juste. Les groupes qui attendent pourraient disposer d’un autre créneau.",
+            "choices": [
+              {
+                "quoteFr": "Je propose une répartition équitable, qui traite chacun de façon juste.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Chaque groupe devrait accéder au matériel de sport.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les groupes qui attendent pourraient disposer d’un autre créneau.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Qui traite chacun de façon juste.",
+            "correct": true
+          },
+          {
+            "text": "Qui favorise toujours le plus grand groupe.",
+            "correct": false
+          },
+          {
+            "text": "Qui distribue le matériel au hasard.",
+            "correct": false
+          },
+          {
+            "text": "Qui réserve tout aux mêmes personnes.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-nuisance",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe pense que les livraisons devraient avoir lieu plus tard. Le bruit très tôt le matin est une nuisance, une gêne pour les habitants. Changer l’horaire leur permettrait de mieux dormir.\n\nDans ce texte, que signifie « nuisance » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je pense que les livraisons devraient avoir lieu plus tard. Le bruit très tôt le matin est une nuisance, une gêne pour les habitants. Changer l’horaire leur permettrait de mieux dormir."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je pense que les livraisons devraient avoir lieu plus tard. Le bruit très tôt le matin est une nuisance, une gêne pour les habitants. Changer l’horaire leur permettrait de mieux dormir."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:argumentative-nuisance",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je pense que les livraisons devraient avoir lieu plus tard. Le bruit très tôt le matin est une nuisance, une gêne pour les habitants. Changer l’horaire leur permettrait de mieux dormir.",
+            "choices": [
+              {
+                "quoteFr": "Le bruit très tôt le matin est une nuisance, une gêne pour les habitants.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je pense que les livraisons devraient avoir lieu plus tard.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Changer l’horaire leur permettrait de mieux dormir.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Une gêne pour les habitants.",
+            "correct": true
+          },
+          {
+            "text": "Une aide apportée aux habitants.",
+            "correct": false
+          },
+          {
+            "text": "Un horaire annoncé à l’avance.",
+            "correct": false
+          },
+          {
+            "text": "Une obligation de travailler dehors.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-compromis",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nCertains veulent jouer dans la salle, d’autres veulent y lire. Cherchons un compromis, une solution où chaque groupe accepte de céder sur un point. Nous pourrions réserver des horaires différents à ces activités.\n\nDans ce texte, que signifie « compromis » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Certains veulent jouer dans la salle, d’autres veulent y lire. Cherchons un compromis, une solution où chaque groupe accepte de céder sur un point. Nous pourrions réserver des horaires différents à ces activités."
+            ],
+            "assessed": {
+              "sentences": [
+                "Certains veulent jouer dans la salle, d’autres veulent y lire. Cherchons un compromis, une solution où chaque groupe accepte de céder sur un point. Nous pourrions réserver des horaires différents à ces activités."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:argumentative-compromis",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Certains veulent jouer dans la salle, d’autres veulent y lire. Cherchons un compromis, une solution où chaque groupe accepte de céder sur un point. Nous pourrions réserver des horaires différents à ces activités.",
+            "choices": [
+              {
+                "quoteFr": "Cherchons un compromis, une solution où chaque groupe accepte de céder sur un point.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Certains veulent jouer dans la salle, d’autres veulent y lire.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Nous pourrions réserver des horaires différents à ces activités.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Une solution où chacun accepte une concession.",
+            "correct": true
+          },
+          {
+            "text": "Une solution imposée par un seul groupe.",
+            "correct": false
+          },
+          {
+            "text": "Une promesse de ne jamais changer d’avis.",
+            "correct": false
+          },
+          {
+            "text": "Une compétition pour choisir le meilleur groupe.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-accessible",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nNotre exposition devrait accueillir davantage de visiteurs. Rendons-la accessible, c’est-à-dire facile à atteindre et à utiliser pour tous. Une entrée sans marche aiderait notamment les personnes en fauteuil.\n\nDans ce texte, que signifie « accessible » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Notre exposition devrait accueillir davantage de visiteurs. Rendons-la accessible, c’est-à-dire facile à atteindre et à utiliser pour tous. Une entrée sans marche aiderait notamment les personnes en fauteuil."
+            ],
+            "assessed": {
+              "sentences": [
+                "Notre exposition devrait accueillir davantage de visiteurs. Rendons-la accessible, c’est-à-dire facile à atteindre et à utiliser pour tous. Une entrée sans marche aiderait notamment les personnes en fauteuil."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:argumentative-accessible",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Notre exposition devrait accueillir davantage de visiteurs. Rendons-la accessible, c’est-à-dire facile à atteindre et à utiliser pour tous. Une entrée sans marche aiderait notamment les personnes en fauteuil.",
+            "choices": [
+              {
+                "quoteFr": "Rendons-la accessible, c’est-à-dire facile à atteindre et à utiliser pour tous.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Notre exposition devrait accueillir davantage de visiteurs.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Une entrée sans marche aiderait notamment les personnes en fauteuil.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Facile à atteindre et à utiliser pour tous.",
+            "correct": true
+          },
+          {
+            "text": "Réservée aux visiteurs déjà inscrits.",
+            "correct": false
+          },
+          {
+            "text": "Située le plus loin possible de l’entrée.",
+            "correct": false
+          },
+          {
+            "text": "Ouverte uniquement aux personnes du quartier.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-ponctuel",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe propose une collecte de livres le mois prochain. Ce serait un événement ponctuel, organisé une seule fois et non régulièrement. Nous pourrions ensuite décider s’il faut le renouveler.\n\nDans ce texte, que signifie « ponctuel » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je propose une collecte de livres le mois prochain. Ce serait un événement ponctuel, organisé une seule fois et non régulièrement. Nous pourrions ensuite décider s’il faut le renouveler."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je propose une collecte de livres le mois prochain. Ce serait un événement ponctuel, organisé une seule fois et non régulièrement. Nous pourrions ensuite décider s’il faut le renouveler."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:argumentative-ponctuel",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je propose une collecte de livres le mois prochain. Ce serait un événement ponctuel, organisé une seule fois et non régulièrement. Nous pourrions ensuite décider s’il faut le renouveler.",
+            "choices": [
+              {
+                "quoteFr": "Ce serait un événement ponctuel, organisé une seule fois et non régulièrement.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je propose une collecte de livres le mois prochain.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Nous pourrions ensuite décider s’il faut le renouveler.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Organisé une seule fois, sans régularité prévue.",
+            "correct": true
+          },
+          {
+            "text": "Organisé tous les matins.",
+            "correct": false
+          },
+          {
+            "text": "Qui commence toujours en retard.",
+            "correct": false
+          },
+          {
+            "text": "Qui dure obligatoirement plusieurs années.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-pertinent",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nPour choisir un atelier, écoutons les propositions des élèves. Un argument pertinent est un argument qui répond bien au sujet discuté. Cela nous aiderait à comparer les idées sans nous disperser.\n\nDans ce texte, que signifie « pertinent » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Pour choisir un atelier, écoutons les propositions des élèves. Un argument pertinent est un argument qui répond bien au sujet discuté. Cela nous aiderait à comparer les idées sans nous disperser."
+            ],
+            "assessed": {
+              "sentences": [
+                "Pour choisir un atelier, écoutons les propositions des élèves. Un argument pertinent est un argument qui répond bien au sujet discuté. Cela nous aiderait à comparer les idées sans nous disperser."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:argumentative-pertinent",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Pour choisir un atelier, écoutons les propositions des élèves. Un argument pertinent est un argument qui répond bien au sujet discuté. Cela nous aiderait à comparer les idées sans nous disperser.",
+            "choices": [
+              {
+                "quoteFr": "Un argument pertinent est un argument qui répond bien au sujet discuté.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Pour choisir un atelier, écoutons les propositions des élèves.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Cela nous aiderait à comparer les idées sans nous disperser.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Qui répond bien au sujet discuté.",
+            "correct": true
+          },
+          {
+            "text": "Qui est plus long que tous les autres.",
+            "correct": false
+          },
+          {
+            "text": "Qui change complètement de sujet.",
+            "correct": false
+          },
+          {
+            "text": "Qui plaît forcément à tout le monde.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-mutualiser",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes clubs achètent parfois le même matériel chacun de leur côté. Nous devrions le mutualiser, autrement dit le mettre en commun. Un calendrier permettrait à chaque club de l’utiliser à son tour.\n\nDans ce texte, que signifie « mutualiser » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les clubs achètent parfois le même matériel chacun de leur côté. Nous devrions le mutualiser, autrement dit le mettre en commun. Un calendrier permettrait à chaque club de l’utiliser à son tour."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les clubs achètent parfois le même matériel chacun de leur côté. Nous devrions le mutualiser, autrement dit le mettre en commun. Un calendrier permettrait à chaque club de l’utiliser à son tour."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:argumentative-mutualiser",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Les clubs achètent parfois le même matériel chacun de leur côté. Nous devrions le mutualiser, autrement dit le mettre en commun. Un calendrier permettrait à chaque club de l’utiliser à son tour.",
+            "choices": [
+              {
+                "quoteFr": "Nous devrions le mutualiser, autrement dit le mettre en commun.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les clubs achètent parfois le même matériel chacun de leur côté.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Un calendrier permettrait à chaque club de l’utiliser à son tour.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Mettre en commun.",
+            "correct": true
+          },
+          {
+            "text": "Jeter après chaque utilisation.",
+            "correct": false
+          },
+          {
+            "text": "Réserver à un seul club.",
+            "correct": false
+          },
+          {
+            "text": "Acheter en plusieurs exemplaires identiques.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-preserver",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe jardin accueille des oiseaux et des insectes. Il faut préserver cet espace, c’est-à-dire le protéger des dégradations. Installons donc des chemins pour éviter de piétiner les plantes.\n\nDans ce texte, que signifie « préserver » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le jardin accueille des oiseaux et des insectes. Il faut préserver cet espace, c’est-à-dire le protéger des dégradations. Installons donc des chemins pour éviter de piétiner les plantes."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le jardin accueille des oiseaux et des insectes. Il faut préserver cet espace, c’est-à-dire le protéger des dégradations. Installons donc des chemins pour éviter de piétiner les plantes."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:argumentative-preserver",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Le jardin accueille des oiseaux et des insectes. Il faut préserver cet espace, c’est-à-dire le protéger des dégradations. Installons donc des chemins pour éviter de piétiner les plantes.",
+            "choices": [
+              {
+                "quoteFr": "Il faut préserver cet espace, c’est-à-dire le protéger des dégradations.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le jardin accueille des oiseaux et des insectes.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Installons donc des chemins pour éviter de piétiner les plantes.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Protéger des dégradations.",
+            "correct": true
+          },
+          {
+            "text": "Transformer entièrement.",
+            "correct": false
+          },
+          {
+            "text": "Utiliser sans aucune limite.",
+            "correct": false
+          },
+          {
+            "text": "Fermer définitivement aux animaux.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-autonomie",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes élèves pourraient organiser eux-mêmes une petite exposition. Ils gagneraient en autonomie, la capacité d’agir sans dépendre constamment d’une aide. Un adulte resterait disponible en cas de difficulté.\n\nDans ce texte, que signifie « autonomie » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les élèves pourraient organiser eux-mêmes une petite exposition. Ils gagneraient en autonomie, la capacité d’agir sans dépendre constamment d’une aide. Un adulte resterait disponible en cas de difficulté."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les élèves pourraient organiser eux-mêmes une petite exposition. Ils gagneraient en autonomie, la capacité d’agir sans dépendre constamment d’une aide. Un adulte resterait disponible en cas de difficulté."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:argumentative-autonomie",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Les élèves pourraient organiser eux-mêmes une petite exposition. Ils gagneraient en autonomie, la capacité d’agir sans dépendre constamment d’une aide. Un adulte resterait disponible en cas de difficulté.",
+            "choices": [
+              {
+                "quoteFr": "Ils gagneraient en autonomie, la capacité d’agir sans dépendre constamment d’une aide.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les élèves pourraient organiser eux-mêmes une petite exposition.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Un adulte resterait disponible en cas de difficulté.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "La capacité d’agir sans aide constante.",
+            "correct": true
+          },
+          {
+            "text": "L’obligation de toujours rester seul.",
+            "correct": false
+          },
+          {
+            "text": "Le fait de suivre chaque ordre sans réfléchir.",
+            "correct": false
+          },
+          {
+            "text": "La capacité de faire tout plus vite que les autres.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-diversifier",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe club de lecture propose surtout des romans. Nous devrions diversifier nos choix, c’est-à-dire les rendre plus variés. Des mangas et des documentaires pourraient attirer de nouveaux lecteurs.\n\nDans ce texte, que signifie « diversifier » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le club de lecture propose surtout des romans. Nous devrions diversifier nos choix, c’est-à-dire les rendre plus variés. Des mangas et des documentaires pourraient attirer de nouveaux lecteurs."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le club de lecture propose surtout des romans. Nous devrions diversifier nos choix, c’est-à-dire les rendre plus variés. Des mangas et des documentaires pourraient attirer de nouveaux lecteurs."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:argumentative-diversifier",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Le club de lecture propose surtout des romans. Nous devrions diversifier nos choix, c’est-à-dire les rendre plus variés. Des mangas et des documentaires pourraient attirer de nouveaux lecteurs.",
+            "choices": [
+              {
+                "quoteFr": "Nous devrions diversifier nos choix, c’est-à-dire les rendre plus variés.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le club de lecture propose surtout des romans.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Des mangas et des documentaires pourraient attirer de nouveaux lecteurs.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Rendre les choix plus variés.",
+            "correct": true
+          },
+          {
+            "text": "Supprimer tous les choix possibles.",
+            "correct": false
+          },
+          {
+            "text": "Choisir toujours le même type de livre.",
+            "correct": false
+          },
+          {
+            "text": "Réduire le nombre de lecteurs.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-transitoire",
+      "item": {
+        "nodeKey": "deduire_mot_definition_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa salle habituelle est fermée pendant les travaux. Utilisons une solution transitoire, une solution temporaire en attendant la situation définitive. La bibliothèque pourrait nous accueillir quelques semaines.\n\nDans ce texte, que signifie « transitoire » ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La salle habituelle est fermée pendant les travaux. Utilisons une solution transitoire, une solution temporaire en attendant la situation définitive. La bibliothèque pourrait nous accueillir quelques semaines."
+            ],
+            "assessed": {
+              "sentences": [
+                "La salle habituelle est fermée pendant les travaux. Utilisons une solution transitoire, une solution temporaire en attendant la situation définitive. La bibliothèque pourrait nous accueillir quelques semaines."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-local-definition-reading:argumentative-transitoire",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "La salle habituelle est fermée pendant les travaux. Utilisons une solution transitoire, une solution temporaire en attendant la situation définitive. La bibliothèque pourrait nous accueillir quelques semaines.",
+            "choices": [
+              {
+                "quoteFr": "Utilisons une solution transitoire, une solution temporaire en attendant la situation définitive.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La salle habituelle est fermée pendant les travaux.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La bibliothèque pourrait nous accueillir quelques semaines.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Temporaire, en attendant la situation définitive.",
+            "correct": true
+          },
+          {
+            "text": "Définitive et impossible à modifier.",
+            "correct": false
+          },
+          {
+            "text": "Décidée sans prévenir personne.",
+            "correct": false
+          },
+          {
+            "text": "Réservée aux déplacements en voiture.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-local-definition-reading:narrative-lucarne",
+      "itemChecksum": "sha256:d463d64f7bca844544d3218340636f3de98b872f9aed65e956eb3f66c84b7292",
+      "facetKey": "deduire_mot_definition_locale::text_type:narrative",
+      "contextKey": "passage:v3-local-definition-reading:narrative-lucarne",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-escale",
+      "itemChecksum": "sha256:32c4f5bccbceb1bdafa121a092364384e0937cb0ff11b340dd4961469fdbd859",
+      "facetKey": "deduire_mot_definition_locale::text_type:narrative",
+      "contextKey": "passage:v3-local-definition-reading:narrative-escale",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-recroqueville",
+      "itemChecksum": "sha256:01fb441d3bec60c4091d5b4286ec9020a6b641707541df4ef5c826111a3cde4d",
+      "facetKey": "deduire_mot_definition_locale::text_type:narrative",
+      "contextKey": "passage:v3-local-definition-reading:narrative-recroqueville",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-baluchon",
+      "itemChecksum": "sha256:e233eeda6a9df77627ec1d43c42c00b0030113030a61e5b20f4c33f05f8cdc0f",
+      "facetKey": "deduire_mot_definition_locale::text_type:narrative",
+      "contextKey": "passage:v3-local-definition-reading:narrative-baluchon",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-furtif",
+      "itemChecksum": "sha256:0a1366c19b1dfbc0fda04c4a611e6ffe0b55ae1a1b1bc9fd65560bfa379c7aab",
+      "facetKey": "deduire_mot_definition_locale::text_type:narrative",
+      "contextKey": "passage:v3-local-definition-reading:narrative-furtif",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-clairiere",
+      "itemChecksum": "sha256:cec7aec345cbeb8c68805ff6bfb663f9c1423ab9b6eb0d0829727a66fa881761",
+      "facetKey": "deduire_mot_definition_locale::text_type:narrative",
+      "contextKey": "passage:v3-local-definition-reading:narrative-clairiere",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-tressaillir",
+      "itemChecksum": "sha256:69aa650f76da2fa4e42673e07b6e3f756ad011f58f557390ef7535ed51d3f400",
+      "facetKey": "deduire_mot_definition_locale::text_type:narrative",
+      "contextKey": "passage:v3-local-definition-reading:narrative-tressaillir",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-replique",
+      "itemChecksum": "sha256:501ec04201e1e92cc72c829fb37f0d5de7d199dd09d573416029b51da8827783",
+      "facetKey": "deduire_mot_definition_locale::text_type:narrative",
+      "contextKey": "passage:v3-local-definition-reading:narrative-replique",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-reperer",
+      "itemChecksum": "sha256:cb2fea5adb3462d6b5aba47179015c2486eac7d5b60054a24de34f23e934a948",
+      "facetKey": "deduire_mot_definition_locale::text_type:narrative",
+      "contextKey": "passage:v3-local-definition-reading:narrative-reperer",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-accalmie",
+      "itemChecksum": "sha256:a0af7c2f9e8bbfa391bdf1388716e33820c64e8fce134fdbeda5015e8d6bd79a",
+      "facetKey": "deduire_mot_definition_locale::text_type:narrative",
+      "contextKey": "passage:v3-local-definition-reading:narrative-accalmie",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-ebreche",
+      "itemChecksum": "sha256:c7e4599fb77da9cbd1eee4e24e8a143700f655fc50929300f506a3025ab93bae",
+      "facetKey": "deduire_mot_definition_locale::text_type:narrative",
+      "contextKey": "passage:v3-local-definition-reading:narrative-ebreche",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:narrative-hisser",
+      "itemChecksum": "sha256:aaf9de0f381215c93b06dacf84a30d79597703f8266646a4169b23d4a128cc25",
+      "facetKey": "deduire_mot_definition_locale::text_type:narrative",
+      "contextKey": "passage:v3-local-definition-reading:narrative-hisser",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-vestige",
+      "itemChecksum": "sha256:eb2951353d9ead899775e2e0ffe1f2733e6e0aa95a166285e0745a5d05c40a4c",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "contextKey": "passage:v3-local-definition-reading:informational-vestige",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-hiberner",
+      "itemChecksum": "sha256:e24d78a7a220a55c2a7e149a7df5ee07ab20640a82ceb8fa760ae2c4d8f10df9",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "contextKey": "passage:v3-local-definition-reading:informational-hiberner",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-affluent",
+      "itemChecksum": "sha256:075a2a50bb4823773e678b5ee6e9e9e4c13eb92c39d5ba12ce9b9ffae46c9d4e",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "contextKey": "passage:v3-local-definition-reading:informational-affluent",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-opaque",
+      "itemChecksum": "sha256:175d36a4c96d7d57d03217057eb234fad71bdd3bc6109fa078ee6e0ec3845ea0",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "contextKey": "passage:v3-local-definition-reading:informational-opaque",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-refuge",
+      "itemChecksum": "sha256:f62fc407d871d5621d0a67c4ddead0128fb0cdd9da65b06e4b9ce1f327ba0da0",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "contextKey": "passage:v3-local-definition-reading:informational-refuge",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-benevole",
+      "itemChecksum": "sha256:ae79a291e7a4748f53c43dcc5eb4edc10412cd78822c93aacbb948d43c709bdb",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "contextKey": "passage:v3-local-definition-reading:informational-benevole",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-manuscrit",
+      "itemChecksum": "sha256:bd4dd1a5c0187bec96b671e0603760c94a5adb950881b7fc22c48219fd478307",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "contextKey": "passage:v3-local-definition-reading:informational-manuscrit",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-reservoir",
+      "itemChecksum": "sha256:fd58564f1fe8cfecbc08d06c90acb98a751425a94c1970ee43dc200cf5132676",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "contextKey": "passage:v3-local-definition-reading:informational-reservoir",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-perimetre",
+      "itemChecksum": "sha256:da9f0cd1474a4953c0db7c7d4e1fcdceb2a9c024a5d3e7867ecf6f1d6291f77f",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "contextKey": "passage:v3-local-definition-reading:informational-perimetre",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-durable",
+      "itemChecksum": "sha256:6c5d3e6e943449e27184136582ec5c0ce12df88ab50feba291805b415a0c9dfa",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "contextKey": "passage:v3-local-definition-reading:informational-durable",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-archives",
+      "itemChecksum": "sha256:21e6e8234213fa43d67f1b7dc2bff2df982957aeb11ab94cb2a641cb36e82f20",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "contextKey": "passage:v3-local-definition-reading:informational-archives",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:informational-amovible",
+      "itemChecksum": "sha256:ed3a538d02921601f8e78d600187e570d1767da71f3e7233a5db85a7755fb8d0",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "contextKey": "passage:v3-local-definition-reading:informational-amovible",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-concertation",
+      "itemChecksum": "sha256:5690962b04a6e16776ccbb16265eba3b24b707a8c54a8d2c9db0cfd7a6665098",
+      "facetKey": "deduire_mot_definition_locale::text_type:argumentative",
+      "contextKey": "passage:v3-local-definition-reading:argumentative-concertation",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-equitable",
+      "itemChecksum": "sha256:f751710001c11117233910b8133bdd4b4fb20a5e817dba890fd60c4de2cc8b72",
+      "facetKey": "deduire_mot_definition_locale::text_type:argumentative",
+      "contextKey": "passage:v3-local-definition-reading:argumentative-equitable",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-nuisance",
+      "itemChecksum": "sha256:eaf5c11a606c799b177939b8b9116d7131bd96a3d1085595341ac994f160745f",
+      "facetKey": "deduire_mot_definition_locale::text_type:argumentative",
+      "contextKey": "passage:v3-local-definition-reading:argumentative-nuisance",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-compromis",
+      "itemChecksum": "sha256:d4328ab6ca843614a2d525d469ca07bf74e84013955334c8f6867ad3d2846993",
+      "facetKey": "deduire_mot_definition_locale::text_type:argumentative",
+      "contextKey": "passage:v3-local-definition-reading:argumentative-compromis",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-accessible",
+      "itemChecksum": "sha256:98339f2d56c5f81e5dd9c7a936c31def911d69b9ea14f9eb45dcb431ae1d1d36",
+      "facetKey": "deduire_mot_definition_locale::text_type:argumentative",
+      "contextKey": "passage:v3-local-definition-reading:argumentative-accessible",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-ponctuel",
+      "itemChecksum": "sha256:3df1d006928aff011af2fb39f537857529b2f7fee510458f0c286cb39c929af3",
+      "facetKey": "deduire_mot_definition_locale::text_type:argumentative",
+      "contextKey": "passage:v3-local-definition-reading:argumentative-ponctuel",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-pertinent",
+      "itemChecksum": "sha256:5b8024080106398e51d402e5f4708fd82c48c93747a81e5922aaec0f20fba38d",
+      "facetKey": "deduire_mot_definition_locale::text_type:argumentative",
+      "contextKey": "passage:v3-local-definition-reading:argumentative-pertinent",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-mutualiser",
+      "itemChecksum": "sha256:c075911afeeff7d198055926dda99699009f0d0d2ec46d8ce9061e8a38626327",
+      "facetKey": "deduire_mot_definition_locale::text_type:argumentative",
+      "contextKey": "passage:v3-local-definition-reading:argumentative-mutualiser",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-preserver",
+      "itemChecksum": "sha256:0d7220ef19bccb3d2d371f89b1f530ab6736e1988883986764784501b9e1d69d",
+      "facetKey": "deduire_mot_definition_locale::text_type:argumentative",
+      "contextKey": "passage:v3-local-definition-reading:argumentative-preserver",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-autonomie",
+      "itemChecksum": "sha256:75e9712547dd3fdcec5a11a4b556da4f41d291364c3317a203922dd0010ae1f2",
+      "facetKey": "deduire_mot_definition_locale::text_type:argumentative",
+      "contextKey": "passage:v3-local-definition-reading:argumentative-autonomie",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-diversifier",
+      "itemChecksum": "sha256:ff63617d4419e1d305fdcb18054f01a3599709a4b2ed6cf18c670ad1f062e658",
+      "facetKey": "deduire_mot_definition_locale::text_type:argumentative",
+      "contextKey": "passage:v3-local-definition-reading:argumentative-diversifier",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    },
+    {
+      "itemKey": "v3-local-definition-reading:argumentative-transitoire",
+      "itemChecksum": "sha256:546bc2335eb6c033dbafb6eac81709e406a63dd220e09adc3318be847cc66eab",
+      "facetKey": "deduire_mot_definition_locale::text_type:argumentative",
+      "contextKey": "passage:v3-local-definition-reading:argumentative-transitoire",
+      "reason": "Utiliser une définition ou une reformulation proche du mot, puis sélectionner la phrase qui permet de justifier ce sens."
+    }
+  ],
+  "checksum": "sha256:e19217b67e3a3acc167ca7ea1283db551392e00dc5019dcfbf371c621db417b8"
+}

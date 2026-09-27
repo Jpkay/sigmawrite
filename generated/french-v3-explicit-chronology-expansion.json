@@ -1,0 +1,1739 @@
+{
+  "version": "french-v3-explicit-chronology-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-explicit-chronology:n-library",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nÀ 11 h, elle retrouve sa sœur au parc. À 8 h, Inès quitte sa maison. À 9 h, elle entre à la bibliothèque.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "À 11 h, elle retrouve sa sœur au parc. À 8 h, Inès quitte sa maison. À 9 h, elle entre à la bibliothèque."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:n-library",
+          "sourceTextType": "literary"
+        },
+        "choices": [
+          {
+            "text": "départ de la maison → arrivée à la bibliothèque → rencontre avec sa sœur",
+            "correct": true
+          },
+          {
+            "text": "rencontre avec sa sœur → départ de la maison → arrivée à la bibliothèque",
+            "correct": false
+          },
+          {
+            "text": "arrivée à la bibliothèque → rencontre avec sa sœur → départ de la maison",
+            "correct": false
+          },
+          {
+            "text": "rencontre avec sa sœur → arrivée à la bibliothèque → départ de la maison",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-rehearsal",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nMercredi, il la répète avec ses amis. Vendredi de la même semaine, ils jouent devant la classe. Lundi, Sam écrit une scène.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Mercredi, il la répète avec ses amis. Vendredi de la même semaine, ils jouent devant la classe. Lundi, Sam écrit une scène."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:n-rehearsal",
+          "sourceTextType": "literary"
+        },
+        "choices": [
+          {
+            "text": "écriture de la scène → répétition → représentation devant la classe",
+            "correct": true
+          },
+          {
+            "text": "représentation devant la classe → écriture de la scène → répétition",
+            "correct": false
+          },
+          {
+            "text": "répétition → représentation devant la classe → écriture de la scène",
+            "correct": false
+          },
+          {
+            "text": "représentation devant la classe → répétition → écriture de la scène",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-comic",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe 9 avril, elle offre sa bande dessinée à Malik. Le 5 avril, elle invente son histoire. Le 3 avril, Léa dessine un personnage.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le 9 avril, elle offre sa bande dessinée à Malik. Le 5 avril, elle invente son histoire. Le 3 avril, Léa dessine un personnage."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:n-comic",
+          "sourceTextType": "literary"
+        },
+        "choices": [
+          {
+            "text": "dessin du personnage → invention de l’histoire → cadeau à Malik",
+            "correct": true
+          },
+          {
+            "text": "cadeau à Malik → dessin du personnage → invention de l’histoire",
+            "correct": false
+          },
+          {
+            "text": "invention de l’histoire → cadeau à Malik → dessin du personnage",
+            "correct": false
+          },
+          {
+            "text": "cadeau à Malik → invention de l’histoire → dessin du personnage",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-match",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nÀ 14 h, Idriss prend le bus. À 16 h, le match commence. À 15 h, il rejoint son équipe au stade.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "À 14 h, Idriss prend le bus. À 16 h, le match commence. À 15 h, il rejoint son équipe au stade."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:n-match",
+          "sourceTextType": "literary"
+        },
+        "choices": [
+          {
+            "text": "trajet en bus → rencontre avec l’équipe → début du match",
+            "correct": true
+          },
+          {
+            "text": "début du match → trajet en bus → rencontre avec l’équipe",
+            "correct": false
+          },
+          {
+            "text": "rencontre avec l’équipe → début du match → trajet en bus",
+            "correct": false
+          },
+          {
+            "text": "début du match → rencontre avec l’équipe → trajet en bus",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-bike",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe 15 juin, elle part se promener avec son frère. Le 10 juin, Nora remarque une roue crevée. Le 12 juin, elle répare son vélo.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le 15 juin, elle part se promener avec son frère. Le 10 juin, Nora remarque une roue crevée. Le 12 juin, elle répare son vélo."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:n-bike",
+          "sourceTextType": "literary"
+        },
+        "choices": [
+          {
+            "text": "découverte de la crevaison → réparation du vélo → promenade avec son frère",
+            "correct": true
+          },
+          {
+            "text": "promenade avec son frère → découverte de la crevaison → réparation du vélo",
+            "correct": false
+          },
+          {
+            "text": "réparation du vélo → promenade avec son frère → découverte de la crevaison",
+            "correct": false
+          },
+          {
+            "text": "promenade avec son frère → réparation du vélo → découverte de la crevaison",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-cake",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nÀ 11 h, il met le gâteau au four. À 14 h, sa famille goûte le gâteau. À 10 h, Noé prépare la pâte du gâteau.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "À 11 h, il met le gâteau au four. À 14 h, sa famille goûte le gâteau. À 10 h, Noé prépare la pâte du gâteau."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:n-cake",
+          "sourceTextType": "literary"
+        },
+        "choices": [
+          {
+            "text": "préparation de la pâte → mise au four → dégustation en famille",
+            "correct": true
+          },
+          {
+            "text": "dégustation en famille → préparation de la pâte → mise au four",
+            "correct": false
+          },
+          {
+            "text": "mise au four → dégustation en famille → préparation de la pâte",
+            "correct": false
+          },
+          {
+            "text": "dégustation en famille → mise au four → préparation de la pâte",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-video",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe 7 mai, elle la présente à ses amis. Le 4 mai, elle monte sa vidéo. Le 2 mai, Aya filme une expérience.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le 7 mai, elle la présente à ses amis. Le 4 mai, elle monte sa vidéo. Le 2 mai, Aya filme une expérience."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:n-video",
+          "sourceTextType": "literary"
+        },
+        "choices": [
+          {
+            "text": "tournage de l’expérience → montage de la vidéo → présentation aux amis",
+            "correct": true
+          },
+          {
+            "text": "présentation aux amis → tournage de l’expérience → montage de la vidéo",
+            "correct": false
+          },
+          {
+            "text": "montage de la vidéo → présentation aux amis → tournage de l’expérience",
+            "correct": false
+          },
+          {
+            "text": "présentation aux amis → montage de la vidéo → tournage de l’expérience",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-lost-scarf",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nÀ 7 h, Zoé oublie son écharpe dans le car. À 17 h, Zoé récupère son écharpe. À 9 h, le conducteur la dépose à l’accueil.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "À 7 h, Zoé oublie son écharpe dans le car. À 17 h, Zoé récupère son écharpe. À 9 h, le conducteur la dépose à l’accueil."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:n-lost-scarf",
+          "sourceTextType": "literary"
+        },
+        "choices": [
+          {
+            "text": "oubli de l’écharpe → dépôt à l’accueil → récupération de l’écharpe",
+            "correct": true
+          },
+          {
+            "text": "récupération de l’écharpe → oubli de l’écharpe → dépôt à l’accueil",
+            "correct": false
+          },
+          {
+            "text": "dépôt à l’accueil → récupération de l’écharpe → oubli de l’écharpe",
+            "correct": false
+          },
+          {
+            "text": "récupération de l’écharpe → dépôt à l’accueil → oubli de l’écharpe",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-exhibition",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nCalendrier de la maison de quartier. Le 10 mars, les portes ouvrent au public. Le 6 mars, les œuvres sont déposées. Le 8 mars, les bénévoles installent l’exposition.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Calendrier de la maison de quartier. Le 10 mars, les portes ouvrent au public. Le 6 mars, les œuvres sont déposées. Le 8 mars, les bénévoles installent l’exposition."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:i-exhibition",
+          "sourceTextType": "informational"
+        },
+        "choices": [
+          {
+            "text": "dépôt des œuvres → installation de l’exposition → ouverture au public",
+            "correct": true
+          },
+          {
+            "text": "ouverture au public → dépôt des œuvres → installation de l’exposition",
+            "correct": false
+          },
+          {
+            "text": "installation de l’exposition → ouverture au public → dépôt des œuvres",
+            "correct": false
+          },
+          {
+            "text": "ouverture au public → installation de l’exposition → dépôt des œuvres",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-borrowing",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nHoraires du service de prêt pour cette journée. À 12 h, les réservations du matin sont closes. À 17 h, le comptoir ferme. À 9 h, le comptoir ouvre.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Horaires du service de prêt pour cette journée. À 12 h, les réservations du matin sont closes. À 17 h, le comptoir ferme. À 9 h, le comptoir ouvre."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:i-borrowing",
+          "sourceTextType": "informational"
+        },
+        "choices": [
+          {
+            "text": "ouverture du comptoir → fin des réservations du matin → fermeture du comptoir",
+            "correct": true
+          },
+          {
+            "text": "fermeture du comptoir → ouverture du comptoir → fin des réservations du matin",
+            "correct": false
+          },
+          {
+            "text": "fin des réservations du matin → fermeture du comptoir → ouverture du comptoir",
+            "correct": false
+          },
+          {
+            "text": "fermeture du comptoir → fin des réservations du matin → ouverture du comptoir",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-club",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nÉtapes de l’inscription au club cette semaine. Samedi, la première rencontre a lieu. Jeudi, les inscriptions sont closes. Lundi, les formulaires deviennent disponibles.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Étapes de l’inscription au club cette semaine. Samedi, la première rencontre a lieu. Jeudi, les inscriptions sont closes. Lundi, les formulaires deviennent disponibles."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:i-club",
+          "sourceTextType": "informational"
+        },
+        "choices": [
+          {
+            "text": "mise à disposition des formulaires → clôture des inscriptions → première rencontre",
+            "correct": true
+          },
+          {
+            "text": "première rencontre → mise à disposition des formulaires → clôture des inscriptions",
+            "correct": false
+          },
+          {
+            "text": "clôture des inscriptions → première rencontre → mise à disposition des formulaires",
+            "correct": false
+          },
+          {
+            "text": "première rencontre → clôture des inscriptions → mise à disposition des formulaires",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-competition",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nProgramme du concours de dessins. Le 1er février, le thème est annoncé. Le 25 février, les résultats sont affichés. Le 20 février, le jury examine les dessins.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Programme du concours de dessins. Le 1er février, le thème est annoncé. Le 25 février, les résultats sont affichés. Le 20 février, le jury examine les dessins."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:i-competition",
+          "sourceTextType": "informational"
+        },
+        "choices": [
+          {
+            "text": "annonce du thème → examen des dessins → affichage des résultats",
+            "correct": true
+          },
+          {
+            "text": "affichage des résultats → annonce du thème → examen des dessins",
+            "correct": false
+          },
+          {
+            "text": "examen des dessins → affichage des résultats → annonce du thème",
+            "correct": false
+          },
+          {
+            "text": "affichage des résultats → examen des dessins → annonce du thème",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-workshop",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nProgramme de l’atelier de fabrication. À 16 h, les tables sont rangées. À 13 h, le matériel est distribué. À 14 h, les participants commencent leur objet.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Programme de l’atelier de fabrication. À 16 h, les tables sont rangées. À 13 h, le matériel est distribué. À 14 h, les participants commencent leur objet."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:i-workshop",
+          "sourceTextType": "informational"
+        },
+        "choices": [
+          {
+            "text": "distribution du matériel → début de la fabrication → rangement des tables",
+            "correct": true
+          },
+          {
+            "text": "rangement des tables → distribution du matériel → début de la fabrication",
+            "correct": false
+          },
+          {
+            "text": "début de la fabrication → rangement des tables → distribution du matériel",
+            "correct": false
+          },
+          {
+            "text": "rangement des tables → début de la fabrication → distribution du matériel",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-newspaper",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nDates de préparation du journal du club. Le 9 octobre, les pages sont relues. Le 12 octobre, le journal est distribué. Le 4 octobre, les articles sont remis.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Dates de préparation du journal du club. Le 9 octobre, les pages sont relues. Le 12 octobre, le journal est distribué. Le 4 octobre, les articles sont remis."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:i-newspaper",
+          "sourceTextType": "informational"
+        },
+        "choices": [
+          {
+            "text": "remise des articles → relecture des pages → distribution du journal",
+            "correct": true
+          },
+          {
+            "text": "distribution du journal → remise des articles → relecture des pages",
+            "correct": false
+          },
+          {
+            "text": "relecture des pages → distribution du journal → remise des articles",
+            "correct": false
+          },
+          {
+            "text": "distribution du journal → relecture des pages → remise des articles",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-gym",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nCalendrier prévu pour le gymnase. Le 20 juillet, les activités reprennent. Le 8 juillet, le sol est réparé. Le 2 juillet, le gymnase ferme.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Calendrier prévu pour le gymnase. Le 20 juillet, les activités reprennent. Le 8 juillet, le sol est réparé. Le 2 juillet, le gymnase ferme."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:i-gym",
+          "sourceTextType": "informational"
+        },
+        "choices": [
+          {
+            "text": "fermeture du gymnase → réparation du sol → reprise des activités",
+            "correct": true
+          },
+          {
+            "text": "reprise des activités → fermeture du gymnase → réparation du sol",
+            "correct": false
+          },
+          {
+            "text": "réparation du sol → reprise des activités → fermeture du gymnase",
+            "correct": false
+          },
+          {
+            "text": "reprise des activités → réparation du sol → fermeture du gymnase",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-festival",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nProgramme du festival pour cette journée. À 11 h, une lecture commence. À 20 h, un concert débute. À 15 h, un film est projeté.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Programme du festival pour cette journée. À 11 h, une lecture commence. À 20 h, un concert débute. À 15 h, un film est projeté."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:i-festival",
+          "sourceTextType": "informational"
+        },
+        "choices": [
+          {
+            "text": "début de la lecture → projection du film → début du concert",
+            "correct": true
+          },
+          {
+            "text": "début du concert → début de la lecture → projection du film",
+            "correct": false
+          },
+          {
+            "text": "projection du film → début du concert → début de la lecture",
+            "correct": false
+          },
+          {
+            "text": "début du concert → projection du film → début de la lecture",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-survey",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe défends ce calendrier : demander d’abord leur avis aux élèves permettra de choisir une activité qui leur plaît. Le 9 mars, les inscriptions ouvriront. Le 3 mars, un sondage aura lieu. Le 6 mars, le conseil choisira l’activité.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je défends ce calendrier : demander d’abord leur avis aux élèves permettra de choisir une activité qui leur plaît. Le 9 mars, les inscriptions ouvriront. Le 3 mars, un sondage aura lieu. Le 6 mars, le conseil choisira l’activité."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:a-survey",
+          "sourceTextType": "argumentative"
+        },
+        "choices": [
+          {
+            "text": "sondage des élèves → choix de l’activité → ouverture des inscriptions",
+            "correct": true
+          },
+          {
+            "text": "ouverture des inscriptions → sondage des élèves → choix de l’activité",
+            "correct": false
+          },
+          {
+            "text": "choix de l’activité → ouverture des inscriptions → sondage des élèves",
+            "correct": false
+          },
+          {
+            "text": "ouverture des inscriptions → choix de l’activité → sondage des élèves",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-play",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nGardons cette organisation : une répétition avant le spectacle aidera chacun à connaître sa place. Le 5 juin, une répétition aura lieu. Le 8 juin, nous jouerons devant les familles. Le 2 juin, les rôles seront distribués.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Gardons cette organisation : une répétition avant le spectacle aidera chacun à connaître sa place. Le 5 juin, une répétition aura lieu. Le 8 juin, nous jouerons devant les familles. Le 2 juin, les rôles seront distribués."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:a-play",
+          "sourceTextType": "argumentative"
+        },
+        "choices": [
+          {
+            "text": "distribution des rôles → répétition → spectacle devant les familles",
+            "correct": true
+          },
+          {
+            "text": "spectacle devant les familles → distribution des rôles → répétition",
+            "correct": false
+          },
+          {
+            "text": "répétition → spectacle devant les familles → distribution des rôles",
+            "correct": false
+          },
+          {
+            "text": "spectacle devant les familles → répétition → distribution des rôles",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-repair",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe soutiens ce programme : réparer les livres avant de les prêter évitera de perdre leurs pages. Vendredi de la même semaine, le prêt reprendra. Mercredi, nous les réparerons. Lundi, nous trierons les livres.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je soutiens ce programme : réparer les livres avant de les prêter évitera de perdre leurs pages. Vendredi de la même semaine, le prêt reprendra. Mercredi, nous les réparerons. Lundi, nous trierons les livres."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:a-repair",
+          "sourceTextType": "argumentative"
+        },
+        "choices": [
+          {
+            "text": "tri des livres → réparation des livres → reprise du prêt",
+            "correct": true
+          },
+          {
+            "text": "reprise du prêt → tri des livres → réparation des livres",
+            "correct": false
+          },
+          {
+            "text": "réparation des livres → reprise du prêt → tri des livres",
+            "correct": false
+          },
+          {
+            "text": "reprise du prêt → réparation des livres → tri des livres",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-canteen",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nEssayons le menu avant de décider : les avis recueillis aideront à l’améliorer. Le 10 novembre, le nouveau menu sera servi. Le 15 novembre, le menu définitif sera choisi. Le 12 novembre, les avis seront recueillis.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Essayons le menu avant de décider : les avis recueillis aideront à l’améliorer. Le 10 novembre, le nouveau menu sera servi. Le 15 novembre, le menu définitif sera choisi. Le 12 novembre, les avis seront recueillis."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:a-canteen",
+          "sourceTextType": "argumentative"
+        },
+        "choices": [
+          {
+            "text": "essai du menu → recueil des avis → choix du menu définitif",
+            "correct": true
+          },
+          {
+            "text": "choix du menu définitif → essai du menu → recueil des avis",
+            "correct": false
+          },
+          {
+            "text": "recueil des avis → choix du menu définitif → essai du menu",
+            "correct": false
+          },
+          {
+            "text": "choix du menu définitif → recueil des avis → essai du menu",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-garden",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nRespectons ces étapes : préparer la terre avant de semer facilitera le travail. À 14 h, nous installerons les étiquettes. À 9 h, nous préparerons la terre. À 11 h, nous sèmerons les graines.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Respectons ces étapes : préparer la terre avant de semer facilitera le travail. À 14 h, nous installerons les étiquettes. À 9 h, nous préparerons la terre. À 11 h, nous sèmerons les graines."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:a-garden",
+          "sourceTextType": "argumentative"
+        },
+        "choices": [
+          {
+            "text": "préparation de la terre → semis des graines → installation des étiquettes",
+            "correct": true
+          },
+          {
+            "text": "installation des étiquettes → préparation de la terre → semis des graines",
+            "correct": false
+          },
+          {
+            "text": "semis des graines → installation des étiquettes → préparation de la terre",
+            "correct": false
+          },
+          {
+            "text": "installation des étiquettes → semis des graines → préparation de la terre",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-trip",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe recommande ce programme : partir tôt nous laissera plus de temps pour visiter. À 10 h, la visite commencera. À 16 h, nous reprendrons le car. À 7 h, le car partira.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je recommande ce programme : partir tôt nous laissera plus de temps pour visiter. À 10 h, la visite commencera. À 16 h, nous reprendrons le car. À 7 h, le car partira."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:a-trip",
+          "sourceTextType": "argumentative"
+        },
+        "choices": [
+          {
+            "text": "départ du car → début de la visite → départ pour le retour",
+            "correct": true
+          },
+          {
+            "text": "départ pour le retour → départ du car → début de la visite",
+            "correct": false
+          },
+          {
+            "text": "début de la visite → départ pour le retour → départ du car",
+            "correct": false
+          },
+          {
+            "text": "départ pour le retour → début de la visite → départ du car",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-posters",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nRelisons les affiches avant de les poser : nous éviterons ainsi de diffuser des erreurs. Le 11 janvier, elles seront posées dans le quartier. Le 7 janvier, une équipe les relira. Le 4 janvier, les affiches seront rédigées.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Relisons les affiches avant de les poser : nous éviterons ainsi de diffuser des erreurs. Le 11 janvier, elles seront posées dans le quartier. Le 7 janvier, une équipe les relira. Le 4 janvier, les affiches seront rédigées."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:a-posters",
+          "sourceTextType": "argumentative"
+        },
+        "choices": [
+          {
+            "text": "rédaction des affiches → relecture des affiches → pose des affiches",
+            "correct": true
+          },
+          {
+            "text": "pose des affiches → rédaction des affiches → relecture des affiches",
+            "correct": false
+          },
+          {
+            "text": "relecture des affiches → pose des affiches → rédaction des affiches",
+            "correct": false
+          },
+          {
+            "text": "pose des affiches → relecture des affiches → rédaction des affiches",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-bikes",
+      "item": {
+        "nodeKey": "ordonner_evenements_explicites",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nSuivons ce programme : essayer les vélos avant la sortie permettra de repérer les problèmes. Mardi, les vélos seront vérifiés. Dimanche de la même semaine, le groupe partira en sortie. Jeudi, un essai aura lieu dans la cour.\n\nQuel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Suivons ce programme : essayer les vélos avant la sortie permettra de repérer les problèmes. Mardi, les vélos seront vérifiés. Dimanche de la même semaine, le groupe partira en sortie. Jeudi, un essai aura lieu dans la cour."
+            ]
+          },
+          "sourceTextKey": "v3-explicit-chronology:a-bikes",
+          "sourceTextType": "argumentative"
+        },
+        "choices": [
+          {
+            "text": "vérification des vélos → essai dans la cour → sortie du groupe",
+            "correct": true
+          },
+          {
+            "text": "sortie du groupe → vérification des vélos → essai dans la cour",
+            "correct": false
+          },
+          {
+            "text": "essai dans la cour → sortie du groupe → vérification des vélos",
+            "correct": false
+          },
+          {
+            "text": "sortie du groupe → essai dans la cour → vérification des vélos",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "explicit-event-order",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-explicit-chronology:n-library",
+      "itemChecksum": "sha256:2e5ecc117d562b171e225dbb137716ebe6c934aa1ac0ad4db14d7bda5be83541",
+      "facetKey": "ordonner_evenements_explicites::text_type:narrative",
+      "contextKey": "passage:v3-explicit-chronology:n-library",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-rehearsal",
+      "itemChecksum": "sha256:f1639f15a4d70d682eadc416f690821dfd3a52be1d06776e90936e4e7d0f0f1d",
+      "facetKey": "ordonner_evenements_explicites::text_type:narrative",
+      "contextKey": "passage:v3-explicit-chronology:n-rehearsal",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-comic",
+      "itemChecksum": "sha256:8a9885500f05377d6e17977349174b158dea857d323a382c168468fe6a34a650",
+      "facetKey": "ordonner_evenements_explicites::text_type:narrative",
+      "contextKey": "passage:v3-explicit-chronology:n-comic",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-match",
+      "itemChecksum": "sha256:f50800ba00b6f6dc81732c9f85f4d9a87343ac76ec6019f4bcc73cf70f3730de",
+      "facetKey": "ordonner_evenements_explicites::text_type:narrative",
+      "contextKey": "passage:v3-explicit-chronology:n-match",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-bike",
+      "itemChecksum": "sha256:74f5673ba5af6fe6bf5c7a147503c3e9655e77fe84693b15a55bbda04023db3f",
+      "facetKey": "ordonner_evenements_explicites::text_type:narrative",
+      "contextKey": "passage:v3-explicit-chronology:n-bike",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-cake",
+      "itemChecksum": "sha256:dee3fb15f6d4205a74897b1fbea3e024c1add31d03a1586d9885be2c9e76b838",
+      "facetKey": "ordonner_evenements_explicites::text_type:narrative",
+      "contextKey": "passage:v3-explicit-chronology:n-cake",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-video",
+      "itemChecksum": "sha256:922d9e3f791150695a87168f51a1bb08ef6cfab591c795656061d850e1a33c39",
+      "facetKey": "ordonner_evenements_explicites::text_type:narrative",
+      "contextKey": "passage:v3-explicit-chronology:n-video",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:n-lost-scarf",
+      "itemChecksum": "sha256:05b4fd4e07e03702ef1bc193ec5f2439a1356787d20e97f03875e1bee0a67eea",
+      "facetKey": "ordonner_evenements_explicites::text_type:narrative",
+      "contextKey": "passage:v3-explicit-chronology:n-lost-scarf",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-exhibition",
+      "itemChecksum": "sha256:fc4a7e06cae0d4a7ca8a459316faeba51cc0647280c3a7b76ace29662166029d",
+      "facetKey": "ordonner_evenements_explicites::text_type:informational",
+      "contextKey": "passage:v3-explicit-chronology:i-exhibition",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-borrowing",
+      "itemChecksum": "sha256:3c5fbe721ba0cc05e3622294e4fa422360fb994477adf75f93ec45fe258bc0a1",
+      "facetKey": "ordonner_evenements_explicites::text_type:informational",
+      "contextKey": "passage:v3-explicit-chronology:i-borrowing",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-club",
+      "itemChecksum": "sha256:7c7ebcd69985bcb1117ec60c0cfd3722c8d7acca5d64e88f575eb48fa3eb0fe3",
+      "facetKey": "ordonner_evenements_explicites::text_type:informational",
+      "contextKey": "passage:v3-explicit-chronology:i-club",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-competition",
+      "itemChecksum": "sha256:00306b70e8ce45e48301e5296994d661340f20b6761198ca07c86205494577c9",
+      "facetKey": "ordonner_evenements_explicites::text_type:informational",
+      "contextKey": "passage:v3-explicit-chronology:i-competition",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-workshop",
+      "itemChecksum": "sha256:a5d479507683b98628485722fd6f2d23c39ab5873029d3cbd06a5e25824ea905",
+      "facetKey": "ordonner_evenements_explicites::text_type:informational",
+      "contextKey": "passage:v3-explicit-chronology:i-workshop",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-newspaper",
+      "itemChecksum": "sha256:307c8fdff78a426ce3156a63e0733bcb49cdb27aa625aa4f4a1f65debbe469b2",
+      "facetKey": "ordonner_evenements_explicites::text_type:informational",
+      "contextKey": "passage:v3-explicit-chronology:i-newspaper",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-gym",
+      "itemChecksum": "sha256:4d3ef9944b8aa5f0ee6f017f1f4fc0cb31690d03ebf20c24d13445888b73555f",
+      "facetKey": "ordonner_evenements_explicites::text_type:informational",
+      "contextKey": "passage:v3-explicit-chronology:i-gym",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:i-festival",
+      "itemChecksum": "sha256:1bb2427507e89653db45f7ae08c66926ccfd61d73740c5f94a94eb94e4dc836c",
+      "facetKey": "ordonner_evenements_explicites::text_type:informational",
+      "contextKey": "passage:v3-explicit-chronology:i-festival",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-survey",
+      "itemChecksum": "sha256:f1870244e90ff1ce8993f28a8467c9afdd2034dabdb83da6ee1af29f32ba6691",
+      "facetKey": "ordonner_evenements_explicites::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-chronology:a-survey",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-play",
+      "itemChecksum": "sha256:c7264df2ad19e299f756e42cbd101798770acb563a3e2fd78d93cddcec47bcad",
+      "facetKey": "ordonner_evenements_explicites::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-chronology:a-play",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-repair",
+      "itemChecksum": "sha256:cc4091a6bdbb64505fe597376ba09cad3453b6220356f0cd9d12ff360b0a7b70",
+      "facetKey": "ordonner_evenements_explicites::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-chronology:a-repair",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-canteen",
+      "itemChecksum": "sha256:6b5bef412aaaea77e7843dfd54df97a6beed6b3ed7c5a9698f3d00a04a54d511",
+      "facetKey": "ordonner_evenements_explicites::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-chronology:a-canteen",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-garden",
+      "itemChecksum": "sha256:71b4e1610005f656a791f2dd277fe48e38b37d5905fd56740dc3f3badf76a6fc",
+      "facetKey": "ordonner_evenements_explicites::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-chronology:a-garden",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-trip",
+      "itemChecksum": "sha256:e52313448199764e26a14005448a8394a53f93f93178b68f61192a25f1541032",
+      "facetKey": "ordonner_evenements_explicites::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-chronology:a-trip",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-posters",
+      "itemChecksum": "sha256:8ef41983d7d096be71f874e2a265dbef522621427f980d76b489c24543eddd71",
+      "facetKey": "ordonner_evenements_explicites::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-chronology:a-posters",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    },
+    {
+      "itemKey": "v3-explicit-chronology:a-bikes",
+      "itemChecksum": "sha256:f666951fdcfc78d3cf92a6248eb1113784cc71abbbbce7ababddfeff4a759758",
+      "facetKey": "ordonner_evenements_explicites::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-chronology:a-bikes",
+      "reason": "Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées."
+    }
+  ],
+  "checksum": "sha256:42d17805074e8c460a312cdccd05b14fb7909233370c4f1c0fd869ab6b01bb12"
+}

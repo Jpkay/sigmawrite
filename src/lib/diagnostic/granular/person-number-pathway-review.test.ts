@@ -1,0 +1,87 @@
+import {readFileSync} from "node:fs";
+import {expect,it} from "vitest";
+import {checksum} from "@/lib/taxonomy/validate";
+import {validateCanonicalDiagnosticBank} from "../item-bank";
+import {assembleDraftBank} from "./assemble-drafts";
+import {adaptV3ForAssessment} from "./v3-adapter";
+import {PERSON_NUMBER_TEACHING} from "./person-number-teaching";
+import {PERSON_NUMBER_DRAFTS,PERSON_NUMBER_LABELS} from "./person-number-drafts";
+import {reviewPersonNumberPathways} from "./person-number-pathway-review";
+const read=(path:string)=>JSON.parse(readFileSync(path,"utf8"));
+const artifact=read("generated/french-taxonomy-v3.json"),base=read("generated/diagnostic-bank-v3-draft.json");
+const expansion=read("generated/french-v3-person-number-expansion.json");
+const {bank,annotations}=assembleDraftBank(base,artifact.taxonomy,[expansion]);
+const assessment=adaptV3ForAssessment({artifact,bank});
+it("maps every subject pattern to a plain replacement-pronoun choice",()=>{
+ expect(PERSON_NUMBER_DRAFTS).toHaveLength(24);
+ for(const label of PERSON_NUMBER_LABELS)expect(PERSON_NUMBER_DRAFTS.filter(draft=>draft.personNumberGroup===label)).toHaveLength(4);
+ expect(PERSON_NUMBER_DRAFTS.find(draft=>draft.key==="on-nous")?.answer).toBe("est");
+ expect(PERSON_NUMBER_DRAFTS.find(draft=>draft.key==="collectif")?.answer).toBe("va");
+ expect(PERSON_NUMBER_DRAFTS.find(draft=>draft.key==="vous-politesse")?.answer).toBe("êtes");
+ expect(PERSON_NUMBER_DRAFTS.find(draft=>draft.key==="vous-moi")?.answer).toBe("avons");
+ for(const entry of expansion.items){
+  expect(entry.item.choices).toHaveLength(6);
+  expect(new Set(entry.item.choices?.map((choice:{text:string})=>choice.text)).size).toBe(6);
+  expect(entry.item.promptFr).toContain("Complète avec la bonne forme");
+  expect(entry.item.choices?.some((choice:{text:string})=>/personne du|singulier|pluriel/i.test(choice.text))).toBe(false);
+  expect(entry.reviewStatus).toBe("needs_human_review");
+ }
+ const eligible=validateCanonicalDiagnosticBank(bank,artifact.taxonomy).eligibleItemKeys;
+ expect(eligible.some(key=>key.startsWith("v3-person-number:"))).toBe(false);
+});
+it("builds natural, capitalized sentences when each answer is inserted",()=>{
+ expect(PERSON_NUMBER_DRAFTS.map(draft=>draft.exerciseSentence.replace("___",draft.answer))).toEqual([
+  "Je vais chercher un pinceau.",
+  "Je suis près des enceintes.",
+  "Je suis encore occupé.",
+  "Je vais acheter les ingrédients.",
+  "Tu as plusieurs choix.",
+  "Tu es presque prêt.",
+  "Tu vas suivre le panneau.",
+  "Tu as cinq minutes pour parler.",
+  "Le robot va tourner à gauche.",
+  "Elle a encore de la peinture.",
+  "On est prêts à commencer.",
+  "La foule va quitter la salle.",
+  "Nous avons beaucoup d’idées.",
+  "Toi et moi sommes près de la fenêtre.",
+  "Elle et moi allons choisir les tissus.",
+  "Vous et moi avons le même programme.",
+  "Vous allez entrer ensemble.",
+  "Vous êtes attendue dans le bureau.",
+  "Toi et elle avez tout le matériel.",
+  "Lui et toi êtes sur le terrain.",
+  "Elles ont des places au premier rang.",
+  "Lina et Sami vont rejoindre le groupe.",
+  "Les lampes sont près des rideaux.",
+  "Lui et elle ont deux pots de peinture.",
+ ]);
+});
+it("reserves disjoint checks, excludes taught sentences and never promotes the draft",()=>{
+ const before=checksum({assessment,bank,annotations,lessons:PERSON_NUMBER_TEACHING});
+ const row=reviewPersonNumberPathways(assessment,bank,artifact.taxonomy,annotations,PERSON_NUMBER_TEACHING).rows[0];
+ expect(row).toMatchObject({skillId:"distinguer_personne_nombre::reading-receptive",unapprovedCandidates:24,distinctTargetSentences:24,excludedTeachingOverlapQuestionIds:[],proposedAllocationStatus:"allocated",releaseReady:false});
+ expect(row.proposedInitialQuestions).toHaveLength(12);expect(row.proposedLaterQuestions).toHaveLength(12);
+ expect(row.proposedLaterQuestions.some(id=>row.proposedInitialQuestions.includes(id))).toBe(false);
+ expect(checksum({assessment,bank,annotations,lessons:PERSON_NUMBER_TEACHING})).toBe(before);
+ const lessons=structuredClone(PERSON_NUMBER_TEACHING),sentence=PERSON_NUMBER_DRAFTS[0].exerciseSentence;
+ lessons[0].steps.push({exampleFr:sentence,explanationFr:"Exemple montré dans ce test."});lessons[0].materialExposure!.sentences!.push(sentence);
+ const after=reviewPersonNumberPathways(assessment,bank,artifact.taxonomy,annotations,lessons).rows[0];
+ expect(after.excludedTeachingOverlapQuestionIds).toContain("v3-person-number:je-dessine");
+ expect([...after.proposedInitialQuestions,...after.proposedLaterQuestions]).not.toContain("v3-person-number:je-dessine");
+});
+it("keeps every grammatical combination in both pools and exposes a missing category",()=>{
+ const row=reviewPersonNumberPathways(assessment,bank,artifact.taxonomy,annotations,PERSON_NUMBER_TEACHING).rows[0];
+ expect(row.groupBalance).toBe("balanced");
+ expect(row.groupCoverage).toHaveLength(6);
+ for(const group of row.groupCoverage??[])expect(group).toMatchObject({initial:2,later:2});
+ const lessons=structuredClone(PERSON_NUMBER_TEACHING);
+ for(const draft of PERSON_NUMBER_DRAFTS.filter(draft=>draft.personNumberGroup==="listener-one")){
+  lessons[0].steps.push({exampleFr:draft.exerciseSentence,explanationFr:"Exemple montré."});lessons[0].materialExposure!.sentences!.push(draft.exerciseSentence);
+ }
+ const missing=reviewPersonNumberPathways(assessment,bank,artifact.taxonomy,annotations,lessons).rows[0];
+ expect(missing.proposedAllocationStatus).toBe("allocated");
+ expect(missing.groupBalance).toBe("insufficient_group_coverage");
+ expect(missing.groupCoverage?.find(group=>group.group==="listener-one")).toMatchObject({initial:0,later:0});
+ expect(missing.excludedTeachingOverlapQuestionIds).toHaveLength(4);
+});

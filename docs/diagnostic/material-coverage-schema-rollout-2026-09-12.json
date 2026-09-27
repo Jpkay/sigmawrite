@@ -1,0 +1,69 @@
+{
+  "status": "schema_applied_capture_contract_disabled",
+  "projectRef": "pwztnrirtrnicywvdbpz",
+  "verifiedAt": "2026-09-12T06:20:44.626860+00:00",
+  "sourceCommit": "f6d754bea7e52d4dd4ae0ff5aa07a6c29033d23a",
+  "migrations": [
+    {
+      "version": "20260912080000",
+      "file": "20260912080000_material_coverage_receipts.sql",
+      "sha256": "53f3be7943773ce50178d5d97d9a3eac2cb5202942fd247743e1f0bed440f1f9"
+    },
+    {
+      "version": "20260912083000",
+      "file": "20260912083000_material_delivery_journal.sql",
+      "sha256": "157ce214dab31c034e0ec650a72ab647eb358b91ec3cf788428e0df772c22ccb"
+    },
+    {
+      "version": "20260912090000",
+      "file": "20260912090000_prior_material_delivery_text.sql",
+      "sha256": "3339edfc11d6e25affe15cdc3ed2eca9cbb96488f06edda8337c543b6e95a002"
+    }
+  ],
+  "databaseVerification": {
+    "anonymous_can_read_history": false,
+    "coverage_epochs": 0,
+    "demo_row_checksum": "c873fbe83b1b3a0f7f3077dade81feb4",
+    "enabled_contracts": 0,
+    "migrations": [
+      {
+        "source_md5": "3ca81947cb4ffc5d7eab3b1667d981c9",
+        "version": "20260912080000"
+      },
+      {
+        "source_md5": "04acf958e10000930b3eae7ebf28ac81",
+        "version": "20260912083000"
+      },
+      {
+        "source_md5": "e7c0a8cacfa8f13863e64dd9aad11bb6",
+        "version": "20260912090000"
+      }
+    ],
+    "service_can_enable_contract": false,
+    "service_can_journal": true,
+    "service_can_overwrite_proof": false,
+    "student_can_journal": false,
+    "student_can_read_journal": false
+  },
+  "apiChecks": [
+    {
+      "rpc": "student_material_history_complete",
+      "result": false
+    },
+    {
+      "rpc": "prior_student_material_delivery_text",
+      "result": []
+    }
+  ],
+  "demoVerification": {
+    "onboardingRedirectsToLessons": true,
+    "lessons": 11,
+    "firstLessonOpens": true,
+    "diagnosticAnswers": 48,
+    "wrongAnswers": 17,
+    "studentRowChecksumUnchanged": true
+  },
+  "applicationCodeDeployed": false,
+  "productionIssueResolved": false,
+  "next": "Deploy the capture application code with coverage disabled, verify actual journals at all supported boundaries, and complete semantic/route/audio coverage before enabling the contract."
+}

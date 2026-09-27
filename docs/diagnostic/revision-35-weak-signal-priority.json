@@ -1,0 +1,608 @@
+{
+  "candidateChecksum": "sha256:add7e7afe08004249962e9136babc8776c6772699be823c64e4e8e2db5fad38d",
+  "method": "Pure server-state simulation using actual candidate pools, deterministic correct/incorrect skill profiles and expected response times; synthetic complete starting history with a ledger retaining repeated exposures; not browser, grading, database, or pedagogical validation",
+  "unchangedDiagnosticResults": true,
+  "profiles": [
+    {
+      "profile": "present_avoir_known_aller_weak",
+      "targetedFollowup": [
+        {
+          "skillId": "produire_present_indicatif::writing-controlled-production::verb:aller",
+          "resultStatus": "uncertain",
+          "directlyPlanned": [],
+          "prerequisiteActivities": [
+            {
+              "skillId": "reconnaitre_radical_terminaison::reading-receptive",
+              "titleFr": "Segmenter une forme verbale"
+            },
+            {
+              "skillId": "reconnaitre_present_indicatif::reading-receptive",
+              "titleFr": "Reconnaître le présent de l'indicatif"
+            }
+          ],
+          "blocked": true
+        }
+      ],
+      "firstActivities": [
+        {
+          "skillId": "reconnaitre_radical_terminaison::reading-receptive",
+          "activityId": "a239a632-93da-5d5a-96a2-a728df4fe7b0",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Segmenter une forme verbale",
+          "href": "/student/diagnostic?activity=a239a632-93da-5d5a-96a2-a728df4fe7b0",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "construction_accord_nom_adjectif::reading-analysis",
+          "activityId": "cbbc6312-82d2-5f16-9c2c-3b9f93134ed9",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Analyser l'accord nom-adjectif",
+          "href": "/student/diagnostic?activity=cbbc6312-82d2-5f16-9c2c-3b9f93134ed9",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Reconnaître une phrase canonique",
+          "href": "/student/diagnostic?activity=d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
+          "activityId": "40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
+          "href": "/student/diagnostic?activity=40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "reconnaitre_present_indicatif::reading-receptive",
+          "activityId": "e2008b40-52b1-579e-aadb-cf322163330c",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Reconnaître le présent de l'indicatif",
+          "href": "/student/diagnostic?activity=e2008b40-52b1-579e-aadb-cf322163330c",
+          "estimatedMinutes": 1
+        }
+      ],
+      "violations": []
+    },
+    {
+      "profile": "determiner_agreement_known_subject_agreement_weak",
+      "targetedFollowup": [
+        {
+          "skillId": "construction_accord_sujet_verbe::reading-analysis::construction:adjacent",
+          "resultStatus": "uncertain",
+          "directlyPlanned": [],
+          "prerequisiteActivities": [
+            {
+              "skillId": "identifier_sujet_verbe::reading-receptive",
+              "titleFr": "Identifier le sujet du verbe"
+            }
+          ],
+          "blocked": true
+        }
+      ],
+      "firstActivities": [
+        {
+          "skillId": "identifier_sujet_verbe::reading-receptive",
+          "activityId": "b7bc4a15-c40d-57b5-a8a0-90dcebbb9a7b",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Identifier le sujet du verbe",
+          "href": "/student/diagnostic?activity=b7bc4a15-c40d-57b5-a8a0-90dcebbb9a7b",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "construction_accord_nom_adjectif::reading-analysis",
+          "activityId": "cbbc6312-82d2-5f16-9c2c-3b9f93134ed9",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Analyser l'accord nom-adjectif",
+          "href": "/student/diagnostic?activity=cbbc6312-82d2-5f16-9c2c-3b9f93134ed9",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Reconnaître une phrase canonique",
+          "href": "/student/diagnostic?activity=d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
+          "activityId": "40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
+          "href": "/student/diagnostic?activity=40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "distinguer_infinitif_participe::reading-receptive",
+          "activityId": "a1e7821f-4878-5cbf-810d-96bfd87e7087",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Distinguer infinitif/participe passé",
+          "href": "/student/diagnostic?activity=a1e7821f-4878-5cbf-810d-96bfd87e7087",
+          "estimatedMinutes": 1
+        }
+      ],
+      "violations": []
+    },
+    {
+      "profile": "m_before_mbp_known_cedilla_weak",
+      "targetedFollowup": [
+        {
+          "skillId": "employer_cedille::writing-controlled-production",
+          "resultStatus": "uncertain",
+          "directlyPlanned": [],
+          "prerequisiteActivities": [
+            {
+              "skillId": "segmenter_syllabes_ecrites::reading-receptive",
+              "titleFr": "Segmenter un mot en syllabes écrites"
+            },
+            {
+              "skillId": "segmenter_syllabes_ecrites::writing-controlled-production",
+              "titleFr": "Segmenter un mot en syllabes écrites"
+            }
+          ],
+          "blocked": false
+        }
+      ],
+      "firstActivities": [
+        {
+          "skillId": "segmenter_syllabes_ecrites::reading-receptive",
+          "activityId": "74f068f3-750d-55d0-beb9-8d4b11924a64",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Segmenter un mot en syllabes écrites",
+          "href": "/student/diagnostic?activity=74f068f3-750d-55d0-beb9-8d4b11924a64",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Reconnaître une phrase canonique",
+          "href": "/student/diagnostic?activity=d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
+          "activityId": "40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
+          "href": "/student/diagnostic?activity=40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "distinguer_infinitif_participe::reading-receptive",
+          "activityId": "a1e7821f-4878-5cbf-810d-96bfd87e7087",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Distinguer infinitif/participe passé",
+          "href": "/student/diagnostic?activity=a1e7821f-4878-5cbf-810d-96bfd87e7087",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "segmenter_syllabes_ecrites::writing-controlled-production",
+          "activityId": "794c125e-1697-5a38-8334-15719b5762b7",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Segmenter un mot en syllabes écrites",
+          "href": "/student/diagnostic?activity=794c125e-1697-5a38-8334-15719b5762b7",
+          "estimatedMinutes": 1
+        }
+      ],
+      "violations": []
+    },
+    {
+      "profile": "literal_chronology_known_causal_inference_weak",
+      "targetedFollowup": [
+        {
+          "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+          "resultStatus": "uncertain",
+          "directlyPlanned": [],
+          "prerequisiteActivities": [
+            {
+              "skillId": "localiser_information_explicite::all-receptive::text_type:narrative",
+              "titleFr": "Localiser une information explicite — Récit bref"
+            }
+          ],
+          "blocked": true
+        }
+      ],
+      "firstActivities": [
+        {
+          "skillId": "localiser_information_explicite::all-receptive::text_type:narrative",
+          "activityId": "8f03a1cf-6c50-5470-8ae0-6b2a26da0a26",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Localiser une information explicite — Récit bref",
+          "href": "/student/diagnostic?activity=8f03a1cf-6c50-5470-8ae0-6b2a26da0a26",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "construction_accord_nom_adjectif::reading-analysis",
+          "activityId": "cbbc6312-82d2-5f16-9c2c-3b9f93134ed9",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Analyser l'accord nom-adjectif",
+          "href": "/student/diagnostic?activity=cbbc6312-82d2-5f16-9c2c-3b9f93134ed9",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Reconnaître une phrase canonique",
+          "href": "/student/diagnostic?activity=d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "distinguer_infinitif_participe::reading-receptive",
+          "activityId": "a1e7821f-4878-5cbf-810d-96bfd87e7087",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Distinguer infinitif/participe passé",
+          "href": "/student/diagnostic?activity=a1e7821f-4878-5cbf-810d-96bfd87e7087",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
+          "activityId": "40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
+          "href": "/student/diagnostic?activity=40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "estimatedMinutes": 1
+        }
+      ],
+      "violations": []
+    },
+    {
+      "profile": "all_correct",
+      "targetedFollowup": null,
+      "firstActivities": [
+        {
+          "skillId": "construction_accord_nom_adjectif::reading-analysis",
+          "activityId": "cbbc6312-82d2-5f16-9c2c-3b9f93134ed9",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Analyser l'accord nom-adjectif",
+          "href": "/student/diagnostic?activity=cbbc6312-82d2-5f16-9c2c-3b9f93134ed9",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Reconnaître une phrase canonique",
+          "href": "/student/diagnostic?activity=d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
+          "activityId": "40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
+          "href": "/student/diagnostic?activity=40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "distinguer_infinitif_participe::reading-receptive",
+          "activityId": "a1e7821f-4878-5cbf-810d-96bfd87e7087",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Distinguer infinitif/participe passé",
+          "href": "/student/diagnostic?activity=a1e7821f-4878-5cbf-810d-96bfd87e7087",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "construction_accord_nom_adjectif::writing-controlled-production",
+          "activityId": "86edb4bb-6999-5882-a6fd-e63ae512f024",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Analyser l'accord nom-adjectif",
+          "href": "/student/diagnostic?activity=86edb4bb-6999-5882-a6fd-e63ae512f024",
+          "estimatedMinutes": 1
+        }
+      ],
+      "violations": []
+    },
+    {
+      "profile": "all_incorrect",
+      "targetedFollowup": null,
+      "firstActivities": [
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "ff1b162f-98e6-50a0-bd67-d0bc11f59cf2",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Repérer l’ordre d’une phrase simple",
+          "href": "/student/diagnostic?activity=ff1b162f-98e6-50a0-bd67-d0bc11f59cf2",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:canonical-sentence:recognition"
+        },
+        {
+          "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
+          "activityId": "9c933995-1957-5dbd-80db-32bd7f9d46d8",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Écrire un adjectif au féminin",
+          "href": "/student/diagnostic?activity=9c933995-1957-5dbd-80db-32bd7f9d46d8",
+          "estimatedMinutes": 4,
+          "contentId": "spelling-regular-feminine"
+        },
+        {
+          "skillId": "identifier_sujet_verbe::reading-receptive",
+          "activityId": "fb19bc72-2c05-53ea-b4e7-61112b86caab",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Trouver le sujet complet d’un verbe",
+          "href": "/student/diagnostic?activity=fb19bc72-2c05-53ea-b4e7-61112b86caab",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:identifier_sujet_verbe"
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "activityId": "972cc1d6-1f45-56a2-bdb2-e184759be48f",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Retrouver ce que remplace « le », « la » ou « lui »",
+          "href": "/student/diagnostic?activity=972cc1d6-1f45-56a2-bdb2-e184759be48f",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:reading:resoudre_pronom_objet:narrative"
+        },
+        {
+          "skillId": "construction_phrase_canonique::writing-controlled-production",
+          "activityId": "2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Remettre les groupes d’une phrase dans l’ordre",
+          "href": "/student/diagnostic?activity=2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:canonical-sentence:production"
+        }
+      ],
+      "violations": []
+    },
+    {
+      "profile": "reading_strong",
+      "targetedFollowup": null,
+      "firstActivities": [
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "ff1b162f-98e6-50a0-bd67-d0bc11f59cf2",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Repérer l’ordre d’une phrase simple",
+          "href": "/student/diagnostic?activity=ff1b162f-98e6-50a0-bd67-d0bc11f59cf2",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:canonical-sentence:recognition"
+        },
+        {
+          "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
+          "activityId": "9c933995-1957-5dbd-80db-32bd7f9d46d8",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Écrire un adjectif au féminin",
+          "href": "/student/diagnostic?activity=9c933995-1957-5dbd-80db-32bd7f9d46d8",
+          "estimatedMinutes": 4,
+          "contentId": "spelling-regular-feminine"
+        },
+        {
+          "skillId": "identifier_sujet_verbe::reading-receptive",
+          "activityId": "fb19bc72-2c05-53ea-b4e7-61112b86caab",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Trouver le sujet complet d’un verbe",
+          "href": "/student/diagnostic?activity=fb19bc72-2c05-53ea-b4e7-61112b86caab",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:identifier_sujet_verbe"
+        },
+        {
+          "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
+          "activityId": "40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Déduire un mot grâce à une définition locale — Texte informatif bref",
+          "href": "/student/diagnostic?activity=40aa9cef-49b0-5e36-9571-ec6efb33cfd9",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "construction_phrase_canonique::writing-controlled-production",
+          "activityId": "2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Remettre les groupes d’une phrase dans l’ordre",
+          "href": "/student/diagnostic?activity=2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:canonical-sentence:production"
+        }
+      ],
+      "violations": []
+    },
+    {
+      "profile": "conjugation_strong",
+      "targetedFollowup": null,
+      "firstActivities": [
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "ff1b162f-98e6-50a0-bd67-d0bc11f59cf2",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Repérer l’ordre d’une phrase simple",
+          "href": "/student/diagnostic?activity=ff1b162f-98e6-50a0-bd67-d0bc11f59cf2",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:canonical-sentence:recognition"
+        },
+        {
+          "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
+          "activityId": "9c933995-1957-5dbd-80db-32bd7f9d46d8",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Écrire un adjectif au féminin",
+          "href": "/student/diagnostic?activity=9c933995-1957-5dbd-80db-32bd7f9d46d8",
+          "estimatedMinutes": 4,
+          "contentId": "spelling-regular-feminine"
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "activityId": "972cc1d6-1f45-56a2-bdb2-e184759be48f",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Retrouver ce que remplace « le », « la » ou « lui »",
+          "href": "/student/diagnostic?activity=972cc1d6-1f45-56a2-bdb2-e184759be48f",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:reading:resoudre_pronom_objet:narrative"
+        },
+        {
+          "skillId": "identifier_sujet_verbe::reading-receptive",
+          "activityId": "b7bc4a15-c40d-57b5-a8a0-90dcebbb9a7b",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Identifier le sujet du verbe",
+          "href": "/student/diagnostic?activity=b7bc4a15-c40d-57b5-a8a0-90dcebbb9a7b",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "construction_phrase_canonique::writing-controlled-production",
+          "activityId": "2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Remettre les groupes d’une phrase dans l’ordre",
+          "href": "/student/diagnostic?activity=2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:canonical-sentence:production"
+        }
+      ],
+      "violations": []
+    },
+    {
+      "profile": "recognition_strong",
+      "targetedFollowup": null,
+      "firstActivities": [
+        {
+          "skillId": "construction_phrase_canonique::writing-controlled-production",
+          "activityId": "2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Remettre les groupes d’une phrase dans l’ordre",
+          "href": "/student/diagnostic?activity=2c3cc1ce-6207-528e-99e3-9244e7a2daf3",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:canonical-sentence:production"
+        },
+        {
+          "skillId": "orthographier_nasale_on_om::writing-controlled-production",
+          "activityId": "022a81f0-29de-5fc4-971c-a2e2240f9955",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Compléter un mot avec on ou om",
+          "href": "/student/diagnostic?activity=022a81f0-29de-5fc4-971c-a2e2240f9955",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:on-om:production"
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "activityId": "972cc1d6-1f45-56a2-bdb2-e184759be48f",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Retrouver ce que remplace « le », « la » ou « lui »",
+          "href": "/student/diagnostic?activity=972cc1d6-1f45-56a2-bdb2-e184759be48f",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:reading:resoudre_pronom_objet:narrative"
+        },
+        {
+          "skillId": "reconnaitre_radical_terminaison::reading-receptive",
+          "activityId": "a239a632-93da-5d5a-96a2-a728df4fe7b0",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Segmenter une forme verbale",
+          "href": "/student/diagnostic?activity=a239a632-93da-5d5a-96a2-a728df4fe7b0",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "produire_pronom_cod::writing-controlled-production::construction:elision",
+          "activityId": "8b4cfef8-1299-59ca-9222-15dab1379320",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Utiliser l’ devant une voyelle",
+          "href": "/student/diagnostic?activity=8b4cfef8-1299-59ca-9222-15dab1379320",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:cod-pronoun:elision"
+        }
+      ],
+      "violations": []
+    },
+    {
+      "profile": "grammar_strong",
+      "targetedFollowup": null,
+      "firstActivities": [
+        {
+          "skillId": "former_feminin_adjectif_regulier::writing-controlled-production",
+          "activityId": "9c933995-1957-5dbd-80db-32bd7f9d46d8",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Écrire un adjectif au féminin",
+          "href": "/student/diagnostic?activity=9c933995-1957-5dbd-80db-32bd7f9d46d8",
+          "estimatedMinutes": 4,
+          "contentId": "spelling-regular-feminine"
+        },
+        {
+          "skillId": "identifier_sujet_verbe::reading-receptive",
+          "activityId": "fb19bc72-2c05-53ea-b4e7-61112b86caab",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Trouver le sujet complet d’un verbe",
+          "href": "/student/diagnostic?activity=fb19bc72-2c05-53ea-b4e7-61112b86caab",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:identifier_sujet_verbe"
+        },
+        {
+          "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+          "activityId": "972cc1d6-1f45-56a2-bdb2-e184759be48f",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Retrouver ce que remplace « le », « la » ou « lui »",
+          "href": "/student/diagnostic?activity=972cc1d6-1f45-56a2-bdb2-e184759be48f",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:reading:resoudre_pronom_objet:narrative"
+        },
+        {
+          "skillId": "construction_phrase_canonique::reading-analysis",
+          "activityId": "d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "kind": "independent_check",
+          "action": "verify",
+          "titleFr": "Reconnaître une phrase canonique",
+          "href": "/student/diagnostic?activity=d9d54860-2d57-5757-8342-e6f87e55acd8",
+          "estimatedMinutes": 1
+        },
+        {
+          "skillId": "orthographier_nasale_on_om::reading-receptive",
+          "activityId": "98f824f6-88bc-5569-a182-4b7fde520eb5",
+          "kind": "instruction",
+          "action": "learn",
+          "titleFr": "Choisir entre on et om",
+          "href": "/student/diagnostic?activity=98f824f6-88bc-5569-a182-4b7fde520eb5",
+          "estimatedMinutes": 4,
+          "contentId": "french-v3-teaching:on-om:recognition"
+        }
+      ],
+      "violations": []
+    }
+  ]
+}

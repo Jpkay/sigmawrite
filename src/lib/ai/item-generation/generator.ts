@@ -41,7 +41,7 @@ export class MockItemGenerator implements ItemGenerator {
         String(hint.verb),
         hint.tense as Tense,
         hint.person as Person,
-        { gender: hint.gender as "m" | "f" | undefined }
+        { gender: hint.gender as "m" | "f" | undefined, auxiliaryUse: hint.auxiliaryUse as "transitive" | "intransitive" | undefined }
       );
       return {
         nodeKey: spec.nodeKey,

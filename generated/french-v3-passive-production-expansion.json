@@ -1,0 +1,1275 @@
+{
+  "version": "french-v3-passive-production-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-passive-production:1",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (présent). Commence par « Le portail » et termine par « par le gardien ». Garde les mêmes informations. Écris la phrase complète.\n\nLe gardien ferme le portail.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Le portail est fermé par le gardien.",
+        "acceptableAnswers": [
+          "Le portail est fermé par le gardien"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le gardien ferme le portail.",
+              "Le portail est fermé par le gardien."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le gardien ferme le portail.",
+                "Le portail est fermé par le gardien."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Le portail est fermé par le gardien.",
+              "Le portail est fermé par le gardien",
+              "Le portail sont fermé par le gardien.",
+              "Le portail sont fermé par le gardien",
+              "Le portail était fermé par le gardien.",
+              "Le portail était fermé par le gardien",
+              "Le portail étaient fermé par le gardien.",
+              "Le portail étaient fermé par le gardien"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:2",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (présent). Commence par « La veste » et termine par « par la couturière ». Garde les mêmes informations. Écris la phrase complète.\n\nLa couturière répare la veste.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "La veste est réparée par la couturière.",
+        "acceptableAnswers": [
+          "La veste est réparée par la couturière"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La couturière répare la veste.",
+              "La veste est réparée par la couturière."
+            ],
+            "assessed": {
+              "sentences": [
+                "La couturière répare la veste.",
+                "La veste est réparée par la couturière."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "La veste est réparée par la couturière.",
+              "La veste est réparée par la couturière",
+              "La veste sont réparée par la couturière.",
+              "La veste sont réparée par la couturière",
+              "La veste était réparée par la couturière.",
+              "La veste était réparée par la couturière",
+              "La veste étaient réparée par la couturière.",
+              "La veste étaient réparée par la couturière"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:3",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (présent). Commence par « Les dictionnaires » et termine par « par les élèves ». Garde les mêmes informations. Écris la phrase complète.\n\nLes élèves rangent les dictionnaires.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les dictionnaires sont rangés par les élèves.",
+        "acceptableAnswers": [
+          "Les dictionnaires sont rangés par les élèves"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les élèves rangent les dictionnaires.",
+              "Les dictionnaires sont rangés par les élèves."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les élèves rangent les dictionnaires.",
+                "Les dictionnaires sont rangés par les élèves."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les dictionnaires sont rangés par les élèves.",
+              "Les dictionnaires sont rangés par les élèves",
+              "Les dictionnaires est rangés par les élèves.",
+              "Les dictionnaires est rangés par les élèves",
+              "Les dictionnaires était rangés par les élèves.",
+              "Les dictionnaires était rangés par les élèves",
+              "Les dictionnaires étaient rangés par les élèves.",
+              "Les dictionnaires étaient rangés par les élèves"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:4",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (présent). Commence par « Les affiches » et termine par « par le jury ». Garde les mêmes informations. Écris la phrase complète.\n\nLe jury examine les affiches.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les affiches sont examinées par le jury.",
+        "acceptableAnswers": [
+          "Les affiches sont examinées par le jury"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le jury examine les affiches.",
+              "Les affiches sont examinées par le jury."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le jury examine les affiches.",
+                "Les affiches sont examinées par le jury."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les affiches sont examinées par le jury.",
+              "Les affiches sont examinées par le jury",
+              "Les affiches est examinées par le jury.",
+              "Les affiches est examinées par le jury",
+              "Les affiches était examinées par le jury.",
+              "Les affiches était examinées par le jury",
+              "Les affiches étaient examinées par le jury.",
+              "Les affiches étaient examinées par le jury"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:5",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (présent). Commence par « Le chapeau » et termine par « par le vent ». Garde les mêmes informations. Écris la phrase complète.\n\nLe vent emporte le chapeau.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Le chapeau est emporté par le vent.",
+        "acceptableAnswers": [
+          "Le chapeau est emporté par le vent"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le vent emporte le chapeau.",
+              "Le chapeau est emporté par le vent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le vent emporte le chapeau.",
+                "Le chapeau est emporté par le vent."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Le chapeau est emporté par le vent.",
+              "Le chapeau est emporté par le vent",
+              "Le chapeau sont emporté par le vent.",
+              "Le chapeau sont emporté par le vent",
+              "Le chapeau était emporté par le vent.",
+              "Le chapeau était emporté par le vent",
+              "Le chapeau étaient emporté par le vent.",
+              "Le chapeau étaient emporté par le vent"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:6",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (présent). Commence par « La soupe » et termine par « par les bénévoles ». Garde les mêmes informations. Écris la phrase complète.\n\nLes bénévoles distribuent la soupe.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "La soupe est distribuée par les bénévoles.",
+        "acceptableAnswers": [
+          "La soupe est distribuée par les bénévoles"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les bénévoles distribuent la soupe.",
+              "La soupe est distribuée par les bénévoles."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les bénévoles distribuent la soupe.",
+                "La soupe est distribuée par les bénévoles."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "La soupe est distribuée par les bénévoles.",
+              "La soupe est distribuée par les bénévoles",
+              "La soupe sont distribuée par les bénévoles.",
+              "La soupe sont distribuée par les bénévoles",
+              "La soupe était distribuée par les bénévoles.",
+              "La soupe était distribuée par les bénévoles",
+              "La soupe étaient distribuée par les bénévoles.",
+              "La soupe étaient distribuée par les bénévoles"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:7",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (présent). Commence par « Les acteurs » et termine par « par le public ». Garde les mêmes informations. Écris la phrase complète.\n\nLe public applaudit les acteurs.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les acteurs sont applaudis par le public.",
+        "acceptableAnswers": [
+          "Les acteurs sont applaudis par le public"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le public applaudit les acteurs.",
+              "Les acteurs sont applaudis par le public."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le public applaudit les acteurs.",
+                "Les acteurs sont applaudis par le public."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les acteurs sont applaudis par le public.",
+              "Les acteurs sont applaudis par le public",
+              "Les acteurs est applaudis par le public.",
+              "Les acteurs est applaudis par le public",
+              "Les acteurs était applaudis par le public.",
+              "Les acteurs était applaudis par le public",
+              "Les acteurs étaient applaudis par le public.",
+              "Les acteurs étaient applaudis par le public"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:8",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (présent). Commence par « Les revues » et termine par « par la bibliothécaire ». Garde les mêmes informations. Écris la phrase complète.\n\nLa bibliothécaire choisit les revues.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les revues sont choisies par la bibliothécaire.",
+        "acceptableAnswers": [
+          "Les revues sont choisies par la bibliothécaire"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La bibliothécaire choisit les revues.",
+              "Les revues sont choisies par la bibliothécaire."
+            ],
+            "assessed": {
+              "sentences": [
+                "La bibliothécaire choisit les revues.",
+                "Les revues sont choisies par la bibliothécaire."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les revues sont choisies par la bibliothécaire.",
+              "Les revues sont choisies par la bibliothécaire",
+              "Les revues est choisies par la bibliothécaire.",
+              "Les revues est choisies par la bibliothécaire",
+              "Les revues était choisies par la bibliothécaire.",
+              "Les revues était choisies par la bibliothécaire",
+              "Les revues étaient choisies par la bibliothécaire.",
+              "Les revues étaient choisies par la bibliothécaire"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:9",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (imparfait). Commence par « Le navire » et termine par « par le capitaine ». Garde les mêmes informations. Écris la phrase complète.\n\nLe capitaine dirigeait le navire.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Le navire était dirigé par le capitaine.",
+        "acceptableAnswers": [
+          "Le navire était dirigé par le capitaine"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le capitaine dirigeait le navire.",
+              "Le navire était dirigé par le capitaine."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le capitaine dirigeait le navire.",
+                "Le navire était dirigé par le capitaine."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Le navire était dirigé par le capitaine.",
+              "Le navire était dirigé par le capitaine",
+              "Le navire est dirigé par le capitaine.",
+              "Le navire est dirigé par le capitaine",
+              "Le navire sont dirigé par le capitaine.",
+              "Le navire sont dirigé par le capitaine",
+              "Le navire étaient dirigé par le capitaine.",
+              "Le navire étaient dirigé par le capitaine"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:10",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (imparfait). Commence par « La mélodie » et termine par « par les musiciens ». Garde les mêmes informations. Écris la phrase complète.\n\nLes musiciens jouaient la mélodie.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "La mélodie était jouée par les musiciens.",
+        "acceptableAnswers": [
+          "La mélodie était jouée par les musiciens"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les musiciens jouaient la mélodie.",
+              "La mélodie était jouée par les musiciens."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les musiciens jouaient la mélodie.",
+                "La mélodie était jouée par les musiciens."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "La mélodie était jouée par les musiciens.",
+              "La mélodie était jouée par les musiciens",
+              "La mélodie est jouée par les musiciens.",
+              "La mélodie est jouée par les musiciens",
+              "La mélodie sont jouée par les musiciens.",
+              "La mélodie sont jouée par les musiciens",
+              "La mélodie étaient jouée par les musiciens.",
+              "La mélodie étaient jouée par les musiciens"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:11",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (imparfait). Commence par « Les romans » et termine par « par le libraire ». Garde les mêmes informations. Écris la phrase complète.\n\nLe libraire vendait les romans.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les romans étaient vendus par le libraire.",
+        "acceptableAnswers": [
+          "Les romans étaient vendus par le libraire"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le libraire vendait les romans.",
+              "Les romans étaient vendus par le libraire."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le libraire vendait les romans.",
+                "Les romans étaient vendus par le libraire."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les romans étaient vendus par le libraire.",
+              "Les romans étaient vendus par le libraire",
+              "Les romans est vendus par le libraire.",
+              "Les romans est vendus par le libraire",
+              "Les romans sont vendus par le libraire.",
+              "Les romans sont vendus par le libraire",
+              "Les romans était vendus par le libraire.",
+              "Les romans était vendus par le libraire"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:12",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (imparfait). Commence par « Les roses » et termine par « par les jardiniers ». Garde les mêmes informations. Écris la phrase complète.\n\nLes jardiniers arrosaient les roses.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les roses étaient arrosées par les jardiniers.",
+        "acceptableAnswers": [
+          "Les roses étaient arrosées par les jardiniers"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les jardiniers arrosaient les roses.",
+              "Les roses étaient arrosées par les jardiniers."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les jardiniers arrosaient les roses.",
+                "Les roses étaient arrosées par les jardiniers."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les roses étaient arrosées par les jardiniers.",
+              "Les roses étaient arrosées par les jardiniers",
+              "Les roses est arrosées par les jardiniers.",
+              "Les roses est arrosées par les jardiniers",
+              "Les roses sont arrosées par les jardiniers.",
+              "Les roses sont arrosées par les jardiniers",
+              "Les roses était arrosées par les jardiniers.",
+              "Les roses était arrosées par les jardiniers"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:13",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (futur simple). Commence par « Le ballon » et termine par « par l’arbitre ». Garde les mêmes informations. Écris la phrase complète.\n\nL’arbitre vérifiera le ballon.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Le ballon sera vérifié par l’arbitre.",
+        "acceptableAnswers": [
+          "Le ballon sera vérifié par l’arbitre"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "L’arbitre vérifiera le ballon.",
+              "Le ballon sera vérifié par l’arbitre."
+            ],
+            "assessed": {
+              "sentences": [
+                "L’arbitre vérifiera le ballon.",
+                "Le ballon sera vérifié par l’arbitre."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Le ballon sera vérifié par l’arbitre.",
+              "Le ballon sera vérifié par l’arbitre",
+              "Le ballon est vérifié par l’arbitre.",
+              "Le ballon est vérifié par l’arbitre",
+              "Le ballon sont vérifié par l’arbitre.",
+              "Le ballon sont vérifié par l’arbitre",
+              "Le ballon était vérifié par l’arbitre.",
+              "Le ballon était vérifié par l’arbitre"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:14",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (futur simple). Commence par « La réunion » et termine par « par la directrice ». Garde les mêmes informations. Écris la phrase complète.\n\nLa directrice ouvrira la réunion.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "La réunion sera ouverte par la directrice.",
+        "acceptableAnswers": [
+          "La réunion sera ouverte par la directrice"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La directrice ouvrira la réunion.",
+              "La réunion sera ouverte par la directrice."
+            ],
+            "assessed": {
+              "sentences": [
+                "La directrice ouvrira la réunion.",
+                "La réunion sera ouverte par la directrice."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "La réunion sera ouverte par la directrice.",
+              "La réunion sera ouverte par la directrice",
+              "La réunion est ouverte par la directrice.",
+              "La réunion est ouverte par la directrice",
+              "La réunion sont ouverte par la directrice.",
+              "La réunion sont ouverte par la directrice",
+              "La réunion était ouverte par la directrice.",
+              "La réunion était ouverte par la directrice"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:15",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (futur simple). Commence par « Les murs » et termine par « par les artistes ». Garde les mêmes informations. Écris la phrase complète.\n\nLes artistes peindront les murs.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les murs seront peints par les artistes.",
+        "acceptableAnswers": [
+          "Les murs seront peints par les artistes"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les artistes peindront les murs.",
+              "Les murs seront peints par les artistes."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les artistes peindront les murs.",
+                "Les murs seront peints par les artistes."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les murs seront peints par les artistes.",
+              "Les murs seront peints par les artistes",
+              "Les murs est peints par les artistes.",
+              "Les murs est peints par les artistes",
+              "Les murs sont peints par les artistes.",
+              "Les murs sont peints par les artistes",
+              "Les murs était peints par les artistes.",
+              "Les murs était peints par les artistes"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-production:16",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Réécris cette phrase à la voix passive, au même temps (futur simple). Commence par « Les sculptures » et termine par « par le guide ». Garde les mêmes informations. Écris la phrase complète.\n\nLe guide décrira les sculptures.",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les sculptures seront décrites par le guide.",
+        "acceptableAnswers": [
+          "Les sculptures seront décrites par le guide"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le guide décrira les sculptures.",
+              "Les sculptures seront décrites par le guide."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le guide décrira les sculptures.",
+                "Les sculptures seront décrites par le guide."
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les sculptures seront décrites par le guide.",
+              "Les sculptures seront décrites par le guide",
+              "Les sculptures est décrites par le guide.",
+              "Les sculptures est décrites par le guide",
+              "Les sculptures sont décrites par le guide.",
+              "Les sculptures sont décrites par le guide",
+              "Les sculptures était décrites par le guide.",
+              "Les sculptures était décrites par le guide"
+            ],
+            "rationaleFr": "La phrase et le sujet sont fournis. Quatre variantes de l’auxiliaire donnent un plancher prudent de probabilité de réussite par hasard ; elles ne couvrent pas toutes les erreurs possibles. Ce n’est pas une rédaction libre."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-sentence-transformation",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:1",
+      "itemChecksum": "sha256:2563fdc74a2359f4f6e38cc473ab90cd2d0f7977e8a34fdabf54f42d42655199",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:1"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:2",
+      "itemChecksum": "sha256:ee730dd3567017ac9c3de0f0aefffc7656f6d498b81462f49c3102d8ff4699c6",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:2"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:3",
+      "itemChecksum": "sha256:3996d19829098a280e52cd1671eb39b997fc439a0914d63521707ad649c5427e",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:3"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:4",
+      "itemChecksum": "sha256:c05e3c87c7a2f3e9d0325026fbb9dca960523b6e5b1927f8036dc7f671063693",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:4"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:5",
+      "itemChecksum": "sha256:9739cd687ab8a92e7edf063870c3eebee0a3cfc4a08a35c6c2774771ecd01b57",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:5"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:6",
+      "itemChecksum": "sha256:27dd8d057e62f0721826178c61b52a98987d41b6cc01ffa97906de9321e99e65",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:6"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:7",
+      "itemChecksum": "sha256:6713f916cd4ba86416304131dd3d6fc7a1e4adf38427d9edec037a84eedc3377",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:7"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:8",
+      "itemChecksum": "sha256:da5b039952e4e26619e70a72abb4a05e01f0651b566b27595c1f28ea4c1c2d65",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:8"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:9",
+      "itemChecksum": "sha256:bddfdbf57f351a34ad3075eaa93f562cc494f0b5e68daefa25a1a579bd20d597",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:9"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:10",
+      "itemChecksum": "sha256:d992f45a61b0a57a04eccd7daaa96a4049826007d7483326b7e8c06be51650d1",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:10"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:11",
+      "itemChecksum": "sha256:1b34fa303fc51cff2121a51cbb9e82d4c178c5c509e87d9f199d2fa54fceb96e",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:11"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:12",
+      "itemChecksum": "sha256:9fcb5d0b8495933c1aa2455c8eca2b1d809071ffe6945a11c2b500783918adc1",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:12"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:13",
+      "itemChecksum": "sha256:873ee778dcd161986765f204c0bd66bd17a8bf33126fcc0853c27a099a7622ab",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:13"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:14",
+      "itemChecksum": "sha256:2c9c2bd6b6de9ba607a96f1947e492da9edbad6a3e18baa45dd276cf41084df9",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:14"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:15",
+      "itemChecksum": "sha256:76fe16f53171f8c92c1e14daf7833f4a755986487874ea0f862bd3e3a321a75d",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:15"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-production:16",
+      "itemChecksum": "sha256:c6c9f915996bd67aef91244a641dcf009d7ebf42298ef6b12159f6ca8d60f5d9",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "passive-production:16"
+    }
+  ],
+  "checksum": "sha256:09f18a25638194de8084c9807c374dae55926776e4516799b6382d643c2c43bd"
+}

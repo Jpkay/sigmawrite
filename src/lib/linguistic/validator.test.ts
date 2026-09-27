@@ -3,6 +3,15 @@ import { mapResponse } from "./languagetool";
 import { normalize, validateAnswer } from "./validator";
 import type { FrenchGrammarChecker, GrammarCheckResult } from "./types";
 
+it('grades contextual auxiliary forms and rejects unsupported metadata',async()=>{
+ const spec={validatorType:'conjugator' as const,config:{verb:'sortir',tense:'passe_compose',person:'3s',gender:'f',auxiliaryUse:'transitive'}};
+ expect((await validateAnswer('a sorti',spec)).pass).toBe(true);
+ expect((await validateAnswer('est sortie',spec)).pass).toBe(false);
+ expect((await validateAnswer('a sortie',spec)).pass).toBe(false);
+ expect((await validateAnswer('est sortie',{...spec,config:{...spec.config,auxiliaryUse:'intransitive'}})).pass).toBe(true);
+ expect((await validateAnswer('a allé',{...spec,config:{...spec.config,verb:'aller'}})).pass).toBe(false);
+});
+
 /** A grammar checker stub: flags answers matching a known-bad agreement pattern.
  *  Uses word boundaries so "cueilli" does not false-match inside "cueillies". */
 const stubChecker = (badPatterns: RegExp[]): FrenchGrammarChecker => ({
@@ -43,6 +52,14 @@ describe("normalize", () => {
 });
 
 describe("validateAnswer — exact", () => {
+  it.each([
+    ["L'élève arrive.", "L’élève arrive."],
+    ["L’élève arrive.", "L'élève arrive."],
+  ])("accepts equivalent apostrophes in %s", async (answer, correctAnswer) => {
+    expect((await validateAnswer(answer, {
+      validatorType: "exact", correctAnswer, caseSensitive: true,
+    })).pass).toBe(true);
+  });
   it("accepts the correct answer (accent- and case-insensitive trim)", async () => {
     const r = await validateAnswer("  Allé ", {
       validatorType: "exact",

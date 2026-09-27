@@ -1,1 +1,13 @@
-import{PageHeader}from"@/components/page";import{Card,CardContent}from"@/components/ui/card";export default function OfflinePage(){return <><PageHeader title="Mode hors connexion" description="Les choix déjà enregistrés dans une lecture ouverte seront renvoyés au retour du réseau."/><Card><CardContent className="space-y-2 pt-6 text-sm text-muted-foreground"><p>Les nouvelles lectures, les résumés et la fin de séance nécessitent une connexion afin de protéger ton historique.</p><p>Garde la lecture ouverte puis reconnecte-toi avant de terminer. La file locale est effacée à la déconnexion du compte.</p></CardContent></Card></>}
+import {PageHeader} from '@/components/page';
+import {Card,CardContent} from '@/components/ui/card';
+import {journalCurrentStudentPayload} from '@/lib/diagnostic/granular/server-delivery-journal';
+import {OFFLINE_COPY as copy} from './offline-copy';
+export default async function OfflinePage(){
+ await journalCurrentStudentPayload('student:offline-copy',copy);
+ return <>
+  <PageHeader title={copy.title} description={copy.description}/>
+  <Card><CardContent className="space-y-2 pt-6 text-sm text-muted-foreground">
+   <p>{copy.connectionRequired}</p><p>{copy.reconnect}</p>
+  </CardContent></Card>
+ </>;
+}

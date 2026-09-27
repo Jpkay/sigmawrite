@@ -7,6 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { nowMs } from "@/lib/clock";
 import { getAdultLanguage } from "@/lib/i18n";
 import { loadAdultStudentGraph } from "@/lib/graph/adult-access";
+import { studentSchoolGradeLabel } from "@/lib/school-grade";
 
 export default async function SupervisorStudentPage({ params }: { params: Promise<{ studentId: string }> }) {
   const { studentId } = await params;
@@ -15,6 +16,7 @@ export default async function SupervisorStudentPage({ params }: { params: Promis
   const { student, frontier } = bundle;
   return <>
     <PageHeader title={student.name} description={language === "en" ? "Competency pathway, evidence, and weekly reading activity." : "Parcours de compétences, preuves et activité de lecture hebdomadaire."} />
+    {studentSchoolGradeLabel(student.snap.grade, student.snap.frenchBackground, language) && <p className="mb-5 text-sm font-medium text-muted-foreground">{studentSchoolGradeLabel(student.snap.grade, student.snap.frenchBackground, language)}</p>}
     <AdultCompetencyGraph graph={frontier.graphView} audience="teacher" language={language} studentName={student.name} />
     <h2 className="mb-3 mt-9 text-lg font-semibold">{language === "en" ? "Weekly activity" : "Activité de la semaine"}</h2>
     <WeeklyReportView snap={student.snap} nowMs={nowMs()} />

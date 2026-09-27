@@ -1,0 +1,904 @@
+{
+  "status": "experimental_not_calibrated",
+  "model": "z-ai/glm-5.2",
+  "syntheticOnly": true,
+  "results": [
+    {
+      "id": "present-incorrect",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 19,
+            "end": 26,
+            "text": "prépare",
+            "criterionId": "employer_present_indicatif_en_contexte",
+            "correct": true,
+            "reasonFr": "« Lina » (3e personne du singulier) : « prépare » est la forme correcte du présent de l'indicatif de « préparer »."
+          },
+          {
+            "start": 45,
+            "end": 51,
+            "text": "arrive",
+            "criterionId": "employer_present_indicatif_en_contexte",
+            "correct": false,
+            "reasonFr": "« Ses amis » (3e personne du pluriel) : la forme correcte serait « arrivent » au présent de l'indicatif."
+          },
+          {
+            "start": 75,
+            "end": 81,
+            "text": "attend",
+            "criterionId": "employer_present_indicatif_en_contexte",
+            "correct": false,
+            "reasonFr": "« ils » (3e personne du pluriel) : la forme correcte serait « attendent » au présent de l'indicatif."
+          },
+          {
+            "start": 95,
+            "end": 102,
+            "text": "partons",
+            "criterionId": "employer_present_indicatif_en_contexte",
+            "correct": true,
+            "reasonFr": "« Nous » (1re personne du pluriel) : « partons » est la forme correcte du présent de l'indicatif de « partir »."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:8d32084d3ee10bb18279f75118956259377f062943bb719e74c7a99d2f4b2789",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "present-unresolved",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:8d32084d3ee10bb18279f75118956259377f062943bb719e74c7a99d2f4b2789",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "near-future-incorrect",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 16,
+            "text": "Nous va préparer",
+            "criterionId": "employer_futur_proche_en_contexte",
+            "correct": false,
+            "reasonFr": "Tentative de futur proche avec « Nous » (1re personne du pluriel), mais la forme correcte est « Nous allons préparer »."
+          },
+          {
+            "start": 27,
+            "end": 46,
+            "text": "Lina vont installer",
+            "criterionId": "employer_futur_proche_en_contexte",
+            "correct": false,
+            "reasonFr": "« Lina » est un sujet singulier ; le futur proche exige « Lina va installer », pas « vont » (3e personne du pluriel)."
+          },
+          {
+            "start": 62,
+            "end": 77,
+            "text": "je vas vérifier",
+            "criterionId": "employer_futur_proche_en_contexte",
+            "correct": false,
+            "reasonFr": "Avec « je » (1re personne du singulier), la forme correcte est « je vais vérifier » ; « vas » est la 2e personne du singulier."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:c073b73740ce145bcc0143a7d60ed975edbe458684e97042efadcb56aeb35ed6",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "near-future-unresolved",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:c073b73740ce145bcc0143a7d60ed975edbe458684e97042efadcb56aeb35ed6",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "recent-past-incorrect",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 21,
+            "text": "Je vient de retrouver",
+            "correct": false,
+            "reasonFr": "« Je » exige la 1ʳᵉ personne du singulier « viens » ; « vient » est la 3ᵉ personne du singulier."
+          },
+          {
+            "start": 30,
+            "end": 53,
+            "text": "Lina viennent de fermer",
+            "correct": false,
+            "reasonFr": "« Lina » (sujet singulier) exige « vient » ; « viennent » est la forme plurielle."
+          },
+          {
+            "start": 68,
+            "end": 98,
+            "text": "nos amis vient de nous appeler",
+            "correct": false,
+            "reasonFr": "« nos amis » (sujet pluriel) exige « viennent » ; « vient » est la forme singulière."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:2a937fbc8f92aec0c15a065e1834ad5ec6c847b076ad1946b03597dc018b3eae",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "recent-past-unresolved",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:2a937fbc8f92aec0c15a065e1834ad5ec6c847b076ad1946b03597dc018b3eae",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "compound-past-incorrect",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 11,
+            "end": 24,
+            "text": "avons visiter",
+            "criterionId": "employer_passe_compose_en_contexte",
+            "correct": false,
+            "reasonFr": "Auxiliaire « avoir » correct mais participe passé manquant : il faut écrire « avons visité »."
+          },
+          {
+            "start": 40,
+            "end": 50,
+            "text": "a regarder",
+            "criterionId": "employer_passe_compose_en_contexte",
+            "correct": false,
+            "reasonFr": "Auxiliaire « avoir » correct mais infinitif utilisé à la place du participe passé : il faut « a regardé »."
+          },
+          {
+            "start": 69,
+            "end": 80,
+            "text": "ai dessiner",
+            "criterionId": "employer_passe_compose_en_contexte",
+            "correct": false,
+            "reasonFr": "Auxiliaire « avoir » correct mais infinitif utilisé à la place du participe passé : il faut « ai dessiné »."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:a974f5418d75e2b0215fce50acbb005198a13ca5cdecb4416679bb19d74778a6",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "compound-past-unresolved",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:a974f5418d75e2b0215fce50acbb005198a13ca5cdecb4416679bb19d74778a6",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "imperfect-incorrect",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouait",
+            "correct": false,
+            "reasonFr": "Imparfait attendu pour l'habitude, mais la forme est à la 3e personne du singulier avec le sujet « nous » ; il faudrait « jouions »."
+          },
+          {
+            "start": 45,
+            "end": 54,
+            "text": "préparais",
+            "correct": false,
+            "reasonFr": "Imparfait attendu pour l'habitude, mais la forme est à la 1re/2e personne du singulier avec le sujet « Lina » (3e personne) ; il faudrait « préparait »."
+          },
+          {
+            "start": 76,
+            "end": 85,
+            "text": "apportait",
+            "correct": false,
+            "reasonFr": "Imparfait attendu pour l'habitude, mais la forme est à la 3e personne du singulier avec le sujet « mes amis » (pluriel) ; il faudrait « apportaient »."
+          },
+          {
+            "start": 111,
+            "end": 122,
+            "text": "participait",
+            "correct": true,
+            "reasonFr": "Imparfait correctement conjugué à la 3e personne du singulier avec le sujet « Tout le monde » pour décrire une habitude passée."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:b708228bcee4e2bb9c1fe52bc9b39a02ca0054c43c2028634f3a78a6b16bea8b",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "imperfect-unresolved",
+      "expected": "unresolved",
+      "observed": "incorrect",
+      "matched": false,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 6,
+            "end": 21,
+            "text": "nous avons joué",
+            "correct": false,
+            "reasonFr": "Le prompt demande de décrire des habitudes passées (autrefois), ce qui requiert l'imparfait « nous jouions » ; le passé composé est utilisé à la place."
+          },
+          {
+            "start": 43,
+            "end": 52,
+            "text": "a préparé",
+            "correct": false,
+            "reasonFr": "Pour une habitude passée, l'imparfait « préparait » est attendu ; le passé composé est employé."
+          },
+          {
+            "start": 74,
+            "end": 85,
+            "text": "ont apporté",
+            "correct": false,
+            "reasonFr": "Pour une habitude passée, l'imparfait « apportaient » est attendu ; le passé composé est employé."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:b708228bcee4e2bb9c1fe52bc9b39a02ca0054c43c2028634f3a78a6b16bea8b",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "simple-future-incorrect",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 13,
+            "end": 24,
+            "text": "prépareront",
+            "correct": false,
+            "reasonFr": "Sujet « nous » : le futur simple attendu est « préparerons » (1re personne du pluriel), et non « prépareront » (3e personne du pluriel)."
+          },
+          {
+            "start": 44,
+            "end": 53,
+            "text": "chanterai",
+            "correct": false,
+            "reasonFr": "Sujet « Lina » (3e personne du singulier) : le futur simple attendu est « chantera », et non « chanterai » (1re personne du singulier)."
+          },
+          {
+            "start": 66,
+            "end": 74,
+            "text": "jouerons",
+            "correct": false,
+            "reasonFr": "Sujet « mes amis » (3e personne du pluriel) : le futur simple attendu est « joueront », et non « jouerons » (1re personne du pluriel)."
+          },
+          {
+            "start": 99,
+            "end": 103,
+            "text": "sera",
+            "correct": true,
+            "reasonFr": "Futur simple 3e personne du singulier, correctement accordé avec le sujet « La salle »."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:5e1a553d595daeff86a3214980fe77dae44f7ee8b1d384ced4f8c755e8a7538b",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "simple-future-unresolved",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:5e1a553d595daeff86a3214980fe77dae44f7ee8b1d384ced4f8c755e8a7538b",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "pluperfect-incorrect",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 24,
+            "end": 41,
+            "text": "nous avait décoré",
+            "criterionId": "employer_plus_que_parfait_en_contexte",
+            "correct": false,
+            "reasonFr": "L'auxiliaire est à la 3e personne du singulier au lieu de la 1re personne du pluriel : il faut « nous avions décoré »."
+          },
+          {
+            "start": 52,
+            "end": 68,
+            "text": "J’avais préparer",
+            "criterionId": "employer_plus_que_parfait_en_contexte",
+            "correct": false,
+            "reasonFr": "Le participe passé est remplacé par l'infinitif : il faut « J'avais préparé »."
+          },
+          {
+            "start": 82,
+            "end": 102,
+            "text": "mes amis avait caché",
+            "criterionId": "employer_plus_que_parfait_en_contexte",
+            "correct": false,
+            "reasonFr": "Le sujet « mes amis » est au pluriel, l'auxiliaire doit l'être aussi : il faut « mes amis avaient caché »."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:47f937c16b2be161b0cbd09217a63c814b8cb4c752beb4f1e38956a8052833a7",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "pluperfect-unresolved",
+      "expected": "unresolved",
+      "observed": "incorrect",
+      "matched": false,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 66,
+            "text": "Nous avons décoré la salle, préparé le gâteau et caché les cadeaux",
+            "criterionId": "employer_plus_que_parfait_en_contexte",
+            "correct": false,
+            "reasonFr": "Les préparatifs sont antérieurs à l'arrivée (passé composé « est arrivée »). Le plus-que-parfait s'imposait : « Nous avions décoré… préparé… caché… ». L'auxiliaire « avons » (passé composé) est utilisé au lieu de « avions » (plus-que-parfait)."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:47f937c16b2be161b0cbd09217a63c814b8cb4c752beb4f1e38956a8052833a7",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "conditional-incorrect",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 31,
+            "end": 41,
+            "text": "planterait",
+            "criterionId": "employer_conditionnel_present_en_contexte",
+            "correct": false,
+            "reasonFr": "Avec le sujet « nous », la forme correcte au conditionnel présent est « planterions », non « planterait » (3e personne du singulier)."
+          },
+          {
+            "start": 59,
+            "end": 71,
+            "text": "installerais",
+            "criterionId": "employer_conditionnel_present_en_contexte",
+            "correct": false,
+            "reasonFr": "Avec le sujet « Lina » (3e personne du singulier), la forme correcte est « installerait », non « installerais » (1re/2e personne du singulier)."
+          },
+          {
+            "start": 92,
+            "end": 104,
+            "text": "construirait",
+            "criterionId": "employer_conditionnel_present_en_contexte",
+            "correct": false,
+            "reasonFr": "Avec le sujet « mes amis » (3e personne du pluriel), la forme correcte est « construiraient », non « construirait » (3e personne du singulier)."
+          },
+          {
+            "start": 120,
+            "end": 126,
+            "text": "serait",
+            "criterionId": "employer_conditionnel_present_en_contexte",
+            "correct": true,
+            "reasonFr": "« Ce serait » : conditionnel présent 3e personne du singulier, correct avec le sujet impersonnel « Ce »."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:b016b1d90a4f404ebc132b17dad3cac6ce8718a2ab0494df0713b98f15144eb9",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "conditional-unresolved",
+      "expected": "unresolved",
+      "observed": "incorrect",
+      "matched": false,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 10,
+            "text": "Nous avons",
+            "correct": false,
+            "reasonFr": "Le contexte hypothétique imposé par le prompt (« si ton groupe disposait d'un jardin ») exige le conditionnel présent « Nous aurions », mais l'élève emploie l'indicatif présent."
+          },
+          {
+            "start": 22,
+            "end": 35,
+            "text": "Nous plantons",
+            "correct": false,
+            "reasonFr": "Dans ce contexte d'imagination/projet hypothétique, la forme attendue est « Nous planterions » au conditionnel présent ; l'élève conserve l'indicatif présent."
+          },
+          {
+            "start": 53,
+            "end": 61,
+            "text": "installe",
+            "correct": false,
+            "reasonFr": "Lina est présentée comme agissant dans un projet imaginé ; le conditionnel présent « installerait » est attendu, mais l'élève utilise l'indicatif présent."
+          },
+          {
+            "start": 82,
+            "end": 94,
+            "text": "construisent",
+            "correct": false,
+            "reasonFr": "L'action de mes amis relève du projet hypothétique ; « construiraient » au conditionnel présent est attendu, l'élève emploie l'indicatif présent."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:b016b1d90a4f404ebc132b17dad3cac6ce8718a2ab0494df0713b98f15144eb9",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "subjunctive-incorrect",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 21,
+            "end": 26,
+            "text": "vient",
+            "criterionId": "employer_subjonctif_present_en_contexte",
+            "correct": false,
+            "reasonFr": "Après « Je souhaite que », le subjonctif présent est requis ; la forme correcte serait « vienne » (subjonctif de venir), et non « vient » (indicatif présent)."
+          },
+          {
+            "start": 58,
+            "end": 65,
+            "text": "faisons",
+            "criterionId": "employer_subjonctif_present_en_contexte",
+            "correct": false,
+            "reasonFr": "Après « Il faut que », le subjonctif présent est requis ; la forme correcte serait « fassions » (subjonctif de faire), et non « faisons » (indicatif présent)."
+          },
+          {
+            "start": 90,
+            "end": 95,
+            "text": "prend",
+            "criterionId": "employer_subjonctif_present_en_contexte",
+            "correct": false,
+            "reasonFr": "Après « Il faut que… et que… », le subjonctif présent se maintient ; la forme correcte serait « prennent » (subjonctif de prendre), et non « prend » (indicif présent)."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:406d182857d7e196712fa61b77c518203b9e840f35d8aef581dddaebcc2301bd",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "subjunctive-unresolved",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:406d182857d7e196712fa61b77c518203b9e840f35d8aef581dddaebcc2301bd",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "imperative-incorrect",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 5,
+            "text": "Prend",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": false,
+            "reasonFr": "Impératif tu de « prendre » : la forme correcte est « Prends » avec un s final, ici écrit sans s."
+          },
+          {
+            "start": 26,
+            "end": 31,
+            "text": "Écrit",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": false,
+            "reasonFr": "Impératif tu de « écrire » : la forme correcte est « Écris », « Écrit » est le participe passé ou la 3e personne du présent."
+          },
+          {
+            "start": 54,
+            "end": 58,
+            "text": "fait",
+            "criterionId": "employer_imperatif_en_contexte",
+            "correct": false,
+            "reasonFr": "Impératif tu de « faire » : la forme correcte est « fais » avec un s, « fait » est le participe passé ou la 3e personne du présent."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:004541bc6696e730e4132f9ecb9c8a85d95094505903790b05a5dd977d3bf525",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "imperative-unresolved",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:004541bc6696e730e4132f9ecb9c8a85d95094505903790b05a5dd977d3bf525",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "simple-past-incorrect",
+      "expected": "incorrect",
+      "observed": "unavailable",
+      "reason": "timeout",
+      "matched": false
+    },
+    {
+      "id": "simple-past-unresolved",
+      "expected": "unresolved",
+      "observed": "incorrect",
+      "matched": false,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 5,
+            "end": 11,
+            "text": "a pris",
+            "criterionId": "employer_passe_simple_en_contexte",
+            "correct": false,
+            "reasonFr": "Passé composé utilisé au lieu du passé simple « prit » attendu dans un récit écrit."
+          },
+          {
+            "start": 22,
+            "end": 30,
+            "text": "a ouvert",
+            "criterionId": "employer_passe_simple_en_contexte",
+            "correct": false,
+            "reasonFr": "Passé composé utilisé au lieu du passé simple « ouvrit » attendu pour faire avancer les événements d'un récit."
+          },
+          {
+            "start": 46,
+            "end": 56,
+            "text": "est entrée",
+            "criterionId": "employer_passe_simple_en_contexte",
+            "correct": false,
+            "reasonFr": "Passé composé utilisé au lieu du passé simple « entra » attendu dans un récit écrit."
+          },
+          {
+            "start": 82,
+            "end": 92,
+            "text": "est sortie",
+            "criterionId": "employer_passe_simple_en_contexte",
+            "correct": false,
+            "reasonFr": "Passé composé utilisé au lieu du passé simple « sortit » attendu pour faire avancer les événements d'un récit."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:5198ffc67bf06b498478fab6bb7fe7bacbe1342049a9d89e2fa2194c9d898ff3",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "pronouns-incorrect",
+      "expected": "incorrect",
+      "observed": "unavailable",
+      "reason": "provider_or_configuration",
+      "matched": false
+    },
+    {
+      "id": "pronouns-unresolved",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:0ec3491ff2a9362b47cdbfebff83fea8d0bc97c871d72957bc1cb2f9298375a4",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "past-contrast-incorrect",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 5,
+            "end": 12,
+            "text": "jouions",
+            "criterionId": "produire_contraste_pc_imparfait",
+            "correct": true,
+            "reasonFr": "Imparfait correct pour l'arrière-plan : activité en cours (« Nous jouions au ballon »)."
+          },
+          {
+            "start": 48,
+            "end": 58,
+            "text": "se cassait",
+            "criterionId": "produire_contraste_pc_imparfait",
+            "correct": false,
+            "reasonFr": "Événement soudain introduit par « soudain » : devrait être au passé composé « s'est cassée », l'imparfait ne convient pas ici."
+          },
+          {
+            "start": 81,
+            "end": 91,
+            "text": "ramassions",
+            "criterionId": "produire_contraste_pc_imparfait",
+            "correct": true,
+            "reasonFr": "Imparfait correct pour l'arrière-plan : activité en cours (« Nous ramassions nos affaires »)."
+          },
+          {
+            "start": 136,
+            "end": 144,
+            "text": "arrivait",
+            "criterionId": "produire_contraste_pc_imparfait",
+            "correct": false,
+            "reasonFr": "Événement soudain introduit par « tout à coup » : devrait être au passé composé « est arrivé », l'imparfait ne convient pas pour l'événement interruptif."
+          },
+          {
+            "start": 173,
+            "end": 187,
+            "text": "sommes rentrés",
+            "criterionId": "produire_contraste_pc_imparfait",
+            "correct": true,
+            "reasonFr": "Passé composé correct pour l'événement ponctuel et accompli marquant la fin de la séquence."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:218de9078f944891cfe41ef4af3f41759d3272f75ba33ed6cdff18ba61be7f67",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "past-contrast-unresolved",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:218de9078f944891cfe41ef4af3f41759d3272f75ba33ed6cdff18ba61be7f67",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "temporal-sequence-incorrect",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 23,
+            "end": 55,
+            "text": "avant de commencer à la chercher",
+            "correct": false,
+            "reasonFr": "Le repère temporel « avant de » place la retrouvaille de la clé avant la recherche elle-même, ce qui est logiquement incohérent : on ne peut pas retrouver un objet avant de le chercher."
+          },
+          {
+            "start": 64,
+            "end": 71,
+            "text": "ensuite",
+            "correct": false,
+            "reasonFr": "Le marqueur « ensuite » devrait introduire l'événement suivant dans un ordre cohérent, mais ici il fait reculer la chronologie : la recherche intervient après une retrouvaille déjà annoncée, sans continuité logique."
+          },
+          {
+            "start": 96,
+            "end": 125,
+            "text": "sans l’avoir encore retrouvée",
+            "correct": false,
+            "reasonFr": "Cette relation temporelle contredit la première phrase qui affirmait que la clé avait déjà été retrouvée ; la cohérence de la séquence est rompue."
+          },
+          {
+            "start": 127,
+            "end": 132,
+            "text": "Enfin",
+            "correct": false,
+            "reasonFr": "Le marqueur de clôture « Enfin » ne résout pas la séquence : il réintroduit une retrouvaille « déjà » effectuée, sans rétablir un ordre chronologique cohérent avec les étapes précédentes."
+          },
+          {
+            "start": 162,
+            "end": 189,
+            "text": "après être partie sans elle",
+            "correct": false,
+            "reasonFr": "La relation « après » place un départ sans la clé après la retrouvaille, ce qui désorganise totalement la chronologie demandée (retrouver la clé dans l'ordre)."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:39e7fb61724930723345ef697cfc9e47e2ae3b379a24aa2cd39e5949abd0663c",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "temporal-sequence-unresolved",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [],
+        "evaluator": {
+          "version": "french-writing-evaluator-v4",
+          "protocolChecksum": "sha256:dea0e8fc37df1bb5d5f763ff5130872d3745121b0cf5ab693d9bb932dbe76110",
+          "rubricChecksum": "sha256:39e7fb61724930723345ef697cfc9e47e2ae3b379a24aa2cd39e5949abd0663c",
+          "model": "injected-judge"
+        }
+      }
+    }
+  ]
+}

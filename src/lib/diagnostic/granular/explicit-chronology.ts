@@ -1,0 +1,59 @@
+import type {TargetTeachingContent} from './teaching-content';
+type Genre='narrative'|'informational'|'argumentative';
+type Event=[text:string,label:string];
+type Row={key:string;genre:Genre;intro?:string;events:[Event,Event,Event]};
+const rows:Row[]=[
+ {key:'n-library',genre:'narrative',events:[['À 8 h, Inès quitte sa maison.','départ de la maison'],['À 9 h, elle entre à la bibliothèque.','arrivée à la bibliothèque'],['À 11 h, elle retrouve sa sœur au parc.','rencontre avec sa sœur']]},
+ {key:'n-rehearsal',genre:'narrative',events:[['Lundi, Sam écrit une scène.','écriture de la scène'],['Mercredi, il la répète avec ses amis.','répétition'],['Vendredi de la même semaine, ils jouent devant la classe.','représentation devant la classe']]},
+ {key:'n-comic',genre:'narrative',events:[['Le 3 avril, Léa dessine un personnage.','dessin du personnage'],['Le 5 avril, elle invente son histoire.','invention de l’histoire'],['Le 9 avril, elle offre sa bande dessinée à Malik.','cadeau à Malik']]},
+ {key:'n-match',genre:'narrative',events:[['À 14 h, Idriss prend le bus.','trajet en bus'],['À 15 h, il rejoint son équipe au stade.','rencontre avec l’équipe'],['À 16 h, le match commence.','début du match']]},
+ {key:'n-bike',genre:'narrative',events:[['Le 10 juin, Nora remarque une roue crevée.','découverte de la crevaison'],['Le 12 juin, elle répare son vélo.','réparation du vélo'],['Le 15 juin, elle part se promener avec son frère.','promenade avec son frère']]},
+ {key:'n-cake',genre:'narrative',events:[['À 10 h, Noé prépare la pâte du gâteau.','préparation de la pâte'],['À 11 h, il met le gâteau au four.','mise au four'],['À 14 h, sa famille goûte le gâteau.','dégustation en famille']]},
+ {key:'n-video',genre:'narrative',events:[['Le 2 mai, Aya filme une expérience.','tournage de l’expérience'],['Le 4 mai, elle monte sa vidéo.','montage de la vidéo'],['Le 7 mai, elle la présente à ses amis.','présentation aux amis']]},
+ {key:'n-lost-scarf',genre:'narrative',events:[['À 7 h, Zoé oublie son écharpe dans le car.','oubli de l’écharpe'],['À 9 h, le conducteur la dépose à l’accueil.','dépôt à l’accueil'],['À 17 h, Zoé récupère son écharpe.','récupération de l’écharpe']]},
+ {key:'i-exhibition',genre:'informational',intro:'Calendrier de la maison de quartier.',events:[['Le 6 mars, les œuvres sont déposées.','dépôt des œuvres'],['Le 8 mars, les bénévoles installent l’exposition.','installation de l’exposition'],['Le 10 mars, les portes ouvrent au public.','ouverture au public']]},
+ {key:'i-borrowing',genre:'informational',intro:'Horaires du service de prêt pour cette journée.',events:[['À 9 h, le comptoir ouvre.','ouverture du comptoir'],['À 12 h, les réservations du matin sont closes.','fin des réservations du matin'],['À 17 h, le comptoir ferme.','fermeture du comptoir']]},
+ {key:'i-club',genre:'informational',intro:'Étapes de l’inscription au club cette semaine.',events:[['Lundi, les formulaires deviennent disponibles.','mise à disposition des formulaires'],['Jeudi, les inscriptions sont closes.','clôture des inscriptions'],['Samedi, la première rencontre a lieu.','première rencontre']]},
+ {key:'i-competition',genre:'informational',intro:'Programme du concours de dessins.',events:[['Le 1er février, le thème est annoncé.','annonce du thème'],['Le 20 février, le jury examine les dessins.','examen des dessins'],['Le 25 février, les résultats sont affichés.','affichage des résultats']]},
+ {key:'i-workshop',genre:'informational',intro:'Programme de l’atelier de fabrication.',events:[['À 13 h, le matériel est distribué.','distribution du matériel'],['À 14 h, les participants commencent leur objet.','début de la fabrication'],['À 16 h, les tables sont rangées.','rangement des tables']]},
+ {key:'i-newspaper',genre:'informational',intro:'Dates de préparation du journal du club.',events:[['Le 4 octobre, les articles sont remis.','remise des articles'],['Le 9 octobre, les pages sont relues.','relecture des pages'],['Le 12 octobre, le journal est distribué.','distribution du journal']]},
+ {key:'i-gym',genre:'informational',intro:'Calendrier prévu pour le gymnase.',events:[['Le 2 juillet, le gymnase ferme.','fermeture du gymnase'],['Le 8 juillet, le sol est réparé.','réparation du sol'],['Le 20 juillet, les activités reprennent.','reprise des activités']]},
+ {key:'i-festival',genre:'informational',intro:'Programme du festival pour cette journée.',events:[['À 11 h, une lecture commence.','début de la lecture'],['À 15 h, un film est projeté.','projection du film'],['À 20 h, un concert débute.','début du concert']]},
+ {key:'a-survey',genre:'argumentative',intro:'Je défends ce calendrier : demander d’abord leur avis aux élèves permettra de choisir une activité qui leur plaît.',events:[['Le 3 mars, un sondage aura lieu.','sondage des élèves'],['Le 6 mars, le conseil choisira l’activité.','choix de l’activité'],['Le 9 mars, les inscriptions ouvriront.','ouverture des inscriptions']]},
+ {key:'a-play',genre:'argumentative',intro:'Gardons cette organisation : une répétition avant le spectacle aidera chacun à connaître sa place.',events:[['Le 2 juin, les rôles seront distribués.','distribution des rôles'],['Le 5 juin, une répétition aura lieu.','répétition'],['Le 8 juin, nous jouerons devant les familles.','spectacle devant les familles']]},
+ {key:'a-repair',genre:'argumentative',intro:'Je soutiens ce programme : réparer les livres avant de les prêter évitera de perdre leurs pages.',events:[['Lundi, nous trierons les livres.','tri des livres'],['Mercredi, nous les réparerons.','réparation des livres'],['Vendredi de la même semaine, le prêt reprendra.','reprise du prêt']]},
+ {key:'a-canteen',genre:'argumentative',intro:'Essayons le menu avant de décider : les avis recueillis aideront à l’améliorer.',events:[['Le 10 novembre, le nouveau menu sera servi.','essai du menu'],['Le 12 novembre, les avis seront recueillis.','recueil des avis'],['Le 15 novembre, le menu définitif sera choisi.','choix du menu définitif']]},
+ {key:'a-garden',genre:'argumentative',intro:'Respectons ces étapes : préparer la terre avant de semer facilitera le travail.',events:[['À 9 h, nous préparerons la terre.','préparation de la terre'],['À 11 h, nous sèmerons les graines.','semis des graines'],['À 14 h, nous installerons les étiquettes.','installation des étiquettes']]},
+ {key:'a-trip',genre:'argumentative',intro:'Je recommande ce programme : partir tôt nous laissera plus de temps pour visiter.',events:[['À 7 h, le car partira.','départ du car'],['À 10 h, la visite commencera.','début de la visite'],['À 16 h, nous reprendrons le car.','départ pour le retour']]},
+ {key:'a-posters',genre:'argumentative',intro:'Relisons les affiches avant de les poser : nous éviterons ainsi de diffuser des erreurs.',events:[['Le 4 janvier, les affiches seront rédigées.','rédaction des affiches'],['Le 7 janvier, une équipe les relira.','relecture des affiches'],['Le 11 janvier, elles seront posées dans le quartier.','pose des affiches']]},
+ {key:'a-bikes',genre:'argumentative',intro:'Suivons ce programme : essayer les vélos avant la sortie permettra de repérer les problèmes.',events:[['Mardi, les vélos seront vérifiés.','vérification des vélos'],['Jeudi, un essai aura lieu dans la cour.','essai dans la cour'],['Dimanche de la même semaine, le groupe partira en sortie.','sortie du groupe']]},
+];
+const orders=[[2,0,1],[1,2,0],[2,1,0],[0,2,1]] as const;
+const labelOrder=(events:readonly Event[],order:readonly number[])=>order.map(i=>events[i][1]).join(' → ');
+export const EXPLICIT_CHRONOLOGY_DRAFTS=rows.map((r,i)=>({
+ key:r.key,nodeKey:'ordonner_evenements_explicites',genre:r.genre,
+ passage:[r.intro,...orders[i%orders.length].map(n=>r.events[n][0])].filter(Boolean).join(' '),
+ question:'Quel est l’ordre des événements, du premier au dernier, d’après les dates ou les heures indiquées ?',
+ answer:labelOrder(r.events,[0,1,2]),distractors:orders.slice(0,3).map(o=>labelOrder(r.events,o)),
+ reason:'Ordonner des événements grâce à des repères explicites, sans confondre leur ordre dans le texte avec leur ordre dans le temps. Les genres gardent des preuves séparées.'
+}));
+const guides:Record<Genre,Array<{text:string;events:[Event,Event,Event]}>>={
+ narrative:[
+  {text:'À 18 h, Lina retrouve son cousin. À 10 h, elle achète un cadeau. À 15 h, elle emballe ce cadeau.',events:[['10 h','achat du cadeau'],['15 h','emballage du cadeau'],['18 h','rencontre avec le cousin']]},
+  {text:'Le 7 août, Émile rentre chez lui. Le 2 août, il arrive au camp. Le 5 août, il participe à une randonnée.',events:[['2 août','arrivée au camp'],['5 août','randonnée'],['7 août','retour à la maison']]},
+ ],
+ informational:[
+  {text:'La réunion se termine à 19 h. L’accueil commence à 17 h. La présentation débute à 18 h.',events:[['17 h','accueil'],['18 h','présentation'],['19 h','fin de la réunion']]},
+  {text:'Les badges sont distribués le 18 septembre. Les photos sont prises le 12 septembre. Les badges sont imprimés le 15 septembre.',events:[['12 septembre','prise des photos'],['15 septembre','impression des badges'],['18 septembre','distribution des badges']]},
+ ],
+ argumentative:[
+  {text:'Testons notre jeu avant de le présenter : nous pourrons corriger ses défauts. La présentation aura lieu le 22 mai. Le test est prévu le 16 mai et les corrections le 19 mai.',events:[['16 mai','test du jeu'],['19 mai','corrections du jeu'],['22 mai','présentation du jeu']]},
+  {text:'Prenons le temps de relire notre message pour qu’il soit clair. Nous l’enverrons à 16 h. Nous l’écrirons à 10 h et le relirons à 13 h.',events:[['10 h','écriture du message'],['13 h','relecture du message'],['16 h','envoi du message']]},
+ ],
+};
+export const EXPLICIT_CHRONOLOGY_TEACHING:readonly TargetTeachingContent[]=(Object.keys(guides) as Genre[]).map(genre=>({
+ id:`french-v3-teaching:explicit-chronology:${genre}`,nodeKey:'ordonner_evenements_explicites',facetKey:`ordonner_evenements_explicites::text_type:${genre}`,mode:'interpretation',status:'draft_requires_review',titleFr:'Remettre les événements dans l’ordre',learnerQuestionFr:'Que se passe-t-il d’abord, puis ensuite ?',
+ steps:[{exampleFr:guides[genre][0].text,explanationFr:`Repère les dates ou les heures : ${guides[genre][0].events.map(e=>e[0]).join(', ')}. Ces repères donnent l’ordre dans le temps, appelé ordre chronologique. La première phrase du texte ne raconte pas forcément le premier événement.`},{exampleFr:guides[genre][1].text,explanationFr:`Associe chaque date ou heure à son événement, puis classe ces repères : ${labelOrder(guides[genre][1].events,[0,1,2])}. Ne décide pas seulement à partir de ce qui se passe habituellement.`}],
+ practice:guides[genre].flatMap((g,i)=>[{id:`chronology-${genre}-${i}-order`,promptFr:`${g.text}\n\nQuel est l’ordre chronologique ?`,choices:[labelOrder(g.events,[0,1,2]),...orders.slice(0,3).map(o=>labelOrder(g.events,o))],answerFr:labelOrder(g.events,[0,1,2]),hintFr:'Cherche les trois repères de temps et classe-les.',explanationFr:`L’ordre est : ${labelOrder(g.events,[0,1,2])}.`},{id:`chronology-${genre}-${i}-middle`,promptFr:`${g.text}\n\nQuel événement a lieu en deuxième ?`,choices:[g.events[1][1],g.events[0][1],g.events[2][1]],answerFr:g.events[1][1],hintFr:'Prends le repère qui se situe entre les deux autres.',explanationFr:`${g.events[1][1]} a lieu à la date ou à l’heure intermédiaire : ${g.events[1][0]}.`}]),
+ takeawayFr:'Associe chaque événement à son repère de temps, puis classe les repères. L’ordre des phrases et l’ordre des événements peuvent être différents.',boundaryFr:'Ici, les dates ou les heures sont indiquées. Déduire un ordre quand les repères ne sont pas écrits est une autre compétence. Le texte peut aussi présenter un programme prévu, pas des événements déjà réalisés.',materialExposure:{sentences:guides[genre].map(g=>g.text)}
+}));

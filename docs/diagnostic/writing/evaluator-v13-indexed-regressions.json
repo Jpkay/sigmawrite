@@ -1,0 +1,154 @@
+{
+  "status": "experimental_not_calibrated",
+  "model": "z-ai/glm-5.2",
+  "syntheticOnly": true,
+  "casesChecksum": "sha256:074097214883e7c3848c74c813527d5d36e48e17ffa9b1b4bd9a3c5c94e0f252",
+  "results": [
+    {
+      "id": "conditional-context",
+      "caseChecksum": "sha256:235ca7eea6cd36338362e1b065165fe2067f3db752e2214723e47aaf7a3a35a3",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "evidenceMatched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 31,
+            "end": 42,
+            "text": "planterions",
+            "correct": true,
+            "reasonFr": "« planterions » est le conditionnel présent de planter à la 1re personne du pluriel, employé correctement dans la proposition principale d'une hypothèse."
+          },
+          {
+            "start": 60,
+            "end": 72,
+            "text": "installerait",
+            "correct": true,
+            "reasonFr": "« installerait » est le conditionnel présent d'installer à la 3e personne du singulier, correct dans ce contexte d'évocation d'un projet."
+          },
+          {
+            "start": 87,
+            "end": 99,
+            "text": "construirais",
+            "correct": true,
+            "reasonFr": "« construirais » est le conditionnel présent de construire à la 1re personne du singulier, forme correcte et bien employée."
+          },
+          {
+            "start": 128,
+            "end": 138,
+            "text": "pourraient",
+            "correct": true,
+            "reasonFr": "« pourraient » est le conditionnel présent de pouvoir à la 3e personne du pluriel, correctement employé pour exprimer une possibilité dans le cadre du projet imaginé."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:06277f22d7ba60d3775a0a53e9a9c947c299c04c85fd7aec3e25dbc361ac3285",
+          "rubricChecksum": "sha256:066e64f86911b55de0a0dde27b478ed5fbce5f852d7a12edc9e76af6226fc212",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "imperative-context",
+      "caseChecksum": "sha256:a56acbcb31006070a24ede47a9ff87fdbfe9f792e0697349dfe164354a26069d",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 0,
+            "end": 5,
+            "text": "Viens",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du verbe venir, correctement formé et employé pour donner une instruction."
+          },
+          {
+            "start": 33,
+            "end": 39,
+            "text": "Prends",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du verbe prendre, forme correcte sans -s final, employé pour ordonner une action."
+          },
+          {
+            "start": 52,
+            "end": 54,
+            "text": "va",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du verbe aller, forme correcte « va », employé pour indiquer la direction."
+          },
+          {
+            "start": 79,
+            "end": 86,
+            "text": "Attends",
+            "correct": true,
+            "reasonFr": "Impératif 2e personne du verbe attendre, forme correcte sans -s final, employé pour donner une consigne d'attente."
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:d12b4013ada634ad1b823d2fc4ef6e113e96503caee088d506572d4adb853667",
+          "rubricChecksum": "sha256:94d8722035f52df6f96df4e1825d3ed49884dea08baa7c65d168e129b722864e",
+          "model": "injected-judge"
+        }
+      }
+    },
+    {
+      "id": "lexical-revision-correct",
+      "caseChecksum": "sha256:a7d6c4e1042398b2ce376b189fe7c3b7d20849751799e98cfafce97d24aca00c",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "evidenceMatched": null,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": [
+          {
+            "start": 31,
+            "end": 37,
+            "text": "cheval",
+            "correct": true,
+            "reasonFr": "« chevale » corrigé en « cheval » : suppression du « e » final erroné, orthographe lexicale correcte.",
+            "revisionProof": {
+              "kind": "corrected",
+              "before": {
+                "start": 31,
+                "end": 38,
+                "text": "chevale"
+              }
+            }
+          },
+          {
+            "start": 66,
+            "end": 74,
+            "text": "barrière",
+            "correct": true,
+            "reasonFr": "« barière » corrigé en « barrière » : ajout du second « r », orthographe lexicale correcte.",
+            "revisionProof": {
+              "kind": "corrected",
+              "before": {
+                "start": 67,
+                "end": 74,
+                "text": "barière"
+              }
+            }
+          }
+        ],
+        "evaluator": {
+          "version": "french-writing-evaluator-v13",
+          "protocolChecksum": "sha256:2469813884dda4fa2db0ae9b5c0ba40a8b94827266650cbdea204c6fea6279b6",
+          "rubricChecksum": "sha256:053868af2a2e8e0226f277ca6f452241c86e3f2357848736efeb08d8404448d3",
+          "model": "injected-judge"
+        }
+      }
+    }
+  ]
+}

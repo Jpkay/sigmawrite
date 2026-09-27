@@ -9,6 +9,7 @@ import { nowMs } from "@/lib/clock";
 import { ChildAccountForm } from "@/components/child-account-form";
 import { getAdultLanguage } from "@/lib/i18n";
 import { createClient } from "@/lib/supabase/server";
+import { studentSchoolGradeLabel } from "@/lib/school-grade";
 
 export default async function ParentHome() {
   const children = await getViewableStudents();
@@ -45,6 +46,7 @@ export default async function ParentHome() {
                 <div className="group flex flex-wrap items-center justify-between gap-3 px-2 py-5 transition-colors hover:bg-muted/30 sm:px-4">
                     <div>
                       <p className="font-medium">{child.name}</p>
+                      {studentSchoolGradeLabel(child.snap.grade, child.snap.frenchBackground, language) && <p className="mt-1 text-xs text-muted-foreground">{studentSchoolGradeLabel(child.snap.grade, child.snap.frenchBackground, language)}</p>}
                       <div className="mt-1 flex flex-wrap items-center gap-2">
                         <Badge>{r.band}</Badge>
                         <span className="text-sm text-muted-foreground">

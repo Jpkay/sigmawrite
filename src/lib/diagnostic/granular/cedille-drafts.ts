@@ -1,0 +1,38 @@
+export type CedilleDraft={key:string;mode:'recognition'|'production';word:string;sentence:string;letter:'c'|'ç'};
+const recognition:readonly [string,string,'c'|'ç'][]=[
+ ['garçon','Le gar___on attend devant le portail.','ç'],
+ ['leçon','Elle relit sa le___on avant le contrôle.','ç'],
+ ['façade','La fa___ade de la maison est blanche.','ç'],
+ ['reçu','Le vendeur lui donne un re___u après le paiement.','ç'],
+ ['glaçon','Un gla___on flotte dans le verre.','ç'],
+ ['balançoire','La balan___oire se trouve près du toboggan.','ç'],
+ ['déçu','Il est dé___u de ne pas avoir gagné.','ç'],
+ ['façon','Elle trouve une autre fa___on de résoudre le problème.','ç'],
+ ['citron','Je presse un ___itron pour son jus.','c'],
+ ['cerise','Une ___erise rouge pend à la branche.','c'],
+ ['racine','La ra___ine de cet arbre dépasse du sol.','c'],
+ ['bracelet','Elle porte un bra___elet au poignet.','c'],
+ ['cadeau','Il ouvre son ___adeau d’anniversaire.','c'],
+ ['colis','Le facteur apporte un ___olis.','c'],
+ ['cube','Ce ___ube possède six faces carrées.','c'],
+ ['école','Les élèves entrent dans l’é___ole.','c'],
+];
+const production:readonly [string,string,'c'|'ç'][]=[
+ ['français','Ce roman est écrit en fran___ais.','ç'],
+ ['maçon','Le ma___on construit un mur.','ç'],
+ ['hameçon','Le pêcheur accroche un appât à son hame___on.','ç'],
+ ['soupçon','La disparition du gâteau éveille un soup___on.','ç'],
+ ['aperçu','J’ai aper___u une étoile filante.','ç'],
+ ['gerçure','Le froid a laissé une ger___ure sur sa lèvre.','ç'],
+ ['remplaçant','Un joueur rempla___ant entre sur le terrain.','ç'],
+ ['effaçable','Ce feutre effa___able permet de corriger le dessin.','ç'],
+ ['cinéma','Nous regardons ce film au ___inéma.','c'],
+ ['ceinture','Elle attache sa ___einture de sécurité.','c'],
+ ['ficelle','Il ferme le paquet avec une fi___elle.','c'],
+ ['police','La poli___e règle la circulation.','c'],
+ ['café','Une tasse de ___afé fume sur la table.','c'],
+ ['coussin','Elle pose un ___oussin sur le canapé.','c'],
+ ['cuisine','Le repas se prépare dans la ___uisine.','c'],
+ ['carton','Nous rangeons les livres dans un ___arton.','c'],
+];
+export const CEDILLE_DRAFTS:readonly CedilleDraft[]=([['recognition',recognition],['production',production]] as const).flatMap(([mode,rows])=>rows.map(([word,sentence,letter])=>({key:`${mode}-${word}`,mode,word,sentence,letter})));

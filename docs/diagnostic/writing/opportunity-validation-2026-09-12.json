@@ -1,0 +1,65 @@
+{
+  "status": "experimental_provider_failures_unresolved",
+  "evaluatorVersion": "french-writing-evaluator-v11",
+  "model": "z-ai/glm-5.2",
+  "syntheticOnly": true,
+  "notEducatorCalibration": true,
+  "publicWritingEnabled": false,
+  "targetRun": {
+    "cases": 16,
+    "matched": 11,
+    "failures": [
+      {
+        "id": "simple-future-context",
+        "reason": "timeout"
+      },
+      {
+        "id": "pluperfect-context",
+        "reason": "timeout"
+      },
+      {
+        "id": "conditional-context",
+        "reason": "invalid_evidence"
+      },
+      {
+        "id": "simple-past-context",
+        "reason": "invalid_schema"
+      },
+      {
+        "id": "pronoun-context",
+        "reason": "timeout"
+      }
+    ]
+  },
+  "opportunityRun": {
+    "cases": 6,
+    "matched": 5,
+    "failures": [
+      {
+        "id": "grammar-scoped-errors",
+        "reason": "invalid_schema"
+      }
+    ]
+  },
+  "findings": [
+    "Conditional response cited aurions although the student wrote avions; exact-source validation rejected it.",
+    "Simple-past response omitted its required uncertainty judgment; schema validation rejected it.",
+    "One grammar response echoed the request payload instead of returning judgments; schema validation rejected it.",
+    "No-target spelling and grammar examples remain unresolved, not incorrectly failed."
+  ],
+  "testHarnessChanges": [
+    "Hidden expected opportunities check target spans, per-opportunity correctness and rubric identity; an aggregate verdict alone is insufficient.",
+    "Expectations are not sent to the evaluator.",
+    "Smoke commands now signal failure for any mismatch or unavailable response while preserving all results.",
+    "Coverage summaries require opportunity checks when a case defines them."
+  ],
+  "checks": {
+    "opportunityMatcherTests": 2,
+    "typescript": "passed"
+  },
+  "remaining": [
+    "Resolve provider reliability and output-contract failures without guessing missing evidence.",
+    "Expand word-level expectations and current-version coverage across all 18 targets.",
+    "Owner review and deployed granular-writing journeys."
+  ]
+}

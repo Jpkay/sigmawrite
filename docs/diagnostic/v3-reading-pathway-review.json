@@ -1,0 +1,600 @@
+{
+  "version": "reading-pathway-review-v2",
+  "reviewedLessonChecksums": {
+    "french-v3-teaching:reading:resoudre_pronom_sujet:narrative": "sha256:ab64a5da5b9ed177f9d569ed60e0db7faa2deff1708d8c2fee5113635fa3f626",
+    "french-v3-teaching:reading:resoudre_pronom_objet:narrative": "sha256:ef9287ed49ad76adca4d1b58ff6cf3d059270fe27e0bffcdbdd8a41d5e58daf4",
+    "french-v3-teaching:reading:inferer_chronologie_implicite:narrative": "sha256:23a3cb283d6a0886923b0aa4aca0b1688fe7501395f4d534e7069f2b8cdff047",
+    "french-v3-teaching:reading:inferer_cause_locale:narrative": "sha256:776f27242d6a638dc26bd49949d8d4999dedb949d1ba6104a707787a0c7d4dcf",
+    "french-v3-teaching:reading:localiser_information_explicite:informational": "sha256:174ede482084e447fc0c8982910033c87a794bb2cd918f5a39ef0209d79e5ed1",
+    "french-v3-teaching:reading:distinguer_fait_opinion:argumentative": "sha256:d28c01ed16507651767caf9fea476d2fb59a04c5b0b19b0539f629f471dbfe64",
+    "french-v3-teaching:reading:deduire_mot_definition_locale:informational": "sha256:650213bb528291567ea2f81c6c4726820f569dc9cb4800c12b17775f3ed3d11c",
+    "french-v3-teaching:reading:deduire_mot_exemple_contraste:informational": "sha256:886d911c827d705c9b060415e91d33cbf8bcb840d425dfa0400b1ec7d7b2721f"
+  },
+  "status": "draft_review_feasibility_only",
+  "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "bankChecksum": "sha256:f29362f32b8562bc8f310b6504fa1891c73488e0313444c4018617a7fe62967c",
+  "facetChecksum": "sha256:faef022500592909cfd0d4229529ab1691ebd018503c3390549fc8bf3b46799f",
+  "rows": [
+    {
+      "lessonId": "french-v3-teaching:reading:resoudre_pronom_sujet:narrative",
+      "titleFr": "Retrouver qui fait l’action",
+      "lessonChecksum": "sha256:ab64a5da5b9ed177f9d569ed60e0db7faa2deff1708d8c2fee5113635fa3f626",
+      "skillId": "resoudre_pronom_sujet::all-receptive::text_type:narrative",
+      "facetKey": "resoudre_pronom_sujet::text_type:narrative",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 2,
+        "featureRequirements": []
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 8,
+      "distinctPassages": 8,
+      "proposedAllocationStatus": "allocated",
+      "excludedTeachingOverlapQuestionIds": [],
+      "proposedInitialQuestions": [
+        "v3-short-reading:subject-manga-illustrator",
+        "v3-short-reading:subject-musicians-stage",
+        "v3-short-reading:subject-players-water",
+        "v3-short-reading:subject-posters-wall"
+      ],
+      "proposedLaterQuestions": [
+        "v3-short-reading:subject-dog-gate",
+        "v3-short-reading:subject-key-pocket",
+        "v3-short-reading:subject-boxes-library",
+        "v3-short-reading:subject-brother-photo"
+      ],
+      "questionChecksums": {
+        "v3-short-reading:subject-manga-illustrator": "sha256:893d9ed9350424986466e06bed4296998ff4cbe841a4845ae2ac35af2645be34",
+        "v3-short-reading:subject-dog-gate": "sha256:e833ccd7ddaf352c55b93ba2de1c411943e6f1ad0b1b0fd22de8ddffd43ac3de",
+        "v3-short-reading:subject-musicians-stage": "sha256:e30bf73f1ec3e6d4d24cd6da4d97dcca338ee8d618a2b900e499f090737ce17e",
+        "v3-short-reading:subject-players-water": "sha256:8ab8695c33993f0831587ec3a09f0030057a57ef064c4660916300023ba92a5c",
+        "v3-short-reading:subject-key-pocket": "sha256:fb64390e1339c41291e32af6107c8cedbe12e8d380d7bafad0583531a24f08db",
+        "v3-short-reading:subject-posters-wall": "sha256:13c11a8e22a417fda2a41ebf6adef026dbc174148aecd3f20c899503064d84c0",
+        "v3-short-reading:subject-boxes-library": "sha256:dccf2416ed453678f3f1ddb7f52568485470ecdfd306c1271e66ca878ce77f1e",
+        "v3-short-reading:subject-brother-photo": "sha256:30ff7f8446186902fa6258c50d4d9c490c5f86da9136780b1ff23a3c9d4b6cef"
+      },
+      "passageChecksums": {
+        "v3-short-reading:subject-manga-illustrator": "passage-content:sha256:6caefabab9953688fd8b70467243ae249d8063793a4ff4abc89201723ec5846e",
+        "v3-short-reading:subject-dog-gate": "passage-content:sha256:78b7a660df4f798d764e0323f97944307e19b271ab1c4c6d873d322230e566c8",
+        "v3-short-reading:subject-musicians-stage": "passage-content:sha256:8135800c731d9efccc9e664c8f9dd581b83396563cb9da4449afcd0472d38a7a",
+        "v3-short-reading:subject-players-water": "passage-content:sha256:9adaa6c3952e523738b1c49ff8c7f260699f1be294d24999b993f757544ecf85",
+        "v3-short-reading:subject-key-pocket": "passage-content:sha256:abc968868b9abe1e6af88519f3924220ee4b382f316d1da496ce1ad576e7101a",
+        "v3-short-reading:subject-posters-wall": "passage-content:sha256:5532c6b33cb2b5ae2083f13ffe6525b72b220c7c13aab6952bbc11b7653ee8c5",
+        "v3-short-reading:subject-boxes-library": "passage-content:sha256:1534366c83ea390789fdd88844e1e9187a66116677be5b4cd1eaf53cec520bdc",
+        "v3-short-reading:subject-brother-photo": "passage-content:sha256:87830b49e61281df70851c992a4b9200e4bb2689cdb651f7c2beb17e1400691c"
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "question_correctness_and_textual_support",
+        "lesson_and_guided_practice",
+        "teaching_to_assessment_overlap",
+        "semantic_passage_independence",
+        "prerequisite_scope",
+        "evidence_criteria_enforcement",
+        "calibration"
+      ]
+    },
+    {
+      "lessonId": "french-v3-teaching:reading:resoudre_pronom_objet:narrative",
+      "titleFr": "Retrouver ce que remplace « le », « la » ou « lui »",
+      "lessonChecksum": "sha256:ef9287ed49ad76adca4d1b58ff6cf3d059270fe27e0bffcdbdd8a41d5e58daf4",
+      "skillId": "resoudre_pronom_objet::all-receptive::text_type:narrative",
+      "facetKey": "resoudre_pronom_objet::text_type:narrative",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 2,
+        "featureRequirements": []
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 8,
+      "distinctPassages": 8,
+      "proposedAllocationStatus": "allocated",
+      "excludedTeachingOverlapQuestionIds": [],
+      "proposedInitialQuestions": [
+        "v3-short-reading:object-ticket-pocket",
+        "v3-short-reading:object-teammate-call",
+        "v3-short-reading:object-visitors-guide",
+        "v3-short-reading:object-players-advice"
+      ],
+      "proposedLaterQuestions": [
+        "v3-short-reading:object-manga-loan",
+        "v3-short-reading:object-jacket-chair",
+        "v3-short-reading:object-boots-mud",
+        "v3-short-reading:object-brother-message"
+      ],
+      "questionChecksums": {
+        "v3-short-reading:object-manga-loan": "sha256:3f35ad3ce325adede31bd43a5a0fdd56273930a7b1caee6acfcfff98f2b3b81f",
+        "v3-short-reading:object-ticket-pocket": "sha256:d63689355d1d7bbf9c443e69aa2c70d1d2a33478ae4914d3bee3e8684fd23b0e",
+        "v3-short-reading:object-jacket-chair": "sha256:5eaea99ed6c5464e1e1b5620e53127c35bce65d1eca13c98b7ac49f84da434be",
+        "v3-short-reading:object-teammate-call": "sha256:de75dbe2a16e9add6c63991387c16e63e35772eece4786e87b7151b6c1e4ca60",
+        "v3-short-reading:object-boots-mud": "sha256:3201f671e4f93852e9ab3b1251bf46a8062a8e4d93b64827740eb175dd0395b5",
+        "v3-short-reading:object-visitors-guide": "sha256:d6a0b85feef25920a109456495011d96a0b1c2c2916f302d936f77c660326e8d",
+        "v3-short-reading:object-brother-message": "sha256:61d6289dc15aec9b504436087d9f4fcfa08760760fc12bb7bbde8d7d38190888",
+        "v3-short-reading:object-players-advice": "sha256:7faecfe38a2e42909322e87cb8ec340407be6a9a77f1ecf909380542515f6556"
+      },
+      "passageChecksums": {
+        "v3-short-reading:object-manga-loan": "passage-content:sha256:ffd4ba4b8f381bb4c7881ed9672aba5a779f5c46c33d792cfe41afd3126a300b",
+        "v3-short-reading:object-ticket-pocket": "passage-content:sha256:1d0f9d27c3eea23c3c8801fda06bc1b6a2cbb3f3e88a246e97485e89f2defdb8",
+        "v3-short-reading:object-jacket-chair": "passage-content:sha256:4c69b9a248afbb91df3a2fdb18c575020b2c068eda82279c5b7fdb0665a9b444",
+        "v3-short-reading:object-teammate-call": "passage-content:sha256:09f8d4498de3fdf801211760aeb1ac43463a44961817b3d87471aad61e93902c",
+        "v3-short-reading:object-boots-mud": "passage-content:sha256:f54720e8ebbc115a651b4e97ecfd4b5e2b43088636bfb0baaf36d38febb48301",
+        "v3-short-reading:object-visitors-guide": "passage-content:sha256:7ae3a5acb2fb92b536b3f4f040855a45afff1f04f42ed43e2b29715f267c25f8",
+        "v3-short-reading:object-brother-message": "passage-content:sha256:6d6fa89aec5073f4f5ed78000f3ae632f4f7bb7f2442a85dc97f3b326d7385f8",
+        "v3-short-reading:object-players-advice": "passage-content:sha256:1d88ed65bf60018e34f7b80358187b55ff89244b2fa337013664ef7d4cf2fe90"
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "question_correctness_and_textual_support",
+        "lesson_and_guided_practice",
+        "teaching_to_assessment_overlap",
+        "semantic_passage_independence",
+        "prerequisite_scope",
+        "evidence_criteria_enforcement",
+        "calibration"
+      ]
+    },
+    {
+      "lessonId": "french-v3-teaching:reading:inferer_chronologie_implicite:narrative",
+      "titleFr": "Retrouver ce qui s’est passé avant",
+      "lessonChecksum": "sha256:23a3cb283d6a0886923b0aa4aca0b1688fe7501395f4d534e7069f2b8cdff047",
+      "skillId": "inferer_chronologie_implicite::all-receptive::text_type:narrative",
+      "facetKey": "inferer_chronologie_implicite::text_type:narrative",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": true,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 2,
+        "featureRequirements": []
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 8,
+      "distinctPassages": 8,
+      "proposedAllocationStatus": "allocated",
+      "excludedTeachingOverlapQuestionIds": [],
+      "proposedInitialQuestions": [
+        "v3-short-reading:time-video-edit",
+        "v3-short-reading:time-manga-return",
+        "v3-short-reading:time-drawing-colour",
+        "v3-short-reading:time-message-arrival"
+      ],
+      "proposedLaterQuestions": [
+        "v3-short-reading:time-bike-repair",
+        "v3-short-reading:time-badge-bag",
+        "v3-short-reading:time-cookie-box",
+        "v3-short-reading:time-costume-button"
+      ],
+      "questionChecksums": {
+        "v3-short-reading:time-video-edit": "sha256:e96508284b5d40f6be8dac7d4b58c53a19e9bd17ea20e7f17250e1d2e83fe840",
+        "v3-short-reading:time-bike-repair": "sha256:8434d13964d7c9407c2b67810178baf88de96463eba018d678c1b2d69b03a3a0",
+        "v3-short-reading:time-badge-bag": "sha256:f4d0b1c0442a94259ee84c565e3eece2a6e53b4784721d3047aec2b39d0adcf1",
+        "v3-short-reading:time-manga-return": "sha256:524ff87ad7187f9bbe3cd923f46d0f9e2b12e0b95eba90da7cc89a49d1ad3d43",
+        "v3-short-reading:time-drawing-colour": "sha256:2ced2da755a7a6e21be6a9b9784660395ac17b3b378f2dbc1fb02defd7f39135",
+        "v3-short-reading:time-message-arrival": "sha256:8a51f5f007ced6d021ad7fc4f7f32eef1f62e1f12381a789d2e279b358de3fd4",
+        "v3-short-reading:time-cookie-box": "sha256:c2a91d560e73c7c892a2422d787e69bbbc469d240b7232b6ddd92032baafcdcb",
+        "v3-short-reading:time-costume-button": "sha256:8c92fe982d3a9163d55332a37687f72e3c53f6b5e3cdd0070d4094ff5a8949bc"
+      },
+      "passageChecksums": {
+        "v3-short-reading:time-video-edit": "passage-content:sha256:67648f336bf42b7e9e40c5319d3a88ceb4f1ede1a8e6e507bc5423ce364aec46",
+        "v3-short-reading:time-bike-repair": "passage-content:sha256:0314f9fc97b37ba86e0dd7a5ffb9a18abf8c315164c1877ba33452ff1a06af65",
+        "v3-short-reading:time-badge-bag": "passage-content:sha256:dcf9c4648c84cad8c6f856c63b7e3632f5971bcea85e8ef1263bae187843a511",
+        "v3-short-reading:time-manga-return": "passage-content:sha256:f8c8a9fbf65ca0bed4ddea4fc92c42430e380d6551b0f42345334abb318d23da",
+        "v3-short-reading:time-drawing-colour": "passage-content:sha256:fc60d452ace5e65dfdf834d817b6c8841ccfa8b2fc45868dfbad9baf2f9305fb",
+        "v3-short-reading:time-message-arrival": "passage-content:sha256:572b7ba6c4fe2e5388a17c080dcdc82afb7d3891f9cc13a1711b997ff0ec9a1f",
+        "v3-short-reading:time-cookie-box": "passage-content:sha256:140afc40ee0f057cb32e6d44132f9fc3602031372a202b9e9f3aa380af48e0b7",
+        "v3-short-reading:time-costume-button": "passage-content:sha256:c9561ac1addbc22ca20f4461a7db75d0d9073951196d17bc7953a8a9af2ed1be"
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "question_correctness_and_textual_support",
+        "lesson_and_guided_practice",
+        "teaching_to_assessment_overlap",
+        "semantic_passage_independence",
+        "prerequisite_scope",
+        "evidence_criteria_enforcement",
+        "calibration"
+      ]
+    },
+    {
+      "lessonId": "french-v3-teaching:reading:inferer_cause_locale:narrative",
+      "titleFr": "Comprendre pourquoi un personnage agit",
+      "lessonChecksum": "sha256:776f27242d6a638dc26bd49949d8d4999dedb949d1ba6104a707787a0c7d4dcf",
+      "skillId": "inferer_cause_locale::all-receptive::text_type:narrative",
+      "facetKey": "inferer_cause_locale::text_type:narrative",
+      "prerequisites": [
+        "localiser_information_explicite::all-receptive::text_type:narrative"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": true,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 2,
+        "featureRequirements": []
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 8,
+      "distinctPassages": 8,
+      "proposedAllocationStatus": "allocated",
+      "excludedTeachingOverlapQuestionIds": [],
+      "proposedInitialQuestions": [
+        "v3-short-reading:manga-queue",
+        "v3-short-reading:drawing-window",
+        "v3-short-reading:rain-notebook",
+        "v3-short-reading:game-headphones"
+      ],
+      "proposedLaterQuestions": [
+        "v3-short-reading:basket-shoelace",
+        "v3-short-reading:dance-music",
+        "v3-short-reading:bike-route",
+        "v3-short-reading:cinema-seat"
+      ],
+      "questionChecksums": {
+        "v3-short-reading:manga-queue": "sha256:45b07af9d212c470e643cb70b6905f300b7357126de17b56946747ccaa0b8791",
+        "v3-short-reading:basket-shoelace": "sha256:ce726dcf3f0699ae919ea87d9f0ef0f25c491e9127101857d4b4d7beb2a03588",
+        "v3-short-reading:drawing-window": "sha256:d0641854fdb2bd2cd30f26ed64fa17d1175d03758d87ee12c762ade54fcdfb39",
+        "v3-short-reading:dance-music": "sha256:5a8b8329a226bceeec27047e1631d90cc020e8e2051b55a3eaf18b099c6b22fb",
+        "v3-short-reading:rain-notebook": "sha256:8b858a5bb2581fb5b4b311fc642c42ab7c302e91b121a5269eaa98ba222b20bd",
+        "v3-short-reading:game-headphones": "sha256:764ce83eb260d900c6fdc4d3ef808d6d1064cb1d5f6234bdaa5dda47456159aa",
+        "v3-short-reading:bike-route": "sha256:84a6b1e182700cc42988396715e2205be7038b4eed9072b761266f81b0ca608e",
+        "v3-short-reading:cinema-seat": "sha256:fae99913eaffffd4e18f8114e2f0a17b0b9e68e6be53f0fb4a2a1d0225f2c8af"
+      },
+      "passageChecksums": {
+        "v3-short-reading:manga-queue": "passage-content:sha256:47da5b03acb12bd07d0f2f5b95b5e2a7af8fe97103f4b62d86b861a36e403242",
+        "v3-short-reading:basket-shoelace": "passage-content:sha256:a3b860481a7007187118979014f8d84ea3a4da845b0ef2e1e170cc72d1978b9c",
+        "v3-short-reading:drawing-window": "passage-content:sha256:f8d6962e2e314232f01b5df4c3f6e009edad92b619fbec29671dce463288d7ea",
+        "v3-short-reading:dance-music": "passage-content:sha256:2d3b8f815164a615f8a4a579d93b3198521b299d860f2ad6a91a546c473c130d",
+        "v3-short-reading:rain-notebook": "passage-content:sha256:4402b8b409ccffbd38220b011893a38fab598664ff29c9e3e9e51d8dd7c76518",
+        "v3-short-reading:game-headphones": "passage-content:sha256:fe0ba8f37b91003d8cb9e630a1f51b520338aa2bfd3ecc02a8e0fa378c30a325",
+        "v3-short-reading:bike-route": "passage-content:sha256:b606ea03c90a8bf95ec3d3b63dbf6d2ce62784699f7231bac26fd08778bb9afc",
+        "v3-short-reading:cinema-seat": "passage-content:sha256:55fe00c893fae2a25882dadd609e95c26fb24e9e763ce5463d87a05fc7993f56"
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "question_correctness_and_textual_support",
+        "lesson_and_guided_practice",
+        "teaching_to_assessment_overlap",
+        "semantic_passage_independence",
+        "prerequisite_scope",
+        "evidence_criteria_enforcement",
+        "calibration"
+      ]
+    },
+    {
+      "lessonId": "french-v3-teaching:reading:localiser_information_explicite:informational",
+      "titleFr": "Trouver la bonne information dans une annonce",
+      "lessonChecksum": "sha256:174ede482084e447fc0c8982910033c87a794bb2cd918f5a39ef0209d79e5ed1",
+      "skillId": "localiser_information_explicite::all-receptive::text_type:informational",
+      "facetKey": "localiser_information_explicite::text_type:informational",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 2,
+        "featureRequirements": []
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 8,
+      "distinctPassages": 8,
+      "proposedAllocationStatus": "allocated",
+      "excludedTeachingOverlapQuestionIds": [],
+      "proposedInitialQuestions": [
+        "v3-short-reading:notice-manga-return",
+        "v3-short-reading:notice-game-location",
+        "v3-short-reading:notice-radio-role",
+        "v3-short-reading:notice-garden-tool"
+      ],
+      "proposedLaterQuestions": [
+        "v3-short-reading:notice-basket-registration",
+        "v3-short-reading:notice-drawing-material",
+        "v3-short-reading:notice-dance-audience",
+        "v3-short-reading:notice-film-vote"
+      ],
+      "questionChecksums": {
+        "v3-short-reading:notice-manga-return": "sha256:286375cdb647d12d6ab01165daafbe97f6f3f5373487175a0aca741d34753b21",
+        "v3-short-reading:notice-basket-registration": "sha256:39fdc9700d80f329622d091f8eb18580e33cfd1858f3886546f699f908f8b258",
+        "v3-short-reading:notice-drawing-material": "sha256:2397dc4a4e66c6fc011fb4e7bc61225e10d86637115843dfb9b361e4b9cec0c4",
+        "v3-short-reading:notice-game-location": "sha256:8d7a28718ef02dc5c7a45e2847c3c582ecf6f99a8b2e17ecf03abcb327d9535d",
+        "v3-short-reading:notice-radio-role": "sha256:45de6b0f9858c6dd5a73c4d58720e20160d73d75c2f593d489db3bad6e4b327a",
+        "v3-short-reading:notice-garden-tool": "sha256:2765d012fc34a088d8dda5133b8b705ecf7739fc64f49964d993fae78b610005",
+        "v3-short-reading:notice-dance-audience": "sha256:3922f68e23cfef0e74145873c9f75d630bd010dcf9a46bd66c3570da6ef3a346",
+        "v3-short-reading:notice-film-vote": "sha256:56d2801cfd541eafb1c27a461d804ce8c010527d6a265ec52edf0f883ab0074e"
+      },
+      "passageChecksums": {
+        "v3-short-reading:notice-manga-return": "passage-content:sha256:9f11fda810f5c72b42f890ffb363c81a9b0a4c01a7dfb203efd50730ac15eb95",
+        "v3-short-reading:notice-basket-registration": "passage-content:sha256:c42b21d78cc10bf41413655f86e4de79e0e45cb492357f5e7024d8ea64069d65",
+        "v3-short-reading:notice-drawing-material": "passage-content:sha256:f79e2b59acd4b42077ad3b843149c6f6d9692e8a11a3c21b5dd6c72075884e1f",
+        "v3-short-reading:notice-game-location": "passage-content:sha256:7839b3d8931abf53265c9720404ac422b7ae621c065d858c1681fab7e912a17c",
+        "v3-short-reading:notice-radio-role": "passage-content:sha256:8586963e7a15bf1cb87f11bee6ba1a96517d2fec5452d8534316a51c510db01d",
+        "v3-short-reading:notice-garden-tool": "passage-content:sha256:4b659cdaf926db2b9804f5b2a218fa883eb16fae5a355ea4443be0955a2aab88",
+        "v3-short-reading:notice-dance-audience": "passage-content:sha256:863a05834e0e1e9075a947235f9e9204dba89d3b74dc3c9b0cfedf9fe75be256",
+        "v3-short-reading:notice-film-vote": "passage-content:sha256:1fb354bd20228b00b166bcbf1216001fbaeca880eeefb9848b160a3d083c62f2"
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "question_correctness_and_textual_support",
+        "lesson_and_guided_practice",
+        "teaching_to_assessment_overlap",
+        "semantic_passage_independence",
+        "prerequisite_scope",
+        "evidence_criteria_enforcement",
+        "calibration"
+      ]
+    },
+    {
+      "lessonId": "french-v3-teaching:reading:distinguer_fait_opinion:argumentative",
+      "titleFr": "Distinguer une information vérifiable d’un avis",
+      "lessonChecksum": "sha256:d28c01ed16507651767caf9fea476d2fb59a04c5b0b19b0539f629f471dbfe64",
+      "skillId": "distinguer_fait_opinion::argumentative-receptive::text_type:argumentative",
+      "facetKey": "distinguer_fait_opinion::text_type:argumentative",
+      "prerequisites": [
+        "localiser_information_explicite::all-receptive::text_type:argumentative"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": true,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 1,
+        "featureRequirements": []
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 8,
+      "distinctPassages": 8,
+      "proposedAllocationStatus": "allocated",
+      "excludedTeachingOverlapQuestionIds": [],
+      "proposedInitialQuestions": [
+        "v3-short-reading:opinion-manga-club",
+        "v3-short-reading:opinion-radio",
+        "v3-short-reading:opinion-garden",
+        "v3-short-reading:opinion-workshop-signup"
+      ],
+      "proposedLaterQuestions": [
+        "v3-short-reading:opinion-basket-court",
+        "v3-short-reading:opinion-film-makers",
+        "v3-short-reading:opinion-exhibition-location",
+        "v3-short-reading:opinion-concert-access"
+      ],
+      "questionChecksums": {
+        "v3-short-reading:opinion-manga-club": "sha256:dfc00b2a891f4b606ceb1fd648d31c8d13ff26a9b2410d6c7d991381775f32d0",
+        "v3-short-reading:opinion-basket-court": "sha256:ffcabdbeaba5944508831c9382929dddd47d98ad64329fb4a95a150fcb6c1226",
+        "v3-short-reading:opinion-radio": "sha256:0d2652f51949ac8b576487d6f15fdf6064cb42a3dd3cb9c2eadd446dc85fc7fb",
+        "v3-short-reading:opinion-garden": "sha256:e65d1c8c74ca495d792ae143c50806131bd94a3616b501a2e4c43e1c85de3a90",
+        "v3-short-reading:opinion-film-makers": "sha256:e854d4e75fff70aa08f57a06085c934ad69a7fa0f54ddd3b3c9ea4d4f4f7ebf7",
+        "v3-short-reading:opinion-exhibition-location": "sha256:9f3727ee308beb58f342ac648aec17ab21097ce3090c12d88a83e635735b7e33",
+        "v3-short-reading:opinion-concert-access": "sha256:958ed0a62ea1db1826a874dd42679cf209f9607fe17783a3ad5eae8b1bb34c07",
+        "v3-short-reading:opinion-workshop-signup": "sha256:928450a56210a203129c90cd094caeb6ebbbfda5bd09e24e2cc0d0877b813e0d"
+      },
+      "passageChecksums": {
+        "v3-short-reading:opinion-manga-club": "passage-content:sha256:de8bba2cff72a5b9269e1da4ca94b3e30507cfbdcfe7b64750e423e80747016f",
+        "v3-short-reading:opinion-basket-court": "passage-content:sha256:ebc211c0a02d284599e79aaba33234bd9c127cd05f911155f1856b6706fd5364",
+        "v3-short-reading:opinion-radio": "passage-content:sha256:f514090a77b04cc0b52bbd2f9a85d40ead16def8dd74c5480cd8fde23aaad541",
+        "v3-short-reading:opinion-garden": "passage-content:sha256:ca1e26401cf0b57c7e312e8e8914ce4cc070d37f556895e5f14a29abf7ab192f",
+        "v3-short-reading:opinion-film-makers": "passage-content:sha256:0da3d10156d68a73211dfa27fd7cc6cbe738a04cc9128d5a77976f21f9b61e55",
+        "v3-short-reading:opinion-exhibition-location": "passage-content:sha256:2dbe614f16c7294b05d403ae5d0f26b267e1388bb5fb061cc4af5d36316f0401",
+        "v3-short-reading:opinion-concert-access": "passage-content:sha256:3aa3354b15631b4bd7c45128c2b1462087638bca9b5498869afb9dab4880e6bd",
+        "v3-short-reading:opinion-workshop-signup": "passage-content:sha256:8d6c974872dc861c335a08bf02c90f529a0c7cfcfe00c4e3213752ed86609cd7"
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "question_correctness_and_textual_support",
+        "lesson_and_guided_practice",
+        "teaching_to_assessment_overlap",
+        "semantic_passage_independence",
+        "prerequisite_scope",
+        "evidence_criteria_enforcement",
+        "calibration"
+      ]
+    },
+    {
+      "lessonId": "french-v3-teaching:reading:deduire_mot_definition_locale:informational",
+      "titleFr": "Trouver une définition dans le texte",
+      "lessonChecksum": "sha256:650213bb528291567ea2f81c6c4726820f569dc9cb4800c12b17775f3ed3d11c",
+      "skillId": "deduire_mot_definition_locale::all-receptive::text_type:informational",
+      "facetKey": "deduire_mot_definition_locale::text_type:informational",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 2,
+        "featureRequirements": []
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 8,
+      "distinctPassages": 8,
+      "proposedAllocationStatus": "allocated",
+      "excludedTeachingOverlapQuestionIds": [],
+      "proposedInitialQuestions": [
+        "v3-short-reading:definition-pseudonym",
+        "v3-short-reading:definition-maquette",
+        "v3-short-reading:definition-itineraire",
+        "v3-short-reading:definition-inventaire"
+      ],
+      "proposedLaterQuestions": [
+        "v3-short-reading:definition-binome",
+        "v3-short-reading:definition-brouillon",
+        "v3-short-reading:definition-coulisses",
+        "v3-short-reading:definition-escale"
+      ],
+      "questionChecksums": {
+        "v3-short-reading:definition-pseudonym": "sha256:061fd54abd703415c15b0219bec8e2b363223d70786ed6e15364e98148b7a6ec",
+        "v3-short-reading:definition-binome": "sha256:62c72764cfffb5210bd1f1f8929135c82d599c9a8360421762f51fafdf9690a3",
+        "v3-short-reading:definition-maquette": "sha256:6e308801f5479d716a66e0307a2229b5eaf99b4084ebcf03f85b4b0278765028",
+        "v3-short-reading:definition-brouillon": "sha256:60902da805d6356692286419cef2184f4b8e819bfd435a81c303e22271542ed0",
+        "v3-short-reading:definition-itineraire": "sha256:0d8749e65354c982072eb0c1450551ff5d0c6ac00566737e79733bfd3ffb0f0a",
+        "v3-short-reading:definition-coulisses": "sha256:fa716905f1752e3e2d0e8aa74d47c4221389c4f23c897dcd322b32d057cbaa3a",
+        "v3-short-reading:definition-escale": "sha256:e3ad71164c9598a8efa794983e5f5c6dfced2c8d6f955b0bf3fec5483b170ebc",
+        "v3-short-reading:definition-inventaire": "sha256:f633d89d9004a1a5f4e3d8e831934943e733e6ffe88110b50f6ac3d3660476ad"
+      },
+      "passageChecksums": {
+        "v3-short-reading:definition-pseudonym": "passage-content:sha256:7cd5e34fe74b693fae9835d8de3be4e246a43d81d04f0e1cad04038b7fcfc94a",
+        "v3-short-reading:definition-binome": "passage-content:sha256:4e57dbfcfffc4e19abe10ff9d7539ecc43d775c2a217bdeb5a0799302d5fe3ae",
+        "v3-short-reading:definition-maquette": "passage-content:sha256:78787de9c34830fdf699c2d34bf8be34efe4d28072378572ef44f5a3844082a0",
+        "v3-short-reading:definition-brouillon": "passage-content:sha256:74708e2d0fc47f7a44f418aa02fadf9c1a7147f7490fd131151df11bcb558cf9",
+        "v3-short-reading:definition-itineraire": "passage-content:sha256:bc961132118602a4d2e8ef4336e71706c7d3629327cded675ebd7e8ed5aa9123",
+        "v3-short-reading:definition-coulisses": "passage-content:sha256:d8df0d9f9b691a0eb4dc543f0e3f9720d76ed3e038af9bd9c85b39bf6216a846",
+        "v3-short-reading:definition-escale": "passage-content:sha256:f301c09996d2b6df13f32fb189b354f90a57b21d6853de6900223a67367d31b6",
+        "v3-short-reading:definition-inventaire": "passage-content:sha256:060bfdb58877e4895b88083cd42cae1e24b633fdbc8d0a59941f4a1552099f67"
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "question_correctness_and_textual_support",
+        "lesson_and_guided_practice",
+        "teaching_to_assessment_overlap",
+        "semantic_passage_independence",
+        "prerequisite_scope",
+        "evidence_criteria_enforcement",
+        "calibration"
+      ]
+    },
+    {
+      "lessonId": "french-v3-teaching:reading:deduire_mot_exemple_contraste:informational",
+      "titleFr": "Déduire un mot grâce aux exemples",
+      "lessonChecksum": "sha256:886d911c827d705c9b060415e91d33cbf8bcb840d425dfa0400b1ec7d7b2721f",
+      "skillId": "deduire_mot_exemple_contraste::all-receptive::text_type:informational",
+      "facetKey": "deduire_mot_exemple_contraste::text_type:informational",
+      "prerequisites": [],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 3,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 1,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false,
+        "parentMinimumTextTypes": 2,
+        "featureRequirements": []
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 8,
+      "distinctPassages": 8,
+      "proposedAllocationStatus": "allocated",
+      "excludedTeachingOverlapQuestionIds": [],
+      "proposedInitialQuestions": [
+        "v3-short-reading:contrast-provisoire",
+        "v3-short-reading:contrast-meticulous",
+        "v3-short-reading:contrast-reticent",
+        "v3-short-reading:contrast-fragile"
+      ],
+      "proposedLaterQuestions": [
+        "v3-short-reading:contrast-bonde",
+        "v3-short-reading:contrast-etanche",
+        "v3-short-reading:contrast-diversifie",
+        "v3-short-reading:contrast-autonome"
+      ],
+      "questionChecksums": {
+        "v3-short-reading:contrast-bonde": "sha256:e35850284aa588a81638ebcbfc1bee0919232cf3b656841ed8c2f7e648c344a8",
+        "v3-short-reading:contrast-provisoire": "sha256:11f816ffc2be6f9763b1c4c11066d8e1523b37c4494784704e040e056cf3699a",
+        "v3-short-reading:contrast-meticulous": "sha256:3e8eed9a05082e2aeb7ceec2cd2f9314751bf5761b8fcbbc4b5e1cc577fcfa37",
+        "v3-short-reading:contrast-reticent": "sha256:cdecad6c4c33783db331d055a7b554dda955265db82dbb16c0cec701585b6372",
+        "v3-short-reading:contrast-fragile": "sha256:92792185e4a8ebc67da16335afeb2a2eb1f9c07c1f81df54ad40b50d674420f7",
+        "v3-short-reading:contrast-etanche": "sha256:3838cfbcc43492569605c297280821a147c95f9c7ac33dbad06b9532a0604d90",
+        "v3-short-reading:contrast-diversifie": "sha256:434de4098d5ef151877f25bc84db560424976a8fa4ba14ff38907264d798c0c3",
+        "v3-short-reading:contrast-autonome": "sha256:6f3060d325a4df69af1708ca6d518485f74176b1a7d06c7f53d0d17a481e02ea"
+      },
+      "passageChecksums": {
+        "v3-short-reading:contrast-bonde": "passage-content:sha256:e7be8e6d7a7508924357c589784f7e293ced9ccfd3d21038dd3eeb9157348457",
+        "v3-short-reading:contrast-provisoire": "passage-content:sha256:060928609d8be428bc39916e05b02afdcfc226464cf1585c145430aae4b781ca",
+        "v3-short-reading:contrast-meticulous": "passage-content:sha256:6610dee52fb460b9f02b9991ddd77cb8ecebad5bdff0a1fb6e0be1b9205eebe5",
+        "v3-short-reading:contrast-reticent": "passage-content:sha256:66e40ebe4ba01bbe946cc9daadec1694bc400198071850167e6829ce7a940b5a",
+        "v3-short-reading:contrast-fragile": "passage-content:sha256:00bbd62b9c524e75193e64ad5d0e7ad635b00b36048d8a8e6b3d19c8da49a2bb",
+        "v3-short-reading:contrast-etanche": "passage-content:sha256:d13d170edebfd131d79eccecabd3b6e47b0ca74d5f14096d53e41880d07ac916",
+        "v3-short-reading:contrast-diversifie": "passage-content:sha256:8e72a74028ccd059abf119b7ed50e9f9ebee4dbb6c17d4127cea4154b18d3389",
+        "v3-short-reading:contrast-autonome": "passage-content:sha256:78b8d2d55bbafd4c8777093b847494029a8dced9ffa3688e781c1fc989cb576f"
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "question_correctness_and_textual_support",
+        "lesson_and_guided_practice",
+        "teaching_to_assessment_overlap",
+        "semantic_passage_independence",
+        "prerequisite_scope",
+        "evidence_criteria_enforcement",
+        "calibration"
+      ]
+    }
+  ],
+  "checksum": "sha256:29c934a60b0b719bc47fd0aa886885c39afb431328ab10a0215dbd8728377c28"
+}

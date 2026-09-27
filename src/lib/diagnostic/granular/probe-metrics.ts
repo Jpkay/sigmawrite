@@ -1,0 +1,42 @@
+import {complexNegationFeature} from "./complex-negation-coverage";
+import {writtenSyllableFeature} from "./written-syllable-coverage";
+import {phonemeGraphieFeature} from "./phoneme-graphie-coverage";
+import {readAudioStimulus} from './audio-stimulus';
+import type {CanonicalDiagnosticBankItem} from "../item-bank";
+import {writtenGuessingFloor} from "./response-space";
+import {PERSON_NUMBER_LABELS,PERSON_NUMBER_VERB_FORMS} from "./person-number-categories";
+/** Sampling metadata from a reviewed question's explicit answer choices. This
+ * does not add a mastery criterion or grant approval to authoring drafts. */
+function samplingCategory(entry:CanonicalDiagnosticBankItem):string|undefined{
+ if(entry.item.nodeKey==='reconnaitre_subjonctif_present'&&entry.evidenceKey==='reading-receptive'&&entry.item.responseType==='mcq'){
+  const labels=['Subjonctif présent','Indicatif présent','Indicatif imparfait','Subjonctif passé'];
+  const choices=entry.item.choices??[],correct=choices.filter(c=>c.correct);
+  if(choices.length===4&&correct.length===1&&labels.every(label=>choices.filter(c=>c.text===label).length===1))return `subjonctif-recognition:${labels.indexOf(correct[0].text)}`;
+ }
+
+ if(entry.item.nodeKey!=="distinguer_personne_nombre"||entry.evidenceKey!=="reading-receptive"||entry.item.responseType!=="mcq")return;
+ const choices=entry.item.choices??[],correct=choices.filter(choice=>choice.correct);
+ const group=entry.item.validatorConfig?.personNumberGroup;
+ if(choices.length!==6||correct.length!==1||typeof group!=="string"||!PERSON_NUMBER_LABELS.some(label=>label===group))return;
+ const category=PERSON_NUMBER_LABELS.indexOf(group as typeof PERSON_NUMBER_LABELS[number]);
+ const answerSet=new Set(choices.map(choice=>choice.text));
+ if(answerSet.size!==6||!Object.values(PERSON_NUMBER_VERB_FORMS).some(forms=>forms.every(form=>answerSet.has(form))&&correct[0].text===forms[category]))return;
+ return `person-number:${category}`;
+}
+/** Current source-derived routing estimates. Written-answer guessing and time
+ * estimates still require calibration; a compiled bundle cannot change them
+ * independently of the adapter's versioned content policy. */
+export function canonicalProbeMetrics(entry:CanonicalDiagnosticBankItem){
+ const audio=readAudioStimulus(entry.item);
+ const writtenGuess=writtenGuessingFloor(entry.item);
+ const category=samplingCategory(entry);
+ const features=[complexNegationFeature(entry),phonemeGraphieFeature(entry),writtenSyllableFeature(entry)].filter((feature):feature is string=>Boolean(feature));
+ return {
+  ...(features.length?{evidenceFeatures:features}:{}),
+  ...(category?{samplingCategory:category}:{}),
+  difficulty:({foundation:.25,core:.5,stretch:.75} as const)[entry.difficultyTier],
+  expectedSeconds:(entry.sectionKey==="reading_comprehension"?60:30)+(audio?Math.ceil(audio.durationMs/1000):0),
+  // Answer and supporting-passage choices are correlated, not independent draws.
+  guessProbability:entry.item.responseType==="mcq"?1/Math.max(2,entry.item.choices?.length??0):writtenGuess,
+ };
+}

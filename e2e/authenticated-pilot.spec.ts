@@ -40,13 +40,14 @@ test.describe("seeded pilot role journeys", () => {
     await expect(page.getByRole("heading", { name: /classes/i })).toBeVisible();
   });
 
-  test("administrator can record feedback-pilot agreement while provisioning a student", async ({ page }) => {
+  test("managed student creation omits pilot fields while pilot enrollment remains separate", async ({ page }) => {
     await login(page, "admin.demo@reading-to-learn.test", /\/admin/);
     await page.goto("/admin/users");
-    const feedbackOption = page.getByLabel("Inscrire au pilote de feedback pendant 30 jours");
-    await expect(feedbackOption).toBeVisible();
-    await feedbackOption.check();
+    await expect(page.getByLabel("Date de naissance")).toHaveCount(0);
+    await expect(page.getByLabel("Inscrire au pilote de feedback pendant 30 jours")).toHaveCount(0);
+
+    await page.goto("/admin/diagnostic-pilot");
+    await expect(page.getByText("Inscrire un participant", { exact: true })).toBeVisible();
     await expect(page.getByLabel("Accord donné par")).toHaveValue("student");
-    await expect(page.getByText("Cet accord est distinct de l’accès scolaire normal.")).toBeVisible();
   });
 });

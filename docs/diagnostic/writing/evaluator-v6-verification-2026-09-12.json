@@ -1,0 +1,48 @@
+{
+  "status": "experimental_morphology_guard_verified_provider_reliability_unresolved",
+  "evaluatorVersion": "french-writing-evaluator-v6",
+  "change": "Anchor imperative lemma and verb-form evidence, check forms with the deterministic conjugator, and preserve incorrect contextual judgments. Unsupported verb paradigms cannot receive a guessed grade.",
+  "localChecks": {
+    "granularAndConjugationTests": 695,
+    "typescript": "passed",
+    "knownFalsePositiveImperativesRejected": [
+      "prend",
+      "met",
+      "attend",
+      "rejoint"
+    ],
+    "correctedImperativesAccepted": [
+      "prends",
+      "mets",
+      "attends",
+      "rejoins"
+    ],
+    "liaisonChecked": true,
+    "unanchoredOrUnknownVerbEvidenceRejected": true
+  },
+  "liveSyntheticChecks": {
+    "matched": 3,
+    "total": 6,
+    "remainingFailures": [
+      {
+        "id": "imperative-forms-errors",
+        "reason": "invalid_json"
+      },
+      {
+        "id": "imperative-liaison-correct",
+        "reason": "invalid_json"
+      },
+      {
+        "id": "imperative-liaison-errors",
+        "reason": "invalid_json"
+      }
+    ]
+  },
+  "limitations": [
+    "Contextual interpretation still depends on model judgments and requires educator calibration.",
+    "The deterministic support inventory is deliberately bounded to authored paradigms and three explicitly added common verbs; unsupported verbs remain unresolved.",
+    "Three live synthetic cases returned invalid JSON, so provider reliability is not established.",
+    "The experimental evaluator is not wired into a student release.",
+    "Revision handling and source-span anchoring issues from the previous audit remain outstanding."
+  ]
+}

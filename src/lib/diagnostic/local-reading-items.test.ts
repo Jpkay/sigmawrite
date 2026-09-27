@@ -28,3 +28,14 @@ describe("local reading diagnostic authoring", () => {
     }
   });
 });
+
+it("authors meaning criteria and accepted paraphrases for every written reading exercise", async () => {
+  const items = await buildLocalReadingDraftItems(taxonomy.taxonomy);
+  const written = items.filter(({ item }) => item.responseType !== "mcq");
+  expect(written).toHaveLength(15);
+  for (const { item } of written) {
+    expect(item.validatorConfig?.readingRubric).toMatchObject({ version: 1, requiredIdeas: expect.any(Array) });
+    expect(item.acceptableAnswers.length).toBeGreaterThan(0);
+  }
+  expect(items.filter(({ item }) => item.responseType === "mcq").every(({ item }) => !item.validatorConfig?.readingRubric)).toBe(true);
+});

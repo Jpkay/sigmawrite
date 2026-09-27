@@ -3,8 +3,8 @@
  *
  * Talks to a LanguageTool HTTP server's /v2/check endpoint. Point LANGUAGETOOL_URL
  * at a self-hosted instance in production (see docker-compose.languagetool.yml);
- * it falls back to the public API for local development and smoke tests. The
- * public API is rate-limited and not for production or sensitive text.
+ * it defaults to localhost for local development. Hosted services authenticate
+ * server-side requests with LANGUAGETOOL_API_KEY; student text is sent by POST.
  *
  * Response shape: https://languagetool.org/http-api/
  */
@@ -36,6 +36,7 @@ type LtResponse = { matches?: LtMatch[]; language?: { code?: string } };
 
 export type LanguageToolConfig = {
   baseUrl?: string;
+  apiKey?: string;
   /** Override the global fetch (for tests). */
   fetchImpl?: typeof fetch;
   /** Request timeout, ms. */
@@ -44,6 +45,7 @@ export type LanguageToolConfig = {
 
 export class LanguageToolChecker implements FrenchGrammarChecker {
   private readonly baseUrl: string;
+  private readonly apiKey: string | undefined;
   private readonly fetchImpl: typeof fetch;
   private readonly timeoutMs: number;
 
@@ -53,6 +55,7 @@ export class LanguageToolChecker implements FrenchGrammarChecker {
       process.env.LANGUAGETOOL_URL ??
       LOCAL_SERVICE
     ).replace(/\/$/, "");
+    this.apiKey = config.apiKey ?? process.env.LANGUAGETOOL_API_KEY;
     this.fetchImpl = config.fetchImpl ?? fetch;
     this.timeoutMs = config.timeoutMs ?? 10_000;
   }
@@ -80,6 +83,7 @@ export class LanguageToolChecker implements FrenchGrammarChecker {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
           Accept: "application/json",
+          ...(this.apiKey ? { Authorization: `Bearer ${this.apiKey}` } : {}),
         },
         body: body.toString(),
         signal: controller.signal,

@@ -6,6 +6,8 @@ import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
  * assembled student snapshot, shared by server dashboards and unit tests.
  */
 export type StudentSnapshot = {
+  grade?: number | null;
+  frenchBackground?: string | null;
   onboarded?: boolean;
   diagnostic?: DiagnosticResult | null;
   sessions?: ReadingSessionResult[];

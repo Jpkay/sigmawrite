@@ -1,0 +1,2987 @@
+{
+  "version": "french-v3-written-determiner-agreement-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-written-determiner:recognition-1",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Un seul animal est représenté.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "phoque",
+                "form": "phoque"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "phoque"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "une phoque",
+              "errorKey": "determiner-gender"
+            },
+            {
+              "incorrectChoiceFr": "des phoque",
+              "errorKey": "determiner-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "un phoque",
+            "correct": true
+          },
+          {
+            "text": "une phoque",
+            "correct": false
+          },
+          {
+            "text": "des phoque",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-2",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Un seul personnage articulé est posé sur la scène.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "marionnette",
+                "form": "marionnette"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "marionnette"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "un marionnette",
+              "errorKey": "determiner-gender"
+            },
+            {
+              "incorrectChoiceFr": "des marionnette",
+              "errorKey": "determiner-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "une marionnette",
+            "correct": true
+          },
+          {
+            "text": "un marionnette",
+            "correct": false
+          },
+          {
+            "text": "des marionnette",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-3",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Un seul lit suspendu est installé.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "hamac",
+                "form": "hamac"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "hamac"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "cette hamac",
+              "errorKey": "determiner-gender"
+            },
+            {
+              "incorrectChoiceFr": "ces hamac",
+              "errorKey": "determiner-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "ce hamac",
+            "correct": true
+          },
+          {
+            "text": "cette hamac",
+            "correct": false
+          },
+          {
+            "text": "ces hamac",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-4",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Un seul instrument indique le nord.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "boussole",
+                "form": "boussole"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "boussole"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "ce boussole",
+              "errorKey": "determiner-gender"
+            },
+            {
+              "incorrectChoiceFr": "ces boussole",
+              "errorKey": "determiner-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "cette boussole",
+            "correct": true
+          },
+          {
+            "text": "ce boussole",
+            "correct": false
+          },
+          {
+            "text": "ces boussole",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-5",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Une seule fermeture appartient à Nora.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "cadenas",
+                "form": "cadenas"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "cadenas"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "sa cadenas",
+              "errorKey": "determiner-gender"
+            },
+            {
+              "incorrectChoiceFr": "ses cadenas",
+              "errorKey": "determiner-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "son cadenas",
+            "correct": true
+          },
+          {
+            "text": "sa cadenas",
+            "correct": false
+          },
+          {
+            "text": "ses cadenas",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-6",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "On parle de la moustache d’un seul personnage.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "moustache",
+                "form": "moustache"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "moustache"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "son moustache",
+              "errorKey": "determiner-gender"
+            },
+            {
+              "incorrectChoiceFr": "ses moustache",
+              "errorKey": "determiner-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "sa moustache",
+            "correct": true
+          },
+          {
+            "text": "son moustache",
+            "correct": false
+          },
+          {
+            "text": "ses moustache",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-7",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Un seul élément de la fleur est tombé.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "pétale",
+                "form": "pétale"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "pétale"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "une pétale",
+              "errorKey": "determiner-gender"
+            },
+            {
+              "incorrectChoiceFr": "des pétale",
+              "errorKey": "determiner-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "un pétale",
+            "correct": true
+          },
+          {
+            "text": "une pétale",
+            "correct": false
+          },
+          {
+            "text": "des pétale",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-8",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Une seule petite pièce est disponible.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "cabine",
+                "form": "cabine"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "cabine"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "un cabine",
+              "errorKey": "determiner-gender"
+            },
+            {
+              "incorrectChoiceFr": "des cabine",
+              "errorKey": "determiner-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "une cabine",
+            "correct": true
+          },
+          {
+            "text": "un cabine",
+            "correct": false
+          },
+          {
+            "text": "des cabine",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-9",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Un seul objet ferme la boîte.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "couvercle",
+                "form": "couvercle"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "couvercle"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "cette couvercle",
+              "errorKey": "determiner-gender"
+            },
+            {
+              "incorrectChoiceFr": "ces couvercle",
+              "errorKey": "determiner-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "ce couvercle",
+            "correct": true
+          },
+          {
+            "text": "cette couvercle",
+            "correct": false
+          },
+          {
+            "text": "ces couvercle",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-10",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Un seul relief apparaît sur la carte.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "colline",
+                "form": "colline"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "colline"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "ce colline",
+              "errorKey": "determiner-gender"
+            },
+            {
+              "incorrectChoiceFr": "ces colline",
+              "errorKey": "determiner-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "cette colline",
+            "correct": true
+          },
+          {
+            "text": "ce colline",
+            "correct": false
+          },
+          {
+            "text": "ces colline",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-11",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nora possède une seule boîte pour ses crayons.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "plumier",
+                "form": "plumier"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "plumier"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "sa plumier",
+              "errorKey": "determiner-gender"
+            },
+            {
+              "incorrectChoiceFr": "ses plumier",
+              "errorKey": "determiner-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "son plumier",
+            "correct": true
+          },
+          {
+            "text": "sa plumier",
+            "correct": false
+          },
+          {
+            "text": "ses plumier",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-12",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nora porte un seul vêtement de ce type.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "cape",
+                "form": "cape"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "cape"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "son cape",
+              "errorKey": "determiner-gender"
+            },
+            {
+              "incorrectChoiceFr": "ses cape",
+              "errorKey": "determiner-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "sa cape",
+            "correct": true
+          },
+          {
+            "text": "son cape",
+            "correct": false
+          },
+          {
+            "text": "ses cape",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-13",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Plusieurs insectes avancent sur le sol.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "fourmi",
+                "form": "fourmis"
+              },
+              {
+                "lemma": "fourmi",
+                "form": "fourmi"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "fourmi"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "une fourmis",
+              "errorKey": "determiner-number"
+            },
+            {
+              "incorrectChoiceFr": "des fourmi",
+              "errorKey": "noun-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "des fourmis",
+            "correct": true
+          },
+          {
+            "text": "une fourmis",
+            "correct": false
+          },
+          {
+            "text": "des fourmi",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-14",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Plusieurs légumes sont montrés.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "navet",
+                "form": "navets"
+              },
+              {
+                "lemma": "navet",
+                "form": "navet"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "navet"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "ce navets",
+              "errorKey": "determiner-number"
+            },
+            {
+              "incorrectChoiceFr": "ces navet",
+              "errorKey": "noun-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "ces navets",
+            "correct": true
+          },
+          {
+            "text": "ce navets",
+            "correct": false
+          },
+          {
+            "text": "ces navet",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-15",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Plusieurs chaussures appartiennent à Sami.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "sandale",
+                "form": "sandales"
+              },
+              {
+                "lemma": "sandale",
+                "form": "sandale"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "sandale"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "sa sandales",
+              "errorKey": "determiner-number"
+            },
+            {
+              "incorrectChoiceFr": "ses sandale",
+              "errorKey": "noun-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "ses sandales",
+            "correct": true
+          },
+          {
+            "text": "sa sandales",
+            "correct": false
+          },
+          {
+            "text": "ses sandale",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-16",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Plusieurs accessoires sont exposés.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "écharpe",
+                "form": "écharpes"
+              },
+              {
+                "lemma": "écharpe",
+                "form": "écharpe"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "écharpe"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "une écharpes",
+              "errorKey": "determiner-number"
+            },
+            {
+              "incorrectChoiceFr": "des écharpe",
+              "errorKey": "noun-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "des écharpes",
+            "correct": true
+          },
+          {
+            "text": "une écharpes",
+            "correct": false
+          },
+          {
+            "text": "des écharpe",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-17",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Plusieurs bâtiments sont montrés.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "pavillon",
+                "form": "pavillons"
+              },
+              {
+                "lemma": "pavillon",
+                "form": "pavillon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "pavillon"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "ce pavillons",
+              "errorKey": "determiner-number"
+            },
+            {
+              "incorrectChoiceFr": "ces pavillon",
+              "errorKey": "noun-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "ces pavillons",
+            "correct": true
+          },
+          {
+            "text": "ce pavillons",
+            "correct": false
+          },
+          {
+            "text": "ces pavillon",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:recognition-18",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Plusieurs enveloppes vides appartiennent à cette collection.\n\nQuel groupe de mots complète correctement l’idée ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "coquille",
+                "form": "coquilles"
+              },
+              {
+                "lemma": "coquille",
+                "form": "coquille"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "coquille"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "sa coquilles",
+              "errorKey": "determiner-number"
+            },
+            {
+              "incorrectChoiceFr": "ses coquille",
+              "errorKey": "noun-number"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "ses coquilles",
+            "correct": true
+          },
+          {
+            "text": "sa coquilles",
+            "correct": false
+          },
+          {
+            "text": "ses coquille",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-1",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « un lézard » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "des lézards",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lézard",
+                "form": "lézard"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "lézard"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "des lézards",
+              "un lézards",
+              "des lézard",
+              "un lézard"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-2",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « une tempête » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "des tempêtes",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "tempête",
+                "form": "tempête"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "tempête"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "des tempêtes",
+              "une tempêtes",
+              "des tempête",
+              "une tempête"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-3",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « ce papillon » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "ces papillons",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "papillon",
+                "form": "papillon"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "papillon"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ces papillons",
+              "ce papillons",
+              "ces papillon",
+              "ce papillon"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-4",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « cette boucle » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "ces boucles",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "boucle",
+                "form": "boucle"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "boucle"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ces boucles",
+              "cette boucles",
+              "ces boucle",
+              "cette boucle"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-5",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « son parapluie » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "ses parapluies",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "parapluie",
+                "form": "parapluie"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "parapluie"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ses parapluies",
+              "son parapluies",
+              "ses parapluie",
+              "son parapluie"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-6",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « sa ceinture » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "ses ceintures",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ceinture",
+                "form": "ceinture"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "ceinture"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ses ceintures",
+              "sa ceintures",
+              "ses ceinture",
+              "sa ceinture"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-7",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « un dépliant » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "des dépliants",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "dépliant",
+                "form": "dépliant"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "dépliant"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "des dépliants",
+              "un dépliants",
+              "des dépliant",
+              "un dépliant"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-8",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « une falaise » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "des falaises",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "falaise",
+                "form": "falaise"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "falaise"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "des falaises",
+              "une falaises",
+              "des falaise",
+              "une falaise"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-9",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « cette ruche » au pluriel. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "ces ruches",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "ruche",
+                "form": "ruche"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "ruche"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ces ruches",
+              "cette ruches",
+              "ces ruche",
+              "cette ruche"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-10",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « des tunnels » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "un tunnel",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "tunnel",
+                "form": "tunnels"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "tunnel"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "un tunnel",
+              "des tunnel",
+              "un tunnels",
+              "des tunnels"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-11",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « des galeries » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "une galerie",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "galerie",
+                "form": "galeries"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "galerie"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "une galerie",
+              "des galerie",
+              "une galeries",
+              "des galeries"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-12",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « ces moulins » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "ce moulin",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "moulin",
+                "form": "moulins"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "moulin"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "ce moulin",
+              "ces moulin",
+              "ce moulins",
+              "ces moulins"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-13",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « ces terrasses » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "cette terrasse",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "terrasse",
+                "form": "terrasses"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "terrasse"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "cette terrasse",
+              "ces terrasse",
+              "cette terrasses",
+              "ces terrasses"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-14",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « ses blousons » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "son blouson",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "blouson",
+                "form": "blousons"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "blouson"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "son blouson",
+              "ses blouson",
+              "son blousons",
+              "ses blousons"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-15",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « ses sacoches » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "sa sacoche",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "sacoche",
+                "form": "sacoches"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "sacoche"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "sa sacoche",
+              "ses sacoche",
+              "sa sacoches",
+              "ses sacoches"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-16",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « des pistons » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "un piston",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "piston",
+                "form": "pistons"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "piston"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "un piston",
+              "des piston",
+              "un pistons",
+              "des pistons"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-17",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « des prairies » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "une prairie",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "prairie",
+                "form": "prairies"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "prairie"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "une prairie",
+              "des prairie",
+              "une prairies",
+              "des prairies"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-written-determiner:production-18",
+      "item": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "strand": "orthographe_grammaticale",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "transform",
+        "promptFr": "Mets le groupe « ces sphères » au singulier. Garde le même type de petit mot (un/une/des, ce/cette/ces ou son/sa/ses).",
+        "instructionsFr": "Écris le groupe transformé.",
+        "correctAnswer": "cette sphère",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "sphère",
+                "form": "sphères"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "sphère"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "cette sphère",
+              "ces sphère",
+              "cette sphères",
+              "ces sphères"
+            ],
+            "rationaleFr": "Le groupe est fourni et la transformation agit sur deux marques. Les quatre variantes conservent ou modifient chacune des deux marques : plancher de hasard de 1/4, sans calibration empirique."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "spelling",
+      "promptFamily": "determiner-noun-written-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-1",
+      "itemChecksum": "sha256:342326b019ca4a13d8b23cc9cdbec7fcfd910b30179183777345b91a0072a207",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-1",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-2",
+      "itemChecksum": "sha256:5da917869b675c9dc221d411a0803e4d60af8e99b6506b0c0989bd7d8028cb50",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-2",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-3",
+      "itemChecksum": "sha256:9cd6986747c8f12f7ea2008af70d54da28355f6352abff53b6b1b42353282de6",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-3",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-4",
+      "itemChecksum": "sha256:c363dc6f144c0cab10014f5bfee0dc63495c885d3f61f73b3155f0ed05e01f46",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-4",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-5",
+      "itemChecksum": "sha256:7edb51a2625becfe6464f312a30d4dcbb223c758b58afcb01e68e2d8f407d534",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-5",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-6",
+      "itemChecksum": "sha256:a887ce479f68e1627c10595698dde9bbe7ff662674fadfb15915a330de0f2f57",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-6",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-7",
+      "itemChecksum": "sha256:e604b8df04ee232c7dc92b842562aa27512203597a92ff28298e7e6cf933819c",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-7",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-8",
+      "itemChecksum": "sha256:aee561968195165c63efff12d0f619dc65482da5e095fafa5fb7780b11129285",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-8",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-9",
+      "itemChecksum": "sha256:dc9343d116803fc99841198ee1fbef6116607b29617041f15228d026b6bbf3b9",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-9",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-10",
+      "itemChecksum": "sha256:297eb60de1e791407bd9d326ec0ff771e97e7cb78e5f03e3cf492fac66d2646a",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-10",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-11",
+      "itemChecksum": "sha256:998efac2668282d5efc0bad80b3b727d4912c6d4e1b1de1ad7302080e64dc272",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-11",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-12",
+      "itemChecksum": "sha256:9e0fcc73bb6bccb6a7241ab46e17920c1b40b9ec7e21cc4e9d793bc28aa38890",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-12",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-13",
+      "itemChecksum": "sha256:10e994812455e0895950d57af03caafc331c8798cd4bd87944f6e0af82935c94",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-13",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-14",
+      "itemChecksum": "sha256:cd6476bad8494cceb95b15249c6637cec07ea65b57f5137bcfaf5355f39be9ef",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-14",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-15",
+      "itemChecksum": "sha256:5d0290fece99c23b1a8cc656105feb8e82475182b5c5e0ab426b06f00365a180",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-15",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-16",
+      "itemChecksum": "sha256:ef7fee4cd7601ee029de5d6ed054a91db3743f54a6fa1b912a1b6acbd01aa811",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-16",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-17",
+      "itemChecksum": "sha256:6079c7cd24d9374a2ed581bea77e3808ed4a4da74b6242d4cd95eea56adc1603",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-17",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:recognition-18",
+      "itemChecksum": "sha256:aff2d9b60655c9a26ed8a48346ed21e05b48de234524ed4349e1c96454f1ab77",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "written-determiner:recognition-18",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-1",
+      "itemChecksum": "sha256:f2ecedf664af7c00de6b84aacdd8a99336a7ec573c2550028fe631ca06124513",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-1",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-2",
+      "itemChecksum": "sha256:036e269f23763401a8d3d702702349dde90b58072b2e73855a48c48cfc6092cc",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-2",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-3",
+      "itemChecksum": "sha256:1b025950247419458efdd1e041032f12d6efe983ba598e2e7239d2e865b66458",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-3",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-4",
+      "itemChecksum": "sha256:7630dccc9fd7782ca6dc05ade5ce15b37b6cceb6df30c34b50e7a24ff23ed6f0",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-4",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-5",
+      "itemChecksum": "sha256:13808039981eb024bee728f755f71312b08bf39dd629384d931415ea14bfd563",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-5",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-6",
+      "itemChecksum": "sha256:2fc0d309f012c037a858b8770b2e02db2e9a3bdb78222c290d0aa061b53a7ca9",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-6",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-7",
+      "itemChecksum": "sha256:8238907c43478ad1c388dab5bef62e33a99445e01f6f86af5efebe5b5574e1ae",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-7",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-8",
+      "itemChecksum": "sha256:2a84fe6e51e683acea6fb7922e93c4beb661402a3dabee924253b8b3f22b5e3d",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-8",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-9",
+      "itemChecksum": "sha256:8035be32e38086887759284f2aba54424d3e453c77258920c4ad15d1df924019",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-9",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-10",
+      "itemChecksum": "sha256:2d99e2960327f636cde86607e7ab3e08540734e0ee0a271466f8efdcc4a5af0c",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-10",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-11",
+      "itemChecksum": "sha256:ce71b5ba8e5a62f2ab1ca79d2f445c739da442c0950f0f0aff9ffe3668baee10",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-11",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-12",
+      "itemChecksum": "sha256:ae8fadd2b3829f58dca996def082d3236a11adfaa03235ac658841c166357623",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-12",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-13",
+      "itemChecksum": "sha256:ef6f770e023b7f9b9af2362cba5be97278996be83aa73e1a257784a05ebdd428",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-13",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-14",
+      "itemChecksum": "sha256:31c42433210b715e3b3035f15333567481a754408b7ab8552a29efcb4c77e527",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-14",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-15",
+      "itemChecksum": "sha256:7d1d71dc53882903ca2364156377c23b91654fd59005b3e4d4c74acd6a23f1ff",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-15",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-16",
+      "itemChecksum": "sha256:debaf497ad941c13cc9d5ffcaf66be449eaa155afbfc22710f7dae80a0f8d713",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-16",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-17",
+      "itemChecksum": "sha256:8da550019a6b11ea561afabc9e7f8ae010c566691de96692962421faaf56285b",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-17",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-written-determiner:production-18",
+      "itemChecksum": "sha256:fab7d13262c28fbe87f2e9799d3815ed110992be11af2377e92cc22a8cd48bed",
+      "evidenceTarget": {
+        "nodeKey": "accorder_determinant_nom_ecrit",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "written-determiner:production-18",
+      "reason": "Accord du déterminant et du nom dans un groupe contextualisé ou transformé ; les deux marques doivent être compatibles."
+    }
+  ],
+  "checksum": "sha256:f3aa99536e30eb7e021e8c8b297dc43bda1e379a06dac67717bc2fe51a6d0586"
+}

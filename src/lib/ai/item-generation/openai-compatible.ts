@@ -23,6 +23,8 @@ export type ChatConfig = {
   jsonMode?: boolean;
   /** Override the OpenAI-compatible response_format payload. */
   responseFormat?: unknown;
+  /** OpenRouter: route only to endpoints supporting the requested parameters. */
+  requireParameters?: boolean;
   /** Retries on 429 / 5xx with exponential backoff (default 5). */
   maxRetries?: number;
   /** Minimum ms between any two calls (proactive rate limiting). Env: LLM_MIN_INTERVAL_MS. */
@@ -45,7 +47,7 @@ async function spaceCalls(minMs: number) {
 
 export const DEFAULT_MODEL = "@cf/zai-org/glm-5.2";
 
-export function resolveConfig(cfg: ChatConfig = {}): Required<Omit<ChatConfig, "temperature" | "jsonMode" | "responseFormat" | "maxRetries" | "minIntervalMs">> & Pick<ChatConfig, "temperature" | "jsonMode" | "responseFormat"> {
+export function resolveConfig(cfg: ChatConfig = {}): Required<Omit<ChatConfig, "temperature" | "jsonMode" | "responseFormat" | "requireParameters" | "maxRetries" | "minIntervalMs">> & Pick<ChatConfig, "temperature" | "jsonMode" | "responseFormat"> {
   const baseUrl = (cfg.baseUrl ?? process.env.LLM_BASE_URL ?? "").replace(/\/$/, "");
   const apiKey = cfg.apiKey ?? process.env.LLM_API_KEY ?? "";
   const model = cfg.model ?? process.env.LLM_MODEL ?? DEFAULT_MODEL;
@@ -77,6 +79,7 @@ export async function chatComplete(
   const body = JSON.stringify({
     model: c.model,
     messages,
+    ...(cfg.requireParameters ? {provider:{require_parameters:true}} : {}),
     ...(c.temperature != null ? { temperature: c.temperature } : {}),
     ...(c.responseFormat
       ? { response_format: c.responseFormat }

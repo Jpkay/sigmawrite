@@ -1,0 +1,2507 @@
+{
+  "version": "french-v3-agreement-analysis-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-1",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La violoniste accorde son instrument.\n\nL’accord du verbe « accorde » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La violoniste accorde son instrument."
+            ],
+            "assessed": {
+              "sentences": [
+                "La violoniste accorde son instrument."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « La violoniste » commande le singulier.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « La violoniste » commande le pluriel.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-2",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les promeneurs longe la rivière.\n\nL’accord du verbe « longe » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Les promeneurs longe la rivière.",
+            "rationaleFr": "Le groupe sujet « Les promeneurs » commande le pluriel. La forme attendue est « longent »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Les promeneurs longe la rivière."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les promeneurs longe la rivière."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « Les promeneurs » commande le pluriel. Il faut écrire « longent ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « Les promeneurs » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-3",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le gardien ferment la grille.\n\nL’accord du verbe « ferment » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Le gardien ferment la grille.",
+            "rationaleFr": "Le groupe sujet « Le gardien » commande le singulier. La forme attendue est « ferme »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Le gardien ferment la grille."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le gardien ferment la grille."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « Le gardien » commande le singulier. Il faut écrire « ferme ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « Le gardien » commande le pluriel.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-4",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les apprentis préparent le matériel.\n\nL’accord du verbe « préparent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les apprentis préparent le matériel."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les apprentis préparent le matériel."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « Les apprentis » commande le pluriel.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « Les apprentis » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-5",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La grenouille saute dans la mare.\n\nL’accord du verbe « saute » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La grenouille saute dans la mare."
+            ],
+            "assessed": {
+              "sentences": [
+                "La grenouille saute dans la mare."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « La grenouille » commande le singulier.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « La grenouille » commande le pluriel.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-6",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les fourmis transporte des miettes.\n\nL’accord du verbe « transporte » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Les fourmis transporte des miettes.",
+            "rationaleFr": "Le groupe sujet « Les fourmis » commande le pluriel. La forme attendue est « transportent »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Les fourmis transporte des miettes."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les fourmis transporte des miettes."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « Les fourmis » commande le pluriel. Il faut écrire « transportent ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « Les fourmis » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-7",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le photographe nettoient son objectif.\n\nL’accord du verbe « nettoient » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Le photographe nettoient son objectif.",
+            "rationaleFr": "Le groupe sujet « Le photographe » commande le singulier. La forme attendue est « nettoie »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Le photographe nettoient son objectif."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le photographe nettoient son objectif."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « Le photographe » commande le singulier. Il faut écrire « nettoie ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « Le photographe » commande le pluriel.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-8",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les nageuses traversent le bassin.\n\nL’accord du verbe « traversent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les nageuses traversent le bassin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les nageuses traversent le bassin."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « Les nageuses » commande le pluriel.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « Les nageuses » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-1",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La boîte des feutres reste sur la table.\n\nL’accord du verbe « reste » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La boîte des feutres reste sur la table."
+            ],
+            "assessed": {
+              "sentences": [
+                "La boîte des feutres reste sur la table."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « La boîte des feutres » commande le singulier.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « La boîte des feutres » commande le pluriel.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-2",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les pages du cahier tourne au vent.\n\nL’accord du verbe « tourne » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Les pages du cahier tourne au vent.",
+            "rationaleFr": "Le groupe sujet « Les pages du cahier » commande le pluriel. La forme attendue est « tournent »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Les pages du cahier tourne au vent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les pages du cahier tourne au vent."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « Les pages du cahier » commande le pluriel. Il faut écrire « tournent ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « Les pages du cahier » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-3",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le chien des voisins attendent près du portail.\n\nL’accord du verbe « attendent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Le chien des voisins attendent près du portail.",
+            "rationaleFr": "Le groupe sujet « Le chien des voisins » commande le singulier. La forme attendue est « attend »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Le chien des voisins attendent près du portail."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le chien des voisins attendent près du portail."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « Le chien des voisins » commande le singulier. Il faut écrire « attend ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « Le chien des voisins » commande le pluriel.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-4",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les roues de la voiture glissent sur le gravier.\n\nL’accord du verbe « glissent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les roues de la voiture glissent sur le gravier."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les roues de la voiture glissent sur le gravier."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « Les roues de la voiture » commande le pluriel.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « Les roues de la voiture » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-5",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La lumière des projecteurs éclaire la scène.\n\nL’accord du verbe « éclaire » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La lumière des projecteurs éclaire la scène."
+            ],
+            "assessed": {
+              "sentences": [
+                "La lumière des projecteurs éclaire la scène."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « La lumière des projecteurs » commande le singulier.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « La lumière des projecteurs » commande le pluriel.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-6",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les branches du sapin plie sous la neige.\n\nL’accord du verbe « plie » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Les branches du sapin plie sous la neige.",
+            "rationaleFr": "Le groupe sujet « Les branches du sapin » commande le pluriel. La forme attendue est « plient »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Les branches du sapin plie sous la neige."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les branches du sapin plie sous la neige."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « Les branches du sapin » commande le pluriel. Il faut écrire « plient ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « Les branches du sapin » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-7",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le sac des randonneurs reposent contre le mur.\n\nL’accord du verbe « reposent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Le sac des randonneurs reposent contre le mur.",
+            "rationaleFr": "Le groupe sujet « Le sac des randonneurs » commande le singulier. La forme attendue est « repose »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Le sac des randonneurs reposent contre le mur."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le sac des randonneurs reposent contre le mur."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « Le sac des randonneurs » commande le singulier. Il faut écrire « repose ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « Le sac des randonneurs » commande le pluriel.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-8",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les clés du garage tintent dans sa poche.\n\nL’accord du verbe « tintent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les clés du garage tintent dans sa poche."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les clés du garage tintent dans sa poche."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « Les clés du garage » commande le pluriel.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « Les clés du garage » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-1",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Au fond de la vallée coule un ruisseau.\n\nL’accord du verbe « coule » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Au fond de la vallée coule un ruisseau."
+            ],
+            "assessed": {
+              "sentences": [
+                "Au fond de la vallée coule un ruisseau."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « un ruisseau » commande le singulier.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « un ruisseau » commande le pluriel.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-2",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Sur le quai patiente les voyageurs.\n\nL’accord du verbe « patiente » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Sur le quai patiente les voyageurs.",
+            "rationaleFr": "Le groupe sujet « les voyageurs » commande le pluriel. La forme attendue est « patientent »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Sur le quai patiente les voyageurs."
+            ],
+            "assessed": {
+              "sentences": [
+                "Sur le quai patiente les voyageurs."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « les voyageurs » commande le pluriel. Il faut écrire « patientent ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « les voyageurs » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-3",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Derrière les maisons se dressent une montagne.\n\nL’accord du verbe « se dressent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Derrière les maisons se dressent une montagne.",
+            "rationaleFr": "Le groupe sujet « une montagne » commande le singulier. La forme attendue est « se dresse »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Derrière les maisons se dressent une montagne."
+            ],
+            "assessed": {
+              "sentences": [
+                "Derrière les maisons se dressent une montagne."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « une montagne » commande le singulier. Il faut écrire « se dresse ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « une montagne » commande le pluriel.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-4",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Au-dessus du lac planent des oiseaux.\n\nL’accord du verbe « planent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Au-dessus du lac planent des oiseaux."
+            ],
+            "assessed": {
+              "sentences": [
+                "Au-dessus du lac planent des oiseaux."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « des oiseaux » commande le pluriel.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « des oiseaux » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-5",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Dans les hautes herbes se cache un lézard.\n\nL’accord du verbe « se cache » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Dans les hautes herbes se cache un lézard."
+            ],
+            "assessed": {
+              "sentences": [
+                "Dans les hautes herbes se cache un lézard."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « un lézard » commande le singulier.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « un lézard » commande le pluriel.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-6",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Dans la cour résonne les cloches.\n\nL’accord du verbe « résonne » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Dans la cour résonne les cloches.",
+            "rationaleFr": "Le groupe sujet « les cloches » commande le pluriel. La forme attendue est « résonnent »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Dans la cour résonne les cloches."
+            ],
+            "assessed": {
+              "sentences": [
+                "Dans la cour résonne les cloches."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « les cloches » commande le pluriel. Il faut écrire « résonnent ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « les cloches » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-7",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Au pied des arbres jaillissent une source.\n\nL’accord du verbe « jaillissent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Au pied des arbres jaillissent une source.",
+            "rationaleFr": "Le groupe sujet « une source » commande le singulier. La forme attendue est « jaillit »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Au pied des arbres jaillissent une source."
+            ],
+            "assessed": {
+              "sentences": [
+                "Au pied des arbres jaillissent une source."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « une source » commande le singulier. Il faut écrire « jaillit ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « une source » commande le pluriel.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-8",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Sur la branche se posent deux mésanges.\n\nL’accord du verbe « se posent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Sur la branche se posent deux mésanges."
+            ],
+            "assessed": {
+              "sentences": [
+                "Sur la branche se posent deux mésanges."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « deux mésanges » commande le pluriel.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « deux mésanges » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-1",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le maire et son adjointe visitent la salle.\n\nL’accord du verbe « visitent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le maire et son adjointe visitent la salle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le maire et son adjointe visitent la salle."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « Le maire et son adjointe » commande le pluriel.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « Le maire et son adjointe » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-2",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La chèvre et son chevreau avance dans le pré.\n\nL’accord du verbe « avance » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "La chèvre et son chevreau avance dans le pré.",
+            "rationaleFr": "Le groupe sujet « La chèvre et son chevreau » commande le pluriel. La forme attendue est « avancent »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "La chèvre et son chevreau avance dans le pré."
+            ],
+            "assessed": {
+              "sentences": [
+                "La chèvre et son chevreau avance dans le pré."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « La chèvre et son chevreau » commande le pluriel. Il faut écrire « avancent ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « La chèvre et son chevreau » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-3",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le vent et la pluie secoue les volets.\n\nL’accord du verbe « secoue » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Le vent et la pluie secoue les volets.",
+            "rationaleFr": "Le groupe sujet « Le vent et la pluie » commande le pluriel. La forme attendue est « secouent »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Le vent et la pluie secoue les volets."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le vent et la pluie secoue les volets."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « Le vent et la pluie » commande le pluriel. Il faut écrire « secouent ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « Le vent et la pluie » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-4",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La lampe et la bougie éclairent le bureau.\n\nL’accord du verbe « éclairent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La lampe et la bougie éclairent le bureau."
+            ],
+            "assessed": {
+              "sentences": [
+                "La lampe et la bougie éclairent le bureau."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « La lampe et la bougie » commande le pluriel.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « La lampe et la bougie » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-5",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le train et le tramway arrivent à la station.\n\nL’accord du verbe « arrivent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le train et le tramway arrivent à la station."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le train et le tramway arrivent à la station."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « Le train et le tramway » commande le pluriel.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « Le train et le tramway » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-6",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La chanteuse et le pianiste répète ensemble.\n\nL’accord du verbe « répète » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "La chanteuse et le pianiste répète ensemble.",
+            "rationaleFr": "Le groupe sujet « La chanteuse et le pianiste » commande le pluriel. La forme attendue est « répètent »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "La chanteuse et le pianiste répète ensemble."
+            ],
+            "assessed": {
+              "sentences": [
+                "La chanteuse et le pianiste répète ensemble."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « La chanteuse et le pianiste » commande le pluriel. Il faut écrire « répètent ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « La chanteuse et le pianiste » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-7",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le père et sa fille fabrique un cerf-volant.\n\nL’accord du verbe « fabrique » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "negativeExample": {
+            "excerptFr": "Le père et sa fille fabrique un cerf-volant.",
+            "rationaleFr": "Le groupe sujet « Le père et sa fille » commande le pluriel. La forme attendue est « fabriquent »."
+          },
+          "materialExposure": {
+            "sentences": [
+              "Le père et sa fille fabrique un cerf-volant."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le père et sa fille fabrique un cerf-volant."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est incorrect : « Le père et sa fille » commande le pluriel. Il faut écrire « fabriquent ».",
+            "correct": true
+          },
+          {
+            "text": "L’accord est correct : « Le père et sa fille » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-8",
+      "item": {
+        "nodeKey": "construction_accord_sujet_verbe",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La biche et le faon traversent le sentier.\n\nL’accord du verbe « traversent » est-il correct ? Choisis l’explication juste.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La biche et le faon traversent le sentier."
+            ],
+            "assessed": {
+              "sentences": [
+                "La biche et le faon traversent le sentier."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accord est correct : « La biche et le faon » commande le pluriel.",
+            "correct": true
+          },
+          {
+            "text": "L’accord est incorrect : « La biche et le faon » commande le singulier.",
+            "correct": false
+          },
+          {
+            "text": "L’accord est correct parce que le verbe ne dépend jamais du sujet.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de sujet dans cette phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "analyze-subject-verb-agreement",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-1",
+      "itemChecksum": "sha256:02a9233d55a9b6860fcf1d1dd4710831a2dd7b9a135e8e42e190edd8d76daa47",
+      "facetKey": "construction_accord_sujet_verbe::construction:adjacent",
+      "contextKey": "agreement-analysis:adjacent-1",
+      "reason": "Le groupe sujet « La violoniste » commande le singulier. La forme attendue est « accorde »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-2",
+      "itemChecksum": "sha256:e0c270f84e6734764ccef9adfaa764e9ce5817873fb6b924a34f94199c4c1183",
+      "facetKey": "construction_accord_sujet_verbe::construction:adjacent",
+      "contextKey": "agreement-analysis:adjacent-2",
+      "reason": "Le groupe sujet « Les promeneurs » commande le pluriel. La forme attendue est « longent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-3",
+      "itemChecksum": "sha256:e60295a1d8a1bcf07566faaf5e99639f564ae0f9f32bda96faa134594ddf956e",
+      "facetKey": "construction_accord_sujet_verbe::construction:adjacent",
+      "contextKey": "agreement-analysis:adjacent-3",
+      "reason": "Le groupe sujet « Le gardien » commande le singulier. La forme attendue est « ferme »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-4",
+      "itemChecksum": "sha256:ac52a769169f27b4993a51b7920b71cc32f49ab0535a9fc9a2a56620067e3a8c",
+      "facetKey": "construction_accord_sujet_verbe::construction:adjacent",
+      "contextKey": "agreement-analysis:adjacent-4",
+      "reason": "Le groupe sujet « Les apprentis » commande le pluriel. La forme attendue est « préparent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-5",
+      "itemChecksum": "sha256:a113057f717ad9bc1a7e8e5061e470cdb76d089137a3b90e02ecc92d07da1449",
+      "facetKey": "construction_accord_sujet_verbe::construction:adjacent",
+      "contextKey": "agreement-analysis:adjacent-5",
+      "reason": "Le groupe sujet « La grenouille » commande le singulier. La forme attendue est « saute »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-6",
+      "itemChecksum": "sha256:9391acc976e53d10f3ce9b97282777c8cb4e83d50c4fc581742ab2d0549cf3b7",
+      "facetKey": "construction_accord_sujet_verbe::construction:adjacent",
+      "contextKey": "agreement-analysis:adjacent-6",
+      "reason": "Le groupe sujet « Les fourmis » commande le pluriel. La forme attendue est « transportent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-7",
+      "itemChecksum": "sha256:0056e49ca102e394b079a1eb524f837b3e67a3670aa09522c2a61e983e52bf4f",
+      "facetKey": "construction_accord_sujet_verbe::construction:adjacent",
+      "contextKey": "agreement-analysis:adjacent-7",
+      "reason": "Le groupe sujet « Le photographe » commande le singulier. La forme attendue est « nettoie »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:adjacent-8",
+      "itemChecksum": "sha256:91fd78085a8f5ee84fffb08e3e4d84acd2b2abc4ff18e068b3fe76f62e61e04b",
+      "facetKey": "construction_accord_sujet_verbe::construction:adjacent",
+      "contextKey": "agreement-analysis:adjacent-8",
+      "reason": "Le groupe sujet « Les nageuses » commande le pluriel. La forme attendue est « traversent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-1",
+      "itemChecksum": "sha256:680ee4ab9c0954073018989ddb390c414f83148a8f94969c6696dbbcd891a1c8",
+      "facetKey": "construction_accord_sujet_verbe::construction:separated",
+      "contextKey": "agreement-analysis:separated-1",
+      "reason": "Le groupe sujet « La boîte des feutres » commande le singulier. La forme attendue est « reste »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-2",
+      "itemChecksum": "sha256:9e2117eec3a2a7101f230acc0ef9d8d52d6258cd690a682aff5b7180bd08db6c",
+      "facetKey": "construction_accord_sujet_verbe::construction:separated",
+      "contextKey": "agreement-analysis:separated-2",
+      "reason": "Le groupe sujet « Les pages du cahier » commande le pluriel. La forme attendue est « tournent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-3",
+      "itemChecksum": "sha256:a442b2668218029b6054e5d896005406f139674dc0e8e6b20ea7c707a3fc74a4",
+      "facetKey": "construction_accord_sujet_verbe::construction:separated",
+      "contextKey": "agreement-analysis:separated-3",
+      "reason": "Le groupe sujet « Le chien des voisins » commande le singulier. La forme attendue est « attend »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-4",
+      "itemChecksum": "sha256:a5cf8c227e78926e47bf3ae0244e7df4f7f8ffb786dfd35aab288c0c89ada3a3",
+      "facetKey": "construction_accord_sujet_verbe::construction:separated",
+      "contextKey": "agreement-analysis:separated-4",
+      "reason": "Le groupe sujet « Les roues de la voiture » commande le pluriel. La forme attendue est « glissent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-5",
+      "itemChecksum": "sha256:d10274c2f43f4a10a255e3e4075a1aef856a1164e7356d212969cabd9ea5621a",
+      "facetKey": "construction_accord_sujet_verbe::construction:separated",
+      "contextKey": "agreement-analysis:separated-5",
+      "reason": "Le groupe sujet « La lumière des projecteurs » commande le singulier. La forme attendue est « éclaire »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-6",
+      "itemChecksum": "sha256:aa84f2402c7fb913267f63b78bb6fc9627fbd436b9131a9e74b9ee4cf2b7b71d",
+      "facetKey": "construction_accord_sujet_verbe::construction:separated",
+      "contextKey": "agreement-analysis:separated-6",
+      "reason": "Le groupe sujet « Les branches du sapin » commande le pluriel. La forme attendue est « plient »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-7",
+      "itemChecksum": "sha256:f9ac99aa08344d84d3804b52c06b4f9c4ab214a7dcccf41df4e0271572c02d9b",
+      "facetKey": "construction_accord_sujet_verbe::construction:separated",
+      "contextKey": "agreement-analysis:separated-7",
+      "reason": "Le groupe sujet « Le sac des randonneurs » commande le singulier. La forme attendue est « repose »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:separated-8",
+      "itemChecksum": "sha256:2368bc1a5fb2912de0061610ca9305fa2e8ba90f2bc43f57bf7f96b173f3b36f",
+      "facetKey": "construction_accord_sujet_verbe::construction:separated",
+      "contextKey": "agreement-analysis:separated-8",
+      "reason": "Le groupe sujet « Les clés du garage » commande le pluriel. La forme attendue est « tintent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-1",
+      "itemChecksum": "sha256:642795a691edb526aa1a87a2f20f1e72c20977e17a3c5a09007250dd55e2a0bd",
+      "facetKey": "construction_accord_sujet_verbe::construction:inverted",
+      "contextKey": "agreement-analysis:inverted-1",
+      "reason": "Le groupe sujet « un ruisseau » commande le singulier. La forme attendue est « coule »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-2",
+      "itemChecksum": "sha256:8ce617511f5e1240cd18ab1d013f9a4b36f55e5af43ec53fba64a5ba19e7aa71",
+      "facetKey": "construction_accord_sujet_verbe::construction:inverted",
+      "contextKey": "agreement-analysis:inverted-2",
+      "reason": "Le groupe sujet « les voyageurs » commande le pluriel. La forme attendue est « patientent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-3",
+      "itemChecksum": "sha256:416107dd236c6de30e9cef2165396fc920d4d5aa1173c57a14ab64a6b290bf42",
+      "facetKey": "construction_accord_sujet_verbe::construction:inverted",
+      "contextKey": "agreement-analysis:inverted-3",
+      "reason": "Le groupe sujet « une montagne » commande le singulier. La forme attendue est « se dresse »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-4",
+      "itemChecksum": "sha256:d213e4a84acc08ec56fe28d113b73595ecc30d0086613393b55c0180d1d6ecba",
+      "facetKey": "construction_accord_sujet_verbe::construction:inverted",
+      "contextKey": "agreement-analysis:inverted-4",
+      "reason": "Le groupe sujet « des oiseaux » commande le pluriel. La forme attendue est « planent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-5",
+      "itemChecksum": "sha256:f570c9173ab3139d68f647439a3ea93504af6abca21ddb9eae4bfbdb6f1716c2",
+      "facetKey": "construction_accord_sujet_verbe::construction:inverted",
+      "contextKey": "agreement-analysis:inverted-5",
+      "reason": "Le groupe sujet « un lézard » commande le singulier. La forme attendue est « se cache »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-6",
+      "itemChecksum": "sha256:ae8fd21aad4707f8c6ef7c248702ad4e8fd7233539896df587980a1c3e07753b",
+      "facetKey": "construction_accord_sujet_verbe::construction:inverted",
+      "contextKey": "agreement-analysis:inverted-6",
+      "reason": "Le groupe sujet « les cloches » commande le pluriel. La forme attendue est « résonnent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-7",
+      "itemChecksum": "sha256:863f3b0d03547347b1231342daececa1f181871450c31c2796086c5d79595575",
+      "facetKey": "construction_accord_sujet_verbe::construction:inverted",
+      "contextKey": "agreement-analysis:inverted-7",
+      "reason": "Le groupe sujet « une source » commande le singulier. La forme attendue est « jaillit »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:inverted-8",
+      "itemChecksum": "sha256:c6e256363e8843fc83501b7c735c7ffec0ff3972e041f7784bae96b565e48063",
+      "facetKey": "construction_accord_sujet_verbe::construction:inverted",
+      "contextKey": "agreement-analysis:inverted-8",
+      "reason": "Le groupe sujet « deux mésanges » commande le pluriel. La forme attendue est « se posent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-1",
+      "itemChecksum": "sha256:8205a95ac1ec1202b0df6e522b59ec48c3248b428e6dad728ade4b03b723449d",
+      "facetKey": "construction_accord_sujet_verbe::construction:coordinated",
+      "contextKey": "agreement-analysis:coordinated-1",
+      "reason": "Le groupe sujet « Le maire et son adjointe » commande le pluriel. La forme attendue est « visitent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-2",
+      "itemChecksum": "sha256:9ceb6439fc1942335fa376503467feeb7d5fe626ab2a8a6d20740ee5c585b0ce",
+      "facetKey": "construction_accord_sujet_verbe::construction:coordinated",
+      "contextKey": "agreement-analysis:coordinated-2",
+      "reason": "Le groupe sujet « La chèvre et son chevreau » commande le pluriel. La forme attendue est « avancent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-3",
+      "itemChecksum": "sha256:252bcdf7c9ab13009e4b422068a1de522e712bcf7527d8f7d241ba628564b08f",
+      "facetKey": "construction_accord_sujet_verbe::construction:coordinated",
+      "contextKey": "agreement-analysis:coordinated-3",
+      "reason": "Le groupe sujet « Le vent et la pluie » commande le pluriel. La forme attendue est « secouent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-4",
+      "itemChecksum": "sha256:d46deb3324ed0cd1cf617fc2205db1e410fe80e35b07965786e72d400f322e35",
+      "facetKey": "construction_accord_sujet_verbe::construction:coordinated",
+      "contextKey": "agreement-analysis:coordinated-4",
+      "reason": "Le groupe sujet « La lampe et la bougie » commande le pluriel. La forme attendue est « éclairent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-5",
+      "itemChecksum": "sha256:eba5b519651510695e432a53b842012d1e46cefb478de0af63abaa7794214c0d",
+      "facetKey": "construction_accord_sujet_verbe::construction:coordinated",
+      "contextKey": "agreement-analysis:coordinated-5",
+      "reason": "Le groupe sujet « Le train et le tramway » commande le pluriel. La forme attendue est « arrivent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-6",
+      "itemChecksum": "sha256:1a0662ca1c0af42f01f4ea7408c2321daadb27a4a3a1a1579ed436683a053a8a",
+      "facetKey": "construction_accord_sujet_verbe::construction:coordinated",
+      "contextKey": "agreement-analysis:coordinated-6",
+      "reason": "Le groupe sujet « La chanteuse et le pianiste » commande le pluriel. La forme attendue est « répètent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-7",
+      "itemChecksum": "sha256:218d578bee5f8fec5f64ce5cf7df4fde40f6e36366a929d1752c907d5679a7a9",
+      "facetKey": "construction_accord_sujet_verbe::construction:coordinated",
+      "contextKey": "agreement-analysis:coordinated-7",
+      "reason": "Le groupe sujet « Le père et sa fille » commande le pluriel. La forme attendue est « fabriquent »."
+    },
+    {
+      "itemKey": "v3-agreement-analysis:coordinated-8",
+      "itemChecksum": "sha256:e64f0f17cbfbbd73f2f7cf94ae008cd638d080dfcd53f7d5e92577a8bd0a6c40",
+      "facetKey": "construction_accord_sujet_verbe::construction:coordinated",
+      "contextKey": "agreement-analysis:coordinated-8",
+      "reason": "Le groupe sujet « La biche et le faon » commande le pluriel. La forme attendue est « traversent »."
+    }
+  ],
+  "checksum": "sha256:a336eb074904796095567c982c1862b9ffbc37260f5f3d70fffba1ba4d405f1d"
+}

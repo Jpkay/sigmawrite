@@ -1,0 +1,40 @@
+{
+  "status": "prepared_not_published",
+  "bankRevision": 32,
+  "newQuestions": 64,
+  "newRecognitionLessons": 4,
+  "guidedExercises": 16,
+  "targets": [
+    "accorder_sujet_verbe_ecrit::reading-receptive::construction:adjacent",
+    "accorder_sujet_verbe_ecrit::reading-receptive::construction:separated",
+    "accorder_sujet_verbe_ecrit::reading-receptive::construction:inverted",
+    "accorder_sujet_verbe_ecrit::reading-receptive::construction:coordinated"
+  ],
+  "candidateSummary": {
+    "graphTargets": 542,
+    "assessmentTargets": 323,
+    "teachingTargets": 323,
+    "questions": 6091,
+    "missingInstructionTargets": 0
+  },
+  "candidateChecksum": "sha256:0fd0435b1aa72def35a9afaedc8cbdec414a9d9e244a2b5b5fd2e03006b4cf69",
+  "expansionChecksum": "sha256:a5c5769f3d1d7567c429c19d2f2fa86699cf9bddd009cb8bd476d0761ff32187",
+  "reviewPacket": "subject-verb-recognition-review-packet-v1.md",
+  "limitations": [
+    "No deployment or human approval recorded.",
+    "Recognition at present tense with third-person nominal subjects is not independent writing mastery or all-tense coverage.",
+    "Complete delivery history and remaining infinitive/participle prerequisites still require work."
+  ],
+  "checks": {
+    "testFiles": 359,
+    "tests": 1599,
+    "typescript": "passed",
+    "regeneration": "passed --bank-revision 32 --check",
+    "distinctAssessmentLemmas": 64,
+    "contrastingErrorFamilies": [
+      "wrong-number",
+      "wrong-person"
+    ],
+    "allocatedConstructions": 4
+  }
+}

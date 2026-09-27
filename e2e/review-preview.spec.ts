@@ -1,0 +1,51 @@
+import AxeBuilder from "@axe-core/playwright";
+import { expect, test } from "@playwright/test";
+
+// Requires local scripts/fixtures/review-browser.sql; never enable against production.
+test.describe("student previews in content review", () => {
+  test.skip(process.env.E2E_REVIEW_PREVIEW !== "true", "requires local review fixtures");
+  test("can try, reveal, edit, then approve and reject with automatic advancement", async ({ page }) => {
+    await page.goto("/login");
+    await page.getByLabel("E-mail ou nom d’utilisateur").fill("review-admin@local.test");
+    await page.getByLabel("Mot de passe", { exact: true }).fill("Review1234!");
+    await page.getByRole("button", { name: "Se connecter", exact: true }).click();
+    await page.waitForURL(/\/admin/);
+    await page.goto("/admin/items/review");
+    await page.getByRole("button", { name: "Voir le corrigé", exact: true }).waitFor();
+    if (!await page.getByRole("radio").count()) await page.getByRole("button", { name: "Passer", exact: true }).click();
+    const choiceOrder = await page.getByRole("radio").allTextContents();
+    await expect(page.getByText("On observe Marie de l’extérieur.", { exact: true })).toBeHidden();
+    await page.getByRole("radio", { name: /Marie avançait/ }).click();
+    await page.getByRole("button", { name: "Vérifier ma réponse", exact: true }).click();
+    await expect(page.getByText("Pas encore — essaie à nouveau.", { exact: true })).toBeVisible();
+    expect(await page.getByRole("radio").allTextContents()).toEqual(choiceOrder);
+    await page.getByRole("button", { name: "Réessayer", exact: true }).click();
+    await page.getByRole("radio", { name: "Je sentais mon cœur battre et j’ignorais ce qui m’attendait.", exact: true }).click();
+    await page.getByRole("button", { name: "Vérifier ma réponse", exact: true }).click();
+    await expect(page.getByText("Bonne réponse.", { exact: true })).toBeVisible();
+    await page.getByRole("button", { name: "Voir le corrigé", exact: true }).click();
+    await expect(page.getByText("On observe Marie de l’extérieur.", { exact: true })).toBeVisible();
+    await page.getByRole("button", { name: "Modifier l’exercice", exact: true }).click();
+    const prompt = page.getByRole("textbox", { name: "Énoncé", exact: true });
+    const originalPrompt = await prompt.inputValue();
+    await prompt.fill(`${originalPrompt} `);
+    await page.getByRole("button", { name: "Enregistrer et voir l’aperçu" }).click();
+    await expect(page.getByText("Modifications enregistrées. L’exercice reste à approuver.")).toBeVisible();
+    await page.setViewportSize({ width: 390, height: 844 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
+    const axe = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();
+    expect(axe.violations.filter((violation) => ["critical", "serious"].includes(violation.impact ?? ""))).toEqual([]);
+    await page.getByRole("button", { name: "Approuver et continuer", exact: true }).click();
+    await expect(page.getByText("Complète : Hier, nous ___ au cinéma. (aller)", { exact: true })).toBeVisible();
+    await expect(page.getByRole("main").getByRole("alert")).toHaveCount(0);
+    await page.getByRole("button", { name: "Signaler un problème", exact: true }).click();
+    await page.getByLabel("Précisions", { exact: true }).fill("Préciser le sujet de la phrase pour ce test de relecture.");
+    await page.getByRole("button", { name: "Envoyer le signalement", exact: true }).click();
+    await expect(page.getByText("Tous les exercices de cette sélection ont été examinés.", { exact: true })).toBeVisible();
+    await expect(page.getByRole("main").getByRole("alert")).toHaveCount(0);
+    await page.goto("/admin/content/review");
+    await expect(page.getByRole("button", { name: "Voir le corrigé", exact: true }).first()).toBeVisible();
+    await page.goto("/admin/dictations");
+    await expect(page.getByRole("button", { name: "Voir la transcription", exact: true })).toBeVisible();
+  });
+});

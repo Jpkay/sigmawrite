@@ -1,0 +1,3115 @@
+{
+  "version": "french-v3-inflection-recognition-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-inflection-recognition:plural-1",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLa boîte contient cinq ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "crayon",
+                "form": "crayons"
+              },
+              {
+                "lemma": "crayon",
+                "form": "crayon"
+              },
+              {
+                "lemma": "crayon",
+                "form": "crayonx"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "crayon"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "crayon",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "crayonx",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "crayons",
+            "correct": true
+          },
+          {
+            "text": "crayon",
+            "correct": false
+          },
+          {
+            "text": "crayonx",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-2",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLes élèves comparent leurs ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "carnet",
+                "form": "carnets"
+              },
+              {
+                "lemma": "carnet",
+                "form": "carnet"
+              },
+              {
+                "lemma": "carnet",
+                "form": "carnetx"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "carnet"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "carnet",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "carnetx",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "carnets",
+            "correct": true
+          },
+          {
+            "text": "carnet",
+            "correct": false
+          },
+          {
+            "text": "carnetx",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-3",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nQuatre ___ entourent le comptoir.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "tabouret",
+                "form": "tabourets"
+              },
+              {
+                "lemma": "tabouret",
+                "form": "tabouret"
+              },
+              {
+                "lemma": "tabouret",
+                "form": "tabouretx"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "tabouret"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "tabouret",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "tabouretx",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "tabourets",
+            "correct": true
+          },
+          {
+            "text": "tabouret",
+            "correct": false
+          },
+          {
+            "text": "tabouretx",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-4",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLes invités occupent plusieurs ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "fauteuil",
+                "form": "fauteuils"
+              },
+              {
+                "lemma": "fauteuil",
+                "form": "fauteuil"
+              },
+              {
+                "lemma": "fauteuil",
+                "form": "fauteuilx"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "fauteuil"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "fauteuil",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "fauteuilx",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "fauteuils",
+            "correct": true
+          },
+          {
+            "text": "fauteuil",
+            "correct": false
+          },
+          {
+            "text": "fauteuilx",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-5",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nDes ___ bordent le sentier.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "sapin",
+                "form": "sapins"
+              },
+              {
+                "lemma": "sapin",
+                "form": "sapin"
+              },
+              {
+                "lemma": "sapin",
+                "form": "sapinx"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "sapin"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "sapin",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "sapinx",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "sapins",
+            "correct": true
+          },
+          {
+            "text": "sapin",
+            "correct": false
+          },
+          {
+            "text": "sapinx",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-6",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nDe gros ___ cachent le soleil.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "nuage",
+                "form": "nuages"
+              },
+              {
+                "lemma": "nuage",
+                "form": "nuage"
+              },
+              {
+                "lemma": "nuage",
+                "form": "nuagex"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "nuage"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "nuage",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "nuagex",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "nuages",
+            "correct": true
+          },
+          {
+            "text": "nuage",
+            "correct": false
+          },
+          {
+            "text": "nuagex",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-7",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLe square possède trois ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "banc",
+                "form": "bancs"
+              },
+              {
+                "lemma": "banc",
+                "form": "banc"
+              },
+              {
+                "lemma": "banc",
+                "form": "bancx"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "banc"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "banc",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "bancx",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "bancs",
+            "correct": true
+          },
+          {
+            "text": "banc",
+            "correct": false
+          },
+          {
+            "text": "bancx",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-8",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nDeux ___ traversent cette rivière.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "pont",
+                "form": "ponts"
+              },
+              {
+                "lemma": "pont",
+                "form": "pont"
+              },
+              {
+                "lemma": "pont",
+                "form": "pontx"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "pont"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "pont",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "pontx",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "ponts",
+            "correct": true
+          },
+          {
+            "text": "pont",
+            "correct": false
+          },
+          {
+            "text": "pontx",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-9",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLe collier compte vingt ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "perle",
+                "form": "perles"
+              },
+              {
+                "lemma": "perle",
+                "form": "perle"
+              },
+              {
+                "lemma": "perle",
+                "form": "perlex"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "perle"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "perle",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "perlex",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "perles",
+            "correct": true
+          },
+          {
+            "text": "perle",
+            "correct": false
+          },
+          {
+            "text": "perlex",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-10",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nNous disposons les ___ sur la table.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "assiette",
+                "form": "assiettes"
+              },
+              {
+                "lemma": "assiette",
+                "form": "assiette"
+              },
+              {
+                "lemma": "assiette",
+                "form": "assiettex"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "assiette"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "assiette",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "assiettex",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "assiettes",
+            "correct": true
+          },
+          {
+            "text": "assiette",
+            "correct": false
+          },
+          {
+            "text": "assiettex",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-11",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nRange les ___ dans ce tiroir.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "fourchette",
+                "form": "fourchettes"
+              },
+              {
+                "lemma": "fourchette",
+                "form": "fourchette"
+              },
+              {
+                "lemma": "fourchette",
+                "form": "fourchettex"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "fourchette"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "fourchette",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "fourchettex",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "fourchettes",
+            "correct": true
+          },
+          {
+            "text": "fourchette",
+            "correct": false
+          },
+          {
+            "text": "fourchettex",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-12",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLes ___ de la salle sont ouvertes.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "fenêtre",
+                "form": "fenêtres"
+              },
+              {
+                "lemma": "fenêtre",
+                "form": "fenêtre"
+              },
+              {
+                "lemma": "fenêtre",
+                "form": "fenêtrex"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "fenêtre"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "fenêtre",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "fenêtrex",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "fenêtres",
+            "correct": true
+          },
+          {
+            "text": "fenêtre",
+            "correct": false
+          },
+          {
+            "text": "fenêtrex",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-13",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLes joueurs portent des ___ rouges.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "casquette",
+                "form": "casquettes"
+              },
+              {
+                "lemma": "casquette",
+                "form": "casquette"
+              },
+              {
+                "lemma": "casquette",
+                "form": "casquettex"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "casquette"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "casquette",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "casquettex",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "casquettes",
+            "correct": true
+          },
+          {
+            "text": "casquette",
+            "correct": false
+          },
+          {
+            "text": "casquettex",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-14",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nElle repasse deux ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chemise",
+                "form": "chemises"
+              },
+              {
+                "lemma": "chemise",
+                "form": "chemise"
+              },
+              {
+                "lemma": "chemise",
+                "form": "chemisex"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "chemise"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "chemise",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "chemisex",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "chemises",
+            "correct": true
+          },
+          {
+            "text": "chemise",
+            "correct": false
+          },
+          {
+            "text": "chemisex",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-15",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLes ___ restent près de la porte.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "chaussure",
+                "form": "chaussures"
+              },
+              {
+                "lemma": "chaussure",
+                "form": "chaussure"
+              },
+              {
+                "lemma": "chaussure",
+                "form": "chaussurex"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "chaussure"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "chaussure",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "chaussurex",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "chaussures",
+            "correct": true
+          },
+          {
+            "text": "chaussure",
+            "correct": false
+          },
+          {
+            "text": "chaussurex",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:plural-16",
+      "item": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nIls ramassent des ___ sur le sable.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "coquillage",
+                "form": "coquillages"
+              },
+              {
+                "lemma": "coquillage",
+                "form": "coquillage"
+              },
+              {
+                "lemma": "coquillage",
+                "form": "coquillagex"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "coquillage"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "coquillage",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "coquillagex",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "coquillages",
+            "correct": true
+          },
+          {
+            "text": "coquillage",
+            "correct": false
+          },
+          {
+            "text": "coquillagex",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-1",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLa tortue ___ traverse le chemin.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "lent",
+                "form": "lente"
+              },
+              {
+                "lemma": "lent",
+                "form": "lent"
+              },
+              {
+                "lemma": "lent",
+                "form": "lents"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "lent"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "lent",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "lents",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "lente",
+            "correct": true
+          },
+          {
+            "text": "lent",
+            "correct": false
+          },
+          {
+            "text": "lents",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-2",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nCette roche ___ résiste aux chocs.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "dur",
+                "form": "dure"
+              },
+              {
+                "lemma": "dur",
+                "form": "dur"
+              },
+              {
+                "lemma": "dur",
+                "form": "durs"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "dur"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "dur",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "durs",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "dure",
+            "correct": true
+          },
+          {
+            "text": "dur",
+            "correct": false
+          },
+          {
+            "text": "durs",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-3",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLa fillette ___ porte un chapeau.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "blond",
+                "form": "blonde"
+              },
+              {
+                "lemma": "blond",
+                "form": "blond"
+              },
+              {
+                "lemma": "blond",
+                "form": "blonds"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "blond"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "blond",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "blonds",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "blonde",
+            "correct": true
+          },
+          {
+            "text": "blond",
+            "correct": false
+          },
+          {
+            "text": "blonds",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-4",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nCette spectatrice semble ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "content",
+                "form": "contente"
+              },
+              {
+                "lemma": "content",
+                "form": "content"
+              },
+              {
+                "lemma": "content",
+                "form": "contents"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "content"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "content",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "contents",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "contente",
+            "correct": true
+          },
+          {
+            "text": "content",
+            "correct": false
+          },
+          {
+            "text": "contents",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-5",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nUne conductrice ___ ralentit avant le virage.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "prudent",
+                "form": "prudente"
+              },
+              {
+                "lemma": "prudent",
+                "form": "prudent"
+              },
+              {
+                "lemma": "prudent",
+                "form": "prudents"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "prudent"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "prudent",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "prudents",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "prudente",
+            "correct": true
+          },
+          {
+            "text": "prudent",
+            "correct": false
+          },
+          {
+            "text": "prudents",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-6",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLa joueuse ___ reviendra demain.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "absent",
+                "form": "absente"
+              },
+              {
+                "lemma": "absent",
+                "form": "absent"
+              },
+              {
+                "lemma": "absent",
+                "form": "absents"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "absent"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "absent",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "absents",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "absente",
+            "correct": true
+          },
+          {
+            "text": "absent",
+            "correct": false
+          },
+          {
+            "text": "absents",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-7",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLa personne ___ peut répondre.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "présent",
+                "form": "présente"
+              },
+              {
+                "lemma": "présent",
+                "form": "présent"
+              },
+              {
+                "lemma": "présent",
+                "form": "présents"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "présent"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "présent",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "présents",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "présente",
+            "correct": true
+          },
+          {
+            "text": "présent",
+            "correct": false
+          },
+          {
+            "text": "présents",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-8",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nNous cherchons une solution ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "différent",
+                "form": "différente"
+              },
+              {
+                "lemma": "différent",
+                "form": "différent"
+              },
+              {
+                "lemma": "différent",
+                "form": "différents"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "différent"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "différent",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "différents",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "différente",
+            "correct": true
+          },
+          {
+            "text": "différent",
+            "correct": false
+          },
+          {
+            "text": "différents",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-9",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nUne information ___ manque au dossier.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "important",
+                "form": "importante"
+              },
+              {
+                "lemma": "important",
+                "form": "important"
+              },
+              {
+                "lemma": "important",
+                "form": "importants"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "important"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "important",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "importants",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "importante",
+            "correct": true
+          },
+          {
+            "text": "important",
+            "correct": false
+          },
+          {
+            "text": "importants",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-10",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nIl raconte une histoire ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "amusant",
+                "form": "amusante"
+              },
+              {
+                "lemma": "amusant",
+                "form": "amusant"
+              },
+              {
+                "lemma": "amusant",
+                "form": "amusants"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "amusant"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "amusant",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "amusants",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "amusante",
+            "correct": true
+          },
+          {
+            "text": "amusant",
+            "correct": false
+          },
+          {
+            "text": "amusants",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-11",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nCette tenue est ___.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "élégant",
+                "form": "élégante"
+              },
+              {
+                "lemma": "élégant",
+                "form": "élégant"
+              },
+              {
+                "lemma": "élégant",
+                "form": "élégants"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "élégant"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "élégant",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "élégants",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "élégante",
+            "correct": true
+          },
+          {
+            "text": "élégant",
+            "correct": false
+          },
+          {
+            "text": "élégants",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-12",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nLa tour ___ paraît minuscule.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "distant",
+                "form": "distante"
+              },
+              {
+                "lemma": "distant",
+                "form": "distant"
+              },
+              {
+                "lemma": "distant",
+                "form": "distants"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "distant"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "distant",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "distants",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "distante",
+            "correct": true
+          },
+          {
+            "text": "distant",
+            "correct": false
+          },
+          {
+            "text": "distants",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-13",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nCette pierre ___ glisse sur l’eau.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "plat",
+                "form": "plate"
+              },
+              {
+                "lemma": "plat",
+                "form": "plat"
+              },
+              {
+                "lemma": "plat",
+                "form": "plats"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "plat"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "plat",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "plats",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "plate",
+            "correct": true
+          },
+          {
+            "text": "plat",
+            "correct": false
+          },
+          {
+            "text": "plats",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-14",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nUne détonation ___ retentit au loin.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "sourd",
+                "form": "sourde"
+              },
+              {
+                "lemma": "sourd",
+                "form": "sourd"
+              },
+              {
+                "lemma": "sourd",
+                "form": "sourds"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "sourd"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "sourd",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "sourds",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "sourde",
+            "correct": true
+          },
+          {
+            "text": "sourd",
+            "correct": false
+          },
+          {
+            "text": "sourds",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-15",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nUne amie ___ reste à ses côtés.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "loyal",
+                "form": "loyale"
+              },
+              {
+                "lemma": "loyal",
+                "form": "loyal"
+              },
+              {
+                "lemma": "loyal",
+                "form": "loyals"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "loyal"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "loyal",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "loyals",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "loyale",
+            "correct": true
+          },
+          {
+            "text": "loyal",
+            "correct": false
+          },
+          {
+            "text": "loyals",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-inflection-recognition:feminine-16",
+      "item": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "strand": "orthographe_grammaticale",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Choisis la forme qui complète correctement la phrase.\n\nL’équipe reste ___ face aux difficultés.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "words": [
+              {
+                "lemma": "uni",
+                "form": "unie"
+              },
+              {
+                "lemma": "uni",
+                "form": "uni"
+              },
+              {
+                "lemma": "uni",
+                "form": "unis"
+              }
+            ],
+            "assessed": {
+              "words": [
+                "uni"
+              ]
+            }
+          },
+          "contrastingErrors": [
+            {
+              "incorrectChoiceFr": "uni",
+              "errorKey": "missing-inflection"
+            },
+            {
+              "incorrectChoiceFr": "unis",
+              "errorKey": "wrong-inflection"
+            }
+          ]
+        },
+        "choices": [
+          {
+            "text": "unie",
+            "correct": true
+          },
+          {
+            "text": "uni",
+            "correct": false
+          },
+          {
+            "text": "unis",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "spelling",
+      "promptFamily": "recognize-regular-inflection",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-1",
+      "itemChecksum": "sha256:efef55715efa8f894db351e81f7f464fe4df8ba663368ae1fd66cdc56258af01",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-1",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de crayon est crayons."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-2",
+      "itemChecksum": "sha256:295e7c5b75da7796dc466846371348104a20ab10377f088dc29cb71e23a010c1",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-2",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de carnet est carnets."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-3",
+      "itemChecksum": "sha256:6ae8e41bbdb4b2ec4df6a1a23d020e094f761dfa33671889fd6f2a1042582565",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-3",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de tabouret est tabourets."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-4",
+      "itemChecksum": "sha256:82479ad33e3f2a790bc48224d3ebeb73035561bde29f5f83bfee8139ec9b60ec",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-4",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de fauteuil est fauteuils."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-5",
+      "itemChecksum": "sha256:20008fe9519c5a5f694f7d16dd35292bf1fac1d5a61fc89a52670bfc528b9dd7",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-5",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de sapin est sapins."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-6",
+      "itemChecksum": "sha256:9039cafbfe89b5e906420a057ba4c25feef0c69194637179ed3f6e4aded2f742",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-6",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de nuage est nuages."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-7",
+      "itemChecksum": "sha256:0712ce0a664a62ebf924cb7c5d100b30e476ad58a6bf6a744a3ad6807c0c0371",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-7",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de banc est bancs."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-8",
+      "itemChecksum": "sha256:5502611b8c89bd72fd346017495d9f327b8a211d4621b594927efd4757f905a3",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-8",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de pont est ponts."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-9",
+      "itemChecksum": "sha256:9dbe33262ad511834536937d52fe66314ee2b8d75585c790923b16c3d62ae01a",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-9",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de perle est perles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-10",
+      "itemChecksum": "sha256:22b0d19b3e4d970b8f0be19c10e5e917a4939714111ac69e09cb6d6f51838958",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-10",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de assiette est assiettes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-11",
+      "itemChecksum": "sha256:d5b61723f19f7a1684bcbbfd12f3e44f0bf5f10aa241479561bc5634d101371c",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-11",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de fourchette est fourchettes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-12",
+      "itemChecksum": "sha256:a868bb4ba25ddb0137b4a9be545517cb6876b357d52d08080858fb132968271e",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-12",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de fenêtre est fenêtres."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-13",
+      "itemChecksum": "sha256:b17453fd0ab52dbb9aed4580e7094a418ade03d9ef1dafbe120877a9ce406a56",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-13",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de casquette est casquettes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-14",
+      "itemChecksum": "sha256:2391b21d9e5e2da2cd07dadf6274ef9642a0ac86e0711b2c7dd8904e33a32266",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-14",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de chemise est chemises."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-15",
+      "itemChecksum": "sha256:393d3a312c8128ffe8ccd6c1e18e636078efc2bd8669b795f98e092abd939a53",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-15",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de chaussure est chaussures."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:plural-16",
+      "itemChecksum": "sha256:5ff713a669b41940a941e0e53d4c828206700b074fa2c66ba2ac4fc4da8c8e43",
+      "evidenceTarget": {
+        "nodeKey": "marquer_pluriel_nom_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:plural-16",
+      "reason": "Le contexte désigne plusieurs éléments : le pluriel régulier de coquillage est coquillages."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-1",
+      "itemChecksum": "sha256:753c5fb9f4f91c5a317d9b8127b2fd04219f174e859d998301aa2b731b0d817d",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-1",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à lent, ce qui donne lente."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-2",
+      "itemChecksum": "sha256:1e381f44a6bacff67015c67ecd29d49da2fa2b768cb262a61cd4a1391d585388",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-2",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à dur, ce qui donne dure."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-3",
+      "itemChecksum": "sha256:b67f922aabf6c14d4407120deed40d69b959a3377dab9d640b694d92283d4594",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-3",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à blond, ce qui donne blonde."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-4",
+      "itemChecksum": "sha256:0d799d7d1cf98a77c18a4b27c84d0458daada8208236216624fd0220d568d349",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-4",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à content, ce qui donne contente."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-5",
+      "itemChecksum": "sha256:deb3c97c69f19e75e23c98f97f684554a9c2389771d10ac65388794f1cd156a1",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-5",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à prudent, ce qui donne prudente."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-6",
+      "itemChecksum": "sha256:6ebc3d14786104ee99237510ee8396ed8781d8bc2928020d1944cdedc719012e",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-6",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à absent, ce qui donne absente."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-7",
+      "itemChecksum": "sha256:d14026c741246c7e68f0fc14e1c4fa931cc16bbf3c0379d1f56a0691343ab8f3",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-7",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à présent, ce qui donne présente."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-8",
+      "itemChecksum": "sha256:6ee2cfa4b1a6b90fc6834ffaa10a82af71a0df8c60bdc841b2870db921b26649",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-8",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à différent, ce qui donne différente."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-9",
+      "itemChecksum": "sha256:9317d403b19bb53acc7c412db249f56077679bc18e388dca4781d2dc04cb7d0a",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-9",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à important, ce qui donne importante."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-10",
+      "itemChecksum": "sha256:91d5c05750340e739b8dbd7d4cb33967935125fd82cbdb1b6f398f4d488f3c9d",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-10",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à amusant, ce qui donne amusante."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-11",
+      "itemChecksum": "sha256:b72a2e7ccc79aced2410629333418d2abd65128bd428d4dd80410577a5deae55",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-11",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à élégant, ce qui donne élégante."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-12",
+      "itemChecksum": "sha256:dd23a0a470496b5ec11e6c2360968c7c9ece0df281ee9b1139296d8daa763271",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-12",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à distant, ce qui donne distante."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-13",
+      "itemChecksum": "sha256:3a36da7fd771eabb82875aac03d193011d60d29e528343c98205ab7764a81caf",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-13",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à plat, ce qui donne plate."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-14",
+      "itemChecksum": "sha256:fe7cf7700b434268c5df6728c76b767fe3702b3b17224ed3afbe6ab78e1dec2f",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-14",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à sourd, ce qui donne sourde."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-15",
+      "itemChecksum": "sha256:4457883f104a08adec1f194cd5b4030cf9ea94a3665d5fce796a75198c677e2f",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-15",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à loyal, ce qui donne loyale."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-inflection-recognition:feminine-16",
+      "itemChecksum": "sha256:7f0589a54cf779c27d506a8d5301865fc3cd7e2a0cddb05ee8c5c072c083550c",
+      "evidenceTarget": {
+        "nodeKey": "former_feminin_adjectif_regulier",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "inflection-sentence:feminine-16",
+      "reason": "Le contexte demande le féminin singulier : on ajoute e à uni, ce qui donne unie."
+    }
+  ],
+  "checksum": "sha256:3cc68a28b9724fc4f9a28261b272aed54faff5ddd7b6ef443c863f82c438d070"
+}

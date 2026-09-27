@@ -1,3 +1,4 @@
+import {isSourceBoundWritingItem} from "./granular/writing-item-contract";
 import {
   generatedItemSchema,
   type GateResults,
@@ -99,7 +100,8 @@ export function validateCanonicalDiagnosticBank(
     if (!entry.qcGates.gate1_schema || !entry.qcGates.gate1_invariants.ok || !entry.qcGates.gate2_answer_key.ok) {
       issues.push(`items.${index}: hard QC gate did not pass`);
     }
-    if (!["exact", "regex", "conjugator"].includes(entry.item.validatorType)) {
+    if (!["exact", "regex", "conjugator"].includes(entry.item.validatorType)
+      && !(entry.evidenceExpectation === "independent_production" && isSourceBoundWritingItem(entry.item))) {
       issues.push(`items.${index}: validator is not supported by the live diagnostic`);
     }
     if (entry.qcGates.verdict === "rejected" || entry.reviewStatus === "rejected") {
@@ -227,6 +229,7 @@ export function validateCanonicalDiagnosticBank(
     checksum: checksum({ bank: artifact.bank, taxonomy: artifact.taxonomy, items: content }),
   };
   return {
+    eligibleItemKeys: eligible.map(entry => entry.itemKey),
     valid: issues.length === 0 && sections.every((section) => section.ready) && partialShortfalls.length === 0,
     issues: [...issues, ...partialShortfalls],
     sections,
@@ -263,6 +266,7 @@ function recomputesCanonicalConjugation(item: GeneratedItem) {
       config.person as Person,
       {
         gender: config.gender as "m" | "f" | undefined,
+        auxiliaryUse: config.auxiliaryUse as "transitive" | "intransitive" | undefined,
         codBefore: config.codBefore as { gender?: "m" | "f"; number?: "s" | "p" } | undefined,
       },
     ) === item.correctAnswer;

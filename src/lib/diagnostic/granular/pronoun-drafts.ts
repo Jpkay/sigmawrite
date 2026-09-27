@@ -1,0 +1,81 @@
+/** Controlled-production review candidates. Each tuple is source, replacement,
+ * complete expected sentence. No participle agreement or double-pronoun order. */
+const groups={
+ le:[
+ ["Je regarde le match.","le match","Je le regarde."],
+ ["Lina cherche son cahier.","son cahier","Lina le cherche."],
+ ["Nous préparons le repas.","le repas","Nous le préparons."],
+ ["Tu connais ce chanteur.","ce chanteur","Tu le connais."],
+ ["Ils ferment le portail.","le portail","Ils le ferment."],
+ ["Nour range son téléphone.","son téléphone","Nour le range."],
+ ["Vous dessinez le personnage.","le personnage","Vous le dessinez."],
+ ["Le gardien surveille le musée.","le musée","Le gardien le surveille."],
+ ],
+ la:[
+ ["Je regarde la vidéo.","la vidéo","Je la regarde."],
+ ["Malik cherche sa trousse.","sa trousse","Malik la cherche."],
+ ["Nous préparons la fête.","la fête","Nous la préparons."],
+ ["Tu connais cette chanteuse.","cette chanteuse","Tu la connais."],
+ ["Ils ferment la fenêtre.","la fenêtre","Ils la ferment."],
+ ["Lina range sa tablette.","sa tablette","Lina la range."],
+ ["Vous dessinez la maison.","la maison","Vous la dessinez."],
+ ["Le gardien surveille la cour.","la cour","Le gardien la surveille."],
+ ],
+ les:[
+ ["Je regarde les étoiles.","les étoiles","Je les regarde."],
+ ["Malik cherche ses clés.","ses clés","Malik les cherche."],
+ ["Nous préparons les sandwiches.","les sandwiches","Nous les préparons."],
+ ["Tu connais ces musiciens.","ces musiciens","Tu les connais."],
+ ["Ils ferment les volets.","les volets","Ils les ferment."],
+ ["Lina range ses crayons.","ses crayons","Lina les range."],
+ ["Vous dessinez les arbres.","les arbres","Vous les dessinez."],
+ ["La photographe observe les oiseaux.","les oiseaux","La photographe les observe."],
+ ],
+ elision:[
+ ["J’écoute la chanson.","la chanson","Je l’écoute."],
+ ["Lina ouvre le livre.","le livre","Lina l’ouvre."],
+ ["Nous invitons notre voisin.","notre voisin","Nous l’invitons."],
+ ["Tu observes cette étoile.","cette étoile","Tu l’observes."],
+ ["Ils admirent le tableau.","le tableau","Ils l’admirent."],
+ ["Nour attend sa sœur.","sa sœur","Nour l’attend."],
+ ["Vous utilisez la tablette.","la tablette","Vous l’utilisez."],
+ ["Le joueur attrape le ballon.","le ballon","Le joueur l’attrape."],
+ ],
+ lui:[
+ ["Je parle à Lina.","à Lina","Je lui parle."],
+ ["Malik téléphone à son frère.","à son frère","Malik lui téléphone."],
+ ["Nous répondons à notre voisine.","à notre voisine","Nous lui répondons."],
+ ["Tu écris à ton grand-père.","à ton grand-père","Tu lui écris."],
+ ["Ils donnent un billet à la gardienne.","à la gardienne","Ils lui donnent un billet."],
+ ["Nour montre son dessin à Sami.","à Sami","Nour lui montre son dessin."],
+ ["Vous prêtez un livre à votre amie.","à votre amie","Vous lui prêtez un livre."],
+ ["La professeure explique la consigne à un élève.","à un élève","La professeure lui explique la consigne."],
+ ],
+ leur:[
+ ["Je parle à mes voisins.","à mes voisins","Je leur parle."],
+ ["Malik téléphone à ses cousins.","à ses cousins","Malik leur téléphone."],
+ ["Nous répondons à nos amies.","à nos amies","Nous leur répondons."],
+ ["Tu écris à tes grands-parents.","à tes grands-parents","Tu leur écris."],
+ ["Ils donnent des billets aux gardiennes.","aux gardiennes","Ils leur donnent des billets."],
+ ["Nour montre son dessin à ses frères.","à ses frères","Nour leur montre son dessin."],
+ ["Vous prêtez des livres à vos amis.","à vos amis","Vous leur prêtez des livres."],
+ ["La professeure explique la consigne aux élèves.","aux élèves","La professeure leur explique la consigne."],
+ ],
+} as const;
+export const PRONOUN_DRAFTS=Object.entries(groups).flatMap(([construction,rows])=>rows.map(([sentence,target,answer],index)=>({
+ key:`${construction}-${index+1}`,construction,nodeKey:["lui","leur"].includes(construction)?"produire_pronom_coi_personne":"produire_pronom_cod",
+ sentence,target,answer,
+ reason:["lui","leur"].includes(construction)?"Le verbe construit le complément de personne avec à; le nombre du référent détermine lui ou leur.":construction==="elision"?"Le complément est direct et singulier; le pronom s’élide devant le verbe commençant par une voyelle.":"Le complément est direct; son genre et son nombre déterminent le pronom sans autre transformation du verbe.",
+})));
+
+/** Mixed verb frames for the approved COD/COI discrimination competency. */
+export const PRONOUN_DISCRIMINATION_DRAFTS=[
+ ["Lina appelle son voisin.","son voisin","Lina l’appelle.","elision","Appeler quelqu’un : complément direct."],
+ ["Lina parle à son voisin.","à son voisin","Lina lui parle.","lui","Parler à quelqu’un : complément indirect."],
+ ["Malik écoute ses amies.","ses amies","Malik les écoute.","les","Écouter quelqu’un : complément direct, malgré le référent humain."],
+ ["Malik répond à ses amies.","à ses amies","Malik leur répond.","leur","Répondre à quelqu’un : complément indirect; référent pluriel."],
+ ["Nour aide sa sœur.","sa sœur","Nour l’aide.","elision","Aider quelqu’un : complément direct; élision devant aide."],
+ ["Nour téléphone à sa sœur.","à sa sœur","Nour lui téléphone.","lui","Téléphoner à quelqu’un : complément indirect."],
+ ["Nous remercions nos voisins.","nos voisins","Nous les remercions.","les","Remercier quelqu’un : complément direct; ne pas attribuer automatiquement la fonction indirecte aux personnes."],
+ ["Nous écrivons à nos voisins.","à nos voisins","Nous leur écrivons.","leur","Écrire à quelqu’un : complément indirect; référent pluriel."],
+].map(([sentence,target,answer,construction,reason],index)=>({key:`discrimination-${index+1}`,sentence,target,answer,construction,reason,nodeKey:"distinguer_pronom_cod_coi"}));

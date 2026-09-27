@@ -1,0 +1,144 @@
+import {SUBJONCTIF_APPLICATION_CONTEXTS} from "./subjonctif-application-contexts";
+import {COMPOUND_APPLICATION_CONTEXTS} from "./compound-application-contexts";
+import {conjugate,type Person,type Tense} from "@/lib/linguistic/conjugation";
+import {checksum,type TaxonomyCandidate} from "@/lib/taxonomy/validate";
+import {runGates} from "@/lib/ai/item-generation/pipeline";
+import type {GeneratedItem} from "@/lib/ai/item-generation/schemas";
+import {diagnosticItemSurfaceIdentity,type CanonicalDiagnosticBankArtifact,type CanonicalDiagnosticBankItem} from "../item-bank";
+import {conjugationAuthoringCases,conjugationEvidenceFeatures} from "./facets";
+import type {FacetAnnotation} from "./facet-adapter";
+import {questionMaterialKeys} from "./material-annotations";
+import {PRESENT_APPLICATION_CONTEXTS} from "./present-application-contexts";
+import {conjugationSentenceGap} from "./conjugation-sentence";
+
+function fixedFormPrompt(tense:Tense,verb:string,subject:string){
+ const lead=`Avec le sujet « ${subject} », `;
+ const singular=["je","tu","il","elle"].includes(subject);
+ switch(tense){
+  case "present":return `${lead}écris « ${verb} » pour parler de ce qui se passe maintenant.`;
+  case "imparfait":return `${lead}écris « ${verb} » en un seul mot pour parler de ce qui se passait ou se répétait, comme dans « ${singular?"nous regardions":"elle regardait"} ».`;
+  case "futur_proche":return `${lead}écris une forme d’aller suivie de « ${verb} » pour annoncer ce qui va se passer.`;
+  case "passe_recent":return `${lead}écris une forme de « venir », puis « de » ou « d’ » et « ${verb} », pour dire ce qui vient de se passer.`;
+  case "passe_compose":return `${lead}écris « ${verb} » avec avoir ou être pour raconter une action terminée, comme dans « elle a fini ».`;
+  case "futur_simple":return `${lead}écris « ${verb} » en un seul mot pour dire ce qui se passera, comme dans « ${singular?"nous chanterons":"elle chantera"} ».`;
+  case "plus_que_parfait":return `${lead}écris « ${verb} » avec avoir ou être pour dire ce qui s’était déjà passé, comme dans « elle avait fini ».`;
+  case "conditionnel_present":return `${lead}écris « ${verb} » en un seul mot pour dire ce qui pourrait se passer, comme dans « ${singular?"nous aimerions":"elle aimerait"} ».`;
+  case "subjonctif_present":return `Après « il faut que », écris « ${verb} » avec le sujet « ${subject} ».`;
+  case "passe_simple":return `${lead}écris « ${verb} » en un seul mot pour raconter une action brève dans un récit, comme dans « soudain, elle entra ».`;
+  case "imperatif_present":throw Error("Imperative prompts need an audience");
+ }
+}
+function sentenceFormPrompt(tense:Tense,verb:string,sentence:string){
+ switch(tense){
+  case "present":return `Complète la phrase avec « ${verb} » pour parler de ce qui se passe maintenant : ${sentence}`;
+  case "imparfait":return `Complète en un seul mot avec « ${verb} » pour parler de ce qui se passait ou se répétait, comme dans « nous regardions » : ${sentence}`;
+  case "futur_proche":return `Complète avec une forme d’aller suivie de « ${verb} » pour annoncer ce qui va se passer : ${sentence}`;
+  case "passe_recent":return `Complète avec une forme de « venir », puis « de » ou « d’ » et « ${verb} », pour dire ce qui vient de se passer : ${sentence}`;
+  case "passe_compose":return `Complète avec « ${verb} » et avoir ou être pour raconter une action terminée, comme dans « elle a fini » : ${sentence}`;
+  case "futur_simple":return `Complète en un seul mot avec « ${verb} » pour dire ce qui se passera, comme dans « nous chanterons » : ${sentence}`;
+  case "plus_que_parfait":return `Complète avec « ${verb} » et avoir ou être pour dire ce qui s’était déjà passé, comme dans « elle avait fini » : ${sentence}`;
+  case "conditionnel_present":return `Complète en un seul mot avec « ${verb} » pour dire ce qui pourrait se passer, comme dans « nous aimerions » : ${sentence}`;
+  case "subjonctif_present":return `Complète la phrase avec « ${verb} ». Le début de la phrase indique la forme à employer : ${sentence}`;
+  case "passe_simple":return `Complète en un seul mot avec « ${verb} » pour raconter une action brève dans un récit, comme dans « soudain, elle entra » : ${sentence}`;
+  case "imperatif_present":throw Error("Imperative prompts need an audience");
+ }
+}
+const SUBJECTS:Array<{person:Person;gender:"m"|"f";subject:string}>=[
+ {person:"1s",gender:"m",subject:"je"},{person:"2s",gender:"m",subject:"tu"},{person:"3s",gender:"m",subject:"il"},{person:"3s",gender:"f",subject:"elle"},
+ {person:"1p",gender:"m",subject:"nous"},{person:"2p",gender:"m",subject:"vous"},{person:"3p",gender:"m",subject:"ils"},{person:"3p",gender:"f",subject:"elles"},
+];
+const PRESENT_SPELLING_CONTEXTS:readonly [string,string][]=[
+ ["manger","Nous ___ une soupe après la randonnée."],
+ ["manger","Nous ___ les fruits du jardin."],
+ ["nager","Nous ___ près du ponton."],
+ ["nager","Nous ___ trois longueurs avant de sortir."],
+ ["voyager","Nous ___ avec une petite valise."],
+ ["voyager","Nous ___ en groupe pendant les vacances."],
+ ["commencer","Nous ___ la répétition après le goûter."],
+ ["commencer","Nous ___ une nouvelle partie."],
+ ["lancer","Nous ___ le cerf-volant face au vent."],
+ ["lancer","Nous ___ le ballon vers le panier."],
+ ["avancer","Nous ___ de deux cases sur le plateau."],
+ ["avancer","Nous ___ lentement dans le couloir."],
+];
+
+/** Authored form-production coverage, not approval or proof of contextual use. */
+export async function expandConjugationDraft(bank:CanonicalDiagnosticBankArtifact,taxonomy:TaxonomyCandidate){
+ const items:CanonicalDiagnosticBankItem[]=[],annotations:FacetAnnotation[]=[],skipped:Array<{key:string;reason:string}>=[];
+ const surfaces=new Set(bank.items.map(e=>`${e.item.nodeKey}:${diagnosticItemSurfaceIdentity(e.item)}`));
+ const context={knownNodeKeys:new Set(taxonomy.nodes.map(n=>n.key)),knownMisconceptionKeys:new Set<string>()};
+ for(const target of conjugationAuthoringCases()){
+  const node=taxonomy.nodes.find(n=>n.key===target.nodeKey);
+  const evidence=node?.evidence.find(e=>e.expectation==="controlled_production"&&e.modality==="writing");
+  if(!node||!evidence)throw Error(`Missing approved production target: ${target.nodeKey}`);
+  const imperative=target.tense==="imperatif_present";
+  const subjects=imperative?SUBJECTS.filter(s=>["2s","1p","2p"].includes(s.person)&&s.gender==="m"):SUBJECTS;
+  for(const subject of subjects)for(const negative of imperative?[false,true]:[false]){
+   const key=`v3-granular-forms:${target.nodeKey}:${target.verb}:${subject.person}:${subject.gender}:${negative?"negative":"affirmative"}`;
+   const form=conjugate(target.verb,target.tense as Tense,subject.person,{gender:subject.gender});
+   const answer=negative?`${/^[aeiouyàâéèêëîïôùûüœ]/i.test(form)?"n’":"ne "}${form} pas`:form;
+   const compound=["passe_compose","plus_que_parfait"].includes(target.tense);
+   const agreementHint=compound&&["1s","2s","1p","2p"].includes(subject.person)?` Le sujet désigne ${subject.person.endsWith("p")?"plusieurs garçons":"un garçon"}.`:"";
+   const instructions=imperative?"Écris la consigne sans pronom sujet. N’ajoute pas d’autres mots.":`Écris seulement le verbe ou le groupe verbal, sans le sujet.${agreementHint}`;
+   const audience=subject.person==="2s"?"une personne que tu tutoies":subject.person==="1p"?"un groupe dont tu fais partie":"plusieurs personnes ou une personne que tu vouvoies";
+   const prompt=imperative?`Écris une consigne ${negative?"qui interdit l’action":"qui demande de faire l’action"} à ${audience}, avec « ${target.verb} ».`:
+    fixedFormPrompt(target.tense as Tense,target.verb,subject.subject);
+   const raw:GeneratedItem={nodeKey:node.key,strand:"conjugaison",modality:"writing",learnerMode:"shared",responseType:"short_answer",promptFr:prompt,instructionsFr:instructions,correctAnswer:answer,
+    acceptableAnswers:negative&&answer.includes("’")?[answer.replaceAll("’","'")]:[],validatorType:negative?"exact":"conjugator",validatorConfig:{verb:target.verb,tense:target.tense,person:subject.person,gender:subject.gender,
+     materialExposure:{words:[{lemma:target.verb,form:target.verb}],assessed:{words:[target.verb]}}},difficulty:50};
+   const surface=`${node.key}:${diagnosticItemSurfaceIdentity(raw)}`;
+   if(surfaces.has(surface)){skipped.push({key,reason:"Existing student-facing surface"});continue;}surfaces.add(surface);
+   const checked=await runGates(raw,context);
+   if(!checked.item||checked.gates.verdict==="rejected")throw Error(`Conjugation draft rejected: ${key}`);
+   const entry:CanonicalDiagnosticBankItem={itemKey:key,item:checked.item,evidenceKey:evidence.key,evidenceExpectation:evidence.expectation,sectionKey:"conjugation",promptFamily:negative?"negative-command":"controlled-form",difficultyTier:"core",
+    reviewStatus:"needs_human_review",qcGates:{...checked.gates,gate3_ensemble:{agrees:false,agreement:0},verdict:"needs_human_review"}};
+   questionMaterialKeys(entry.item);
+   items.push(entry);annotations.push({itemKey:key,itemChecksum:checksum(entry),facetKey:target.facetKey,contextKey:`verb:${target.verb}`,evidenceFeatures:conjugationEvidenceFeatures(node.key,raw.validatorConfig??{})});
+  }
+ }
+ // Both independent pools need several actual -geons/-çons demonstrations.
+ // More unchanged endings or gender variants cannot fill that feature gap.
+ const sentenceCases=[
+  ...SUBJONCTIF_APPLICATION_CONTEXTS.map(([verb,person,sentence],index)=>({verb,person,sentence,tense:"subjonctif_present" as const,key:`v3-granular-forms:subjonctif_present-application-context:${verb}:${person}:${index}`})),
+  ...(["passe_compose","plus_que_parfait"] as const).flatMap(tense=>COMPOUND_APPLICATION_CONTEXTS.map((row,index)=>({...row,tense,key:`v3-granular-forms:${tense}-application-context:${row.verb}:${row.person}:${index}`}))),
+  ...PRESENT_SPELLING_CONTEXTS.map(([verb,sentence],index)=>({verb,sentence,tense:"present" as const,person:"1p" as Person,key:`v3-granular-forms:present-spelling-context:${verb}:${index}`})),
+  ...PRESENT_APPLICATION_CONTEXTS.map(([verb,person,sentence],index)=>({verb,person,sentence,tense:"present" as const,key:`v3-granular-forms:present-application-context:${verb}:${person}:${index}`})),
+  ...(["imparfait","futur_simple","conditionnel_present"] as const).flatMap(tense=>PRESENT_APPLICATION_CONTEXTS.flatMap(([verb,person,sentence],index)=>{
+   const target=conjugationAuthoringCases().find(target=>target.tense===tense&&target.verb===verb);
+   return target?.facetKey.includes("::verb:")?[{verb,person,sentence,tense,key:`v3-granular-forms:${tense}-application-context:${verb}:${person}:${index}`}]:[];
+  })),
+ ];
+ for(const application of sentenceCases){
+  const {verb,person,sentence:sourceSentence,tense,key}=application;
+  const gender="gender" in application?application.gender:"m";
+  const auxiliaryUse="auxiliaryUse" in application?application.auxiliaryUse:undefined;
+  const target=conjugationAuthoringCases().find(target=>target.tense===tense&&target.verb===verb)!;
+  const node=taxonomy.nodes.find(node=>node.key===target.nodeKey)!;
+  const evidence=node.evidence.find(evidence=>evidence.expectation==="controlled_production"&&evidence.modality==="writing")!;
+  const answer=conjugate(verb,tense,person,{gender,auxiliaryUse});
+  const sentence=conjugationSentenceGap(sourceSentence,answer);
+  const completedSentence=sentence.replace("___",answer);
+
+  // An individual-verb target necessarily revisits the same lemma. Identify
+  // the sentence application separately, while retaining the lemma as exposure.
+  // Include the completed correction so a taught answer cannot evade overlap
+  // detection merely because the question itself contains a blank.
+  const individualVerb=target.facetKey.includes("::verb:");
+  const raw:GeneratedItem={nodeKey:node.key,strand:"conjugaison",modality:"writing",learnerMode:"shared",responseType:"short_answer",
+   promptFr:sentenceFormPrompt(tense,verb,sentence),
+   instructionsFr:"Écris seulement le verbe manquant."+("genderSpecified" in application&&application.genderSpecified?` Sujet ${gender==="f"?"féminin":"masculin"} ${person.endsWith("p")?"pluriel":"singulier"}.`:""),correctAnswer:answer,acceptableAnswers:[],validatorType:"conjugator",
+   validatorConfig:{verb,tense,person,gender,...(auxiliaryUse?{auxiliaryUse}:{}),...(individualVerb?{sentenceApplication:sentence}:{}),materialExposure:{...(tense==="plus_que_parfait"?{elidedGapAliases:true}:{}),words:[{lemma:verb,form:verb}],sentences:individualVerb?[sentence,completedSentence]:[sentence],...(individualVerb?{assessed:{sentences:[sentence,completedSentence]}}:{})}},difficulty:50};
+  const surface=`${node.key}:${diagnosticItemSurfaceIdentity(raw)}`;
+  if(surfaces.has(surface)){skipped.push({key,reason:"Existing student-facing surface"});continue;}surfaces.add(surface);
+  const checked=await runGates(raw,context);
+  if(!checked.item||checked.gates.verdict==="rejected")throw Error(`Context draft rejected: ${key}`);
+  const entry:CanonicalDiagnosticBankItem={itemKey:key,item:checked.item,evidenceKey:evidence.key,evidenceExpectation:evidence.expectation,
+   sectionKey:"conjugation",promptFamily:"sentence-form-application",difficultyTier:"core",reviewStatus:"needs_human_review",
+   qcGates:{...checked.gates,gate3_ensemble:{agrees:false,agreement:0},verdict:"needs_human_review"}};
+  // Keep the conservative verb context grouping; a second sentence about one
+  // verb must not manufacture a second verb context for pattern confirmation.
+  items.push(entry);annotations.push({itemKey:key,itemChecksum:checksum(entry),facetKey:target.facetKey,contextKey:`verb:${verb}`,
+   evidenceFeatures:conjugationEvidenceFeatures(node.key,raw.validatorConfig??{})});
+ }
+ return {items,annotations,skipped};
+}

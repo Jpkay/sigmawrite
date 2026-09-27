@@ -1,0 +1,147 @@
+{
+  "version": "direct-object-pathway-review-v2",
+  "reviewedLessonChecksums": {
+    "french-v3-teaching:identifier_complement_direct": "sha256:c77c14acdffcf9da28fbae04db9c222f618cca7cb8cbb68d4a96c70433852aea"
+  },
+  "status": "draft_review_feasibility_only",
+  "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "bankChecksum": "sha256:f29362f32b8562bc8f310b6504fa1891c73488e0313444c4018617a7fe62967c",
+  "facetChecksum": "sha256:faef022500592909cfd0d4229529ab1691ebd018503c3390549fc8bf3b46799f",
+  "rows": [
+    {
+      "lessonId": "french-v3-teaching:identifier_complement_direct",
+      "lessonChecksum": "sha256:c77c14acdffcf9da28fbae04db9c222f618cca7cb8cbb68d4a96c70433852aea",
+      "titleFr": "Trouver ce qui complète directement le verbe",
+      "skillId": "identifier_complement_direct::reading-receptive",
+      "prerequisites": [
+        "construction_phrase_canonique::reading-analysis",
+        "construction_phrase_canonique::writing-controlled-production"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 16,
+      "guessingFloorValues": [
+        0.25
+      ],
+      "minimumAllCorrectItemsForGuessGate": 4,
+      "distinctTargetSentences": 16,
+      "excludedTeachingOverlapQuestionIds": [],
+      "excludedRepeatedSentenceQuestionIds": [],
+      "proposedAllocationStatus": "allocated",
+      "proposedInitialQuestions": [
+        "v3-direct-object:person",
+        "v3-direct-object:place",
+        "v3-direct-object:provenance",
+        "v3-direct-object:quantity",
+        "v3-direct-object:question",
+        "v3-direct-object:recipient",
+        "v3-direct-object:sleep",
+        "v3-direct-object:time"
+      ],
+      "proposedLaterQuestions": [
+        "v3-direct-object:attribute",
+        "v3-direct-object:coordinated",
+        "v3-direct-object:indirect-only",
+        "v3-direct-object:listen",
+        "v3-direct-object:manga",
+        "v3-direct-object:negative",
+        "v3-direct-object:noun-group",
+        "v3-direct-object:perfect"
+      ],
+      "questionChecksums": {
+        "v3-direct-object:manga": "sha256:17ace4d8b7cc7c671ef145181a63da89c84bae1e4bc8a641aae9a2d47f7e0178",
+        "v3-direct-object:person": "sha256:6fd2028397f50956629ab9ad410cedc8591f0f25d6090b662cb673ab7da69939",
+        "v3-direct-object:time": "sha256:99dd08c38e2c6b978821d7ae8bacad1883567840ad77ea7a12b68905d0eec4be",
+        "v3-direct-object:recipient": "sha256:a06d79ae6d6277bdfc0bd4eab4b3f4a977c1c4e2bc6f90f4a5aafcf54f64a09c",
+        "v3-direct-object:place": "sha256:02df0fc1b90463793075347c32890c0be4ddf9f1ada1f47b148fa64565a237f2",
+        "v3-direct-object:negative": "sha256:dfaf82e87c50cbb6a1ba0235cf1487b6ed38f464d803ae4c7429db0a985e3650",
+        "v3-direct-object:question": "sha256:a2065cff94503f6a5fbdbb2f9975853b6458a94a7bcf36a6326fc074669ac356",
+        "v3-direct-object:noun-group": "sha256:18b775e53d64a1550f57521204e12468dd3bf6ac2682da0309b0a2ab87bb14e8",
+        "v3-direct-object:listen": "sha256:6e440cd865bd313f262a8e27747c80c28e87396358e8c59be0100e5ff08f0d6f",
+        "v3-direct-object:quantity": "sha256:d8aac80bfc6c76d0c1fe5ccfa3ea4f5439fcdd51b57f1cc1e5db4a99f96ee700",
+        "v3-direct-object:coordinated": "sha256:887e5e50ea829e09e369c2cc274f317f8aa9bfefed6cd9e54dbaed55e84e796e",
+        "v3-direct-object:perfect": "sha256:ea5b1493ffada2f9819cda02d0cb772bffbfe877dd70a6f47258f69d19a7cd43",
+        "v3-direct-object:indirect-only": "sha256:a3954e250f3eeb91a441631b2816cbbe96e35f575da93b0c128edae42cd3b4e9",
+        "v3-direct-object:sleep": "sha256:daf705b3b179175de19a189371a4fa41212bbe1f6e3b697e36ee5159452a2d2a",
+        "v3-direct-object:attribute": "sha256:99b4018f62bbd6844d4642812b1d39add8945d4cf7e12047e7768f03d8c96a9d",
+        "v3-direct-object:provenance": "sha256:3ae7839d496cb206badff7ed9580494bf812255feb774eb03d57693ca1882ba7"
+      },
+      "assessedMaterialKeys": {
+        "v3-direct-object:manga": [
+          "sentence:sha256:bf2ccf8a4f27b6d340d49e79a8011ac2b7aeb9e18a9d5fb2e5feb1ae0894a6ed"
+        ],
+        "v3-direct-object:person": [
+          "sentence:sha256:9d5d64d606055ebd862931123cac7542f3dfeaeed2413937bf06b518e9d5be76"
+        ],
+        "v3-direct-object:time": [
+          "sentence:sha256:fe076f1011cf84d5f20306c9b30c57173bec5dddca6bf8f8047e6af2382d3a00"
+        ],
+        "v3-direct-object:recipient": [
+          "sentence:sha256:90967aea2965a1c38d7ae4d17cf5a0880956458559caf1af2846f9123990e2fc"
+        ],
+        "v3-direct-object:place": [
+          "sentence:sha256:a267fd4ebbc70f0ee235c9e9ad8f0bcd8b73affb53e6878592aa99f781092d0f"
+        ],
+        "v3-direct-object:negative": [
+          "sentence:sha256:d5da37a82997d755fa32caab9cb1cc54473ef313a830174b927e1732a28aebbd"
+        ],
+        "v3-direct-object:question": [
+          "sentence:sha256:28a68ba9cb3f4188fdb09e2140190941e019086aba48dc066b02f82a75dff37f"
+        ],
+        "v3-direct-object:noun-group": [
+          "sentence:sha256:487506246825f98cb93497974a17c0ed026acabb2781c772753bf252a6770f48"
+        ],
+        "v3-direct-object:listen": [
+          "sentence:sha256:0ddf2a863651f67c041c77bf0e2cf3ae144f89ba0f2c7a1eba2ddcbaeceedb63"
+        ],
+        "v3-direct-object:quantity": [
+          "sentence:sha256:54d2e6e02fe208a9666511dfed87d7edca02f68f47edb9d4db28d9345ecb5ffc"
+        ],
+        "v3-direct-object:coordinated": [
+          "sentence:sha256:dc6caf333e242a5e6349a4d67235884270e2d6af52487dad48e26369f483c1c3"
+        ],
+        "v3-direct-object:perfect": [
+          "sentence:sha256:edb5fba30bb06671270755e1b3410a84606dfafc251c201494b043cca6f563a5"
+        ],
+        "v3-direct-object:indirect-only": [
+          "sentence:sha256:5e7223d0d7118477dbebc0dd27fbf1e48c2c22aca0cee67392c7587180245937"
+        ],
+        "v3-direct-object:sleep": [
+          "sentence:sha256:9670118d5aed88c4abb5eecb1797965e8e506996b1f90bbe4f2004d297215344"
+        ],
+        "v3-direct-object:attribute": [
+          "sentence:sha256:b0e6d66ff225602bae5985766e4ad641207190954ab1823d2e986077045cca05"
+        ],
+        "v3-direct-object:provenance": [
+          "sentence:sha256:1152a6ff0592c756d8e52096ff2b46eb299ad16a8fb8c95cf05c9e1c93a96fae"
+        ]
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "answer_and_supplied_analysis_validity",
+        "target_and_prerequisite_fit",
+        "teaching_and_semantic_overlap",
+        "material_annotation_completeness",
+        "construction_balance_and_answer_cues",
+        "recognition_not_independent_explanation",
+        "cross_activity_exposure",
+        "multiple_occasions"
+      ]
+    }
+  ],
+  "checksum": "sha256:52981ff4473e8574e169b0beee7168979e0e193d91866819c96a2d13efc1fa1b"
+}

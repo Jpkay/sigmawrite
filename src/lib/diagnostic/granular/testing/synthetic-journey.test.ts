@@ -1,0 +1,27 @@
+import {readFileSync} from "node:fs";
+import {expect,it} from "vitest";
+import {buildSyntheticIntegrationBundle} from "./synthetic-bundle";
+import {buildSyntheticPersistenceJourney} from "./synthetic-journey";
+import {bindAssessmentRelease} from "../release-binding";
+it("keeps full-graph session snapshots bounded and preserves the time-budget pathway",()=>{
+ const artifact=JSON.parse(readFileSync("generated/french-taxonomy-v3.json","utf8"));
+ const bundle=buildSyntheticIntegrationBundle(artifact,{taxonomyId:"test-taxonomy",bankId:"test-bank"});
+ const release=bindAssessmentRelease(bundle.assessment,bundle);
+ expect(Object.keys(release).sort()).toEqual(["bankId","checksum","taxonomyId"]);
+ const journey=buildSyntheticPersistenceJourney(bundle);
+ expect(journey.results).toHaveLength(257);
+ expect(journey.priorities.length).toBeGreaterThan(0);
+ expect(journey.states.every((state,index)=>state.revision===index)).toBe(true);
+ const paused=journey.states[journey.pausedRevision],resumed=journey.states[journey.pausedRevision+1];
+ expect(paused.paused).toBe(true);expect(resumed.paused).toBe(false);
+ expect(resumed.activeSeconds).toBe(paused.activeSeconds);
+ const handoff=journey.states[journey.learningRevision],final=journey.states.at(-1)!;
+ expect(handoff.activeSeconds).toBe(2100);expect(handoff.completionReason).toBe("time_budget");
+ expect(handoff.observations.filter(observation=>observation.skipped)).toHaveLength(1);
+ const sampled=new Set(handoff.observations.map(observation=>bundle.assessment.skills.find(skill=>skill.id===observation.skillId)!.samplingGroup));
+ expect(sampled).toEqual(new Set(["conjugaison","grammaire_syntaxe","comprehension_ecrite","orthographe_lexicale","orthographe_grammaticale"]));
+ expect(final.refinements).toHaveLength(1);
+ expect(final.observations.some(observation=>observation.itemId===final.refinements[0].itemId)).toBe(false);
+ expect(final.refinements[0].source).toBe("learning");expect(final.learningCheck).toBeNull();
+ expect(JSON.stringify(journey).length).toBeLessThan(1_000_000);
+});

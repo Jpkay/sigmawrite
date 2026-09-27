@@ -1,0 +1,247 @@
+{
+  "version": "person-number-pathway-review-v2",
+  "reviewedLessonChecksums": {
+    "french-v3-teaching:person-number": "sha256:064a4a0b99974a757fa7f846db878d9131a162b6acd0b38683450535f08bd5bb"
+  },
+  "status": "draft_review_feasibility_only",
+  "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "bankChecksum": "sha256:ffe5106b1b4ce4f155a7250d79472d1e5e915aa8bf99e72fe4cff9bb90d2c88a",
+  "facetChecksum": "sha256:e6f4a3d063d51cb61e34b828084d6177bb5cfba071ad17243085b9c6df0cf884",
+  "rows": [
+    {
+      "lessonId": "french-v3-teaching:person-number",
+      "lessonChecksum": "sha256:064a4a0b99974a757fa7f846db878d9131a162b6acd0b38683450535f08bd5bb",
+      "titleFr": "Choisir la forme du verbe qui va avec le sujet",
+      "skillId": "distinguer_personne_nombre::reading-receptive",
+      "prerequisites": [
+        "identifier_sujet_verbe::reading-receptive"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": false,
+        "unaidedRequired": false
+      },
+      "groupBalance": "balanced",
+      "candidateGroups": {
+        "v3-person-number:je-dessine": "speaker-one",
+        "v3-person-number:j-ecoute": "speaker-one",
+        "v3-person-number:je-negation": "speaker-one",
+        "v3-person-number:je-incise": "speaker-one",
+        "v3-person-number:tu-choisis": "listener-one",
+        "v3-person-number:tu-question": "listener-one",
+        "v3-person-number:tu-negative": "listener-one",
+        "v3-person-number:tu-future": "listener-one",
+        "v3-person-number:nom-singulier": "other-one",
+        "v3-person-number:elle": "other-one",
+        "v3-person-number:on-nous": "other-one",
+        "v3-person-number:collectif": "other-one",
+        "v3-person-number:nous": "speaker-group",
+        "v3-person-number:toi-moi": "speaker-group",
+        "v3-person-number:elle-moi": "speaker-group",
+        "v3-person-number:vous-moi": "speaker-group",
+        "v3-person-number:vous-groupe": "listener-group",
+        "v3-person-number:vous-politesse": "listener-group",
+        "v3-person-number:toi-elle": "listener-group",
+        "v3-person-number:lui-toi": "listener-group",
+        "v3-person-number:elles": "other-group",
+        "v3-person-number:noms-coordonnes": "other-group",
+        "v3-person-number:objets-pluriels": "other-group",
+        "v3-person-number:lui-elle": "other-group"
+      },
+      "groupCoverage": [
+        {
+          "group": "listener-group",
+          "initial": 2,
+          "later": 2
+        },
+        {
+          "group": "listener-one",
+          "initial": 2,
+          "later": 2
+        },
+        {
+          "group": "other-group",
+          "initial": 2,
+          "later": 2
+        },
+        {
+          "group": "other-one",
+          "initial": 2,
+          "later": 2
+        },
+        {
+          "group": "speaker-group",
+          "initial": 2,
+          "later": 2
+        },
+        {
+          "group": "speaker-one",
+          "initial": 2,
+          "later": 2
+        }
+      ],
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 24,
+      "guessingFloorValues": [
+        0.16666666666666666
+      ],
+      "minimumAllCorrectItemsForGuessGate": 3,
+      "distinctTargetSentences": 24,
+      "excludedTeachingOverlapQuestionIds": [],
+      "excludedRepeatedSentenceQuestionIds": [],
+      "proposedAllocationStatus": "allocated",
+      "proposedInitialQuestions": [
+        "v3-person-number:lui-toi",
+        "v3-person-number:vous-groupe",
+        "v3-person-number:tu-choisis",
+        "v3-person-number:tu-negative",
+        "v3-person-number:elles",
+        "v3-person-number:noms-coordonnes",
+        "v3-person-number:collectif",
+        "v3-person-number:nom-singulier",
+        "v3-person-number:elle-moi",
+        "v3-person-number:toi-moi",
+        "v3-person-number:j-ecoute",
+        "v3-person-number:je-incise"
+      ],
+      "proposedLaterQuestions": [
+        "v3-person-number:toi-elle",
+        "v3-person-number:vous-politesse",
+        "v3-person-number:tu-future",
+        "v3-person-number:tu-question",
+        "v3-person-number:lui-elle",
+        "v3-person-number:objets-pluriels",
+        "v3-person-number:elle",
+        "v3-person-number:on-nous",
+        "v3-person-number:nous",
+        "v3-person-number:vous-moi",
+        "v3-person-number:je-dessine",
+        "v3-person-number:je-negation"
+      ],
+      "questionChecksums": {
+        "v3-person-number:je-dessine": "sha256:c543a010be599b13a1ccfc37965bb7eda74858a89b9871c6f160bc3e96abcefa",
+        "v3-person-number:j-ecoute": "sha256:0157a5b07d4cee89cea7fdca77efabc8880ef693755b6eeed4f4ea5a1da25ba7",
+        "v3-person-number:je-negation": "sha256:71aa94fe276ec5d614705a008d501cee6ce48952b11997bc39b93bb2898ee898",
+        "v3-person-number:je-incise": "sha256:ac219ea4c31805e5323c6d78aa95e10963fc39b82ae92ce6fedd337c462e217d",
+        "v3-person-number:tu-choisis": "sha256:bbdcba58c6832ceb9b31096e09defd957ff606fcfe197759a60f0694caa95a10",
+        "v3-person-number:tu-question": "sha256:4b4ca59dfaf5538deb2140c9b399680c24f2a0e5677ad9a0cea3735c9650b71a",
+        "v3-person-number:tu-negative": "sha256:fa70ef915395dc2ce56ceaf5b0e4a7f30cd2fee86deb9288754379ec87192a57",
+        "v3-person-number:tu-future": "sha256:ff0f7fef0d5819b7c2758d56e560b9c8de8579c5f34a4543ad9949855127ec0d",
+        "v3-person-number:nom-singulier": "sha256:878d3480321bf03283ee506b6003e7db9ec1d9f2ac42433a3ecb90036b93e4d4",
+        "v3-person-number:elle": "sha256:ac40c29486aa9ae235741a44a288c3769b38be0184746d8035830d75c11c93b4",
+        "v3-person-number:on-nous": "sha256:c79fe15f37c961f0922e6d777fd05ecad77d2fd0704711be218b6cb2b60b09c4",
+        "v3-person-number:collectif": "sha256:eaf2e28eaed8ff253be021debb83ccf9bcf3b8064ff2530317868cc819841176",
+        "v3-person-number:nous": "sha256:c1b14f481a697347ed3ce67d510612e9ff085bba78667e73de2684f894256a8f",
+        "v3-person-number:toi-moi": "sha256:321c6cdb5a510d0a801b5d20397db3c4f1ddaf2d969d6d6295b88254029283f9",
+        "v3-person-number:elle-moi": "sha256:e742f49b3cf0cfffd6acfd615916845469dc767ae559d992f8902c01a0254019",
+        "v3-person-number:vous-moi": "sha256:876348091f6e7f08033823590ef1aff74df27510dbc3316ae809c50ac6d9c7b6",
+        "v3-person-number:vous-groupe": "sha256:376c4e04231a02a890337525336cb28214de9fb33e885f1bf3d6bca93589b6ed",
+        "v3-person-number:vous-politesse": "sha256:4c36fd5c6098b27cfb180b4c9f7fe326f874a9f697dbe067433fdbedc808312d",
+        "v3-person-number:toi-elle": "sha256:1268a59a8823f532ee0458b179817dcf7653d066e864790568e4b915095c2dca",
+        "v3-person-number:lui-toi": "sha256:4fab18ac1f95be5c392c0366f89799533b3e2701ca8851b0e51a613891f06cf2",
+        "v3-person-number:elles": "sha256:b336b70bffbb64ce7e9029533696097df6784ddfcd420bbe7dafd4115d0f3d30",
+        "v3-person-number:noms-coordonnes": "sha256:5fc0577e1e509c8617eadb15361b6525993de9df9c2d5c32afc7e9c71886d569",
+        "v3-person-number:objets-pluriels": "sha256:5349daac6332191dfe8334bcf722536951656afb9d35b32b236c22a903fc5a28",
+        "v3-person-number:lui-elle": "sha256:fd3a5b5d2c2472149da8edb1c020ec583ea9cd81f24b84702ba9cafa204d4522"
+      },
+      "assessedMaterialKeys": {
+        "v3-person-number:je-dessine": [
+          "sentence:sha256:5e5437869899a553a5e366386d7831b3d9d537bdf1b1d1799c1b7740797e0e36"
+        ],
+        "v3-person-number:j-ecoute": [
+          "sentence:sha256:42215fbe36e4ea9fc56cb6c1709c72fe1fc13b753cac646fbb20823712e63c5a"
+        ],
+        "v3-person-number:je-negation": [
+          "sentence:sha256:6b2f1dc13dce855c25d170a1dcdd94a79e5f9ca2a4f3d64d829e64dee87940e3"
+        ],
+        "v3-person-number:je-incise": [
+          "sentence:sha256:b73eb5a7603c54df8b464d22a48ebeef8b3fc59bd604c9d258ee6b36dd30c29c"
+        ],
+        "v3-person-number:tu-choisis": [
+          "sentence:sha256:3a82f45b991f88204df4260b450489a7148374ff0b00c2a13e125734ac41c810"
+        ],
+        "v3-person-number:tu-question": [
+          "sentence:sha256:e2c6216d61f5fead766ab6d26bcdba26638b220abfc7e707ccc4bf8943b393bf"
+        ],
+        "v3-person-number:tu-negative": [
+          "sentence:sha256:0a49ca513bca7d581db07971c27e24d56e387a7024b0a89aa109c6304e75e0df"
+        ],
+        "v3-person-number:tu-future": [
+          "sentence:sha256:d16b08e058d86392d2ea59f64746decbbe50b6030ed67c5893ca379b25db71c4"
+        ],
+        "v3-person-number:nom-singulier": [
+          "sentence:sha256:23630ea71f1945a2560d0551608f8b5b3f1b694e55aeaf763fc9f813e2947a30"
+        ],
+        "v3-person-number:elle": [
+          "sentence:sha256:aa4f2528924cdc1ef83a6f2a102593de980627b85e155ceace86152ba78ed96d"
+        ],
+        "v3-person-number:on-nous": [
+          "sentence:sha256:729b987bf0a9678c624b8a5dfa340b20b68fc0818869bf6d663086e8ea844db2"
+        ],
+        "v3-person-number:collectif": [
+          "sentence:sha256:ebf2f4e7c792b39ca160de735a98de84b61d0ac8f992fe87a7479bde38bd6df6"
+        ],
+        "v3-person-number:nous": [
+          "sentence:sha256:bf469bb879a2e5385235d19c07a849f4e8613b952ed8b44ac1775f2cbaf385e7"
+        ],
+        "v3-person-number:toi-moi": [
+          "sentence:sha256:5ab0fc2813f4a3065cfb395a3262690032975b8799e79274bea0335437ae97cb"
+        ],
+        "v3-person-number:elle-moi": [
+          "sentence:sha256:0cabd22d16f1ca687c6fa7dc5a96b4835e0249e7fb2409b046a6dfdf51595ac9"
+        ],
+        "v3-person-number:vous-moi": [
+          "sentence:sha256:6ad3382a7470a2fe195fcc9561f12ae0957399f2ebe48013968d3ea75383124d"
+        ],
+        "v3-person-number:vous-groupe": [
+          "sentence:sha256:d31c4fe05742703e0fba535db613de6ea313e37959adebae8868c9ee8ad68cef"
+        ],
+        "v3-person-number:vous-politesse": [
+          "sentence:sha256:d95ebbbd451059d95d86f49e227f177b1fee59fb32f63a595465f8b2224fa7ae"
+        ],
+        "v3-person-number:toi-elle": [
+          "sentence:sha256:8b321048fbe69f030d4bec858c8b0a843cb63817b5cd99e99f336579be95a946"
+        ],
+        "v3-person-number:lui-toi": [
+          "sentence:sha256:d1859df8a49c0e80f2aec0cdb505bc0ca4a7c1a7888d035532778088fe688b32"
+        ],
+        "v3-person-number:elles": [
+          "sentence:sha256:0e6de601dfb14ec54eccdfc32402d1cb17d8ebb8747f8601ab769d0f9cd456bf"
+        ],
+        "v3-person-number:noms-coordonnes": [
+          "sentence:sha256:614dc3d90fea31945d21901618d92c55896b46fa95ea0bc70b66df0b3b5bf5e6"
+        ],
+        "v3-person-number:objets-pluriels": [
+          "sentence:sha256:e3108b29cafe3f711840a429340c6b4925e5107842c0d5d58d2fc43a3ae59102"
+        ],
+        "v3-person-number:lui-elle": [
+          "sentence:sha256:a72205f22316dfbde74a73183456802cfe1f5af046220598f650fc0f76d646db"
+        ]
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "grammatical_versus_referential_number",
+        "six_person_number_combinations_per_pool",
+        "coordinated_subjects",
+        "verb_ending_answer_cues",
+        "target_and_prerequisite_fit",
+        "teaching_and_semantic_overlap",
+        "material_annotation_completeness",
+        "supplied_subject_not_subject_identification",
+        "cross_activity_exposure",
+        "multiple_occasions"
+      ]
+    }
+  ],
+  "checksum": "sha256:a9494ee124580cdaa845a8d3cc6edca50c5367402fd850c46160865af539ed4f"
+}

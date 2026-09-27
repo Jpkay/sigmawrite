@@ -43,7 +43,7 @@ insert into auth.users(
   '66000000-0000-4000-8000-000000000002',
   '00000000-0000-0000-0000-000000000000',
   'authenticated','authenticated','unauthorized-reviewer@test.local','',now(),
-  '{}','{"role":"teacher","display_name":"Not an item reviewer"}',
+  '{}','{"role":"parent","display_name":"Not an item reviewer"}',
   now(),now()
 );
 -- Signup metadata is untrusted after migration 0077. Assign fixture roles as a

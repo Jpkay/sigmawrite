@@ -9,6 +9,7 @@ export const OPTIMAL_SUCCESS_ZONE = { min: 0.75, max: 0.85 } as const;
 export type RatedPracticeItem = {
   difficultyRating: number;
   responseType?: string;
+  interestKeys?: string[];
 };
 
 export function predictedSuccess(learnerRating: number, itemRating: number): number {
@@ -24,19 +25,22 @@ export function selectOptimalPracticeItems<T extends RatedPracticeItem>(
   items: T[],
   learnerRating: number,
   limit = PRACTICE_EXERCISE_TARGET,
+  interests: string[] = [],
 ): T[] {
   const ranked = items
     .map((item, index) => {
       const success = predictedSuccess(learnerRating, item.difficultyRating);
       const inZone = success >= OPTIMAL_SUCCESS_ZONE.min && success <= OPTIMAL_SUCCESS_ZONE.max;
-      return { item, index, success, inZone, gap: Math.abs(success - TARGET_SUCCESS) };
+      const gap = Math.abs(success - TARGET_SUCCESS);
+      const interestMatch = (item.interestKeys ?? []).some((key) => interests.includes(key));
+      return { item, index, success, inZone, gap, fitBand: Math.floor((gap + 1e-9) / 0.03), interestMatch };
     })
-    .sort((a, b) => Number(b.inZone) - Number(a.inZone) || a.gap - b.gap || a.index - b.index)
+    .sort((a, b) => Number(b.inZone) - Number(a.inZone) || a.fitBand - b.fitBand || Number(b.interestMatch) - Number(a.interestMatch) || a.gap - b.gap || a.index - b.index)
   const selected: typeof ranked = [];
   while (ranked.length && selected.length < Math.max(0, limit)) {
     const previousType = selected.at(-1)?.item.responseType;
     const differentTypeIndex = previousType
-      ? ranked.findIndex((candidate) => candidate.item.responseType && candidate.item.responseType !== previousType)
+      ? ranked.findIndex((candidate) => candidate.inZone === ranked[0].inZone && candidate.gap <= ranked[0].gap + 0.03 && candidate.interestMatch === ranked[0].interestMatch && candidate.item.responseType && candidate.item.responseType !== previousType)
       : -1;
     selected.push(...ranked.splice(differentTypeIndex >= 0 ? differentTypeIndex : 0, 1));
   }

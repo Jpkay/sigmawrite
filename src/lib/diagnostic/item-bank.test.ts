@@ -278,6 +278,13 @@ describe("canonical diagnostic item-bank gate", () => {
       items: entries,
     };
     expect(validateCanonicalDiagnosticBank(artifact, taxonomy).valid).toBe(true);
+    const contextual=structuredClone(artifact);
+    contextual.items[conjugationIndex].item.validatorConfig={verb:"sortir",tense:"passe_compose",person:"3s",gender:"f",auxiliaryUse:"transitive"};
+    contextual.items[conjugationIndex].item.correctAnswer="a sorti";
+    contextual.items[conjugationIndex].qcGates.gate0_computed={applied:true,correctedAnswer:"a sorti"};
+    expect(validateCanonicalDiagnosticBank(contextual,taxonomy).valid).toBe(true);
+    contextual.items[conjugationIndex].item.correctAnswer="est sortie";
+    expect(validateCanonicalDiagnosticBank(contextual,taxonomy).valid).toBe(false);
     const corrupted = structuredClone(artifact);
     corrupted.items[conjugationIndex].item.correctAnswer = "parlez";
     const result = validateCanonicalDiagnosticBank(corrupted, taxonomy);
@@ -357,4 +364,19 @@ describe("canonical diagnostic item-bank gate", () => {
     expect(result.sections.find((section) => section.key === "reading_comprehension"))
       .toMatchObject({ confirmableNodeCount: 1, ready: false });
   });
+});
+
+it('keeps source-bound writing drafts separate from initial diagnostic validators and approvals',()=>{
+ const graph:TaxonomyCandidate=structuredClone(taxonomy);
+ graph.nodes.find(n=>n.key==='conjugation-0')!.evidence.push({key:'free-writing',actionFr:'Rédiger un texte connecté.',modality:'writing',expectation:'independent_production',successCriteria:{}});
+ const entry=item('conjugation-0','conjugaison','conjugation',1);
+ entry.item={...entry.item,validatorType:'rubric',correctAnswer:undefined,validatorConfig:{writingEvaluation:'source-bound-v1'}};
+ entry.evidenceKey='free-writing';entry.evidenceExpectation='independent_production';entry.reviewStatus='needs_human_review';entry.review=undefined;
+ entry.qcGates={...entry.qcGates,verdict:'needs_human_review'};
+ const artifact={schemaVersion:1 as const,bank:{key:'test',version:'1'},taxonomy:{releaseKey:'test',releaseVersion:'1',checksum:'sha256:test'},generatedAt:'2026-07-12T00:00:00Z',items:[entry]};
+ const accepted=validateCanonicalDiagnosticBank(artifact,graph);
+ expect(accepted.issues.filter(issue=>issue.startsWith("items."))).toEqual([]);
+ expect(accepted.issues).toContain("conjugation: 0/24 approved items");expect(accepted.eligibleItemKeys).not.toContain(entry.itemKey);
+ entry.evidenceExpectation='controlled_production';entry.evidenceKey='production';
+ expect(validateCanonicalDiagnosticBank(artifact,graph).issues).toContain('items.0: validator is not supported by the live diagnostic');
 });

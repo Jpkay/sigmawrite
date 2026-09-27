@@ -1,0 +1,37 @@
+{
+  "status": "implemented_draft_authoring_not_deployed",
+  "contract": {
+    "validatorType": "rubric",
+    "modality": "writing",
+    "responseType": "short_answer",
+    "writingEvaluation": "source-bound-v1",
+    "exactAnswerAllowed": false,
+    "modelAnswerChoicesAllowed": false,
+    "evidenceExpectation": "independent_production"
+  },
+  "changes": [
+    "The generation pipeline admits explicit source-bound writing tasks without a fictitious exact answer.",
+    "Such tasks remain needs_human_review; the change grants neither review approval nor bank eligibility.",
+    "Canonical bank validation accepts the contract only for independent-production evidence; receptive and controlled-production use remains rejected.",
+    "Spelling tasks require their source-owned criteria."
+  ],
+  "draftContent": {
+    "tasks": 6,
+    "targets": [
+      "employer_present_indicatif_en_contexte",
+      "employer_imparfait_en_contexte"
+    ],
+    "contexts": 6,
+    "published": false
+  },
+  "checks": {
+    "targetedTests": 35,
+    "testFiles": 4,
+    "typescript": "passed"
+  },
+  "remaining": [
+    "Author the remaining writing tasks and corresponding teaching content.",
+    "Assemble and verify the complete writing release without changing the approved graph.",
+    "Publish under parallel owner review and run deployed writing journeys before student activation."
+  ]
+}

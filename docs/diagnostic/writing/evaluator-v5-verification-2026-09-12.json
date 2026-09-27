@@ -1,0 +1,150 @@
+{
+  "status": "experimental_regressions_remaining_not_release_ready",
+  "evaluatorVersion": "french-writing-evaluator-v5",
+  "change": "Separate instruction compliance from evidence of the targeted contextual tense; valid alternative forms supply no evidence rather than an incorrect observation.",
+  "baseline": "evaluator-counterexample-v4-baseline.json",
+  "baselineCounterexamples": {
+    "matched": 22,
+    "total": 28,
+    "falseIncorrect": 4,
+    "unavailable": 2
+  },
+  "currentRuns": {
+    "counterexample": {
+      "matched": 26,
+      "total": 28,
+      "failures": [
+        {
+          "id": "simple-past-incorrect",
+          "expected": "incorrect",
+          "observed": "unavailable",
+          "reason": "invalid_evidence"
+        },
+        {
+          "id": "pronouns-incorrect",
+          "expected": "incorrect",
+          "observed": "unavailable",
+          "reason": "invalid_evidence"
+        }
+      ]
+    },
+    "target": {
+      "matched": 7,
+      "total": 12,
+      "failures": [
+        {
+          "id": "present-context",
+          "expected": "correct",
+          "observed": "unavailable",
+          "reason": "provider_or_configuration"
+        },
+        {
+          "id": "recent-past-context",
+          "expected": "correct",
+          "observed": "unavailable",
+          "reason": "provider_or_configuration"
+        },
+        {
+          "id": "pluperfect-context",
+          "expected": "correct",
+          "observed": "unavailable",
+          "reason": "provider_or_configuration"
+        },
+        {
+          "id": "conditional-context",
+          "expected": "correct",
+          "observed": "unavailable",
+          "reason": "provider_or_configuration"
+        },
+        {
+          "id": "temporal-sequence",
+          "expected": "correct",
+          "observed": "unavailable",
+          "reason": "provider_or_configuration"
+        }
+      ]
+    },
+    "scoped": {
+      "matched": 1,
+      "total": 4,
+      "failures": [
+        {
+          "id": "lexical-scoped-correct",
+          "expected": "correct",
+          "observed": "unavailable",
+          "reason": "provider_or_configuration"
+        },
+        {
+          "id": "lexical-scoped-errors",
+          "expected": "incorrect",
+          "observed": "unavailable",
+          "reason": "timeout"
+        },
+        {
+          "id": "grammar-scoped-correct",
+          "expected": "correct",
+          "observed": "unavailable",
+          "reason": "provider_or_configuration"
+        }
+      ]
+    },
+    "adversarial": {
+      "matched": 2,
+      "total": 8,
+      "failures": [
+        {
+          "id": "unrelated-spelling",
+          "expected": "correct",
+          "observed": "unavailable",
+          "reason": "provider_or_configuration"
+        },
+        {
+          "id": "imperative-errors",
+          "expected": "incorrect",
+          "observed": "correct",
+          "reason": null
+        },
+        {
+          "id": "disconnected-forms",
+          "expected": "unresolved",
+          "observed": "unavailable",
+          "reason": "provider_or_configuration"
+        },
+        {
+          "id": "retained-revision-errors",
+          "expected": "incorrect",
+          "observed": "unavailable",
+          "reason": "provider_or_configuration"
+        },
+        {
+          "id": "introduced-revision-errors",
+          "expected": "incorrect",
+          "observed": "unresolved",
+          "reason": null
+        },
+        {
+          "id": "grading-injection",
+          "expected": "incorrect",
+          "observed": "unavailable",
+          "reason": "invalid_schema"
+        }
+      ]
+    }
+  },
+  "localChecks": {
+    "writingTests": 20,
+    "typescript": "passed"
+  },
+  "limitations": [
+    "Synthetic cases and expected judgments still require educator review; passing them is not calibration.",
+    "The narrative-imperfect contrast counterexample particularly needs review for alternative narrative interpretations.",
+    "No student release includes connected-writing assessment or this experimental evaluator."
+  ],
+  "remaining": [
+    "Reject incorrect imperative forms even when the model labels them correct, without conflating absence of evidence with errors.",
+    "Fix revision opportunity handling for newly introduced errors.",
+    "Improve reliable anchoring of repeated and malformed source excerpts without guessing or silently repairing model judgments.",
+    "Rerun provider failures with more specific safe error categories and verify correct, incorrect and unresolved outcomes for every target.",
+    "Prepare real connected-writing activities and teach-to-writing pathways only after reliable evaluation and scope checks."
+  ]
+}

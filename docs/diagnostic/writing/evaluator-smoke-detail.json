@@ -1,0 +1,39 @@
+{
+  "status": "experimental_not_calibrated",
+  "model": "z-ai/glm-5.2",
+  "syntheticOnly": true,
+  "results": [
+    {
+      "id": "correct-imparfait",
+      "expected": "correct",
+      "observed": "unavailable",
+      "reason": "invalid_evidence",
+      "rawJudgment": {
+        "uncertain": false,
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "opportunities": [
+          {
+            "excerpt": "jouait",
+            "occurrence": 17,
+            "correct": true,
+            "reasonFr": "Imparfait de « jouer », 3e personne du singulier, employé pour décrire une habitude passée (« Chaque été »). Forme et valeur correctes."
+          },
+          {
+            "excerpt": "retrouvait",
+            "occurrence": 37,
+            "correct": true,
+            "reasonFr": "Imparfait de « retrouver », 3e personne du singulier, contexte d'habitude passée. Forme et valeur correctes."
+          },
+          {
+            "excerpt": "exploraient",
+            "occurrence": 64,
+            "correct": true,
+            "reasonFr": "Imparfait de « explorer », 3e personne du pluriel, accord avec « ils », contexte d'habitude passée. Forme et valeur correctes."
+          }
+        ]
+      },
+      "matched": false
+    }
+  ]
+}

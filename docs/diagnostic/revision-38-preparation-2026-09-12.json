@@ -1,0 +1,76 @@
+{
+  "status": "published_candidate_not_publicly_activated",
+  "authoringOptions": [
+    "--bank-revision",
+    "38",
+    "--verb-family-recognition",
+    "--etre-participle-agreement",
+    "--question-detail-reading"
+  ],
+  "scope": {
+    "graphTargets": 544,
+    "assessmentTargets": 353,
+    "teachingTargets": 353,
+    "questions": 6494,
+    "missingInstructionTargets": 0
+  },
+  "candidateChecksum": "sha256:d14f1fc783634e11c874821b8b3ded02842b5bb942a4b690399db88eaf83e20b",
+  "preflight": {
+    "version": "french-granular-parallel-publication-v1",
+    "ready": true,
+    "authorization": "product-owner-request-2026-09-11",
+    "reviewOwner": "product_owner",
+    "bankChecksum": "sha256:5ee189c6c57402709484d0eeb2fd03a20082f447e922a87f93587ed58921da04",
+    "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+    "bundleChecksum": "sha256:44b9fdd66a64e8bd751a99d910b65e4821763acf86226df301dea911203c05f4",
+    "policyChecksum": "sha256:4ac14fed96b5eb0b8148bc802520be4ace3afef7fc73582b4067ca5c0186ff73",
+    "scopeChecksum": "sha256:3ab91c93588d602d9d63452fd68ce3674e4c55003b36aa50ffde6445e66b98d9",
+    "bankItemCount": 7928,
+    "assessmentTargets": 353,
+    "teachingTargets": 353,
+    "instructionGapSkillIds": [],
+    "freshCheckGapSkillIds": [],
+    "limitation": "Preparation only. IDs are placeholders; the publisher must revalidate with actual parent IDs and persist the exact resulting bundle checksum. No human review is recorded."
+  },
+  "validation": {
+    "testFiles": 394,
+    "tests": 1752,
+    "newLessonJourneys": 3,
+    "typeScriptPassed": true,
+    "profileAndCommandSimulations": "completed",
+    "simulatedProfiles": 10,
+    "commandJourneys": 2,
+    "namedContrastCoverage": {
+      "intendedComparisons": 4,
+      "bothSidesSampled": 3,
+      "separatedSampledComparisons": 3,
+      "unexercisedComparisons": [
+        "literal_chronology_known_causal_inference_weak"
+      ],
+      "limitation": "Both sides sampled means at least one target per side; inspect contrastCoverage for untested modes and constructions. Probability separation is not confirmed mastery or classroom validation."
+    }
+  },
+  "limitations": [
+    "Constructed prerequisite-success and target-gap profiles with synthetic history; not classroom calibration.",
+    "Older question versions without assessed passage records remain canonical and historical, but are excluded from the new contextual pathways.",
+    "Human review remains pending. Draft import is verified; the separate candidate build is ready. The release is published after verified chunk upload; it is not publicly activated.",
+    "The reading chronology versus causal inference comparison did not sample the intended chronology targets. Other named comparisons cover sampled targets only, not every mode or construction."
+  ],
+  "releasePreparation": {
+    "sourceCommit": "e8982c447a3ccd8748d1ded517096d1ea08dc0b4",
+    "frozenReproductionPassed": true,
+    "canonicalExportItems": 7928,
+    "bankId": "b29ff7a0-4299-428f-8061-64b671ae460c",
+    "bankStatus": "draft",
+    "importComplete": true,
+    "deploymentId": "dpl_4XajPwgJtMUQzMCrCWHnJcsBnmcH",
+    "deploymentUrl": "https://sigmawrite-n6lndt4t6-jpkays-projects.vercel.app",
+    "deploymentStatus": "Ready",
+    "published": true,
+    "publiclyActivated": false,
+    "verifiedCanonicalItems": 7928,
+    "releaseId": "e203adcd-b218-46f6-95a6-559ee49abf7b",
+    "publishedBundleChecksum": "sha256:10ed36543182eef7aca833747cd065eec97b6cefddf87b7e9ca040e4def1f69c",
+    "publicationTransport": "verified-chunk-upload-same-publication-function"
+  }
+}

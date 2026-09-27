@@ -88,7 +88,7 @@ export async function getContentLibrary(
   const { data, error } = await supabase
     .from("text_versions")
     .select("id,text_id,title,body,text_type,difficulty_band,overall_difficulty,review_status,version_number,created_at,texts!inner(slug,primary_interest,status)")
-    .in("review_status", ["human_approved", "benchmark_locked"])
+    .in("review_status", ["human_approved", "benchmark_locked", "auto_approved"])
     .eq("texts.status", "active")
     .order("created_at", { ascending: false });
   if (error) throw new Error(error.message);
@@ -183,7 +183,7 @@ export async function getPublishedReadingText(
     .from("text_versions")
     .select("id,title,body,word_count,text_type,difficulty_band")
     .eq("text_id", textRow.id)
-    .in("review_status", ["human_approved", "benchmark_locked"])
+    .in("review_status", ["human_approved", "benchmark_locked", "auto_approved"])
     .order("version_number", { ascending: false })
     .limit(1)
     .single();

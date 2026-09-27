@@ -1,3 +1,4 @@
+import { READING_ANSWER_CRITERIA } from "./reading-answer-criteria";
 import { runGates } from "@/lib/ai/item-generation/pipeline";
 import type { GeneratedItem } from "@/lib/ai/item-generation/schemas";
 import type { TaxonomyCandidate } from "@/lib/taxonomy/validate";
@@ -274,6 +275,8 @@ export async function buildLocalReadingDraftItems(
     for (let index = 0; index < plan.seeds.length; index += 1) {
       const seed = plan.seeds[index];
       const tier = DIAGNOSTIC_DIFFICULTY_TIERS[index];
+      const criteria = READING_ANSWER_CRITERIA[`${node.key}:${seed.passage}`];
+      if (plan.expectation !== "receptive" && !criteria) throw new Error(`Missing reading criteria: ${node.key}:${seed.passage}`);
       const promptFr = `Lis le texte.\n\n${PASSAGES[seed.passage]}\n\n${seed.question}`;
       const raw: GeneratedItem = plan.expectation === "receptive"
         ? {
@@ -287,8 +290,8 @@ export async function buildLocalReadingDraftItems(
             nodeKey: node.key, strand: node.strand, modality: "writing", learnerMode: "shared",
             responseType: index === 0 ? "short_answer" : index === 1 ? "cloze" : "transform",
             promptFr, instructionsFr: "Réponds en une phrase complète en t’appuyant uniquement sur le texte.",
-            correctAnswer: seed.answer, acceptableAnswers: [], validatorType: "exact",
-            validatorConfig: { sourceTextKey: seed.passage, sourceTextType: PASSAGE_TYPES[seed.passage] },
+            correctAnswer: seed.answer, acceptableAnswers: criteria.alternatives, validatorType: "exact",
+            validatorConfig: { sourceTextKey: seed.passage, sourceTextType: PASSAGE_TYPES[seed.passage], readingRubric: criteria.rubric },
             difficulty: diagnosticDifficultyForTier(tier),
           };
       const gated = await runGates(raw, { knownNodeKeys, knownMisconceptionKeys: new Set() });

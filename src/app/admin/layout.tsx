@@ -5,11 +5,12 @@ import { getReviewerAccess } from "@/lib/db/reviews";
 
 const nav: NavItem[] = [
   { href: "/admin", label: "Accueil" },
+  { href: "/admin/catalogue", label: "Catalogue pédagogique" },
   { href: "/admin/content/review", label: "Textes", matchPrefixes: ["/admin/content", "/admin/texts"] },
   { href: "/admin/dictations", label: "Dictées" },
   { href: "/admin/reviews", label: "Évaluations", matchPrefixes: ["/admin/benchmarks"] },
   { href: "/admin/items/review", label: "Qualité", matchPrefixes: ["/admin/items"] },
-  { href: "/admin/configuration", label: "Configuration", matchPrefixes: ["/admin/skills", "/admin/vocabulary", "/admin/concepts", "/admin/graph", "/admin/ai-jobs", "/admin/prompts", "/admin/reuse", "/admin/diagnostic-pilot", "/admin/users", "/admin/schools", "/admin/audit"] },
+  { href: "/admin/configuration", label: "Configuration", matchPrefixes: ["/admin/skills", "/admin/vocabulary", "/admin/concepts", "/admin/graph", "/admin/ai-jobs", "/admin/prompts", "/admin/reuse", "/admin/diagnostic-pilot", "/admin/diagnostic-test", "/admin/users", "/admin/schools", "/admin/audit"] },
 ];
 
 export default async function AdminLayout({
@@ -22,7 +23,7 @@ export default async function AdminLayout({
   return (
     <DashboardShell
       area="Administration"
-      nav={session.role === "school_admin" ? [{ href: "/admin/users", label: "Comptes et accès" }, { href: "/teacher", label: "Établissement" }] : nav}
+      nav={session.role === "school_admin" ? [{ href: "/admin/schools", label: "Établissement" }, { href: "/admin/users", label: "Comptes et accès" }, { href: "/teacher/classes", label: "Classes et suivi" }] : nav}
       user={{ name: session.displayName ?? "Admin", role: session.role, analyticsId: session.id }}
       modeSwitch={<AdminReviewerSwitch reviewerActive={Boolean(reviewerAccess?.active)} />}
     >

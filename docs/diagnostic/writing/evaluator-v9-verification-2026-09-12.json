@@ -1,0 +1,73 @@
+{
+  "status": "experimental_coverage_expanded_provider_reliability_unresolved",
+  "evaluatorVersion": "french-writing-evaluator-v9",
+  "changes": [
+    "Add explicitly authored imperative forms of écrire without assuming other tenses are supported.",
+    "Distinguish unsupported morphology from provider failures in synthetic QA.",
+    "Recover the captured duplicate object prefix with whitespace while rejecting changes to grading properties."
+  ],
+  "localChecks": {
+    "targetedAndConjugationTests": 61,
+    "typescript": "passed",
+    "capturedPayloadCorruptionRejected": true
+  },
+  "liveSyntheticChecks": {
+    "matched": 7,
+    "total": 8,
+    "failures": [
+      {
+        "id": "imperative-liaison-errors",
+        "reason": "invalid_json"
+      }
+    ]
+  },
+  "separateLiaisonRecheck": {
+    "status": "experimental_not_calibrated",
+    "model": "z-ai/glm-5.2",
+    "syntheticOnly": true,
+    "casesChecksum": "sha256:639f2fb91fd7c8c5af3a5b3909e60b79f51d4224aa4a3c5f58bc3653365300cb",
+    "results": [
+      {
+        "id": "imperative-liaison-errors",
+        "caseChecksum": "sha256:ed378f157b0673d1065376688443ec106b9ced1bd5ead5ee42ee855ee0c45c7e",
+        "expected": "incorrect",
+        "observed": "incorrect",
+        "matched": true,
+        "result": {
+          "connectedWriting": true,
+          "revisionReviewed": false,
+          "tokens": [
+            {
+              "start": 39,
+              "end": 47,
+              "text": "Mange-en",
+              "criterionId": "employer_imperatif_en_contexte",
+              "correct": false,
+              "reasonFr": "Devant en ou y directement attaché, la forme mange prend un s : manges. Vérifie aussi à qui tu t’adresses."
+            },
+            {
+              "start": 79,
+              "end": 83,
+              "text": "va-y",
+              "criterionId": "employer_imperatif_en_contexte",
+              "correct": false,
+              "reasonFr": "Devant en ou y directement attaché, la forme va prend un s : vas. Vérifie aussi à qui tu t’adresses."
+            }
+          ],
+          "evaluator": {
+            "version": "french-writing-evaluator-v9",
+            "protocolChecksum": "sha256:dcf82fefdbebb3c43e7b4225784964d0a81b7b4d8e1835f37f824fad1670540f",
+            "rubricChecksum": "sha256:b8b878657aa752c616764968143550c598aa579b68b4ea068363f1e68c7d9bd5",
+            "model": "injected-judge"
+          }
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "The initial eight-case run used envelope policy v1; the final whitespace recovery is covered by captured-response regression tests.",
+    "A successful retry does not erase the initial provider failure.",
+    "Contextual interpretation, revision judgments and broad lexical coverage still require work and review.",
+    "The evaluator remains outside student releases."
+  ]
+}

@@ -1,0 +1,1355 @@
+{
+  "version": "french-v3-direct-object-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-direct-object:manga",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lina lit un manga.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Lina lit un manga.",
+              "« Lina » est le COD : c’est la personne qui lit.",
+              "« lit » est le COD : ce mot indique l’action.",
+              "Il n’y a pas de COD : la phrase contient seulement un sujet et un verbe.",
+              "« un manga » est le COD : c’est ce que Lina lit."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lina lit un manga."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« un manga » est le COD : c’est ce que Lina lit.",
+            "correct": true
+          },
+          {
+            "text": "« Lina » est le COD : c’est la personne qui lit.",
+            "correct": false
+          },
+          {
+            "text": "« lit » est le COD : ce mot indique l’action.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de COD : la phrase contient seulement un sujet et un verbe.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:person",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le médecin examine le joueur.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le médecin examine le joueur.",
+              "« Le médecin » est le COD : c’est la personne qui examine.",
+              "« le joueur » est un complément indirect : il désigne une personne.",
+              "Il n’y a pas de COD : examiner ne peut pas avoir de complément.",
+              "« le joueur » est le COD : c’est la personne que le médecin examine."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le médecin examine le joueur."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« le joueur » est le COD : c’est la personne que le médecin examine.",
+            "correct": true
+          },
+          {
+            "text": "« Le médecin » est le COD : c’est la personne qui examine.",
+            "correct": false
+          },
+          {
+            "text": "« le joueur » est un complément indirect : il désigne une personne.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de COD : examiner ne peut pas avoir de complément.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:time",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Chaque matin, Nour prépare son sac.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Chaque matin, Nour prépare son sac.",
+              "« Chaque matin » est le COD : ce groupe précise quand Nour prépare son sac.",
+              "« Nour » est le COD : ce nom désigne la personne qui prépare.",
+              "« son sac » est le sujet : c’est le dernier nom de la phrase.",
+              "« son sac » est le COD : c’est ce que Nour prépare."
+            ],
+            "assessed": {
+              "sentences": [
+                "Chaque matin, Nour prépare son sac."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« son sac » est le COD : c’est ce que Nour prépare.",
+            "correct": true
+          },
+          {
+            "text": "« Chaque matin » est le COD : ce groupe précise quand Nour prépare son sac.",
+            "correct": false
+          },
+          {
+            "text": "« Nour » est le COD : ce nom désigne la personne qui prépare.",
+            "correct": false
+          },
+          {
+            "text": "« son sac » est le sujet : c’est le dernier nom de la phrase.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:recipient",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Sami prête sa règle à Inès.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Sami prête sa règle à Inès.",
+              "« à Inès » est le COD : c’est la personne à qui Sami prête quelque chose.",
+              "« Sami » est le COD : c’est la personne qui prête.",
+              "« sa règle à Inès » est un seul COD : les deux groupes ont le même rôle.",
+              "« sa règle » est le COD : c’est ce que Sami prête."
+            ],
+            "assessed": {
+              "sentences": [
+                "Sami prête sa règle à Inès."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« sa règle » est le COD : c’est ce que Sami prête.",
+            "correct": true
+          },
+          {
+            "text": "« à Inès » est le COD : c’est la personne à qui Sami prête quelque chose.",
+            "correct": false
+          },
+          {
+            "text": "« Sami » est le COD : c’est la personne qui prête.",
+            "correct": false
+          },
+          {
+            "text": "« sa règle à Inès » est un seul COD : les deux groupes ont le même rôle.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:place",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Dans la cour, les élèves ramassent les feuilles.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Dans la cour, les élèves ramassent les feuilles.",
+              "« Dans la cour » est le COD : ce groupe indique où l’action se déroule.",
+              "« les élèves » est le COD : ce sont les personnes qui ramassent.",
+              "Il n’y a pas de COD : la phrase commence par un lieu.",
+              "« les feuilles » est le COD : c’est ce que les élèves ramassent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Dans la cour, les élèves ramassent les feuilles."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« les feuilles » est le COD : c’est ce que les élèves ramassent.",
+            "correct": true
+          },
+          {
+            "text": "« Dans la cour » est le COD : ce groupe indique où l’action se déroule.",
+            "correct": false
+          },
+          {
+            "text": "« les élèves » est le COD : ce sont les personnes qui ramassent.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de COD : la phrase commence par un lieu.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:negative",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous ne regardons pas cette émission.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Nous ne regardons pas cette émission.",
+              "« pas » est le COD : il suit le verbe.",
+              "« Nous » est le COD : ce pronom désigne les spectateurs.",
+              "Il n’y a pas de COD : la négation supprime les compléments.",
+              "« cette émission » est le COD : c’est ce que nous ne regardons pas."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ne regardons pas cette émission."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« cette émission » est le COD : c’est ce que nous ne regardons pas.",
+            "correct": true
+          },
+          {
+            "text": "« pas » est le COD : il suit le verbe.",
+            "correct": false
+          },
+          {
+            "text": "« Nous » est le COD : ce pronom désigne les spectateurs.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de COD : la négation supprime les compléments.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:question",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Quel dessin préfères-tu ?\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Quel dessin préfères-tu ?",
+              "« tu » est le COD : ce pronom est placé après le verbe.",
+              "« Quel dessin » est le sujet : il est placé avant le verbe.",
+              "Il n’y a pas de COD : une question ne peut pas en contenir.",
+              "« Quel dessin » est le COD : c’est ce que tu préfères."
+            ],
+            "assessed": {
+              "sentences": [
+                "Quel dessin préfères-tu ?"
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« Quel dessin » est le COD : c’est ce que tu préfères.",
+            "correct": true
+          },
+          {
+            "text": "« tu » est le COD : ce pronom est placé après le verbe.",
+            "correct": false
+          },
+          {
+            "text": "« Quel dessin » est le sujet : il est placé avant le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de COD : une question ne peut pas en contenir.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:noun-group",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le vent secoue les branches du vieux chêne.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le vent secoue les branches du vieux chêne.",
+              "« du vieux chêne » est seul le COD : c’est le dernier groupe de la phrase.",
+              "« Le vent » est le COD : c’est ce qui provoque le mouvement.",
+              "Il n’y a pas de COD : le sujet n’est pas une personne.",
+              "« les branches du vieux chêne » est le COD : c’est tout le groupe qui désigne ce que le vent secoue."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le vent secoue les branches du vieux chêne."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« les branches du vieux chêne » est le COD : c’est tout le groupe qui désigne ce que le vent secoue.",
+            "correct": true
+          },
+          {
+            "text": "« du vieux chêne » est seul le COD : c’est le dernier groupe de la phrase.",
+            "correct": false
+          },
+          {
+            "text": "« Le vent » est le COD : c’est ce qui provoque le mouvement.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de COD : le sujet n’est pas une personne.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:listen",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les enfants écoutent leur grand-mère.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les enfants écoutent leur grand-mère.",
+              "« leur grand-mère » est indirect : tout complément de personne est indirect.",
+              "« Les enfants » est le COD : ce groupe désigne ceux qui écoutent.",
+              "Il n’y a pas de COD : écouter ne peut avoir qu’un complément de lieu.",
+              "« leur grand-mère » est le COD : c’est la personne que les enfants écoutent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les enfants écoutent leur grand-mère."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« leur grand-mère » est le COD : c’est la personne que les enfants écoutent.",
+            "correct": true
+          },
+          {
+            "text": "« leur grand-mère » est indirect : tout complément de personne est indirect.",
+            "correct": false
+          },
+          {
+            "text": "« Les enfants » est le COD : ce groupe désigne ceux qui écoutent.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de COD : écouter ne peut avoir qu’un complément de lieu.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:quantity",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La boulangère vend trois croissants.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La boulangère vend trois croissants.",
+              "« trois » est seul le COD : un nombre suffit à désigner le complément entier.",
+              "« La boulangère » est le COD : elle réalise la vente.",
+              "Il n’y a pas de COD : un groupe contenant un nombre ne peut pas être COD.",
+              "« trois croissants » est le COD : c’est ce que la boulangère vend."
+            ],
+            "assessed": {
+              "sentences": [
+                "La boulangère vend trois croissants."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« trois croissants » est le COD : c’est ce que la boulangère vend.",
+            "correct": true
+          },
+          {
+            "text": "« trois » est seul le COD : un nombre suffit à désigner le complément entier.",
+            "correct": false
+          },
+          {
+            "text": "« La boulangère » est le COD : elle réalise la vente.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de COD : un groupe contenant un nombre ne peut pas être COD.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:coordinated",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Malik range ses crayons et sa gomme.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Malik range ses crayons et sa gomme.",
+              "« sa gomme » est seul le COD : seul le dernier groupe peut compléter le verbe.",
+              "« Malik » est le COD : c’est la personne qui range.",
+              "Il n’y a pas de COD : la présence de et empêche un complément direct.",
+              "« ses crayons et sa gomme » est le COD : les deux groupes désignent ce que Malik range."
+            ],
+            "assessed": {
+              "sentences": [
+                "Malik range ses crayons et sa gomme."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« ses crayons et sa gomme » est le COD : les deux groupes désignent ce que Malik range.",
+            "correct": true
+          },
+          {
+            "text": "« sa gomme » est seul le COD : seul le dernier groupe peut compléter le verbe.",
+            "correct": false
+          },
+          {
+            "text": "« Malik » est le COD : c’est la personne qui range.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de COD : la présence de et empêche un complément direct.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:perfect",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Vous avez terminé le puzzle.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Vous avez terminé le puzzle.",
+              "« terminé » est le COD : il suit avez.",
+              "« Vous » est le COD : ce pronom désigne les personnes qui ont terminé.",
+              "Il n’y a pas de COD : un verbe au passé composé n’en possède pas.",
+              "« le puzzle » est le COD : c’est ce que vous avez terminé."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous avez terminé le puzzle."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« le puzzle » est le COD : c’est ce que vous avez terminé.",
+            "correct": true
+          },
+          {
+            "text": "« terminé » est le COD : il suit avez.",
+            "correct": false
+          },
+          {
+            "text": "« Vous » est le COD : ce pronom désigne les personnes qui ont terminé.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a pas de COD : un verbe au passé composé n’en possède pas.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:indirect-only",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Zoé téléphone à son cousin.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Zoé téléphone à son cousin.",
+              "« son cousin » est le COD : il suffit de retirer la préposition à.",
+              "« Zoé » est le COD : c’est la personne qui téléphone.",
+              "« à son cousin » est le COD : tout groupe après un verbe est direct.",
+              "Il n’y a pas de COD : « à son cousin » complète téléphone avec la préposition à."
+            ],
+            "assessed": {
+              "sentences": [
+                "Zoé téléphone à son cousin."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Il n’y a pas de COD : « à son cousin » complète téléphone avec la préposition à.",
+            "correct": true
+          },
+          {
+            "text": "« son cousin » est le COD : il suffit de retirer la préposition à.",
+            "correct": false
+          },
+          {
+            "text": "« Zoé » est le COD : c’est la personne qui téléphone.",
+            "correct": false
+          },
+          {
+            "text": "« à son cousin » est le COD : tout groupe après un verbe est direct.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:sleep",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le bébé dort dans sa chambre.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le bébé dort dans sa chambre.",
+              "« sa chambre » est le COD : ce nom vient après le verbe.",
+              "« Le bébé » est le COD : c’est la personne qui dort.",
+              "« dans sa chambre » est le COD : tout complément de lieu est direct.",
+              "Il n’y a pas de COD : « dans sa chambre » indique le lieu où le bébé dort."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le bébé dort dans sa chambre."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Il n’y a pas de COD : « dans sa chambre » indique le lieu où le bébé dort.",
+            "correct": true
+          },
+          {
+            "text": "« sa chambre » est le COD : ce nom vient après le verbe.",
+            "correct": false
+          },
+          {
+            "text": "« Le bébé » est le COD : c’est la personne qui dort.",
+            "correct": false
+          },
+          {
+            "text": "« dans sa chambre » est le COD : tout complément de lieu est direct.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:attribute",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Cette musicienne est célèbre.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Cette musicienne est célèbre.",
+              "« célèbre » est le COD : tout mot après est est un complément d’objet.",
+              "« Cette musicienne » est le COD : ce groupe désigne une personne.",
+              "« est » est le COD : il relie le sujet à sa description.",
+              "Il n’y a pas de COD : « célèbre » décrit le sujet après le verbe être."
+            ],
+            "assessed": {
+              "sentences": [
+                "Cette musicienne est célèbre."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Il n’y a pas de COD : « célèbre » décrit le sujet après le verbe être.",
+            "correct": true
+          },
+          {
+            "text": "« célèbre » est le COD : tout mot après est est un complément d’objet.",
+            "correct": false
+          },
+          {
+            "text": "« Cette musicienne » est le COD : ce groupe désigne une personne.",
+            "correct": false
+          },
+          {
+            "text": "« est » est le COD : il relie le sujet à sa description.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-direct-object:provenance",
+      "item": {
+        "nodeKey": "identifier_complement_direct",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le car arrive de Bruxelles.\n\nQuelle analyse du complément d’objet direct (COD) est correcte ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le car arrive de Bruxelles.",
+              "« Bruxelles » est le COD : le nom se trouve après le verbe.",
+              "« Le car » est le COD : c’est ce qui se déplace.",
+              "« de Bruxelles » est le COD : tous les lieux sont des objets du verbe.",
+              "Il n’y a pas de COD : « de Bruxelles » indique la provenance du car."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le car arrive de Bruxelles."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Il n’y a pas de COD : « de Bruxelles » indique la provenance du car.",
+            "correct": true
+          },
+          {
+            "text": "« Bruxelles » est le COD : le nom se trouve après le verbe.",
+            "correct": false
+          },
+          {
+            "text": "« Le car » est le COD : c’est ce qui se déplace.",
+            "correct": false
+          },
+          {
+            "text": "« de Bruxelles » est le COD : tous les lieux sont des objets du verbe.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "identify-direct-object-with-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:manga",
+      "itemChecksum": "sha256:17ace4d8b7cc7c671ef145181a63da89c84bae1e4bc8a641aae9a2d47f7e0178",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:manga",
+      "reason": "Lire quelque chose : un manga complète directement lit; Lina est le sujet."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:person",
+      "itemChecksum": "sha256:6fd2028397f50956629ab9ad410cedc8591f0f25d6090b662cb673ab7da69939",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:person",
+      "reason": "Un complément direct peut désigner une personne; examiner quelqu’un ne demande pas de préposition."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:time",
+      "itemChecksum": "sha256:99dd08c38e2c6b978821d7ae8bacad1883567840ad77ea7a12b68905d0eec4be",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:time",
+      "reason": "Chaque matin indique le moment; son sac complète le verbe préparer."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:recipient",
+      "itemChecksum": "sha256:a06d79ae6d6277bdfc0bd4eab4b3f4a977c1c4e2bc6f90f4a5aafcf54f64a09c",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:recipient",
+      "reason": "Prêter quelque chose à quelqu’un : sa règle est direct, à Inès indique la destinataire."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:place",
+      "itemChecksum": "sha256:02df0fc1b90463793075347c32890c0be4ddf9f1ada1f47b148fa64565a237f2",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:place",
+      "reason": "La présence d’un lieu en début de phrase ne change pas le rôle de les feuilles."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:negative",
+      "itemChecksum": "sha256:dfaf82e87c50cbb6a1ba0235cf1487b6ed38f464d803ae4c7429db0a985e3650",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:negative",
+      "reason": "La négation ne supprime pas la construction regarder quelque chose."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:question",
+      "itemChecksum": "sha256:a2065cff94503f6a5fbdbb2f9975853b6458a94a7bcf36a6326fc074669ac356",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:question",
+      "reason": "Le COD interrogatif peut précéder le verbe; tu reste le sujet de préfères."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:noun-group",
+      "itemChecksum": "sha256:18b775e53d64a1550f57521204e12468dd3bf6ac2682da0309b0a2ab87bb14e8",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:noun-group",
+      "reason": "Du vieux chêne complète branches; le COD comprend le groupe nominal entier."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:listen",
+      "itemChecksum": "sha256:6e440cd865bd313f262a8e27747c80c28e87396358e8c59be0100e5ff08f0d6f",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:listen",
+      "reason": "Écouter quelqu’un se construit directement, contrairement à parler à quelqu’un."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:quantity",
+      "itemChecksum": "sha256:d8aac80bfc6c76d0c1fe5ccfa3ea4f5439fcdd51b57f1cc1e5db4a99f96ee700",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:quantity",
+      "reason": "Le déterminant numéral appartient au groupe nominal trois croissants, complément de vend."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:coordinated",
+      "itemChecksum": "sha256:887e5e50ea829e09e369c2cc274f317f8aa9bfefed6cd9e54dbaed55e84e796e",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:coordinated",
+      "reason": "Deux groupes coordonnés peuvent ensemble remplir la fonction de complément direct."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:perfect",
+      "itemChecksum": "sha256:ea5b1493ffada2f9819cda02d0cb772bffbfe877dd70a6f47258f69d19a7cd43",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:perfect",
+      "reason": "Avez terminé est le verbe au passé composé; le puzzle complète terminer."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:indirect-only",
+      "itemChecksum": "sha256:a3954e250f3eeb91a441631b2816cbbe96e35f575da93b0c128edae42cd3b4e9",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:indirect-only",
+      "reason": "Téléphoner à quelqu’un est une construction indirecte; on ne retire pas à pour changer sa fonction."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:sleep",
+      "itemChecksum": "sha256:daf705b3b179175de19a189371a4fa41212bbe1f6e3b697e36ee5159452a2d2a",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:sleep",
+      "reason": "Dort est ici employé sans complément d’objet; le groupe prépositionnel indique le lieu."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:attribute",
+      "itemChecksum": "sha256:99b4018f62bbd6844d4642812b1d39add8945d4cf7e12047e7768f03d8c96a9d",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:attribute",
+      "reason": "Célèbre est un attribut du sujet, et non un objet de être."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-direct-object:provenance",
+      "itemChecksum": "sha256:3ae7839d496cb206badff7ed9580494bf812255feb774eb03d57693ca1882ba7",
+      "evidenceTarget": {
+        "nodeKey": "identifier_complement_direct",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "direct-object-sentence:provenance",
+      "reason": "La provenance n’est pas un complément d’objet direct; arrive n’en a pas dans cette phrase."
+    }
+  ],
+  "checksum": "sha256:c8db8ec950edf2c8762333a7f010e33f06aa0d08bf938e6f3143a35cee597e4b"
+}

@@ -1,0 +1,9 @@
+# Orthography candidate upgrade preparation
+
+A read-only preparation from the completed v14 QA session to the 237-target candidate passed. It preserves 59 original diagnostic observations and responses, four learning refinements, completed lessons, material/reading exposure, elapsed time, completion state and the original source object. No live successor was created by this audit.
+
+The compatibility check initially rejected four changed evidence contracts: syllable recognition/production and sound-to-spelling recognition/production. They were outside the old release's assessment scope and had no old probes. The corrected check permits only newly scoped, previously unassessable targets to gain additional feature requirements. It still requires identical target metadata and all other evidence criteria, retains existing feature requirements exactly, and rejects duplicates or invalid minima. Previously assessable targets cannot use this exception. Successor preparation also rejects any historical observation or refinement naming such a newly scoped target.
+
+All existing item, probe, lesson and activity meanings must still match. Teaching exposure may expand only under the existing unchanged-material checks. The 609-test suite and TypeScript pass. A real candidate-browser upgrade and answer-review check remain required before publication to students.
+
+Deployment verification now plays actual audio before assessment, guided-practice and independent-check submissions. The deployed-audio helper checks the expected recording URL and waits for a real `ended` event; it never dispatches simulated playback events. The first media fixture was replaced by login hydration, so it was changed to a locally intercepted fixture document on the candidate origin; its audio requests still use actual deployed assets.

@@ -1,0 +1,2267 @@
+{
+  "version": "french-v3-causal-reading-genres-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-causal-reading-genres:informational-atelier",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe centre propose un atelier de dessin mercredi. La salle peut accueillir douze personnes. Douze inscriptions ont déjà été confirmées. Les nouvelles demandes sont placées sur une liste d’attente.\n\nPourquoi les nouvelles demandes sont-elles mises en attente ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le centre propose un atelier de dessin mercredi. La salle peut accueillir douze personnes. Douze inscriptions ont déjà été confirmées. Les nouvelles demandes sont placées sur une liste d’attente."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le centre propose un atelier de dessin mercredi. La salle peut accueillir douze personnes. Douze inscriptions ont déjà été confirmées. Les nouvelles demandes sont placées sur une liste d’attente."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:informational-atelier",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le centre propose un atelier de dessin mercredi. La salle peut accueillir douze personnes. Douze inscriptions ont déjà été confirmées. Les nouvelles demandes sont placées sur une liste d’attente.",
+            "choices": [
+              {
+                "quoteFr": "La salle peut accueillir douze personnes. Douze inscriptions ont déjà été confirmées.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le centre propose un atelier de dessin mercredi.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les nouvelles demandes sont placées sur une liste d’attente.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Toutes les places de la salle sont déjà prises.",
+            "correct": true
+          },
+          {
+            "text": "Le matériel de dessin a disparu.",
+            "correct": false
+          },
+          {
+            "text": "L’atelier a changé de jour.",
+            "correct": false
+          },
+          {
+            "text": "Aucune personne ne s’est inscrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-retour-livres",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa bibliothèque publie son bilan du lundi. La boîte de retour était remplie jusqu’à l’ouverture. Aucun livre ne pouvait plus y entrer. Une affiche demandait de rapporter les livres au comptoir.\n\nPourquoi fallait-il rendre les livres au comptoir ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La bibliothèque publie son bilan du lundi. La boîte de retour était remplie jusqu’à l’ouverture. Aucun livre ne pouvait plus y entrer. Une affiche demandait de rapporter les livres au comptoir."
+            ],
+            "assessed": {
+              "sentences": [
+                "La bibliothèque publie son bilan du lundi. La boîte de retour était remplie jusqu’à l’ouverture. Aucun livre ne pouvait plus y entrer. Une affiche demandait de rapporter les livres au comptoir."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:informational-retour-livres",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "La bibliothèque publie son bilan du lundi. La boîte de retour était remplie jusqu’à l’ouverture. Aucun livre ne pouvait plus y entrer. Une affiche demandait de rapporter les livres au comptoir.",
+            "choices": [
+              {
+                "quoteFr": "La boîte de retour était remplie jusqu’à l’ouverture. Aucun livre ne pouvait plus y entrer.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La bibliothèque publie son bilan du lundi.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Une affiche demandait de rapporter les livres au comptoir.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "La boîte de retour ne pouvait plus recevoir de livres.",
+            "correct": true
+          },
+          {
+            "text": "Les livres devaient tous être réparés.",
+            "correct": false
+          },
+          {
+            "text": "La bibliothèque ne prêtait plus de livres.",
+            "correct": false
+          },
+          {
+            "text": "Le comptoir était fermé au public.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-projection",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe programme prévoit un film dans la cour. Des rafales soulèvent l’écran installé dehors. Dans la salle, un autre écran est déjà fixé au mur. La projection aura finalement lieu dans la salle.\n\nQuelle est la cause la plus probable de ce changement de lieu ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le programme prévoit un film dans la cour. Des rafales soulèvent l’écran installé dehors. Dans la salle, un autre écran est déjà fixé au mur. La projection aura finalement lieu dans la salle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le programme prévoit un film dans la cour. Des rafales soulèvent l’écran installé dehors. Dans la salle, un autre écran est déjà fixé au mur. La projection aura finalement lieu dans la salle."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:informational-projection",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le programme prévoit un film dans la cour. Des rafales soulèvent l’écran installé dehors. Dans la salle, un autre écran est déjà fixé au mur. La projection aura finalement lieu dans la salle.",
+            "choices": [
+              {
+                "quoteFr": "Des rafales soulèvent l’écran installé dehors. Dans la salle, un autre écran est déjà fixé au mur.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le programme prévoit un film dans la cour.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La projection aura finalement lieu dans la salle.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le vent rend l’écran extérieur difficile à utiliser.",
+            "correct": true
+          },
+          {
+            "text": "Le film dure trop longtemps.",
+            "correct": false
+          },
+          {
+            "text": "La cour est trop éloignée de la salle.",
+            "correct": false
+          },
+          {
+            "text": "Le public a déjà vu le film.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-arrosage",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe rapport décrit l’entretien des bacs du jardin. Ce matin, la terre est humide dans tous les bacs. De l’eau reste visible à leur surface. L’arrosage prévu à midi est annulé.\n\nPourquoi l’arrosage est-il probablement annulé ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le rapport décrit l’entretien des bacs du jardin. Ce matin, la terre est humide dans tous les bacs. De l’eau reste visible à leur surface. L’arrosage prévu à midi est annulé."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le rapport décrit l’entretien des bacs du jardin. Ce matin, la terre est humide dans tous les bacs. De l’eau reste visible à leur surface. L’arrosage prévu à midi est annulé."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:informational-arrosage",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le rapport décrit l’entretien des bacs du jardin. Ce matin, la terre est humide dans tous les bacs. De l’eau reste visible à leur surface. L’arrosage prévu à midi est annulé.",
+            "choices": [
+              {
+                "quoteFr": "Ce matin, la terre est humide dans tous les bacs. De l’eau reste visible à leur surface.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le rapport décrit l’entretien des bacs du jardin.",
+                "correct": false
+              },
+              {
+                "quoteFr": "L’arrosage prévu à midi est annulé.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Les bacs contiennent déjà assez d’eau.",
+            "correct": true
+          },
+          {
+            "text": "Les bacs ont été retirés du jardin.",
+            "correct": false
+          },
+          {
+            "text": "Il n’y a plus de plantes dans les bacs.",
+            "correct": false
+          },
+          {
+            "text": "Les jardiniers veulent déplacer toutes les plantes.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-pont",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe bulletin présente les accès au parc. Une planche du petit pont est cassée. Un passage intact longe le ruisseau quelques mètres plus loin. Des barrières ferment le pont et des flèches indiquent le passage voisin.\n\nPourquoi le parcours des visiteurs a-t-il été modifié ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le bulletin présente les accès au parc. Une planche du petit pont est cassée. Un passage intact longe le ruisseau quelques mètres plus loin. Des barrières ferment le pont et des flèches indiquent le passage voisin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le bulletin présente les accès au parc. Une planche du petit pont est cassée. Un passage intact longe le ruisseau quelques mètres plus loin. Des barrières ferment le pont et des flèches indiquent le passage voisin."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:informational-pont",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le bulletin présente les accès au parc. Une planche du petit pont est cassée. Un passage intact longe le ruisseau quelques mètres plus loin. Des barrières ferment le pont et des flèches indiquent le passage voisin.",
+            "choices": [
+              {
+                "quoteFr": "Une planche du petit pont est cassée. Un passage intact longe le ruisseau quelques mètres plus loin.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le bulletin présente les accès au parc.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Des barrières ferment le pont et des flèches indiquent le passage voisin.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le pont abîmé ne permet plus un passage sûr.",
+            "correct": true
+          },
+          {
+            "text": "Le ruisseau a complètement disparu.",
+            "correct": false
+          },
+          {
+            "text": "Le parc ferme pour toute l’année.",
+            "correct": false
+          },
+          {
+            "text": "Le passage voisin vient d’être interdit.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-impression",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe journal du collège doit être distribué vendredi. La machine du secrétariat n’imprime plus aucune page. Celle de la bibliothèque fonctionne encore. Les exemplaires seront imprimés à la bibliothèque.\n\nPourquoi l’impression a-t-elle été déplacée ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le journal du collège doit être distribué vendredi. La machine du secrétariat n’imprime plus aucune page. Celle de la bibliothèque fonctionne encore. Les exemplaires seront imprimés à la bibliothèque."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le journal du collège doit être distribué vendredi. La machine du secrétariat n’imprime plus aucune page. Celle de la bibliothèque fonctionne encore. Les exemplaires seront imprimés à la bibliothèque."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:informational-impression",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le journal du collège doit être distribué vendredi. La machine du secrétariat n’imprime plus aucune page. Celle de la bibliothèque fonctionne encore. Les exemplaires seront imprimés à la bibliothèque.",
+            "choices": [
+              {
+                "quoteFr": "La machine du secrétariat n’imprime plus aucune page. Celle de la bibliothèque fonctionne encore.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le journal du collège doit être distribué vendredi.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les exemplaires seront imprimés à la bibliothèque.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "La machine habituelle ne fonctionne plus.",
+            "correct": true
+          },
+          {
+            "text": "Les articles parlent uniquement de livres.",
+            "correct": false
+          },
+          {
+            "text": "La distribution est annulée.",
+            "correct": false
+          },
+          {
+            "text": "Le journal ne contient aucune page.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-bus",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe panneau annonce un changement pour la ligne 4. La rue des Lilas est entièrement occupée par un chantier. Aucun véhicule ne peut la traverser. Le bus dessert provisoirement l’arrêt de la rue voisine.\n\nPourquoi le bus utilise-t-il un autre arrêt ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le panneau annonce un changement pour la ligne 4. La rue des Lilas est entièrement occupée par un chantier. Aucun véhicule ne peut la traverser. Le bus dessert provisoirement l’arrêt de la rue voisine."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le panneau annonce un changement pour la ligne 4. La rue des Lilas est entièrement occupée par un chantier. Aucun véhicule ne peut la traverser. Le bus dessert provisoirement l’arrêt de la rue voisine."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:informational-bus",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le panneau annonce un changement pour la ligne 4. La rue des Lilas est entièrement occupée par un chantier. Aucun véhicule ne peut la traverser. Le bus dessert provisoirement l’arrêt de la rue voisine.",
+            "choices": [
+              {
+                "quoteFr": "La rue des Lilas est entièrement occupée par un chantier. Aucun véhicule ne peut la traverser.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le panneau annonce un changement pour la ligne 4.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le bus dessert provisoirement l’arrêt de la rue voisine.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Il ne peut plus passer par la rue habituelle.",
+            "correct": true
+          },
+          {
+            "text": "Les voyageurs ont tous changé de quartier.",
+            "correct": false
+          },
+          {
+            "text": "Le bus circule désormais sans passagers.",
+            "correct": false
+          },
+          {
+            "text": "L’arrêt voisin sera supprimé définitivement.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-exposition",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nL’exposition de dessins reste ouverte jusqu’à samedi. Des visiteurs font la queue devant une seule table d’accueil. Une seconde table est disponible à côté. Une autre personne accueillera le public à cette seconde table.\n\nQuel problème explique probablement cette nouvelle organisation ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "L’exposition de dessins reste ouverte jusqu’à samedi. Des visiteurs font la queue devant une seule table d’accueil. Une seconde table est disponible à côté. Une autre personne accueillera le public à cette seconde table."
+            ],
+            "assessed": {
+              "sentences": [
+                "L’exposition de dessins reste ouverte jusqu’à samedi. Des visiteurs font la queue devant une seule table d’accueil. Une seconde table est disponible à côté. Une autre personne accueillera le public à cette seconde table."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:informational-exposition",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "L’exposition de dessins reste ouverte jusqu’à samedi. Des visiteurs font la queue devant une seule table d’accueil. Une seconde table est disponible à côté. Une autre personne accueillera le public à cette seconde table.",
+            "choices": [
+              {
+                "quoteFr": "Des visiteurs font la queue devant une seule table d’accueil. Une seconde table est disponible à côté.",
+                "correct": true
+              },
+              {
+                "quoteFr": "L’exposition de dessins reste ouverte jusqu’à samedi.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Une autre personne accueillera le public à cette seconde table.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "L’accueil à une seule table ralentit l’entrée des visiteurs.",
+            "correct": true
+          },
+          {
+            "text": "Les dessins ne sont pas encore terminés.",
+            "correct": false
+          },
+          {
+            "text": "Les visiteurs refusent de voir l’exposition.",
+            "correct": false
+          },
+          {
+            "text": "La seconde table bloque la sortie.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-entrainement",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nL’équipe reçoit son programme de la semaine. Le terrain extérieur est recouvert de flaques. Le sol du gymnase est sec. L’entraînement de ce soir est transféré au gymnase.\n\nPourquoi l’équipe s’entraînera-t-elle probablement au gymnase ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "L’équipe reçoit son programme de la semaine. Le terrain extérieur est recouvert de flaques. Le sol du gymnase est sec. L’entraînement de ce soir est transféré au gymnase."
+            ],
+            "assessed": {
+              "sentences": [
+                "L’équipe reçoit son programme de la semaine. Le terrain extérieur est recouvert de flaques. Le sol du gymnase est sec. L’entraînement de ce soir est transféré au gymnase."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:informational-entrainement",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "L’équipe reçoit son programme de la semaine. Le terrain extérieur est recouvert de flaques. Le sol du gymnase est sec. L’entraînement de ce soir est transféré au gymnase.",
+            "choices": [
+              {
+                "quoteFr": "Le terrain extérieur est recouvert de flaques. Le sol du gymnase est sec.",
+                "correct": true
+              },
+              {
+                "quoteFr": "L’équipe reçoit son programme de la semaine.",
+                "correct": false
+              },
+              {
+                "quoteFr": "L’entraînement de ce soir est transféré au gymnase.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le terrain extérieur est trop mouillé pour la séance prévue.",
+            "correct": true
+          },
+          {
+            "text": "L’équipe ne souhaite plus s’entraîner.",
+            "correct": false
+          },
+          {
+            "text": "Le gymnase ne possède aucun espace libre.",
+            "correct": false
+          },
+          {
+            "text": "Les joueurs ont oublié la date de la séance.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-commande",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe magasin envoie une information sur une commande de cahiers. Le colis reçu contient vingt cahiers au lieu des trente commandés. Les dix autres sont annoncés pour demain. Une partie de la commande sera remise demain seulement.\n\nPourquoi la remise de la commande se fait-elle en deux fois ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le magasin envoie une information sur une commande de cahiers. Le colis reçu contient vingt cahiers au lieu des trente commandés. Les dix autres sont annoncés pour demain. Une partie de la commande sera remise demain seulement."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le magasin envoie une information sur une commande de cahiers. Le colis reçu contient vingt cahiers au lieu des trente commandés. Les dix autres sont annoncés pour demain. Une partie de la commande sera remise demain seulement."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:informational-commande",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le magasin envoie une information sur une commande de cahiers. Le colis reçu contient vingt cahiers au lieu des trente commandés. Les dix autres sont annoncés pour demain. Une partie de la commande sera remise demain seulement.",
+            "choices": [
+              {
+                "quoteFr": "Le colis reçu contient vingt cahiers au lieu des trente commandés. Les dix autres sont annoncés pour demain.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le magasin envoie une information sur une commande de cahiers.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Une partie de la commande sera remise demain seulement.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Tous les cahiers ne sont pas arrivés ensemble.",
+            "correct": true
+          },
+          {
+            "text": "Le client a demandé de supprimer dix cahiers.",
+            "correct": false
+          },
+          {
+            "text": "Les trente cahiers sont déjà disponibles.",
+            "correct": false
+          },
+          {
+            "text": "Le magasin a reçu uniquement des crayons.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-porte",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne note décrit l’accès à la salle de musique. La serrure de la porte principale est bloquée. La porte latérale s’ouvre normalement. Les élèves sont invités à entrer par le côté.\n\nPourquoi les élèves doivent-ils changer d’entrée ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Une note décrit l’accès à la salle de musique. La serrure de la porte principale est bloquée. La porte latérale s’ouvre normalement. Les élèves sont invités à entrer par le côté."
+            ],
+            "assessed": {
+              "sentences": [
+                "Une note décrit l’accès à la salle de musique. La serrure de la porte principale est bloquée. La porte latérale s’ouvre normalement. Les élèves sont invités à entrer par le côté."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:informational-porte",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Une note décrit l’accès à la salle de musique. La serrure de la porte principale est bloquée. La porte latérale s’ouvre normalement. Les élèves sont invités à entrer par le côté.",
+            "choices": [
+              {
+                "quoteFr": "La serrure de la porte principale est bloquée. La porte latérale s’ouvre normalement.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Une note décrit l’accès à la salle de musique.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les élèves sont invités à entrer par le côté.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "La porte principale ne peut pas être ouverte normalement.",
+            "correct": true
+          },
+          {
+            "text": "La salle de musique a été déplacée.",
+            "correct": false
+          },
+          {
+            "text": "La porte latérale est condamnée.",
+            "correct": false
+          },
+          {
+            "text": "Les élèves doivent attendre dehors toute la journée.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-horaires",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe musée prépare l’accueil d’un groupe mardi. Le train du groupe arrive à dix heures. La visite était prévue à neuf heures trente. Le début de la visite est reporté à dix heures trente.\n\nPourquoi la visite commence-t-elle plus tard ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le musée prépare l’accueil d’un groupe mardi. Le train du groupe arrive à dix heures. La visite était prévue à neuf heures trente. Le début de la visite est reporté à dix heures trente."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le musée prépare l’accueil d’un groupe mardi. Le train du groupe arrive à dix heures. La visite était prévue à neuf heures trente. Le début de la visite est reporté à dix heures trente."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:informational-horaires",
+          "sourceTextType": "informational",
+          "textualSupport": {
+            "passageText": "Le musée prépare l’accueil d’un groupe mardi. Le train du groupe arrive à dix heures. La visite était prévue à neuf heures trente. Le début de la visite est reporté à dix heures trente.",
+            "choices": [
+              {
+                "quoteFr": "Le train du groupe arrive à dix heures. La visite était prévue à neuf heures trente.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le musée prépare l’accueil d’un groupe mardi.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le début de la visite est reporté à dix heures trente.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le groupe ne peut pas être présent à l’heure initialement prévue.",
+            "correct": true
+          },
+          {
+            "text": "Le groupe souhaite quitter le musée avant neuf heures.",
+            "correct": false
+          },
+          {
+            "text": "Le musée ne recevra aucun visiteur mardi.",
+            "correct": false
+          },
+          {
+            "text": "Le trajet en train a été supprimé.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-mangas",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJe propose d’ajouter des mangas au club de lecture. Plusieurs élèves demandent ces livres chaque semaine. Ils repartent souvent sans emprunter les romans disponibles. Essayons d’en acheter quelques-uns avant la prochaine rencontre.\n\nPourquoi l’auteur propose-t-il probablement cet achat ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Je propose d’ajouter des mangas au club de lecture. Plusieurs élèves demandent ces livres chaque semaine. Ils repartent souvent sans emprunter les romans disponibles. Essayons d’en acheter quelques-uns avant la prochaine rencontre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je propose d’ajouter des mangas au club de lecture. Plusieurs élèves demandent ces livres chaque semaine. Ils repartent souvent sans emprunter les romans disponibles. Essayons d’en acheter quelques-uns avant la prochaine rencontre."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:argumentative-mangas",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Je propose d’ajouter des mangas au club de lecture. Plusieurs élèves demandent ces livres chaque semaine. Ils repartent souvent sans emprunter les romans disponibles. Essayons d’en acheter quelques-uns avant la prochaine rencontre.",
+            "choices": [
+              {
+                "quoteFr": "Plusieurs élèves demandent ces livres chaque semaine. Ils repartent souvent sans emprunter les romans disponibles.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Je propose d’ajouter des mangas au club de lecture.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Essayons d’en acheter quelques-uns avant la prochaine rencontre.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Il souhaite intéresser des élèves qui ne trouvent pas de lecture à leur goût.",
+            "correct": true
+          },
+          {
+            "text": "Il veut empêcher les élèves de lire des romans.",
+            "correct": false
+          },
+          {
+            "text": "Il affirme que les romans sont tous abîmés.",
+            "correct": false
+          },
+          {
+            "text": "Il souhaite fermer le club de lecture.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-horaires-club",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nDéplaçons la réunion du club au mercredi. Le mardi, plusieurs membres ont un cours à la même heure. Le mercredi, ils sont libres. Nous pourrions essayer ce nouvel horaire pendant un mois.\n\nQuelle difficulté motive probablement la proposition ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Déplaçons la réunion du club au mercredi. Le mardi, plusieurs membres ont un cours à la même heure. Le mercredi, ils sont libres. Nous pourrions essayer ce nouvel horaire pendant un mois."
+            ],
+            "assessed": {
+              "sentences": [
+                "Déplaçons la réunion du club au mercredi. Le mardi, plusieurs membres ont un cours à la même heure. Le mercredi, ils sont libres. Nous pourrions essayer ce nouvel horaire pendant un mois."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:argumentative-horaires-club",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Déplaçons la réunion du club au mercredi. Le mardi, plusieurs membres ont un cours à la même heure. Le mercredi, ils sont libres. Nous pourrions essayer ce nouvel horaire pendant un mois.",
+            "choices": [
+              {
+                "quoteFr": "Le mardi, plusieurs membres ont un cours à la même heure. Le mercredi, ils sont libres.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Déplaçons la réunion du club au mercredi.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Nous pourrions essayer ce nouvel horaire pendant un mois.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Certains membres ne peuvent pas venir à l’horaire actuel.",
+            "correct": true
+          },
+          {
+            "text": "Le club ne dispose plus d’aucun membre.",
+            "correct": false
+          },
+          {
+            "text": "Le mercredi est le jour où tous ont cours.",
+            "correct": false
+          },
+          {
+            "text": "La réunion doit durer un mois entier.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-panneaux",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAjoutons des panneaux à l’entrée du collège. Les nouveaux élèves demandent souvent où se trouvent les salles. Certains arrivent en retard après avoir cherché leur chemin. Un plan près du portail serait aussi utile.\n\nPourquoi l’auteur souhaite-t-il ces panneaux ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ajoutons des panneaux à l’entrée du collège. Les nouveaux élèves demandent souvent où se trouvent les salles. Certains arrivent en retard après avoir cherché leur chemin. Un plan près du portail serait aussi utile."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ajoutons des panneaux à l’entrée du collège. Les nouveaux élèves demandent souvent où se trouvent les salles. Certains arrivent en retard après avoir cherché leur chemin. Un plan près du portail serait aussi utile."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:argumentative-panneaux",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Ajoutons des panneaux à l’entrée du collège. Les nouveaux élèves demandent souvent où se trouvent les salles. Certains arrivent en retard après avoir cherché leur chemin. Un plan près du portail serait aussi utile.",
+            "choices": [
+              {
+                "quoteFr": "Les nouveaux élèves demandent souvent où se trouvent les salles. Certains arrivent en retard après avoir cherché leur chemin.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ajoutons des panneaux à l’entrée du collège.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Un plan près du portail serait aussi utile.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Il veut aider les nouveaux élèves à trouver leur salle.",
+            "correct": true
+          },
+          {
+            "text": "Il veut déplacer toutes les salles.",
+            "correct": false
+          },
+          {
+            "text": "Il souhaite allonger les trajets des élèves.",
+            "correct": false
+          },
+          {
+            "text": "Il pense que les élèves connaissent déjà tous les lieux.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-casques",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nPrévoyons des casques pour les vidéos de l’atelier. Dans la même salle, un groupe écoute une vidéo et un autre enregistre sa voix. Le son de la vidéo s’entend dans l’enregistrement. Essayons cette solution dès la prochaine séance.\n\nQuel problème motive probablement cette proposition ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Prévoyons des casques pour les vidéos de l’atelier. Dans la même salle, un groupe écoute une vidéo et un autre enregistre sa voix. Le son de la vidéo s’entend dans l’enregistrement. Essayons cette solution dès la prochaine séance."
+            ],
+            "assessed": {
+              "sentences": [
+                "Prévoyons des casques pour les vidéos de l’atelier. Dans la même salle, un groupe écoute une vidéo et un autre enregistre sa voix. Le son de la vidéo s’entend dans l’enregistrement. Essayons cette solution dès la prochaine séance."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:argumentative-casques",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Prévoyons des casques pour les vidéos de l’atelier. Dans la même salle, un groupe écoute une vidéo et un autre enregistre sa voix. Le son de la vidéo s’entend dans l’enregistrement. Essayons cette solution dès la prochaine séance.",
+            "choices": [
+              {
+                "quoteFr": "Dans la même salle, un groupe écoute une vidéo et un autre enregistre sa voix. Le son de la vidéo s’entend dans l’enregistrement.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Prévoyons des casques pour les vidéos de l’atelier.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Essayons cette solution dès la prochaine séance.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le son d’une activité perturbe l’autre.",
+            "correct": true
+          },
+          {
+            "text": "Les vidéos ne contiennent aucun son.",
+            "correct": false
+          },
+          {
+            "text": "La salle est toujours vide.",
+            "correct": false
+          },
+          {
+            "text": "Les élèves veulent arrêter tout enregistrement.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-pret-materiel",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nOrganisons un prêt de raquettes au collège. Des élèves voudraient participer au tournoi. Plusieurs n’ont pas de raquette et ne peuvent pas en acheter une. Chacun pourrait rendre le matériel après son match.\n\nPourquoi l’auteur propose-t-il de prêter du matériel ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Organisons un prêt de raquettes au collège. Des élèves voudraient participer au tournoi. Plusieurs n’ont pas de raquette et ne peuvent pas en acheter une. Chacun pourrait rendre le matériel après son match."
+            ],
+            "assessed": {
+              "sentences": [
+                "Organisons un prêt de raquettes au collège. Des élèves voudraient participer au tournoi. Plusieurs n’ont pas de raquette et ne peuvent pas en acheter une. Chacun pourrait rendre le matériel après son match."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:argumentative-pret-materiel",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Organisons un prêt de raquettes au collège. Des élèves voudraient participer au tournoi. Plusieurs n’ont pas de raquette et ne peuvent pas en acheter une. Chacun pourrait rendre le matériel après son match.",
+            "choices": [
+              {
+                "quoteFr": "Des élèves voudraient participer au tournoi. Plusieurs n’ont pas de raquette et ne peuvent pas en acheter une.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Organisons un prêt de raquettes au collège.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Chacun pourrait rendre le matériel après son match.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Il veut permettre de jouer à ceux qui n’ont pas de raquette.",
+            "correct": true
+          },
+          {
+            "text": "Il veut réserver le tournoi aux propriétaires de raquettes.",
+            "correct": false
+          },
+          {
+            "text": "Il pense que personne ne veut participer.",
+            "correct": false
+          },
+          {
+            "text": "Il veut empêcher le retour du matériel.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-salle-calme",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nRéservons une petite salle pour le travail silencieux. Au foyer, des élèves discutent pendant que d’autres essaient de lire. Ces derniers relisent souvent la même ligne sans avancer. Le foyer pourrait rester un lieu de rencontre.\n\nQuelle difficulté explique probablement la proposition ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Réservons une petite salle pour le travail silencieux. Au foyer, des élèves discutent pendant que d’autres essaient de lire. Ces derniers relisent souvent la même ligne sans avancer. Le foyer pourrait rester un lieu de rencontre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Réservons une petite salle pour le travail silencieux. Au foyer, des élèves discutent pendant que d’autres essaient de lire. Ces derniers relisent souvent la même ligne sans avancer. Le foyer pourrait rester un lieu de rencontre."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:argumentative-salle-calme",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Réservons une petite salle pour le travail silencieux. Au foyer, des élèves discutent pendant que d’autres essaient de lire. Ces derniers relisent souvent la même ligne sans avancer. Le foyer pourrait rester un lieu de rencontre.",
+            "choices": [
+              {
+                "quoteFr": "Au foyer, des élèves discutent pendant que d’autres essaient de lire. Ces derniers relisent souvent la même ligne sans avancer.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Réservons une petite salle pour le travail silencieux.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Le foyer pourrait rester un lieu de rencontre.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Certains élèves ont du mal à lire au milieu des conversations.",
+            "correct": true
+          },
+          {
+            "text": "Tous les élèves souhaitent supprimer les discussions.",
+            "correct": false
+          },
+          {
+            "text": "Aucun élève ne lit au collège.",
+            "correct": false
+          },
+          {
+            "text": "La petite salle est déjà utilisée pour des concerts.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-echange-livres",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nCréons une table d’échange de livres. Plusieurs élèves ont terminé leurs livres et cherchent de nouvelles lectures. D’autres possèdent des livres qu’ils ne lisent plus. Nous pourrions commencer avec une table dans le hall.\n\nPourquoi cette table serait-elle utile selon l’auteur ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Créons une table d’échange de livres. Plusieurs élèves ont terminé leurs livres et cherchent de nouvelles lectures. D’autres possèdent des livres qu’ils ne lisent plus. Nous pourrions commencer avec une table dans le hall."
+            ],
+            "assessed": {
+              "sentences": [
+                "Créons une table d’échange de livres. Plusieurs élèves ont terminé leurs livres et cherchent de nouvelles lectures. D’autres possèdent des livres qu’ils ne lisent plus. Nous pourrions commencer avec une table dans le hall."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:argumentative-echange-livres",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Créons une table d’échange de livres. Plusieurs élèves ont terminé leurs livres et cherchent de nouvelles lectures. D’autres possèdent des livres qu’ils ne lisent plus. Nous pourrions commencer avec une table dans le hall.",
+            "choices": [
+              {
+                "quoteFr": "Plusieurs élèves ont terminé leurs livres et cherchent de nouvelles lectures. D’autres possèdent des livres qu’ils ne lisent plus.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Créons une table d’échange de livres.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Nous pourrions commencer avec une table dans le hall.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Elle permettrait aux livres disponibles de trouver de nouveaux lecteurs.",
+            "correct": true
+          },
+          {
+            "text": "Elle obligerait chacun à racheter ses propres livres.",
+            "correct": false
+          },
+          {
+            "text": "Elle empêcherait les élèves d’apporter des livres.",
+            "correct": false
+          },
+          {
+            "text": "Elle servirait uniquement à ranger des cahiers vides.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-reserve-eau",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nInstallons un point d’eau près du terrain. Pendant les matchs, les joueurs doivent traverser tout le bâtiment pour remplir leur gourde. Ils manquent alors plusieurs minutes de jeu. Un emplacement près de l’entrée du terrain conviendrait.\n\nQuel problème motive probablement la demande ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Installons un point d’eau près du terrain. Pendant les matchs, les joueurs doivent traverser tout le bâtiment pour remplir leur gourde. Ils manquent alors plusieurs minutes de jeu. Un emplacement près de l’entrée du terrain conviendrait."
+            ],
+            "assessed": {
+              "sentences": [
+                "Installons un point d’eau près du terrain. Pendant les matchs, les joueurs doivent traverser tout le bâtiment pour remplir leur gourde. Ils manquent alors plusieurs minutes de jeu. Un emplacement près de l’entrée du terrain conviendrait."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:argumentative-reserve-eau",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Installons un point d’eau près du terrain. Pendant les matchs, les joueurs doivent traverser tout le bâtiment pour remplir leur gourde. Ils manquent alors plusieurs minutes de jeu. Un emplacement près de l’entrée du terrain conviendrait.",
+            "choices": [
+              {
+                "quoteFr": "Pendant les matchs, les joueurs doivent traverser tout le bâtiment pour remplir leur gourde. Ils manquent alors plusieurs minutes de jeu.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Installons un point d’eau près du terrain.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Un emplacement près de l’entrée du terrain conviendrait.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le point d’eau actuel oblige les joueurs à s’absenter longtemps.",
+            "correct": true
+          },
+          {
+            "text": "Les joueurs ne possèdent jamais de gourde.",
+            "correct": false
+          },
+          {
+            "text": "Le terrain ne sert plus à jouer.",
+            "correct": false
+          },
+          {
+            "text": "Le bâtiment est trop proche du terrain.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-rotation",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nFaisons tourner les rôles dans le groupe vidéo. Les mêmes élèves tiennent toujours la caméra. Les autres aimeraient essayer, mais restent chargés du rangement. Un tableau des rôles pour chaque séance aiderait à nous organiser.\n\nPourquoi l’auteur souhaite-t-il une rotation ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Faisons tourner les rôles dans le groupe vidéo. Les mêmes élèves tiennent toujours la caméra. Les autres aimeraient essayer, mais restent chargés du rangement. Un tableau des rôles pour chaque séance aiderait à nous organiser."
+            ],
+            "assessed": {
+              "sentences": [
+                "Faisons tourner les rôles dans le groupe vidéo. Les mêmes élèves tiennent toujours la caméra. Les autres aimeraient essayer, mais restent chargés du rangement. Un tableau des rôles pour chaque séance aiderait à nous organiser."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:argumentative-rotation",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Faisons tourner les rôles dans le groupe vidéo. Les mêmes élèves tiennent toujours la caméra. Les autres aimeraient essayer, mais restent chargés du rangement. Un tableau des rôles pour chaque séance aiderait à nous organiser.",
+            "choices": [
+              {
+                "quoteFr": "Les mêmes élèves tiennent toujours la caméra. Les autres aimeraient essayer, mais restent chargés du rangement.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Faisons tourner les rôles dans le groupe vidéo.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Un tableau des rôles pour chaque séance aiderait à nous organiser.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Il veut donner à chacun l’occasion d’essayer la caméra.",
+            "correct": true
+          },
+          {
+            "text": "Il veut supprimer le rôle de rangement.",
+            "correct": false
+          },
+          {
+            "text": "Il affirme que la caméra est cassée.",
+            "correct": false
+          },
+          {
+            "text": "Il souhaite confier la caméra toujours aux mêmes élèves.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-sous-titres",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAjoutons des sous-titres aux vidéos de présentation. Dans le hall, le bruit couvre souvent les paroles des vidéos. Les visiteurs voient les images sans comprendre les explications. Quelques lignes bien lisibles pourraient accompagner chaque passage.\n\nPourquoi l’auteur propose-t-il des sous-titres ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ajoutons des sous-titres aux vidéos de présentation. Dans le hall, le bruit couvre souvent les paroles des vidéos. Les visiteurs voient les images sans comprendre les explications. Quelques lignes bien lisibles pourraient accompagner chaque passage."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ajoutons des sous-titres aux vidéos de présentation. Dans le hall, le bruit couvre souvent les paroles des vidéos. Les visiteurs voient les images sans comprendre les explications. Quelques lignes bien lisibles pourraient accompagner chaque passage."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:argumentative-sous-titres",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Ajoutons des sous-titres aux vidéos de présentation. Dans le hall, le bruit couvre souvent les paroles des vidéos. Les visiteurs voient les images sans comprendre les explications. Quelques lignes bien lisibles pourraient accompagner chaque passage.",
+            "choices": [
+              {
+                "quoteFr": "Dans le hall, le bruit couvre souvent les paroles des vidéos. Les visiteurs voient les images sans comprendre les explications.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ajoutons des sous-titres aux vidéos de présentation.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Quelques lignes bien lisibles pourraient accompagner chaque passage.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Il veut rendre les explications accessibles quand on les entend mal.",
+            "correct": true
+          },
+          {
+            "text": "Il veut remplacer les vidéos par de la musique.",
+            "correct": false
+          },
+          {
+            "text": "Il pense que les visiteurs ne voient aucune image.",
+            "correct": false
+          },
+          {
+            "text": "Il souhaite rendre les paroles plus difficiles à comprendre.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-inscriptions",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nOuvrons les inscriptions aussi pendant la pause de midi. Le bureau ferme à seize heures. À cette heure-là, plusieurs élèves sont encore en cours. Ce créneau supplémentaire pourrait être testé la semaine prochaine.\n\nPourquoi l’auteur demande-t-il un autre créneau ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ouvrons les inscriptions aussi pendant la pause de midi. Le bureau ferme à seize heures. À cette heure-là, plusieurs élèves sont encore en cours. Ce créneau supplémentaire pourrait être testé la semaine prochaine."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ouvrons les inscriptions aussi pendant la pause de midi. Le bureau ferme à seize heures. À cette heure-là, plusieurs élèves sont encore en cours. Ce créneau supplémentaire pourrait être testé la semaine prochaine."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:argumentative-inscriptions",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Ouvrons les inscriptions aussi pendant la pause de midi. Le bureau ferme à seize heures. À cette heure-là, plusieurs élèves sont encore en cours. Ce créneau supplémentaire pourrait être testé la semaine prochaine.",
+            "choices": [
+              {
+                "quoteFr": "Le bureau ferme à seize heures. À cette heure-là, plusieurs élèves sont encore en cours.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ouvrons les inscriptions aussi pendant la pause de midi.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Ce créneau supplémentaire pourrait être testé la semaine prochaine.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Certains élèves ne peuvent pas se rendre au bureau avant sa fermeture.",
+            "correct": true
+          },
+          {
+            "text": "Le bureau est déjà ouvert toute la nuit.",
+            "correct": false
+          },
+          {
+            "text": "Personne ne souhaite s’inscrire.",
+            "correct": false
+          },
+          {
+            "text": "L’auteur veut supprimer les inscriptions de midi.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-abri",
+      "item": {
+        "nodeKey": "inferer_cause_locale",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAjoutons un abri près de l’arrêt scolaire. Les élèves y attendent dehors plusieurs minutes. Les jours de pluie, leurs sacs et leurs vêtements sont trempés avant le trajet. Un petit toit suffirait peut-être, sans fermer tout l’espace.\n\nPourquoi l’auteur demande-t-il cet abri ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ajoutons un abri près de l’arrêt scolaire. Les élèves y attendent dehors plusieurs minutes. Les jours de pluie, leurs sacs et leurs vêtements sont trempés avant le trajet. Un petit toit suffirait peut-être, sans fermer tout l’espace."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ajoutons un abri près de l’arrêt scolaire. Les élèves y attendent dehors plusieurs minutes. Les jours de pluie, leurs sacs et leurs vêtements sont trempés avant le trajet. Un petit toit suffirait peut-être, sans fermer tout l’espace."
+              ]
+            }
+          },
+          "sourceTextKey": "v3-causal-reading-genres:argumentative-abri",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Ajoutons un abri près de l’arrêt scolaire. Les élèves y attendent dehors plusieurs minutes. Les jours de pluie, leurs sacs et leurs vêtements sont trempés avant le trajet. Un petit toit suffirait peut-être, sans fermer tout l’espace.",
+            "choices": [
+              {
+                "quoteFr": "Les élèves y attendent dehors plusieurs minutes. Les jours de pluie, leurs sacs et leurs vêtements sont trempés avant le trajet.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ajoutons un abri près de l’arrêt scolaire.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Un petit toit suffirait peut-être, sans fermer tout l’espace.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Il souhaite protéger les élèves de la pluie pendant l’attente.",
+            "correct": true
+          },
+          {
+            "text": "Il veut empêcher le bus de s’arrêter.",
+            "correct": false
+          },
+          {
+            "text": "Il souhaite prolonger le trajet scolaire.",
+            "correct": false
+          },
+          {
+            "text": "Il affirme que les élèves attendent déjà dans une salle.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-causal-reading-genres:informational-atelier",
+      "itemChecksum": "sha256:26cd2bbc067b3a5cdba3421a3af1e9978683b297174eb4bb53d9e87622b041cc",
+      "facetKey": "inferer_cause_locale::text_type:informational",
+      "contextKey": "passage:v3-causal-reading-genres:informational-atelier",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-retour-livres",
+      "itemChecksum": "sha256:21a7d311ae756b5dac4b107cd081cb255a67531fdd1bd31fad4d00f8edc6a1f2",
+      "facetKey": "inferer_cause_locale::text_type:informational",
+      "contextKey": "passage:v3-causal-reading-genres:informational-retour-livres",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-projection",
+      "itemChecksum": "sha256:c039fc2dc7bccb20ff38a999fa4c62967b2e231d57d5886b0c16c7b3c1c5e1af",
+      "facetKey": "inferer_cause_locale::text_type:informational",
+      "contextKey": "passage:v3-causal-reading-genres:informational-projection",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-arrosage",
+      "itemChecksum": "sha256:e0aa749afe9dc4439ddd234e6826f0b0d452145f7de3414b2ccd3c4f577ae026",
+      "facetKey": "inferer_cause_locale::text_type:informational",
+      "contextKey": "passage:v3-causal-reading-genres:informational-arrosage",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-pont",
+      "itemChecksum": "sha256:47c8d2933cf4632d847a2d6b68e6aaa369997b16f621e5c6ac88856e055b2c02",
+      "facetKey": "inferer_cause_locale::text_type:informational",
+      "contextKey": "passage:v3-causal-reading-genres:informational-pont",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-impression",
+      "itemChecksum": "sha256:4924de466489ed3421be855be9edf473956f764cf71acae912d2af43e39eef38",
+      "facetKey": "inferer_cause_locale::text_type:informational",
+      "contextKey": "passage:v3-causal-reading-genres:informational-impression",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-bus",
+      "itemChecksum": "sha256:7b1f579a82b8ac13b649f214a8b3b3acb661b819db0053ab9b15e875d11a96cc",
+      "facetKey": "inferer_cause_locale::text_type:informational",
+      "contextKey": "passage:v3-causal-reading-genres:informational-bus",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-exposition",
+      "itemChecksum": "sha256:479cc839978b0a8b0f2e80a973d16e265d14ce844635a59e7670233c10f2d34f",
+      "facetKey": "inferer_cause_locale::text_type:informational",
+      "contextKey": "passage:v3-causal-reading-genres:informational-exposition",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-entrainement",
+      "itemChecksum": "sha256:025bd1bf3f28d149ee2daf1b3abadac701dbafd114a1ab957c6ae07749415e1c",
+      "facetKey": "inferer_cause_locale::text_type:informational",
+      "contextKey": "passage:v3-causal-reading-genres:informational-entrainement",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-commande",
+      "itemChecksum": "sha256:89c52a7550f6310206451f2bdbe3fcbf06c3ae828e20e0f5de386efafb0be723",
+      "facetKey": "inferer_cause_locale::text_type:informational",
+      "contextKey": "passage:v3-causal-reading-genres:informational-commande",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-porte",
+      "itemChecksum": "sha256:a0786f74a8bd48b8e43a667475ebc6a19ce92283ad2bf606c8994ac1d18289fc",
+      "facetKey": "inferer_cause_locale::text_type:informational",
+      "contextKey": "passage:v3-causal-reading-genres:informational-porte",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:informational-horaires",
+      "itemChecksum": "sha256:9b290aa47a400df84ec8c91810f8f5727fb0e69ae0afccc61c8743946275750c",
+      "facetKey": "inferer_cause_locale::text_type:informational",
+      "contextKey": "passage:v3-causal-reading-genres:informational-horaires",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-mangas",
+      "itemChecksum": "sha256:44a91b802edde8961392e5aff7f58755cd2c98f8fb14d9011f682f8b067b8a50",
+      "facetKey": "inferer_cause_locale::text_type:argumentative",
+      "contextKey": "passage:v3-causal-reading-genres:argumentative-mangas",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-horaires-club",
+      "itemChecksum": "sha256:6980944cd9ff871162b2d8cd07acafc042a75f49539234e7b8716d9626e2e2a5",
+      "facetKey": "inferer_cause_locale::text_type:argumentative",
+      "contextKey": "passage:v3-causal-reading-genres:argumentative-horaires-club",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-panneaux",
+      "itemChecksum": "sha256:250858278450a610dbea0798d7c765d9bcbde78ceafe7df2afeeaba5df3b08c6",
+      "facetKey": "inferer_cause_locale::text_type:argumentative",
+      "contextKey": "passage:v3-causal-reading-genres:argumentative-panneaux",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-casques",
+      "itemChecksum": "sha256:8bc21b65d559e16000d5a9bf328a364fe0423fa28b72aa472ec25d93120ce519",
+      "facetKey": "inferer_cause_locale::text_type:argumentative",
+      "contextKey": "passage:v3-causal-reading-genres:argumentative-casques",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-pret-materiel",
+      "itemChecksum": "sha256:110b1be0982753f4128b1384b25795973c8bee2b2f1824463557e11f36365901",
+      "facetKey": "inferer_cause_locale::text_type:argumentative",
+      "contextKey": "passage:v3-causal-reading-genres:argumentative-pret-materiel",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-salle-calme",
+      "itemChecksum": "sha256:0caa23357a293ac4f7bb69a726a089967b9d9fd5e5b4da50c8e243fca38541f9",
+      "facetKey": "inferer_cause_locale::text_type:argumentative",
+      "contextKey": "passage:v3-causal-reading-genres:argumentative-salle-calme",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-echange-livres",
+      "itemChecksum": "sha256:d8639096410e219b726d7f9d7975cfa1220c5458c5d8ae4d231d33d51069b023",
+      "facetKey": "inferer_cause_locale::text_type:argumentative",
+      "contextKey": "passage:v3-causal-reading-genres:argumentative-echange-livres",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-reserve-eau",
+      "itemChecksum": "sha256:b1aff1f2ec02be92519d2e0028efe8c9b9bb1cb9aa13cfcc68608997c016a454",
+      "facetKey": "inferer_cause_locale::text_type:argumentative",
+      "contextKey": "passage:v3-causal-reading-genres:argumentative-reserve-eau",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-rotation",
+      "itemChecksum": "sha256:32f491c00ef84686fc502af2e421ec782669cd5f53faa5bcc5a7fc4b9c3a06ce",
+      "facetKey": "inferer_cause_locale::text_type:argumentative",
+      "contextKey": "passage:v3-causal-reading-genres:argumentative-rotation",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-sous-titres",
+      "itemChecksum": "sha256:fe3a32ed2bc3623dac8d94803e0b51a4acbcf59bc338db652b02d944e280c9d6",
+      "facetKey": "inferer_cause_locale::text_type:argumentative",
+      "contextKey": "passage:v3-causal-reading-genres:argumentative-sous-titres",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-inscriptions",
+      "itemChecksum": "sha256:9b28a21193e67ab3dc1c17dc1fc1165ed0a502b5c99e030c340c68b0cabbf2f5",
+      "facetKey": "inferer_cause_locale::text_type:argumentative",
+      "contextKey": "passage:v3-causal-reading-genres:argumentative-inscriptions",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    },
+    {
+      "itemKey": "v3-causal-reading-genres:argumentative-abri",
+      "itemChecksum": "sha256:dd242beb7d71dbbfaed5eb12ea92f06300121d8ae8923b8252ee11bfedc4a5d3",
+      "facetKey": "inferer_cause_locale::text_type:argumentative",
+      "contextKey": "passage:v3-causal-reading-genres:argumentative-abri",
+      "reason": "Relier une situation et sa conséquence ou une proposition à son motif implicite, puis sélectionner les indices voisins qui soutiennent cette déduction."
+    }
+  ],
+  "checksum": "sha256:5c7380ded670741d82eacde09ed07766b5ea95482411fc2b8b108f6e81af2dfe"
+}

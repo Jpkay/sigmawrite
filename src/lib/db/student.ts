@@ -214,7 +214,14 @@ export async function getStudentStateData(
     if (word) vocab[word] = { exposures: row.exposures, lastSeenAt: row.last_seen_at ?? "" };
   }
 
+  let granularDiagnosticReady = false;
+  if (process.env.GRANULAR_DIAGNOSTIC_ENABLED === "true") {
+    const readiness = await supabase.rpc("student_granular_learning_ready", { p_student_id: studentId });
+    if (readiness.error) throw new Error("La vérification de ton parcours a échoué.");
+    granularDiagnosticReady = readiness.data === true;
+  }
   return {
+    granularDiagnosticReady,
     onboarded: !!student.onboarding_completed_at,
     grade: student.current_grade,
     frenchBackground: student.french_background,

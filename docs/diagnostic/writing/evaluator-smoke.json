@@ -1,0 +1,110 @@
+{
+  "status": "experimental_not_calibrated",
+  "model": "z-ai/glm-5.2",
+  "syntheticOnly": true,
+  "results": [
+    {
+      "id": "correct-imparfait",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouait",
+            "correct": true,
+            "reasonFr": "Imparfait 3e personne du singulier, correctement employé pour décrire une habitude passée (« Chaque été »)."
+          },
+          {
+            "start": 37,
+            "end": 47,
+            "text": "retrouvait",
+            "correct": true,
+            "reasonFr": "Imparfait 3e personne du singulier, correctement employé pour décrire une action habituelle dans le passé."
+          },
+          {
+            "start": 64,
+            "end": 75,
+            "text": "exploraient",
+            "correct": true,
+            "reasonFr": "Imparfait 3e personne du pluriel, correctement employé pour décrire une habitude passée avec le sujet « ils »."
+          }
+        ]
+      }
+    },
+    {
+      "id": "incorrect-imparfait",
+      "expected": "incorrect",
+      "observed": "incorrect",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": [
+          {
+            "start": 17,
+            "end": 23,
+            "text": "jouais",
+            "correct": false,
+            "reasonFr": "Sujet « Lina » (3e personne du singulier) ; la forme correcte est « jouait ». La terminaison -ais est celle de la 1re personne."
+          },
+          {
+            "start": 37,
+            "end": 47,
+            "text": "retrouvais",
+            "correct": false,
+            "reasonFr": "Sujet « Elle » (3e personne du singulier) ; la forme correcte est « retrouvait ». La terminaison -ais est incorrecte ici."
+          },
+          {
+            "start": 64,
+            "end": 73,
+            "text": "explorait",
+            "correct": false,
+            "reasonFr": "Sujet « ils » (3e personne du pluriel) ; la forme correcte est « exploraient ». La terminaison -ait est du singulier."
+          }
+        ]
+      }
+    },
+    {
+      "id": "valid-alternative",
+      "expected": "unresolved",
+      "observed": "unresolved",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": false,
+        "tokens": []
+      }
+    },
+    {
+      "id": "spelling-revision",
+      "expected": "correct",
+      "observed": "correct",
+      "matched": true,
+      "result": {
+        "connectedWriting": true,
+        "revisionReviewed": true,
+        "tokens": [
+          {
+            "start": 31,
+            "end": 37,
+            "text": "cheval",
+            "correct": true,
+            "reasonFr": "Correction juste de « chevale » en « cheval » : suppression du « e » final superflu dans la version finale."
+          },
+          {
+            "start": 66,
+            "end": 74,
+            "text": "barrière",
+            "correct": true,
+            "reasonFr": "Correction juste de « barière » en « barrière » : ajout du second « r » manquant dans la version finale."
+          }
+        ]
+      }
+    }
+  ]
+}

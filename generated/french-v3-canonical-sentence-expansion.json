@@ -1,0 +1,2619 @@
+{
+  "version": "french-v3-canonical-sentence-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-canonical-sentence:recognition-1",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La musicienne accorde sa guitare.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La musicienne accorde sa guitare."
+            ],
+            "assessed": {
+              "sentences": [
+                "La musicienne accorde sa guitare."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« La musicienne » est le sujet, « accorde » est le verbe et « sa guitare » est son complément.",
+            "correct": true
+          },
+          {
+            "text": "« sa guitare » est le sujet et « La musicienne » est le complément du verbe.",
+            "correct": false
+          },
+          {
+            "text": "« accorde » est le sujet et « La musicienne » est le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il manque un verbe conjugué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-2",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le jardinier arrose les tomates.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le jardinier arrose les tomates."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le jardinier arrose les tomates."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« Le jardinier » est le sujet, « arrose » est le verbe et « les tomates » est son complément.",
+            "correct": true
+          },
+          {
+            "text": "« les tomates » est le sujet et « Le jardinier » est le complément du verbe.",
+            "correct": false
+          },
+          {
+            "text": "« arrose » est le sujet et « Le jardinier » est le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il manque un verbe conjugué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-3",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les élèves préparent une affiche.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les élèves préparent une affiche."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les élèves préparent une affiche."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« Les élèves » est le sujet, « préparent » est le verbe et « une affiche » est son complément.",
+            "correct": true
+          },
+          {
+            "text": "« une affiche » est le sujet et « Les élèves » est le complément du verbe.",
+            "correct": false
+          },
+          {
+            "text": "« préparent » est le sujet et « Les élèves » est le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il manque un verbe conjugué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-4",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Mon frère, son vélo.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Mon frère, son vélo."
+            ],
+            "assessed": {
+              "sentences": [
+                "Mon frère, son vélo."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Mon frère, son vélo.",
+            "rationaleFr": "Ce groupe de mots ne contient aucun verbe conjugué."
+          }
+        },
+        "choices": [
+          {
+            "text": "Il manque un verbe conjugué pour former une phrase verbale complète.",
+            "correct": true
+          },
+          {
+            "text": "Le sujet est placé après le verbe.",
+            "correct": false
+          },
+          {
+            "text": "La phrase suit l’ordre sujet, verbe, complément.",
+            "correct": false
+          },
+          {
+            "text": "Le complément est placé avant le sujet.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-5",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La dessinatrice termine son manga.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La dessinatrice termine son manga."
+            ],
+            "assessed": {
+              "sentences": [
+                "La dessinatrice termine son manga."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« La dessinatrice » est le sujet, « termine » est le verbe et « son manga » est son complément.",
+            "correct": true
+          },
+          {
+            "text": "« son manga » est le sujet et « La dessinatrice » est le complément du verbe.",
+            "correct": false
+          },
+          {
+            "text": "« termine » est le sujet et « La dessinatrice » est le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il manque un verbe conjugué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-6",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les joueurs rangent les ballons.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les joueurs rangent les ballons."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les joueurs rangent les ballons."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« Les joueurs » est le sujet, « rangent » est le verbe et « les ballons » est son complément.",
+            "correct": true
+          },
+          {
+            "text": "« les ballons » est le sujet et « Les joueurs » est le complément du verbe.",
+            "correct": false
+          },
+          {
+            "text": "« rangent » est le sujet et « Les joueurs » est le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il manque un verbe conjugué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-7",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Notre voisine ouvre la fenêtre.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Notre voisine ouvre la fenêtre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Notre voisine ouvre la fenêtre."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« Notre voisine » est le sujet, « ouvre » est le verbe et « la fenêtre » est son complément.",
+            "correct": true
+          },
+          {
+            "text": "« la fenêtre » est le sujet et « Notre voisine » est le complément du verbe.",
+            "correct": false
+          },
+          {
+            "text": "« ouvre » est le sujet et « Notre voisine » est le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il manque un verbe conjugué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-8",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le cuisinier, les légumes.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le cuisinier, les légumes."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le cuisinier, les légumes."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Le cuisinier, les légumes.",
+            "rationaleFr": "Ce groupe de mots ne contient aucun verbe conjugué."
+          }
+        },
+        "choices": [
+          {
+            "text": "Il manque un verbe conjugué pour former une phrase verbale complète.",
+            "correct": true
+          },
+          {
+            "text": "Le sujet est placé après le verbe.",
+            "correct": false
+          },
+          {
+            "text": "La phrase suit l’ordre sujet, verbe, complément.",
+            "correct": false
+          },
+          {
+            "text": "Le complément est placé avant le sujet.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-9",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les visiteurs admirent la peinture.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les visiteurs admirent la peinture."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les visiteurs admirent la peinture."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« Les visiteurs » est le sujet, « admirent » est le verbe et « la peinture » est son complément.",
+            "correct": true
+          },
+          {
+            "text": "« la peinture » est le sujet et « Les visiteurs » est le complément du verbe.",
+            "correct": false
+          },
+          {
+            "text": "« admirent » est le sujet et « Les visiteurs » est le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il manque un verbe conjugué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-10",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La libraire conseille un roman.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La libraire conseille un roman."
+            ],
+            "assessed": {
+              "sentences": [
+                "La libraire conseille un roman."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« La libraire » est le sujet, « conseille » est le verbe et « un roman » est son complément.",
+            "correct": true
+          },
+          {
+            "text": "« un roman » est le sujet et « La libraire » est le complément du verbe.",
+            "correct": false
+          },
+          {
+            "text": "« conseille » est le sujet et « La libraire » est le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il manque un verbe conjugué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-11",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Ma cousine photographie le paysage.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ma cousine photographie le paysage."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ma cousine photographie le paysage."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« Ma cousine » est le sujet, « photographie » est le verbe et « le paysage » est son complément.",
+            "correct": true
+          },
+          {
+            "text": "« le paysage » est le sujet et « Ma cousine » est le complément du verbe.",
+            "correct": false
+          },
+          {
+            "text": "« photographie » est le sujet et « Ma cousine » est le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il manque un verbe conjugué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-12",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les danseurs, leur chorégraphie.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les danseurs, leur chorégraphie."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les danseurs, leur chorégraphie."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Les danseurs, leur chorégraphie.",
+            "rationaleFr": "Ce groupe de mots ne contient aucun verbe conjugué."
+          }
+        },
+        "choices": [
+          {
+            "text": "Il manque un verbe conjugué pour former une phrase verbale complète.",
+            "correct": true
+          },
+          {
+            "text": "Le sujet est placé après le verbe.",
+            "correct": false
+          },
+          {
+            "text": "La phrase suit l’ordre sujet, verbe, complément.",
+            "correct": false
+          },
+          {
+            "text": "Le complément est placé avant le sujet.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-13",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mécanicien vérifie le moteur.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le mécanicien vérifie le moteur."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le mécanicien vérifie le moteur."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« Le mécanicien » est le sujet, « vérifie » est le verbe et « le moteur » est son complément.",
+            "correct": true
+          },
+          {
+            "text": "« le moteur » est le sujet et « Le mécanicien » est le complément du verbe.",
+            "correct": false
+          },
+          {
+            "text": "« vérifie » est le sujet et « Le mécanicien » est le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il manque un verbe conjugué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-14",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La vétérinaire examine le chat.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La vétérinaire examine le chat."
+            ],
+            "assessed": {
+              "sentences": [
+                "La vétérinaire examine le chat."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« La vétérinaire » est le sujet, « examine » est le verbe et « le chat » est son complément.",
+            "correct": true
+          },
+          {
+            "text": "« le chat » est le sujet et « La vétérinaire » est le complément du verbe.",
+            "correct": false
+          },
+          {
+            "text": "« examine » est le sujet et « La vétérinaire » est le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il manque un verbe conjugué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-15",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les campeurs installent leur tente.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les campeurs installent leur tente."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les campeurs installent leur tente."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "« Les campeurs » est le sujet, « installent » est le verbe et « leur tente » est son complément.",
+            "correct": true
+          },
+          {
+            "text": "« leur tente » est le sujet et « Les campeurs » est le complément du verbe.",
+            "correct": false
+          },
+          {
+            "text": "« installent » est le sujet et « Les campeurs » est le verbe.",
+            "correct": false
+          },
+          {
+            "text": "Il manque un verbe conjugué.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:recognition-16",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le facteur, les lettres.\n\nQuelle analyse décrit cette phrase ?",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le facteur, les lettres."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le facteur, les lettres."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Le facteur, les lettres.",
+            "rationaleFr": "Ce groupe de mots ne contient aucun verbe conjugué."
+          }
+        },
+        "choices": [
+          {
+            "text": "Il manque un verbe conjugué pour former une phrase verbale complète.",
+            "correct": true
+          },
+          {
+            "text": "Le sujet est placé après le verbe.",
+            "correct": false
+          },
+          {
+            "text": "La phrase suit l’ordre sujet, verbe, complément.",
+            "correct": false
+          },
+          {
+            "text": "Le complément est placé avant le sujet.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-1",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nses lunettes / La nageuse / ajuste",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "La nageuse ajuste ses lunettes.",
+        "acceptableAnswers": [
+          "La nageuse ajuste ses lunettes"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nses lunettes / La nageuse / ajuste"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nses lunettes / La nageuse / ajuste"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "La nageuse ajuste ses lunettes.",
+              "La nageuse ajuste ses lunettes",
+              "La nageuse ses lunettes ajuste.",
+              "La nageuse ses lunettes ajuste",
+              "ajuste La nageuse ses lunettes.",
+              "ajuste La nageuse ses lunettes",
+              "ajuste ses lunettes La nageuse.",
+              "ajuste ses lunettes La nageuse",
+              "ses lunettes La nageuse ajuste.",
+              "ses lunettes La nageuse ajuste",
+              "ses lunettes ajuste La nageuse.",
+              "ses lunettes ajuste La nageuse"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-2",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle plan / Les touristes / consultent",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les touristes consultent le plan.",
+        "acceptableAnswers": [
+          "Les touristes consultent le plan"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle plan / Les touristes / consultent"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle plan / Les touristes / consultent"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les touristes consultent le plan.",
+              "Les touristes consultent le plan",
+              "Les touristes le plan consultent.",
+              "Les touristes le plan consultent",
+              "consultent Les touristes le plan.",
+              "consultent Les touristes le plan",
+              "consultent le plan Les touristes.",
+              "consultent le plan Les touristes",
+              "le plan Les touristes consultent.",
+              "le plan Les touristes consultent",
+              "le plan consultent Les touristes.",
+              "le plan consultent Les touristes"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-3",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nla pâte / Le boulanger / pétrit",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Le boulanger pétrit la pâte.",
+        "acceptableAnswers": [
+          "Le boulanger pétrit la pâte"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nla pâte / Le boulanger / pétrit"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nla pâte / Le boulanger / pétrit"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Le boulanger pétrit la pâte.",
+              "Le boulanger pétrit la pâte",
+              "Le boulanger la pâte pétrit.",
+              "Le boulanger la pâte pétrit",
+              "pétrit Le boulanger la pâte.",
+              "pétrit Le boulanger la pâte",
+              "pétrit la pâte Le boulanger.",
+              "pétrit la pâte Le boulanger",
+              "la pâte Le boulanger pétrit.",
+              "la pâte Le boulanger pétrit",
+              "la pâte pétrit Le boulanger.",
+              "la pâte pétrit Le boulanger"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-4",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nla terrasse / Mon oncle / nettoie",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Mon oncle nettoie la terrasse.",
+        "acceptableAnswers": [
+          "Mon oncle nettoie la terrasse"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nla terrasse / Mon oncle / nettoie"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nla terrasse / Mon oncle / nettoie"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Mon oncle nettoie la terrasse.",
+              "Mon oncle nettoie la terrasse",
+              "Mon oncle la terrasse nettoie.",
+              "Mon oncle la terrasse nettoie",
+              "nettoie Mon oncle la terrasse.",
+              "nettoie Mon oncle la terrasse",
+              "nettoie la terrasse Mon oncle.",
+              "nettoie la terrasse Mon oncle",
+              "la terrasse Mon oncle nettoie.",
+              "la terrasse Mon oncle nettoie",
+              "la terrasse nettoie Mon oncle.",
+              "la terrasse nettoie Mon oncle"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-5",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nles étoiles / Les chercheurs / observent",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les chercheurs observent les étoiles.",
+        "acceptableAnswers": [
+          "Les chercheurs observent les étoiles"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nles étoiles / Les chercheurs / observent"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nles étoiles / Les chercheurs / observent"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les chercheurs observent les étoiles.",
+              "Les chercheurs observent les étoiles",
+              "Les chercheurs les étoiles observent.",
+              "Les chercheurs les étoiles observent",
+              "observent Les chercheurs les étoiles.",
+              "observent Les chercheurs les étoiles",
+              "observent les étoiles Les chercheurs.",
+              "observent les étoiles Les chercheurs",
+              "les étoiles Les chercheurs observent.",
+              "les étoiles Les chercheurs observent",
+              "les étoiles observent Les chercheurs.",
+              "les étoiles observent Les chercheurs"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-6",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle tissu / La couturière / choisit",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "La couturière choisit le tissu.",
+        "acceptableAnswers": [
+          "La couturière choisit le tissu"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle tissu / La couturière / choisit"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle tissu / La couturière / choisit"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "La couturière choisit le tissu.",
+              "La couturière choisit le tissu",
+              "La couturière le tissu choisit.",
+              "La couturière le tissu choisit",
+              "choisit La couturière le tissu.",
+              "choisit La couturière le tissu",
+              "choisit le tissu La couturière.",
+              "choisit le tissu La couturière",
+              "le tissu La couturière choisit.",
+              "le tissu La couturière choisit",
+              "le tissu choisit La couturière.",
+              "le tissu choisit La couturière"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-7",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle bateau / Le capitaine / dirige",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Le capitaine dirige le bateau.",
+        "acceptableAnswers": [
+          "Le capitaine dirige le bateau"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle bateau / Le capitaine / dirige"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle bateau / Le capitaine / dirige"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Le capitaine dirige le bateau.",
+              "Le capitaine dirige le bateau",
+              "Le capitaine le bateau dirige.",
+              "Le capitaine le bateau dirige",
+              "dirige Le capitaine le bateau.",
+              "dirige Le capitaine le bateau",
+              "dirige le bateau Le capitaine.",
+              "dirige le bateau Le capitaine",
+              "le bateau Le capitaine dirige.",
+              "le bateau Le capitaine dirige",
+              "le bateau dirige Le capitaine.",
+              "le bateau dirige Le capitaine"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-8",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nune cabane / Les enfants / construisent",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les enfants construisent une cabane.",
+        "acceptableAnswers": [
+          "Les enfants construisent une cabane"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nune cabane / Les enfants / construisent"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nune cabane / Les enfants / construisent"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les enfants construisent une cabane.",
+              "Les enfants construisent une cabane",
+              "Les enfants une cabane construisent.",
+              "Les enfants une cabane construisent",
+              "construisent Les enfants une cabane.",
+              "construisent Les enfants une cabane",
+              "construisent une cabane Les enfants.",
+              "construisent une cabane Les enfants",
+              "une cabane Les enfants construisent.",
+              "une cabane Les enfants construisent",
+              "une cabane construisent Les enfants.",
+              "une cabane construisent Les enfants"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-9",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle témoin / La journaliste / interroge",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "La journaliste interroge le témoin.",
+        "acceptableAnswers": [
+          "La journaliste interroge le témoin"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle témoin / La journaliste / interroge"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle témoin / La journaliste / interroge"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "La journaliste interroge le témoin.",
+              "La journaliste interroge le témoin",
+              "La journaliste le témoin interroge.",
+              "La journaliste le témoin interroge",
+              "interroge La journaliste le témoin.",
+              "interroge La journaliste le témoin",
+              "interroge le témoin La journaliste.",
+              "interroge le témoin La journaliste",
+              "le témoin La journaliste interroge.",
+              "le témoin La journaliste interroge",
+              "le témoin interroge La journaliste.",
+              "le témoin interroge La journaliste"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-10",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nles couleurs / Le peintre / mélange",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Le peintre mélange les couleurs.",
+        "acceptableAnswers": [
+          "Le peintre mélange les couleurs"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nles couleurs / Le peintre / mélange"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nles couleurs / Le peintre / mélange"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Le peintre mélange les couleurs.",
+              "Le peintre mélange les couleurs",
+              "Le peintre les couleurs mélange.",
+              "Le peintre les couleurs mélange",
+              "mélange Le peintre les couleurs.",
+              "mélange Le peintre les couleurs",
+              "mélange les couleurs Le peintre.",
+              "mélange les couleurs Le peintre",
+              "les couleurs Le peintre mélange.",
+              "les couleurs Le peintre mélange",
+              "les couleurs mélange Le peintre.",
+              "les couleurs mélange Le peintre"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-11",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nles vêtements / Les bénévoles / collectent",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les bénévoles collectent les vêtements.",
+        "acceptableAnswers": [
+          "Les bénévoles collectent les vêtements"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nles vêtements / Les bénévoles / collectent"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nles vêtements / Les bénévoles / collectent"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les bénévoles collectent les vêtements.",
+              "Les bénévoles collectent les vêtements",
+              "Les bénévoles les vêtements collectent.",
+              "Les bénévoles les vêtements collectent",
+              "collectent Les bénévoles les vêtements.",
+              "collectent Les bénévoles les vêtements",
+              "collectent les vêtements Les bénévoles.",
+              "collectent les vêtements Les bénévoles",
+              "les vêtements Les bénévoles collectent.",
+              "les vêtements Les bénévoles collectent",
+              "les vêtements collectent Les bénévoles.",
+              "les vêtements collectent Les bénévoles"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-12",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nla radio / Ma sœur / écoute",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Ma sœur écoute la radio.",
+        "acceptableAnswers": [
+          "Ma sœur écoute la radio"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nla radio / Ma sœur / écoute"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nla radio / Ma sœur / écoute"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Ma sœur écoute la radio.",
+              "Ma sœur écoute la radio",
+              "Ma sœur la radio écoute.",
+              "Ma sœur la radio écoute",
+              "écoute Ma sœur la radio.",
+              "écoute Ma sœur la radio",
+              "écoute la radio Ma sœur.",
+              "écoute la radio Ma sœur",
+              "la radio Ma sœur écoute.",
+              "la radio Ma sœur écoute",
+              "la radio écoute Ma sœur.",
+              "la radio écoute Ma sœur"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-13",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle gâteau / Le pâtissier / décore",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Le pâtissier décore le gâteau.",
+        "acceptableAnswers": [
+          "Le pâtissier décore le gâteau"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle gâteau / Le pâtissier / décore"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle gâteau / Le pâtissier / décore"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Le pâtissier décore le gâteau.",
+              "Le pâtissier décore le gâteau",
+              "Le pâtissier le gâteau décore.",
+              "Le pâtissier le gâteau décore",
+              "décore Le pâtissier le gâteau.",
+              "décore Le pâtissier le gâteau",
+              "décore le gâteau Le pâtissier.",
+              "décore le gâteau Le pâtissier",
+              "le gâteau Le pâtissier décore.",
+              "le gâteau Le pâtissier décore",
+              "le gâteau décore Le pâtissier.",
+              "le gâteau décore Le pâtissier"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-14",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle microphone / Les techniciens / testent",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Les techniciens testent le microphone.",
+        "acceptableAnswers": [
+          "Les techniciens testent le microphone"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle microphone / Les techniciens / testent"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nle microphone / Les techniciens / testent"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Les techniciens testent le microphone.",
+              "Les techniciens testent le microphone",
+              "Les techniciens le microphone testent.",
+              "Les techniciens le microphone testent",
+              "testent Les techniciens le microphone.",
+              "testent Les techniciens le microphone",
+              "testent le microphone Les techniciens.",
+              "testent le microphone Les techniciens",
+              "le microphone Les techniciens testent.",
+              "le microphone Les techniciens testent",
+              "le microphone testent Les techniciens.",
+              "le microphone testent Les techniciens"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-15",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nsa valise / La voyageuse / prépare",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "La voyageuse prépare sa valise.",
+        "acceptableAnswers": [
+          "La voyageuse prépare sa valise"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nsa valise / La voyageuse / prépare"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nsa valise / La voyageuse / prépare"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "La voyageuse prépare sa valise.",
+              "La voyageuse prépare sa valise",
+              "La voyageuse sa valise prépare.",
+              "La voyageuse sa valise prépare",
+              "prépare La voyageuse sa valise.",
+              "prépare La voyageuse sa valise",
+              "prépare sa valise La voyageuse.",
+              "prépare sa valise La voyageuse",
+              "sa valise La voyageuse prépare.",
+              "sa valise La voyageuse prépare",
+              "sa valise prépare La voyageuse.",
+              "sa valise prépare La voyageuse"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-canonical-sentence:production-16",
+      "item": {
+        "nodeKey": "construction_phrase_canonique",
+        "strand": "grammaire_syntaxe",
+        "modality": "writing",
+        "learnerMode": "shared",
+        "responseType": "cloze",
+        "promptFr": "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nla pierre / Le sculpteur / taille",
+        "instructionsFr": "Écris la phrase complète.",
+        "correctAnswer": "Le sculpteur taille la pierre.",
+        "acceptableAnswers": [
+          "Le sculpteur taille la pierre"
+        ],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nla pierre / Le sculpteur / taille"
+            ],
+            "assessed": {
+              "sentences": [
+                "Remets ces trois groupes dans l’ordre sujet, verbe, complément. Recopie la phrase complète sans ajouter de mots.\n\nla pierre / Le sculpteur / taille"
+              ]
+            }
+          },
+          "finiteResponseSpace": {
+            "alternatives": [
+              "Le sculpteur taille la pierre.",
+              "Le sculpteur taille la pierre",
+              "Le sculpteur la pierre taille.",
+              "Le sculpteur la pierre taille",
+              "taille Le sculpteur la pierre.",
+              "taille Le sculpteur la pierre",
+              "taille la pierre Le sculpteur.",
+              "taille la pierre Le sculpteur",
+              "la pierre Le sculpteur taille.",
+              "la pierre Le sculpteur taille",
+              "la pierre taille Le sculpteur.",
+              "la pierre taille Le sculpteur"
+            ],
+            "rationaleFr": "Trois groupes à ordonner offrent six permutations. La saisie ne transforme pas cette tâche en production ouverte."
+          }
+        },
+        "difficulty": 50
+      },
+      "evidenceKey": "writing-controlled-production",
+      "evidenceExpectation": "controlled_production",
+      "sectionKey": "grammar",
+      "promptFamily": "canonical-sentence-constituents",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-1",
+      "itemChecksum": "sha256:624dc4c575a36cfab2b654c7577046a945e25ff9a278208ac75a60efb6eb2d2f",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-1",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-2",
+      "itemChecksum": "sha256:9e3ba9acb77ae418689ed2dbf881f43bc9cbbc3ae17e6eb74b0068d3dbb8de40",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-2",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-3",
+      "itemChecksum": "sha256:0ea0257ef49990258462f48395209e1e528a7852fd29479941f94e42c899bb89",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-3",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-4",
+      "itemChecksum": "sha256:c348b52146af1ab522f3a7fa371e68eb9a6fd0cfa9d15b9942ac924751e804d7",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-4",
+      "reason": "Repérer l’absence de noyau verbal."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-5",
+      "itemChecksum": "sha256:c4a65cf98bb961c413bfcf43a546f5d912c50ee261b52cb4a3c8b7030feb946b",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-5",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-6",
+      "itemChecksum": "sha256:1eccc98b37eb8cf4706035732eccbdcd26344db06c93fe7d9daa9892daa92bba",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-6",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-7",
+      "itemChecksum": "sha256:bb876ed7ffa3eed7b273b4a2e041fee788877f03ce666a2502056ad791996c61",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-7",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-8",
+      "itemChecksum": "sha256:8017eeded6c9ceae5aee968af244c97a5ca026b6e70cef6381b31ad0cd6c5960",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-8",
+      "reason": "Repérer l’absence de noyau verbal."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-9",
+      "itemChecksum": "sha256:72da7cd7d7a207b944d891ceb8221fb88c1b736094b37d0bfadab192f052f1c8",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-9",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-10",
+      "itemChecksum": "sha256:dc497f9c28469d936782a3477ed3a1b30989964e900e518bd7a7abd00665e227",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-10",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-11",
+      "itemChecksum": "sha256:8a4aa6d2b6fd8fb4ac119ac59fc8df1a35a267ae78297b0fb974efec2e1f96ad",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-11",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-12",
+      "itemChecksum": "sha256:96e38d22e45817277cb07876826e9d59bd32e71551ec3ac2d56f2dd2fb1e201c",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-12",
+      "reason": "Repérer l’absence de noyau verbal."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-13",
+      "itemChecksum": "sha256:845b5d24836fe90a32feea3bbde290ac3d6e6f157d846a0bb80026be29e4597c",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-13",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-14",
+      "itemChecksum": "sha256:4c1916b2cc64427cfd6ea389a59847b6e4cf51aa880cea4cfb9b96ad9c235213",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-14",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-15",
+      "itemChecksum": "sha256:9eaacd621f5a322d5e3f5f6a65a018c78ea4477a9e78780958815d606452a0cf",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-15",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:recognition-16",
+      "itemChecksum": "sha256:b7a4cb0b811cb451244261ca32969e1f960ced8719ed7925c826e31013d81c10",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "canonical-sentence:recognition-16",
+      "reason": "Repérer l’absence de noyau verbal."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-1",
+      "itemChecksum": "sha256:102078b1a42c13b4e7009a86f9d07a8c9820b3a54cbb8b6fc51ef9f560cb748f",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-1",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-2",
+      "itemChecksum": "sha256:68232b099e5f63cbe3c69c52637045559e74880030602f44da33b45bff6fc9c7",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-2",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-3",
+      "itemChecksum": "sha256:285a6e27f17220de4a2b7065a8c894ec5cf9830fb1f0c62229f5ed86fba97808",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-3",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-4",
+      "itemChecksum": "sha256:6e8c2a22462dbc20f92624fb83585fc49a95643e7f3ba50582aea8768d9c1748",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-4",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-5",
+      "itemChecksum": "sha256:a142f2b2595ae6a77cf488e6893927df21e66a5c35283e751c0c5b01fe0336f1",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-5",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-6",
+      "itemChecksum": "sha256:5609a69b11978d43ecf4d648de85e1ec618127c51823b9899f03612ffa5fff6e",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-6",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-7",
+      "itemChecksum": "sha256:24f03d7890b4e7bc3d82be6bd55ec3126b6c42a1985a650acc3107abf50e89a3",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-7",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-8",
+      "itemChecksum": "sha256:8dcaafe07c3841c1a453d1f834b2a18ce1ec65981c3f26eaa8dda30989cfb7f9",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-8",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-9",
+      "itemChecksum": "sha256:2fb5d7fe9ad29a3517c537b0d674428d7b54874b7b9d272cfdc34a6eb1c34dc9",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-9",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-10",
+      "itemChecksum": "sha256:10f9ab9b81d012ab823e0aa9de3fbff2379b2d2759484a28f278a24b270a5f79",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-10",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-11",
+      "itemChecksum": "sha256:5a6ba4f584f0d08135ba64fd9585a06ec57dc7d49e42a458f1ff5f57d01ee901",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-11",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-12",
+      "itemChecksum": "sha256:b95ced45e854ee518d0187b1a19a9f08c6c43537241c673297c77a0b6d971355",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-12",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-13",
+      "itemChecksum": "sha256:23e4a5db98cd1f3e439a186b4bc502d433eac5041701609394f54ba87a5bd408",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-13",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-14",
+      "itemChecksum": "sha256:aba2b65896ca2ca4fa1353ffdf47fe60d62af37dbdcbfbb12ea1dfd80868aa99",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-14",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-15",
+      "itemChecksum": "sha256:2213c4ee613604ea380840696bd435a7ec965c12a898e19257b84cb7c38c476c",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-15",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-canonical-sentence:production-16",
+      "itemChecksum": "sha256:2ea4311d896270388ff1820a2426d53b4c6426370f7940c52bd810920007182f",
+      "evidenceTarget": {
+        "nodeKey": "construction_phrase_canonique",
+        "evidenceKey": "writing-controlled-production"
+      },
+      "contextKey": "canonical-sentence:production-16",
+      "reason": "Identifier ou reconstruire l’ordre sujet, verbe et complément dans une phrase nouvelle."
+    }
+  ],
+  "checksum": "sha256:f8590c98c2c460c54e63e1c2e79774ea8e0edd384224443f6d177b639cb68fc5"
+}

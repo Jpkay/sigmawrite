@@ -56,6 +56,8 @@ export type ValidatorType =
   | "llm_assisted";
 
 export type ValidationSpec = {
+  /** Learning target used by the shared presentation-tolerance policy. */
+  assessment?: import("./assessment-policy").AssessmentContext;
   validatorType: ValidatorType;
   correctAnswer?: string;
   acceptableAnswers?: string[];

@@ -1,0 +1,3715 @@
+{
+  "version": "french-v3-complex-negation-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-complex-negation:plus:1",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Depuis son déménagement, Nora ne prend plus ce bus.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "plus",
+          "materialExposure": {
+            "sentences": [
+              "Depuis son déménagement, Nora ne prend plus ce bus."
+            ],
+            "assessed": {
+              "sentences": [
+                "Depuis son déménagement, Nora ne prend plus ce bus."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": true
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:plus:2",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le vieux réveil ne sonne plus depuis hier.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "plus",
+          "materialExposure": {
+            "sentences": [
+              "Le vieux réveil ne sonne plus depuis hier."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le vieux réveil ne sonne plus depuis hier."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:plus:3",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous n’habitons plus près de la gare.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "plus",
+          "materialExposure": {
+            "sentences": [
+              "Nous n’habitons plus près de la gare."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous n’habitons plus près de la gare."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": true
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:plus:4",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Après cette réparation, la porte ne grince plus.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "plus",
+          "materialExposure": {
+            "sentences": [
+              "Après cette réparation, la porte ne grince plus."
+            ],
+            "assessed": {
+              "sentences": [
+                "Après cette réparation, la porte ne grince plus."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": true
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:plus:5",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Tu ne joues plus dans cette équipe cette année.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "plus",
+          "materialExposure": {
+            "sentences": [
+              "Tu ne joues plus dans cette équipe cette année."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ne joues plus dans cette équipe cette année."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": true
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:plus:6",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les élèves n’utilisent plus ces anciens cahiers.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "plus",
+          "materialExposure": {
+            "sentences": [
+              "Les élèves n’utilisent plus ces anciens cahiers."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les élèves n’utilisent plus ces anciens cahiers."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:plus:7",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Depuis le remplacement des rouleaux, l’imprimante ne laisse plus de traces.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "plus",
+          "materialExposure": {
+            "sentences": [
+              "Depuis le remplacement des rouleaux, l’imprimante ne laisse plus de traces."
+            ],
+            "assessed": {
+              "sentences": [
+                "Depuis le remplacement des rouleaux, l’imprimante ne laisse plus de traces."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": true
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:plus:8",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Depuis la fin du stage, Amel ne vient plus au centre le mercredi.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "plus",
+          "materialExposure": {
+            "sentences": [
+              "Depuis la fin du stage, Amel ne vient plus au centre le mercredi."
+            ],
+            "assessed": {
+              "sentences": [
+                "Depuis la fin du stage, Amel ne vient plus au centre le mercredi."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": true
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:jamais:1",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Pendant ses voyages, Sami ne prend jamais l’avion.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "jamais",
+          "materialExposure": {
+            "sentences": [
+              "Pendant ses voyages, Sami ne prend jamais l’avion."
+            ],
+            "assessed": {
+              "sentences": [
+                "Pendant ses voyages, Sami ne prend jamais l’avion."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": true
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:jamais:2",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Dans cette boutique, on ne vend jamais de livres abîmés.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "jamais",
+          "materialExposure": {
+            "sentences": [
+              "Dans cette boutique, on ne vend jamais de livres abîmés."
+            ],
+            "assessed": {
+              "sentences": [
+                "Dans cette boutique, on ne vend jamais de livres abîmés."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:jamais:3",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle n’oublie jamais la clé de son casier.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "jamais",
+          "materialExposure": {
+            "sentences": [
+              "Elle n’oublie jamais la clé de son casier."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle n’oublie jamais la clé de son casier."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": true
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:jamais:4",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous ne rentrons jamais seuls après cet entraînement.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "jamais",
+          "materialExposure": {
+            "sentences": [
+              "Nous ne rentrons jamais seuls après cet entraînement."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ne rentrons jamais seuls après cet entraînement."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": true
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:jamais:5",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Durant le tournoi, ce joueur n’a jamais contesté une décision.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "jamais",
+          "materialExposure": {
+            "sentences": [
+              "Durant le tournoi, ce joueur n’a jamais contesté une décision."
+            ],
+            "assessed": {
+              "sentences": [
+                "Durant le tournoi, ce joueur n’a jamais contesté une décision."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": true
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:jamais:6",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Au cours de cette visite, vous n’avez jamais quitté le groupe.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "jamais",
+          "materialExposure": {
+            "sentences": [
+              "Au cours de cette visite, vous n’avez jamais quitté le groupe."
+            ],
+            "assessed": {
+              "sentences": [
+                "Au cours de cette visite, vous n’avez jamais quitté le groupe."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:jamais:7",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Durant ce voyage, les deux amis n’ont jamais pris le même train.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "jamais",
+          "materialExposure": {
+            "sentences": [
+              "Durant ce voyage, les deux amis n’ont jamais pris le même train."
+            ],
+            "assessed": {
+              "sentences": [
+                "Durant ce voyage, les deux amis n’ont jamais pris le même train."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": true
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:jamais:8",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Dans ce jeu, le gardien ne quitte jamais sa zone.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "jamais",
+          "materialExposure": {
+            "sentences": [
+              "Dans ce jeu, le gardien ne quitte jamais sa zone."
+            ],
+            "assessed": {
+              "sentences": [
+                "Dans ce jeu, le gardien ne quitte jamais sa zone."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": true
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:rien:1",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lina n’a rien acheté au marché ce matin.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "rien",
+          "materialExposure": {
+            "sentences": [
+              "Lina n’a rien acheté au marché ce matin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lina n’a rien acheté au marché ce matin."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": true
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:rien:2",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je ne trouve rien dans cette boîte.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "rien",
+          "materialExposure": {
+            "sentences": [
+              "Je ne trouve rien dans cette boîte."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ne trouve rien dans cette boîte."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:rien:3",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous n’avons rien changé au décor.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "rien",
+          "materialExposure": {
+            "sentences": [
+              "Nous n’avons rien changé au décor."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous n’avons rien changé au décor."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": true
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:rien:4",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le vent n’a rien cassé dans le jardin.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "rien",
+          "materialExposure": {
+            "sentences": [
+              "Le vent n’a rien cassé dans le jardin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le vent n’a rien cassé dans le jardin."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": true
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:rien:5",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Tu n’as rien oublié sur la table.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "rien",
+          "materialExposure": {
+            "sentences": [
+              "Tu n’as rien oublié sur la table."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu n’as rien oublié sur la table."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": true
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:rien:6",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle ne veut rien ajouter à son dessin.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "rien",
+          "materialExposure": {
+            "sentences": [
+              "Elle ne veut rien ajouter à son dessin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle ne veut rien ajouter à son dessin."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:rien:7",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le mécanicien n’a rien remplacé dans ce moteur.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "rien",
+          "materialExposure": {
+            "sentences": [
+              "Le mécanicien n’a rien remplacé dans ce moteur."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le mécanicien n’a rien remplacé dans ce moteur."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": true
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:rien:8",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les enfants n’ont rien laissé dans le vestiaire.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "rien",
+          "materialExposure": {
+            "sentences": [
+              "Les enfants n’ont rien laissé dans le vestiaire."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les enfants n’ont rien laissé dans le vestiaire."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": true
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:personne:1",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Amir ne connaît personne dans cette nouvelle classe.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "personne",
+          "materialExposure": {
+            "sentences": [
+              "Amir ne connaît personne dans cette nouvelle classe."
+            ],
+            "assessed": {
+              "sentences": [
+                "Amir ne connaît personne dans cette nouvelle classe."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": true
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:personne:2",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous n’avons rencontré personne sur le sentier.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "personne",
+          "materialExposure": {
+            "sentences": [
+              "Nous n’avons rencontré personne sur le sentier."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous n’avons rencontré personne sur le sentier."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:personne:3",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le gardien ne laisse entrer personne dans cette salle.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "personne",
+          "materialExposure": {
+            "sentences": [
+              "Le gardien ne laisse entrer personne dans cette salle."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le gardien ne laisse entrer personne dans cette salle."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": true
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:personne:4",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Tu n’as invité personne à cette répétition.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "personne",
+          "materialExposure": {
+            "sentences": [
+              "Tu n’as invité personne à cette répétition."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu n’as invité personne à cette répétition."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": true
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:personne:5",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je ne vois personne devant le portail.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "personne",
+          "materialExposure": {
+            "sentences": [
+              "Je ne vois personne devant le portail."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ne vois personne devant le portail."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": true
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:personne:6",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Ces élèves n’attendent personne à la sortie.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "personne",
+          "materialExposure": {
+            "sentences": [
+              "Ces élèves n’attendent personne à la sortie."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ces élèves n’attendent personne à la sortie."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:personne:7",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Vous n’avez prévenu personne de ce changement.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "personne",
+          "materialExposure": {
+            "sentences": [
+              "Vous n’avez prévenu personne de ce changement."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous n’avez prévenu personne de ce changement."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": true
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:personne:8",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le guide n’a oublié personne au point de rendez-vous.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "personne",
+          "materialExposure": {
+            "sentences": [
+              "Le guide n’a oublié personne au point de rendez-vous."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le guide n’a oublié personne au point de rendez-vous."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": true
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:guere:1",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Depuis la rentrée, Malik ne regarde guère la télévision.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "guere",
+          "materialExposure": {
+            "sentences": [
+              "Depuis la rentrée, Malik ne regarde guère la télévision."
+            ],
+            "assessed": {
+              "sentences": [
+                "Depuis la rentrée, Malik ne regarde guère la télévision."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": true
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:guere:2",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Ce petit abri ne protège guère du vent.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "guere",
+          "materialExposure": {
+            "sentences": [
+              "Ce petit abri ne protège guère du vent."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ce petit abri ne protège guère du vent."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:guere:3",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle n’a guère dormi pendant le trajet.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "guere",
+          "materialExposure": {
+            "sentences": [
+              "Elle n’a guère dormi pendant le trajet."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle n’a guère dormi pendant le trajet."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": true
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:guere:4",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Cette explication ne m’aide guère à comprendre le plan.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "guere",
+          "materialExposure": {
+            "sentences": [
+              "Cette explication ne m’aide guère à comprendre le plan."
+            ],
+            "assessed": {
+              "sentences": [
+                "Cette explication ne m’aide guère à comprendre le plan."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": true
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:guere:5",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous ne parlons guère durant les répétitions.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "guere",
+          "materialExposure": {
+            "sentences": [
+              "Nous ne parlons guère durant les répétitions."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ne parlons guère durant les répétitions."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": true
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:guere:6",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Vous n’avez guère de place dans ce coffre.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "guere",
+          "materialExposure": {
+            "sentences": [
+              "Vous n’avez guère de place dans ce coffre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous n’avez guère de place dans ce coffre."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:guere:7",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Ce sac vide ne pèse guère.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "guere",
+          "materialExposure": {
+            "sentences": [
+              "Ce sac vide ne pèse guère."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ce sac vide ne pèse guère."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": true
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:guere:8",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Cette solution ne change guère notre organisation.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "guere",
+          "materialExposure": {
+            "sentences": [
+              "Cette solution ne change guère notre organisation."
+            ],
+            "assessed": {
+              "sentences": [
+                "Cette solution ne change guère notre organisation."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela se produit peu, ou dans une faible mesure, sans être forcément nul.",
+            "correct": true
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:simple:1",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le paquet n’est pas arrivé ce matin.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "simple",
+          "materialExposure": {
+            "sentences": [
+              "Le paquet n’est pas arrivé ce matin."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le paquet n’est pas arrivé ce matin."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Le paquet n’est pas arrivé ce matin.",
+            "rationaleFr": "La phrase contient une négation simple avec ne…pas."
+          }
+        },
+        "choices": [
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": true
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:simple:2",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Cette lampe ne fonctionne pas.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "simple",
+          "materialExposure": {
+            "sentences": [
+              "Cette lampe ne fonctionne pas."
+            ],
+            "assessed": {
+              "sentences": [
+                "Cette lampe ne fonctionne pas."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Cette lampe ne fonctionne pas.",
+            "rationaleFr": "La phrase contient une négation simple avec ne…pas."
+          }
+        },
+        "choices": [
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          },
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:simple:3",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous ne sommes pas prêts pour le départ.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "simple",
+          "materialExposure": {
+            "sentences": [
+              "Nous ne sommes pas prêts pour le départ."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ne sommes pas prêts pour le départ."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Nous ne sommes pas prêts pour le départ.",
+            "rationaleFr": "La phrase contient une négation simple avec ne…pas."
+          }
+        },
+        "choices": [
+          {
+            "text": "Cela ne se produit à aucun moment dans la situation décrite.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": false
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": true
+          },
+          {
+            "text": "La situation a cessé : ce n’est plus le cas maintenant.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:restriction:1",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lila ne garde que les photos nettes.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "restriction",
+          "materialExposure": {
+            "sentences": [
+              "Lila ne garde que les photos nettes."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lila ne garde que les photos nettes."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Lila ne garde que les photos nettes.",
+            "rationaleFr": "La phrase limite à un élément : ne…que signifie ici seulement."
+          }
+        },
+        "choices": [
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": true
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:restriction:2",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Cette salle n’accueille que les groupes inscrits.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "restriction",
+          "materialExposure": {
+            "sentences": [
+              "Cette salle n’accueille que les groupes inscrits."
+            ],
+            "assessed": {
+              "sentences": [
+                "Cette salle n’accueille que les groupes inscrits."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Cette salle n’accueille que les groupes inscrits.",
+            "rationaleFr": "La phrase limite à un élément : ne…que signifie ici seulement."
+          }
+        },
+        "choices": [
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": true
+          },
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-complex-negation:restriction:3",
+      "item": {
+        "nodeKey": "construction_negation_complexe",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous n’avons que deux places libres.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "complexNegationFeature": "restriction",
+          "materialExposure": {
+            "sentences": [
+              "Nous n’avons que deux places libres."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous n’avons que deux places libres."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Nous n’avons que deux places libres.",
+            "rationaleFr": "La phrase limite à un élément : ne…que signifie ici seulement."
+          }
+        },
+        "choices": [
+          {
+            "text": "La phrase contient une négation simple avec ne…pas.",
+            "correct": false
+          },
+          {
+            "text": "Aucune chose n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "Aucune personne n’est concernée par l’action décrite.",
+            "correct": false
+          },
+          {
+            "text": "La phrase limite à un élément : ne…que signifie ici seulement.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "complex-negation-meaning",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:plus:1",
+      "itemChecksum": "sha256:5eb3b63d148e19a714e41853e84684549f28b91ca0d037fee3b961b95171be3d",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:plus:1"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:plus:2",
+      "itemChecksum": "sha256:d0ad828a22d409cf96f8481673573c8f4f4a5f55cad79b72af17974a0ebaf35a",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:plus:2"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:plus:3",
+      "itemChecksum": "sha256:31ae4e4cfcdb7b10caf9489aeac4e46336c7effb347b24d9354f889ce1dd5c3f",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:plus:3"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:plus:4",
+      "itemChecksum": "sha256:b22da5bc898a9251300b6cd327281fe6d64fd711bd6743ed70c18185385c83dd",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:plus:4"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:plus:5",
+      "itemChecksum": "sha256:548dbc7a0af11f80d74a9374a0e739b4d970b767700e644e6b8d38d3fc7a703d",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:plus:5"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:plus:6",
+      "itemChecksum": "sha256:a1af61219781d20636e792a4711cfc59cfc6f70238c6a06d2890684bf06962b7",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:plus:6"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:plus:7",
+      "itemChecksum": "sha256:0a5b81efc62545dfe9035dd13773a3cb46cfb4f01996bf466d811fefafd3b551",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:plus:7"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:plus:8",
+      "itemChecksum": "sha256:99d77802165386c2c8a5c712d963fe8531e9e8b91ea76ea462d88bda98ba8543",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:plus:8"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:jamais:1",
+      "itemChecksum": "sha256:38d4c5ba66f59ebe15a4c9815d6e6cc4517da08cc736f15b576189534119a778",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:jamais:1"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:jamais:2",
+      "itemChecksum": "sha256:ec1c8db179ef108483164d0aaa8881aa36b2b19a24d9acc70acf9f99c5dd326d",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:jamais:2"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:jamais:3",
+      "itemChecksum": "sha256:4c9c5ad7f16da27bbe503852b8e3c56d071bb9454ef8859a1bee1a562cff012e",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:jamais:3"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:jamais:4",
+      "itemChecksum": "sha256:a04944c4fe46466f2551378fde1794d770a612b7257ffe9d419d467b2fae83c3",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:jamais:4"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:jamais:5",
+      "itemChecksum": "sha256:f360bdf275f9b0023853588a07fb59a00095e35530c67bfc0a2234a84c3d4b9d",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:jamais:5"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:jamais:6",
+      "itemChecksum": "sha256:cb0b5a94d04fea4c47991dc2a7f151b0e12ca0bff5ac5ff2e0e9852983740b70",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:jamais:6"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:jamais:7",
+      "itemChecksum": "sha256:7d34c0e77ef339ec1468619f6493c0587375eb94f333c611440f4c558a682ba5",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:jamais:7"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:jamais:8",
+      "itemChecksum": "sha256:796f373f8fc5f523f19da9db988a4c88f5aaff80ccc46b8159ee3024cc247dea",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:jamais:8"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:rien:1",
+      "itemChecksum": "sha256:8e94890051d51e6e9ce3f50531f1cc30ad3a1c65c7a0132e9215b30e9156fdc4",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:rien:1"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:rien:2",
+      "itemChecksum": "sha256:b74e75f9f748ec9cf42d3fd95c381191d8e16a416e66bac19e456119cb6c0c49",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:rien:2"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:rien:3",
+      "itemChecksum": "sha256:7ba7cdb50d9a7802b3eaa93b25aacbde244e07fa556de4bbfc6d34e2c8e930a2",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:rien:3"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:rien:4",
+      "itemChecksum": "sha256:60f92af0e422494c88651b7ab7066d0ad7f5350ef1f5698dbc5d3f8e3b3dd100",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:rien:4"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:rien:5",
+      "itemChecksum": "sha256:cc2448b2d928ec88e591bf27a9268144090b11cdc499683028160829b201845b",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:rien:5"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:rien:6",
+      "itemChecksum": "sha256:3648d076955aad1fd2526284961e032b60b419aabb3f91b95e7f516921f8f2c6",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:rien:6"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:rien:7",
+      "itemChecksum": "sha256:105da337858580b314c588d783fc350faabc34108bb2b8deab4a3bfb562f6fc9",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:rien:7"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:rien:8",
+      "itemChecksum": "sha256:04d284aa754f008e4bac89ce820a0d5d8fbfc92cbb29365654ade94a28db0c55",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:rien:8"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:personne:1",
+      "itemChecksum": "sha256:644325e981136785234fccf225aa0798ac052b3c617aafdd2693c78d124e8c91",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:personne:1"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:personne:2",
+      "itemChecksum": "sha256:bf720e375abf7741ae0b73d5dc9bf34ed9f6214722310b347bfb3a4a1be54ca1",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:personne:2"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:personne:3",
+      "itemChecksum": "sha256:f65ecfc03755d8c3f149d438e10fc222a19c4d65ef4e3b1c84c68b8a3a744817",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:personne:3"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:personne:4",
+      "itemChecksum": "sha256:fb699094d8c3d6e60f8db137ceb8a68ab54e25a53b951f5d26b2da4a0ff5c1b8",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:personne:4"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:personne:5",
+      "itemChecksum": "sha256:9e0f541f5a400fa4cf75ed5b8215c6f723c4a1be4d60b02b207499e95938e107",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:personne:5"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:personne:6",
+      "itemChecksum": "sha256:32d7504d6689bb01582a5d9b15e4948c68dd6dfb23b785baf0750ad5d73bf10e",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:personne:6"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:personne:7",
+      "itemChecksum": "sha256:a0efd96e85a8c7cd81786241f7d7e61584e9fe29486de3569ae9f0673aef1175",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:personne:7"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:personne:8",
+      "itemChecksum": "sha256:00e42fd29bd25e91759754e352163f4b7bb3a52e9c72c47cebb191f44876fb08",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:personne:8"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:guere:1",
+      "itemChecksum": "sha256:d314551a2cbe29f5a4e17ac455630890846084012940d2c9bee1f9f595bcb788",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:guere:1"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:guere:2",
+      "itemChecksum": "sha256:eb2f7708eb3a94d8bb0ebe19fc0fce1b8c2294e3662c372c901a018095cbfff0",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:guere:2"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:guere:3",
+      "itemChecksum": "sha256:59915da3714e166400c80b8150913e5ffe52f56504acf94827a30f3635db73fa",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:guere:3"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:guere:4",
+      "itemChecksum": "sha256:a16167666ad9640d11cb034333572c95185647da6e2940ef6576883f33622cd4",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:guere:4"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:guere:5",
+      "itemChecksum": "sha256:03a49f991ab2c436a6aa7a7e0ffdd9df3bea5d98534401d31b207f7c8a3babcf",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:guere:5"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:guere:6",
+      "itemChecksum": "sha256:12d3639c831b3863db84a3cf8bc7ab70ebc43cb8531f65d0a47b13c28177935a",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:guere:6"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:guere:7",
+      "itemChecksum": "sha256:eecc663d433a5f524230cb28398c2fa99cfacb81ba2e5bcd5abcd2b2d231384f",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:guere:7"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:guere:8",
+      "itemChecksum": "sha256:e0763267e401d7e575512de73464e69a2a9d8542c970f9ca8cf805636e6ae69e",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:guere:8"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:simple:1",
+      "itemChecksum": "sha256:df9784577c8c29fa9f29961c567aeb405fadee3844baf991a206d82eae57aac8",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:simple:1"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:simple:2",
+      "itemChecksum": "sha256:abd5076885babc7234e933ec3cbee70aca06c5fda8d0154d38958037e548c64d",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:simple:2"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:simple:3",
+      "itemChecksum": "sha256:55ae908fa737b6cb594e400b169033f77afba1d8c61622cceb3f5eae7d3dd9fb",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:simple:3"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:restriction:1",
+      "itemChecksum": "sha256:3565140df62dacef335aee735b36c02bc285e09a30ce18423dd141aa75cd313a",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:restriction:1"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:restriction:2",
+      "itemChecksum": "sha256:5992011a718ec51be95828e8e4e807a9c74c2111a547a1defc39054a62795317",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:restriction:2"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-complex-negation:restriction:3",
+      "itemChecksum": "sha256:9be4fc48b389e792971eed9e6dc7489c13827010f08e5dfb5892058598e8aba1",
+      "evidenceTarget": {
+        "nodeKey": "construction_negation_complexe",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "complex-negation:restriction:3"
+    }
+  ],
+  "checksum": "sha256:dfca9a23dfc6c891719f6f38cd74200190c0701e878cf0e3c55afbdff0ec6334"
+}

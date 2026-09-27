@@ -1,3 +1,4 @@
+import {vouloirImperativeAnswers} from './vouloir-imperative';
 /**
  * Unified answer validator (Roadmap Phase 8) — the contract QC Gate 2 and live
  * grading both call. Routes on validator_type (migration 0008):
@@ -18,6 +19,7 @@
 import {
   conjugate,
   UnsupportedVerbError,
+  InvalidConjugationContextError,
   type Agreement,
   type Gender,
   type Person,
@@ -28,14 +30,16 @@ import type {
   ValidationResult,
   ValidationSpec,
 } from "./types";
+import { OPTIONAL_PERIOD_FEEDBACK, withOptionalFinalPeriod, withOptionalImperativeEnding, OPTIONAL_IMPERATIVE_ENDING_FEEDBACK } from "./assessment-policy";
 
-/** Lowercase, collapse whitespace, optional case/punctuation. Accents kept —
+/** Lowercase, collapse whitespace, unify apostrophe typography, optional case/punctuation. Accents kept —
  *  they are meaningful in French and frequently the thing under test. */
 export function normalize(
   s: string,
   { caseSensitive = false, ignorePunctuation = false } = {}
 ): string {
   let out = s.normalize("NFC").trim().replace(/\s+/g, " ");
+  out = out.replace(/’/g, "'");
   if (ignorePunctuation) out = out.replace(/[.,;:!?«»"'’]/g, "").replace(/\s+/g, " ").trim();
   if (!caseSensitive) out = out.toLocaleLowerCase("fr");
   return out;
@@ -43,6 +47,7 @@ export function normalize(
 
 export type ValidatorDeps = {
   grammarChecker?: FrenchGrammarChecker;
+  readingJudge?: import("./reading-ideas").ReadingJudge;
 };
 
 export async function validateAnswer(
@@ -51,14 +56,27 @@ export async function validateAnswer(
   deps: ValidatorDeps = {}
 ): Promise<ValidationResult> {
   switch (spec.validatorType) {
-    case "exact":
-      return exactMatch(answer, spec);
+    case "exact": {
+      const exact = exactMatch(answer, spec);
+      if (!spec.config?.readingRubric) return exact;
+      // Listed answers have already been approved. Unlisted wording is assessed
+      // against the same authored ideas in review, practice and diagnostics.
+      if (exact.pass) return { ...exact, reason: "Ta réponse exprime les idées attendues." };
+      const { assessReadingIdeas } = await import("./reading-ideas");
+      return assessReadingIdeas(answer, spec, deps.readingJudge);
+    }
 
     case "regex": {
       const pattern = spec.correctAnswer ?? "";
       let pass = false;
+      let toleratedPeriod = false;
       try {
         pass = new RegExp(pattern).test(answer.trim());
+        const alternative = withOptionalFinalPeriod(answer, spec.assessment, spec.config);
+        if (!pass && alternative) {
+          pass = new RegExp(pattern).test(alternative);
+          toleratedPeriod = pass;
+        }
       } catch {
         return {
           pass: false,
@@ -66,7 +84,7 @@ export async function validateAnswer(
           reason: `invalid regex: ${pattern}`,
         };
       }
-      return { pass, validator: "regex", normalized: answer.trim() };
+      return { pass, validator: "regex", normalized: answer.trim(), ...(toleratedPeriod ? { reason: OPTIONAL_PERIOD_FEEDBACK } : {}) };
     }
 
     case "grammalecte":
@@ -82,6 +100,14 @@ export async function validateAnswer(
       const hits = targetCategory
         ? result.matches.filter((m) => m.category === targetCategory)
         : result.matches;
+      const alternative = withOptionalFinalPeriod(answer, spec.assessment, spec.config);
+      if (hits.length && alternative) {
+        // Recheck the full answer: adding a period must resolve every targeted
+        // error, so spelling/agreement errors cannot be hidden by this rule.
+        const checked = await deps.grammarChecker.check(alternative);
+        const remaining = targetCategory ? checked.matches.filter((match) => match.category === targetCategory) : checked.matches;
+        if (!remaining.length) return { pass: true, validator: spec.validatorType, normalized: answer.trim(), ruleHits: [], reason: OPTIONAL_PERIOD_FEEDBACK };
+      }
       return {
         pass: hits.length === 0,
         validator: spec.validatorType,
@@ -92,7 +118,7 @@ export async function validateAnswer(
     }
 
     case "conjugator": {
-      // config: {verb, tense, person, gender?, codBefore?}. The expected form is
+      // config: {verb, tense, person, gender?, codBefore?, auxiliaryUse?}. The expected form is
       // computed deterministically and compared to the student's answer.
       const c = spec.config ?? {};
       const verb = c.verb as string | undefined;
@@ -106,23 +132,29 @@ export async function validateAnswer(
         };
       }
       let expected: string;
+      let expectedForms: readonly string[];
       try {
         expected = conjugate(verb, tense, person, {
           gender: c.gender as Gender | undefined,
+          auxiliaryUse: c.auxiliaryUse as "transitive" | "intransitive" | undefined,
           codBefore: c.codBefore as Agreement | undefined,
         });
+        expectedForms = c.vouloirImperativeUse === undefined
+          ? [expected]
+          : vouloirImperativeAnswers(verb, tense, person, c.vouloirImperativeUse);
       } catch (e) {
-        if (e instanceof UnsupportedVerbError) {
+        if (e instanceof UnsupportedVerbError || e instanceof InvalidConjugationContextError) {
           return { pass: false, validator: "conjugator", reason: e.message };
         }
         throw e;
       }
       const got = normalize(answer);
+      const pass = expectedForms.some(form => got === normalize(form));
       return {
-        pass: got === normalize(expected),
+        pass,
         validator: "conjugator",
         normalized: got,
-        reason: got === normalize(expected) ? undefined : `attendu: ${expected}`,
+        reason: pass ? undefined : `attendu: ${expectedForms.join(" ou ")}`,
       };
     }
 
@@ -152,9 +184,18 @@ function exactMatch(answer: string, spec: ValidationSpec): ValidationResult {
   const candidates = [spec.correctAnswer, ...(spec.acceptableAnswers ?? [])]
     .filter((c): c is string => typeof c === "string")
     .map((c) => normalize(c, opts));
+  const exact = candidates.includes(got);
+  const alternative = withOptionalFinalPeriod(answer, spec.assessment, spec.config);
+  const toleratedPeriod = !exact && alternative !== null && candidates.includes(normalize(alternative, opts));
+  const toleratedImperative = !exact && !toleratedPeriod && [spec.correctAnswer,...(spec.acceptableAnswers??[])].some(expected=>{
+    if(typeof expected!=="string")return false;
+    const ending=withOptionalImperativeEnding(answer,expected,spec.assessment,spec.config);
+    return ending!==null&&normalize(ending,opts)===normalize(expected,opts);
+  });
   return {
-    pass: candidates.includes(got),
+    pass: exact || toleratedPeriod || toleratedImperative,
     validator: "exact",
     normalized: got,
+    ...(toleratedPeriod ? { reason: OPTIONAL_PERIOD_FEEDBACK } : toleratedImperative ? {reason: OPTIONAL_IMPERATIVE_ENDING_FEEDBACK} : {}),
   };
 }

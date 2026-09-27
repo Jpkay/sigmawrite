@@ -34,6 +34,7 @@ Règles STRICTES :
 - Pour la conjugaison, mets validatorType="conjugator" et fournis validatorConfig {verb, tense (present|imparfait|passe_compose|futur_simple|futur_proche|conditionnel_present|subjonctif_present|imperatif_present|plus_que_parfait), person (1s|2s|3s|1p|2p|3p)}. NE T'INQUIÈTE PAS de la forme exacte : elle sera recalculée de façon déterministe.
 - N'utilise "conjugator" QUE pour les temps listés ci-dessus et pour un verbe fréquent dont tu es sûr (l'impératif n'existe qu'aux personnes 2s, 1p, 2p). Pour le passé simple ou d'autres périphrases, utilise un QCM ou une réponse exacte qui passera obligatoirement en revue humaine.
 - Pour un QCM, exactement UNE bonne réponse.
+- Si la ponctuation est la compétence évaluée, précise validatorConfig.punctuationPolicy="strict". Pour les autres compétences, le correcteur tolère automatiquement le seul point final manquant ; ne présente pas ce point comme une condition de réussite.
 - Pour une preuve "controlled_production", exige une réponse réellement produite (short_answer, cloze ou transform), jamais un simple QCM.
 - Pour la compréhension écrite, inclus dans promptFr un court passage original et toutes les informations nécessaires. Aucune question ne doit dépendre d'un texte absent.
 - Pour l'orthographe productive, donne un contexte ou un indice qui ne révèle jamais la graphie attendue. N'annonce pas une dictée sans ressource audio.

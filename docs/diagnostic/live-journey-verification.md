@@ -1,0 +1,22 @@
+# Live diagnostic-to-learning verification
+
+`scripts/verify-live-granular-journey.mts` operates an existing technical QA student through Playwright on an HTTPS deployment. It uses the managed account provisioner's private JSON file to authenticate without sending email. Do not use a real learner's account. It preserves previous answers and any paused session, then submits a deliberately mixed continuation: compound-form answers are wrong and every fifth other answer is wrong. This is a functional test profile, not a calibrated learner model.
+
+The runner spends real browser time on questions, lets the application's heartbeat enforce the time budget, and checks persisted grading after each submission. It verifies the complete graph result count, available learning activities, reload persistence, guided feedback, lesson completion, isolation of guided work from diagnostic evidence, and a fresh independent check saved against the lesson's exact skill. A failure to find a lesson needs investigation; uncertain evidence may legitimately call for another check before instruction.
+
+Example for the pending revision-six rollout, **after publication, default-selection verification and the compound-production smoke check**:
+
+```sh
+node --import tsx scripts/verify-live-granular-journey.mts \
+  --base-url https://app.trouvetaplume.com \
+  --release-key french-granular-diagnostic-v7 \
+  --expected-scope 158 \
+  --credentials-file tmp/plume-granular-r6-default-qa.json \
+  --output-prefix tmp/plume-r6-live
+```
+
+Progress, final results and learning verification are separate JSON files. A final-results file alone does not prove the lesson or independent check passed. The runner does not publish, promote, reset a diagnostic, certify mastery or replace pedagogical review. Stop or inspect an existing running process before starting another against the same account.
+
+After the diagnostic reaches learning, run `scripts/audit-live-granular-result.mts <QA-session-UUID> <private-output.json>` for a read-only result audit. It checks graph completeness, keeps untested skills unknown, checks mastery against mode confirmation and the release's item/context/occasion/accuracy minimums, and reports per-skill answers and proposed activities. It refuses to emit a final-result audit for an unfinished diagnostic. This is a technical consistency check, not pedagogical calibration.
+
+For an explicitly constructed struggling follow-up scenario, add `--follow-up-errors`. If the initial pathway offers only checks, the runner follows up to eight proposed checks with intentionally wrong answers, verifies their persisted grading, and then continues into any offered lesson. These additional answers are recorded separately in `-initial-checks.json`; they do not change the original diagnostic answer count or profile. The bound fails for investigation if no lesson appears. Omitting the flag preserves the original requirement for an immediately available lesson.

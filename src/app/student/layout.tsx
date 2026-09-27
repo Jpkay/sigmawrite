@@ -1,3 +1,6 @@
+import {DASHBOARD_COPY,STUDENT_INTERFACE_COPY} from "@/lib/student-interface-copy";
+import {OFFLINE_FALLBACK_COPY} from "../../../public/offline-fallback.js";
+import {journalCurrentStudentPayload} from '@/lib/diagnostic/granular/server-delivery-journal';
 import { DashboardShell, type NavItem, type TabItem } from "@/components/dashboard-shell";
 import { getSessionProfile, requireRole } from "@/lib/auth";
 import { getStudentAccessGate } from "@/lib/db/lifecycle";
@@ -7,14 +10,14 @@ import { StudentAssessmentGate } from "@/components/student-assessment-gate";
 
 const nav: NavItem[] = [
   { href: "/student", label: "Accueil" },
-  { href: "/student/onboarding", label: "Découverte" },
+  { href: "/student/lessons", label: "Mes leçons" },
   { href: "/student/diagnostic", label: "Diagnostic" },
   { href: "/student/dictee", label: "Dictées" },
   { href: "/student/vocabulary", label: "Vocabulaire" },
   { href: "/student/memory", label: "Mémoire" },
   { href: "/student/progress", label: "Progrès" },
   { href: "/student/recueil", label: "Mon recueil" },
-  { href: "/student/frontier", label: "Frontière" },
+  { href: "/student/frontier", label: "Mon parcours" },
   { href: "/student/inbox", label: "Messages" },
   { href: "/student/reference/verbe", label: "Référence", matchPrefixes: ["/student/reference"] },
   { href: "/student/settings", label: "Paramètres" },
@@ -39,12 +42,20 @@ export default async function StudentLayout({
   const access = session?.role === "student" && isSupabaseConfigured
     ? await getStudentAccessGate()
     : null;
+  const user={name:session?.displayName??"Élève",role:session?.role??"student",analyticsId:session?.id};
+  // Capture only this layout's delivered labels and identity, not child pages.
+  // A cached layout reuses the already-recorded payload on client navigation.
+  await journalCurrentStudentPayload('student:shell',{
+    area:'Élève',navigation:nav.map(item=>item.label),tabs:tabs.map(item=>item.label),
+    displayName:user.name,role:user.role,offlineFallback:OFFLINE_FALLBACK_COPY,
+    controls:STUDENT_INTERFACE_COPY,brand:DASHBOARD_COPY.brand,shell:DASHBOARD_COPY.fr,
+  });
   return (
     <DashboardShell
       area="Élève"
       nav={nav}
       tabs={tabs}
-      user={{ name: session?.displayName ?? "Élève", role: session?.role ?? "student", analyticsId: session?.id }}
+      user={user}
     >
       {access && !access.authorized
         ? <StudentAccessPending />

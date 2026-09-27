@@ -1,0 +1,683 @@
+{
+  "version": "french-v3-argument-thesis-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-argument-thesis:manga-club",
+      "item": {
+        "nodeKey": "identifier_these_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nCertains pensent que lire un manga doit rester une activité solitaire. Je défends au contraire la création d’un club de lecture de mangas. Discuter des choix des personnages permettrait de découvrir des interprétations différentes.\n\nQuelle idée l’auteur défend-il dans ce texte ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-thesis:manga-club",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Certains pensent que lire un manga doit rester une activité solitaire. Je défends au contraire la création d’un club de lecture de mangas. Discuter des choix des personnages permettrait de découvrir des interprétations différentes.",
+            "choices": [
+              {
+                "quoteFr": "Je défends au contraire la création d’un club de lecture de mangas.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Certains pensent que lire un manga doit rester une activité solitaire.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Discuter des choix des personnages permettrait de découvrir des interprétations différentes.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Créer un club de lecture de mangas.",
+            "correct": true
+          },
+          {
+            "text": "Lire les mangas uniquement seul.",
+            "correct": false
+          },
+          {
+            "text": "Les personnages peuvent être interprétés différemment.",
+            "correct": false
+          },
+          {
+            "text": "Remplacer tous les romans par des mangas.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-thesis:quiet-room",
+      "item": {
+        "nodeKey": "identifier_these_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUne salle calme devrait rester accessible pendant la pause. Les élèves qui souhaitent lire y trouveraient un endroit sans bruit. La pièce près du bureau pourrait convenir.\n\nQuelle idée l’auteur défend-il dans ce texte ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-thesis:quiet-room",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Une salle calme devrait rester accessible pendant la pause. Les élèves qui souhaitent lire y trouveraient un endroit sans bruit. La pièce près du bureau pourrait convenir.",
+            "choices": [
+              {
+                "quoteFr": "Une salle calme devrait rester accessible pendant la pause.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les élèves qui souhaitent lire y trouveraient un endroit sans bruit.",
+                "correct": false
+              },
+              {
+                "quoteFr": "La pièce près du bureau pourrait convenir.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Garder une salle calme accessible pendant la pause.",
+            "correct": true
+          },
+          {
+            "text": "Choisir obligatoirement la pièce près du bureau.",
+            "correct": false
+          },
+          {
+            "text": "Certains élèves souhaitent lire sans bruit.",
+            "correct": false
+          },
+          {
+            "text": "Interdire toute conversation dans le collège.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-thesis:repair",
+      "item": {
+        "nodeKey": "identifier_these_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nJeter un objet dès la première panne coûte cher. Apprendre quelques réparations permet aussi de limiter les déchets. C’est pourquoi je propose des ateliers de réparation au collège.\n\nQuelle idée l’auteur défend-il dans ce texte ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-thesis:repair",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Jeter un objet dès la première panne coûte cher. Apprendre quelques réparations permet aussi de limiter les déchets. C’est pourquoi je propose des ateliers de réparation au collège.",
+            "choices": [
+              {
+                "quoteFr": "C’est pourquoi je propose des ateliers de réparation au collège.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Jeter un objet dès la première panne coûte cher.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Apprendre quelques réparations permet aussi de limiter les déchets.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Organiser des ateliers de réparation au collège.",
+            "correct": true
+          },
+          {
+            "text": "Une panne peut entraîner une dépense.",
+            "correct": false
+          },
+          {
+            "text": "Les réparations peuvent limiter les déchets.",
+            "correct": false
+          },
+          {
+            "text": "Interdire l’achat de tout objet neuf.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-thesis:uniform",
+      "item": {
+        "nodeKey": "identifier_these_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nOn affirme parfois qu’un uniforme rendrait tous les élèves égaux. Je ne suis pas favorable à cette obligation. Les différences de moyens resteraient visibles dans les sacs et les chaussures.\n\nQuelle idée l’auteur défend-il dans ce texte ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-thesis:uniform",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "On affirme parfois qu’un uniforme rendrait tous les élèves égaux. Je ne suis pas favorable à cette obligation. Les différences de moyens resteraient visibles dans les sacs et les chaussures.",
+            "choices": [
+              {
+                "quoteFr": "Je ne suis pas favorable à cette obligation.",
+                "correct": true
+              },
+              {
+                "quoteFr": "On affirme parfois qu’un uniforme rendrait tous les élèves égaux.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les différences de moyens resteraient visibles dans les sacs et les chaussures.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne pas rendre l’uniforme obligatoire.",
+            "correct": true
+          },
+          {
+            "text": "L’uniforme rend tous les élèves égaux.",
+            "correct": false
+          },
+          {
+            "text": "Les sacs peuvent montrer des différences de moyens.",
+            "correct": false
+          },
+          {
+            "text": "Interdire les sacs et les chaussures différents.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-thesis:garden",
+      "item": {
+        "nodeKey": "identifier_these_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nIl vaut mieux commencer notre potager par une petite surface. Un grand terrain demanderait un entretien que notre groupe ne peut pas encore assurer. Nous pourrions l’agrandir après une première saison réussie.\n\nQuelle idée l’auteur défend-il dans ce texte ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-thesis:garden",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Il vaut mieux commencer notre potager par une petite surface. Un grand terrain demanderait un entretien que notre groupe ne peut pas encore assurer. Nous pourrions l’agrandir après une première saison réussie.",
+            "choices": [
+              {
+                "quoteFr": "Il vaut mieux commencer notre potager par une petite surface.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Un grand terrain demanderait un entretien que notre groupe ne peut pas encore assurer.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Nous pourrions l’agrandir après une première saison réussie.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Commencer le potager sur une petite surface.",
+            "correct": true
+          },
+          {
+            "text": "Un grand terrain demande beaucoup d’entretien.",
+            "correct": false
+          },
+          {
+            "text": "Agrandir immédiatement le potager.",
+            "correct": false
+          },
+          {
+            "text": "Renoncer définitivement au potager.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-thesis:phone",
+      "item": {
+        "nodeKey": "identifier_these_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nPendant une discussion, les notifications détournent notre attention. Même une consultation rapide peut faire perdre le fil d’une idée. Je recommande donc de laisser les téléphones de côté pendant les débats du club.\n\nQuelle idée l’auteur défend-il dans ce texte ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-thesis:phone",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Pendant une discussion, les notifications détournent notre attention. Même une consultation rapide peut faire perdre le fil d’une idée. Je recommande donc de laisser les téléphones de côté pendant les débats du club.",
+            "choices": [
+              {
+                "quoteFr": "Je recommande donc de laisser les téléphones de côté pendant les débats du club.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Pendant une discussion, les notifications détournent notre attention.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Même une consultation rapide peut faire perdre le fil d’une idée.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Mettre les téléphones de côté pendant les débats du club.",
+            "correct": true
+          },
+          {
+            "text": "Une notification peut distraire.",
+            "correct": false
+          },
+          {
+            "text": "Supprimer définitivement les téléphones.",
+            "correct": false
+          },
+          {
+            "text": "Consulter son téléphone pendant chaque débat.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-thesis:tournament",
+      "item": {
+        "nodeKey": "identifier_these_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe tournoi plaît beaucoup, mais son organisation occupe déjà toutes nos pauses. Il ne faudrait pas ajouter une nouvelle compétition ce mois-ci. Nous aurions ainsi le temps de terminer celle qui est commencée.\n\nQuelle idée l’auteur défend-il dans ce texte ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-thesis:tournament",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Le tournoi plaît beaucoup, mais son organisation occupe déjà toutes nos pauses. Il ne faudrait pas ajouter une nouvelle compétition ce mois-ci. Nous aurions ainsi le temps de terminer celle qui est commencée.",
+            "choices": [
+              {
+                "quoteFr": "Il ne faudrait pas ajouter une nouvelle compétition ce mois-ci.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le tournoi plaît beaucoup, mais son organisation occupe déjà toutes nos pauses.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Nous aurions ainsi le temps de terminer celle qui est commencée.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Ne pas ajouter de compétition ce mois-ci.",
+            "correct": true
+          },
+          {
+            "text": "Le tournoi est apprécié.",
+            "correct": false
+          },
+          {
+            "text": "Terminer la compétition déjà commencée prend du temps.",
+            "correct": false
+          },
+          {
+            "text": "Ne plus jamais organiser de tournoi.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-argument-thesis:library",
+      "item": {
+        "nodeKey": "identifier_these_argument",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa bibliothèque devrait prêter aussi des livres audio. Ils permettraient de découvrir des histoires pendant un trajet. Ce service compléterait les livres imprimés sans les remplacer.\n\nQuelle idée l’auteur défend-il dans ce texte ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-argument-thesis:library",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "La bibliothèque devrait prêter aussi des livres audio. Ils permettraient de découvrir des histoires pendant un trajet. Ce service compléterait les livres imprimés sans les remplacer.",
+            "choices": [
+              {
+                "quoteFr": "La bibliothèque devrait prêter aussi des livres audio.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Ils permettraient de découvrir des histoires pendant un trajet.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Ce service compléterait les livres imprimés sans les remplacer.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Ajouter le prêt de livres audio à la bibliothèque.",
+            "correct": true
+          },
+          {
+            "text": "On peut écouter une histoire pendant un trajet.",
+            "correct": false
+          },
+          {
+            "text": "Retirer tous les livres imprimés.",
+            "correct": false
+          },
+          {
+            "text": "Autoriser seulement les livres imprimés.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "argumentative-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-argument-thesis:manga-club",
+      "itemChecksum": "sha256:0673c5f33cc7bd20c66a2d2bdeaf04d5da69447bd81c913f3f08b757190d8b39",
+      "facetKey": "identifier_these_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-thesis:manga-club",
+      "reason": "Distinguer la thèse défendue des raisons, détails et opinions rapportées, sans demander si le lecteur est d’accord."
+    },
+    {
+      "itemKey": "v3-argument-thesis:quiet-room",
+      "itemChecksum": "sha256:2b35d3e3b5fe0f76799c2bf1a592cf9038e7c121bf8fb8bc37d49ae4b082f8d2",
+      "facetKey": "identifier_these_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-thesis:quiet-room",
+      "reason": "Distinguer la thèse défendue des raisons, détails et opinions rapportées, sans demander si le lecteur est d’accord."
+    },
+    {
+      "itemKey": "v3-argument-thesis:repair",
+      "itemChecksum": "sha256:15b5736a092798c4e3a5f452d5976af558c3aeea8ecf7650240301e681ce82c4",
+      "facetKey": "identifier_these_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-thesis:repair",
+      "reason": "Distinguer la thèse défendue des raisons, détails et opinions rapportées, sans demander si le lecteur est d’accord."
+    },
+    {
+      "itemKey": "v3-argument-thesis:uniform",
+      "itemChecksum": "sha256:27790caf1322bbcb3c8c6969b1ccbed7694bc3e7f9c8781aa6feecc8532b402a",
+      "facetKey": "identifier_these_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-thesis:uniform",
+      "reason": "Distinguer la thèse défendue des raisons, détails et opinions rapportées, sans demander si le lecteur est d’accord."
+    },
+    {
+      "itemKey": "v3-argument-thesis:garden",
+      "itemChecksum": "sha256:b62ae1f92ac6cbe7c1bdd5afa5dd986f34cded64666cfdbeedb9f4f79f66252e",
+      "facetKey": "identifier_these_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-thesis:garden",
+      "reason": "Distinguer la thèse défendue des raisons, détails et opinions rapportées, sans demander si le lecteur est d’accord."
+    },
+    {
+      "itemKey": "v3-argument-thesis:phone",
+      "itemChecksum": "sha256:733c0fa83064cca46b6a6f786a8d2d783b96ea5a16819797d8fb2bc937dbea53",
+      "facetKey": "identifier_these_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-thesis:phone",
+      "reason": "Distinguer la thèse défendue des raisons, détails et opinions rapportées, sans demander si le lecteur est d’accord."
+    },
+    {
+      "itemKey": "v3-argument-thesis:tournament",
+      "itemChecksum": "sha256:6e09719efcc015e3243ac6001b227ce3fc5e0409cdc045b4c1b8847d902f2e7a",
+      "facetKey": "identifier_these_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-thesis:tournament",
+      "reason": "Distinguer la thèse défendue des raisons, détails et opinions rapportées, sans demander si le lecteur est d’accord."
+    },
+    {
+      "itemKey": "v3-argument-thesis:library",
+      "itemChecksum": "sha256:75bc91743a216ad8ddd4c63bafd5799bc9f8abdcb56d4843342044f91f6c14e7",
+      "facetKey": "identifier_these_argument::text_type:argumentative",
+      "contextKey": "passage:v3-argument-thesis:library",
+      "reason": "Distinguer la thèse défendue des raisons, détails et opinions rapportées, sans demander si le lecteur est d’accord."
+    }
+  ],
+  "checksum": "sha256:04e30ff7afbc5c8c4ce55d10b5cc60512740e2ab55f6dcbfa34603d4249106f7"
+}

@@ -1,0 +1,1307 @@
+{
+  "version": "french-v3-passive-recognition-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-passive-recognition:1",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le trophée est remis par la directrice.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le trophée est remis par la directrice."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le trophée est remis par la directrice."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": true
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:2",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le jardinier arrose les plantes.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le jardinier arrose les plantes."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le jardinier arrose les plantes."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Le jardinier arrose les plantes.",
+            "rationaleFr": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple."
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": false
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": true
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:3",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La nageuse est arrivée au bassin.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La nageuse est arrivée au bassin."
+            ],
+            "assessed": {
+              "sentences": [
+                "La nageuse est arrivée au bassin."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "La nageuse est arrivée au bassin.",
+            "rationaleFr": "Le verbe est à la voix active, à un temps composé avec un auxiliaire."
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": false
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": true
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:4",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les décors seront transportés par les bénévoles.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les décors seront transportés par les bénévoles."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les décors seront transportés par les bénévoles."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": true
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:5",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Ce personnage est courageux.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ce personnage est courageux."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ce personnage est courageux."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Ce personnage est courageux.",
+            "rationaleFr": "La phrase décrit le sujet avec un adjectif, sans construction passive."
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": false
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:6",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le courrier a été distribué par le facteur.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Le courrier a été distribué par le facteur."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le courrier a été distribué par le facteur."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": true
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:7",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les résultats seront annoncés demain.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les résultats seront annoncés demain."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les résultats seront annoncés demain."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": true
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:8",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les élèves ont préparé une affiche.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les élèves ont préparé une affiche."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les élèves ont préparé une affiche."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Les élèves ont préparé une affiche.",
+            "rationaleFr": "Le verbe est à la voix active, à un temps composé avec un auxiliaire."
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": false
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": true
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:9",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Un mécanicien réparera ce moteur.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Un mécanicien réparera ce moteur."
+            ],
+            "assessed": {
+              "sentences": [
+                "Un mécanicien réparera ce moteur."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Un mécanicien réparera ce moteur.",
+            "rationaleFr": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple."
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": false
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": true
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:10",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La gagnante était applaudie par le public.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "La gagnante était applaudie par le public."
+            ],
+            "assessed": {
+              "sentences": [
+                "La gagnante était applaudie par le public."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": true
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:11",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les affiches sont dessinées par les membres du club.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les affiches sont dessinées par les membres du club."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les affiches sont dessinées par les membres du club."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": true
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:12",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les voisines sont parties tôt.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les voisines sont parties tôt."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les voisines sont parties tôt."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Les voisines sont parties tôt.",
+            "rationaleFr": "Le verbe est à la voix active, à un temps composé avec un auxiliaire."
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": false
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": true
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:13",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Cette salle semble immense.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Cette salle semble immense."
+            ],
+            "assessed": {
+              "sentences": [
+                "Cette salle semble immense."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "Cette salle semble immense.",
+            "rationaleFr": "La phrase décrit le sujet avec un adjectif, sans construction passive."
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": false
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": true
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:14",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "L’orchestre jouait une nouvelle mélodie.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "L’orchestre jouait une nouvelle mélodie."
+            ],
+            "assessed": {
+              "sentences": [
+                "L’orchestre jouait une nouvelle mélodie."
+              ]
+            }
+          },
+          "negativeExample": {
+            "excerptFr": "L’orchestre jouait une nouvelle mélodie.",
+            "rationaleFr": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple."
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": false
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": true
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:15",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Ce roman sera traduit en italien.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Ce roman sera traduit en italien."
+            ],
+            "assessed": {
+              "sentences": [
+                "Ce roman sera traduit en italien."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": true
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-passive-recognition:16",
+      "item": {
+        "nodeKey": "construction_voix_passive",
+        "strand": "grammaire_syntaxe",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les fenêtres ont été nettoyées par l’équipe.\n\nChoisis l’analyse correcte de cette phrase.",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "materialExposure": {
+            "sentences": [
+              "Les fenêtres ont été nettoyées par l’équipe."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les fenêtres ont été nettoyées par l’équipe."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "Le sujet subit l’action : le verbe est à la voix passive.",
+            "correct": true
+          },
+          {
+            "text": "Le sujet fait l’action : le verbe est à la voix active, à un temps simple.",
+            "correct": false
+          },
+          {
+            "text": "Le verbe est à la voix active, à un temps composé avec un auxiliaire.",
+            "correct": false
+          },
+          {
+            "text": "La phrase décrit le sujet avec un adjectif, sans construction passive.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-analysis",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "grammar",
+      "promptFamily": "passive-analysis",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:1",
+      "itemChecksum": "sha256:627ba34dde3683838f87e2f02cf39dd7b51f981e063debb06246b7b3759ef6d0",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:1"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:2",
+      "itemChecksum": "sha256:f2e3eb6e6823dd2aba374f08f262388add24555b750741b393c3050dee70560b",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:2"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:3",
+      "itemChecksum": "sha256:df226a80a97f18815e87bdc53fbe403496367abc24a29cb5b3768101dcb7cdc5",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:3"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:4",
+      "itemChecksum": "sha256:28ec3f79e7cf5c6b10d86239711c9f4978e7d0db85a845f1e57564c74800a9b2",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:4"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:5",
+      "itemChecksum": "sha256:f5212b480945ded7ec238cf2c60a67ed681ff03c8fd146b2901d0205afe73b9f",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:5"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:6",
+      "itemChecksum": "sha256:58c2cbe728dd922a518347b3051428b6055afbcb976caa6d772651796fc9b979",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:6"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:7",
+      "itemChecksum": "sha256:0ee8ef93c80115faf5c37dea5b7cc0a367ee81333b7fe577f95ac7c42718671f",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:7"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:8",
+      "itemChecksum": "sha256:cf3f07f8c433329c9e1c674dd5566e179b48b2f6e65641664df978a566e84514",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:8"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:9",
+      "itemChecksum": "sha256:7e9027689f3d7476f710726cd83d7128fbaa0a9210b6a4f756787d37bdf9344f",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:9"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:10",
+      "itemChecksum": "sha256:331aa1825599575f852df49dac72901e5fc1a13aeb3221a1c578c5bf96ee3128",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:10"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:11",
+      "itemChecksum": "sha256:84e0c272b14d290cef8c0ff0fca3f49733831104ed6f16486d2597cd33ecde8d",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:11"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:12",
+      "itemChecksum": "sha256:f0f575132bfa98224986880cd558e5bf16c3b7bc97e67c2a45f63df425898dd1",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:12"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:13",
+      "itemChecksum": "sha256:29220c629e3dc6f5e7ad64645e9dd26416490d3b3afad18db2bd8154c8b892c0",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:13"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:14",
+      "itemChecksum": "sha256:65bc97789d2a835db61311f5c9980e2a4737b07ea63c780d3e401d2e7d177300",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:14"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:15",
+      "itemChecksum": "sha256:82be50f5e283bcce3977307eab8908a6ead611e1ae5fd5fc54c7cd1779571d39",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:15"
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-passive-recognition:16",
+      "itemChecksum": "sha256:a9ae8a1b5ea726dd045b7d8dd4a443cdd6e518eea131bd36b64958feed6f4003",
+      "evidenceTarget": {
+        "nodeKey": "construction_voix_passive",
+        "evidenceKey": "reading-analysis"
+      },
+      "contextKey": "passive-recognition:16"
+    }
+  ],
+  "checksum": "sha256:4b76a799a59f7e5ae6af89a0758248ba0835cffb86ffadafaa08541c31dea55d"
+}

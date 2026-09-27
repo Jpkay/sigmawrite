@@ -1,0 +1,1355 @@
+{
+  "version": "french-v3-explicit-reading-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-explicit-reading:manga-return",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nNora entre à la bibliothèque avec deux mangas dans son sac. Elle dépose les livres dans la boîte bleue près de la porte. Puis elle rejoint son amie au rayon des romans.\n\nOù Nora dépose-t-elle les livres ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:manga-return",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Nora entre à la bibliothèque avec deux mangas dans son sac. Elle dépose les livres dans la boîte bleue près de la porte. Puis elle rejoint son amie au rayon des romans.",
+            "choices": [
+              {
+                "quoteFr": "Elle dépose les livres dans la boîte bleue près de la porte.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Nora entre à la bibliothèque avec deux mangas dans son sac.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Puis elle rejoint son amie au rayon des romans.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Dans la boîte bleue près de la porte.",
+            "correct": true
+          },
+          {
+            "text": "Sur une table au rayon des romans.",
+            "correct": false
+          },
+          {
+            "text": "Dans le sac de son amie.",
+            "correct": false
+          },
+          {
+            "text": "Derrière le comptoir de la bibliothèque.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:bus-departure",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAdam arrive au terminus avant son frère. Leur bus part à huit heures quinze. Pendant qu’il attend, Adam achète une bouteille d’eau.\n\nÀ quelle heure le bus part-il ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:bus-departure",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Adam arrive au terminus avant son frère. Leur bus part à huit heures quinze. Pendant qu’il attend, Adam achète une bouteille d’eau.",
+            "choices": [
+              {
+                "quoteFr": "Leur bus part à huit heures quinze.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Adam arrive au terminus avant son frère.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Pendant qu’il attend, Adam achète une bouteille d’eau.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "À huit heures quinze.",
+            "correct": true
+          },
+          {
+            "text": "À huit heures.",
+            "correct": false
+          },
+          {
+            "text": "À huit heures trente.",
+            "correct": false
+          },
+          {
+            "text": "À neuf heures quinze.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:cake-delivery",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe gâteau est enfin prêt pour la fête. Maya confie la boîte à son cousin Idriss. Elle ferme ensuite les fenêtres de la cuisine et prend ses clés.\n\nÀ qui Maya confie-t-elle la boîte ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:cake-delivery",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Le gâteau est enfin prêt pour la fête. Maya confie la boîte à son cousin Idriss. Elle ferme ensuite les fenêtres de la cuisine et prend ses clés.",
+            "choices": [
+              {
+                "quoteFr": "Maya confie la boîte à son cousin Idriss.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le gâteau est enfin prêt pour la fête.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Elle ferme ensuite les fenêtres de la cuisine et prend ses clés.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "À son cousin Idriss.",
+            "correct": true
+          },
+          {
+            "text": "À sa sœur.",
+            "correct": false
+          },
+          {
+            "text": "À un voisin.",
+            "correct": false
+          },
+          {
+            "text": "À la personne qui a préparé le gâteau.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:lost-glove",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nAprès la répétition, Éli cherche son gant rouge. Il le retrouve sous le banc du vestiaire. Il range le gant dans sa poche et court rejoindre les autres dehors.\n\nOù Éli retrouve-t-il son gant ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:lost-glove",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Après la répétition, Éli cherche son gant rouge. Il le retrouve sous le banc du vestiaire. Il range le gant dans sa poche et court rejoindre les autres dehors.",
+            "choices": [
+              {
+                "quoteFr": "Il le retrouve sous le banc du vestiaire.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Après la répétition, Éli cherche son gant rouge.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Il range le gant dans sa poche et court rejoindre les autres dehors.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Sous le banc du vestiaire.",
+            "correct": true
+          },
+          {
+            "text": "Dans sa poche.",
+            "correct": false
+          },
+          {
+            "text": "Dehors près de la porte.",
+            "correct": false
+          },
+          {
+            "text": "Sur une chaise de la salle de répétition.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:garden-seeds",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nSamira ouvre le petit sachet offert par sa tante. Elle plante six graines dans un pot en terre. Elle arrose le pot, puis le pose sur le rebord de la fenêtre.\n\nCombien de graines Samira plante-t-elle ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:garden-seeds",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Samira ouvre le petit sachet offert par sa tante. Elle plante six graines dans un pot en terre. Elle arrose le pot, puis le pose sur le rebord de la fenêtre.",
+            "choices": [
+              {
+                "quoteFr": "Elle plante six graines dans un pot en terre.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Samira ouvre le petit sachet offert par sa tante.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Elle arrose le pot, puis le pose sur le rebord de la fenêtre.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Six graines.",
+            "correct": true
+          },
+          {
+            "text": "Trois graines.",
+            "correct": false
+          },
+          {
+            "text": "Cinq graines.",
+            "correct": false
+          },
+          {
+            "text": "Dix graines.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:repair-bike",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe vélo de Tom fait un bruit étrange. Sa voisine resserre une vis près de la roue arrière. Tom essaie ensuite le vélo dans l’allée et lui dit merci.\n\nQue resserre la voisine ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:repair-bike",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Le vélo de Tom fait un bruit étrange. Sa voisine resserre une vis près de la roue arrière. Tom essaie ensuite le vélo dans l’allée et lui dit merci.",
+            "choices": [
+              {
+                "quoteFr": "Sa voisine resserre une vis près de la roue arrière.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le vélo de Tom fait un bruit étrange.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Tom essaie ensuite le vélo dans l’allée et lui dit merci.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Une vis près de la roue arrière.",
+            "correct": true
+          },
+          {
+            "text": "Une vis sur le guidon.",
+            "correct": false
+          },
+          {
+            "text": "La selle du vélo.",
+            "correct": false
+          },
+          {
+            "text": "Le bouchon d’une roue.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:draw-prize",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes dessins du concours sont exposés dans le couloir. Le jury remet à Lina un carnet à couverture verte. Elle montre son prix à ses camarades avant de retourner en classe.\n\nQuel prix Lina reçoit-elle ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:draw-prize",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "Les dessins du concours sont exposés dans le couloir. Le jury remet à Lina un carnet à couverture verte. Elle montre son prix à ses camarades avant de retourner en classe.",
+            "choices": [
+              {
+                "quoteFr": "Le jury remet à Lina un carnet à couverture verte.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les dessins du concours sont exposés dans le couloir.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Elle montre son prix à ses camarades avant de retourner en classe.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Un carnet à couverture verte.",
+            "correct": true
+          },
+          {
+            "text": "Une boîte de crayons.",
+            "correct": false
+          },
+          {
+            "text": "Un livre de dessin.",
+            "correct": false
+          },
+          {
+            "text": "Une affiche pour sa classe.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:rain-shelter",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa pluie surprend Amine au retour du marché. Il s’abrite sous l’auvent de la boulangerie. Quand les gouttes deviennent moins fortes, il reprend son chemin avec ses achats.\n\nOù Amine s’abrite-t-il ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:rain-shelter",
+          "sourceTextType": "literary",
+          "textualSupport": {
+            "passageText": "La pluie surprend Amine au retour du marché. Il s’abrite sous l’auvent de la boulangerie. Quand les gouttes deviennent moins fortes, il reprend son chemin avec ses achats.",
+            "choices": [
+              {
+                "quoteFr": "Il s’abrite sous l’auvent de la boulangerie.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La pluie surprend Amine au retour du marché.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Quand les gouttes deviennent moins fortes, il reprend son chemin avec ses achats.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Sous l’auvent de la boulangerie.",
+            "correct": true
+          },
+          {
+            "text": "Dans une voiture.",
+            "correct": false
+          },
+          {
+            "text": "Sous un arbre du marché.",
+            "correct": false
+          },
+          {
+            "text": "À l’intérieur de son immeuble.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:library-hours",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa bibliothèque devrait ouvrir un peu plus tard pour les élèves qui terminent leurs cours après seize heures. Je propose une fermeture à dix-huit heures le mercredi. Cette ouverture supplémentaire laisserait davantage de temps pour emprunter un livre.\n\nQuel jour la fermeture à dix-huit heures est-elle proposée ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:library-hours",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "La bibliothèque devrait ouvrir un peu plus tard pour les élèves qui terminent leurs cours après seize heures. Je propose une fermeture à dix-huit heures le mercredi. Cette ouverture supplémentaire laisserait davantage de temps pour emprunter un livre.",
+            "choices": [
+              {
+                "quoteFr": "Je propose une fermeture à dix-huit heures le mercredi.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La bibliothèque devrait ouvrir un peu plus tard pour les élèves qui terminent leurs cours après seize heures.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Cette ouverture supplémentaire laisserait davantage de temps pour emprunter un livre.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le mercredi.",
+            "correct": true
+          },
+          {
+            "text": "Le lundi.",
+            "correct": false
+          },
+          {
+            "text": "Le vendredi.",
+            "correct": false
+          },
+          {
+            "text": "Le samedi.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:water-taps",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nInstaller des points d’eau dans la cour permettrait aux élèves de remplir leurs gourdes. Notre groupe demande deux robinets près du gymnase. Ce changement pourrait réduire le nombre de bouteilles jetées après le sport.\n\nCombien de robinets le groupe demande-t-il ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:water-taps",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Installer des points d’eau dans la cour permettrait aux élèves de remplir leurs gourdes. Notre groupe demande deux robinets près du gymnase. Ce changement pourrait réduire le nombre de bouteilles jetées après le sport.",
+            "choices": [
+              {
+                "quoteFr": "Notre groupe demande deux robinets près du gymnase.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Installer des points d’eau dans la cour permettrait aux élèves de remplir leurs gourdes.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Ce changement pourrait réduire le nombre de bouteilles jetées après le sport.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Deux robinets.",
+            "correct": true
+          },
+          {
+            "text": "Un robinet.",
+            "correct": false
+          },
+          {
+            "text": "Trois robinets.",
+            "correct": false
+          },
+          {
+            "text": "Quatre robinets.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:quiet-room",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn lieu calme serait utile aux élèves qui veulent lire pendant la pause. Je propose d’utiliser la petite salle à côté du bureau des surveillants. On pourrait y limiter les conversations pour que chacun puisse se concentrer.\n\nQuelle salle est proposée ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:quiet-room",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Un lieu calme serait utile aux élèves qui veulent lire pendant la pause. Je propose d’utiliser la petite salle à côté du bureau des surveillants. On pourrait y limiter les conversations pour que chacun puisse se concentrer.",
+            "choices": [
+              {
+                "quoteFr": "Je propose d’utiliser la petite salle à côté du bureau des surveillants.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Un lieu calme serait utile aux élèves qui veulent lire pendant la pause.",
+                "correct": false
+              },
+              {
+                "quoteFr": "On pourrait y limiter les conversations pour que chacun puisse se concentrer.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "La petite salle à côté du bureau des surveillants.",
+            "correct": true
+          },
+          {
+            "text": "La salle à côté du gymnase.",
+            "correct": false
+          },
+          {
+            "text": "La salle des professeurs.",
+            "correct": false
+          },
+          {
+            "text": "La grande salle au-dessus de la cantine.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:games-loan",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLe prêt de jeux de société rendrait les pauses pluvieuses plus agréables. Le conseil des élèves pourrait gérer les emprunts. Les élèves apprendraient ainsi à partager le matériel et à le rendre en bon état.\n\nQui pourrait gérer les emprunts ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:games-loan",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Le prêt de jeux de société rendrait les pauses pluvieuses plus agréables. Le conseil des élèves pourrait gérer les emprunts. Les élèves apprendraient ainsi à partager le matériel et à le rendre en bon état.",
+            "choices": [
+              {
+                "quoteFr": "Le conseil des élèves pourrait gérer les emprunts.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Le prêt de jeux de société rendrait les pauses pluvieuses plus agréables.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Les élèves apprendraient ainsi à partager le matériel et à le rendre en bon état.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le conseil des élèves.",
+            "correct": true
+          },
+          {
+            "text": "Les parents uniquement.",
+            "correct": false
+          },
+          {
+            "text": "Le club de théâtre.",
+            "correct": false
+          },
+          {
+            "text": "Les commerçants du quartier.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:tree-yard",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLa cour manque d’ombre pendant les journées chaudes. Nous proposons de planter trois arbres le long du mur sud. Des arbres rendraient cet espace plus agréable sans empêcher les jeux au centre de la cour.\n\nOù les arbres seraient-ils plantés ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:tree-yard",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "La cour manque d’ombre pendant les journées chaudes. Nous proposons de planter trois arbres le long du mur sud. Des arbres rendraient cet espace plus agréable sans empêcher les jeux au centre de la cour.",
+            "choices": [
+              {
+                "quoteFr": "Nous proposons de planter trois arbres le long du mur sud.",
+                "correct": true
+              },
+              {
+                "quoteFr": "La cour manque d’ombre pendant les journées chaudes.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Des arbres rendraient cet espace plus agréable sans empêcher les jeux au centre de la cour.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Le long du mur sud.",
+            "correct": true
+          },
+          {
+            "text": "Au centre de la cour.",
+            "correct": false
+          },
+          {
+            "text": "Devant la porte du gymnase.",
+            "correct": false
+          },
+          {
+            "text": "Dans la rue derrière l’école.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:manga-club",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nUn club de manga peut donner envie de lire et d’échanger des avis. Les rencontres pourraient avoir lieu une fois par mois. Chaque participant présenterait un livre afin de faire découvrir des histoires variées.\n\nÀ quelle fréquence les rencontres sont-elles proposées ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:manga-club",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Un club de manga peut donner envie de lire et d’échanger des avis. Les rencontres pourraient avoir lieu une fois par mois. Chaque participant présenterait un livre afin de faire découvrir des histoires variées.",
+            "choices": [
+              {
+                "quoteFr": "Les rencontres pourraient avoir lieu une fois par mois.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Un club de manga peut donner envie de lire et d’échanger des avis.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Chaque participant présenterait un livre afin de faire découvrir des histoires variées.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Une fois par mois.",
+            "correct": true
+          },
+          {
+            "text": "Tous les jours.",
+            "correct": false
+          },
+          {
+            "text": "Deux fois par semaine.",
+            "correct": false
+          },
+          {
+            "text": "Une fois par an.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:bike-space",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nLes vélos rangés devant l’entrée gênent parfois le passage. Je propose de déplacer les supports derrière le bâtiment principal. Cette solution laisserait l’entrée libre tout en conservant une place pour les cyclistes.\n\nOù faudrait-il déplacer les supports ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:bike-space",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Les vélos rangés devant l’entrée gênent parfois le passage. Je propose de déplacer les supports derrière le bâtiment principal. Cette solution laisserait l’entrée libre tout en conservant une place pour les cyclistes.",
+            "choices": [
+              {
+                "quoteFr": "Je propose de déplacer les supports derrière le bâtiment principal.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Les vélos rangés devant l’entrée gênent parfois le passage.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Cette solution laisserait l’entrée libre tout en conservant une place pour les cyclistes.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Derrière le bâtiment principal.",
+            "correct": true
+          },
+          {
+            "text": "Devant l’entrée.",
+            "correct": false
+          },
+          {
+            "text": "Au milieu du terrain de sport.",
+            "correct": false
+          },
+          {
+            "text": "Dans le hall du bâtiment.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-explicit-reading:reuse-paper",
+      "item": {
+        "nodeKey": "localiser_information_explicite",
+        "strand": "comprehension_ecrite",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lis le texte.\n\nNous devrions réutiliser les feuilles imprimées sur une seule face pour les brouillons. Une boîte de collecte pourrait être installée dans chaque salle de classe. Ce geste simple éviterait de prendre une feuille neuve pour chaque essai.\n\nOù une boîte de collecte serait-elle installée ?",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "sourceTextKey": "v3-explicit-reading:reuse-paper",
+          "sourceTextType": "argumentative",
+          "textualSupport": {
+            "passageText": "Nous devrions réutiliser les feuilles imprimées sur une seule face pour les brouillons. Une boîte de collecte pourrait être installée dans chaque salle de classe. Ce geste simple éviterait de prendre une feuille neuve pour chaque essai.",
+            "choices": [
+              {
+                "quoteFr": "Une boîte de collecte pourrait être installée dans chaque salle de classe.",
+                "correct": true
+              },
+              {
+                "quoteFr": "Nous devrions réutiliser les feuilles imprimées sur une seule face pour les brouillons.",
+                "correct": false
+              },
+              {
+                "quoteFr": "Ce geste simple éviterait de prendre une feuille neuve pour chaque essai.",
+                "correct": false
+              }
+            ]
+          }
+        },
+        "choices": [
+          {
+            "text": "Dans chaque salle de classe.",
+            "correct": true
+          },
+          {
+            "text": "Uniquement à la bibliothèque.",
+            "correct": false
+          },
+          {
+            "text": "Dans la cour.",
+            "correct": false
+          },
+          {
+            "text": "Chez chaque élève.",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "all-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "reading_comprehension",
+      "promptFamily": "answer-and-textual-support",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "itemKey": "v3-explicit-reading:manga-return",
+      "itemChecksum": "sha256:170ccfee8b99b97ef48d06fef973660af66953abad1e85f5e5a54fe234973325",
+      "facetKey": "localiser_information_explicite::text_type:narrative",
+      "contextKey": "passage:v3-explicit-reading:manga-return",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:bus-departure",
+      "itemChecksum": "sha256:ebed7e654acb50f6a9bb0310dd13fb99a1196ffa9eeb067cc9f01fbffa9b4a6f",
+      "facetKey": "localiser_information_explicite::text_type:narrative",
+      "contextKey": "passage:v3-explicit-reading:bus-departure",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:cake-delivery",
+      "itemChecksum": "sha256:97639b43e294461dd2bf05c961c6f1a9a0443e430a3325c1ab0a9318e8fac503",
+      "facetKey": "localiser_information_explicite::text_type:narrative",
+      "contextKey": "passage:v3-explicit-reading:cake-delivery",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:lost-glove",
+      "itemChecksum": "sha256:dec9ca289ddeb212fad4373fb99c8b008823b38b575e1b9ed4d69ffd2b8f9456",
+      "facetKey": "localiser_information_explicite::text_type:narrative",
+      "contextKey": "passage:v3-explicit-reading:lost-glove",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:garden-seeds",
+      "itemChecksum": "sha256:a82bd4577b7f3ee87a6a0ea09f55c2ee0ba8f2d339ad0d0cf6708350bebe3b58",
+      "facetKey": "localiser_information_explicite::text_type:narrative",
+      "contextKey": "passage:v3-explicit-reading:garden-seeds",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:repair-bike",
+      "itemChecksum": "sha256:22f12228e16c232d4f74283a5d89ab8eb324493fc90c7f74e9a5888e16f559bc",
+      "facetKey": "localiser_information_explicite::text_type:narrative",
+      "contextKey": "passage:v3-explicit-reading:repair-bike",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:draw-prize",
+      "itemChecksum": "sha256:65a01353c7ec8f7db0b3828a5fa886edfb45257bf6cb8403c75770da27df30ba",
+      "facetKey": "localiser_information_explicite::text_type:narrative",
+      "contextKey": "passage:v3-explicit-reading:draw-prize",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:rain-shelter",
+      "itemChecksum": "sha256:aad396b26bcc2e67994276c9aa4efa6eb5f85f2204e5a852f7e88f637aadbaac",
+      "facetKey": "localiser_information_explicite::text_type:narrative",
+      "contextKey": "passage:v3-explicit-reading:rain-shelter",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:library-hours",
+      "itemChecksum": "sha256:5072cf53e1aeb0f883e8b04801ba922db0e5c617ee8170a898b32e1c61d7e495",
+      "facetKey": "localiser_information_explicite::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-reading:library-hours",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:water-taps",
+      "itemChecksum": "sha256:49d51d260c83fa3636efdae2df3fae305cf3ab657cfceae0cdbd481ab09f9ec5",
+      "facetKey": "localiser_information_explicite::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-reading:water-taps",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:quiet-room",
+      "itemChecksum": "sha256:bb68e270d12cd15cffae71a641f85321aa0e36f6a378c7fc89b2fa97d4a8793b",
+      "facetKey": "localiser_information_explicite::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-reading:quiet-room",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:games-loan",
+      "itemChecksum": "sha256:c736f2dc86f6f835ddc14f3f8b9a1540a94c9204afc2b308ff983e5f646bc9c4",
+      "facetKey": "localiser_information_explicite::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-reading:games-loan",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:tree-yard",
+      "itemChecksum": "sha256:43a821ff94c8aad71b154239660eb2f05395f6c46721e62bf8ae01334bd6d042",
+      "facetKey": "localiser_information_explicite::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-reading:tree-yard",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:manga-club",
+      "itemChecksum": "sha256:ff0bfe9fb38ba33f43ba19abb253e955d6ae86f133321f5e67ee61710e498c74",
+      "facetKey": "localiser_information_explicite::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-reading:manga-club",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:bike-space",
+      "itemChecksum": "sha256:c5a9268a7228c52130916d5ffadd20e5f965ba088cdbe644e6220ffce1fe2606",
+      "facetKey": "localiser_information_explicite::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-reading:bike-space",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    },
+    {
+      "itemKey": "v3-explicit-reading:reuse-paper",
+      "itemChecksum": "sha256:302851407704dccf74c74874147871b390b9e646ced7fea6bff0e727fe8d032c",
+      "facetKey": "localiser_information_explicite::text_type:argumentative",
+      "contextKey": "passage:v3-explicit-reading:reuse-paper",
+      "reason": "Retrouver une information directement énoncée et sélectionner la phrase qui la contient, sans déduire une cause ou une intention."
+    }
+  ],
+  "checksum": "sha256:207a46e2cb94bd2dfc323d9144ed65a3a8767b1afe0e9cdacdb9e49064fdc433"
+}

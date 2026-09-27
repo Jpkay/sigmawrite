@@ -1,0 +1,73 @@
+{
+  "sourceCommit": "0ac2e7d",
+  "intendedReleaseKey": "french-granular-diagnostic-v6",
+  "assessmentTargets": 154,
+  "questionCount": 2697,
+  "bank": {
+    "key": "french-diagnostic-bank-v3-r5",
+    "id": "a12f5822-68d3-4922-a0b7-fa39d35d928c",
+    "expectedItems": 5304,
+    "checksum": "sha256:41b29d8e6780f0e894f36345655f17878f679d15cf389116988bd5d584c0e2a6",
+    "importVerifiedComplete": true
+  },
+  "preparedDeployment": {
+    "id": "dpl_9SdY6mnNbgHhesssKatEtgutNsFE",
+    "url": "https://sigmawrite-5e73qstra-jpkays-projects.vercel.app",
+    "status": "Ready",
+    "promoted": true
+  },
+  "published": true,
+  "defaultActivated": true,
+  "remaining": [
+    "Finish the live new-compound-target grading and pause/reload check"
+  ],
+  "note": "Published and promoted after all 5,304 stored items passed exact verification and old pinned bundles passed compatibility checks. Human review and full graph implementation remain incomplete. Live verification is recorded incrementally; activation is not proof of complete validation.",
+  "verification": {
+    "version": "french-granular-parallel-publication-v1",
+    "ready": true,
+    "authorization": "product-owner-request-2026-09-11",
+    "reviewOwner": "product_owner",
+    "bankChecksum": "sha256:41b29d8e6780f0e894f36345655f17878f679d15cf389116988bd5d584c0e2a6",
+    "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+    "bundleChecksum": "sha256:5562e523c8896c918710e03b5454508b76b5cc400060b8e62908d9bd478e4a48",
+    "policyChecksum": "sha256:1334cbdff434ddeb8c3c40afa10bd61aeafb921049d344e2000423371774e07a",
+    "scopeChecksum": "sha256:02feaafbb6a692c860448ecc2edacdd214c13bd8ee2dd4146367019c19806d38",
+    "bankItemCount": 5304,
+    "assessmentTargets": 154,
+    "teachingTargets": 154,
+    "instructionGapSkillIds": [],
+    "freshCheckGapSkillIds": [],
+    "verifiedItems": 5304
+  },
+  "release": {
+    "releaseId": "42042122-9ecd-4214-a906-53583bec3d01",
+    "releaseKey": "french-granular-diagnostic-v6",
+    "bundleChecksum": "sha256:5562e523c8896c918710e03b5454508b76b5cc400060b8e62908d9bd478e4a48"
+  },
+  "defaultVerification": {
+    "sessionId": "7eb6c58e-2aab-473c-b205-3964099d5259",
+    "releaseId": "42042122-9ecd-4214-a906-53583bec3d01",
+    "scope": 154,
+    "defaultSelectedByApplication": true,
+    "reloadPreservedSession": true
+  },
+  "demoVerification": {
+    "onboardingRedirect": "/student/lessons",
+    "startableLessonCount": 11
+  },
+  "priorSessionVerification": {
+    "sessionId": "0f4e963f-857e-4924-bd9e-4fc707a45f78",
+    "releaseId": "3136b14e-8337-4fdf-8093-be4a56031b6b",
+    "scope": 96,
+    "existingRevisionPreserved": true,
+    "reloadPreservedSession": true
+  },
+  "compoundRoutingAudit": {
+    "status": "failed_verification_bound",
+    "sessionId": "e90a5cf0-2119-464d-bd8c-3940db77bbe4",
+    "answers": 140,
+    "newCompoundTargetReached": false,
+    "pauseReloadVerified": false,
+    "evidence": "revision-five-routing-audit-2026-09-11.md"
+  }
+}

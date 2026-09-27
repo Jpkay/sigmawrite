@@ -1,0 +1,189 @@
+{
+  "version": "determiner-production-pathway-review-v1",
+  "reviewedLessonChecksums": {
+    "french-v3-teaching:determiner-production": "sha256:24acbafd5e63f6dd62599b93c30d65ba54b1a986cc8bb91771598cf90b1a8c30"
+  },
+  "status": "draft_review_feasibility_only",
+  "taxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "bankChecksum": "sha256:f29362f32b8562bc8f310b6504fa1891c73488e0313444c4018617a7fe62967c",
+  "facetChecksum": "sha256:faef022500592909cfd0d4229529ab1691ebd018503c3390549fc8bf3b46799f",
+  "rows": [
+    {
+      "lessonId": "french-v3-teaching:determiner-production",
+      "lessonChecksum": "sha256:24acbafd5e63f6dd62599b93c30d65ba54b1a986cc8bb91771598cf90b1a8c30",
+      "titleFr": "Corriger le déterminant",
+      "skillId": "construction_accord_determinant_nom::writing-controlled-production",
+      "prerequisites": [
+        "construction_phrase_canonique::reading-analysis",
+        "construction_phrase_canonique::writing-controlled-production"
+      ],
+      "evidenceRequirements": {
+        "minimumItems": 3,
+        "minimumContexts": 1,
+        "minimumOccasions": 2,
+        "minimumAccuracy": 0.8,
+        "textualSupportRequired": false,
+        "minimumTextTypes": 0,
+        "minimumEligibleTokens": 0,
+        "revisionRequired": false,
+        "minimumContrastingErrors": 0,
+        "negativeExamplesRequired": false,
+        "novelWordsRequired": false,
+        "novelSentencesRequired": true,
+        "unaidedRequired": true
+      },
+      "eligibleQuestions": 0,
+      "unapprovedCandidates": 24,
+      "guessingFloorValues": [
+        0.25,
+        0.3333333333333333,
+        0.5
+      ],
+      "minimumAllCorrectItemsForGuessGate": 7,
+      "distinctTargetSentences": 24,
+      "excludedTeachingOverlapQuestionIds": [],
+      "excludedRepeatedSentenceQuestionIds": [],
+      "proposedAllocationStatus": "allocated",
+      "proposedInitialQuestions": [
+        "v3-determiner-production:defined-elision",
+        "v3-determiner-production:defined-feminine",
+        "v3-determiner-production:defined-masculine",
+        "v3-determiner-production:defined-plural",
+        "v3-determiner-production:indefinite-feminine",
+        "v3-determiner-production:indefinite-plural",
+        "v3-determiner-production:leur-plural",
+        "v3-determiner-production:notre-plural",
+        "v3-determiner-production:possessive-mes",
+        "v3-determiner-production:possessive-sa",
+        "v3-determiner-production:possessive-ta",
+        "v3-determiner-production:possessive-vowel"
+      ],
+      "proposedLaterQuestions": [
+        "v3-determiner-production:demonstrative-feminine",
+        "v3-determiner-production:demonstrative-masculine",
+        "v3-determiner-production:demonstrative-plural",
+        "v3-determiner-production:demonstrative-vowel",
+        "v3-determiner-production:indefinite-masculine",
+        "v3-determiner-production:indefinite-singular",
+        "v3-determiner-production:leurs-singular",
+        "v3-determiner-production:possessive-ma",
+        "v3-determiner-production:possessive-mon",
+        "v3-determiner-production:possessive-ses",
+        "v3-determiner-production:possessive-tes",
+        "v3-determiner-production:votre-singular"
+      ],
+      "questionChecksums": {
+        "v3-determiner-production:defined-plural": "sha256:81ed4e2df4cbbdadfc618c6499e6ad4fa601a9258ad9f7f3d7cd07b0cbf4278a",
+        "v3-determiner-production:defined-feminine": "sha256:8484a1d8cf511ec2e3e4847809f7ec652a8c79f7bac68a3c924e42214e3437d0",
+        "v3-determiner-production:defined-masculine": "sha256:0cc603e6b8f98a3e7a11e5845433fd620aae405bd0f45af3191856e3505c3fff",
+        "v3-determiner-production:defined-elision": "sha256:5490666e2693418fb6b63fb589b23398c3a5e7e11b16bbcc2e20abfc59dc63c4",
+        "v3-determiner-production:indefinite-feminine": "sha256:092c5b30e92a0c3bf017029f78f37517c4b21470ded55512a4bf2106ebc1feed",
+        "v3-determiner-production:indefinite-masculine": "sha256:cf6d528e4c5c6b92825367b2d6aee60439ce99634bd51a8f801c7b5353197aaf",
+        "v3-determiner-production:indefinite-plural": "sha256:8feb8818d869feb9fcf2fabaf00189d9f3e893599c3362285e191dedb56381c5",
+        "v3-determiner-production:indefinite-singular": "sha256:0eb7a60c9666c0c5a6d5103ef1821ee7693648f6339d26ced729b27b6836af4c",
+        "v3-determiner-production:demonstrative-feminine": "sha256:022fa089b86245f9fe66f52f4e69421174ee58f5b9c5d262872602f7e584eed6",
+        "v3-determiner-production:demonstrative-masculine": "sha256:820c245f5fe315392b0bd22e945e3f31d10c3fbc19cf51632089741921384c80",
+        "v3-determiner-production:demonstrative-plural": "sha256:f0f7bd5f40ae53436e2b4c535a2931b026ee23472c3a8902ef15defce0e30834",
+        "v3-determiner-production:demonstrative-vowel": "sha256:eaccac358e9f3a1c1aec72e424b456d83b58df3dd58ed4188a3d4433cbc5ea70",
+        "v3-determiner-production:possessive-ma": "sha256:0920ed75089dc9d7cdea38308294688aa96adf3578fbaac51f4a4b43b971373e",
+        "v3-determiner-production:possessive-mon": "sha256:094966b6210eef6d50892cfb2cae8b696a493a891b42d914774d6bad0bda5a44",
+        "v3-determiner-production:possessive-mes": "sha256:bcc86a7362df1e62f9665b5b82279a62750f516a7f91aa111250020b2f6b3950",
+        "v3-determiner-production:possessive-vowel": "sha256:973fc8eaa154f9a093cb96f7bdba3f428f569550c3ee8ee18e4b96b53824cff3",
+        "v3-determiner-production:possessive-ta": "sha256:410bea9775b1d898e5b1dc5a73e464b71e2de67219e38861e36bd18fcd27b460",
+        "v3-determiner-production:possessive-tes": "sha256:2c0748e089734ebfa151fce675ddbac591f6e1d9b778f378b5fc2c2aa5d01acc",
+        "v3-determiner-production:possessive-sa": "sha256:9d70d30ef6c4c12fd930852a884dae46c6ff1c3282bca9fd3ef455728103065e",
+        "v3-determiner-production:possessive-ses": "sha256:1b29d6693f7544407b7960937ce0a01ada57c7af34697ccfed6618a3b0789afd",
+        "v3-determiner-production:notre-plural": "sha256:8189115c67d31d8cb3fa92c64ff648ddd26897ac882265796f086607643fe848",
+        "v3-determiner-production:votre-singular": "sha256:7fca4fd73f054de04545bdea5726b920c7b1c2d8b46116b4467d25da987a9f1c",
+        "v3-determiner-production:leur-plural": "sha256:e259e6337d92b2e98aca97f4c245536920b9ac0ce2af8a172e62de7c09937dc0",
+        "v3-determiner-production:leurs-singular": "sha256:f05334800eb2cebd0a5acbb446ced6622560273c3b6a07af9cb5c55be0b42860"
+      },
+      "assessedMaterialKeys": {
+        "v3-determiner-production:defined-plural": [
+          "sentence:sha256:23ebcea13e9856ecc1f1be65b190e2333958915cd90daf973e856f740e5a055b"
+        ],
+        "v3-determiner-production:defined-feminine": [
+          "sentence:sha256:e724077156350fd388749897d83fe4d1d693ce6dabe1cad33f29493e42c04947"
+        ],
+        "v3-determiner-production:defined-masculine": [
+          "sentence:sha256:db64f24f9e34749e4c92b1773920b97313c3076857eba6c5bd16476142f6f0f5"
+        ],
+        "v3-determiner-production:defined-elision": [
+          "sentence:sha256:7afb18d2bd9446cbc5de502ea88d5b8977c03a0d029e02d38c1b9a1ff07cb0aa"
+        ],
+        "v3-determiner-production:indefinite-feminine": [
+          "sentence:sha256:16e1389e6e1a10944dfa9e3e7e1b2d8069cd3e03e31cdcb715c4f36e78198b0c"
+        ],
+        "v3-determiner-production:indefinite-masculine": [
+          "sentence:sha256:e5d289a0d1207eeb3bfe96c458d465f395fbc604e60bb7a547d52815a11a2f52"
+        ],
+        "v3-determiner-production:indefinite-plural": [
+          "sentence:sha256:1b37d098082711b1e762c7ed8dd85a680645e2251a65f51e0109cb9c8e201716"
+        ],
+        "v3-determiner-production:indefinite-singular": [
+          "sentence:sha256:1cdf42d41380f8385160ee11a364d62063a41f0f699091110563aa4472ad54f6"
+        ],
+        "v3-determiner-production:demonstrative-feminine": [
+          "sentence:sha256:a010c7c91ee87442e64dc3f20b93602364b787533b383074fa92c9b7412e1624"
+        ],
+        "v3-determiner-production:demonstrative-masculine": [
+          "sentence:sha256:ad7bd317387980d316a9d0a19fb31ce146641edbde9b6004d2c433ef9dcfa7c2"
+        ],
+        "v3-determiner-production:demonstrative-plural": [
+          "sentence:sha256:79c3fa044929bec5aec527caacfd92395e1e4a417e8a30d0fc351159728370a5"
+        ],
+        "v3-determiner-production:demonstrative-vowel": [
+          "sentence:sha256:229a36b48dfacfb2e52ab40d1628c9d9c20ef72ca45ccd61ef0ece27f6ab0377"
+        ],
+        "v3-determiner-production:possessive-ma": [
+          "sentence:sha256:46e37077636edf0195185cfbe71db5195ff2fe0114a10e0922b5d62a13c9709e"
+        ],
+        "v3-determiner-production:possessive-mon": [
+          "sentence:sha256:4bef0eedd3e23634b5ed908e8e76a9498a44bb5a0de8f5c7b155a3f2329ebbc0"
+        ],
+        "v3-determiner-production:possessive-mes": [
+          "sentence:sha256:6c7e2fb472e0a080cae20e4f064e62fe4e3f5d604515471dc9cd4a2f3c78da48"
+        ],
+        "v3-determiner-production:possessive-vowel": [
+          "sentence:sha256:bbb60ca25e236332b55148254003ec10ded34e9030e8669146b27c8b85972172"
+        ],
+        "v3-determiner-production:possessive-ta": [
+          "sentence:sha256:8280dc8618116280fa6bce7e37d6467812de7742c64646abd42bc16335ded7ef"
+        ],
+        "v3-determiner-production:possessive-tes": [
+          "sentence:sha256:87232d7ecb85337ed79e4fa4147684246c20cfcdef5070529c908f5486f47831"
+        ],
+        "v3-determiner-production:possessive-sa": [
+          "sentence:sha256:aa2b79b1fb7bf01583e34fb435c5631876f5eb80d292568a6dd135440e96648b"
+        ],
+        "v3-determiner-production:possessive-ses": [
+          "sentence:sha256:5c8dc4a380285287c9c6946516b2716b7c118c32b8593c36027c07c4465ca78a"
+        ],
+        "v3-determiner-production:notre-plural": [
+          "sentence:sha256:27e8fc7da113a543254544ba0070c3983eeb1a8317032bdb5ec2ab71f5f91829"
+        ],
+        "v3-determiner-production:votre-singular": [
+          "sentence:sha256:9bdee0917fb3ed09b3657058e5b8f6816782f0a2db327d60d2aff70bd367f982"
+        ],
+        "v3-determiner-production:leur-plural": [
+          "sentence:sha256:78f9232354eccd39c2f232429e9d99acde8b89962a771c66d9acbddbf42fc4fc"
+        ],
+        "v3-determiner-production:leurs-singular": [
+          "sentence:sha256:2a89284ee557bbaf40385d25eadbe8335210fa53c63f9360e1135c769e4a49a9"
+        ]
+      },
+      "releaseReady": false,
+      "requiredReviews": [
+        "single_determiner_correction",
+        "preserve_determiner_family_and_possessor",
+        "gender_number_elision",
+        "finite_response_space_calibration",
+        "noun_gender_and_lexical_confounds",
+        "teaching_and_semantic_overlap",
+        "novel_sentences_and_multiple_occasions",
+        "controlled_not_independent_writing"
+      ]
+    }
+  ],
+  "checksum": "sha256:3050fa37c1d86f2bc4388b3c40e62c3d5d06b227226ce4684502e51a16d77085"
+}

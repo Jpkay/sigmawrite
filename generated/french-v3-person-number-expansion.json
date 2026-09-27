@@ -1,0 +1,2171 @@
+{
+  "version": "french-v3-person-number-expansion-v1",
+  "status": "draft_requires_review",
+  "parentTaxonomyChecksum": "sha256:ef2b63974c580b3070c879125b23567cdf6be703c344d0365b998d1f0f14e880",
+  "sourceBankChecksum": "sha256:59b5b39da476f5ffe122b705ba21a052a2cf51add9d40d8aca6cf174eeee9880",
+  "items": [
+    {
+      "itemKey": "v3-person-number:je-dessine",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je dessine un paysage.\n\nComplète avec la bonne forme de « aller » : « Je ___ chercher un pinceau. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "speaker-one",
+          "materialExposure": {
+            "sentences": [
+              "Je dessine un paysage.",
+              "Je ___ chercher un pinceau."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ___ chercher un pinceau."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "vais",
+            "correct": true
+          },
+          {
+            "text": "vas",
+            "correct": false
+          },
+          {
+            "text": "va",
+            "correct": false
+          },
+          {
+            "text": "allons",
+            "correct": false
+          },
+          {
+            "text": "allez",
+            "correct": false
+          },
+          {
+            "text": "vont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:j-ecoute",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "J’écoute cette chanson.\n\nComplète avec la bonne forme de « être » : « Je ___ près des enceintes. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "speaker-one",
+          "materialExposure": {
+            "sentences": [
+              "J’écoute cette chanson.",
+              "Je ___ près des enceintes."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ___ près des enceintes."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "suis",
+            "correct": true
+          },
+          {
+            "text": "es",
+            "correct": false
+          },
+          {
+            "text": "est",
+            "correct": false
+          },
+          {
+            "text": "sommes",
+            "correct": false
+          },
+          {
+            "text": "êtes",
+            "correct": false
+          },
+          {
+            "text": "sont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:je-negation",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Je ne regarde pas la série.\n\nComplète avec la bonne forme de « être » : « Je ___ encore occupé. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "speaker-one",
+          "materialExposure": {
+            "sentences": [
+              "Je ne regarde pas la série.",
+              "Je ___ encore occupé."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ___ encore occupé."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "suis",
+            "correct": true
+          },
+          {
+            "text": "es",
+            "correct": false
+          },
+          {
+            "text": "est",
+            "correct": false
+          },
+          {
+            "text": "sommes",
+            "correct": false
+          },
+          {
+            "text": "êtes",
+            "correct": false
+          },
+          {
+            "text": "sont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:je-incise",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Demain, je préparerai le repas.\n\nComplète avec la bonne forme de « aller » : « Je ___ acheter les ingrédients. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "speaker-one",
+          "materialExposure": {
+            "sentences": [
+              "Demain, je préparerai le repas.",
+              "Je ___ acheter les ingrédients."
+            ],
+            "assessed": {
+              "sentences": [
+                "Je ___ acheter les ingrédients."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "vais",
+            "correct": true
+          },
+          {
+            "text": "vas",
+            "correct": false
+          },
+          {
+            "text": "va",
+            "correct": false
+          },
+          {
+            "text": "allons",
+            "correct": false
+          },
+          {
+            "text": "allez",
+            "correct": false
+          },
+          {
+            "text": "vont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:tu-choisis",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Tu choisis un livre.\n\nComplète avec la bonne forme de « avoir » : « Tu ___ plusieurs choix. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "listener-one",
+          "materialExposure": {
+            "sentences": [
+              "Tu choisis un livre.",
+              "Tu ___ plusieurs choix."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ plusieurs choix."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "as",
+            "correct": true
+          },
+          {
+            "text": "ai",
+            "correct": false
+          },
+          {
+            "text": "a",
+            "correct": false
+          },
+          {
+            "text": "avons",
+            "correct": false
+          },
+          {
+            "text": "avez",
+            "correct": false
+          },
+          {
+            "text": "ont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:tu-question",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Pourquoi hésites-tu ?\n\nComplète avec la bonne forme de « être » : « Tu ___ presque prêt. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "listener-one",
+          "materialExposure": {
+            "sentences": [
+              "Pourquoi hésites-tu ?",
+              "Tu ___ presque prêt."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ presque prêt."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "es",
+            "correct": true
+          },
+          {
+            "text": "suis",
+            "correct": false
+          },
+          {
+            "text": "est",
+            "correct": false
+          },
+          {
+            "text": "sommes",
+            "correct": false
+          },
+          {
+            "text": "êtes",
+            "correct": false
+          },
+          {
+            "text": "sont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:tu-negative",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Tu ne connais pas ce chemin.\n\nComplète avec la bonne forme de « aller » : « Tu ___ suivre le panneau. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "listener-one",
+          "materialExposure": {
+            "sentences": [
+              "Tu ne connais pas ce chemin.",
+              "Tu ___ suivre le panneau."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ suivre le panneau."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "vas",
+            "correct": true
+          },
+          {
+            "text": "vais",
+            "correct": false
+          },
+          {
+            "text": "va",
+            "correct": false
+          },
+          {
+            "text": "allons",
+            "correct": false
+          },
+          {
+            "text": "allez",
+            "correct": false
+          },
+          {
+            "text": "vont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:tu-future",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Ce soir, tu présenteras ton dessin.\n\nComplète avec la bonne forme de « avoir » : « Tu ___ cinq minutes pour parler. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "listener-one",
+          "materialExposure": {
+            "sentences": [
+              "Ce soir, tu présenteras ton dessin.",
+              "Tu ___ cinq minutes pour parler."
+            ],
+            "assessed": {
+              "sentences": [
+                "Tu ___ cinq minutes pour parler."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "as",
+            "correct": true
+          },
+          {
+            "text": "ai",
+            "correct": false
+          },
+          {
+            "text": "a",
+            "correct": false
+          },
+          {
+            "text": "avons",
+            "correct": false
+          },
+          {
+            "text": "avez",
+            "correct": false
+          },
+          {
+            "text": "ont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:nom-singulier",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Le robot avance sur la piste.\n\nComplète avec la bonne forme de « aller » : « Le robot ___ tourner à gauche. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "other-one",
+          "materialExposure": {
+            "sentences": [
+              "Le robot avance sur la piste.",
+              "Le robot ___ tourner à gauche."
+            ],
+            "assessed": {
+              "sentences": [
+                "Le robot ___ tourner à gauche."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "va",
+            "correct": true
+          },
+          {
+            "text": "vais",
+            "correct": false
+          },
+          {
+            "text": "vas",
+            "correct": false
+          },
+          {
+            "text": "allons",
+            "correct": false
+          },
+          {
+            "text": "allez",
+            "correct": false
+          },
+          {
+            "text": "vont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:elle",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle range les pinceaux.\n\nComplète avec la bonne forme de « avoir » : « Elle ___ encore de la peinture. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "other-one",
+          "materialExposure": {
+            "sentences": [
+              "Elle range les pinceaux.",
+              "Elle ___ encore de la peinture."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle ___ encore de la peinture."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "a",
+            "correct": true
+          },
+          {
+            "text": "ai",
+            "correct": false
+          },
+          {
+            "text": "as",
+            "correct": false
+          },
+          {
+            "text": "avons",
+            "correct": false
+          },
+          {
+            "text": "avez",
+            "correct": false
+          },
+          {
+            "text": "ont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:on-nous",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "On prépare notre spectacle. Ici, on désigne toute notre équipe.\n\nComplète avec la bonne forme de « être » : « On ___ prêts à commencer. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "other-one",
+          "materialExposure": {
+            "sentences": [
+              "On prépare notre spectacle. Ici, on désigne toute notre équipe.",
+              "On ___ prêts à commencer."
+            ],
+            "assessed": {
+              "sentences": [
+                "On ___ prêts à commencer."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "est",
+            "correct": true
+          },
+          {
+            "text": "suis",
+            "correct": false
+          },
+          {
+            "text": "es",
+            "correct": false
+          },
+          {
+            "text": "sommes",
+            "correct": false
+          },
+          {
+            "text": "êtes",
+            "correct": false
+          },
+          {
+            "text": "sont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:collectif",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "La foule applaudit.\n\nComplète avec la bonne forme de « aller » : « La foule ___ quitter la salle. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "other-one",
+          "materialExposure": {
+            "sentences": [
+              "La foule applaudit.",
+              "La foule ___ quitter la salle."
+            ],
+            "assessed": {
+              "sentences": [
+                "La foule ___ quitter la salle."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "va",
+            "correct": true
+          },
+          {
+            "text": "vais",
+            "correct": false
+          },
+          {
+            "text": "vas",
+            "correct": false
+          },
+          {
+            "text": "allons",
+            "correct": false
+          },
+          {
+            "text": "allez",
+            "correct": false
+          },
+          {
+            "text": "vont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:nous",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Nous inventons une histoire.\n\nComplète avec la bonne forme de « avoir » : « Nous ___ beaucoup d’idées. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "speaker-group",
+          "materialExposure": {
+            "sentences": [
+              "Nous inventons une histoire.",
+              "Nous ___ beaucoup d’idées."
+            ],
+            "assessed": {
+              "sentences": [
+                "Nous ___ beaucoup d’idées."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "avons",
+            "correct": true
+          },
+          {
+            "text": "ai",
+            "correct": false
+          },
+          {
+            "text": "as",
+            "correct": false
+          },
+          {
+            "text": "a",
+            "correct": false
+          },
+          {
+            "text": "avez",
+            "correct": false
+          },
+          {
+            "text": "ont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:toi-moi",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Toi et moi partageons cette table.\n\nComplète avec la bonne forme de « être » : « Toi et moi ___ près de la fenêtre. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "speaker-group",
+          "materialExposure": {
+            "sentences": [
+              "Toi et moi partageons cette table.",
+              "Toi et moi ___ près de la fenêtre."
+            ],
+            "assessed": {
+              "sentences": [
+                "Toi et moi ___ près de la fenêtre."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "sommes",
+            "correct": true
+          },
+          {
+            "text": "suis",
+            "correct": false
+          },
+          {
+            "text": "es",
+            "correct": false
+          },
+          {
+            "text": "est",
+            "correct": false
+          },
+          {
+            "text": "êtes",
+            "correct": false
+          },
+          {
+            "text": "sont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:elle-moi",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elle et moi dessinons les costumes.\n\nComplète avec la bonne forme de « aller » : « Elle et moi ___ choisir les tissus. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "speaker-group",
+          "materialExposure": {
+            "sentences": [
+              "Elle et moi dessinons les costumes.",
+              "Elle et moi ___ choisir les tissus."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elle et moi ___ choisir les tissus."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "allons",
+            "correct": true
+          },
+          {
+            "text": "vais",
+            "correct": false
+          },
+          {
+            "text": "vas",
+            "correct": false
+          },
+          {
+            "text": "va",
+            "correct": false
+          },
+          {
+            "text": "allez",
+            "correct": false
+          },
+          {
+            "text": "vont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:vous-moi",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Vous et moi organiserons la rencontre.\n\nComplète avec la bonne forme de « avoir » : « Vous et moi ___ le même programme. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "speaker-group",
+          "materialExposure": {
+            "sentences": [
+              "Vous et moi organiserons la rencontre.",
+              "Vous et moi ___ le même programme."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous et moi ___ le même programme."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "avons",
+            "correct": true
+          },
+          {
+            "text": "ai",
+            "correct": false
+          },
+          {
+            "text": "as",
+            "correct": false
+          },
+          {
+            "text": "a",
+            "correct": false
+          },
+          {
+            "text": "avez",
+            "correct": false
+          },
+          {
+            "text": "ont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:vous-groupe",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Vous cherchez vos places. Je parle à trois amis.\n\nComplète avec la bonne forme de « aller » : « Vous ___ entrer ensemble. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "listener-group",
+          "materialExposure": {
+            "sentences": [
+              "Vous cherchez vos places. Je parle à trois amis.",
+              "Vous ___ entrer ensemble."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ entrer ensemble."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "allez",
+            "correct": true
+          },
+          {
+            "text": "vais",
+            "correct": false
+          },
+          {
+            "text": "vas",
+            "correct": false
+          },
+          {
+            "text": "va",
+            "correct": false
+          },
+          {
+            "text": "allons",
+            "correct": false
+          },
+          {
+            "text": "vont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:vous-politesse",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Madame, vous pouvez entrer. Je parle à une seule personne.\n\nComplète avec la bonne forme de « être » : « Vous ___ attendue dans le bureau. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "listener-group",
+          "materialExposure": {
+            "sentences": [
+              "Madame, vous pouvez entrer. Je parle à une seule personne.",
+              "Vous ___ attendue dans le bureau."
+            ],
+            "assessed": {
+              "sentences": [
+                "Vous ___ attendue dans le bureau."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "êtes",
+            "correct": true
+          },
+          {
+            "text": "suis",
+            "correct": false
+          },
+          {
+            "text": "es",
+            "correct": false
+          },
+          {
+            "text": "est",
+            "correct": false
+          },
+          {
+            "text": "sommes",
+            "correct": false
+          },
+          {
+            "text": "sont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:toi-elle",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Toi et elle préparerez les affiches.\n\nComplète avec la bonne forme de « avoir » : « Toi et elle ___ tout le matériel. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "listener-group",
+          "materialExposure": {
+            "sentences": [
+              "Toi et elle préparerez les affiches.",
+              "Toi et elle ___ tout le matériel."
+            ],
+            "assessed": {
+              "sentences": [
+                "Toi et elle ___ tout le matériel."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "avez",
+            "correct": true
+          },
+          {
+            "text": "ai",
+            "correct": false
+          },
+          {
+            "text": "as",
+            "correct": false
+          },
+          {
+            "text": "a",
+            "correct": false
+          },
+          {
+            "text": "avons",
+            "correct": false
+          },
+          {
+            "text": "ont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:lui-toi",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lui et toi jouez dans la même équipe.\n\nComplète avec la bonne forme de « être » : « Lui et toi ___ sur le terrain. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "listener-group",
+          "materialExposure": {
+            "sentences": [
+              "Lui et toi jouez dans la même équipe.",
+              "Lui et toi ___ sur le terrain."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lui et toi ___ sur le terrain."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "êtes",
+            "correct": true
+          },
+          {
+            "text": "suis",
+            "correct": false
+          },
+          {
+            "text": "es",
+            "correct": false
+          },
+          {
+            "text": "est",
+            "correct": false
+          },
+          {
+            "text": "sommes",
+            "correct": false
+          },
+          {
+            "text": "sont",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:elles",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Elles arrivent avant le début du film.\n\nComplète avec la bonne forme de « avoir » : « Elles ___ des places au premier rang. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "other-group",
+          "materialExposure": {
+            "sentences": [
+              "Elles arrivent avant le début du film.",
+              "Elles ___ des places au premier rang."
+            ],
+            "assessed": {
+              "sentences": [
+                "Elles ___ des places au premier rang."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "ont",
+            "correct": true
+          },
+          {
+            "text": "ai",
+            "correct": false
+          },
+          {
+            "text": "as",
+            "correct": false
+          },
+          {
+            "text": "a",
+            "correct": false
+          },
+          {
+            "text": "avons",
+            "correct": false
+          },
+          {
+            "text": "avez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:noms-coordonnes",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lina et Sami ferment la porte.\n\nComplète avec la bonne forme de « aller » : « Lina et Sami ___ rejoindre le groupe. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "other-group",
+          "materialExposure": {
+            "sentences": [
+              "Lina et Sami ferment la porte.",
+              "Lina et Sami ___ rejoindre le groupe."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lina et Sami ___ rejoindre le groupe."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "vont",
+            "correct": true
+          },
+          {
+            "text": "vais",
+            "correct": false
+          },
+          {
+            "text": "vas",
+            "correct": false
+          },
+          {
+            "text": "va",
+            "correct": false
+          },
+          {
+            "text": "allons",
+            "correct": false
+          },
+          {
+            "text": "allez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:objets-pluriels",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Les lampes éclairent la scène.\n\nComplète avec la bonne forme de « être » : « Les lampes ___ près des rideaux. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "other-group",
+          "materialExposure": {
+            "sentences": [
+              "Les lampes éclairent la scène.",
+              "Les lampes ___ près des rideaux."
+            ],
+            "assessed": {
+              "sentences": [
+                "Les lampes ___ près des rideaux."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "sont",
+            "correct": true
+          },
+          {
+            "text": "suis",
+            "correct": false
+          },
+          {
+            "text": "es",
+            "correct": false
+          },
+          {
+            "text": "est",
+            "correct": false
+          },
+          {
+            "text": "sommes",
+            "correct": false
+          },
+          {
+            "text": "êtes",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    },
+    {
+      "itemKey": "v3-person-number:lui-elle",
+      "item": {
+        "nodeKey": "distinguer_personne_nombre",
+        "strand": "conjugaison",
+        "modality": "reading",
+        "learnerMode": "shared",
+        "responseType": "mcq",
+        "promptFr": "Lui et elle repeignent le banc.\n\nComplète avec la bonne forme de « avoir » : « Lui et elle ___ deux pots de peinture. »",
+        "instructionsFr": "Choisis une réponse.",
+        "acceptableAnswers": [],
+        "validatorType": "exact",
+        "validatorConfig": {
+          "personNumberGroup": "other-group",
+          "materialExposure": {
+            "sentences": [
+              "Lui et elle repeignent le banc.",
+              "Lui et elle ___ deux pots de peinture."
+            ],
+            "assessed": {
+              "sentences": [
+                "Lui et elle ___ deux pots de peinture."
+              ]
+            }
+          }
+        },
+        "choices": [
+          {
+            "text": "ont",
+            "correct": true
+          },
+          {
+            "text": "ai",
+            "correct": false
+          },
+          {
+            "text": "as",
+            "correct": false
+          },
+          {
+            "text": "a",
+            "correct": false
+          },
+          {
+            "text": "avons",
+            "correct": false
+          },
+          {
+            "text": "avez",
+            "correct": false
+          }
+        ],
+        "difficulty": 50
+      },
+      "evidenceKey": "reading-receptive",
+      "evidenceExpectation": "receptive",
+      "sectionKey": "conjugation",
+      "promptFamily": "identify-supplied-subject-person-number",
+      "difficultyTier": "core",
+      "reviewStatus": "needs_human_review",
+      "qcGates": {
+        "gate1_schema": true,
+        "gate1_invariants": {
+          "ok": true,
+          "violations": []
+        },
+        "gate0_computed": {
+          "applied": false
+        },
+        "gate2_answer_key": {
+          "ok": true
+        },
+        "gate3_ensemble": {
+          "agrees": false,
+          "agreement": 0
+        },
+        "verdict": "needs_human_review"
+      }
+    }
+  ],
+  "annotations": [
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:je-dessine",
+      "itemChecksum": "sha256:c543a010be599b13a1ccfc37965bb7eda74858a89b9871c6f160bc3e96abcefa",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:je-dessine",
+      "reason": "Je commande la forme vais."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:j-ecoute",
+      "itemChecksum": "sha256:0157a5b07d4cee89cea7fdca77efabc8880ef693755b6eeed4f4ea5a1da25ba7",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:j-ecoute",
+      "reason": "Je commande la forme suis."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:je-negation",
+      "itemChecksum": "sha256:71aa94fe276ec5d614705a008d501cee6ce48952b11997bc39b93bb2898ee898",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:je-negation",
+      "reason": "La négation de la première phrase ne change pas la forme attendue avec je."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:je-incise",
+      "itemChecksum": "sha256:ac219ea4c31805e5323c6d78aa95e10963fc39b82ae92ce6fedd337c462e217d",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:je-incise",
+      "reason": "Le moment indiqué ne change pas la forme attendue avec je."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:tu-choisis",
+      "itemChecksum": "sha256:bbdcba58c6832ceb9b31096e09defd957ff606fcfe197759a60f0694caa95a10",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:tu-choisis",
+      "reason": "Tu commande la forme as."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:tu-question",
+      "itemChecksum": "sha256:4b4ca59dfaf5538deb2140c9b399680c24f2a0e5677ad9a0cea3735c9650b71a",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:tu-question",
+      "reason": "Même après le verbe dans la première question, tu commande la forme es."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:tu-negative",
+      "itemChecksum": "sha256:fa70ef915395dc2ce56ceaf5b0e4a7f30cd2fee86deb9288754379ec87192a57",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:tu-negative",
+      "reason": "Tu commande la forme vas."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:tu-future",
+      "itemChecksum": "sha256:ff0f7fef0d5819b7c2758d56e560b9c8de8579c5f34a4543ad9949855127ec0d",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:tu-future",
+      "reason": "Le moment de l’action ne change pas la forme attendue avec tu."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:nom-singulier",
+      "itemChecksum": "sha256:878d3480321bf03283ee506b6003e7db9ec1d9f2ac42433a3ecb90036b93e4d4",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:nom-singulier",
+      "reason": "Le robot commande la même forme que il : va."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:elle",
+      "itemChecksum": "sha256:ac40c29486aa9ae235741a44a288c3769b38be0184746d8035830d75c11c93b4",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:elle",
+      "reason": "Elle commande la forme a."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:on-nous",
+      "itemChecksum": "sha256:c79fe15f37c961f0922e6d777fd05ecad77d2fd0704711be218b6cb2b60b09c4",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:on-nous",
+      "reason": "Même quand on désigne plusieurs personnes, on commande ici la forme est."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:collectif",
+      "itemChecksum": "sha256:eaf2e28eaed8ff253be021debb83ccf9bcf3b8064ff2530317868cc819841176",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:collectif",
+      "reason": "Le nom foule commande ici la forme va, même s’il désigne de nombreuses personnes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:nous",
+      "itemChecksum": "sha256:c1b14f481a697347ed3ce67d510612e9ff085bba78667e73de2684f894256a8f",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:nous",
+      "reason": "Nous commande la forme avons."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:toi-moi",
+      "itemChecksum": "sha256:321c6cdb5a510d0a801b5d20397db3c4f1ddaf2d969d6d6295b88254029283f9",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:toi-moi",
+      "reason": "Toi et moi commande la même forme que nous : sommes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:elle-moi",
+      "itemChecksum": "sha256:e742f49b3cf0cfffd6acfd615916845469dc767ae559d992f8902c01a0254019",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:elle-moi",
+      "reason": "Elle et moi commande la même forme que nous : allons."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:vous-moi",
+      "itemChecksum": "sha256:876348091f6e7f08033823590ef1aff74df27510dbc3316ae809c50ac6d9c7b6",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:vous-moi",
+      "reason": "Vous et moi inclut la personne qui parle et commande avons."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:vous-groupe",
+      "itemChecksum": "sha256:376c4e04231a02a890337525336cb28214de9fb33e885f1bf3d6bca93589b6ed",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:vous-groupe",
+      "reason": "Vous commande la forme allez."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:vous-politesse",
+      "itemChecksum": "sha256:4c36fd5c6098b27cfb180b4c9f7fe326f874a9f697dbe067433fdbedc808312d",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:vous-politesse",
+      "reason": "Même adressé à une seule personne poliment, vous commande êtes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:toi-elle",
+      "itemChecksum": "sha256:1268a59a8823f532ee0458b179817dcf7653d066e864790568e4b915095c2dca",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:toi-elle",
+      "reason": "Toi et elle commande la même forme que vous : avez."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:lui-toi",
+      "itemChecksum": "sha256:4fab18ac1f95be5c392c0366f89799533b3e2701ca8851b0e51a613891f06cf2",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:lui-toi",
+      "reason": "Lui et toi commande la même forme que vous : êtes."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:elles",
+      "itemChecksum": "sha256:b336b70bffbb64ce7e9029533696097df6784ddfcd420bbe7dafd4115d0f3d30",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:elles",
+      "reason": "Elles commande la forme ont."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:noms-coordonnes",
+      "itemChecksum": "sha256:5fc0577e1e509c8617eadb15361b6525993de9df9c2d5c32afc7e9c71886d569",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:noms-coordonnes",
+      "reason": "Lina et Sami commande la même forme que ils : vont."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:objets-pluriels",
+      "itemChecksum": "sha256:5349daac6332191dfe8334bcf722536951656afb9d35b32b236c22a903fc5a28",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:objets-pluriels",
+      "reason": "Les lampes commande la même forme que elles : sont."
+    },
+    {
+      "kind": "evidence",
+      "itemKey": "v3-person-number:lui-elle",
+      "itemChecksum": "sha256:fd3a5b5d2c2472149da8edb1c020ec583ea9cd81f24b84702ba9cafa204d4522",
+      "evidenceTarget": {
+        "nodeKey": "distinguer_personne_nombre",
+        "evidenceKey": "reading-receptive"
+      },
+      "contextKey": "person-number-sentence:lui-elle",
+      "reason": "Lui et elle commande la même forme que ils : ont."
+    }
+  ],
+  "checksum": "sha256:8930a6e974f69696917a1c91bf939e61ba67b3c2b732547bf25567a3564862da"
+}

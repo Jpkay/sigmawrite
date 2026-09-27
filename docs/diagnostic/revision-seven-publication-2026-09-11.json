@@ -1,0 +1,87 @@
+{
+  "sourceCommit": "e016f972fc5f82f5a2162824f5e72c51ce5ca59c",
+  "frozenWorkspace": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r7-e016f97",
+  "bankKey": "french-diagnostic-bank-v3-r7",
+  "bankChecksum": "sha256:8ad92af7e4f55bd255b240f772ab4b2c65d0f64c244041d65b7bfb20b41cb5f3",
+  "bankItems": 5376,
+  "candidateChecksum": "sha256:4637c54c3b16e094350ae709f498cd1470274f8802e2176d73cdbb802d31e21d",
+  "supportedTargets": 160,
+  "graphTargets": 542,
+  "published": true,
+  "activated": true,
+  "validation": {
+    "preflightReady": true,
+    "instructionGaps": 0,
+    "freshCheckGaps": 0,
+    "granularTests": 489,
+    "scopedCommandJourney": [
+      {
+        "profile": "wrong",
+        "checkedQuestion": "v3-short-reading:definition-binome",
+        "questions": 61,
+        "correct": 0,
+        "completionReason": "time_budget",
+        "activeMinutes": 35,
+        "results": 542,
+        "firstActivity": "Trouver une définition dans le texte",
+        "completedLesson": "french-v3-teaching:reading:deduire_mot_definition_locale:informational",
+        "practiceResponses": 4
+      },
+      {
+        "profile": "mixed",
+        "checkedQuestion": "v3-canonical-sentence:recognition-12",
+        "questions": 61,
+        "correct": 41,
+        "completionReason": "time_budget",
+        "activeMinutes": 35,
+        "results": 542,
+        "firstActivity": "Reconnaître une phrase canonique",
+        "completedLesson": null,
+        "practiceResponses": 0
+      }
+    ],
+    "pinned158SessionPreserved": true,
+    "openingComparison": "revision-seven-opening-comparison-2026-09-11.json"
+  },
+  "pending": [
+    "Opening latency remains unresolved; the candidate did not demonstrate an end-to-end speed improvement in the paired browser sample."
+  ],
+  "limitations": [
+    "Full graph coverage and educational calibration remain unfinished.",
+    "Bank import alone does not activate the candidate.",
+    "Human pedagogical review remains pending under the authorized parallel-review policy."
+  ],
+  "releaseKey": "french-granular-diagnostic-v8",
+  "bankId": "eb8cbeb1-d02f-42fe-a4fd-0a99261a45bb",
+  "deploymentId": "dpl_Dp4JysSUAHeZFMV49d8KU8PVj2HH",
+  "deploymentUrl": "https://sigmawrite-onj0ziu6e-jpkays-projects.vercel.app",
+  "deploymentReady": true,
+  "candidateDemoPreserved": {
+    "onboardingRedirect": "/student/lessons",
+    "lessonCount": 11,
+    "verified": true
+  },
+  "releaseId": "87db36f6-1148-4ede-af90-557a14274852",
+  "bundleChecksum": "sha256:6e2e0343f0e4efe13026fc10f0b4764704d167a06a1a384ffd15e7aa89fc03cd",
+  "verifiedItems": 5376,
+  "candidateDefaultVerification": {
+    "sessionId": "9ada5e5e-1697-4f83-a5be-8b471d0d374a",
+    "releaseId": "87db36f6-1148-4ede-af90-557a14274852",
+    "scope": 160,
+    "defaultSelectedByApplication": true,
+    "reloadPreservedSession": true
+  },
+  "publicDefaultVerification": {
+    "sessionId": "01d5e716-ec5b-475e-804b-929e5fd831ad",
+    "releaseId": "87db36f6-1148-4ede-af90-557a14274852",
+    "scope": 160,
+    "defaultSelectedByApplication": true,
+    "reloadPreservedSession": true
+  },
+  "publicDemoPreserved": {
+    "onboardingRedirect": "/student/lessons",
+    "lessonCount": 11,
+    "verified": true
+  },
+  "persistentDefaultReleaseKey": "french-granular-diagnostic-v8"
+}

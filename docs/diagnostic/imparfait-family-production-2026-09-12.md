@@ -1,0 +1,11 @@
+# Imparfait production for regular verb families
+
+Four exact-target lessons now cover the regular -er and -ir patterns and the -ger and -cer spelling patterns. The lessons use existing familiar guided situations, with each exercise retaining its own verb. They explain the present-nous base, the six endings, retained -iss-, e before a but not i for -ger, and ç before a but c before i for -cer. Irregular verb targets remain separate.
+
+Forty-eight original habitual or ongoing past situations provide twelve independent applications per family across all six persons. Guided sentences and independent applications have separate material identities. The infinitive and tense are supplied: this is controlled written form production, not spontaneous tense choice, general verb mastery or independent writing. Five distinct written forms are possible because je and tu share a form; the one-in-five response-space floor is not an empirical calibration result.
+
+Prepared bank revision 12 now supports 215 of 542 targets with 4,070 scoped probes. The complete granular suite passes 569 tests across 164 files. TypeScript, scoped command journeys and publication preflight pass with no instruction or fresh-check gaps within this prepared scope. All four targeted lesson command journeys pass, with one deliberately wrong guided response per lesson, a fresh independent check and preserved reload state. These are isolated server-command fixtures, not browser or educational validation.
+
+A read-only upgrade preparation from the completed public-v12 technical QA session preserves 62 diagnostic answers, four refinements, answer origins, completed lessons, material exposure, active time and completion state. It adds eighteen targets relative to that 197-target source. This audit creates no student successor and makes no claim of educational calibration or human approval.
+
+The public v12 release remains immutable at 197 supported targets. These four lessons, the preceding fourteen passé récent lessons and the newer routing changes remain an unpublished draft. The full target backlog now records 215 prepared pathways, 73 targets needing exact-target lessons, 236 needing question-pool work, and 18 connected-writing targets for learning.

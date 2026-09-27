@@ -39,12 +39,15 @@ export type DiagnosticSectionProfile = {
 
 export type StudentState = {
   hydrated: boolean;
+  hydrationError?: boolean;
   onboarded: boolean;
   grade: number | null;
   frenchBackground: string | null;
+  exposures?: string[];
   interests: string[];
   diagnostic: DiagnosticResult | null;
   diagnosticProvisional: boolean;
+  granularDiagnosticReady?: boolean;
   diagnosticSectionProfile: Partial<Record<DiagnosticSectionProfileKey, DiagnosticSectionProfile>>;
   sessions: ReadingSessionResult[];
   answersByText: Record<string, Record<string, number>>;

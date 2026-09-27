@@ -1,0 +1,11 @@
+# Recognizing auxiliaries and compound past tenses
+
+Adds three separate recognition lessons for the approved targets reconnaitre_auxiliaire, reconnaitre_passe_compose and reconnaitre_plus_que_parfait. The lessons start from concrete sentence contrasts, explain the auxiliary and participle, and distinguish recognition from auxiliary choice, participle formation, agreement and individual verb production.
+
+Thirty-six new assessment questions use distinct sentence sets, with twelve questions per target. They include both auxiliaries, lexical uses of avoir and être, negative sentences, intervening adverbs, pronominal verbs, and être/avoir as the main verb. The tense contrasts include imparfait, passé composé, plus-que-parfait and other compound forms. Eighteen guided exercises use separate material. Auxiliary distractor lengths vary to avoid a consistent longest-answer cue. Previously prepared tense-recognition questions remain unchanged.
+
+The approved auxiliary prerequisite and minimum three items, 80% accuracy and two occasions remain intact. Two prescribed synthetic profiles invert strengths in passé composé and plus-que-parfait, receive the lesson for the weaker tense, and leave untested individual verb production unknown. These fixtures test aggregation and routing; they do not establish that every contrast will be sampled during one initial sitting or that item difficulty is calibrated.
+
+Preparation covers 119 assessment/teaching targets and 2,026 questions while retaining the full 542-target map. The catalogue contains 125 lessons and 700 guided exercises; the consolidated draft bank has 4,862 questions. Full graph coverage and human review remain unfinished. These additions are separate from the frozen 116-target revision-three bank being published, so that publication cannot accidentally include unverified changes.
+
+Validation: 446 granular tests, TypeScript and source lint pass. Prepared scope has no instruction or fresh-check gaps. Six symbolic profiles reach the 35-active-minute boundary with learning activities; mixed and all-wrong command journeys reach results and independent checks. Human semantic review remains pending under the authorized parallel-review release process.

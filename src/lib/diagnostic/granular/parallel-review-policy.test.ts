@@ -1,0 +1,35 @@
+import {readFileSync} from "node:fs";
+import {expect,it} from "vitest";
+import {checksum} from "@/lib/taxonomy/validate";
+import {validateCanonicalDiagnosticBank,type CanonicalDiagnosticBankArtifact} from "../item-bank";
+import {assessmentQuestionIds,type ParallelReviewPolicy} from "./parallel-review-policy";
+import {adaptV3ForAssessment} from "./v3-adapter";
+import {inspectReleaseBank} from "./release-bank";
+import {buildLearningCheckRegistry} from "./check-registry";
+import {bindAssessmentRelease} from "./release-binding";
+const read=(path:string)=>JSON.parse(readFileSync(path,"utf8"));
+const artifact=read("generated/french-taxonomy-v3.json"),bank=read("generated/diagnostic-bank-v3-draft.json") as CanonicalDiagnosticBankArtifact;
+const question=bank.items.find(entry=>entry.itemKey==="review-draft-v1:construction_pronom_relatif:controlled_production:foundation")!;
+const policy:ParallelReviewPolicy={mode:"parallel_review",authorization:"product-owner-request-2026-09-11",reviewOwner:"product_owner",bankChecksum:validateCanonicalDiagnosticBank(bank,artifact.taxonomy).manifest.checksum,questionChecksums:{[question.itemKey]:checksum(question)}};
+it("admits only explicitly selected pending content without changing canonical approval or other drafts",()=>{
+ const before=checksum(bank),reviewed=assessmentQuestionIds(bank,artifact.taxonomy),allowed=assessmentQuestionIds(bank,artifact.taxonomy,policy);
+ expect(reviewed).not.toContain(question.itemKey);expect(allowed).toEqual([...reviewed,question.itemKey]);
+ expect(checksum(bank)).toBe(before);expect(question.reviewStatus).toBe("needs_human_review");expect(question.review).toBeUndefined();
+ const standard=adaptV3ForAssessment({artifact,bank}),parallel=adaptV3ForAssessment({artifact,bank,reviewPolicy:policy});
+ expect(standard.probes.some(probe=>probe.id===question.itemKey)).toBe(false);expect(parallel.probes.some(probe=>probe.id===question.itemKey)).toBe(true);
+ expect(parallel.skills).toEqual(standard.skills);
+ const bundle={assessment:parallel,bank,taxonomyId:"t",bankId:"b"};
+ expect(inspectReleaseBank(bundle)).toBe(true);
+ const withoutPolicy={...parallel};delete withoutPolicy.reviewPolicy;
+ expect(inspectReleaseBank({...bundle,assessment:withoutPolicy})).toBe(false);
+ expect(()=>buildLearningCheckRegistry(parallel,bank,artifact.taxonomy)).not.toThrow();
+ expect(()=>buildLearningCheckRegistry(withoutPolicy,bank,artifact.taxonomy)).toThrow("Ineligible");
+ expect(bindAssessmentRelease(parallel,{taxonomyId:"t",bankId:"b"}).checksum).not.toBe(bindAssessmentRelease(standard,{taxonomyId:"t",bankId:"b"}).checksum);
+});
+it("rejects stale or invented content permission and preserves hard question gates",()=>{
+ expect(()=>assessmentQuestionIds(bank,artifact.taxonomy,{...policy,bankChecksum:checksum("other")})).toThrow("another bank");
+ expect(()=>assessmentQuestionIds(bank,artifact.taxonomy,{...policy,questionChecksums:{unknown:checksum(question)}})).toThrow("Stale");
+ expect(()=>assessmentQuestionIds(bank,artifact.taxonomy,{...policy,questionChecksums:{[question.itemKey]:checksum("changed")}})).toThrow("Stale");
+ const broken=structuredClone(bank);broken.items.find(entry=>entry.itemKey===question.itemKey)!.qcGates.gate2_answer_key.ok=false;
+ expect(()=>assessmentQuestionIds(broken,artifact.taxonomy,policy)).toThrow("Invalid");
+});

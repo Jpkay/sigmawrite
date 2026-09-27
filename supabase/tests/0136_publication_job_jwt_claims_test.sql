@@ -1,0 +1,16 @@
+begin;
+set local search_path=public,extensions;
+select plan(7);
+set local request.jwt.claim.role='';
+set local request.jwt.claims='{"role":"authenticated"}';
+select throws_ok($q$select claim_job_run('jwt_test',120)$q$,'42501','service role required','Authenticated user cannot claim jobs');
+select throws_ok($q$select claim_content_publication('b3600000-0000-4000-8000-000000000001')$q$,'42501','service role required','Authenticated user cannot claim publication');
+set local request.jwt.claims='{"role":"service_role"}';
+select lives_ok($q$select claim_job_run('jwt_test',120)$q$,'Service claim works with current PostgREST JWT format');
+select throws_ok($q$select claim_job_run('jwt_test',120)$q$,'55000','job already running','Job idempotency is retained');
+insert into ai_generated_candidates(id,candidate_type,payload) values('b3600000-0000-4000-8000-000000000001','reading_text','{}');
+select lives_ok($q$select claim_content_publication('b3600000-0000-4000-8000-000000000001')$q$,'Publication claim accepts current JWT format');
+select lives_ok($q$select finish_content_publication('b3600000-0000-4000-8000-000000000001','{}')$q$,'Publication completion accepts current JWT format');
+select is((select status from content_publication_claims where candidate_id='b3600000-0000-4000-8000-000000000001'),'completed','Publication completion is recorded');
+select * from finish();
+rollback;

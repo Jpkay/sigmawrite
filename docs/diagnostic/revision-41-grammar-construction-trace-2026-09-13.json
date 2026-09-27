@@ -1,0 +1,507 @@
+{
+  "report": {
+    "version": "profile-trace-v1",
+    "profile": "relative_clause_known_completive_clause_weak",
+    "candidateChecksum": "sha256:5e1a6ce496b93e4fd5d5bafc93caa6f26b68070e0ee103218bf7127f66cac8ab",
+    "fixedInputs": {
+      "targets": [
+        {
+          "skillId": "construction_subordonnee_relative::writing-controlled-production",
+          "expected": "known"
+        },
+        {
+          "skillId": "construction_subordonnee_completive::writing-controlled-production",
+          "expected": "weak"
+        }
+      ],
+      "requireSameBranch": true,
+      "policy": {
+        "activeSeconds": 2100,
+        "minimumItemsPerMode": 3,
+        "minimumContextsPerMode": 2,
+        "maxItemsPerSkill": 12,
+        "startingLevel": 1,
+        "itemsPerBranchVisit": 6
+      },
+      "syntheticPrerequisiteObservationCount": 6
+    },
+    "trace": [
+      {
+        "index": 1,
+        "questionId": "v3-completive-production:1",
+        "skillId": "construction_subordonnee_completive::writing-controlled-production",
+        "mode": "production",
+        "selectionReason": "step_up",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "answer": "incorrect",
+        "elapsedSeconds": 30,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.11764705882352941,
+          "distinctItems": 1,
+          "distinctContexts": 1,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 2,
+        "questionId": "v3-completive-production:10",
+        "skillId": "construction_subordonnee_completive::writing-controlled-production",
+        "mode": "production",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "answer": "incorrect",
+        "elapsedSeconds": 60,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.017467248908296946,
+          "distinctItems": 2,
+          "distinctContexts": 2,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 3,
+        "questionId": "v3-completive-production:11",
+        "skillId": "construction_subordonnee_completive::writing-controlled-production",
+        "mode": "production",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "answer": "incorrect",
+        "elapsedSeconds": 90,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.0023647650014779796,
+          "distinctItems": 3,
+          "distinctContexts": 3,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": true,
+          "withinOccasionResolved": true
+        }
+      },
+      {
+        "index": 4,
+        "questionId": "v3-relative-production:1",
+        "skillId": "construction_subordonnee_relative::writing-controlled-production",
+        "mode": "production",
+        "selectionReason": "gap_check",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "answer": "correct",
+        "elapsedSeconds": 120,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.782608695652174,
+          "distinctItems": 1,
+          "distinctContexts": 1,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 5,
+        "questionId": "v3-relative-production:10",
+        "skillId": "construction_subordonnee_relative::writing-controlled-production",
+        "mode": "production",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "answer": "correct",
+        "elapsedSeconds": 150,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.9283667621776505,
+          "distinctItems": 2,
+          "distinctContexts": 2,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 6,
+        "questionId": "v3-relative-production:11",
+        "skillId": "construction_subordonnee_relative::writing-controlled-production",
+        "mode": "production",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "answer": "correct",
+        "elapsedSeconds": 180,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.9790162833641095,
+          "distinctItems": 3,
+          "distinctContexts": 3,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 7,
+        "questionId": "v3-relative-production:12",
+        "skillId": "construction_subordonnee_relative::writing-controlled-production",
+        "mode": "production",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "answer": "correct",
+        "elapsedSeconds": 210,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.9940814954403842,
+          "distinctItems": 4,
+          "distinctContexts": 4,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": true
+        }
+      }
+    ],
+    "activeSeconds": 210,
+    "ending": {
+      "kind": "provisional",
+      "reason": "later_evidence_required",
+      "unresolvedSkillIds": [
+        "construction_subordonnee_relative::writing-controlled-production",
+        "construction_subordonnee_completive::writing-controlled-production"
+      ]
+    },
+    "contrast": {
+      "requiredKnownTargets": 1,
+      "requiredWeakTargets": 1,
+      "knownTargetsWithEvidence": [
+        "construction_subordonnee_relative::writing-controlled-production"
+      ],
+      "weakTargetsWithEvidence": [
+        "construction_subordonnee_completive::writing-controlled-production"
+      ],
+      "knownTargetsUnresolved": [],
+      "weakTargetsUnresolved": [],
+      "sameBranchBoundaries": [
+        "grammar"
+      ],
+      "requireSameBranch": true,
+      "passed": true
+    },
+    "passed": true,
+    "targetResults": [
+      {
+        "skillId": "construction_subordonnee_relative::writing-controlled-production",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.9940814954403842,
+            "distinctItems": 4,
+            "distinctContexts": 4,
+            "distinctOccasions": 1,
+            "accuracy": 1,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      },
+      {
+        "skillId": "construction_subordonnee_completive::writing-controlled-production",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.0023647650014779796,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 0,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false,
+            "provisionalGap": true
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      }
+    ],
+    "nextActivity": {
+      "skillId": "construction_subordonnee_completive::writing-controlled-production",
+      "activityId": "bba9caf6-3a01-51c3-803b-0ac606510949",
+      "kind": "instruction",
+      "action": "learn",
+      "titleFr": "Écrire ce que quelqu’un pense ou annonce",
+      "href": "/student/diagnostic?activity=bba9caf6-3a01-51c3-803b-0ac606510949",
+      "estimatedMinutes": 4,
+      "contentId": "french-v3-teaching:completive:production",
+      "evidence": {
+        "skillId": "construction_subordonnee_completive::writing-controlled-production",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.0023647650014779796,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 0,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false,
+            "provisionalGap": true
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      }
+    },
+    "missingActivitySkillIds": [
+      "construction_subordonnee_relative::writing-controlled-production"
+    ],
+    "blockedSkillIds": [
+      "construction_subordonnee_relative::writing-controlled-production"
+    ],
+    "limitations": [
+      "Synthetic fixed answers and prerequisite history; no student calibration or mastery claim.",
+      "Focused routing trace over released target branches; not a complete 35-minute assessment journey."
+    ]
+  },
+  "omissionCounterexample": {
+    "version": "profile-trace-v1",
+    "profile": "relative_clause_known_completive_clause_weak_omission_counterexample",
+    "candidateChecksum": "sha256:5e1a6ce496b93e4fd5d5bafc93caa6f26b68070e0ee103218bf7127f66cac8ab",
+    "fixedInputs": {
+      "targets": [
+        {
+          "skillId": "construction_subordonnee_relative::writing-controlled-production",
+          "expected": "known"
+        },
+        {
+          "skillId": "construction_subordonnee_completive::writing-controlled-production",
+          "expected": "weak"
+        }
+      ],
+      "requireSameBranch": true,
+      "policy": {
+        "activeSeconds": 2100,
+        "minimumItemsPerMode": 3,
+        "minimumContextsPerMode": 2,
+        "maxItemsPerSkill": 12,
+        "startingLevel": 1,
+        "itemsPerBranchVisit": 6
+      },
+      "syntheticPrerequisiteObservationCount": 6
+    },
+    "trace": [
+      {
+        "index": 1,
+        "questionId": "v3-completive-production:1",
+        "skillId": "construction_subordonnee_completive::writing-controlled-production",
+        "mode": "production",
+        "selectionReason": "step_up",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "answer": "incorrect",
+        "elapsedSeconds": 30,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.11764705882352941,
+          "distinctItems": 1,
+          "distinctContexts": 1,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 2,
+        "questionId": "v3-completive-production:10",
+        "skillId": "construction_subordonnee_completive::writing-controlled-production",
+        "mode": "production",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "answer": "incorrect",
+        "elapsedSeconds": 60,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.017467248908296946,
+          "distinctItems": 2,
+          "distinctContexts": 2,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": false,
+          "withinOccasionResolved": false
+        }
+      },
+      {
+        "index": 3,
+        "questionId": "v3-completive-production:11",
+        "skillId": "construction_subordonnee_completive::writing-controlled-production",
+        "mode": "production",
+        "selectionReason": "confirmation",
+        "difficulty": 0.5,
+        "expectedSeconds": 30,
+        "answer": "incorrect",
+        "elapsedSeconds": 90,
+        "evidence": {
+          "status": "uncertain",
+          "source": "direct",
+          "probability": 0.0023647650014779796,
+          "distinctItems": 3,
+          "distinctContexts": 3,
+          "distinctOccasions": 1,
+          "confirmed": false,
+          "provisionalGap": true,
+          "withinOccasionResolved": true
+        }
+      }
+    ],
+    "activeSeconds": 90,
+    "ending": {
+      "kind": "provisional",
+      "reason": "time_budget",
+      "unresolvedSkillIds": [
+        "construction_subordonnee_relative::writing-controlled-production",
+        "construction_subordonnee_completive::writing-controlled-production"
+      ]
+    },
+    "contrast": {
+      "requiredKnownTargets": 1,
+      "requiredWeakTargets": 1,
+      "knownTargetsWithEvidence": [],
+      "weakTargetsWithEvidence": [
+        "construction_subordonnee_completive::writing-controlled-production"
+      ],
+      "knownTargetsUnresolved": [
+        "construction_subordonnee_relative::writing-controlled-production"
+      ],
+      "weakTargetsUnresolved": [],
+      "sameBranchBoundaries": [],
+      "requireSameBranch": true,
+      "passed": false
+    },
+    "passed": false,
+    "targetResults": [
+      {
+        "skillId": "construction_subordonnee_relative::writing-controlled-production",
+        "status": "unknown",
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.5,
+            "distinctItems": 0,
+            "distinctContexts": 0,
+            "distinctOccasions": 0,
+            "accuracy": 0,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false
+          }
+        ],
+        "resolved": false,
+        "evidence": "untested"
+      },
+      {
+        "skillId": "construction_subordonnee_completive::writing-controlled-production",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.0023647650014779796,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 0,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false,
+            "provisionalGap": true
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      }
+    ],
+    "nextActivity": {
+      "skillId": "construction_subordonnee_completive::writing-controlled-production",
+      "activityId": "bba9caf6-3a01-51c3-803b-0ac606510949",
+      "kind": "instruction",
+      "action": "learn",
+      "titleFr": "Écrire ce que quelqu’un pense ou annonce",
+      "href": "/student/diagnostic?activity=bba9caf6-3a01-51c3-803b-0ac606510949",
+      "estimatedMinutes": 4,
+      "contentId": "french-v3-teaching:completive:production",
+      "evidence": {
+        "skillId": "construction_subordonnee_completive::writing-controlled-production",
+        "status": "uncertain",
+        "modes": [
+          {
+            "mode": "production",
+            "probability": 0.0023647650014779796,
+            "distinctItems": 3,
+            "distinctContexts": 3,
+            "distinctOccasions": 1,
+            "accuracy": 0,
+            "unconfirmedFeatures": [],
+            "textTypes": [],
+            "contrastingErrorKeys": [],
+            "negativeExampleConfirmed": false,
+            "confirmed": false,
+            "provisionalGap": true
+          }
+        ],
+        "resolved": false,
+        "evidence": "direct"
+      }
+    },
+    "missingActivitySkillIds": [
+      "construction_subordonnee_relative::writing-controlled-production"
+    ],
+    "blockedSkillIds": [
+      "construction_subordonnee_relative::writing-controlled-production"
+    ],
+    "limitations": [
+      "Synthetic fixed answers and prerequisite history; no student calibration or mastery claim.",
+      "Focused routing trace over released target branches; not a complete 35-minute assessment journey."
+    ]
+  },
+  "sourceArtifact": "/Users/jean-philippekayobotsi/.codex/release-workspaces/sigmawrite-r41-evidence-773d3f7/docs/diagnostic/v3-scoped-review-candidate.json"
+}

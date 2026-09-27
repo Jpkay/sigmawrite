@@ -1,0 +1,26 @@
+import {expect,it} from "vitest";
+import {parseMaterialReceipt} from "./material-receipt";
+const word=`word:sha256:${"a".repeat(64)}`,sentence=`sentence:sha256:${"b".repeat(64)}`;
+it("keeps missing receipts unknown and separates first-recorded from already seen",()=>{
+ expect(parseMaterialReceipt([],[word])).toBeNull();
+ expect(parseMaterialReceipt([{material_key:word,first_recorded_exposure:false},{material_key:sentence,first_recorded_exposure:true}],[word,sentence])).toEqual({firstRecordedKeys:[sentence],previouslySeenKeys:[word]});
+});
+it("rejects partial, extra, duplicate or malformed receipt data",()=>{
+ const row={material_key:word,first_recorded_exposure:true};
+ expect(()=>parseMaterialReceipt([row],[word,sentence])).toThrow(/match/);
+ expect(()=>parseMaterialReceipt([row],[])).toThrow(/match/);
+ expect(()=>parseMaterialReceipt([row,row],[word])).toThrow(/match/);
+ expect(()=>parseMaterialReceipt([{...row,first_recorded_exposure:"true"}],[word])).toThrow();
+ expect(()=>parseMaterialReceipt([{...row,material_key:"unhashed"}],[word])).toThrow();
+});
+
+it('does not count a reused recording as novel under a new word annotation',async()=>{
+ const {hasVerifiedNovelMaterial}=await import('./material-receipt');
+ const audio=`audio:sha256:${'c'.repeat(64)}`;
+ const parsed=parseMaterialReceipt([{material_key:word,first_recorded_exposure:true},{material_key:audio,first_recorded_exposure:false}],[word,audio])!;
+ const receipt={...parsed,presentationId:'fixture',sourceChecksum:'fixture',historyComplete:true,assessedMaterialKeys:[word,audio]};
+ expect(hasVerifiedNovelMaterial(receipt,'word')).toBe(false);
+ expect(hasVerifiedNovelMaterial({...receipt,firstRecordedKeys:[word,audio],previouslySeenKeys:[]},'word')).toBe(true);
+ expect(hasVerifiedNovelMaterial({...receipt,assessedMaterialKeys:[word]},'word')).toBe(true);
+ expect(hasVerifiedNovelMaterial({...receipt,firstRecordedKeys:[word],previouslySeenKeys:[]},'word')).toBe(false);
+});
