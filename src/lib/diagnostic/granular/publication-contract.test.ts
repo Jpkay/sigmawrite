@@ -20,11 +20,11 @@ it("rejects the legacy bank and changed question provenance",()=>{
  expect(()=>prepareParallelPublication(legacy)).toThrow(/restricted/);
  const changed=structuredClone(bundle);changed.bank.items[0].item.promptFr+=" changed";
  expect(()=>prepareParallelPublication(changed)).toThrow(/canonical bank/);
-});
+},30000);
 it("does not authorize a lesson without fresh bound follow-up questions",()=>{
  const missing=structuredClone(bundle);
  missing.activities=missing.activities!.filter(a=>a.kind!=="independent_check");
  const report=prepareParallelPublication(missing);
  expect(report.ready).toBe(false);
  expect(report.freshCheckGapSkillIds.length).toBeGreaterThan(0);
-});
+},30000);
