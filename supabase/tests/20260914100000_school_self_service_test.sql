@@ -1,6 +1,6 @@
 -- Synthetic users only; every mutation is rolled back.
 begin;
-set local search_path = public;
+set local search_path = public, extensions;
 create extension if not exists pgtap with schema extensions;
 select extensions.plan(1);
 

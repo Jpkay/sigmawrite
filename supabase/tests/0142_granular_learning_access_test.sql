@@ -20,7 +20,8 @@ values ('30000000-0000-4000-8000-000000000001','granular-test-bank-142','granula
  '{"checksum":"granular-test-142"}','granular-test-142','{"valid":true}',(select id from profiles where auth_user_id='10000000-0000-4000-8000-000000000002'),now());
 alter table diagnostic_item_bank_releases enable trigger diagnostic_bank_publication_guard;
 insert into granular_assessment_releases(id,release_key,taxonomy_release_id,bank_release_id,status,content_checksum,bundle)
-values ('40000000-0000-4000-8000-000000000001','test-granular','20000000-0000-4000-8000-000000000001','30000000-0000-4000-8000-000000000001','published','test','{}');
+values ('40000000-0000-4000-8000-000000000001','test-granular','20000000-0000-4000-8000-000000000001','30000000-0000-4000-8000-000000000001','published','test',
+ '{"assessment":{"taxonomyChecksum":"granular-test-142","bankChecksum":"granular-test-142"}}');
 insert into granular_assessment_sessions(student_id,release_id,state) values
 ('10000000-0000-4000-8000-000000000001','40000000-0000-4000-8000-000000000001','{"revision":0,"phase":"learning","completionReason":"time_budget"}');
 select set_config('request.jwt.claim.role','authenticated',true);

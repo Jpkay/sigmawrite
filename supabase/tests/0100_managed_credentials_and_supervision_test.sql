@@ -33,7 +33,8 @@ values
 select is((select count(distinct username) from public.profiles where auth_user_id::text like 'a2000000-%'),4::bigint,'Auth trigger gives every account a unique username');
 select is((select count(*) from public.profiles where auth_user_id::text like 'a2000000-%' and email_recovery_enabled),4::bigint,'Real email accounts are recovery-enabled');
 
-update public.profiles set role='teacher' where auth_user_id='a2000000-0000-4000-8000-000000000003';
+update public.profiles set role='teacher', school_id='a1000000-0000-4000-8000-000000000002'
+where auth_user_id='a2000000-0000-4000-8000-000000000003';
 update public.profiles set role='supervisor' where auth_user_id='a2000000-0000-4000-8000-000000000004';
 select is((select role from public.profiles where auth_user_id='a2000000-0000-4000-8000-000000000004'),'supervisor','Supervisor role is accepted by the authorization constraint');
 

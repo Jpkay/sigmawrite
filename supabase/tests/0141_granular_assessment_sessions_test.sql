@@ -18,7 +18,8 @@ values ('30000000-0000-4000-8000-000000000001','granular-test-bank-141','granula
  '{"checksum":"granular-test-141"}','granular-test-141','{"valid":true}',(select id from profiles where auth_user_id='10000000-0000-4000-8000-000000000002'),now());
 alter table diagnostic_item_bank_releases enable trigger diagnostic_bank_publication_guard;
 insert into granular_assessment_releases(id,release_key,taxonomy_release_id,bank_release_id,status,content_checksum,bundle)
-values ('40000000-0000-4000-8000-000000000001','test-granular','20000000-0000-4000-8000-000000000001','30000000-0000-4000-8000-000000000001','published','test-checksum','{}');
+values ('40000000-0000-4000-8000-000000000001','test-granular','20000000-0000-4000-8000-000000000001','30000000-0000-4000-8000-000000000001','published','test-checksum',
+ '{"assessment":{"taxonomyChecksum":"granular-test-141","bankChecksum":"granular-test-141"}}');
 insert into granular_assessment_sessions(id,student_id,release_id,state)
 values ('50000000-0000-4000-8000-000000000001','10000000-0000-4000-8000-000000000001','40000000-0000-4000-8000-000000000001','{"revision":0,"phase":"assessing","release":{"checksum":"pinned"}}');
 do $$ declare affected integer; begin
