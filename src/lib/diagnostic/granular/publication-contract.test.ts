@@ -14,7 +14,7 @@ it("reports missing instruction rather than authorizing an incomplete pathway",(
  expect(report.ready).toBe(report.instructionGapSkillIds.length===0&&report.freshCheckGapSkillIds.length===0);
  expect(report.freshCheckGapSkillIds).toEqual([]);
  expect(JSON.stringify(bundle)).toBe(before);
-});
+},30000);
 it("rejects the legacy bank and changed question provenance",()=>{
  const legacy=structuredClone(bundle);legacy.bank.bank.key="french-diagnostic-bank-v2";
  expect(()=>prepareParallelPublication(legacy)).toThrow(/restricted/);

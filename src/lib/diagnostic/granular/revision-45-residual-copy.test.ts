@@ -2,12 +2,14 @@ import {readFileSync} from "node:fs";
 import {describe,expect,it} from "vitest";
 import type {CanonicalDiagnosticBankArtifact,CanonicalDiagnosticBankItem} from "../item-bank";
 import {FRENCH_DRAFT_EXPANSION_SOURCES} from "./draft-expansion-sources";
+import {buildPasseRecentModalExpansion} from "./passe-recent-modal-expansion";
 import {rewriteRevision45ResidualItem} from "./revision-45-residual-copy";
 
 const read=<T>(path:string):T=>JSON.parse(readFileSync(path,"utf8")) as T;
 const base=read<CanonicalDiagnosticBankArtifact>("generated/diagnostic-bank-v3-draft.json");
-const sources=[...FRENCH_DRAFT_EXPANSION_SOURCES,"etre-participle-agreement","avoir-participle-agreement","passe-recent-modal-family"];
-const items:CanonicalDiagnosticBankItem[]=[...base.items,...sources.flatMap(source=>read<{items:CanonicalDiagnosticBankItem[]}>(`generated/french-v3-${source}-expansion.json`).items)];
+const sources=[...FRENCH_DRAFT_EXPANSION_SOURCES,"etre-participle-agreement","avoir-participle-agreement"];
+const modal=await buildPasseRecentModalExpansion(read("generated/french-taxonomy-v3.json"),base);
+const items:CanonicalDiagnosticBankItem[]=[...base.items,...sources.flatMap(source=>read<{items:CanonicalDiagnosticBankItem[]}>(`generated/french-v3-${source}-expansion.json`).items),...modal.items];
 const revised=items.map(rewriteRevision45ResidualItem);
 const changed=revised.filter((entry,index)=>entry!==items[index]);
 const byKey=(key:string)=>revised.find(entry=>entry.itemKey===key)?.item;

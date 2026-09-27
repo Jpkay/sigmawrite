@@ -9,14 +9,16 @@ import {canonicalProbeMetrics} from './probe-metrics';
 import {applyFacetTargets} from './facet-adapter';
 import {allocateTeachingQuestionPools} from './teaching-question-pools';
 import {assessSkills,type Observation} from './engine';
+import {adaptV3ForAssessment} from './v3-adapter';
 import type {CanonicalDiagnosticBankArtifact,CanonicalDiagnosticBankItem} from '../item-bank';
 import type {V3Assessment} from './v3-adapter';
 function study(){
  const candidate=JSON.parse(readFileSync('docs/diagnostic/v3-parallel-review-candidate.json','utf8'));
- const parent=candidate.assessment.skills.find((skill:{id:string})=>skill.id==='classer_famille_verbale::reading-receptive');
- if(!parent)throw Error('Approved parent missing');
+ const artifact=JSON.parse(readFileSync('generated/french-taxonomy-v3.json','utf8'));
  const items=JSON.parse(readFileSync('generated/french-v3-verb-family-recognition-expansion.json','utf8')).items as CanonicalDiagnosticBankItem[];
  const base=JSON.parse(readFileSync('generated/diagnostic-bank-v3-draft.json','utf8')) as CanonicalDiagnosticBankArtifact;
+ const parent=adaptV3ForAssessment({artifact,bank:base}).skills.find(skill=>skill.id==='classer_famille_verbale::reading-receptive');
+ if(!parent)throw Error('Approved parent missing');
  const bank={...base,items};delete bank.manifest;
  // Isolated authoring simulation; this does not grant publication or classroom review.
  const source:V3Assessment={taxonomyChecksum:candidate.assessment.taxonomyChecksum,bankChecksum:checksum(bank),skills:[structuredClone(parent)],probes:items.map(entry=>({id:entry.itemKey,skillId:parent.id,mode:'recognition',contextId:entry.itemKey,materialKeys:questionMaterialKeys(entry.item),assessedMaterialKeys:questionAssessedMaterialKeys(entry.item),...canonicalProbeMetrics(entry)}))};

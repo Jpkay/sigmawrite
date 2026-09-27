@@ -1,5 +1,7 @@
 -- Synthetic users only; rolled back. Run against a disposable full-schema DB.
 begin;
+create extension if not exists pgtap with schema extensions;
+select extensions.plan(1);
 insert into public.schools(id,name) values
  ('14100000-0000-0000-0000-000000000001','Assignment test A'),
  ('14100000-0000-0000-0000-000000000002','Assignment test B');
@@ -158,4 +160,6 @@ do $$ begin
  assert not public.can_view_student('14100000-0000-0000-0000-000000000021');
 end $$;
 reset role;
+select extensions.pass('Teacher assignment boundary assertions hold');
+select * from extensions.finish();
 rollback;

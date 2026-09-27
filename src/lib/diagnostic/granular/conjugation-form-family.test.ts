@@ -40,7 +40,7 @@ it('samples both simple and compound production within the full graph time budge
  const verbs=new Set(history.map(o=>assessment.skills.find(s=>s.id===o.skillId)!.branch).filter(branch=>branch.startsWith('conjugation:verb:')));
  expect(verbs.size).toBeGreaterThanOrEqual(2);
  const results=assessSkills(assessment.skills,history);
- expect(results).toHaveLength(542);
+ expect(results).toHaveLength(assessment.skills.length);
  for(const r of results)if(!history.some(o=>o.skillId===r.skillId))expect(r.status).toBe('unknown');
  expect(results.some(r=>r.status==='mastered')).toBe(false);
 });

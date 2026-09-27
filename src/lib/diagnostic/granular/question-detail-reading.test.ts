@@ -18,7 +18,7 @@ it('retains pending review and binds answer plus exact text support to the appro
  expect(validateCanonicalDiagnosticBank(bank,taxonomy).issues).toEqual([]);
  for(const entry of expansion.items){expect(entry.reviewStatus).toBe('needs_human_review');expect(entry.item.nodeKey).toBe('associer_information_question');expect(entry.evidenceKey).toBe('all-receptive');expect(entry.review).toBeUndefined();expect(readTextualSupport(entry.item)).toBeTruthy();expect(questionAssessedMaterialKeys(entry.item)).toHaveLength(1);}
  const existing=read('generated/diagnostic-bank-v3-consolidated-draft.json');
- expect(existing.items.some((i:{itemKey:string})=>i.itemKey.startsWith('v3-question-detail-reading:'))).toBe(false);
+ expect(existing.items.filter((i:{itemKey:string})=>i.itemKey.startsWith('v3-question-detail-reading:'))).toHaveLength(36);
 });
 
 import {QUESTION_DETAIL_READING_TEACHING} from './question-detail-reading-teaching';

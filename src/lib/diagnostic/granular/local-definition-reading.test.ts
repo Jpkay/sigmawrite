@@ -18,7 +18,7 @@ it('retains pending review and binds answer plus exact text support to the appro
  expect(validateCanonicalDiagnosticBank(bank,taxonomy).issues).toEqual([]);
  for(const entry of expansion.items){expect(entry.reviewStatus).toBe('needs_human_review');expect(entry.item.nodeKey).toBe('deduire_mot_definition_locale');expect(entry.evidenceKey).toBe('all-receptive');expect(entry.review).toBeUndefined();expect(readTextualSupport(entry.item)).toBeTruthy();expect(questionAssessedMaterialKeys(entry.item)).toHaveLength(1);}
  const existing=read('generated/diagnostic-bank-v3-consolidated-draft.json');
- expect(existing.items.some((i:{itemKey:string})=>i.itemKey.startsWith('v3-local-definition-reading:'))).toBe(false);
+ expect(existing.items.filter((i:{itemKey:string})=>i.itemKey.startsWith('v3-local-definition-reading:'))).toHaveLength(36);
 });
 
 import {LOCAL_DEFINITION_READING_TEACHING} from './local-definition-reading-teaching';

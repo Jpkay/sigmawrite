@@ -28,5 +28,5 @@ it.each(cases)('keeps separate direct evidence for $name',profile=>{
   else expect(result.modes[0].provisionalGap).toBe(true);
  }
  for(const id of [target('passe_compose','avoir'),target('plus_que_parfait','être')])expect(results.find(r=>r.skillId===id)).toMatchObject({status:'unknown',evidence:'untested'});
- expect(results).toHaveLength(542);
+  expect(results).toHaveLength(assessment.skills.length);
 });

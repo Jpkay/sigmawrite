@@ -38,7 +38,7 @@ it('preserves the recognition contrasts in both reserves even beside older uncat
  const unrelated=structuredClone(entries[0]);unrelated.item.nodeKey='reconnaitre_futur_simple';expect(canonicalProbeMetrics(unrelated).samplingCategory).toBeUndefined();
 });
 
-it('retires untracked recognition only in a bank with tracked replacements',async()=>{
+it('retains reviewed recognition prompts while retiring unsupported older probes',async()=>{
  const {adaptV3ForAssessment}=await import('./v3-adapter');
  const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
  const artifact=read('generated/french-taxonomy-v3.json');
@@ -46,8 +46,13 @@ it('retires untracked recognition only in a bank with tracked replacements',asyn
  const legacy=old.probes.filter(p=>['reconnaitre_subjonctif_present::reading-receptive','produire_subjonctif_present_frequent::writing-controlled-production'].includes(p.skillId)&&!p.assessedMaterialKeys?.length);
  expect(legacy.length).toBeGreaterThan(0);
  const current=adaptV3ForAssessment({artifact,bank:read('generated/diagnostic-bank-v3-consolidated-draft.json'),reviewPolicy:read('generated/french-v3-parallel-review-policy.json')});
- for(const p of legacy){expect(current.probes.some(q=>q.id===p.id)).toBe(false);expect(current.unsupportedEvidenceItemKeys).toContain(p.id);}
- expect(current.probes.filter(p=>p.skillId==='reconnaitre_subjonctif_present::reading-receptive')).toHaveLength(24);
+ const retained=legacy.filter(p=>current.probes.some(q=>q.id===p.id));
+ expect(retained.map(p=>p.id).sort()).toEqual([
+  'local-conjugation-gap-v1:reconnaitre_subjonctif_present:receptive:foundation',
+  'local-conjugation-gap-v1:reconnaitre_subjonctif_present:receptive:stretch',
+ ]);
+ for(const p of legacy.filter(p=>!retained.includes(p)))expect(current.unsupportedEvidenceItemKeys).toContain(p.id);
+ expect(current.probes.filter(p=>p.id.startsWith('v3-tense-recognition:subjonctif-recognition-'))).toHaveLength(24);
 });
 
 it('does not repartition older person-number groups with unclassified legacy questions',async()=>{

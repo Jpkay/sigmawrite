@@ -1,6 +1,8 @@
 -- Synthetic users only; every mutation is rolled back.
 begin;
 set local search_path = public;
+create extension if not exists pgtap with schema extensions;
+select extensions.plan(1);
 
 do $$ begin
   assert to_regprocedure('public.create_school_with_organization(text,uuid,text,text,text,text)') is not null;
@@ -140,4 +142,7 @@ do $$ begin
   assert exists(select 1 from public.teacher_classes teacher_class join public.classes class on class.id=teacher_class.class_id where class.name='Classe indépendante test');
 end $$;
 
+reset role;
+select extensions.pass('School self-service assertions hold');
+select * from extensions.finish();
 rollback;

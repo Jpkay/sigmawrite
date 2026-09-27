@@ -28,8 +28,10 @@ select col_default_is(
   'Pilot settings default fail closed even when staging has been explicitly enabled'
 );
 select extensions.ok(
-  pg_get_functiondef('public.student_learning_is_unlocked(uuid)'::regprocedure)
-    like '%bank.status=''published''%',
+  pg_get_functiondef('public.student_legacy_learning_is_unlocked(uuid)'::regprocedure)
+    like '%bank.status=''published''%'
+  and pg_get_functiondef('public.student_granular_learning_ready(uuid)'::regprocedure)
+    like '%b.status=''published''%',
   'Production learning unlock still requires a published bank'
 );
 

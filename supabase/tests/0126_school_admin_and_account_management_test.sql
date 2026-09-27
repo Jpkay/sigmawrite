@@ -15,15 +15,18 @@ insert into public.schools(id,name,teacher_code) values ('12600000-0000-0000-000
 insert into public.classes(id,school_id,name) values ('12600000-0000-0000-0000-000000000011','12600000-0000-0000-0000-000000000001','6e A'),('12600000-0000-0000-0000-000000000012','12600000-0000-0000-0000-000000000002','6e B');
 insert into auth.users(id,instance_id,aud,role,email,encrypted_password,email_confirmed_at,raw_app_meta_data,raw_user_meta_data,created_at,updated_at) values
   ('12600000-0000-4000-8000-000000000001','00000000-0000-0000-0000-000000000000','authenticated','authenticated','admin-a@test.local','',now(),'{}','{"role":"parent","display_name":"Admin A"}',now(),now()),
-  ('12600000-0000-4000-8000-000000000002','00000000-0000-0000-0000-000000000000','authenticated','authenticated','teacher-code@test.local','',now(),'{}','{"role":"teacher","display_name":"Prof avec code","teacher_code":"abcd1234"}',now(),now()),
-  ('12600000-0000-4000-8000-000000000003','00000000-0000-0000-0000-000000000000','authenticated','authenticated','teacher-nocode@test.local','',now(),'{}','{"role":"teacher","display_name":"Prof sans code"}',now(),now());
+  ('12600000-0000-4000-8000-000000000002','00000000-0000-0000-0000-000000000000','authenticated','authenticated','teacher-code@test.local','',now(),'{}','{"role":"teacher","display_name":"Prof avec code","teacher_code":"abcd1234"}',now(),now());
 update public.profiles set role='school_admin', school_id='12600000-0000-0000-0000-000000000001' where auth_user_id='12600000-0000-4000-8000-000000000001';
 insert into public.students(id,display_name,school_id) values ('12600000-0000-0000-0000-000000000021','Élève A','12600000-0000-0000-0000-000000000001'),('12600000-0000-0000-0000-000000000022','Élève B','12600000-0000-0000-0000-000000000002');
 insert into public.enrollments(student_id,class_id,status) values ('12600000-0000-0000-0000-000000000021','12600000-0000-0000-0000-000000000011','active'),('12600000-0000-0000-0000-000000000022','12600000-0000-0000-0000-000000000012','active');
 
 select is((select role from public.profiles where auth_user_id='12600000-0000-4000-8000-000000000002'),'teacher','A valid teacher code yields a teacher account linked to the school');
 select is((select school_id from public.profiles where auth_user_id='12600000-0000-4000-8000-000000000002'),'12600000-0000-0000-0000-000000000001'::uuid,'The teacher is linked to the school of the code');
-select is((select role from public.profiles where auth_user_id='12600000-0000-4000-8000-000000000003'),'parent','Without a code a self-declared teacher becomes a parent');
+select throws_ok(
+  $$insert into auth.users(id,instance_id,aud,role,email,encrypted_password,email_confirmed_at,raw_app_meta_data,raw_user_meta_data,created_at,updated_at)
+    values ('12600000-0000-4000-8000-000000000003','00000000-0000-0000-0000-000000000000','authenticated','authenticated','teacher-nocode@test.local','',now(),'{}','{"role":"teacher","display_name":"Prof sans code"}',now(),now())$$,
+  '22023','teacher_code_invalid','A self-declared teacher without a code is rejected'
+);
 
 select set_config('request.jwt.claim.sub','12600000-0000-4000-8000-000000000001',true);
 select set_config('request.jwt.claim.role','authenticated',true);
