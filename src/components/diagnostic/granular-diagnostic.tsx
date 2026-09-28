@@ -1,6 +1,8 @@
 "use client";
 import {SkillEvidenceResults} from "./skill-evidence-results";
-import {diagnosticProgressPercent,diagnosticProgressText,diagnosticQuestionText,diagnosticAnswerCountText} from "./diagnostic-copy";
+import {diagnosticProgressPercent,diagnosticProgressText,diagnosticQuestionText,diagnosticAnswerCountText,diagnosticRemainingQuestionsText,diagnosticMilestoneText} from "./diagnostic-copy";
+import {estimateRemainingQuestions,interludeAfter,type Interlude} from "@/lib/diagnostic/granular/diagnostic-pacing";
+import {PartyPopper} from "lucide-react";
 import {DIAGNOSTIC_COPY as copy} from "./diagnostic-copy";
 import {WritingFeedbackCard} from "./writing-feedback";
 import {SkillFeatureResults} from "./skill-feature-results";
@@ -29,6 +31,9 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
  const [supportDraft,setSupportDraft]=useState<{questionId:string;choiceId:string}|null>(null);
  const supportRef=useRef<{questionId:string;choiceId:string}|null>(null);
  const current=useRef<AssessmentView|null>(null),draftRef=useRef(""),locked=useRef(false),pauseQueued=useRef(false),queuedAnswer=useRef<{itemId:string;type:"answer"|"skip"}|null>(null),mounted=useRef(true),lastTimedEventAt=useRef(0);
+ const [interlude,setInterlude]=useState<Interlude|null>(null),[resting,setResting]=useState(false);
+ // Active-time anchor (remaining seconds at the last real break) for break suggestions.
+ const breakAnchor=useRef<number|null>(null),keepBreakAnchor=useRef(false);
  const accept=useCallback((response:AssessmentResponse)=>{
   if(!mounted.current)return;
   if(response.studentState&&!preview)replaceStudentState(response.studentState);
@@ -55,6 +60,16 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
    const teachingCommand=["start_teaching","begin_practice","teaching_hint","answer_practice","next_exercise","leave_teaching"].includes(type);
    const response=await (teachingCommand?updateTeaching:type.endsWith("_check")?updateLearning:update)(command);
    accept(response);
+   const after=current.current;
+   if((type==="answer"||type==="skip")&&mounted.current&&!response.error&&!response.conflict&&after?.phase==="assessing"&&!after.paused){
+    const found=interludeAfter({done:state.answeredCount+(state.skippedCount??0),remainingSeconds:state.remainingSeconds},{done:after.answeredCount+(after.skippedCount??0),remainingSeconds:after.remainingSeconds},breakAnchor.current);
+    // The interlude pauses the server clock, so celebrating never costs time.
+    if(found){setInterlude(found);pauseQueued.current=true;}
+   }
+   if(type==="resume"&&!response.error&&!response.conflict&&after&&!after.paused){
+    if(!keepBreakAnchor.current)breakAnchor.current=after.remainingSeconds;
+    keepBreakAnchor.current=false;if(mounted.current)setResting(false);
+   }
    // Accepted answers, skips, resumes and pulses all restart server timing.
    if(["answer","skip","resume","pulse"].includes(type)&&!response.error&&!response.conflict)lastTimedEventAt.current=sentAt;
    if(mounted.current&&type==="skip"&&!response.error&&!response.conflict&&response.view)setNotice(copy.skippedNotice);
@@ -109,8 +124,16 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
   {notice&&<p role="status" className="mb-5 rounded-md border border-border p-4">{notice}</p>}
   {error&&<p role="alert" className="mb-5 rounded-md border border-border p-4">{error}</p>}
   {view.teaching?<GuidedTeaching teaching={view.teaching} busy={busy} draft={draft} edit={edit} send={type=>void send(type)}/>:view.phase==="assessing"||checking?<>
-   {!checking&&<div className="mb-6 grid gap-3 text-sm text-muted-foreground"><div className="flex flex-wrap items-center justify-between gap-3"><p>{diagnosticProgressText(view.answeredCount,view.skippedCount??0,view.remainingSeconds)}</p>{!view.paused&&<Button variant="outline" disabled={busy} onClick={()=>void send("pause")}>{copy.pause}</Button>}</div><div className="h-2 overflow-hidden rounded-full bg-muted" role="progressbar" aria-label={copy.timeProgressLabel} aria-valuemin={0} aria-valuemax={100} aria-valuenow={diagnosticProgressPercent(view.remainingSeconds)} aria-valuetext={`Environ ${Math.ceil(view.remainingSeconds/60)} min restantes`}><div className="h-full rounded-full bg-primary" style={{width:`${diagnosticProgressPercent(view.remainingSeconds)}%`}}/></div><p className="text-xs">{copy.adaptiveProgressHelp}</p></div>}
-   {view.paused&&!checking?<section className="rounded-xl border border-border p-6"><h2 className="mb-2 text-xl font-semibold">{view.answeredCount||(view.skippedCount??0)?copy.progressSaved:copy.ready}</h2><p className="mb-5 text-muted-foreground">{copy.pauseHelp}</p><Button disabled={busy} onClick={()=>void send("resume")}>{view.answeredCount||question?copy.resume:copy.begin}</Button></section>
+   {!checking&&<div className="mb-6 grid gap-3 text-sm text-muted-foreground"><div className="flex flex-wrap items-center justify-between gap-3"><div><p className="font-medium text-foreground">{diagnosticRemainingQuestionsText(estimateRemainingQuestions(view.answeredCount+(view.skippedCount??0),view.remainingSeconds))}</p><p>{diagnosticProgressText(view.answeredCount,view.skippedCount??0,view.remainingSeconds)}</p></div>{!view.paused&&!interlude&&<Button variant="outline" disabled={busy} onClick={()=>void send("pause")}>{copy.pause}</Button>}</div><div className="h-2 overflow-hidden rounded-full bg-muted" role="progressbar" aria-label={copy.timeProgressLabel} aria-valuemin={0} aria-valuemax={100} aria-valuenow={diagnosticProgressPercent(view.remainingSeconds)} aria-valuetext={`Environ ${Math.ceil(view.remainingSeconds/60)} min restantes`}><div className="h-full rounded-full bg-primary" style={{width:`${diagnosticProgressPercent(view.remainingSeconds)}%`}}/></div><p className="text-xs">{copy.adaptiveProgressHelp}</p></div>}
+   {interlude&&!checking?<section role="status" className="rounded-xl border border-border p-6 text-center sm:p-8">
+    <PartyPopper aria-hidden className="mx-auto mb-4 size-10 text-primary motion-safe:animate-bounce [animation-iteration-count:2]"/>
+    <h2 className="mb-2 text-2xl font-semibold">{interlude.milestone==="half"?copy.celebrateHalfTitle:interlude.milestone==="three_quarters"?copy.celebrateThreeQuartersTitle:interlude.milestone?copy.celebrateQuestionsTitle:copy.breakTitle}</h2>
+    {interlude.milestone&&<p className="mb-2">{diagnosticMilestoneText(interlude.done)} {copy.celebrateEffort}</p>}
+    {interlude.breakSuggested&&<p className="mb-2">{copy.breakSuggestion}</p>}
+    <p className="mb-6 text-sm text-muted-foreground">{copy.clockStopped}</p>
+    <div className="flex flex-wrap justify-center gap-3"><Button autoFocus disabled={busy} onClick={()=>{keepBreakAnchor.current=!interlude.breakSuggested;setInterlude(null);if(current.current?.paused)void send("resume");}}>{copy.continue}</Button><Button variant="outline" disabled={busy} onClick={()=>{setInterlude(null);setResting(true);}}>{copy.pause}</Button></div>
+   </section>
+   :view.paused&&!checking?<section className="rounded-xl border border-border p-6"><h2 className="mb-2 text-xl font-semibold">{view.answeredCount||(view.skippedCount??0)?copy.progressSaved:copy.ready}</h2><p className="mb-5 text-muted-foreground">{copy.pauseHelp}</p>{resting&&<p className="-mt-3 mb-5 text-muted-foreground">{copy.breakTip}</p>}<Button disabled={busy} onClick={()=>void send("resume")}>{view.answeredCount||question?copy.resume:copy.begin}</Button></section>
    :question?<form onSubmit={event=>{event.preventDefault();if(question.audio&&audioPlayedKey!==`${view.sessionId}:${question.id}:${question.audio.src}`)return;void send(checking?"answer_check":"answer");}} className="rounded-xl border border-border p-5 sm:p-7">
     <h2 className="mb-4 text-sm font-semibold text-muted-foreground">{checking?copy.newCheck:diagnosticQuestionText(view.answeredCount,view.skippedCount??0)}</h2>
     <ExercisePrompt promptFr={question.promptFr} instructionsFr={question.instructionsFr}/>

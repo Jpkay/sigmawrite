@@ -5,7 +5,7 @@ vi.mock('@/lib/auth',()=>({requireRole:f.guard}));
 vi.mock('@/lib/supabase/server',()=>({createClient:async()=>({}),createServiceClient:()=>({})}));
 vi.mock('@/lib/db/student',()=>({getCurrentStudentId:async()=> 'owner',getStudentStateData:async()=>f.state}));
 vi.mock('@/lib/diagnostic/access',()=>({requireStudentAccessAuthorized:async()=>{}}));
-vi.mock('@/lib/diagnostic/granular/store',()=>({SupabaseAssessmentStore:class{recordDeliveredText=f.journal;latestSession=f.latest;start=f.start;currentSessionId=f.current;}}));
+vi.mock('@/lib/diagnostic/granular/store',()=>({SupabaseAssessmentStore:class{recordDeliveredText=f.journal;latestSession=f.latest;start=f.start;currentSessionId=f.current;startProfileInput=async()=>({});}}));
 vi.mock('@/lib/diagnostic/granular/material-delivery',()=>({recordMaterialDelivery:f.record}));
 vi.mock('@/lib/diagnostic/granular/service',()=>({runAssessmentCommand:f.command,publicAssessmentView:vi.fn()}));
 vi.mock('@/lib/diagnostic/granular/learning-service',()=>({runLearningCheckCommand:f.command}));
