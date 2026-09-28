@@ -40,8 +40,9 @@ export async function startGranularDiagnostic(){
 }
 async function startDiagnostic(){
  const {studentId,store,client}=await context();
+ // Starting points come from the stored profile, read only for a new sitting.
  const current=await store.latestSession(studentId)
-  ?? await store.start(studentId,process.env.GRANULAR_DIAGNOSTIC_RELEASE_KEY??"french-granular-diagnostic-v1");
+  ?? await store.start(studentId,process.env.GRANULAR_DIAGNOSTIC_RELEASE_KEY??"french-granular-diagnostic-v1",await store.startProfileInput(studentId));
  if(!current)return deliver(store,studentId,"granular:start",{error:"Ce diagnostic n’est pas encore disponible."});
  const result={view:publicAssessmentView(current.session,current.bundle),history:await store.completedSessions(studentId),...(current.session.state.phase==="learning"?{studentState:await getStudentStateData(studentId,client)}:{})};
  return deliver(store,studentId,"granular:start",result);
@@ -57,7 +58,7 @@ export async function retakeGranularDiagnostic(){
  const releaseKey=process.env.GRANULAR_DIAGNOSTIC_RELEASE_KEY??"french-granular-diagnostic-v1";
  const targetId=await store.publishedReleaseId(releaseKey);
  if(!targetId)return deliver(store,studentId,"granular:retake",{error:"Le nouveau diagnostic n’est pas encore disponible."});
- const successor=await store.createRetake(studentId,current.session.id,targetId);
+ const successor=await store.createRetake(studentId,current.session.id,targetId,await store.startProfileInput(studentId));
  const bundle=await store.release(successor.releaseId);
  if(!bundle)throw Error("Diagnostic target release unavailable");
  revalidatePath("/student/diagnostic");
