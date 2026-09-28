@@ -28,7 +28,7 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
  const [audioPlayedKey,setAudioPlayedKey]=useState<string|null>(null);
  const [supportDraft,setSupportDraft]=useState<{questionId:string;choiceId:string}|null>(null);
  const supportRef=useRef<{questionId:string;choiceId:string}|null>(null);
- const current=useRef<AssessmentView|null>(null),draftRef=useRef(""),locked=useRef(false),pauseQueued=useRef(false),queuedAnswer=useRef<{itemId:string;type:"answer"|"skip"}|null>(null),mounted=useRef(true);
+ const current=useRef<AssessmentView|null>(null),draftRef=useRef(""),locked=useRef(false),pauseQueued=useRef(false),queuedAnswer=useRef<{itemId:string;type:"answer"|"skip"}|null>(null),mounted=useRef(true),lastTimedEventAt=useRef(0);
  const accept=useCallback((response:AssessmentResponse)=>{
   if(!mounted.current)return;
   if(response.studentState&&!preview)replaceStudentState(response.studentState);
@@ -49,11 +49,14 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
   const state=current.current;if(!state)return;
   if(locked.current){if(type==="pause")pauseQueued.current=true;else if((type==="answer"||type==="skip")&&state.question){queuedAnswer.current={itemId:state.question.id,type};setBusy(true);}return;}
   locked.current=true;if(type!=="pulse"){setBusy(true);setNotice(null);}
+  const sentAt=Date.now();
   try{
    const command={type,sessionId:state.sessionId,revision:state.revision,...(type==="answer"?{itemId:state.question?.id,answer:draftRef.current,...(supportRef.current?{supportChoiceId:supportRef.current.choiceId}:{})}:type==="skip"?{itemId:state.question?.id}:(type==="start_check"||type==="start_teaching")?{activityId}:type==="answer_practice"?{exerciseId:state.teaching?.exercise?.id,answer:draftRef.current}:type==="answer_check"?{checkId:state.learningCheck?.id,answer:draftRef.current,...(supportRef.current?{supportChoiceId:supportRef.current.choiceId}:{})}:type==="abandon_check"?{checkId:state.learningCheck?.id}:{})};
    const teachingCommand=["start_teaching","begin_practice","teaching_hint","answer_practice","next_exercise","leave_teaching"].includes(type);
    const response=await (teachingCommand?updateTeaching:type.endsWith("_check")?updateLearning:update)(command);
    accept(response);
+   // Accepted answers, skips, resumes and pulses all restart server timing.
+   if(["answer","skip","resume","pulse"].includes(type)&&!response.error&&!response.conflict)lastTimedEventAt.current=sentAt;
    if(mounted.current&&type==="skip"&&!response.error&&!response.conflict&&response.view)setNotice(copy.skippedNotice);
    if(mounted.current&&type==="answer_check"&&!response.error&&!response.conflict&&response.view&&!response.view.learningCheck)setNotice(response.view.writingFeedback?.assessed===false?copy.writingSavedNotice:copy.answerSavedNotice);
    if(mounted.current&&type==="next_exercise"&&!response.error&&!response.conflict&&response.view&&!response.view.teaching)setNotice(copy.practiceSavedNotice);
@@ -82,7 +85,10 @@ export function GranularDiagnostic({initialActivityId,start=startGranularDiagnos
   return()=>{cancelled=true;mounted.current=false;};
  },[start,accept,send,initialActivityId]);
  useEffect(()=>{
-  const timer=setInterval(()=>{if(document.visibilityState==="visible"&&current.current?.phase==="assessing"&&!current.current.paused)void send("pulse");},15000);
+  // A pulse only keeps active time counted (the server caps each gap at 30 s).
+  // Skipping one right after another timed event keeps gaps under 25 s and
+  // avoids a pulse holding up the next answer.
+  const timer=setInterval(()=>{if(document.visibilityState==="visible"&&Date.now()-lastTimedEventAt.current>=10000&&current.current?.phase==="assessing"&&!current.current.paused)void send("pulse");},15000);
   const visibility=()=>{if(document.visibilityState==="hidden"&&current.current?.phase==="assessing"&&!current.current.paused)void send("pause");};
   document.addEventListener("visibilitychange",visibility);
   return()=>{clearInterval(timer);document.removeEventListener("visibilitychange",visibility);};
