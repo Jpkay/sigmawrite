@@ -15,6 +15,8 @@ import {bindAssessmentRelease} from "./release-binding";
 import {inspectQuestionPools} from "./question-pools";
 import {inspectReleaseBank} from "./release-bank";
 import {validatePublishedTeaching} from "./teaching-content";
+import {startProfileForAssessment,type StartProfileInput} from "./start-profile";
+const bundleStartProfile=(bundle:AssessmentBundle,profile:StartProfileInput|null|undefined)=>startProfileForAssessment(bundle.assessment,profile);
 export class SupabaseAssessmentStore implements AssessmentStore{
  // One deterministic validation result per store instance (normally one action).
  // Content and live availability are still fetched and checked on every call.
@@ -203,6 +205,19 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   }
   return null;
  }
+ /** Server-owned profile fields for starting points; never client input.
+  * Missing rows yield null fields, which start at the default level. */
+ async startProfileInput(studentId:string):Promise<StartProfileInput>{
+  const [student,profile,goal]=await Promise.all([
+   this.db.from("students").select("current_grade,french_background").eq("id",studentId).maybeSingle(),
+   this.db.from("learner_profiles").select("student_type,exposure,exposures").eq("student_id",studentId).maybeSingle(),
+   this.db.from("learning_goals").select("goal_type,target_level").eq("student_id",studentId).eq("status","active").order("created_at",{ascending:false}).limit(1).maybeSingle(),
+  ]);
+  const error=student.error??profile.error??goal.error;if(error)throw Error(error.message);
+  return {grade:student.data?.current_grade??null,frenchBackground:student.data?.french_background??null,
+   studentType:profile.data?.student_type??null,exposures:profile.data?.exposures??null,exposure:profile.data?.exposure??null,
+   goalType:goal.data?.goal_type??null,targetLevel:goal.data?.target_level??null};
+ }
  async currentSessionId(studentId:string):Promise<string|null>{
   const {data,error}=await this.db.from("granular_active_assessment_sessions").select("id")
    .eq("student_id",studentId).order("created_at",{ascending:false}).limit(1).maybeSingle();
@@ -236,12 +251,12 @@ export class SupabaseAssessmentStore implements AssessmentStore{
  }
  /** The source and its results stay intact. The database creates a fresh
   * sitting and switches the active view in one transaction. */
- async createRetake(studentId:string,sourceSessionId:string,targetReleaseId:string):Promise<StoredSession>{
+ async createRetake(studentId:string,sourceSessionId:string,targetReleaseId:string,profile?:StartProfileInput|null):Promise<StoredSession>{
   const source=await this.load(studentId,sourceSessionId);
   if(!source)throw Error("Diagnostic predecessor unavailable");
   const bundle=await this.release(targetReleaseId);
   if(!bundle)throw Error("Diagnostic target release unavailable");
-  const state={...createSession(bindAssessmentRelease(bundle.assessment,{taxonomyId:bundle.taxonomyId,bankId:bundle.bankId})),
+  const state={...createSession(bindAssessmentRelease(bundle.assessment,{taxonomyId:bundle.taxonomyId,bankId:bundle.bankId}),bundleStartProfile(bundle,profile)),
    priorDiagnosticItemIds:[...new Set([...(source.state.priorDiagnosticItemIds??[]),...source.state.observations.map(observation=>observation.itemId)])]};
   const {data,error}=await this.db.rpc("create_granular_assessment_retake",{
    p_student_id:studentId,p_source_session_id:sourceSessionId,p_source_revision:source.state.revision,
@@ -253,11 +268,11 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   if(!successor||successor.releaseId!==targetReleaseId)throw Error("Diagnostic retake unavailable");
   return successor;
  }
- async start(studentId:string,releaseKey:string):Promise<{session:StoredSession;bundle:AssessmentBundle}|null>{
+ async start(studentId:string,releaseKey:string,profile?:StartProfileInput|null):Promise<{session:StoredSession;bundle:AssessmentBundle}|null>{
   const releaseId=await this.publishedReleaseId(releaseKey);
   if(!releaseId)return null;
   const bundle=await this.release(releaseId);if(!bundle)return null;
-  const state=createSession(bindAssessmentRelease(bundle.assessment,{taxonomyId:bundle.taxonomyId,bankId:bundle.bankId}));
+  const state=createSession(bindAssessmentRelease(bundle.assessment,{taxonomyId:bundle.taxonomyId,bankId:bundle.bankId}),bundleStartProfile(bundle,profile));
   const {data,error:startError}=await this.db.rpc("start_granular_assessment_session",{
    p_student_id:studentId,p_target_release_id:releaseId,p_target_bundle_checksum:checksum(bundle),p_target_state:state,
   });

@@ -115,7 +115,37 @@ export type Policy = {
    * domain visits. Unresolved skills remain eligible for a later visit. */
   maxSpellingTopicVisit?:number;
   startingLevel: number;
+  /** Per-domain entry challenge from the session's start profile. Routing
+   * only; a missing domain falls back to startingLevel. */
+  startingLevels?:Readonly<Record<string,number>>;
+  /** Faster steps and short same-area visits. Absent on sessions created
+   * before start profiles, which keep their original routing. */
+  adaptiveRouting?:AdaptiveRouting;
 };
+/** Routing parameters, never evidence or mastery thresholds. */
+export type AdaptiveRouting={version:string;stepUpStreak:number;jumpStreak:number;jumpSize:number;areaVisit:number;areaSlackSeconds:number};
+export const ADAPTIVE_ROUTING_V1:AdaptiveRouting={version:"adaptive-routing-v1",stepUpStreak:2,jumpStreak:4,jumpSize:2,areaVisit:3,areaSlackSeconds:150};
+/** Current routing level of one domain: start at the profile entry, move up
+ * one available level per stepUpStreak unaided successes (jumpSize once the
+ * streak reaches jumpStreak), and down one level on an error at or below it.
+ * Answers far below the level neither raise it nor break the streak. This
+ * picks the next probe only; results still come from assessSkills alone. */
+export function domainRoutingLevel(start:number,levels:readonly number[],answers:readonly {correct:boolean;challenge:number;unaided?:boolean}[],rule:AdaptiveRouting){
+ const sorted=[...new Set(levels)].sort((a,b)=>a-b);
+ if(!sorted.length)return {level:start,streak:0};
+ let index=sorted.reduce((best,value,i)=>Math.abs(value-start)<Math.abs(sorted[best]-start)?i:best,0),streak=0;
+ for(const answer of answers){
+  if(answer.correct&&answer.unaided!==false){
+   if(answer.challenge<sorted[index]-1)continue;
+   streak++;
+   if(streak%Math.max(1,rule.stepUpStreak)===0)index=Math.min(sorted.length-1,index+(streak>=rule.jumpStreak?rule.jumpSize:1));
+  }else{
+   streak=0;
+   if(answer.challenge<=sorted[index])index=Math.max(0,index-1);
+  }
+ }
+ return {level:sorted[index],streak};
+}
 export const DEFAULT_POLICY: Policy = {
   activeSeconds: 35 * 60, minimumItemsPerMode: 3, minimumContextsPerMode: 2,
   maxItemsPerSkill: 12, startingLevel: 1, itemsPerBranchVisit: 6,
@@ -360,9 +390,28 @@ function selectProbeWithTierFallbacks(skills: readonly Skill[], bank: readonly P
     // Count breaks zero-time ties so quick answers/skips cannot monopolize a domain.
     return seconds(left)-seconds(right)||left.length-right.length||tieRank(a)-tieRank(b)||a.localeCompare(b);
   });
-  const domain=balance([...new Set(available.map(item=>domainOf(skillById.get(item.skillId)!)))],observed,domainOf)[0];
+  const adaptive=policy.adaptiveRouting;
+  const availableDomains=[...new Set(available.map(item=>domainOf(skillById.get(item.skillId)!)))];
+  let domain=balance(availableDomains,observed,domainOf)[0];
+  const lastObserved=observed.at(-1),lastDomain=lastObserved&&!lastObserved.skipped?domainOf(skillById.get(lastObserved.skillId)!):undefined;
+  if(adaptive&&lastDomain&&lastDomain!==domain&&availableDomains.includes(lastDomain)){
+    // Stay for a short visit so a step up or down is felt on the next question.
+    // Each visit still starts in the least-used area, and a skip or a large
+    // time lead ends it, so the domain time balance holds over the sitting.
+    let run=0;for(const observation of [...observed].reverse()){if(domainOf(skillById.get(observation.skillId)!)!==lastDomain)break;run++;}
+    const seconds=(value:string)=>observed.reduce((sum,o)=>sum+(domainOf(skillById.get(o.skillId)!)===value?Math.max(0,o.activeSeconds):0),0);
+    if(run<adaptive.areaVisit&&seconds(lastDomain)-seconds(domain)<=adaptive.areaSlackSeconds)domain=lastDomain;
+  }
   let domainItems=available.filter(item=>domainOf(skillById.get(item.skillId)!)===domain);
   const domainHistory=observed.filter(observation=>domainOf(skillById.get(observation.skillId)!)===domain);
+  // Entry challenge for new targets in this domain: the profile start, moved
+  // by today's answers when adaptive routing is on. Never mastery evidence.
+  const profileStart=policy.startingLevels?.[domain]??policy.startingLevel;
+  const routing=adaptive?domainRoutingLevel(profileStart,bank.flatMap(item=>{
+    const skill=skillById.get(item.skillId);
+    return skill&&item.usage!=="learning"&&skill.assessmentStage!=="learning"&&domainOf(skill)===domain&&(!scope||scope.assessmentSkillIds.has(skill.id))?[challengeOf(skill)]:[];
+  }),domainHistory.filter(observation=>!observation.skipped).map(observation=>({correct:observation.correct,challenge:challengeOf(skillById.get(observation.skillId)!),unaided:observation.unaided})),adaptive):undefined;
+  const entryLevel=routing?.level??profileStart;
   if(domain==="spelling"&&policy.maxSpellingTopicVisit!==undefined){
     const visitLimit=Math.max(1,Math.floor(policy.maxSpellingTopicVisit));
     const lastTopic=probeById.get(domainHistory.at(-1)?.itemId??"")?.routeTopic;
@@ -375,7 +424,9 @@ function selectProbeWithTierFallbacks(skills: readonly Skill[], bank: readonly P
     const topicCount=(topic:string)=>domainHistory.filter(observation=>probeById.get(observation.itemId)?.routeTopic===topic).length;
     const lastSkillId=domainHistory.at(-1)?.skillId;
     const continueUnresolved=lastTopic&&lastSkillId&&visitCount<visitLimit&&!routingById.get(lastSkillId)?.resolved&&topics.includes(lastTopic);
-    topics.sort((left,right)=>Math.floor(topicCount(left)/visitLimit)-Math.floor(topicCount(right)/visitLimit)||topicCount(left)-topicCount(right)||left.localeCompare(right));
+    // Adaptive routing opens the topic nearest the domain level first.
+    const topicDistance=(topic:string)=>adaptive?Math.min(...domainItems.filter(item=>item.routeTopic===topic).map(item=>Math.abs(challengeOf(skillById.get(item.skillId)!)-entryLevel))):0;
+    topics.sort((left,right)=>Math.floor(topicCount(left)/visitLimit)-Math.floor(topicCount(right)/visitLimit)||topicCount(left)-topicCount(right)||topicDistance(left)-topicDistance(right)||left.localeCompare(right));
     const targetTopic=continueUnresolved?lastTopic:topics[0];
     if(targetTopic)domainItems=domainItems.filter(item=>item.routeTopic===targetTopic);
   }
@@ -417,8 +468,11 @@ function selectProbeWithTierFallbacks(skills: readonly Skill[], bank: readonly P
       const lastAnswer=domainHistory.filter(observation=>!observation.skipped).at(-1);
       const activeSkill=lastAnswer&&!routingById.get(lastAnswer.skillId)?.resolved?lastAnswer.skillId:undefined;
       const sameTarget=activeSkill?unseen.filter(item=>item.skillId===activeSkill):[];
+      // Adaptive routing climbs before a target resolves, so an active target
+      // is common. A new area visit then opens with an unseen shape unless an
+      // error needs checking; within a visit the adaptive step keeps priority.
       if(sameTarget.length)domainItems=sameTarget;
-      else if(!activeSkill&&unseen.length)domainItems=unseen;
+      else if((!activeSkill||adaptive&&lastDomain!==domain&&lastAnswer?.correct)&&unseen.length)domainItems=unseen;
     }
   }
   const group=balance([...new Set(domainItems.map(item=>groupOf(skillById.get(item.skillId)!)))],domainHistory,groupOf)[0];
@@ -496,7 +550,9 @@ function selectProbeWithTierFallbacks(skills: readonly Skill[], bank: readonly P
     const count=allFamilyHistory.filter(observation=>formOf(skillById.get(observation.skillId)!)===form).length;
     return count===0?1:1+Math.floor((count-1)/3);
   };
-  formCandidates.sort((a,b)=>formVisitRound(a)-formVisitRound(b)||(formPriority[a]??5)-(formPriority[b]??5)||a.localeCompare(b));
+  // Adaptive routing surveys the form nearest the domain level first.
+  const formDistance=(form:string)=>adaptive?Math.min(...allFamilyItems.filter(item=>formOf(skillById.get(item.skillId)!)===form).map(item=>Math.abs(challengeOf(skillById.get(item.skillId)!)-entryLevel))):0;
+  formCandidates.sort((a,b)=>formVisitRound(a)-formVisitRound(b)||formDistance(a)-formDistance(b)||(formPriority[a]??5)-(formPriority[b]??5)||a.localeCompare(b));
   // After the initial category survey, gather a bounded visit for one verb.
   // Confirm the nearest unresolved challenge before spreading its remaining
   // questions across more tense categories. Other domains keep their budgets.
@@ -510,10 +566,10 @@ function selectProbeWithTierFallbacks(skills: readonly Skill[], bank: readonly P
     const visits=(branch:string)=>Math.floor(count(branch)/(surveyed<2?screeningSize:Math.max(1,policy.itemsPerBranchVisit??6)));
     const candidates=[...new Set(allFamilyItems.map(i=>skillById.get(i.skillId)!.branch))];
     const entryDistances=new Map<string,number>(),candidateSet=new Set(candidates);
-    for(const item of bank){const skill=skillById.get(item.skillId);if(!skill||item.usage==='learning'||skill.assessmentStage==='learning'||!candidateSet.has(skill.branch)||(scope&&!scope.assessmentSkillIds.has(skill.id)))continue;const distance=Math.abs(challengeOf(skill)-policy.startingLevel);entryDistances.set(skill.branch,Math.min(entryDistances.get(skill.branch)??Infinity,distance));}
+    for(const item of bank){const skill=skillById.get(item.skillId);if(!skill||item.usage==='learning'||skill.assessmentStage==='learning'||!candidateSet.has(skill.branch)||(scope&&!scope.assessmentSkillIds.has(skill.id)))continue;const distance=Math.abs(challengeOf(skill)-entryLevel);entryDistances.set(skill.branch,Math.min(entryDistances.get(skill.branch)??Infinity,distance));}
     candidates.sort((a,b)=>visits(a)-visits(b)||(entryDistances.get(a)??Infinity)-(entryDistances.get(b)??Infinity)||a.localeCompare(b));
     const branchItems=allFamilyItems.filter(i=>skillById.get(i.skillId)!.branch===candidates[0]);
-    const target=branchItems.map(i=>skillById.get(i.skillId)!).sort((a,b)=>Math.abs(challengeOf(a)-policy.startingLevel)-Math.abs(challengeOf(b)-policy.startingLevel)||challengeOf(a)-challengeOf(b)||a.id.localeCompare(b.id))[0];
+    const target=branchItems.map(i=>skillById.get(i.skillId)!).sort((a,b)=>Math.abs(challengeOf(a)-entryLevel)-Math.abs(challengeOf(b)-entryLevel)||challengeOf(a)-challengeOf(b)||a.id.localeCompare(b.id))[0];
     verbVisitItems=branchItems.filter(i=>i.skillId===target.id);
     verbVisitReason=allFamilyHistory.some(o=>o.skillId===target.id)?'confirmation':allFamilyHistory.some(o=>skillById.get(o.skillId)!.branch===target.branch&&routingById.get(o.skillId)?.status==='mastered'&&challengeOf(skillById.get(o.skillId)!)<challengeOf(target))?'step_up':'branch_coverage';
   }
@@ -536,7 +592,7 @@ function selectProbeWithTierFallbacks(skills: readonly Skill[], bank: readonly P
     if(!skill||item.usage==="learning"||skill.assessmentStage==="learning"||!candidateBranches.has(skill.branch)||formOf(skill)!==form
       ||domainOf(skill)!==domain||groupOf(skill)!==group||familyOf(skill)!==family
       ||(scope&&!scope.assessmentSkillIds.has(skill.id)))continue;
-    const distance=Math.abs(challengeOf(skill)-policy.startingLevel);
+    const distance=Math.abs(challengeOf(skill)-entryLevel);
     entryDistanceByBranch.set(skill.branch,Math.min(entryDistanceByBranch.get(skill.branch)??Infinity,distance));
   }
   // Keep the original entry ranking after a foundation is resolved, so
@@ -574,6 +630,7 @@ function selectProbeWithTierFallbacks(skills: readonly Skill[], bank: readonly P
   let reason: Extract<Selection, {kind: "question"}>["reason"] = "gap_check";
   let pool = branchItems;
   let tierProgressBlockedSkillId:string|undefined;
+  let climbTo:number|undefined;
   let transitionSeed:{axis:SelectionTransition["axis"];relation:SelectionTransition["relation"];source?:Observation}|undefined;
   const restrict = (predicate: (item: Probe) => boolean, nextReason: typeof reason,nextTransition?:typeof transitionSeed) => {
     const matches = branchItems.filter(predicate);
@@ -642,10 +699,16 @@ function selectProbeWithTierFallbacks(skills: readonly Skill[], bank: readonly P
   } else if(last) {
     const lowerResolved = routingById.get(lastSkill.id)?.status === "mastered";
     const failedAbove = [...history].reverse().find(o => !o.skipped && !o.correct && challengeOf(skillById.get(o.skillId)!) > challengeOf(lastSkill));
+    // Adaptive routing climbs after a short unaided streak on this target;
+    // the target stays unresolved and keeps its full evidence requirement.
+    const recentOnSkill=adaptive?observed.filter(o=>o.skillId===lastSkill.id&&!o.skipped).slice(-adaptive.stepUpStreak):[];
+    const quickClimb=adaptive!==undefined&&!failedAbove&&recentOnSkill.length>=adaptive.stepUpStreak&&recentOnSkill.every(o=>o.correct&&o.unaided===true);
     if (lowerResolved && failedAbove && restrict(i => i.skillId === failedAbove.skillId, "recheck_boundary",{axis:"graph",relation:"boundary_recheck",source:failedAbove})) {
       // The recovered foundation is confirmed; probe the earlier failure with a new item.
-    } else if (lowerResolved && restrict(i => challengeOf(skillById.get(i.skillId)!) > challengeOf(lastSkill), "step_up",{axis:"graph",relation:"higher_challenge",source:last})) {
-      // Move up one available challenge level, not to a global proficiency band.
+    } else if ((lowerResolved||quickClimb) && restrict(i => challengeOf(skillById.get(i.skillId)!) > challengeOf(lastSkill), "step_up",{axis:"graph",relation:"higher_challenge",source:last})) {
+      // Move up one available challenge level, not to a global proficiency
+      // band; a strong domain streak may jump up to jumpSize levels.
+      if(adaptive)climbTo=challengeOf(lastSkill)+((routing?.streak??0)>=adaptive.jumpStreak?adaptive.jumpSize:1);
     } else {
       const sourceProbe=probeById.get(last.itemId),tiers=authoredDifficultyTiers(bank,lastSkill.id,last.mode);
       const levels=[...tiers.keys()].sort((a,b)=>a-b),sourceIndex=sourceProbe?levels.indexOf(sourceProbe.difficulty):-1;
@@ -684,15 +747,20 @@ function selectProbeWithTierFallbacks(skills: readonly Skill[], bank: readonly P
       }
     }
   }
-  if(tierProgressBlockedSkillId){
+  // A blocked target can still be the latest answer in this branch; blocking
+  // it again would recurse without progress, so keep the current pool then.
+  if(tierProgressBlockedSkillId&&!tierBlockedSkillIds.has(tierProgressBlockedSkillId)){
     const nextBlocked=new Set(tierBlockedSkillIds).add(tierProgressBlockedSkillId);
     return selectProbeWithTierFallbacks(skills,bank,observations,policy,extraKnownMaterialKeys,releaseScope,nextBlocked);
   }
   const selectedReason = reason as Extract<Selection, { kind: "question" }>["reason"];
-  const targetLevel = selectedReason === "step_up" || selectedReason === "recheck_boundary"
-    ? Math.min(...pool.map(i => challengeOf(skillById.get(i.skillId)!)))
+  const poolLevels=pool.map(i => challengeOf(skillById.get(i.skillId)!));
+  const targetLevel = climbTo!==undefined&&selectedReason === "step_up"
+    ? Math.max(...poolLevels.filter(level=>level<=climbTo!),Math.min(...poolLevels))
+    : selectedReason === "step_up" || selectedReason === "recheck_boundary"
+    ? Math.min(...poolLevels)
     : selectedReason === "step_down" ? Math.max(...pool.map(i => challengeOf(skillById.get(i.skillId)!)))
-    : lastSkill ? challengeOf(lastSkill) : policy.startingLevel;
+    : lastSkill ? challengeOf(lastSkill) : entryLevel;
   pool.sort((a, b) => {
     const priority = (item: Probe) => {
       const mode = resultById.get(item.skillId)!.modes.find(m => m.mode === item.mode)!;
