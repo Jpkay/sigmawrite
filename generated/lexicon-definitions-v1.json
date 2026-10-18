@@ -17,37 +17,47 @@
   },
   "stats": {
     "releaseLemmas": 2005,
-    "entries": 232,
-    "missing": 1773,
-    "accepted": 54,
-    "discarded": 0,
-    "skipped": 178,
+    "entries": 1296,
+    "missing": 709,
+    "accepted": 934,
+    "discarded": 156,
+    "skipped": 206,
     "skippedIneligible": 176,
-    "skippedByGenerator": 2,
-    "acceptedFirstAttempt": 38,
-    "acceptedAfterRegeneration": 16,
-    "generatedForTeaching": 54
+    "skippedByGenerator": 30,
+    "acceptedFirstAttempt": 575,
+    "acceptedAfterRegeneration": 359,
+    "generatedForTeaching": 1090
   },
   "usage": {
     "anthropic/claude-sonnet-5.5": {
-      "calls": 26,
-      "promptTokens": 64910,
-      "completionTokens": 85014,
-      "costUsd": 0.98
+      "calls": 425,
+      "promptTokens": 1076624,
+      "completionTokens": 1311184,
+      "costUsd": 15.2647
     },
     "openai/gpt-5.6-terra": {
-      "calls": 19,
-      "promptTokens": 35489,
-      "completionTokens": 28507,
-      "costUsd": 0.4301
+      "calls": 339,
+      "promptTokens": 613036,
+      "completionTokens": 418716,
+      "costUsd": 6.5319
     }
   },
   "shards": [
     {
       "path": "lexicon-definitions-v1/shard-01.json",
-      "count": 232,
-      "checksum": "sha256:f5e0f548259c1935bdb31da7f5b7aef140e8de0c59a279929b22e5bb6a62fd40"
+      "count": 500,
+      "checksum": "sha256:0615a1c5883c64ddeb541a56d4c6bce6e3998c1b4e3401bc2d3d3466435cb034"
+    },
+    {
+      "path": "lexicon-definitions-v1/shard-02.json",
+      "count": 500,
+      "checksum": "sha256:9436f5e23347cc0e1ea7f9d9c4bb9be3f79b988c06791076559cf4176fd59039"
+    },
+    {
+      "path": "lexicon-definitions-v1/shard-03.json",
+      "count": 296,
+      "checksum": "sha256:eb0fee756d86f9bcf7bd2ce971983a9541ae99cc388a38167201b43e8e44b852"
     }
   ],
-  "entriesChecksum": "sha256:f5e0f548259c1935bdb31da7f5b7aef140e8de0c59a279929b22e5bb6a62fd40"
+  "entriesChecksum": "sha256:9451d2116a272b046d467cca612c48b9efd18a3c486d050080ca80af60d3ac04"
 }
