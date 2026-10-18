@@ -26,6 +26,7 @@ const nav: NavItem[] = [
 const tabs: TabItem[] = [
   { href: "/student", label: "Accueil", icon: "home" },
   { href: "/student/dictee", label: "Dictées", icon: "pen" },
+  { href: "/student/vocabulary", label: "Mots", icon: "book" },
   { href: "/student/memory", label: "Mémoire", icon: "brain" },
   { href: "/student/progress", label: "Progrès", icon: "progress" },
   { href: "/student/inbox", label: "Messages", icon: "inbox" },

@@ -10,7 +10,7 @@ beforeEach(()=>{vi.resetAllMocks();f.role.mockResolvedValue({id:'profile'});f.or
 it('records correction wrappers and reachable counts before returning words',async()=>{
  const result=await loadVocabularyMemories();expect(Array.isArray(result)).toBe(true);
  expect(f.journal).toHaveBeenCalledWith('owner','legacy:vocabulary',{rows:result,display:vocabularyDisplay(result)});
- expect(vocabularyDisplay(result).rows[0]).toEqual({exposures:'2 rencontre(s)',correction:'Réponse attendue : rivage'});
+ expect(vocabularyDisplay(result).rows[0]).toEqual({exposures:'2 rencontre(s)',status:'Découvert',correction:'Réponse attendue : rivage'});
 });
 it('does not return vocabulary if recording fails',async()=>{
  f.journal.mockRejectedValue(Error('capture failed'));await expect(loadVocabularyMemories()).rejects.toThrow('capture failed');

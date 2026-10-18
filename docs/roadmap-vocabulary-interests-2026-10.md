@@ -68,27 +68,33 @@ acceptance test.
 
 ## Phase A: Fix word tracking (bugs, do first)
 
-- [ ] **A.1** Stop reading from raising mastery. In `student.ts:2464-2473`, reading a text adds
+- [x] **A.1** Stop reading from raising mastery. In `student.ts:2464-2473`, reading a text adds
   one `exposure` row to `vocabulary_learning_evidence` and increases `exposures`. It no longer
   touches `mastery`. **S**. *Accept:* a unit test where a student reads a text with the word 10
   times and the word's mastery is still 0.
-- [ ] **A.2** Recompute existing mastery values from evidence. A migration sets every row of
+  *Landed 2026-10-18:* reading calls `captureReadingExposure` (exposure evidence only); test `src/lib/vocabulary/server.test.ts`.
+- [x] **A.2** Recompute existing mastery values from evidence. A migration sets every row of
   `student_word_mastery.mastery` from typed review history only (`vocabulary_review_attempts`).
   Words that drop are shown as "à confirmer", never as "lost". **S**. *Accept:* pgTAP test
   shows a row backed only by exposures ends at 0.
-- [ ] **A.3** Match words by lemma and meaning, not by spelling. Link `vocabulary_items` to the
+  *Landed 2026-10-18:* `recompute_word_mastery_from_typed_history` replays typed attempts, caps unspaced history at 0.84 and flags drops `a_confirmer`; typed history copied into evidence and put on the to-introduce list (no card is created without an introduction).
+- [x] **A.3** Match words by lemma and meaning, not by spelling. Link `vocabulary_items` to the
   lexical graph (`0037_lexical_graph.sql`: lemma and sense). Exposure matching uses the lemma, so
   *courait* counts for *courir* and *bureau* (furniture) is kept apart from *bureau* (office). **M**.
-- [ ] **A.4** Record every place a word is seen: dictées (each segment), practice items, the
+  *Landed 2026-10-18:* `resolve_word_senses` + lazy `ensure_vocabulary_lexical_anchors`; `text_vocabulary.lexical_sense_id` pins ambiguous senses. Spelling evidence applies to every sense of a lemma, meaning evidence only to a resolved sense. Only words with an approved sense (vetted definition) are tracked.
+- [x] **A.4** Record every place a word is seen: dictées (each segment), practice items, the
   diagnostic, the student's own writing (correct use and misspellings), and story chapters. One
   function, `recordWordEvidence(studentId, lemmaSenseId, kind, outcome, source)`, called from each
   place. **M**. *Accept:* an integration test where a word misspelled in a dictée appears as
   `correct_spelling: false` evidence.
-- [ ] **A.5** Check that word tracking still works on the new learning path. The legacy lock
+  *Landed 2026-10-18:* `recordWordEvidence(db, studentId, inputs)` in `src/lib/vocabulary/server.ts`, fed by `capture.ts` from reading, dictées, practice, legacy and granular diagnostics, productions and summaries. Story chapters will call it with `source: "story"` (Phase H).
+- [x] **A.5** Check that word tracking still works on the new learning path. The legacy lock
   policy (`20260912120000_granular_learning_policy_bindings.sql:30`) may block writes for
   students on that path. **S**. *Accept:* an RLS test where a student on the new path records evidence.
-- [ ] **A.6** Add the Vocabulaire page to the mobile menu (`src/app/student/layout.tsx:26-32`), as a
+  *Landed 2026-10-18:* the lock policies were already rebound; word memory writes now go through service-only RPCs (students can read, not forge). pgTAP `20261018100000_word_memory_foundation_test.sql` covers a granular-path student.
+- [x] **A.6** Add the Vocabulaire page to the mobile menu (`src/app/student/layout.tsx:26-32`), as a
   short-term fix until Phase D lands. **S**.
+  *Landed 2026-10-18:* "Mots" tab in the mobile bar.
 
 ## Phase B: Word memory model (what "mastered" means)
 
@@ -100,11 +106,12 @@ student, lemma and meaning:
 | **Spelling** | Can write the word correctly, without help | Hear it and type it (word dictée), type it from its definition, fill a gap in a new sentence by typing it, spell it correctly in a dictée or in free writing | Pick the correctly spelled form out of 4 |
 | **Meaning** | Knows what the word means | Type the word from its definition (counts for both traces), explain it in their own words (checked against the vetted definition, Phase D.5), judge whether the word is used correctly in a new sentence, choose a synonym or antonym in context | Pick the definition out of 4 |
 
-- [ ] **B.1** Schema. Use `learning_retrieval_schedules` (`target_type = 'lexical_sense'`,
+- [x] **B.1** Schema. Use `learning_retrieval_schedules` (`target_type = 'lexical_sense'`,
   `fsrs_state` already exists) with a `facet` column (`spelling | meaning`). Add a full review log
   table (`word_review_log`) with: card, time, rating, days since last review, activity format,
   hint used, response time, and source. The log is required for Phase C.3. **M**.
-- [ ] **B.2** The mastery rule, as one pure function `wordStatus(evidence, cards)`. All numbers
+  *Landed 2026-10-18:* `learning_retrieval_schedules.facet` (unique key now includes it), `word_review_log`, `record_word_review` (atomic, compare-and-set, idempotent).
+- [x] **B.2** The mastery rule, as one pure function `wordStatus(evidence, cards)`. All numbers
   are settings and are revisited after the pilot (C.6):
   - **Spelling secured**: at least 3 correct typed answers with no help, on at least 3 different
     days, with the last one at least 7 days after the one before. FSRS stability on the spelling
@@ -121,12 +128,15 @@ student, lemma and meaning:
     one successful relearning plus one spaced review.
   **M**. *Accept:* table-driven tests for each rule above, including "10 recognition successes =
   not mastered" and "spelling secured without meaning = not mastered".
-- [ ] **B.3** Statuses the student sees. *Découvert → En route → Presque → Maîtrisé → Ancré*. The
+  *Landed 2026-10-18:* `src/lib/vocabulary/word-status.ts` (`WORD_STATUS_RULES`). Deviation: after a lapse on a secured trace, the 21-day stability gate is waived for the "relearning + one spaced review" return to Maîtrisé, as the rule asks.
+- [x] **B.3** Statuses the student sees. *Découvert → En route → Presque → Maîtrisé → Ancré*. The
   word collection ("Mon trésor de mots") is grouped by interest, and each word shows the sentence
   where the student first met it. **S**.
-- [ ] **B.4** How help lowers the grade. With a hint the best grade is Hard (Good if the hint was
+  *Landed 2026-10-18:* statuses stored in `student_word_mastery.word_status`; simple badge on `/student/vocabulary`. Lapses read "On le revoit". Grouping by interest and the rich collection are Phase D.
+- [x] **B.4** How help lowers the grade. With a hint the best grade is Hard (Good if the hint was
   only the first letter). If the student sees the answer, the grade is Again. A very slow answer
   lowers the grade by one level. This uses the same rules as `src/lib/practice/scaffolding.ts`. **S**.
+  *Landed 2026-10-18:* `ratingForAttempt` in `src/lib/vocabulary/grading.ts`.
 
 ## Phase C: Long-term spaced repetition (months and school years, not weeks)
 
@@ -134,7 +144,7 @@ FSRS-6 is the best-performing open algorithm in the public open-spaced-repetitio
 we already use it. The work is to make it run over the long term: the right settings, real
 parameters, a complete history, and planning around school holidays.
 
-- [ ] **C.1** Long-term settings in `src/lib/scoring/fsrs.ts`:
+- [x] **C.1** Long-term settings in `src/lib/scoring/fsrs.ts`:
   - `maximum_interval` 365 → **1825 days**, so a word can stay scheduled across the whole of collège.
   - Turn `enable_fuzz` on, so reviews don't all fall due on the same day.
   - Keep in-session retries (C.4) *out* of the FSRS state.
@@ -142,10 +152,12 @@ parameters, a complete history, and planning around school holidays.
     "Ancré" words, which keeps the long-term workload small.
   **S**. *Accept:* a simulation test where a word answered "Good" at every review reaches an
   interval of 180 days or more within 12 months, with 6–8 reviews or fewer.
-- [ ] **C.2** Set the first review date when a word is introduced. Today every word seen is due
+  *Landed 2026-10-18:* `LONG_TERM_FSRS_CONFIG` in `src/lib/scoring/fsrs.ts` (params/retention injectable). Existing graph and concept cards keep the 365-day legacy profile. Simulation in `src/lib/vocabulary/simulation.test.ts`.
+- [x] **C.2** Set the first review date when a word is introduced. Today every word seen is due
   at once. Instead, a word first needs to be *introduced* (D.1) to get its first card. Plain
   exposure only puts the word on a "to introduce" list. **S**.
-- [ ] **C.3** Fit our own FSRS parameters. Run an offline job (FSRS optimizer through
+  *Landed 2026-10-18:* `introduceWord` creates the cards, first review the next day; exposure only sets `to_introduce`.
+- [x] **C.3** Fit our own FSRS parameters. Run an offline job (FSRS optimizer through
   `@open-spaced-repetition/binding`, the fsrs-rs bindings; check the package when we start) on
   `word_review_log`:
   - First fit **one set of parameters per age group** (CM, 6e-5e, 4e-3e) and per trace, once
@@ -155,11 +167,13 @@ parameters, a complete history, and planning around school holidays.
   - Store versioned parameters. Students fall back to the defaults.
   **M**. *Accept:* the job writes parameters and a calibration report (log-loss and RMSE by bin,
   for default and for fitted).
-- [ ] **C.4** Successive relearning inside a session. A missed word comes back 2–4 items later,
+  *Landed 2026-10-18:* `/api/jobs/fsrs-calibration` + `fsrs_parameter_sets` (versioned, student → age group → default selection, held-out adoption rule) + `fsrs_calibration_reports`. **TODO:** no maintained FSRS optimiser is installed (`@open-spaced-repetition/binding` could not be added in this change); plug it into `FsrsOptimizer` in `src/lib/vocabulary/fsrs-params.ts`. Until then the job writes calibration reports only.
+- [x] **C.4** Successive relearning inside a session. A missed word comes back 2–4 items later,
   in a different format, until the student gets it right once. Only the *first* attempt of the
   day updates FSRS. Research on successive relearning (Rawson and Dunlosky) shows this
   combination gives the best long-term retention. **S**.
-- [ ] **C.5** Plan around school holidays and the workload:
+  *Landed 2026-10-18:* `src/lib/vocabulary/relearning.ts` and `countsForFsrs`; enforced server-side in `recordWordReviewAttempt`.
+- [x] **C.5** Plan around school holidays and the workload:
   - School calendar by zone (French zones A/B/C plus a custom calendar), with an option to pause
     reviews during holidays.
   - FSRS uses the real time that has passed, so memory estimates stay right.
@@ -169,9 +183,11 @@ parameters, a complete history, and planning around school holidays.
     of new words drops automatically when overdue reviews pile up or recent success goes below 75%.
   **M**. *Accept:* a simulation over two school years with holidays, where daily load never goes
   above the cap and no review is more than 3× overdue for words that are still learning.
-- [ ] **C.6** Monitor memory quality. Weekly report: predicted versus observed recall (calibration),
+  *Landed 2026-10-18:* `calendar.ts` (zones A/B/C 2025-27 + custom), `student_memory_settings`, `planWordDay`. "3× overdue" counts only non-paused days. New words fall well below 3/day once two cards per word are reviewed (≈1/day in the simulation).
+- [x] **C.6** Monitor memory quality. Weekly report: predicted versus observed recall (calibration),
   real retention at 30 days and 90 days per trace, reviews per word mastered, and student time on
   reviews per day. Send events to PostHog. **S**.
+  *Landed 2026-10-18:* `/api/jobs/word-memory-report` → `word_memory_reports` + PostHog `word_memory_weekly_report`.
 
 ## Phase D: Retrieval practice inside the daily session
 

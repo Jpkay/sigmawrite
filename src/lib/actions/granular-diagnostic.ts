@@ -73,7 +73,7 @@ export async function updateGranularDiagnostic(input:unknown){
   const {studentId,store,client}=await context();
   const stale=await span("stale",()=>staleSessionResponse(store,studentId,input,"granular:diagnostic"));
   if(stale)return stale;
-  const result=await span("command",()=>runAssessmentCommand(store,studentId,input,Date.now,receivedAt));
+  const result=await span("command",()=>runAssessmentCommand(store,studentId,input,Date.now,receivedAt,async answer=>{if(answer.validatorType==="conjugator")return null;const {captureTypedAnswerEvidence}=await import("@/lib/vocabulary/capture");return captureTypedAnswerEvidence(createServiceClient(),{studentId,expected:answer.expected,produced:answer.produced,source:"diagnostic",occurrenceKey:`granular:${answer.sessionId}:${answer.itemId}`,at:new Date(answer.at).toISOString()});}));
   return deliver(store,studentId,"granular:diagnostic",{...result,...("view" in result&&result.view?.phase==="learning"?{studentState:await span("studentState",()=>getStudentStateData(studentId,client))}:{})});
  });
 }
