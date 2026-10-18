@@ -56,12 +56,12 @@ export async function callRole<T>(deps: TeamDeps, role: EditorialRole, prompt: {
 
 export async function draftText(deps: TeamDeps, brief: EditorialBrief, style: StyleCard, context: ChapterContext | null, temperature = 0.9): Promise<AuthorOutput> {
   const { value } = await callRole(deps, "author", authorPrompt(brief, style, context), authorOutputSchema, temperature, 5000);
-  return { ...value, body: normalizeFrenchTypography(value.body) };
+  return { ...value, body: normalizeFrenchTypography(value.body), bonusScene: value.bonusScene ? normalizeFrenchTypography(value.bonusScene) : "" };
 }
 
 export async function rewriteText(deps: TeamDeps, brief: EditorialBrief, style: StyleCard, context: ChapterContext | null, draft: AuthorOutput, instructions: string[]): Promise<AuthorOutput> {
   const { value } = await callRole(deps, "author", rewritePrompt(brief, style, context, draft, instructions), authorOutputSchema, 0.7, 5000);
-  return { ...value, body: normalizeFrenchTypography(value.body) };
+  return { ...value, body: normalizeFrenchTypography(value.body), bonusScene: value.bonusScene ? normalizeFrenchTypography(value.bonusScene) : "" };
 }
 
 /** Pre-check of a draft before the line edit: deterministic findings only (no provider moderation). */

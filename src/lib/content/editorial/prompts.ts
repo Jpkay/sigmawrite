@@ -13,7 +13,7 @@ import { interestPhrase } from "@/lib/content/interests";
  */
 export const PROMPT_VERSIONS = {
   architect: "architect-1",
-  author: "author-1",
+  author: "author-2",
   line_editor: "line-editor-1",
   reviewer_style: "reviewer-style-1",
   reviewer_targets: "reviewer-targets-1",
@@ -69,7 +69,10 @@ export const authorOutputSchema = z.object({
     questionType: z.enum(["literal", "vocabulary_in_context", "inference", "main_idea", "cause_consequence"]),
     choices: z.array(z.string().min(1)).length(3),
     correctAnswer: z.string().min(1),
+    explanation: txt(400).default(""),
   }), 5).default([]),
+  /** H.3: a short extra moment of the chapter, unlocked by a right first answer. Chapters only; gated in chapter-extras.ts. */
+  bonusScene: txt(1500).default(""),
 });
 export type AuthorOutput = z.infer<typeof authorOutputSchema>;
 
@@ -159,10 +162,10 @@ export type ChapterContext = {
 
 export function authorPrompt(brief: EditorialBrief, style: StyleCard, context: ChapterContext | null) {
   const kindRules = brief.kind === "chapter"
-    ? `CHAPITRE ${context?.chapterIndex ?? 1} sur ${context?.chapterCount ?? 8}. Il fait avancer l'étape prévue par le plan et tient compte du dernier choix de l'élève. ${context && context.chapterIndex >= context.chapterCount ? "C'est le DERNIER chapitre : il mène à l'une des fins du plan, sans choix ni cliffhanger (choices = [])." : "Il se termine sur un moment suspendu qui appelle exactement deux choix, réels et différents, tous deux compatibles avec le plan (choices : 2 éléments, label court à la 2e personne, intent = ce que ce choix entraîne)."} chapterSummary : deux phrases neutres pour la mémoire de la saga. questions = [].`
+    ? `CHAPITRE ${context?.chapterIndex ?? 1} sur ${context?.chapterCount ?? 8}. Il fait avancer l'étape prévue par le plan et tient compte du dernier choix de l'élève. ${context && context.chapterIndex >= context.chapterCount ? "C'est le DERNIER chapitre : il mène à l'une des fins du plan, sans choix ni cliffhanger (choices = [])." : "Il se termine sur un moment suspendu qui appelle exactement deux choix, réels et différents, tous deux compatibles avec le plan (choices : 2 éléments, label court à la 2e personne, intent = ce que ce choix entraîne)."} chapterSummary : deux phrases neutres pour la mémoire de la saga. questions : exactement 1 question de compréhension à 3 choix sur un fait que ce chapitre dit clairement (questionType literal ou cause_consequence), courte (une phrase finissant par « ? »), trois réponses courtes et nettement différentes, une seule bonne réponse recopiée exactement dans correctAnswer et formulée avec les mots du texte, explanation : une phrase courte et bienveillante, pour un lecteur de ${AGE[brief.gradeBand]}, qui dit où le texte le montre. bonusScene : une scène bonus de 3 à 5 phrases (40 à 100 mots), un moment en plus de ce chapitre (un détail, un personnage déjà présent, ce qui se passe ailleurs au même instant), agréable à lire mais pas nécessaire à l'intrigue ; même style, mêmes marqueurs de héros, aucun nouveau personnage nommé, aucune morale.`
     : brief.kind === "passage"
-      ? "TEXTE DE LECTURE autonome (début, tension, fin ouverte ou chute), avec un titre. choices = []. questions : 4 questions de compréhension à 3 choix (une littérale, une d'inférence, une de vocabulaire en contexte sur un mot cible, une de cause/conséquence), une seule bonne réponse recopiée exactement dans correctAnswer. chapterSummary = une phrase."
-      : "DICTÉE : un texte court qui se lit bien à voix haute, phrases complètes et nettes, sans dialogue à tirets, sans noms propres difficiles, sans chiffres ni sigles, sans homophones ambigus non voulus ni enchaînements de sons difficiles. choices = [], questions = []. chapterSummary = une phrase.";
+      ? "TEXTE DE LECTURE autonome (début, tension, fin ouverte ou chute), avec un titre. choices = [], bonusScene = ''. questions : 4 questions de compréhension à 3 choix (une littérale, une d'inférence, une de vocabulaire en contexte sur un mot cible, une de cause/conséquence), une seule bonne réponse recopiée exactement dans correctAnswer. chapterSummary = une phrase."
+      : "DICTÉE : un texte court qui se lit bien à voix haute, phrases complètes et nettes, sans dialogue à tirets, sans noms propres difficiles, sans chiffres ni sigles, sans homophones ambigus non voulus ni enchaînements de sons difficiles. choices = [], questions = [], bonusScene = ''. chapterSummary = une phrase.";
   return {
     system: `Tu es un écrivain de littérature jeunesse française de tout premier plan. Tu écris un texte original qui pourrait figurer dans une anthologie publiée.
 ${styleBlock(style, brief.gradeBand)}
@@ -174,7 +177,7 @@ ${kindRules}
 ${SAFETY}
 ${LINE_EDITOR_RUBRIC}
 Typographie française : guillemets « », tiret cadratin pour les répliques en début de ligne, paragraphes séparés par une ligne vide.
-Réponds uniquement en JSON : { "title", "body", "tenseEvidence": [{"form","lemma","tense"}], "targetUsage": [{"lemma","sentence"}], "choices": [{"label","intent"}], "chapterSummary", "questions": [{"questionText","questionType","choices","correctAnswer"}] }.`,
+Réponds uniquement en JSON : { "title", "body", "tenseEvidence": [{"form","lemma","tense"}], "targetUsage": [{"lemma","sentence"}], "choices": [{"label","intent"}], "chapterSummary", "questions": [{"questionText","questionType","choices","correctAnswer","explanation"}], "bonusScene" }.`,
     user: JSON.stringify({
       plan: context?.outline ?? null,
       étapeDuChapitre: context?.outline?.stages.find((s) => s.chapter === context.chapterIndex) ?? null,

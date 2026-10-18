@@ -5,8 +5,9 @@
  * down, a fallback is served with a template bridge sentence. The student
  * never sees an error. Fallback rate is tracked (target < 2%).
  */
+import type { RawQuestion } from "./chapter-extras";
 
-export type FallbackCandidate = { id: string; interest: string; gradeBand: string; styleKey: string; title: string; body: string; choices: Array<{ label: string; intent: string }>; usedCount: number };
+export type FallbackCandidate = { id: string; interest: string; gradeBand: string; styleKey: string; title: string; body: string; choices: Array<{ label: string; intent: string }>; usedCount: number; questions?: RawQuestion[] | null; bonusScene?: string | null };
 
 /** Prefers same style, then same interest, then least used; never the same fallback twice in a saga. */
 export function pickFallback(pool: FallbackCandidate[], wanted: { interest: string; gradeBand: string; styleKey: string }, alreadyUsed: string[]): FallbackCandidate | null {

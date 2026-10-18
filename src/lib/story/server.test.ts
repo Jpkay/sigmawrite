@@ -13,7 +13,7 @@ const vocab = vi.hoisted(() => ({
 vi.mock("@/lib/vocabulary/server", () => vocab);
 
 import { createFakeSupabase } from "./fake-supabase.test-helper";
-import { answerChapterTask, endingWordsFor, ensureChapterTask, loadFinale, loadStoryHomeCard, loadStoryLibrary, recordEmbeddedExposure, storyAvailability, toPublicTask } from "./server";
+import { answerChapterTask, chapterTaskView, endingWordsFor, ensureChapterTask, loadFinale, loadStoryHomeCard, loadStoryLibrary, recordEmbeddedExposure, storyAvailability, toPublicTask } from "./server";
 
 const STUDENT = "11111111-1111-4111-8111-111111111111";
 const SAGA = "22222222-2222-4222-8222-222222222222";
@@ -164,6 +164,71 @@ describe("micro-task and embedded evidence (H.3, D.6)", () => {
     vocab.resolveFormTargets.mockRejectedValue(new Error("db down"));
     expect(await ensureChapterTask(asDb(sagaDb()), STUDENT, chapter, NOW)).toBeNull();
     expect(await recordEmbeddedExposure(asDb(sagaDb()), STUDENT, CH2, chapter.paragraphs, NOW)).toBe(0);
+  });
+});
+
+describe("comprehension questions and bonus scenes (H.3)", () => {
+  const chapter2 = { id: CH2, paragraphs: BODY.split("\n\n") };
+  const chapter1 = { id: CH1, paragraphs: BODY.split("\n\n") };
+  const COMPREHENSION = { question: "Que fait le gardien ?", options: ["Il dort", "Il siffle entre ses dents", "Il court"], correctIndex: 1, explanation: "Le texte dit qu'il siffle entre ses dents.", type: "literal" };
+  const SCENE = "Pendant ce temps, {{HEROS}} serra les lacets de ses crampons.\n\nDans les tribunes, un parapluie jaune s'ouvrit tout seul.";
+  const withExtras = (rows = [{ chapter_id: CH2, comprehension: COMPREHENSION, bonus_scene: SCENE }, { chapter_id: CH1, comprehension: COMPREHENSION, bonus_scene: SCENE }]) => {
+    const db = sagaDb();
+    db.tables.story_chapter_extras = rows;
+    return db;
+  };
+
+  it("asks about the story on even chapters and never sends the answer, the explanation or the scene", async () => {
+    const db = withExtras();
+    const row = await ensureChapterTask(asDb(db), STUDENT, chapter2, NOW);
+    expect(row).toMatchObject({ kind: "comprehension", word: null, due: false, correct_index: 1 });
+    const shown = toPublicTask(row)!;
+    expect(shown).toMatchObject({ kind: "comprehension", prompt: "Que fait le gardien ?", options: COMPREHENSION.options, answered: null });
+    expect(JSON.stringify(shown)).not.toMatch(/correct_?index|siffle entre ses dents\.|parapluie/iu);
+  });
+
+  it("keeps the vocabulary task on odd chapters, and the question stands in when no word works", async () => {
+    expect(await ensureChapterTask(asDb(withExtras()), STUDENT, chapter1, NOW)).toMatchObject({ kind: "vocabulary", word: "intrépide" });
+    vocab.getDueWordCards.mockResolvedValue({ reviews: [], toIntroduce: [], newWordAllowance: 0 });
+    vocab.resolveFormTargets.mockResolvedValue(new Map());
+    const db = withExtras();
+    db.tables.lexical_senses = [];
+    expect(await ensureChapterTask(asDb(db), STUDENT, chapter1, NOW)).toMatchObject({ kind: "comprehension" });
+  });
+
+  it("falls back to the vocabulary task when the chapter has no question (fallback chapters)", async () => {
+    expect(await ensureChapterTask(asDb(withExtras([])), STUDENT, chapter2, NOW)).toMatchObject({ kind: "vocabulary", word: "intrépide" });
+  });
+
+  it("a right first answer unlocks the bonus scene with the hero's name, and it stays unlocked", async () => {
+    const db = withExtras();
+    await ensureChapterTask(asDb(db), STUDENT, chapter2, NOW);
+    const result = await answerChapterTask(asDb(db), STUDENT, CH2, 1, NOW);
+    expect(result).toMatchObject({ kind: "comprehension", correct: true, word: null, explanation: COMPREHENSION.explanation });
+    expect(result.bonus).toEqual(["Pendant ce temps, Lina serra les lacets de ses crampons.", "Dans les tribunes, un parapluie jaune s'ouvrit tout seul."]);
+    expect(db.tables.story_chapter_tasks[0]).toMatchObject({ bonus_unlocked: true, correct: true });
+    expect(vocab.recordWordReviewAttempt).not.toHaveBeenCalled();
+    const view = await chapterTaskView(asDb(db), STUDENT, chapter2, NOW);
+    expect(view?.answered).toMatchObject({ correct: true, correctIndex: 1, explanation: COMPREHENSION.explanation, bonus: result.bonus });
+  });
+
+  it("a wrong answer still opens the path, explains gently and unlocks nothing", async () => {
+    const db = withExtras();
+    await ensureChapterTask(asDb(db), STUDENT, chapter2, NOW);
+    const result = await answerChapterTask(asDb(db), STUDENT, CH2, 0, NOW);
+    expect(result).toMatchObject({ correct: false, correctIndex: 1, definition: "Il siffle entre ses dents", explanation: COMPREHENSION.explanation, bonus: null });
+    expect(db.tables.story_chapter_tasks[0].bonus_unlocked).toBe(false);
+    expect((await answerChapterTask(asDb(db), STUDENT, CH2, 1, NOW)).bonus).toBeNull();
+    expect((await chapterTaskView(asDb(db), STUDENT, chapter2, NOW))?.answered?.bonus).toBeNull();
+  });
+
+  it("a right vocabulary answer unlocks the bonus scene too; no scene, no bonus", async () => {
+    const db = withExtras();
+    const row = (await ensureChapterTask(asDb(db), STUDENT, chapter1, NOW))!;
+    expect((await answerChapterTask(asDb(db), STUDENT, CH1, row.correct_index, NOW)).bonus?.[0]).toContain("Lina");
+    const bare = sagaDb();
+    const bareRow = (await ensureChapterTask(asDb(bare), STUDENT, chapter1, NOW))!;
+    expect((await answerChapterTask(asDb(bare), STUDENT, CH1, bareRow.correct_index, NOW))).toMatchObject({ correct: true, bonus: null });
   });
 });
 

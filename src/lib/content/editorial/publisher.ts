@@ -27,6 +27,8 @@ export async function saveLibraryItem(db: SupabaseClient, input: { kind: "passag
     kind: input.kind, interest: brief.interests[0], grade_band: brief.gradeBand, grade: brief.grade, style_key: brief.styleKey,
     title: outcome.text.title, body: outcome.text.body, segments: outcome.segments.length ? outcome.segments : null,
     choices: input.kind === "fallback_chapter" ? outcome.text.choices : null, questions: outcome.text.questions.length ? outcome.text.questions : null,
+    // H.3: gated again when the fallback is served (chapter-extras.ts).
+    ...(input.kind === "fallback_chapter" && outcome.text.bonusScene ? { bonus_scene: outcome.text.bonusScene.slice(0, 1500) } : {}),
     target_lemmas: brief.targetLemmas, target_tenses: brief.targetTenses, rubric_mean: outcome.reviews.rubricMean,
     scores: { rubric: outcome.reviews.rubric, aiTells: outcome.gates.aiTells.score, styleFit: outcome.gates.styleFit, rounds: outcome.rounds, gates: outcome.gates.results.map((r) => ({ gate: r.gate, passed: r.passed, level: r.level })) },
     audio_check: input.audioCheck ?? null, run_id: input.runId, pipeline_version: EDITORIAL_PIPELINE_VERSION,

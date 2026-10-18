@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { buildEditorialBrief, type EditorialBrief } from "./brief";
+import { extrasRow, gateChapterExtras, type RawQuestion } from "./chapter-extras";
 import { bridgeSentence, pickFallback, type FallbackCandidate } from "./fallback";
 import type { GateDeps } from "./gates";
 import { renderHero } from "./hero";
@@ -124,13 +125,38 @@ async function ensureOutline(deps: StoryDeps, saga: SagaRow, brief: EditorialBri
 }
 
 async function loadFallbackPool(db: SupabaseClient, band: GradeBand): Promise<FallbackCandidate[]> {
-  const { data } = await db.from("editorial_library_items").select("id,interest,grade_band,style_key,title,body,choices,used_count").eq("kind", "fallback_chapter").eq("grade_band", band).eq("status", "published").limit(200);
-  return (data ?? []).map((r) => ({ id: r.id as string, interest: r.interest as string, gradeBand: r.grade_band as string, styleKey: r.style_key as string, title: r.title as string, body: r.body as string, choices: (r.choices as FallbackCandidate["choices"]) ?? [], usedCount: Number(r.used_count ?? 0) }));
+  const { data } = await db.from("editorial_library_items").select("id,interest,grade_band,style_key,title,body,choices,used_count,questions,bonus_scene").eq("kind", "fallback_chapter").eq("grade_band", band).eq("status", "published").limit(200);
+  return (data ?? []).map((r) => ({
+    id: r.id as string, interest: r.interest as string, gradeBand: r.grade_band as string, styleKey: r.style_key as string, title: r.title as string, body: r.body as string,
+    choices: (r.choices as FallbackCandidate["choices"]) ?? [], usedCount: Number(r.used_count ?? 0),
+    questions: Array.isArray(r.questions) ? r.questions as RawQuestion[] : null, bonusScene: typeof r.bonus_scene === "string" ? r.bonus_scene : null,
+  }));
+}
+
+/**
+ * H.3: stores the chapter's comprehension question and bonus scene once they
+ * pass their deterministic gates (and provider moderation). Best effort:
+ * extras never hold a chapter back; without them the student gets the
+ * vocabulary task and no bonus.
+ */
+async function saveChapterExtras(deps: StoryDeps, chapterId: string, input: { body: string; questions?: RawQuestion[] | null; bonusScene?: string | null }, names: { forbiddenNames: string[]; allowedNames: string[] }): Promise<void> {
+  try {
+    const extras = await gateChapterExtras(input, { ...names, moderate: deps.gates.moderate });
+    const row = extrasRow(chapterId, extras);
+    if (row) await deps.db.from("story_chapter_extras").upsert(row, { onConflict: "chapter_id" });
+  } catch {
+    // Extras are optional; the chapter is already served.
+  }
 }
 
 async function saveChoices(db: SupabaseClient, chapterId: string, choices: Array<{ label: string; intent?: string }>) {
   if (!choices.length) return;
   await db.from("story_choices").upsert(choices.slice(0, 2).map((c, index) => ({ chapter_id: chapterId, choice_index: index, label: c.label, intent: c.intent ?? null })), { onConflict: "chapter_id,choice_index" });
+}
+
+async function forbiddenNamesFor(db: SupabaseClient, saga: SagaRow): Promise<string[]> {
+  const { displayName } = await studentGrade(db, saga.student_id);
+  return [saga.hero_name, displayName].filter((n): n is string => Boolean(n && n.trim().length >= 2));
 }
 
 async function serveFallback(deps: StoryDeps, saga: SagaRow, chapter: ChapterRow, previousChoice: string | null, reason: string): Promise<void> {
@@ -147,7 +173,10 @@ async function serveFallback(deps: StoryDeps, saga: SagaRow, chapter: ChapterRow
     status: "ready", source: "fallback", fallback_item_id: pick.id, scores: { fallbackReason: reason }, ready_at: new Date().toISOString(),
   }).eq("id", chapter.id);
   await deps.db.from("editorial_library_items").update({ used_count: pick.usedCount + 1 }).eq("id", pick.id);
-  if (!isLast) await saveChoices(deps.db, chapter.id, pick.choices);
+  if (!isLast) {
+    await saveChoices(deps.db, chapter.id, pick.choices);
+    if (pick.questions?.length || pick.bonusScene) await saveChapterExtras(deps, chapter.id, { body: pick.body, questions: pick.questions, bonusScene: pick.bonusScene }, { forbiddenNames: await forbiddenNamesFor(deps.db, saga), allowedNames: allowedCastNames(saga.outline) });
+  }
 }
 
 /** Generates one chapter slot (live, else fallback). Idempotent: concurrent calls share one generation. */
@@ -183,7 +212,10 @@ export async function generateChapter(deps: StoryDeps, input: { sagaId: string; 
       word_count: outcome.gates.wordCount, scores: { rubricMean: outcome.reviews.rubricMean, rubric: outcome.reviews.rubric, aiTells: outcome.gates.aiTells.score, styleFit: outcome.gates.styleFit, rewrites: outcome.rewrites },
       ready_at: new Date().toISOString(),
     }).eq("id", row.id);
-    if (input.chapterIndex < saga.chapter_count) await saveChoices(deps.db, row.id, outcome.text.choices);
+    if (input.chapterIndex < saga.chapter_count) {
+      await saveChoices(deps.db, row.id, outcome.text.choices);
+      await saveChapterExtras(deps, row.id, { body: outcome.text.body, questions: outcome.text.questions, bonusScene: outcome.text.bonusScene }, { forbiddenNames, allowedNames: allowedCastNames(outline) });
+    }
     await finishRun(deps.db, runId, { status: "published", reasons: outcome.verdict.reasons, rubricMean: outcome.reviews.rubricMean, aiTells: outcome.gates.aiTells.score, gates: outcome.gates.results.map((r) => ({ gate: r.gate, passed: r.passed, level: r.level })), costUsd: outcome.costUsd, latencyMs: outcome.latencyMs });
   } else {
     await finishRun(deps.db, runId, { status: "fallback", reasons: [outcome.reason, ...(outcome.verdict?.reasons ?? [])], costUsd: outcome.costUsd, latencyMs: outcome.latencyMs });
