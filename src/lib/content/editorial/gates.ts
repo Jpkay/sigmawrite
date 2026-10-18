@@ -173,7 +173,9 @@ export async function runGates(input: GateInput, deps: GateDeps = {}, options: G
   const words = tokenize(plain).filter((t) => !t.endsWith("'")).length;
   const { min, max } = brief.lengthWords;
   push("length_cap", "hard", words <= Math.ceil(max * 1.25), `${words} mots (plafond ${Math.ceil(max * 1.25)})`);
-  push("length_band", "required", words >= Math.floor(min * 0.85) && words <= Math.ceil(max * 1.15), `${words} mots (cible ${min}–${max})`);
+  // Dictées are checked again at publication against the exact band (src/lib/dictation/gates.ts): no overshoot allowed here either.
+  const upper = brief.kind === "dictation" ? max : Math.ceil(max * 1.15);
+  push("length_band", "required", words >= Math.floor(min * 0.85) && words <= upper, `${words} mots (cible ${min}–${max})`);
 
   // Required: learning targets, checked deterministically.
   const lemmas = checkLemmaPresence(template, brief.targetLemmas.map((l) => l.lemma));

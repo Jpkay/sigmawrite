@@ -54,7 +54,7 @@ export const LENGTHS: Record<EditorialKind, Record<GradeBand, { min: number; max
   chapter: { cm: { min: 150, max: 260 }, "6e-5e": { min: 200, max: 340 }, "4e-3e": { min: 250, max: 400 }, lycee: { min: 300, max: 480 } },
   passage: { cm: { min: 180, max: 280 }, "6e-5e": { min: 230, max: 360 }, "4e-3e": { min: 280, max: 450 }, lycee: { min: 340, max: 550 } },
   // G.7 / src/lib/dictation/gates.ts wordCountBand: 15–40 words for CM, ≤ 80 in 6e–5e, ≤ 100 in 4e–3e.
-  dictation: { cm: { min: 15, max: 40 }, "6e-5e": { min: 40, max: 80 }, "4e-3e": { min: 60, max: 100 }, lycee: { min: 80, max: 130 } },
+  dictation: { cm: { min: 15, max: 40 }, "6e-5e": { min: 40, max: 80 }, "4e-3e": { min: 60, max: 100 }, lycee: { min: 80, max: 120 } },
 };
 
 export const READABILITY: Record<GradeBand, z.infer<typeof readabilityTargetSchema>> = {
