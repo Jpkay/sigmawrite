@@ -1,0 +1,14 @@
+{
+ "schemaVersion": 1,
+ "rule": "Textes d'auteurs français utilisables dans les prompts et montrés aux élèves seulement si l'auteur est mort en 1955 ou avant (70 ans, art. L123-1 CPI), en vérifiant la prorogation de 30 ans « mort pour la France » (art. L123-10 CPI). Les prorogations de guerre sont absorbées par les 70 ans depuis Cass. 1re civ., 27 février 2007. Liste à faire valider par un juriste avant lancement (H.7).",
+ "excluded": [
+  { "author": "Antoine de Saint-Exupéry", "deathYear": 1944, "reason": "Mort pour la France : +30 ans, protégé en France jusqu'en 2032 au moins (calcul le plus favorable), voire 2045." },
+  { "author": "Marcel Pagnol", "deathYear": 1974, "reason": "Protégé (70 ans après la mort)." },
+  { "author": "Jean Giono", "deathYear": 1970, "reason": "Protégé." },
+  { "author": "Albert Camus", "deathYear": 1960, "reason": "Protégé jusqu'en 2031." },
+  { "author": "Jacques Prévert", "deathYear": 1977, "reason": "Protégé." },
+  { "author": "Marcel Aymé", "deathYear": 1967, "reason": "Protégé." },
+  { "author": "Boris Vian", "deathYear": 1959, "reason": "Protégé jusqu'en 2030." }
+ ],
+ "modernTraitOnly": "Les cartes « moderne-* » décrivent des traits avec nos propres mots. Aucun texte de l'auteur n'est utilisé ; son nom n'est montré aux élèves qu'après validation juridique (publicName=false)."
+}
