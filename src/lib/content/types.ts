@@ -38,4 +38,6 @@ export type SeedText = {
   summaryPrompt: string;
   /** A single retrieval question seeded for spaced review (PRD §L). */
   retrievalPrompt: string;
+  /** Why this text was recommended, e.g. "Parce que tu aimes le foot" (roadmap E.5). */
+  pickReasonFr?: string | null;
 };

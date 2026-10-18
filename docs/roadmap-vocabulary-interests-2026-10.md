@@ -227,22 +227,30 @@ parameters, a complete history, and planning around school holidays.
   movies/series…). Merge the rare ones into broader groups (for example *board games* into *games*,
   *beauty* into *fashion & style*). Never show an interest that has no content. **S** (decision) +
   **S** (code: `src/lib/content/interests.ts`).
-- [ ] **E.2** Minimum content per interest kept: at least 6 reading passages per age group, at
+  *Code landed 2026-10-18:* 14 groups with neighbours in `interests.ts`, all 38 keys kept selectable
+  for stored choices; `npm run content:interest-demand` (read-only) prints demand vs. content. The
+  keep/merge decision and hiding interests waits for that report on production data.
+- [x] **E.2** Minimum content per interest kept: at least 6 reading passages per age group, at
   least 20 themed practice sentences per main skill family, and at least 3 dictées per grade. Add
   this check to `npm run launch:audit-content`. **S** (check) + **L** (content, ongoing).
+  *Landed:* pure check + `missingInterestCoverage()` in `src/lib/content/interest-coverage.ts`,
+  informational (non-blocking) in the audit. Dictée counts need the G.1 `dictations.interests` column.
 - [ ] **E.3** Fill each interest with no content using the editorial pipeline in **library mode**
   (H.17), fully automatic. Order: interests by popularity, then grade. Each text states its target
   words and its target tense or tenses. **L** (mostly compute; the pipeline does the work).
-- [ ] **E.4** Use interests outside reading:
+- [x] **E.4** Use interests outside reading:
   - The practice item picker gives interest a real weight, not just a tie-breaker
     (`src/lib/practice/session.ts:35-38`). It still never picks an item outside the success
     zone just because it matches an interest.
   - Comprehension questions are written for each passage, so they share its theme.
   - The interest-tagged items of diagnostic bank v2 are used once the student's interests are known.
-  **M**.
-- [ ] **E.5** If no content matches, use the closest interest group and show "On prépare des
-  textes sur *manga*". Never silently fall back to `library[0]`. **S**.
-- [ ] **E.6** Fix the onboarding promise. Keep "Tes textes partiront de là" only once E.2 passes for
+  **M**. *Landed:* exact match worth 5 points of fit (group 2.5) inside the zone only, session opens on
+  a themed item; questions are generated with and stored on their passage (verified, no change);
+  `next_section_diagnostic_item` prefers tagged items within one 10-point difficulty bucket.
+- [x] **E.5** If no content matches, use the closest interest group and show "On prépare des
+  textes sur *manga*". Never silently fall back to `library[0]`. **S**. *Landed:* plus "Parce que
+  tu aimes le foot" on each home recommendation.
+- [x] **E.6** Fix the onboarding promise. Keep "Tes textes partiront de là" only once E.2 passes for
   every interest offered. Until then, use a more modest line. **S**.
 
 ## Phase F: Interest-aware generator for students

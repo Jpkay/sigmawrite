@@ -17,6 +17,7 @@ import { LeagueCard } from "@/components/league";
 import { StudentAssignments } from "@/components/student-assignments";
 import type {Assignment} from "@/lib/diagnostic/granular/assignment-display";
 import { track } from "@/lib/analytics";
+import { interestEmoji } from "@/lib/content/interest-matching";
 import { studentSchoolGradeLabel } from "@/lib/school-grade";
 
 export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY;assignments?:Assignment[]}) {
@@ -31,6 +32,7 @@ export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY
   const [classGoal,setClassGoal]=useState<{className:string;targetXp:number;earnedXp:number;activeMembers:number;members:number}|null>(null);
   const [resume,setResume]=useState<{textKey:string;title:string;phase:string}|null>(null);
   const [assessment,setAssessment]=useState<{required:boolean;kind:string;reason:string}|null>(null);
+  const [interestNote,setInterestNote]=useState<string|null>(null);
 
   useEffect(() => {
     if (!hasStudentBackend || !state.hydrated || (!state.diagnostic && !state.granularDiagnosticReady)) return;
@@ -43,7 +45,7 @@ export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY
         type: "practice", role: "new", nodeId: step.nodeId, label: step.label,
         mastery: step.mastery, estimatedMinutes: 7, href: `/student/practice/${step.nodeId}`,
       })));
-      setMotivation(home.motivation); setResume(home.resume); setAssessment(home.assessment); setRecap(home.recap); setClassGoal(home.classGoal); setLeague(home.league);
+      setMotivation(home.motivation); setResume(home.resume); setAssessment(home.assessment); setRecap(home.recap); setClassGoal(home.classGoal); setLeague(home.league); setInterestNote(home.interestNote ?? null);
     }).catch(() => { if (active) setRecommendations(null); });
     return () => { active = false; };
   }, [state.hydrated, state.diagnostic, state.granularDiagnosticReady, state.interests,recommendationKey]);
@@ -165,15 +167,17 @@ export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY
 
       <section className="mb-10">
         <h2 className="mb-5 text-2xl font-bold tracking-[-0.04em]">{copy.reading}</h2>
+        {interestNote && <p className="-mt-3 mb-5 text-sm text-muted-foreground">{interestNote}</p>}
         <div className="divide-y divide-border border-y border-border-strong">
-          {displayedRecommendations.map((text, index) => <article key={text.id} className="group grid gap-5 py-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+          {displayedRecommendations.map((text, index) => { const card=homeReadingCardText(text,state.interests); const emoji=interestEmoji(text.primaryInterest); return <article key={text.id} className="group grid gap-5 py-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-muted-foreground">{index === 0 ? copy.recommended : copy.alternative}</p>
-              <h3 className="mt-2 max-w-2xl text-[clamp(1.25rem,2vw,1.65rem)] font-semibold leading-snug tracking-[-0.035em]">{homeReadingCardText(text).title}</h3>
-              <div className="mt-3 flex flex-wrap gap-2"><Badge variant="outline">{homeReadingCardText(text).band}</Badge>{homeReadingCardText(text).concepts.map((concept) => <Badge key={concept} variant="secondary">{concept}</Badge>)}</div>
+              <h3 className="mt-2 max-w-2xl text-[clamp(1.25rem,2vw,1.65rem)] font-semibold leading-snug tracking-[-0.035em]">{card.title}</h3>
+              {card.why && <p className="mt-1.5 text-sm text-muted-foreground">{emoji && <span aria-hidden="true">{emoji} </span>}{card.why}</p>}
+              <div className="mt-3 flex flex-wrap gap-2"><Badge variant="outline">{card.band}</Badge>{card.concepts.map((concept) => <Badge key={concept} variant="secondary">{concept}</Badge>)}</div>
             </div>
             <Link href={`/student/read/${text.id}`} onClick={() => { if (completed === 0) track("first_session_started", { text_id: text.id }); if (index > 0) track("topic_reselected", { text_id: text.id, interest: text.primaryInterest }); }} className="inline-flex min-h-11 items-center justify-between gap-6 font-display text-sm font-bold text-foreground underline decoration-border-strong underline-offset-4 hover:decoration-brand sm:justify-end">{copy.choose} <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></Link>
-          </article>)}
+          </article>; })}
         </div>
       </section>
 
