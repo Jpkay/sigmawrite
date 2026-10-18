@@ -27,7 +27,8 @@ export function segmentDictation(text: string, band: GradeBand): string[] {
   const segments: string[] = [];
   for (const sentence of splitSentences(text.replace(/\n+/gu, " "))) {
     let rest = sentence.trim();
-    while (tokenize(rest).length > max) {
+    // A little over the limit is fine; cutting "Le chat, silencieux, / pose sa patte" is not.
+    while (tokenize(rest).length > max + 2) {
       const parts = rest.split(/(?<=,)\s+|\s+(?=(?:et|mais|puis|quand|qui|que|où)\s)/u);
       if (parts.length < 2) break;
       // Cut at the boundary closest to the middle of the sentence.
@@ -38,8 +39,9 @@ export function segmentDictation(text: string, band: GradeBand): string[] {
       for (let i = 0; i < parts.length - 1; i += 1) {
         acc += tokenize(parts[i]).length;
         const distance = Math.abs(acc - total / 2);
-        if (distance < best && acc >= 2 && total - acc >= 2) { best = distance; cut = i + 1; }
+        if (distance < best && acc >= 4 && total - acc >= 4) { best = distance; cut = i + 1; }
       }
+      if (best === Infinity) break;
       const head = parts.slice(0, cut).join(" ").trim();
       if (!head || head === rest) break;
       segments.push(head);

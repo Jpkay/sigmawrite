@@ -138,7 +138,7 @@ export function judge(mode: "live" | "library", brief: EditorialBrief, gates: Ga
   if (brief.kind === "dictation") {
     const dictation = reviews.dictation;
     if (!dictation) reasons.push("dictation_review_missing");
-    else if (dictation.readAloudScore < 4 || dictation.ambiguousHomophones.length || dictation.tongueTwisters.length) {
+    else if (dictation.readAloudScore < 4 || dictation.ambiguousHomophones.length || dictation.tongueTwisters.length || dictation.segmentIssues.length) {
       reasons.push("dictation_read_aloud");
       notes.push(...dictation.ambiguousHomophones.map((h) => `[dictée] homophone ambigu : ${h}`), ...dictation.tongueTwisters.map((t) => `[dictée] difficile à dire : ${t}`), ...dictation.segmentIssues.map((s) => `[dictée] ${s}`));
     }
