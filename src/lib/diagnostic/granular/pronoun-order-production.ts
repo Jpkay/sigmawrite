@@ -1635,6 +1635,10 @@ export const DOUBLE_PRONOUN_ORDER_TEACHING: readonly TargetTeachingContent[] = [
     "learnerQuestionFr": "Comment placer deux pronoms sans changer le sens de ma phrase ?",
     "steps": [
       {
+        "exampleFr": "Il me le donne. · Il le lui donne.",
+        "explanationFr": "Pourquoi cet ordre ? En français, la place des pronoms n’est pas une question de sens : c’est un classement fixe, hérité de l’histoire de la langue. On l’apprend une fois pour toutes : 1) me, te, se, nous, vous ; 2) le, la, les ; 3) lui, leur ; 4) y ; 5) en. Me et lui jouent le même rôle (celui qui reçoit), mais ils n’ont pas la même place : me vient avant le, lui vient après. C’est pour cela que l’ordre semble changer."
+      },
+      {
         "exampleFr": "Je donne la fiche à Zoé. → Je la lui donne.",
         "explanationFr": "La reprend la fiche ; lui reprend à Zoé. Dans cette combinaison, le pronom direct la se place avant lui, tous deux avant donne."
       },
@@ -1659,7 +1663,7 @@ export const DOUBLE_PRONOUN_ORDER_TEACHING: readonly TargetTeachingContent[] = [
         "explanationFr": "Y reprend le lieu et suit nous. Avec me ou te, on écrit m’y ou t’y."
       }
     ],
-    "takeawayFr": "Avant le verbe, me/te/nous/vous précèdent le/la/les ; le/la/les précèdent lui/leur. En et y suivent les autres pronoms dans les combinaisons étudiées.",
+    "takeawayFr": "Avant le verbe, suis le classement : me/te/se/nous/vous, puis le/la/les, puis lui/leur, puis y, puis en. Astuce : entre deux pronoms qui commencent par l, c’est l’ordre du dictionnaire : la, le, les avant leur, lui.",
     "boundaryFr": "L’ordre dépend des pronoms, du verbe et de la forme affirmative ou négative. Les pronoms qui complètent un infinitif restent attachés à cet infinitif ; ils ne se déplacent pas automatiquement avec le verbe conjugué.",
     "practice": [
       {
@@ -1795,7 +1799,7 @@ export const DOUBLE_PRONOUN_ORDER_TEACHING: readonly TargetTeachingContent[] = [
         "explanationFr": "Vous précède y. La négation encadre l’ensemble pronoms et verbe."
       }
     ],
-    "takeawayFr": "Avant le verbe, me/te/nous/vous précèdent le/la/les ; le/la/les précèdent lui/leur. En et y suivent les autres pronoms dans les combinaisons étudiées.",
+    "takeawayFr": "Avant le verbe, suis le classement : me/te/se/nous/vous, puis le/la/les, puis lui/leur, puis y, puis en. Astuce : entre deux pronoms qui commencent par l, c’est l’ordre du dictionnaire : la, le, les avant leur, lui.",
     "boundaryFr": "L’ordre dépend des pronoms, du verbe et de la forme affirmative ou négative. Les pronoms qui complètent un infinitif restent attachés à cet infinitif ; ils ne se déplacent pas automatiquement avec le verbe conjugué.",
     "practice": [
       {
