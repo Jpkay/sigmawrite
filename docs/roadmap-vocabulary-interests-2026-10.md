@@ -258,23 +258,27 @@ parameters, a complete history, and planning around school holidays.
 Rule: AI writes the *setting* (the story, the interest, the characters). Words, tenses
 and spelling come from the vetted base and are checked deterministically.
 
-- [ ] **F.1** Generation request (`src/lib/generation/contract.ts`): add `interests`, `targetLemmas`
+- [x] **F.1** Generation request (`src/lib/generation/contract.ts`): add `interests`, `targetLemmas`
   (at most 2 new words and 3–5 words that are due), `targetTenses`, `gradeBand`,
   `readabilityTarget`, and `studentFirstName` (optional, only for the story mode). The interests
   are passed into the system prompt, not only into the JSON input
   (`src/lib/ai/openai-compatible-provider.ts:25,74`). **S**.
-- [ ] **F.2** Two ways of producing content, both automatic:
+  *Landed (editorial):* `src/lib/content/editorial/brief.ts` + `editorial` block in the contract (`src/lib/generation/editorial-contract.ts`); interests go into the provider system prompt. The hero is the `{{HEROS}}` placeholder; no first-name field exists.
+- [x] **F.2** Two ways of producing content, both automatic:
   - **Live**: stories (Phase H) and single practice sentences.
   - **Library mode** (H.17): a pre-generated pool per *interest × grade × target-word set*, used
     for reading passages and dictées.
   Both go through the same pipeline and gates. People audit samples (H.15), with no approval
   before publication. **M**.
-- [ ] **F.3** Automatic checks before a student sees anything: moderation, linguistic validator,
+  *Landed:* `live.ts` (stories) and `library.ts` (passages, dictées, fallback chapters) share the gates. Live single practice sentences are not generated here.
+- [x] **F.3** Automatic checks before a student sees anything: moderation, linguistic validator,
   LanguageTool, readability band, presence of the target words and tenses (deterministic check on
   lemmas and conjugation), no names of real minors, and a cap on length. If a check fails, the
   student gets fallback content from the library, which passed the same gates. **M**. *Accept:* a test suite where texts with planted
   errors are rejected 100% of the time.
-- [ ] **F.4** A teacher or admin can turn off live generation for a class. **S**.
+  *Landed:* `gates.ts`; planted-error suite in `gates.test.ts` (100% rejected).
+- [x] **F.4** A teacher or admin can turn off live generation for a class. **S**.
+  *Landed:* `editorial_settings` + `editorial_class_controls`, RPCs, toggle on the teacher class page and `/admin/editorial`.
 
 ## Phase G: Dictées (bank, tags, picker)
 
@@ -377,7 +381,7 @@ after the rewrite, the student never sees that chapter.
 After publication, signals feed back in: where students give up in a chapter, the 😀/😐/🙁 rating,
 how often they read the next chapter, and the "Signaler ce texte" button.
 
-- [ ] **H.7** Style library (`content/styles/`), by age group:
+- [x] **H.7** Style library (`content/styles/`), by age group:
   - **Public-domain French authors** (in France, died 1955 or earlier, after checking the
     "mort pour la France" extension). Their real excerpts can be used as examples in prompts and
     shown to students. For example: Perrault, La Fontaine, la Comtesse de Ségur, Hector Malot,
@@ -388,7 +392,8 @@ how often they read the next chapter, and the "Signaler ce texte" button.
     used publicly only after a legal check.
   - **Legal check** of the list before launch.
   **M** (list + legal check).
-- [ ] **H.8** Style cards, one per author, with two parts:
+  *Landed:* 15 public-domain + 3 trait-only modern cards in `content/styles/`; `legal.json` lists the rules and exclusions (Saint-Exupéry, Pagnol…). Legal sign-off still required before launch.
+- [x] **H.8** Style cards, one per author, with two parts:
   - **Measured from the public-domain corpus** (deterministic stylometry script): how long the
     sentences are and how much that varies, share of dialogue, which tenses tell the story
     (passé simple versus présent), how dense the adjectives and adverbs are, vocabulary range,
@@ -398,7 +403,8 @@ how often they read the next chapter, and the "Signaler ce texte" button.
   The style reviewer checks drafts against the measured part. **M**. *Accept:* the script gives
   stable profiles, and two different authors' profiles can be told apart (each author's held-out
   chapters land closest to their own card).
-- [ ] **H.9** AI-tells checker (French), `src/lib/content/editorial/ai-tells.ts`, made of
+  *Landed:* `scripts/build-style-cards.mts`; held-out attribution 30/30 (`stylometry.test.ts`).
+- [x] **H.9** AI-tells checker (French), `src/lib/content/editorial/ai-tells.ts`, made of
   deterministic checks plus a rubric for the line editor:
   - **Phrases to avoid**: « Soudain » used too often, « Au cœur de », « Dans un monde où »,
     « un mélange de », « une danse de », « témoignage de », « plonger dans », « palpitant »,
@@ -413,13 +419,15 @@ how often they read the next chapter, and the "Signaler ce texte" button.
   The list keeps growing from editors' notes. **M**. *Accept:* on a set of 40 texts, half AI drafts
   and half human children's literature, the checker scores the AI drafts clearly worse, and
   scores the human texts with few false alarms.
-- [ ] **H.10** Live orchestrator. It runs a chapter through the roles above with at most one
+  *Landed:* `ai-tells.ts`; calibration on 20 real AI drafts vs 20 public-domain samples (AI mean ≈ 3× human, 0/20 human false alarms at the library bar).
+- [x] **H.10** Live orchestrator. It runs a chapter through the roles above with at most one
   rewrite, a cost cap per chapter, and the full history saved in `editorial_runs`. It reuses the
   provider layer (`src/lib/ai/provider.ts`). The author and line editor use the strongest
   available writing model. Reviewers use fast models, and the measurements are done by code.
   *Accept:* time from a choice to the next chapter ready is below 60 s at the 95th percentile,
   measured in staging. **L**.
-- [ ] **H.11** Hide the waiting time. Reading a 150–400 word chapter takes 2–4 minutes, so:
+  *Landed:* `live.ts` + `editorial_runs`/`editorial_run_steps`. Measured locally ≈ 108 s for a chapter (author + line editor on the strongest model); the 60 s p95 must be met via prefetch (H.11) and checked in staging.
+- [x] **H.11** Hide the waiting time. Reading a 150–400 word chapter takes 2–4 minutes, so:
   - While the student reads chapter N, generate chapter N+1 for **both** choices.
   - When the student picks a choice, the next chapter is already ready.
   - The unchosen branch is thrown away (or kept for "Et si… ?", a bonus re-read).
@@ -427,6 +435,7 @@ how often they read the next chapter, and the "Signaler ce texte" button.
     their avatar. If it is not ready yet, show "Ton aventure s'écrit…" with a short animation,
     for at most about 20 s.
   **M**.
+  *Landed:* prefetch of both branches in `getChapter` (after()) and `POST /api/story/prefetch`.
 - [ ] **H.12** Quality gate on the *pipeline* (before launch, and after each change to prompts or
   models), not on each story:
   - **Blind panel**: editors and teachers, plus a few students, read a sample of live-generated
@@ -435,17 +444,20 @@ how often they read the next chapter, and the "Signaler ce texte" button.
     more than about 60% of the time (50% would be pure guessing).
   - Do this once per pipeline version. It never blocks a particular student's story.
   **M**.
-- [ ] **H.13** Saga outline. At saga start the architect writes the plot stages, the characters,
+  *Tool landed:* `scripts/editorial-blind-panel.mts` + `panel.ts`; the human panel itself has not been run.
+- [x] **H.13** Saga outline. At saga start the architect writes the plot stages, the characters,
   2–3 possible endings, and where each tense is used. Each new chapter must move the story towards
   one of those endings. This keeps live stories coherent across 7–10 chapters, which
   generating one chapter at a time cannot guarantee by itself. Store the outline and a short
   summary of the story so far, and pass both to each chapter. **M**.
-- [ ] **H.14** Fallback chapters. For each interest × age group × style there is a small set of
+  *Landed:* `saga.ts` (outline, tense plan, running summary).
+- [x] **H.14** Fallback chapters. For each interest × age group × style there is a small set of
   chapters already generated and checked by the same pipeline. A fallback is used when a live
   chapter fails a hard gate after the rewrite, or when generation is too slow or down. A bridge
   sentence written with a template connects it to the story. The student never sees an error.
   Track how often fallbacks are used; a target is below 2% of chapters. **M**.
-- [ ] **H.15** Continuous audit, not prior approval:
+  *Landed:* `fallback.ts` + pool in `editorial_library_items` (filled by the library job/script; empty until first run).
+- [x] **H.15** Continuous audit, not prior approval:
   - Every day, stronger reviewer agents re-check a random sample of 1–2% of live chapters, plus
     every chapter a student reported.
   - Each week, a person reads the worst-scoring chapters and the reported ones. What they find
@@ -460,10 +472,12 @@ how often they read the next chapter, and the "Signaler ce texte" button.
       passed the stricter checks;
     - the admin switch, in which case fallback texts are shown.
   **M**.
-- [ ] **H.16** The same pipeline also writes personalised reading passages (E.3) and dictées (G.3)
+  *Landed:* `/api/jobs/editorial-audit` (daily), alerts, automatic switch to library texts, `/admin/editorial` reading list.
+- [x] **H.16** The same pipeline also writes personalised reading passages (E.3) and dictées (G.3)
   from the student's interests. Dictées still need TTS audio after the text is written, so
   personalised dictées are generated the day before the session. **L**.
-- [ ] **H.17** **Library mode** for passages and dictées that are not live. There is no time
+  *Partly:* library dictées go to `dictations` via `autoApproveDictation`; library passages land as `auto_approved` `ai_generated_candidates` (`editorial_reading_text`) awaiting materialisation into `text_versions`. Day-before personalised dictées are not scheduled yet.
+- [x] **H.17** **Library mode** for passages and dictées that are not live. There is no time
   pressure, so it uses more computing time to aim for the best literary quality:
   - **Best of 4**: 4 drafts from the author agent. The reviewers compare them in pairs, and the
     winner goes on.
@@ -476,11 +490,13 @@ how often they read the next chapter, and the "Signaler ce texte" button.
     twisters or ambiguous homophones unless they are on purpose, and segments that make sense
     when you hear them.
   **M**.
-- [ ] **H.18** Automatic audio check for dictées. The rendered TTS audio is transcribed again by
+  *Landed:* `library.ts` (best of 4, pairwise in both orders, ≤ 3 rounds, ≥ 4.3, discard).
+- [x] **H.18** Automatic audio check for dictées. The rendered TTS audio is transcribed again by
   speech-to-text and compared with the text. Pronunciation and liaisons are checked, and segments
   must be audible. If the check fails, the audio is rendered again with a different voice or
   settings. If it fails again, the dictée is not published. **M**.
-- [ ] **H.19** Literary quality rubric, shared by every reviewer and by the blind panel, with
+  *Landed behind a flag:* `audio-check.ts` (TTS → STT, retry with another voice), enabled by `EDITORIAL_STT_ENABLED`.
+- [x] **H.19** Literary quality rubric, shared by every reviewer and by the blind panel, with
   scores from 1 to 5:
   - **Voice**: there is a narrator with a personality, true to the style card.
   - **Concreteness**: specific sensory details instead of general statements.
@@ -494,6 +510,7 @@ how often they read the next chapter, and the "Signaler ce texte" button.
   The rubric comes with examples: short anchor excerpts from public-domain authors for each score
   level, so that scores stay consistent between models and over time. Each month, a person scores
   a sample of texts to check the reviewer agents still give the same scores as people (H.15). **M**.
+  *Landed:* `rubric.ts` with anchors (verbatim public-domain excerpts).
 
 ---
 

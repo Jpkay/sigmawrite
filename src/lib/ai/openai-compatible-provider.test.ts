@@ -36,6 +36,17 @@ describe("OpenAICompatibleAIProvider", () => {
     expect(fetchImpl).toHaveBeenCalledTimes(2);
   });
 
+  it("puts the student's interests into the system prompt (F.1)", async () => {
+    const fetchImpl = vi.fn().mockResolvedValueOnce(chatResponse(JSON.stringify(validCandidate)));
+    const provider = new OpenAICompatibleAIProvider({
+      kind: "glm", baseUrl: "https://example.test/v1", apiKey: "test", model: "test-model",
+      embeddingBaseUrl: "", embeddingApiKey: "", embeddingModel: "test-embedding",
+    }, fetchImpl as typeof fetch);
+    await provider.generateText({ ...input, interests: ["manga", "basketball"] });
+    const body = JSON.parse(String((fetchImpl.mock.calls[0][1] as RequestInit).body));
+    expect(body.messages[0].content).toContain("Centres d'intérêt de l'élève : manga, basketball");
+  });
+
   it("uses the official moderation and embeddings endpoints for OpenAI", async () => {
     const fetchImpl = vi.fn()
       .mockResolvedValueOnce(new Response(JSON.stringify({ results: [{ flagged: true, categories: { hate: true, violence: false } }] }), { status: 200 }))

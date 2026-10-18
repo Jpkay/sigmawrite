@@ -17,6 +17,8 @@ import { requireRole } from "@/lib/auth";
 import { ClassGoalControl } from "@/components/class-goal-control";
 import { loadClassGoal, loadClassLeague } from "@/lib/actions/teacher";
 import { ClassLeagueControl } from "@/components/class-league-control";
+import { ClassLiveGenerationControl } from "@/components/class-live-generation-control";
+import { loadClassLiveGeneration } from "@/lib/actions/editorial-admin";
 import { createClient } from "@/lib/supabase/server";
 import { studentSchoolGradeLabel } from "@/lib/school-grade";
 
@@ -36,12 +38,13 @@ export default async function ClassDetailPage({
   if (accessError) throw new Error(accessError.message);
   if (!accessibleClass) notFound();
 
-  const [classGoal, classLeague, students, joinCode, managedAccounts] = await Promise.all([
+  const [classGoal, classLeague, students, joinCode, managedAccounts, liveGeneration] = await Promise.all([
     loadClassGoal(classId),
     loadClassLeague(classId),
     getClassStudents(classId),
     getActiveJoinCode(classId),
     getClassManagedAccounts(classId),
+    loadClassLiveGeneration(classId),
   ]);
   const now = nowMs();
   const summary = classSummary(students, now);
@@ -57,6 +60,7 @@ export default async function ClassDetailPage({
       {session.role === "teacher" && <ClassStudentAccountForm classId={classId} />}
       <ClassGoalControl classId={classId} initial={classGoal} memberCount={students.length} />
       {classLeague && <ClassLeagueControl classId={classId} initial={classLeague} />}
+      <ClassLiveGenerationControl classId={classId} initialEnabled={liveGeneration} />
       <JoinCodePanel classId={classId} initial={joinCode} />
       <div className="mb-5"><Link prefetch={false} href={`/api/teacher/classes/${classId}/export`} className={buttonVariants({ variant: "outline" })}>Télécharger le rapport CSV</Link></div>
 
