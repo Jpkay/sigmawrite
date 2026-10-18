@@ -32,7 +32,10 @@ describe("editorial passage publication (H.16)", () => {
     expect(ageBandForDifficultyBand(PASSAGE_BAND_FOR_GRADE[7])).toBe("6e_5e");
     expect(ageBandForDifficultyBand(PASSAGE_BAND_FOR_GRADE[8])).toBe("4e_3e");
     expect(ageBandForDifficultyBand(PASSAGE_BAND_FOR_GRADE[9])).toBe("4e_3e");
-    expect(passageMetrics({ ...payload, grade: 12 }).difficultyBand).toBe("Secondary 9A");
+    expect(ageBandForDifficultyBand(PASSAGE_BAND_FOR_GRADE[10])).toBe("lycee");
+    expect(ageBandForDifficultyBand(PASSAGE_BAND_FOR_GRADE[12])).toBe("lycee");
+    expect(passageMetrics({ ...payload, grade: 12 }).difficultyBand).toBe("Advanced 11-12");
+    expect(passageMetrics({ ...payload, grade: 14 }).difficultyBand).toBe("Advanced 11-12");
   });
 
   it("publishes through the service-only SQL function and stores the embedding", async () => {

@@ -8,7 +8,7 @@
  *   # produce
  *   node --env-file=<private env> --import tsx scripts/editorial-bulk.mts --budget 50 --execute \
  *     [--state editorial-bulk-state.json] [--kinds passage,dictation,fallback_chapter] [--max-jobs 20] \
- *     [--max-attempts 3] [--per-job-cap 3] [--fallback-per-cell 3] [--level interest|group] [--interests football,manga]
+ *     [--max-attempts 3] [--per-job-cap 3] [--fallback-per-cell 3] [--level interest|group] [--interests football,manga] [--grades 10,11,12]
  *
  * - Coverage is re-read at every start, so a stopped run resumes where it
  *   stopped; the state file keeps the total spend across runs (the budget is a
@@ -52,7 +52,9 @@ const demand = await loadInterestDemand(db);
 const gaps = missingInterestCoverage(counts, { demand, level, ...(onlyInterests.length ? { targets: onlyInterests } : {}) });
 const popular = onlyInterests.length ? onlyInterests : Object.entries(demand).sort((a, b) => b[1] - a[1]).slice(0, 14).map(([k]) => k);
 const { data: existing } = await db.from("editorial_library_items").select("interest,grade_band").eq("kind", "fallback_chapter").eq("status", "published");
-const cells = planBulkCells(gaps, { kinds, fallback: { interests: popular, existing: (existing ?? []).map((e) => ({ interest: e.interest as string, gradeBand: e.grade_band as string })), perCell: Number(arg("fallback-per-cell", "3")) } });
+const onlyGrades = new Set(arg("grades", "").split(",").filter((s) => s.trim()).map((s) => Number(s.trim())).filter((n) => Number.isInteger(n)));
+const cells = planBulkCells(gaps, { kinds, fallback: { interests: popular, existing: (existing ?? []).map((e) => ({ interest: e.interest as string, gradeBand: e.grade_band as string })), perCell: Number(arg("fallback-per-cell", "3")) } })
+  .filter((cell) => onlyGrades.size === 0 || onlyGrades.has(cell.grade));
 const state: BulkState = existsSync(statePath) ? resumeBulkState(JSON.parse(readFileSync(statePath, "utf8")), budget) : newBulkState(budget);
 const texts = cells.reduce((n, c) => n + c.missing, 0);
 console.log(`${cells.length} cells, ${texts} texts missing; spent so far $${state.spentUsd.toFixed(2)} of $${budget}`);

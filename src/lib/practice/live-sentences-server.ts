@@ -23,7 +23,7 @@ export async function withLiveThemedSentences<P extends { items: Array<{ id: str
       db.from("students").select("current_grade").eq("id", studentId).maybeSingle(),
     ]);
     const interests = (interestRows ?? []).map((row) => row.interest_key as string).filter((key) => key in INTEREST_BY_KEY);
-    const grade = Math.min(9, Math.max(4, Number(student?.current_grade ?? 6) || 6));
+    const grade = Math.min(12, Math.max(4, Number(student?.current_grade ?? 6) || 6));
     const moderate = editorialGateDeps().moderate;
     const items = await applyLiveSentences(practice.items, { interests, grade }, {
       findCached: async (itemId, interest) => {

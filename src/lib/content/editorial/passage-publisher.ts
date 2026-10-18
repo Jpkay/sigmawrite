@@ -43,7 +43,7 @@ export function passageMetrics(payload: EditorialPassagePayload): PassageMetrics
     newVocabCount: (payload.targetLemmas ?? []).filter((l) => l.kind === "new").length,
     inferenceQuestionCount: payload.questions.filter((q) => q.questionType === "inference").length,
   });
-  const grade = Math.min(9, Math.max(4, Math.round(Number(payload.grade) || 6)));
+  const grade = Math.min(12, Math.max(4, Math.round(Number(payload.grade) || 6)));
   return {
     slug: contentSlug(payload.title).slice(0, 60),
     wordCount: difficulty.features.wordCount,

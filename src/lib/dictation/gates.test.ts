@@ -46,6 +46,15 @@ describe("gates reject planted problems", () => {
     expect(result.details?.problems).toEqual(expect.arrayContaining(["segment_0_no_final_punctuation", "segment_0_digits", "segment_1_markup"]));
   });
 
+  it("structure: a long sentence may be read in groups, but the last group must end the sentence", async () => {
+    const grouped = await structureGate.run(base({ segments: ["Le soir, près du poêle, il nous montrait des planches", "où des enfants marchaient dans la neige."] }));
+    expect(grouped.details?.problems ?? []).not.toContain("segment_0_no_final_punctuation");
+    const unfinished = await structureGate.run(base({ segments: ["Le soir, il nous montrait des planches."] , }));
+    expect(unfinished.details?.problems ?? []).toEqual([]);
+    const dangling = await structureGate.run(base({ segments: ["Le soir, il nous montrait des planches.", "où des enfants marchaient"] }));
+    expect(dangling.details?.problems).toContain("segment_1_no_final_punctuation");
+  });
+
   it("length: CM dictées stay between 15 and 40 words, one sentence per segment", async () => {
     const tooShort = await lengthGate.run(base({ gradeMin: 4, gradeMax: 5, segments: ["Le chat dort."] }));
     expect(tooShort.status).toBe("fail");

@@ -69,7 +69,7 @@ export async function publishDictation(db: SupabaseClient, input: { brief: Edito
   const { data, error } = await db.from("dictations").insert({
     key: `editorial-${brief.gradeBand}-${input.libraryItemId.slice(0, 8)}`, title_fr: outcome.text.title, kind: "flash",
     text_fr: dictationText(segments), segments: segments.map((text) => ({ text, audioPath: null })), word_count: dictationWordCount(segments),
-    grade_min: brief.grade, grade_max: Math.min(9, brief.grade + 1), target_node_keys: tenses.map((t) => TENSE_NODE_KEYS[t]),
+    grade_min: brief.grade, grade_max: Math.min(12, brief.grade + 1), target_node_keys: tenses.map((t) => TENSE_NODE_KEYS[t]),
     focus_fr: `Temps : ${brief.targetTenses.map((t) => TENSE_LABELS[t]).join(", ")}`,
     source_note: `Écrite automatiquement par le pipeline éditorial ${EDITORIAL_PIPELINE_VERSION} (run ${input.runId}).`,
     review_status: "needs_human_review",
