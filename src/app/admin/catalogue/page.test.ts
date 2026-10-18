@@ -74,7 +74,7 @@ describe("pedagogical catalogue access", () => {
     expect(html).toContain(`href="/admin/catalogue?kind=${kind}&amp;page=1"`);
     expect(html).toContain(`href="/admin/catalogue?kind=${kind}&amp;page=3"`);
     expect(html).not.toContain("Signaler une observation");
-    expect(html).not.toContain("Votre observation a été transmise");
+    expect(html).not.toContain("votre observation a bien été transmise");
     if (kind === "passage") expect(html).toContain("Avis soumis");
   });
 
@@ -82,7 +82,7 @@ describe("pedagogical catalogue access", () => {
     const html = renderToStaticMarkup(await ContentCatalog({ audience: "teacher", query: { kind: "passage", sent: "1" } }));
     expect(html).toContain("Avis soumis");
     expect(html).toContain("Signaler une observation");
-    expect(html).toContain("Votre observation a été transmise");
+    expect(html).toContain("votre observation a bien été transmise");
     expect(html).toContain('href="/teacher/content?kind=lesson"');
   });
 });

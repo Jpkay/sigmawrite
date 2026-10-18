@@ -49,6 +49,8 @@ generated/*
 !generated/past-narration-items.json
 !generated/present-agreement-items.json
 !generated/french-baseline-lexicon.json
+!generated/lexicon-definitions-v1.json
+!generated/lexicon-definitions-v1/
 !generated/french-taxonomy-v1.json
 !generated/french-taxonomy-v2.json
 !generated/diagnostic-bank-v2.json
@@ -67,3 +69,6 @@ generated/*
 /scripts/.*.mts
 /scripts/.*.mjs
 /.claude/skills/self-driving-setup/
+
+# Resumable per-lemma cache of the lexicon definitions pipeline
+.cache/

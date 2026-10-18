@@ -48,6 +48,7 @@ beforeEach(() => {
     const query = {
       select: () => query,
       eq: () => query,
+      in: () => query,
       order: () => query,
       update: (...args: unknown[]) => { f.update(table, ...args); return query; },
       single: async () => ({

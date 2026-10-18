@@ -5,12 +5,14 @@ import {requireRole} from '@/lib/auth';
 import {getCurrentStudentId} from '@/lib/db/student';
 import {createClient,isSupabaseConfigured} from '@/lib/supabase/server';
 import {deliveredStudentAssignments} from '@/lib/diagnostic/granular/assignment-delivery';
+import {storyHomeCardFor} from '@/lib/story/visibility';
 export default async function StudentHomePage(){
  if(!isSupabaseConfigured)return <StudentHome key="local" copy={HOME_COPY}/>;
  await requireRole(['student']);
  const client=await createClient(),owner=await getCurrentStudentId(client);
- const assignments=await deliveredStudentAssignments(owner,client);
+ const [assignments,story]=await Promise.all([deliveredStudentAssignments(owner,client),storyHomeCardFor(owner)]);
  await journalStudentPayload(owner,'student:home-copy',HOME_COPY);
+ if(story)await journalStudentPayload(owner,'student:story-home',story);
  // Changing accounts remounts all dashboard state, not just recommendations.
- return <StudentHome key={owner} copy={HOME_COPY} assignments={assignments}/>;
+ return <StudentHome key={owner} copy={HOME_COPY} assignments={assignments} story={story}/>;
 }

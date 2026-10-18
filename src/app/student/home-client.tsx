@@ -17,9 +17,12 @@ import { LeagueCard } from "@/components/league";
 import { StudentAssignments } from "@/components/student-assignments";
 import type {Assignment} from "@/lib/diagnostic/granular/assignment-display";
 import { track } from "@/lib/analytics";
+import { interestEmoji } from "@/lib/content/interest-matching";
 import { studentSchoolGradeLabel } from "@/lib/school-grade";
+import { StoryHomeCard } from "@/components/story/story-home-card";
+import type { StoryHomeCard as StoryHomeCardData } from "@/lib/story/server";
 
-export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY;assignments?:Assignment[]}) {
+export default function StudentHome({copy,assignments=[],story=null}:{copy:typeof HOME_COPY;assignments?:Assignment[];story?:StoryHomeCardData}) {
   const state = useStudentState();
   const fallback = homeFallbackText(state.interests);
   const recommendationKey=JSON.stringify(state.interests);
@@ -31,6 +34,7 @@ export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY
   const [classGoal,setClassGoal]=useState<{className:string;targetXp:number;earnedXp:number;activeMembers:number;members:number}|null>(null);
   const [resume,setResume]=useState<{textKey:string;title:string;phase:string}|null>(null);
   const [assessment,setAssessment]=useState<{required:boolean;kind:string;reason:string}|null>(null);
+  const [interestNote,setInterestNote]=useState<string|null>(null);
 
   useEffect(() => {
     if (!hasStudentBackend || !state.hydrated || (!state.diagnostic && !state.granularDiagnosticReady)) return;
@@ -43,7 +47,7 @@ export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY
         type: "practice", role: "new", nodeId: step.nodeId, label: step.label,
         mastery: step.mastery, estimatedMinutes: 7, href: `/student/practice/${step.nodeId}`,
       })));
-      setMotivation(home.motivation); setResume(home.resume); setAssessment(home.assessment); setRecap(home.recap); setClassGoal(home.classGoal); setLeague(home.league);
+      setMotivation(home.motivation); setResume(home.resume); setAssessment(home.assessment); setRecap(home.recap); setClassGoal(home.classGoal); setLeague(home.league); setInterestNote(home.interestNote ?? null);
     }).catch(() => { if (active) setRecommendations(null); });
     return () => { active = false; };
   }, [state.hydrated, state.diagnostic, state.granularDiagnosticReady, state.interests,recommendationKey]);
@@ -55,7 +59,7 @@ export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY
   useEffect(()=>{
     if(!state.hydrated||typeof navigator==="undefined"||!navigator.serviceWorker?.controller)return;
     const controller=new AbortController();
-    const urls=[...displayedRecommendations.map(text=>`/student/read/${text.id}`),...plan.filter(entry=>entry.type!=="review_card").map(entry=>entry.href)];
+    const urls=[...displayedRecommendations.map(text=>`/student/read/${text.id}`),...plan.filter(entry=>entry.type!=="review_card"&&entry.type!=="review_word").map(entry=>entry.href)];
     // The worker alone writes owner-verified responses into the private pack.
     void Promise.all(urls.map(url=>fetch(url,{headers:{"X-Plume-Offline-Prefetch":"1"},signal:controller.signal}).catch(()=>undefined)));
     return()=>controller.abort();
@@ -150,6 +154,8 @@ export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY
         </div>
       </section>
 
+      <StoryHomeCard card={story} />
+
       {motivation && <section className="mb-10 border-b border-border-strong pb-8">
         <div className="grid items-start gap-7 lg:grid-cols-2 lg:gap-10">
           <div className="min-w-0 space-y-6">
@@ -161,19 +167,21 @@ export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY
         {(league || classGoal) && <div className="mt-7 grid items-start gap-6 md:grid-cols-2">{league && <LeagueCard league={league} />}{classGoal && <ClassGoalCard goal={classGoal} />}</div>}
       </section>}
 
-      {plan.length > 0 && <section className="mb-10"><div className="mb-4 flex items-end justify-between"><div><p className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-success">{copy.plan}</p><h2 className="mt-1 text-xl font-semibold">{copy.planHelp}</h2></div><span className="text-sm text-muted-foreground">{homePlanSummary(plan.length,planMinutes)}</span></div><div className="border-y border-border">{plan.map((entry, index) => {const isReview=entry.role==="review";return <div key={entry.cardId ?? entry.nodeId ?? index} className="group grid gap-4 border-b border-border py-4 last:border-0 sm:grid-cols-[3rem_1fr_auto] sm:items-center"><span className={`grid size-10 place-items-center rounded-full border-2 font-display text-sm font-bold ${isReview?"border-secondary bg-secondary/15 text-secondary":"border-primary bg-primary text-primary-foreground"}`}>{index + 1}</span><div><p className="font-semibold">{entry.label}</p>{entry.mastery != null && <div className="mt-2 h-1.5 max-w-sm overflow-hidden rounded-full bg-rail"><div className="h-full rounded-full bg-success" style={{width:`${Math.round(entry.mastery*100)}%`}} /></div>}<p className="mt-1.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{homePlanEntryText(entry)}</p></div><Link href={entry.href} className={buttonVariants({variant:index===0?"default":"outline",size:"sm"})}>{entry.type==="review_card"?copy.memory:entry.type==="dictation"?copy.dictation:entry.type==="production"?copy.write:isReview?copy.revise:copy.practice} <ArrowRight /></Link></div>})}</div></section>}
+      {plan.length > 0 && <section className="mb-10"><div className="mb-4 flex items-end justify-between"><div><p className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-success">{copy.plan}</p><h2 className="mt-1 text-xl font-semibold">{copy.planHelp}</h2></div><span className="text-sm text-muted-foreground">{homePlanSummary(plan.length,planMinutes)}</span></div><div className="border-y border-border">{plan.map((entry, index) => {const isReview=entry.role==="review";return <div key={entry.cardId ?? entry.nodeId ?? `${entry.type}:${index}`} className="group grid gap-4 border-b border-border py-4 last:border-0 sm:grid-cols-[3rem_1fr_auto] sm:items-center"><span className={`grid size-10 place-items-center rounded-full border-2 font-display text-sm font-bold ${isReview?"border-secondary bg-secondary/15 text-secondary":"border-primary bg-primary text-primary-foreground"}`}>{index + 1}</span><div><p className="font-semibold">{entry.label}</p>{entry.mastery != null && <div className="mt-2 h-1.5 max-w-sm overflow-hidden rounded-full bg-rail"><div className="h-full rounded-full bg-success" style={{width:`${Math.round(entry.mastery*100)}%`}} /></div>}<p className="mt-1.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{homePlanEntryText(entry)}</p></div><Link href={entry.href} className={buttonVariants({variant:index===0?"default":"outline",size:"sm"})}>{entry.type==="review_card"?copy.memory:entry.type==="review_word"?copy.words:entry.type==="dictation"?copy.dictation:entry.type==="production"?copy.write:isReview?copy.revise:copy.practice} <ArrowRight /></Link></div>})}</div></section>}
 
       <section className="mb-10">
         <h2 className="mb-5 text-2xl font-bold tracking-[-0.04em]">{copy.reading}</h2>
+        {interestNote && <p className="-mt-3 mb-5 text-sm text-muted-foreground">{interestNote}</p>}
         <div className="divide-y divide-border border-y border-border-strong">
-          {displayedRecommendations.map((text, index) => <article key={text.id} className="group grid gap-5 py-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+          {displayedRecommendations.map((text, index) => { const card=homeReadingCardText(text,state.interests); const emoji=interestEmoji(text.primaryInterest); return <article key={text.id} className="group grid gap-5 py-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-[.14em] text-muted-foreground">{index === 0 ? copy.recommended : copy.alternative}</p>
-              <h3 className="mt-2 max-w-2xl text-[clamp(1.25rem,2vw,1.65rem)] font-semibold leading-snug tracking-[-0.035em]">{homeReadingCardText(text).title}</h3>
-              <div className="mt-3 flex flex-wrap gap-2"><Badge variant="outline">{homeReadingCardText(text).band}</Badge>{homeReadingCardText(text).concepts.map((concept) => <Badge key={concept} variant="secondary">{concept}</Badge>)}</div>
+              <h3 className="mt-2 max-w-2xl text-[clamp(1.25rem,2vw,1.65rem)] font-semibold leading-snug tracking-[-0.035em]">{card.title}</h3>
+              {card.why && <p className="mt-1.5 text-sm text-muted-foreground">{emoji && <span aria-hidden="true">{emoji} </span>}{card.why}</p>}
+              <div className="mt-3 flex flex-wrap gap-2"><Badge variant="outline">{card.band}</Badge>{card.concepts.map((concept) => <Badge key={concept} variant="secondary">{concept}</Badge>)}</div>
             </div>
             <Link href={`/student/read/${text.id}`} onClick={() => { if (completed === 0) track("first_session_started", { text_id: text.id }); if (index > 0) track("topic_reselected", { text_id: text.id, interest: text.primaryInterest }); }} className="inline-flex min-h-11 items-center justify-between gap-6 font-display text-sm font-bold text-foreground underline decoration-border-strong underline-offset-4 hover:decoration-brand sm:justify-end">{copy.choose} <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" /></Link>
-          </article>)}
+          </article>; })}
         </div>
       </section>
 

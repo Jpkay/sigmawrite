@@ -2,6 +2,7 @@ import type { NextAction, DifficultyBand } from "@/lib/types";
 import { DIFFICULTY_BANDS } from "@/lib/types";
 import { SEED_TEXTS } from "@/lib/content/texts";
 import { MICRO_LESSONS } from "@/lib/content/micro-lessons";
+import { interestRank, NO_INTEREST_MATCH_RANK } from "@/lib/content/interest-matching";
 import type { SkillEstimate } from "./skill-estimate";
 
 /**
@@ -57,14 +58,15 @@ function pickText(
   const pool = SEED_TEXTS.filter((t) =>
     excludeInterest
       ? t.primaryInterest !== excludeInterest
-      : interests.length === 0 || interests.includes(t.primaryInterest)
+      : interests.length === 0 || interestRank(t.primaryInterest, interests) < NO_INTEREST_MATCH_RANK
   );
   const candidates = pool.length ? pool : SEED_TEXTS;
   // Closest band to the target.
   return [...candidates].sort(
     (a, b) =>
       Math.abs(bandIndex(a.difficultyBand) - target) -
-      Math.abs(bandIndex(b.difficultyBand) - target)
+      Math.abs(bandIndex(b.difficultyBand) - target) ||
+      interestRank(a.primaryInterest, interests) - interestRank(b.primaryInterest, interests)
   )[0].id;
 }
 

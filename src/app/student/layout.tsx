@@ -7,8 +7,10 @@ import { getStudentAccessGate } from "@/lib/db/lifecycle";
 import { isSupabaseConfigured } from "@/lib/supabase/server";
 import { StudentAccessPending } from "@/components/student-access-pending";
 import { StudentAssessmentGate } from "@/components/student-assessment-gate";
+import { storyVisibleForCurrentStudent } from "@/lib/story/visibility";
+import { STORY_COPY } from "@/lib/story/copy";
 
-const nav: NavItem[] = [
+const baseNav: NavItem[] = [
   { href: "/student", label: "Accueil" },
   { href: "/student/lessons", label: "Mes leçons" },
   { href: "/student/diagnostic", label: "Diagnostic" },
@@ -26,6 +28,7 @@ const nav: NavItem[] = [
 const tabs: TabItem[] = [
   { href: "/student", label: "Accueil", icon: "home" },
   { href: "/student/dictee", label: "Dictées", icon: "pen" },
+  { href: "/student/vocabulary", label: "Mots", icon: "book" },
   { href: "/student/memory", label: "Mémoire", icon: "brain" },
   { href: "/student/progress", label: "Progrès", icon: "progress" },
   { href: "/student/inbox", label: "Messages", icon: "inbox" },
@@ -42,6 +45,9 @@ export default async function StudentLayout({
   const access = session?.role === "student" && isSupabaseConfigured
     ? await getStudentAccessGate()
     : null;
+  // Story mode (H.1–H.6) appears only when chapters can really be served.
+  const storyVisible = session?.role === "student" && (!access || access.authorized) ? await storyVisibleForCurrentStudent() : false;
+  const nav: NavItem[] = storyVisible ? [baseNav[0], { href: "/student/histoire", label: STORY_COPY.navLabel }, ...baseNav.slice(1)] : baseNav;
   const user={name:session?.displayName??"Élève",role:session?.role??"student",analyticsId:session?.id};
   // Capture only this layout's delivered labels and identity, not child pages.
   // A cached layout reuses the already-recorded payload on client navigation.

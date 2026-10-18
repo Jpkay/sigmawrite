@@ -112,7 +112,10 @@ test.describe("incoming invited student", () => {
     }
     await page.getByRole("button", { name: /Commencer le diagnostic/ }).click();
     await expect(page).toHaveURL(/\/student\/diagnostic/, { timeout: 20_000 });
-    await expect(page.getByRole("heading", { name: "Diagnostic adaptatif" })).toBeVisible();
+    // The page first shows "Diagnostic adaptatif", then the startup result. CI only
+    // prepares the bank as a pilot, so a new invitee without pilot access gets the
+    // "not yet available" state; both mean the onboarding handed over correctly.
+    await expect(page.getByRole("heading", { level: 1, name: /^(Diagnostic adaptatif|Le diagnostic ne peut pas encore démarrer)$/u })).toBeVisible();
 
     const { data: users } = await service.auth.admin.listUsers({ page: 1, perPage: 1000 });
     const firstAuthUser = users.users.find((user) => user.email === firstEmail);

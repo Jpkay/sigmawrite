@@ -25,6 +25,7 @@ vi.mock("@/lib/actions/teacher", () => ({ loadClassGoal: f.goal, loadClassLeague
 vi.mock("@/lib/db/dashboard", () => ({ getClassStudents: f.students }));
 vi.mock("@/lib/db/lifecycle", () => ({ getActiveJoinCode: f.joinCode }));
 vi.mock("@/lib/db/users", () => ({ getClassManagedAccounts: f.managedAccounts }));
+vi.mock("@/lib/actions/editorial-admin", () => ({ loadClassLiveGeneration: async () => true }));
 
 import ClassDetailPage from "./page";
 

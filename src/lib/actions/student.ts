@@ -21,18 +21,22 @@ import { onboardingSchema, onboardingTarget } from "@/lib/onboarding";
 import { getContentLibrary, getPublishedReadingText, recommendPublishedTextKey } from "@/lib/db/content";
 import { rankInterestSignals } from "@/lib/content/recommend";
 import { rankByInterestAndVocabulary } from "@/lib/content/vocabulary-fit";
+import { loadInterestPreparingNote, withInterestReasons } from "@/lib/content/interest-note";
 import { scoreSession } from "@/lib/scoring/session";
 import { updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
 import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE, type RetrievalResult } from "@/lib/scoring/retrieval";
 import { scheduleFsrs } from "@/lib/scoring/fsrs";
+import { captureDictationEvidence, captureFreeWritingEvidence, captureReadingExposure, captureReadingVocabularyAnswers, captureTypedAnswerEvidence } from "@/lib/vocabulary/capture";
 import { fireImplicitUpdates } from "@/lib/graph/fire";
 import { effectiveMastery } from "@/lib/scoring/decay";
 import { activityMinutes, buildSessionPlan } from "@/lib/learning/session-plan";
+import { loadDueWordsForPlan, WORD_PLAN_LABEL, wordBurstHref, weaveWordEntries } from "@/lib/vocabulary/session/plan-entries";
 import { eloUpdate, itemRatingFromDifficulty } from "@/lib/scoring/elo";
 import { nextScaffoldState } from "@/lib/practice/scaffolding";
 import { fallbackModeration, moderateStudentText } from "@/lib/safety/moderate-input";
 import { logAudit } from "@/lib/audit";
+import { loadRecueilEndings } from "@/lib/story/recueil";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getActivePrompt } from "@/lib/db/ai";
 import { loadCompletedDiagnostic } from "@/lib/diagnostic/completed";
@@ -84,6 +88,10 @@ import { classifyDictation, CATEGORY_LABELS, type DictationError, type ErrorCate
 import { resolveDictationAudioAssets } from "@/lib/dictation/audio-manifest";
 import { signDictationAudio } from "@/lib/dictation/audio";
 import { speakableSegment } from "@/lib/dictation/speech-text";
+import { pickDailyDictation, suggestDictations } from "@/lib/dictation/picker";
+import { loadDictationStudentContext, loadPickerDictations, pickerDictationFromRow } from "@/lib/dictation/picker-data";
+import { dictationChips, STUDENT_VISIBLE_DICTATION_STATUSES } from "@/lib/dictation/tags";
+import { dictationStepByStep } from "@/lib/dictation/presentation";
 import { BADGE_BY_KEY, earnedBadges, type BadgeKey } from "@/lib/badges";
 import { genrePrompt, genreSpec, genresForGrade, isWritingGenre, type WritingGenre } from "@/lib/writing/genres";
 import { scoreProductionWithAI, type ProductionRubric } from "@/lib/scoring/production-ai";
@@ -716,7 +724,7 @@ export async function recommendReadingTexts(input: unknown) {
     captureError(error, { operation: "calibrated_reuse_recommendation", studentId });
   }
   return Promise.all(selected.map((item) => getPublishedReadingText(item.slug, supabase)))
-    .then((rows) => journalStudentPayload(studentId,"legacy:reading-recommendations",rows.filter((row): row is NonNullable<typeof row> => !!row)));
+    .then((rows) => journalStudentPayload(studentId,"legacy:reading-recommendations",withInterestReasons(rows.filter((row): row is NonNullable<typeof row> => !!row),ranked.map((item) => item.interestKey))));
 }
 
 export async function selectInterests(input: unknown) {
@@ -1160,7 +1168,7 @@ export async function loadStudentCatchUpPlan(input: unknown) {
 }
 
 export type SessionPlanEntry = {
-  type: "practice" | "production" | "review_node" | "review_card" | "dictation";
+  type: "practice" | "production" | "review_node" | "review_card" | "dictation" | "review_word";
   role: "new" | "compression" | "review";
   nodeId?: string;
   cardId?: string;
@@ -1252,7 +1260,10 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
   const progressMastery = unfinishedMasteries.length
     ? unfinishedMasteries.reduce((sum, mastery) => sum + mastery, 0) / unfinishedMasteries.length
     : 0.5;
+  // Roadmap 2026-10 D.2: due words woven into the itinerary (best effort).
+  const wordPlan = await loadDueWordsForPlan(service, studentId, new Date(nowMs).toISOString());
   const plan = buildSessionPlan({
+    ...wordPlan,
     dueNodeReviews: dueNodeReviews.filter((review) => schedulable.has(review.nodeId)),
     dueCards,
     newSteps: availableSteps.map((step, index) => ({ nodeId: step.nodeId, position: index })),
@@ -1275,7 +1286,11 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
   const masteryByNode = estimateMasteryByNode;
 
   const dictationEntry = await dictationPlanEntry(service, studentId, nowMs);
+  let wordBurst = 0;
   const entries = plan.map((activity): SessionPlanEntry => {
+    if (activity.type === "review_word") {
+      return { type: "review_word", role: "review", label: WORD_PLAN_LABEL, estimatedMinutes: activityMinutes(activity), href: wordBurstHref(activity, wordBurst++) };
+    }
     if (activity.type === "review_card") {
       return {
         type: "review_card",
@@ -1320,7 +1335,7 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
       }));
       // Broad node exercises must not replace missing facet-specific activities.
       // Retain due reading retrieval alongside the precise granular targets.
-      const candidates = [...entries.filter(entry => entry.type === "review_card").slice(0, 1), ...targeted];
+      const candidates = weaveWordEntries([...entries.filter(entry => entry.type === "review_card").slice(0, 1), ...targeted], entries.filter(entry => entry.type === "review_word"));
       let minutes = 0;
       return candidates.filter(entry => { if (minutes + entry.estimatedMinutes > 28) return false; minutes += entry.estimatedMinutes; return true; });
     }
@@ -1329,31 +1344,19 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
 }
 
 /**
- * One flash dictée every second day within the student's grade band, and a
- * Brevet-length dictée once per trimester for 3e. Nothing when no published
- * dictée exists or the student did one yesterday.
+ * Today's dictée (roadmap 2026-10, G.5): the scored picker in
+ * src/lib/dictation/picker.ts keeps the 36 h spacing and the 3e brevet rule.
  */
 async function dictationPlanEntry(service: SupabaseClient, studentId: string, nowMs: number): Promise<SessionPlanEntry | null> {
-  const [{ data: student }, { data: recent }] = await Promise.all([
-    service.from("students").select("current_grade").eq("id", studentId).single(),
-    service.from("dictation_attempts").select("dictation_id,mode,submitted_at").eq("student_id", studentId).not("submitted_at", "is", null).gte("submitted_at", new Date(nowMs - 120 * 86_400_000).toISOString()).order("submitted_at", { ascending: false }),
-  ]);
-  const grade = Math.max(4, Math.min(9, Number(student?.current_grade ?? 7)));
-  const attempts = recent ?? [];
-  const lastAt = attempts[0]?.submitted_at ? Date.parse(attempts[0].submitted_at as string) : 0;
-  if (nowMs - lastAt < 36 * 3_600_000) return null;
-  const brevetDone = attempts.some((a) => a.mode === "brevet" && nowMs - Date.parse(a.submitted_at as string) < 90 * 86_400_000);
-  const done = new Set(attempts.map((a) => a.dictation_id as string));
-  let query = service.from("dictations").select("id,title_fr,kind,word_count").eq("review_status", "human_approved").lte("grade_min", grade).gte("grade_max", grade);
-  if (!browserTtsFallbackAllowed()) query = query.eq("audio_status", "ready");
-  const { data: rows } = await query.order("word_count");
-  const candidates = (rows ?? []) as { id: string; title_fr: string; kind: string; word_count: number }[];
-  if (candidates.length === 0) return null;
-  const brevet = !brevetDone && grade === 9 ? candidates.find((row) => row.kind === "brevet") : undefined;
-  const pick = brevet ?? candidates.find((row) => row.kind !== "brevet" && !done.has(row.id)) ?? candidates.find((row) => row.kind !== "brevet") ?? null;
+  const dictations = await loadPickerDictations(service, !browserTtsFallbackAllowed());
+  if (dictations.length === 0) return null;
+  const pick = pickDailyDictation({ ...(await loadDictationStudentContext(service, studentId, nowMs, dictations)), dictations });
   if (!pick) return null;
-  return { type: "dictation", role: "new", label: `${pick.kind === "brevet" ? "Dictée type brevet" : "Dictée"} : ${pick.title_fr}`, estimatedMinutes: pick.kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(pick.word_count / 8))), href: `/student/dictee/${pick.id}` };
+  const chosen = pick.dictation;
+  return { type: "dictation", role: "new", label: `${chosen.kind === "brevet" ? "Dictée type brevet" : "Dictée"} : ${chosen.title}`, estimatedMinutes: dictationMinutes(chosen.kind, chosen.wordCount), href: `/student/dictee/${chosen.id}` };
 }
+
+const dictationMinutes = (kind: string, wordCount: number) => (kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(wordCount / 8))));
 
 async function independentProductionNode(service: SupabaseClient, studentId: string, nodeId: string) {
   const { data: activePath, error: pathError } = await service.from("student_learning_paths")
@@ -1462,6 +1465,7 @@ export async function submitIndependentProduction(input: unknown) {
     }).select("id").single();
   if (submissionError?.code === "23505") throw new Error("Ce texte a déjà été évalué. Écris un nouveau paragraphe pour démontrer la maîtrise une autre fois.");
   if (submissionError || !submission) throw new Error(submissionError?.message ?? "La production n’a pas pu être enregistrée.");
+  await captureFreeWritingEvidence(service, { studentId, text: data.text, source: "writing", occurrenceKey: `production:${submission.id as string}`, at: submittedAt });
   let mastery: number | null = null;
   if (verified) {
     const result = await recordDirectCompetencyEvidence({
@@ -1600,6 +1604,7 @@ export async function submitNodePractice(input: unknown) {
   await journalStudentPayload(studentId,"legacy:practice-feedback-display",{itemId:item.id,...practiceFeedbackDisplay({correct,feedbackFr,remediation,conjugation:(item.competency_nodes as unknown as {strand?:string}|null)?.strand==="conjugaison"})});
   const { data: attempt, error: attemptError } = await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, practice_session_id: data.practiceSessionId, exercise_position: data.exercisePosition, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), hints_used: hintsUsed, context: "practice", attempted_at: now }).select("id").single();
   if (attemptError || !attempt) throw new Error(attemptError?.message ?? "La réponse n’a pas pu être enregistrée.");
+  if (item.validator_type !== "conjugator") await captureTypedAnswerEvidence(service, { studentId, expected: item.correct_answer as string | null, produced: data.answerText, source: "practice", occurrenceKey: `practice:${attempt.id as string}`, at: now, responseMs: Math.max(0, Date.now() - Date.parse(data.startedAt)) });
   const { mastery } = await recordDirectCompetencyEvidence({
     service,
     studentId,
@@ -2206,6 +2211,7 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
     p_mastery_evidence_id: itemSnapshot.masteryEvidenceId,
   });
   if (submission.error) throw new Error(submission.error.message);
+  if (!existingResponse && item.validator_type !== "conjugator") await captureTypedAnswerEvidence(service, { studentId, expected: item.correct_answer as string | null, produced: data.answerText, source: "diagnostic", occurrenceKey: `diagnostic:${data.runItemId}`, at: attemptedAt, responseMs: latencyMs });
   const probeCount = Number((submission.data as { probeCount?: number } | null)?.probeCount ?? run.probe_count);
   const candidate = await nextDiagnosticItem(studentId, data.runId, sectionKey, service);
   const sectionProgress = await refreshSectionProgress({ db: service, runId: data.runId, sectionKey, candidate });
@@ -2326,6 +2332,7 @@ export async function submitSummary(input: unknown) {
   if (error || !summaryRow) throw new Error(error?.message ?? "Résumé non enregistré.");
   const writing = await evaluateAndStoreWriting({ service, studentId, summaryId: summaryRow.id as string, revisionNumber: 0, sourceText: text.body.join("\n\n"), studentText: data.summaryText, keywords: text.concepts, systemPrompt: prompt.promptText, delivery: "rubric" });
   const evaluation = writing.rubric;
+  await captureFreeWritingEvidence(service, { studentId, text: data.summaryText, source: "writing", occurrenceKey: `summary:${summaryRow.id as string}`, at: new Date().toISOString() });
   await service.from("student_summaries").update({ ai_score: evaluation }).eq("id", summaryRow.id);
   await supabase.from("reading_sessions").update({ current_phase: "retrieval" }).eq("id", data.sessionId);
   return { ok: true, evaluation };
@@ -2461,16 +2468,10 @@ export async function completeReadingSession(input: unknown) {
     if (error) throw new Error(error.message);
   }
 
-  const { data: vocabulary } = await supabase.from("vocabulary_items").select("id,display_word").in("display_word", text.targetVocabulary.map((item) => item.word));
-  for (const item of vocabulary ?? []) {
-    const { data: existing } = await supabase.from("student_word_mastery").select("exposures").eq("student_id", studentId).eq("vocabulary_item_id", item.id).maybeSingle();
-    const exposures = Number(existing?.exposures ?? 0) + 1;
-    const { error } = await supabase.from("student_word_mastery").upsert({
-      student_id: studentId, vocabulary_item_id: item.id, exposures,
-      mastery: Math.min(1, exposures / 5), last_seen_at: data.completedAt,
-    }, { onConflict: "student_id,vocabulary_item_id" });
-    if (error) throw new Error(error.message);
-  }
+  // Roadmap 2026-10 A.1/A.3: reading adds exposure evidence (matched by lemma) and never raises mastery.
+  await captureReadingExposure(service, { studentId, sessionId: data.sessionId, textVersionId: ownedSession.text_version_id as string, paragraphs: text.body, interest: text.primaryInterest ?? null, at: data.completedAt });
+  // D.6: a due word answered correctly in the passage's vocabulary questions counts as its review.
+  await captureReadingVocabularyAnswers(service, { studentId, sessionId: data.sessionId, questions: text.questions, answers: data.answers, at: data.completedAt });
   const { error: eventError } = await supabase.from("reading_session_events").insert({
     session_id: data.sessionId, student_id: studentId, event_type: "completed",
     event_payload: { success_rate: result.successRate, next_action: result.recommendedNextAction },
@@ -2678,9 +2679,9 @@ export async function updateStudentPassword(input:unknown){const data=checked(st
  */
 export async function loadStudentHome(input: unknown) {
   checked(emptySchema, input);
-  const {studentId}=await context();
+  const {supabase,studentId}=await context();
   const settle = async <T,>(promise: Promise<T>): Promise<T | null> => { try { return await promise; } catch { return null; } };
-  const [texts, plan, motivation, resume, assessment, recap, classGoal, league] = await Promise.all([
+  const [texts, plan, motivation, resume, assessment, recap, classGoal, league, interestNote] = await Promise.all([
     settle(recommendReadingTexts({})),
     settle(loadStudentSessionPlan({})),
     settle(loadStudentMotivation({})),
@@ -2689,9 +2690,10 @@ export async function loadStudentHome(input: unknown) {
     settle(loadStudentWeeklyRecap({})),
     settle(loadStudentClassGoal({})),
     settle(loadStudentLeague({})),
+    settle(loadInterestPreparingNote(supabase,studentId)),
   ]);
   const fallbackPlan = plan ? null : await settle(loadStudentCatchUpPlan({}));
-  const result={texts,plan,fallbackPlan,motivation,resume,assessment,recap,classGoal,league};
+  const result={texts,plan,fallbackPlan,motivation,resume,assessment,recap,classGoal,league,interestNote};
   await journalStudentPayload(studentId,"student:home",{...result,displayText:homeDynamicDisplay(result),motivationDisplay:motivationDisplay(result),leagueDisplay:result.motivation?leagueDisplay(result.league):null});
   return result;
 }
@@ -2733,10 +2735,10 @@ export async function markStudentNotificationsRead(input: unknown) {
 const DICTATION_MODES = ["flash", "trous", "choix", "negociee", "brevet"] as const;
 const browserTtsFallbackAllowed = () => process.env.DICTATION_BROWSER_TTS_FALLBACK === "true" && process.env.NODE_ENV !== "production";
 
-type DictationRow = { id: string; key: string; title_fr: string; kind: DictationMode; text_fr: string; segments: { text: string; audioPath: string | null }[]; word_count: number; grade_min: number; grade_max: number; target_node_keys: string[]; focus_fr: string | null; review_status: string; audio_status: string; audio_manifest?: unknown };
+type DictationRow = { id: string; key: string; title_fr: string; kind: DictationMode; text_fr: string; segments: { text: string; audioPath: string | null }[]; word_count: number; grade_min: number; grade_max: number; target_node_keys: string[]; focus_fr: string | null; review_status: string; audio_status: string; audio_manifest?: unknown; grammar_node_keys?: string[] | null; themes?: string[] | null; interests?: string[] | null; target_lemmas?: string[] | null };
 
 async function visibleDictations(service: SupabaseClient, filter?: { id?: string }) {
-  let query = service.from("dictations").select("id,key,title_fr,kind,text_fr,segments,word_count,grade_min,grade_max,target_node_keys,focus_fr,review_status,audio_status,audio_manifest").eq("review_status", "human_approved");
+  let query = service.from("dictations").select("id,key,title_fr,kind,text_fr,segments,word_count,grade_min,grade_max,target_node_keys,focus_fr,review_status,audio_status,audio_manifest,grammar_node_keys,themes,interests,target_lemmas").in("review_status", [...STUDENT_VISIBLE_DICTATION_STATUSES]);
   if (!browserTtsFallbackAllowed()) query = query.eq("audio_status", "ready");
   if (filter?.id) query = query.eq("id", filter.id);
   const { data, error } = await query.order("grade_min").order("word_count");
@@ -2744,7 +2746,7 @@ async function visibleDictations(service: SupabaseClient, filter?: { id?: string
   return (data ?? []) as DictationRow[];
 }
 
-export type DictationCatalogEntry = { id: string; key: string; title: string; kind: DictationMode; wordCount: number; gradeMin: number; gradeMax: number; focus: string | null; estimatedMinutes: number; lastScore: number | null; lastAt: string | null; attempts: number; audioMode: "server" | "browser" };
+export type DictationCatalogEntry = { id: string; key: string; title: string; kind: DictationMode; wordCount: number; gradeMin: number; gradeMax: number; focus: string | null; estimatedMinutes: number; lastScore: number | null; lastAt: string | null; attempts: number; audioMode: "server" | "browser"; chips?: string[]; suggested?: number | null };
 
 export async function loadDictationCatalog(input: unknown): Promise<DictationCatalogEntry[]> {
   checked(emptySchema, input); const { supabase, studentId } = await context();
@@ -2759,20 +2761,49 @@ export async function loadDictationCatalog(input: unknown): Promise<DictationCat
     const id = attempt.dictation_id as string; const existing = byDictation.get(id);
     if (existing) existing.count++; else byDictation.set(id, { score: attempt.score == null ? null : Number(attempt.score), at: attempt.submitted_at as string, count: 1 });
   }
+  // 2–3 suggestions the student chooses from (autonomy rule); never blocks the catalogue.
+  const suggestedRank = await dictationSuggestionRanks(service, studentId, rows);
   const catalog: DictationCatalogEntry[] = rows.map((row) => ({
     id: row.id, key: row.key, title: row.title_fr, kind: row.kind, wordCount: row.word_count, gradeMin: row.grade_min, gradeMax: row.grade_max, focus: row.focus_fr,
-    estimatedMinutes: row.kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(row.word_count / 8))),
+    estimatedMinutes: dictationMinutes(row.kind, row.word_count),
     lastScore: byDictation.get(row.id)?.score ?? null, lastAt: byDictation.get(row.id)?.at ?? null, attempts: byDictation.get(row.id)?.count ?? 0,
     audioMode: row.audio_status === "ready" ? "server" : "browser",
+    chips: dictationChips({ interests: row.interests ?? [], themes: row.themes ?? [] }),
+    suggested: suggestedRank.get(row.id) ?? null,
   }));
   await journalStudentPayload(studentId,"legacy:dictation-catalog",{rows:catalog,display:dictationCatalogDisplay(catalog)});
   return catalog;
+}
+
+async function dictationSuggestionRanks(service: SupabaseClient, studentId: string, rows: DictationRow[]): Promise<Map<string, number>> {
+  try {
+    const dictations = rows.map(pickerDictationFromRow);
+    const context = await loadDictationStudentContext(service, studentId, Date.now(), dictations);
+    return new Map(suggestDictations({ ...context, dictations }, 3).map((entry, index) => [entry.dictation.id, index + 1]));
+  } catch {
+    return new Map();
+  }
+}
+
+async function dictationStepByStepFor(service: SupabaseClient, studentId: string, kind: DictationMode): Promise<boolean> {
+  try {
+    const [{ data: student }, { data: recent }] = await Promise.all([
+      service.from("students").select("current_grade").eq("id", studentId).single(),
+      service.from("dictation_attempts").select("accuracy").eq("student_id", studentId).not("submitted_at", "is", null).order("submitted_at", { ascending: false }).limit(3),
+    ]);
+    const grade = student?.current_grade == null ? null : Number(student.current_grade);
+    return dictationStepByStep({ grade, kind, recentAccuracies: (recent ?? []).map((row) => Number(row.accuracy)) });
+  } catch {
+    return false;
+  }
 }
 
 const startDictationSchema = z.object({ dictationId: z.string().uuid(), mode: z.enum(DICTATION_MODES).optional(), clientRequestId: z.string().uuid() });
 
 export type DictationSession = {
   attemptId: string; dictationId: string; title: string; mode: DictationMode; focus: string | null; wordCount: number; audioMode: "server" | "browser";
+  /** G.7: one sentence at a time, replay freely (CM1–CM2 and struggling students). */
+  stepByStep?: boolean;
   fullAudioUrl: string | null;
   segments: { index: number; audioUrl: string | null; browserText: string | null; template: ReturnType<typeof publicTemplate> | null }[];
 };
@@ -2798,8 +2829,9 @@ export async function startDictation(input: unknown): Promise<DictationSession> 
     await journalStudentPayload(studentId,"legacy:dictation-audio-offered",audioAssets.manifest);
   }
   const withTemplates = mode === "trous" || mode === "choix";
+  const stepByStep = await dictationStepByStepFor(service, studentId, mode);
   const session: DictationSession = {
-    attemptId: attempt.id as string, dictationId: row.id, title: row.title_fr, mode, focus: row.focus_fr, wordCount: row.word_count, audioMode,
+    attemptId: attempt.id as string, dictationId: row.id, title: row.title_fr, mode, focus: row.focus_fr, wordCount: row.word_count, audioMode, stepByStep,
     fullAudioUrl: audioMode === "server" ? urls[urls.length - 1] ?? null : null,
     segments: row.segments.map((segment, index) => ({
       index,
@@ -2870,6 +2902,8 @@ export async function submitDictation(input: unknown): Promise<DictationResult> 
       pathMastery: (value) => (correct ? value : Math.min(value, 0.84)),
     });
   }
+  // G.6: every dictée word is spelling evidence for its lemma (correct or misspelled), via recordWordEvidence.
+  await captureDictationEvidence(service, { studentId, attemptId: attempt.id as string, segments: row.segments.map((segment) => segment.text), answers, at: submittedAt });
   await recordDailyActivity(service, studentId, submittedAt, "writing");
   const xp = await awardXp(service, { studentId, eventKey: `dictation:${attempt.id as string}`, sourceType: "dictation", sourceId: attempt.id as string, baseXp: mode === "brevet" ? XP_AWARDS.dictationBase * 2 : XP_AWARDS.dictationBase, bonusXp: outcome.errors.length === 0 ? XP_AWARDS.dictationCleanBonus : 0, at: submittedAt });
   await service.from("dictation_attempts").update({ xp_awarded: xp.xp }).eq("id", attempt.id);
@@ -2946,7 +2980,7 @@ export async function loadStudentClassGoal(input: unknown) {
   return null;
 }
 
-export type RecueilEntry = { kind: "production" | "summary"; id: string; at: string; title: string; text: string; note: string | null };
+export type RecueilEntry = { kind: "production" | "summary" | "story"; id: string; at: string; title: string; text: string; note: string | null };
 
 /** Final drafts of the trimester for the printable recueil (roadmap 5.6): demonstrated productions and last summary revisions. */
 export async function loadStudentRecueil(input: unknown): Promise<{ since: string; entries: RecueilEntry[] }> {
@@ -2954,9 +2988,10 @@ export async function loadStudentRecueil(input: unknown): Promise<{ since: strin
   // French school trimesters: September–December, January–March, April–August.
   const now = new Date(); const month = now.getUTCMonth();
   const since = new Date(Date.UTC(now.getUTCFullYear(), month >= 8 ? 8 : month >= 3 ? 3 : 0, 1)).toISOString();
-  const [{ data: productions }, { data: evaluations }] = await Promise.all([
+  const [{ data: productions }, { data: evaluations }, storyEndings] = await Promise.all([
     supabase.from("independent_production_submissions").select("id,content,submitted_at,demonstrated,competency_nodes!inner(label_fr)").eq("student_id", studentId).gte("submitted_at", since).order("submitted_at", { ascending: true }),
     supabase.from("writing_evaluations").select("id,student_summary_id,submitted_text,revision_number,rubric,created_at").eq("student_id", studentId).gte("created_at", since).order("created_at", { ascending: true }),
+    loadRecueilEndings(supabase, studentId, since).catch(() => []), // H.4 alternative endings (story mode)
   ]);
   const lastBySummary = new Map<string, { id: string; text: string; at: string; revision: number; score: number | null }>();
   for (const row of evaluations ?? []) {
@@ -2966,6 +3001,7 @@ export async function loadStudentRecueil(input: unknown): Promise<{ since: strin
   const entries: RecueilEntry[] = [
     ...(productions ?? []).filter((row) => row.demonstrated).map((row) => ({ kind: "production" as const, id: row.id as string, at: row.submitted_at as string, title: (row.competency_nodes as unknown as { label_fr: string }).label_fr, text: row.content as string, note: "Production libre · maîtrise démontrée" })),
     ...[...lastBySummary.values()].map((entry) => ({ kind: "summary" as const, id: entry.id, at: entry.at, title: `Résumé de lecture (version ${entry.revision + 1})`, text: entry.text, note: entry.score != null ? `Rubrique ${entry.score}/100` : null })),
+    ...storyEndings.map((entry) => ({ kind: "story" as const, ...entry })),
   ].sort((a, b) => Date.parse(a.at) - Date.parse(b.at));
   return journalStudentPayload(studentId, "legacy:recueil", { since: since.slice(0, 10), entries });
 }

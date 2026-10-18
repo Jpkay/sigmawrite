@@ -4,6 +4,7 @@ import type { DifficultyBand, ReviewStatus, TextType } from "@/lib/types";
 import type { SeedText } from "@/lib/content/types";
 import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 import { paragraphsFromText } from "@/lib/content/text-format";
+import { pickClosestByInterest } from "@/lib/content/interest-matching";
 import { createClient } from "@/lib/supabase/server";
 
 type CandidateRow = {
@@ -62,6 +63,8 @@ export async function getContentCandidates(
   const { data, error } = await supabase
     .from("ai_generated_candidates")
     .select("id,payload,review_status,approved_text_version_id,created_at,updated_at")
+    // Editorial library passages (H.16) carry their own evidence and are published by the pipeline, not this workflow.
+    .or("candidate_type.is.null,candidate_type.neq.editorial_reading_text")
     .order("updated_at", { ascending: false });
   if (error) throw new Error(error.message);
   return ((data ?? []) as CandidateRow[]).map(candidateFromRow);
@@ -244,6 +247,8 @@ export async function recommendPublishedTextKey(
   client?: SupabaseClient
 ): Promise<string> {
   const library = await getContentLibrary(client);
-  const match = library.find((row) => row.primaryInterest && interests.includes(row.primaryInterest));
-  return (match ?? library[0])?.slug ?? Object.keys(SEED_TEXT_BY_ID)[0];
+  // Roadmap E.5: closest interest group, not silently library[0]. With no
+  // close match the first item is still served; the home says what we are
+  // preparing (see loadInterestPreparingNote).
+  return pickClosestByInterest(library, interests).item?.slug ?? Object.keys(SEED_TEXT_BY_ID)[0];
 }

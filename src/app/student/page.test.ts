@@ -1,5 +1,6 @@
 import {beforeEach,expect,it,vi} from 'vitest';
-const f=vi.hoisted(()=>({journal:vi.fn(),role:vi.fn(),owner:vi.fn(),assignments:vi.fn()}));
+const f=vi.hoisted(()=>({journal:vi.fn(),role:vi.fn(),owner:vi.fn(),assignments:vi.fn(),story:vi.fn()}));
+vi.mock('@/lib/story/visibility',()=>({storyHomeCardFor:f.story}));
 vi.mock('@/lib/diagnostic/granular/server-delivery-journal',()=>({journalStudentPayload:f.journal}));
 vi.mock('@/lib/auth',()=>({requireRole:f.role}));
 vi.mock('@/lib/db/student',()=>({getCurrentStudentId:f.owner}));
@@ -8,7 +9,7 @@ vi.mock('@/lib/diagnostic/granular/assignment-delivery',()=>({deliveredStudentAs
 vi.mock('./home-client',()=>({default:()=>null}));
 import Page from './page';
 import {HOME_COPY} from './home-copy';
-beforeEach(()=>{vi.resetAllMocks();f.owner.mockResolvedValue('owner-a');f.assignments.mockResolvedValue([]);});
+beforeEach(()=>{vi.resetAllMocks();f.owner.mockResolvedValue('owner-a');f.assignments.mockResolvedValue([]);f.story.mockResolvedValue(null);});
 it('records the same fixed wording before returning the home client',async()=>{
  let done!:()=>void;f.journal.mockReturnValue(new Promise<void>(resolve=>{done=resolve;}));let returned=false;
  const pending=Page().then(page=>{returned=true;return page;});await Promise.resolve();expect(returned).toBe(false);
@@ -24,4 +25,13 @@ it('changes the client key across accounts and rejects unauthorized requests',as
  expect(first.key).toBe('owner-a');expect(second.key).toBe('owner-b');
  expect(first.props.assignments).toEqual([{id:'a'}]);expect(second.props.assignments).toEqual([{id:'b'}]);
  f.journal.mockClear();f.role.mockRejectedValueOnce(Error('unauthorized'));await expect(Page()).rejects.toThrow('unauthorized');expect(f.journal).not.toHaveBeenCalled();
+});
+it('passes and journals the story home card when story mode is available',async()=>{
+ f.journal.mockResolvedValue(undefined);
+ const card={state:'ready',sagaId:'s1',title:'Le ballon gris',chapterIndex:2,chapterCount:7,avatarEmoji:'🦊',manner:'à la manière de Jules Verne'};
+ f.story.mockResolvedValue(card);
+ const page=await Page();
+ expect(f.story).toHaveBeenCalledWith('owner-a');
+ expect(page.props.story).toEqual(card);
+ expect(f.journal).toHaveBeenCalledWith('owner-a','student:story-home',card);
 });
