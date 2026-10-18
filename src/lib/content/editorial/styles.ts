@@ -43,7 +43,7 @@ const cardSchema = z.object({
   displayName: z.string(),
   publicDisplayName: z.string().optional(),
   era: z.string(),
-  ageBands: z.array(z.enum(["cm", "6e-5e", "4e-3e"])).min(1),
+  ageBands: z.array(z.enum(["cm", "6e-5e", "4e-3e", "lycee"])).min(1),
   formats: z.array(z.enum(["chapter", "passage", "dictation"])).min(1),
   legal: z.object({
     status: z.enum(["public_domain_fr", "under_copyright"]),

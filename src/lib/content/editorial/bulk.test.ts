@@ -7,7 +7,7 @@ const gaps: InterestCoverageGap[] = [
   { interest: "manga", type: "passage", cell: "cm", have: 4, need: 6, missing: 2 },
   { interest: "manga", type: "practice", cell: "conjugaison", have: 0, need: 20, missing: 20 },
   { interest: "manga", type: "dictation", cell: "7", have: 2, need: 3, missing: 1 },
-  { interest: "manga", type: "dictation", cell: "12", have: 0, need: 3, missing: 3 },
+  { interest: "manga", type: "dictation", cell: "13", have: 0, need: 3, missing: 3 },
 ];
 
 function results(script: Array<"publish" | "discard" | Error>, cost = 1) {
@@ -28,7 +28,7 @@ describe("bulk library production (E.3)", () => {
     const cells = planBulkCells(gaps, { fallback: { interests: ["manga"], existing: [{ interest: "manga", gradeBand: "cm" }], perCell: 2 } });
     expect(cells.map((c) => `${c.key}:${c.missing}`)).toEqual([
       "passage:manga:cm:2", "dictation:manga:7:1",
-      "fallback_chapter:manga:cm:1", "fallback_chapter:manga:6e-5e:2", "fallback_chapter:manga:4e-3e:2",
+      "fallback_chapter:manga:cm:1", "fallback_chapter:manga:6e-5e:2", "fallback_chapter:manga:4e-3e:2", "fallback_chapter:manga:lycee:2",
     ]);
     expect(cells[1]).toMatchObject({ grade: 7, gradeBand: "6e-5e" });
     expect(planBulkCells(gaps, { kinds: ["dictation"] }).map((c) => c.kind)).toEqual(["dictation"]);

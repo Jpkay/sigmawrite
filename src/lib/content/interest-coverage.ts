@@ -14,11 +14,11 @@ export const INTEREST_COVERAGE_MINIMUMS = {
   dictationsPerGrade: 3,
 } as const;
 
-/** CM1–CM2, 6e–5e, 4e–3e (grade numbers: CM1 = 4 … 3e = 9). */
-export const INTEREST_AGE_BANDS = ["cm", "6e_5e", "4e_3e"] as const;
+/** CM1–CM2, 6e–5e, 4e–3e, 2de–Terminale (grade numbers: CM1 = 4 … 3e = 9, Terminale = 12). */
+export const INTEREST_AGE_BANDS = ["cm", "6e_5e", "4e_3e", "lycee"] as const;
 export type InterestAgeBand = (typeof INTEREST_AGE_BANDS)[number];
-export const INTEREST_AGE_BAND_LABELS: Record<InterestAgeBand, string> = { cm: "CM1–CM2", "6e_5e": "6e–5e", "4e_3e": "4e–3e" };
-export const COVERAGE_GRADES = [4, 5, 6, 7, 8, 9] as const;
+export const INTEREST_AGE_BAND_LABELS: Record<InterestAgeBand, string> = { cm: "CM1–CM2", "6e_5e": "6e–5e", "4e_3e": "4e–3e", lycee: "2de–Terminale" };
+export const COVERAGE_GRADES = [4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
 export type CoverageGrade = (typeof COVERAGE_GRADES)[number];
 
 /** Main practice skill families and the competency strands they cover. */
@@ -35,10 +35,11 @@ export function ageBandForGrade(grade: number): InterestAgeBand | null {
   if (grade === 4 || grade === 5) return "cm";
   if (grade === 6 || grade === 7) return "6e_5e";
   if (grade === 8 || grade === 9) return "4e_3e";
+  if (grade === 10 || grade === 11 || grade === 12) return "lycee";
   return null;
 }
 
-/** "Foundation 5A" → cm, "Secondary 7B" → 6e_5e; lycée bands are out of scope. */
+/** "Foundation 5A" → cm, "Secondary 7B" → 6e_5e, "Advanced 11-12" → lycee. */
 export function ageBandForDifficultyBand(band: string | null | undefined): InterestAgeBand | null {
   const grade = Number(/(\d+)/.exec(band ?? "")?.[1]);
   return Number.isFinite(grade) ? ageBandForGrade(grade) : null;

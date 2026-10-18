@@ -48,7 +48,7 @@ const gates = {
 };
 
 function briefFor(sample: (typeof SAMPLES)[number]) {
-  const band = sample.grade <= 5 ? "cm" as const : sample.grade <= 7 ? "6e-5e" as const : "4e-3e" as const;
+  const band = sample.grade <= 5 ? "cm" as const : sample.grade <= 7 ? "6e-5e" as const : sample.grade <= 9 ? "4e-3e" as const : "lycee" as const;
   return buildEditorialBrief({
     kind: "chapter", mode: "live", interests: [sample.interest], grade: sample.grade, gradeBand: band, styleKey: sample.style, narration: "tu", heroGender: "f",
     newLemmas: sample.newLemmas.map(([lemma, definition]) => ({ lemma, kind: "new" as const, definition })),

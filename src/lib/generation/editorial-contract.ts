@@ -15,7 +15,7 @@ export const editorialContractSchema = z.object({
     due: z.array(z.string().min(1)).max(5),
   }),
   targetTenses: z.array(z.string().min(1)).min(1).max(2),
-  gradeBand: z.enum(["cm", "6e-5e", "4e-3e"]),
+  gradeBand: z.enum(["cm", "6e-5e", "4e-3e", "lycee"]),
   readabilityTarget: z.object({ maxAverageSentenceWords: z.number().min(6).max(30), maxSentenceWords: z.number().int().min(10).max(60) }),
   mode: z.enum(["live", "library"]),
   heroPlaceholder: z.literal("{{HEROS}}").nullable(),

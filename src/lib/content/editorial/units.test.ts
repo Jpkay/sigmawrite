@@ -129,7 +129,7 @@ describe("styles, saga and models", () => {
   it("plans library jobs from coverage gaps and fills the fallback pool", () => {
     const jobs = planLibraryJobs([{ interest: "manga", type: "passage", cell: "6e_5e", missing: 2 }, { interest: "manga", type: "dictation", cell: "4", missing: 1 }, { interest: "manga", type: "practice", cell: "conjugaison", missing: 5 }], { limit: 10 });
     expect(jobs.map((j) => [j.kind, j.gradeBand])).toEqual([["passage", "6e-5e"], ["passage", "6e-5e"], ["dictation", "cm"]]);
-    expect(planFallbackJobs(["manga"], [], 2, 10)).toHaveLength(6);
+    expect(planFallbackJobs(["manga"], [], 2, 10)).toHaveLength(8);
   });
 });
 

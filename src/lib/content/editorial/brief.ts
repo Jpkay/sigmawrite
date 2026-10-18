@@ -29,8 +29,8 @@ export const editorialBriefSchema = z.object({
   kind: z.enum(["chapter", "passage", "dictation"]),
   mode: z.enum(["live", "library"]),
   interests: z.array(z.string().trim().min(2).max(60)).min(1).max(3),
-  gradeBand: z.enum(["cm", "6e-5e", "4e-3e"]),
-  grade: z.number().int().min(4).max(9),
+  gradeBand: z.enum(["cm", "6e-5e", "4e-3e", "lycee"]),
+  grade: z.number().int().min(4).max(12),
   targetLemmas: z.array(targetLemmaSchema).max(7),
   targetTenses: z.array(z.enum(tenseKeys)).min(1).max(2),
   readabilityTarget: readabilityTargetSchema,
@@ -51,16 +51,17 @@ export const editorialBriefSchema = z.object({
 export type EditorialBrief = z.infer<typeof editorialBriefSchema>;
 
 export const LENGTHS: Record<EditorialKind, Record<GradeBand, { min: number; max: number }>> = {
-  chapter: { cm: { min: 150, max: 260 }, "6e-5e": { min: 200, max: 340 }, "4e-3e": { min: 250, max: 400 } },
-  passage: { cm: { min: 180, max: 280 }, "6e-5e": { min: 230, max: 360 }, "4e-3e": { min: 280, max: 450 } },
+  chapter: { cm: { min: 150, max: 260 }, "6e-5e": { min: 200, max: 340 }, "4e-3e": { min: 250, max: 400 }, lycee: { min: 300, max: 480 } },
+  passage: { cm: { min: 180, max: 280 }, "6e-5e": { min: 230, max: 360 }, "4e-3e": { min: 280, max: 450 }, lycee: { min: 340, max: 550 } },
   // G.7 / src/lib/dictation/gates.ts wordCountBand: 15–40 words for CM, ≤ 80 in 6e–5e, ≤ 100 in 4e–3e.
-  dictation: { cm: { min: 15, max: 40 }, "6e-5e": { min: 40, max: 80 }, "4e-3e": { min: 60, max: 100 } },
+  dictation: { cm: { min: 15, max: 40 }, "6e-5e": { min: 40, max: 80 }, "4e-3e": { min: 60, max: 100 }, lycee: { min: 80, max: 130 } },
 };
 
 export const READABILITY: Record<GradeBand, z.infer<typeof readabilityTargetSchema>> = {
   cm: { maxAverageSentenceWords: 13, maxSentenceWords: 26, maxRareWordShare: 0.06 },
   "6e-5e": { maxAverageSentenceWords: 17, maxSentenceWords: 34, maxRareWordShare: 0.09 },
   "4e-3e": { maxAverageSentenceWords: 21, maxSentenceWords: 42, maxRareWordShare: 0.12 },
+  lycee: { maxAverageSentenceWords: 25, maxSentenceWords: 50, maxRareWordShare: 0.15 },
 };
 
 export type BriefInput = {

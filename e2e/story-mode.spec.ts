@@ -54,7 +54,7 @@ test.describe("story mode journey", () => {
     const { data: student } = await service.from("students").select("id,current_grade").eq("profile_id", profile!.id).single();
     studentId = student!.id as string;
     const grade = Number(student!.current_grade ?? 7);
-    const band = grade <= 5 ? "cm" : grade <= 7 ? "6e-5e" : "4e-3e";
+    const band = grade <= 5 ? "cm" : grade <= 7 ? "6e-5e" : grade <= 9 ? "4e-3e" : "lycee";
     await service.from("story_sagas").delete().eq("student_id", studentId);
     await service.from("story_hero_profiles").delete().eq("student_id", studentId);
     await service.from("editorial_library_items").delete().eq("pipeline_version", PIPELINE);

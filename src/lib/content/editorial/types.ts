@@ -1,6 +1,6 @@
 /** Shared types of the editorial pipeline (roadmap Phase F + H). */
 
-export type GradeBand = "cm" | "6e-5e" | "4e-3e";
+export type GradeBand = "cm" | "6e-5e" | "4e-3e" | "lycee";
 export type EditorialMode = "live" | "library";
 export type EditorialKind = "chapter" | "passage" | "dictation";
 
@@ -52,12 +52,14 @@ export const TENSES_BY_BAND: Record<GradeBand, TenseKey[]> = {
   cm: ["present", "passe_compose", "imparfait", "futur_simple"],
   "6e-5e": ["present", "passe_compose", "imparfait", "futur_simple", "passe_simple", "conditionnel_present", "imperatif_present"],
   "4e-3e": ["present", "passe_compose", "imparfait", "futur_simple", "passe_simple", "conditionnel_present", "imperatif_present", "plus_que_parfait", "subjonctif_present"],
+  lycee: ["present", "passe_compose", "imparfait", "futur_simple", "passe_simple", "conditionnel_present", "imperatif_present", "plus_que_parfait", "subjonctif_present"],
 };
 
 export function gradeBandFor(grade: number): GradeBand {
   if (grade <= 5) return "cm";
   if (grade <= 7) return "6e-5e";
-  return "4e-3e";
+  if (grade <= 9) return "4e-3e";
+  return "lycee";
 }
 
 export type TargetLemma = {
