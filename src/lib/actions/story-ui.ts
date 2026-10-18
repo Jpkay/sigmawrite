@@ -18,8 +18,8 @@ import { mannerOf } from "@/lib/story/copy";
 import type { PublicStoryTask } from "@/lib/story/micro-task";
 import { chapterUnlock, checkEnding } from "@/lib/story/rules";
 import {
-  answerChapterTask, dailyReadingState, endingWordsFor, ensureChapterTask, loadFinale, loadHero, recordEmbeddedExposure,
-  saveEnding, saveHero, setAsideActiveSagas, storyAvailability, toPublicTask, type StoryFinale,
+  answerChapterTask, chapterTaskView, dailyReadingState, endingWordsFor, loadFinale, loadHero, recordEmbeddedExposure,
+  saveEnding, saveHero, setAsideActiveSagas, storyAvailability, type StoryFinale,
 } from "@/lib/story/server";
 
 /**
@@ -87,14 +87,14 @@ export async function loadStoryChapter(input: unknown): Promise<ReaderView> {
       result = { ...base, status: "locked", locked: { index: chapter.index, title: chapter.title, choice: label } };
     } else {
       const choices = chapter.choices.map((choice) => ({ index: choice.index, label: choice.label }));
-      const task = !chapter.isLast && choices.length === 2 ? toPublicTask(await ensureChapterTask(service, studentId, { id: chapter.id, paragraphs: chapter.paragraphs })) : null;
+      const task = !chapter.isLast && choices.length === 2 ? await chapterTaskView(service, studentId, { id: chapter.id, paragraphs: chapter.paragraphs }) : null;
       result = { ...base, chapter: { id: chapter.id, index: chapter.index, title: chapter.title, paragraphs: chapter.paragraphs, choices, isLast: chapter.isLast }, task, bonus: unlock.bonus };
     }
   }
   return journalStudentPayload(studentId, "student:story-chapter", result);
 }
 
-/** H.3: answer the micro-task. Any answer opens the branch; due words count as embedded reviews. */
+/** H.3: answer the micro-task. Any answer opens the branch; a right one unlocks the bonus scene; due words count as embedded reviews. */
 export async function answerStoryTask(input: unknown) {
   const data = z.object({ sagaId: uuid, chapterId: uuid, optionIndex: z.number().int().min(0).max(3) }).parse(input);
   const { studentId, service } = await studentContext();

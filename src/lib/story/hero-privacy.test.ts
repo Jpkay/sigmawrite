@@ -31,11 +31,15 @@ const outline = {
   endings: [{ key: "a", summary: "L'équipe gagne grâce au ballon retrouvé." }, { key: "b", summary: "L'équipe perd mais garde le ballon." }],
   tensePlan: [{ chapter: 1, tenses: ["passe_simple"] }], motifs: [], avoid: [],
 };
-const author = { title: "Sept heures douze", body: BODY, tenseEvidence: [{ form: "compta", lemma: "compter", tense: "passe_simple" }], targetUsage: [], choices: [{ label: "Suivre le gardien", intent: "x" }, { label: "Rester au vestiaire", intent: "y" }], chapterSummary: "Le match commence.", questions: [] };
+const author = { title: "Sept heures douze", body: BODY, tenseEvidence: [{ form: "compta", lemma: "compter", tense: "passe_simple" }], targetUsage: [], choices: [{ label: "Suivre le gardien", intent: "x" }, { label: "Rester au vestiaire", intent: "y" }], chapterSummary: "Le match commence.",
+  // H.3: the comprehension question and the bonus scene come in the same call, with the same placeholder.
+  questions: [{ questionText: "Combien de crampons sont alignés sous le banc ?", questionType: "literal", choices: ["Vingt-deux crampons", "Onze crampons", "Trois crampons"], correctAnswer: "Vingt-deux crampons", explanation: "Le texte dit : vingt-deux, pas un de plus." }],
+  bonusScene: "Pendant ce temps, Gaspard rangea son carnet dans la poche de sa veste. Il caressa la couture du vieux ballon, comme on salue un ami. Dehors, la pluie redoublait sur la tôle, et {{HEROS}} entendit les crampons claquer dans le couloir." };
 
 describe("hero privacy (H.2)", () => {
   it("never sends the nickname or the student's name to any editorial role", async () => {
-    const db = createFakeSupabase({ students: [{ id: STUDENT, current_grade: 6, display_name: "Maëlys Dupont" }] });
+    // CM band (shorter chapters) so the scripted chapter passes every gate and is published with its extras.
+    const db = createFakeSupabase({ students: [{ id: STUDENT, current_grade: 5, display_name: "Maëlys Dupont" }] });
     const llm = new ScriptedLLM({
       architect: [outline], author: [author], line_editor: [{ body: BODY, tenseEvidence: author.tenseEvidence, changes: [] }],
       reviewer_style: [{ rubric: GOOD_RUBRIC, strengths: [], notes: [] }], reviewer_targets: [{ naturalness: 5, contextHelpsMeaning: true, notes: [] }],
@@ -58,11 +62,40 @@ describe("hero privacy (H.2)", () => {
     const logged = JSON.stringify([db.tables.editorial_runs ?? [], db.tables.editorial_run_steps ?? []]);
     expect(logged).not.toContain("Zéphyrine");
 
+    // H.3 extras are stored with the placeholder too (staff-only table), never with the name.
+    expect(db.tables.story_chapters[0].status).toBe("ready");
+    expect(db.tables.story_chapter_extras).toHaveLength(1);
+    expect(db.tables.story_chapter_extras[0]).toMatchObject({ comprehension: { correctIndex: 0, options: ["Vingt-deux crampons", "Onze crampons", "Trois crampons"] } });
+    expect(String(db.tables.story_chapter_extras[0].bonus_scene)).toContain("{{HEROS}}");
+    expect(JSON.stringify(db.tables.story_chapter_extras)).not.toContain("Zéphyrine");
+
     // Whatever the editorial decision, a stored chapter keeps the placeholder; the name appears only when read back.
     const chapter = db.tables.story_chapters[0];
     expect(String(chapter.body_template ?? "")).not.toContain("Zéphyrine");
     Object.assign(chapter, { status: "ready", body_template: BODY });
     const view = await readChapter({ db: db as unknown as SupabaseClient }, { sagaId });
     expect(view.chapter?.paragraphs.join(" ")).toContain("Zéphyrine sortit la première");
+  });
+
+  it("serves a fallback chapter with its gated question and bonus scene; a fallback without them stays plain", async () => {
+    const pool = (id: string, extras: Record<string, unknown>) => ({
+      id, kind: "fallback_chapter", interest: "football", grade_band: "cm", style_key: "verne", status: "published", title: "Sept heures douze", body: BODY,
+      choices: [{ label: "Suivre le gardien", intent: "x" }, { label: "Rester au vestiaire", intent: "y" }], used_count: id === "fb-1" ? 0 : 5, ...extras,
+    });
+    // Fallback sagas have no outline cast: the scene may only name people the chapter already names.
+    const scene = author.bonusScene.replace("Gaspard", "l'entraîneur");
+    const db = createFakeSupabase({
+      students: [{ id: STUDENT, current_grade: 5, display_name: "Maëlys Dupont" }],
+      editorial_library_items: [pool("fb-1", { questions: author.questions, bonus_scene: scene }), pool("fb-2", { questions: null, bonus_scene: null })],
+    });
+    const deps = { db: db as unknown as SupabaseClient, llm: null, gates: { moderate: async () => ({ allowed: true, categories: [] }) }, liveDecision: async () => ({ live: false, reason: "flag_off" as const }) };
+    const sagaId = await createSaga(deps, { studentId: STUDENT, interest: "football", styleKey: "verne", hero: { name: "Zéphyrine", gender: "f" } });
+    await generateChapter(deps, { sagaId, chapterIndex: 1, parentChoiceId: null });
+    expect(db.tables.story_chapters[0]).toMatchObject({ status: "ready", source: "fallback", fallback_item_id: "fb-1" });
+    expect(db.tables.story_chapter_extras).toEqual([expect.objectContaining({ chapter_id: db.tables.story_chapters[0].id, comprehension: expect.objectContaining({ correctIndex: 0 }), bonus_scene: scene })]);
+    const [choice] = db.tables.story_choices;
+    await generateChapter(deps, { sagaId, chapterIndex: 2, parentChoiceId: choice.id as string });
+    expect(db.tables.story_chapters[1]).toMatchObject({ status: "ready", fallback_item_id: "fb-2" });
+    expect(db.tables.story_chapter_extras).toHaveLength(1);
   });
 });

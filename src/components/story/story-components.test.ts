@@ -66,9 +66,29 @@ describe("choices and micro-task (H.1, H.3)", () => {
     expect(open).toContain(copy.taskEyebrow);
     expect(open).toContain("<mark");
     expect(open.match(/role="radio"/gu)).toHaveLength(3);
-    const answered = decoded(html(h(StoryTaskPanel, { task, answer: { optionIndex: 0, correct: false, correctIndex: 1, definition: "qui n'a pas peur du danger" }, onAnswer: () => undefined })));
+    const answered = decoded(html(h(StoryTaskPanel, { task, answer: { optionIndex: 0, correct: false, correctIndex: 1, definition: "qui n'a pas peur du danger", explanation: null, bonus: null }, onAnswer: () => undefined })));
     expect(answered).toContain(copy.taskGentle("intrépide", "qui n'a pas peur du danger"));
     expect(answered.toLowerCase()).not.toMatch(/faux|erreur|raté/u);
+  });
+
+  const question = { kind: "comprehension" as const, prompt: "Que fait le gardien quand tu entres ?", options: ["Il siffle entre ses dents", "Il dort sur le banc", "Il range les ballons"], answered: null };
+
+  it("asks a comprehension question without a quoted word, and explains kindly after a miss", () => {
+    const open = html(h(StoryTaskPanel, { task: question, answer: null, onAnswer: () => undefined }));
+    expect(open).toContain("Que fait le gardien quand tu entres ?");
+    expect(open).not.toContain("<mark");
+    expect(open.match(/role="radio"/gu)).toHaveLength(3);
+    const missed = decoded(html(h(StoryTaskPanel, { task: question, answer: { optionIndex: 1, correct: false, correctIndex: 0, definition: "Il siffle entre ses dents", explanation: "Le texte dit qu'il siffle entre ses dents.", bonus: null }, onAnswer: () => undefined })));
+    expect(missed).toContain(copy.comprehensionGentle("Il siffle entre ses dents", "Le texte dit qu'il siffle entre ses dents."));
+    expect(missed).not.toContain(copy.sceneBonusTitle);
+    expect(missed.toLowerCase()).not.toMatch(/faux|erreur|raté/u);
+  });
+
+  it("shows the bonus scene a right answer unlocks", () => {
+    const right = decoded(html(h(StoryTaskPanel, { task: question, answer: { optionIndex: 0, correct: true, correctIndex: 0, definition: "Il siffle entre ses dents", explanation: null, bonus: ["Dans les tribunes, un parapluie jaune s'ouvrit tout seul."] }, onAnswer: () => undefined })));
+    expect(right).toContain(copy.taskCorrect);
+    expect(right).toContain(copy.sceneBonusTitle);
+    expect(right).toContain("un parapluie jaune s'ouvrit tout seul.");
   });
 });
 

@@ -1,8 +1,11 @@
 /**
  * H.3: the micro-task that opens the next chapter. Deterministic, no model:
  * a word of the chapter (today's due words first), the sentence where it
- * appears, and three meanings taken from the vetted lexicon. The student's
- * answer opens the branch they picked; it is never a gate they can fail.
+ * appears, and three meanings taken from the vetted lexicon — or, every
+ * other chapter, the comprehension question the author wrote with the
+ * chapter (gated by code). The student's answer opens the branch they
+ * picked; it is never a gate they can fail. A right first answer unlocks the
+ * chapter's bonus scene when there is one.
  */
 import { normalizeWord, sentences, wordTokens } from "@/lib/vocabulary/matching";
 
@@ -16,7 +19,7 @@ export type TaskCandidate = {
   due: boolean;
 };
 
-export type StoryTask = {
+export type VocabularyTask = {
   kind: "vocabulary";
   word: string;
   /** The form as written in the chapter ("intrépides"). */
@@ -29,8 +32,25 @@ export type StoryTask = {
   due: boolean;
 };
 
-/** What the browser receives: never the answer. */
-export type PublicStoryTask = Omit<StoryTask, "correctIndex" | "senseId" | "due"> & { answered: null | { optionIndex: number; correct: boolean; correctIndex: number } };
+/** H.3: a comprehension question written with the chapter and gated by code (chapter-extras.ts). */
+export type ComprehensionTask = {
+  kind: "comprehension";
+  prompt: string;
+  options: string[];
+  correctIndex: number;
+  /** Shown only once the student has answered. */
+  explanation: string;
+};
+
+export type StoryTask = VocabularyTask | ComprehensionTask;
+
+/** Revealed after the (first and only) answer: never before. */
+export type TaskReveal = { optionIndex: number; correct: boolean; correctIndex: number; explanation: string | null; bonus: string[] | null };
+
+/** What the browser receives: never the answer, the explanation or the bonus scene before an answer. */
+export type PublicStoryTask =
+  | { kind: "vocabulary"; word: string; form: string; sentence: string; prompt: string; options: string[]; answered: TaskReveal | null }
+  | { kind: "comprehension"; prompt: string; options: string[]; answered: TaskReveal | null };
 
 function hash(text: string): number {
   let value = 2166136261;
@@ -55,7 +75,7 @@ export function findOccurrence(paragraphs: string[], forms: string[]): { sentenc
   return null;
 }
 
-export function buildVocabularyTask(input: { paragraphs: string[]; candidates: TaskCandidate[]; distractors: string[]; seed: string }): StoryTask | null {
+export function buildVocabularyTask(input: { paragraphs: string[]; candidates: TaskCandidate[]; distractors: string[]; seed: string }): VocabularyTask | null {
   for (const candidate of input.candidates) {
     const definition = clean(candidate.definition);
     if (definition.length < 4) continue;
@@ -78,9 +98,21 @@ export function buildVocabularyTask(input: { paragraphs: string[]; candidates: T
   return null;
 }
 
-export function publicTask(task: StoryTask, answer: { optionIndex: number; correct: boolean } | null): PublicStoryTask {
-  return {
-    kind: task.kind, word: task.word, form: task.form, sentence: task.sentence, prompt: task.prompt, options: task.options,
-    answered: answer ? { ...answer, correctIndex: task.correctIndex } : null,
-  };
+/** The comprehension question as a task. The stored order of options is kept (it was gated as written). */
+export function buildComprehensionTask(question: { question: string; options: string[]; correctIndex: number; explanation?: string | null }): ComprehensionTask | null {
+  if (question.options.length !== 3 || question.correctIndex < 0 || question.correctIndex > 2 || !question.question) return null;
+  return { kind: "comprehension", prompt: question.question, options: [...question.options], correctIndex: question.correctIndex, explanation: question.explanation?.trim() ?? "" };
+}
+
+/** H.3 alternation: even chapters ask about the story, odd ones about a word; the other kind stands in when one is missing. */
+export function preferredTaskKind(chapterIndex: number): StoryTask["kind"] {
+  return chapterIndex % 2 === 0 ? "comprehension" : "vocabulary";
+}
+
+export function publicTask(task: StoryTask, answer: { optionIndex: number; correct: boolean; bonus?: string[] | null } | null): PublicStoryTask {
+  const answered: TaskReveal | null = answer
+    ? { optionIndex: answer.optionIndex, correct: answer.correct, correctIndex: task.correctIndex, explanation: task.kind === "comprehension" ? task.explanation || null : null, bonus: answer.correct ? answer.bonus ?? null : null }
+    : null;
+  if (task.kind === "comprehension") return { kind: "comprehension", prompt: task.prompt, options: task.options, answered };
+  return { kind: "vocabulary", word: task.word, form: task.form, sentence: task.sentence, prompt: task.prompt, options: task.options, answered };
 }

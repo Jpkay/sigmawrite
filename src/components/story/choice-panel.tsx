@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
 import styles from "./story.module.css";
 import { cn } from "@/lib/utils";
 import { STORY_COPY as copy, STORY_RATINGS, type StoryRating } from "@/lib/story/copy";
@@ -43,22 +43,31 @@ export function ChoiceCards({ choices, selected, disabled, onSelect }: {
   );
 }
 
-export type TaskAnswer = { optionIndex: number; correct: boolean; correctIndex: number; definition: string };
+export type TaskAnswer = { optionIndex: number; correct: boolean; correctIndex: number; definition: string; explanation: string | null; bonus: string[] | null };
 
-/** H.3: one vocabulary question before the next chapter. Never "faux": the right meaning is shown, gently. */
+/**
+ * H.3: one question before the next chapter — a word of the chapter, or a
+ * question about the story. Never "faux": the right answer is shown, gently,
+ * and the chosen path opens either way. A right answer unlocks a bonus scene.
+ */
 export function StoryTaskPanel({ task, answer, busy, onAnswer }: {
   task: PublicStoryTask;
   answer: TaskAnswer | null;
   busy?: boolean;
   onAnswer: (optionIndex: number) => void;
 }) {
-  const sentence = highlight(task.sentence, task.form);
+  const sentence = task.kind === "vocabulary" ? highlight(task.sentence, task.form) : null;
+  const feedback = !answer ? null
+    : answer.correct ? `${copy.taskCorrect} ✨${task.kind === "comprehension" && answer.explanation ? ` ${answer.explanation}` : ""}`
+      : task.kind === "vocabulary" ? copy.taskGentle(task.form, answer.definition) : copy.comprehensionGentle(answer.definition, answer.explanation);
   return (
     <section aria-labelledby="story-task-title" className={`${styles.fadeIn} mt-6 border-l-4 border-brand bg-card p-5 sm:p-6`}>
       <p className="app-eyebrow">{copy.taskEyebrow}</p>
-      <blockquote className={`${styles.serif} mt-4 text-lg italic leading-relaxed text-muted-foreground`}>
-        « {sentence.before}<mark className="bg-accent px-0.5 font-semibold not-italic text-foreground">{sentence.word}</mark>{sentence.after} »
-      </blockquote>
+      {sentence && (
+        <blockquote className={`${styles.serif} mt-4 text-lg italic leading-relaxed text-muted-foreground`}>
+          « {sentence.before}<mark className="bg-accent px-0.5 font-semibold not-italic text-foreground">{sentence.word}</mark>{sentence.after} »
+        </blockquote>
+      )}
       <h3 id="story-task-title" className="mt-4 text-lg font-semibold">{task.prompt}</h3>
       <div role="radiogroup" aria-labelledby="story-task-title" className="mt-4 grid gap-3">
         {task.options.map((option, index) => {
@@ -83,12 +92,24 @@ export function StoryTaskPanel({ task, answer, busy, onAnswer }: {
           );
         })}
       </div>
-      {answer && (
-        <p role="status" className={cn("mt-4 text-[15px] font-medium", answer.correct ? "text-success" : "text-foreground")}>
-          {answer.correct ? `${copy.taskCorrect} ✨` : copy.taskGentle(task.form, answer.definition)}
-        </p>
+      {feedback && (
+        <p role="status" className={cn("mt-4 text-[15px] font-medium", answer?.correct ? "text-success" : "text-foreground")}>{feedback}</p>
       )}
+      {answer?.correct && answer.bonus?.length ? <BonusScene paragraphs={answer.bonus} /> : null}
     </section>
+  );
+}
+
+/** The bonus scene a right first answer unlocks: an extra moment of the story, not needed for the plot. */
+export function BonusScene({ paragraphs }: { paragraphs: string[] }) {
+  return (
+    <aside aria-labelledby="story-bonus-title" className={`${styles.fadeIn} mt-5 border border-dashed border-brand/60 bg-accent/40 p-5`}>
+      <p id="story-bonus-title" className="flex items-center gap-2 text-sm font-semibold text-success"><Sparkles aria-hidden="true" className="size-4" />{copy.sceneBonusTitle}</p>
+      <p className="mt-1 text-sm text-muted-foreground">{copy.sceneBonusHelp}</p>
+      <div className={`${styles.serif} mt-4 grid gap-3 text-[17px] leading-relaxed`}>
+        {paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+      </div>
+    </aside>
   );
 }
 

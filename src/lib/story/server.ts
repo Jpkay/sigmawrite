@@ -22,7 +22,7 @@ import { wordTokens } from "@/lib/vocabulary/matching";
 import { genreSpec } from "@/lib/writing/genres";
 import { avatarFor, DEFAULT_AVATAR, STORY_AVATAR_KEYS, type StoryAvatarKey } from "./avatars";
 import { mannerOf } from "./copy";
-import { buildVocabularyTask, publicTask, type PublicStoryTask, type StoryTask, type TaskCandidate } from "./micro-task";
+import { buildComprehensionTask, buildVocabularyTask, preferredTaskKind, publicTask, type ComprehensionTask, type PublicStoryTask, type StoryTask, type TaskCandidate } from "./micro-task";
 import { proposeSagas, storyInterests, styleTeaser, stylesReadThisTerm, STYLES_PER_TERM_GOAL, type SagaHistoryEntry, type SagaProposal } from "./picker";
 import { chapterUnlock, dayStartIso, pickEndingWords } from "./rules";
 import { sagaTitle, styleName } from "./recueil";
@@ -265,7 +265,8 @@ export async function dueWordsInText(db: Db, studentId: string, paragraphs: stri
   return [...found.values()];
 }
 
-type TaskRow = { chapter_id: string; word: string; sense_id: string | null; due: boolean; task: StoryTask; correct_index: number; answer_index: number | null; correct: boolean | null };
+type TaskRow = { chapter_id: string; kind?: StoryTask["kind"]; word: string | null; sense_id: string | null; due: boolean; task: StoryTask; correct_index: number; answer_index: number | null; correct: boolean | null; bonus_unlocked?: boolean | null };
+const TASK_COLUMNS = "chapter_id,kind,word,sense_id,due,task,correct_index,answer_index,correct,bonus_unlocked";
 
 async function lexiconCandidates(db: Db, paragraphs: string[], exclude: Set<string>): Promise<{ candidates: TaskCandidate[]; definitions: string[] }> {
   const forms = await resolveFormTargets(db, [...new Set(wordTokens(paragraphs.join("\n")))]);
@@ -285,26 +286,42 @@ async function lexiconCandidates(db: Db, paragraphs: string[], exclude: Set<stri
   return { candidates, definitions: candidates.map((candidate) => candidate.definition) };
 }
 
-async function chapterTargetLemmas(db: Db, chapterId: string): Promise<Array<{ lemma: string; definition?: string }>> {
-  const { data } = await db.from("story_chapters").select("target_lemmas,fallback_item_id").eq("id", chapterId).maybeSingle();
+type ChapterMeta = { chapterIndex: number; sagaId: string | null; lemmas: Array<{ lemma: string; definition?: string }> };
+
+async function chapterMeta(db: Db, chapterId: string): Promise<ChapterMeta> {
+  const { data } = await db.from("story_chapters").select("chapter_index,saga_id,target_lemmas,fallback_item_id").eq("id", chapterId).maybeSingle();
   let lemmas = Array.isArray(data?.target_lemmas) ? data!.target_lemmas as Array<{ lemma?: string; definition?: string }> : [];
   if (!lemmas.length && data?.fallback_item_id) {
     const { data: item } = await db.from("editorial_library_items").select("target_lemmas").eq("id", data.fallback_item_id).maybeSingle();
     lemmas = Array.isArray(item?.target_lemmas) ? item!.target_lemmas as Array<{ lemma?: string; definition?: string }> : [];
   }
-  return lemmas.filter((entry) => typeof entry?.lemma === "string").map((entry) => ({ lemma: entry.lemma as string, definition: typeof entry.definition === "string" ? entry.definition : undefined }));
+  return {
+    chapterIndex: Number(data?.chapter_index ?? 1) || 1,
+    sagaId: (data?.saga_id as string | undefined) ?? null,
+    lemmas: lemmas.filter((entry) => typeof entry?.lemma === "string").map((entry) => ({ lemma: entry.lemma as string, definition: typeof entry.definition === "string" ? entry.definition : undefined })),
+  };
 }
 
-/** Builds (once) and returns the chapter's micro-task. Null when the chapter offers no word to work on. */
-export async function ensureChapterTask(db: Db, studentId: string, chapter: { id: string; paragraphs: string[] }, now = new Date()): Promise<TaskRow | null> {
-  const { data: existing } = await db.from("story_chapter_tasks").select("chapter_id,word,sense_id,due,task,correct_index,answer_index,correct").eq("chapter_id", chapter.id).eq("student_id", studentId).maybeSingle();
-  if (existing) return existing as TaskRow;
+type ExtrasRow = { comprehension: { question?: string; options?: string[]; correctIndex?: number; explanation?: string } | null; bonus_scene: string | null };
+
+async function chapterExtras(db: Db, chapterId: string): Promise<ExtrasRow | null> {
+  const { data, error } = await db.from("story_chapter_extras").select("comprehension,bonus_scene").eq("chapter_id", chapterId).maybeSingle();
+  if (error) throw new Error(error.message);
+  return (data as ExtrasRow | null) ?? null;
+}
+
+function comprehensionFrom(extras: ExtrasRow | null): ComprehensionTask | null {
+  const q = extras?.comprehension;
+  if (!q || typeof q.question !== "string" || !Array.isArray(q.options) || typeof q.correctIndex !== "number") return null;
+  return buildComprehensionTask({ question: q.question, options: q.options.map(String), correctIndex: q.correctIndex, explanation: typeof q.explanation === "string" ? q.explanation : "" });
+}
+
+async function vocabularyTaskFor(db: Db, studentId: string, chapter: { id: string; paragraphs: string[] }, lemmas: ChapterMeta["lemmas"], now: Date) {
   const due = await safe("due-words", [] as DueWordInText[], () => dueWordsInText(db, studentId, chapter.paragraphs, now));
   const lexicon = await safe("lexicon", { candidates: [] as TaskCandidate[], definitions: [] as string[] }, () => lexiconCandidates(db, chapter.paragraphs, new Set()));
-  const targets = await safe("targets", [] as Array<{ lemma: string; definition?: string }>, () => chapterTargetLemmas(db, chapter.id));
   const candidates: TaskCandidate[] = [
     ...due.filter((word) => word.definition).map((word) => ({ word: word.word, forms: [word.form], definition: word.definition as string, senseId: word.senseId, due: true })),
-    ...targets.filter((entry) => entry.definition).map((entry) => {
+    ...lemmas.filter((entry) => entry.definition).map((entry) => {
       const known = lexicon.candidates.find((candidate) => candidate.word.toLocaleLowerCase("fr") === entry.lemma.toLocaleLowerCase("fr"));
       return { word: entry.lemma, forms: known?.forms ?? [], definition: entry.definition as string, senseId: known?.senseId ?? null, due: false };
     }),
@@ -315,39 +332,97 @@ export async function ensureChapterTask(db: Db, studentId: string, chapter: { id
     const { data } = await db.from("lexical_senses").select("definition_fr").eq("is_teachable", true).limit(40);
     distractors = [...distractors, ...(data ?? []).map((row) => row.definition_fr as string).filter(Boolean)];
   }
-  const task = buildVocabularyTask({ paragraphs: chapter.paragraphs, candidates, distractors, seed: chapter.id });
-  if (!task) return null;
-  const row = { chapter_id: chapter.id, student_id: studentId, kind: "vocabulary", word: task.word.slice(0, 60), sense_id: task.senseId, due: task.due, task, correct_index: task.correctIndex };
-  const { error } = await db.from("story_chapter_tasks").upsert(row, { onConflict: "chapter_id", ignoreDuplicates: true });
-  if (error) { captureError(new Error(error.message), { component: "story-ui", step: "task-insert" }); return null; }
-  const { data: stored } = await db.from("story_chapter_tasks").select("chapter_id,word,sense_id,due,task,correct_index,answer_index,correct").eq("chapter_id", chapter.id).maybeSingle();
-  return (stored as TaskRow | null) ?? { ...row, answer_index: null, correct: null };
+  return buildVocabularyTask({ paragraphs: chapter.paragraphs, candidates, distractors, seed: chapter.id });
 }
 
-export function toPublicTask(row: TaskRow | null): PublicStoryTask | null {
-  if (!row) return null;
-  return publicTask({ ...row.task, correctIndex: row.correct_index }, row.answer_index == null ? null : { optionIndex: row.answer_index, correct: Boolean(row.correct) });
+/**
+ * Builds (once) and returns the chapter's micro-task (H.3). Chapters
+ * alternate between a comprehension question (when the chapter has one that
+ * passed its gates) and a vocabulary task; either stands in for the other.
+ * Null when the chapter offers neither.
+ */
+export async function ensureChapterTask(db: Db, studentId: string, chapter: { id: string; paragraphs: string[] }, now = new Date()): Promise<TaskRow | null> {
+  const { data: existing } = await db.from("story_chapter_tasks").select(TASK_COLUMNS).eq("chapter_id", chapter.id).eq("student_id", studentId).maybeSingle();
+  if (existing) return existing as unknown as TaskRow;
+  const meta = await safe("chapter-meta", { chapterIndex: 1, sagaId: null, lemmas: [] } as ChapterMeta, () => chapterMeta(db, chapter.id));
+  const comprehension = comprehensionFrom(await safe("extras", null as ExtrasRow | null, () => chapterExtras(db, chapter.id)));
+  let task: StoryTask | null = comprehension && preferredTaskKind(meta.chapterIndex) === "comprehension" ? comprehension : null;
+  task ??= await vocabularyTaskFor(db, studentId, chapter, meta.lemmas, now);
+  task ??= comprehension;
+  if (!task) return null;
+  const row: { chapter_id: string; student_id: string; kind: StoryTask["kind"]; word: string | null; sense_id: string | null; due: boolean; task: StoryTask; correct_index: number } = task.kind === "vocabulary"
+    ? { chapter_id: chapter.id, student_id: studentId, kind: "vocabulary", word: task.word.slice(0, 60), sense_id: task.senseId, due: task.due, task, correct_index: task.correctIndex }
+    : { chapter_id: chapter.id, student_id: studentId, kind: "comprehension", word: null, sense_id: null, due: false, task, correct_index: task.correctIndex };
+  const { error } = await db.from("story_chapter_tasks").upsert(row, { onConflict: "chapter_id", ignoreDuplicates: true });
+  if (error) { captureError(new Error(error.message), { component: "story-ui", step: "task-insert" }); return null; }
+  const { data: stored } = await db.from("story_chapter_tasks").select(TASK_COLUMNS).eq("chapter_id", chapter.id).maybeSingle();
+  return (stored as unknown as TaskRow | null) ?? { ...row, answer_index: null, correct: null, bonus_unlocked: false };
 }
+
+/** The chapter's bonus scene with the hero's name inserted (H.2/H.3), as paragraphs. Null when the chapter has none. */
+export async function loadBonusScene(db: Db, chapterId: string): Promise<string[] | null> {
+  return safe("bonus-scene", null, async () => {
+    const extras = await chapterExtras(db, chapterId);
+    if (!extras?.bonus_scene) return null;
+    const { data: chapter } = await db.from("story_chapters").select("saga_id").eq("id", chapterId).maybeSingle();
+    const { data: saga } = chapter?.saga_id ? await db.from("story_sagas").select("hero_name,hero_gender").eq("id", chapter.saga_id).maybeSingle() : { data: null };
+    const hero = { name: (saga?.hero_name as string | null) ?? null, gender: ((saga?.hero_gender as HeroGender | undefined) ?? "n") };
+    const paragraphs = renderHero(extras.bonus_scene, hero).split(/\n{2,}/u).map((p) => p.trim()).filter(Boolean);
+    return paragraphs.length ? paragraphs : null;
+  });
+}
+
+export function toPublicTask(row: TaskRow | null, bonus: string[] | null = null): PublicStoryTask | null {
+  if (!row) return null;
+  return publicTask({ ...row.task, correctIndex: row.correct_index }, row.answer_index == null ? null : { optionIndex: row.answer_index, correct: Boolean(row.correct), bonus: row.bonus_unlocked ? bonus : null });
+}
+
+/** The chapter's task as the browser sees it, with the bonus scene once it is unlocked. */
+export async function chapterTaskView(db: Db, studentId: string, chapter: { id: string; paragraphs: string[] }, now = new Date()): Promise<PublicStoryTask | null> {
+  const row = await ensureChapterTask(db, studentId, chapter, now);
+  const bonus = row?.bonus_unlocked ? await loadBonusScene(db, chapter.id) : null;
+  return toPublicTask(row, bonus);
+}
+
+export type TaskAnswerResult = {
+  kind: StoryTask["kind"];
+  correct: boolean;
+  correctIndex: number;
+  /** The right option as written (a meaning for a vocabulary task, an answer for a comprehension question). */
+  definition: string;
+  word: string | null;
+  form: string | null;
+  explanation: string | null;
+  /** A right first answer unlocks the chapter's bonus scene, when it has one. */
+  bonus: string[] | null;
+};
 
 /**
  * Grades the micro-task. Due words get a review woven into content
  * (source 'embedded', D.6): a recognition format, so weak credit, as the
- * word-memory rules require. Idempotent: the first answer stands.
+ * word-memory rules require. A right answer unlocks the bonus scene; a wrong
+ * one still opens the chosen branch. Idempotent: the first answer stands.
  */
-export async function answerChapterTask(db: Db, studentId: string, chapterId: string, optionIndex: number, now = new Date()): Promise<{ correct: boolean; correctIndex: number; definition: string; word: string; form: string }> {
-  const { data } = await db.from("story_chapter_tasks").select("chapter_id,word,sense_id,due,task,correct_index,answer_index,correct").eq("chapter_id", chapterId).eq("student_id", studentId).maybeSingle();
-  const row = data as TaskRow | null;
+export async function answerChapterTask(db: Db, studentId: string, chapterId: string, optionIndex: number, now = new Date()): Promise<TaskAnswerResult> {
+  const { data } = await db.from("story_chapter_tasks").select(TASK_COLUMNS).eq("chapter_id", chapterId).eq("student_id", studentId).maybeSingle();
+  const row = data as unknown as TaskRow | null;
   if (!row) throw new Error("Cette question n’existe plus.");
-  const definition = row.task.options[row.correct_index] ?? "";
-  if (row.answer_index != null) return { correct: Boolean(row.correct), correctIndex: row.correct_index, definition, word: row.word, form: row.task.form };
-  if (optionIndex < 0 || optionIndex >= row.task.options.length) throw new Error("Réponse invalide.");
+  const task = row.task;
+  const result = (correct: boolean, bonus: string[] | null): TaskAnswerResult => ({
+    kind: task.kind, correct, correctIndex: row.correct_index, definition: task.options[row.correct_index] ?? "",
+    word: task.kind === "vocabulary" ? row.word ?? task.word : null, form: task.kind === "vocabulary" ? task.form : null,
+    explanation: task.kind === "comprehension" ? task.explanation || null : null, bonus: correct ? bonus : null,
+  });
+  if (row.answer_index != null) return result(Boolean(row.correct), row.bonus_unlocked ? await loadBonusScene(db, chapterId) : null);
+  if (optionIndex < 0 || optionIndex >= task.options.length) throw new Error("Réponse invalide.");
   const correct = optionIndex === row.correct_index;
+  const bonus = correct ? await loadBonusScene(db, chapterId) : null;
   const at = now.toISOString();
-  await db.from("story_chapter_tasks").update({ answer_index: optionIndex, correct, answered_at: at }).eq("chapter_id", chapterId).eq("student_id", studentId).is("answer_index", null);
-  if (row.due && row.sense_id) {
+  await db.from("story_chapter_tasks").update({ answer_index: optionIndex, correct, answered_at: at, bonus_unlocked: Boolean(bonus) }).eq("chapter_id", chapterId).eq("student_id", studentId).is("answer_index", null);
+  if (task.kind === "vocabulary" && row.due && row.sense_id) {
     await safe("task-evidence", null, () => recordWordReviewAttempt(db, { studentId, senseId: row.sense_id as string, format: "pick_definition", correct, source: "embedded", novelContext: true, occurrenceKey: `story-task:${chapterId}`, at }));
   }
-  return { correct, correctIndex: row.correct_index, definition, word: row.word, form: row.task.form };
+  return result(correct, bonus);
 }
 
 /** Due words used in a chapter count as met inside content (D.6, source 'embedded'). Best effort. */
@@ -390,7 +465,7 @@ export async function endingWordsFor(db: Db, studentId: string, sagaId: string):
   ]);
   const ordered = [...(chapters ?? [])].sort((a, b) => Number(a.chapter_index) - Number(b.chapter_index));
   const preferred = [
-    ...(tasks ?? []).map((task) => task.word as string),
+    ...(tasks ?? []).map((task) => task.word as string | null).filter((word): word is string => Boolean(word)),
     ...ordered.flatMap((chapter) => (Array.isArray(chapter.target_lemmas) ? chapter.target_lemmas as Array<{ lemma?: string }> : []).map((entry) => entry.lemma ?? "")),
   ];
   const hero = { name: saga.hero_name as string | null, gender: (saga.hero_gender as HeroGender) ?? "n" };

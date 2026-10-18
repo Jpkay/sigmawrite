@@ -33,6 +33,7 @@ brief (F.1) ──► architect (saga outline, H.13, once per saga)
 | `live.ts` | H.10 live orchestrator: one rewrite max, cost cap, timeout, never throws (returns `fallback`). |
 | `library.ts` | H.17: best-of-4, pairwise tournament judged in both orders, up to 3 rounds, ≥4.3 bar, discard otherwise. |
 | `dictation.ts` / `audio-check.ts` | Dictée segmentation and read-aloud checks; H.18 TTS → STT round trip (behind `EDITORIAL_STT_ENABLED`). |
+| `chapter-extras.ts` | H.3: the comprehension question (3 options, answer, kind explanation) and the bonus scene the author writes in the same call as a chapter. Deterministic gates (distinct options, answer among them and stated in the chapter, length caps, hero markers, no student name or new named character, safety lexicon, AI-tell phrases), then provider moderation (fails closed). Stored in `story_chapter_extras` (staff-read only; fallback chapters keep theirs in `editorial_library_items.questions` / `bonus_scene` and are re-gated when served). A failed gate drops the extra, never the chapter. |
 | `saga.ts` / `fallback.ts` | H.13 outline, tense plan, running summary; H.14 fallback pick + template bridge sentence. |
 | `audit.ts` / `audit-runner.ts` | H.15 sampling (1.5 % default), alert rules, automatic switch to library texts. |
 | `kill-switch.ts` | F.4 decision: `STORY_LIVE_GENERATION` flag, provider configured, global setting, quality auto-switch, class switches. |

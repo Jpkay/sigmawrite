@@ -70,6 +70,11 @@ const PERSONAL_DATA = [
   { category: "real_school", pattern: /\b(?:collège|lycée|école) (?:Jean|Victor|Jules|Louis|Marie|Paul|Saint|Sainte|Pierre|Jacques)\b/u },
 ];
 
+/** Personal-data categories found in a text (contact, address, real school). */
+export function personalDataHits(text: string): string[] {
+  return PERSONAL_DATA.filter((rule) => rule.pattern.test(text)).map((rule) => rule.category);
+}
+
 /** Common capitalised words that are not names (sentence starters, places generic, interjections). */
 const NOT_NAMES = new Set(["Il", "Elle", "Ils", "Elles", "On", "Tu", "Je", "Nous", "Vous", "Le", "La", "Les", "Un", "Une", "Des", "Mais", "Et", "Puis", "Alors", "Quand", "Ce", "Cette", "Son", "Sa", "Ses", "Ton", "Ta", "Tes", "Mon", "Ma", "Mes", "Oh", "Ah", "Eh", "Hé", "Non", "Oui", "Si", "Dans", "Sur", "Sous", "Au", "Aux", "Du", "De", "En", "Pour", "Par", "Avec", "Sans", "Pourquoi", "Comment", "Où", "Qui", "Que", "Quoi", "Là", "Ici", "Tout", "Tous", "Rien", "Personne", "Monsieur", "Madame", "Mademoiselle", "Maître", "Capitaine", "Docteur", "Coach", "Papa", "Maman", "Grand-mère", "Grand-père", "Mamie", "Papi", "Dieu", "Noël", "Paris", "France", "Lune", "Terre", "Soleil", "Mars", "Atlantique", "Méditerranée"]);
 
@@ -150,7 +155,7 @@ export async function runGates(input: GateInput, deps: GateDeps = {}, options: G
   const safety = safetyLexiconHits(plain);
   push("safety_lexicon", "hard", safety.length === 0, safety.join(",") || "ok");
 
-  const personal = PERSONAL_DATA.filter((rule) => rule.pattern.test(plain)).map((rule) => rule.category);
+  const personal = personalDataHits(plain);
   const forbidden = (deps.forbiddenNames ?? []).filter((name) => name.trim().length >= 2 && new RegExp(`(^|[^\\p{L}])${name.trim().replace(/[.*+?^${}()|[\]\\]/gu, "\\$&")}($|[^\\p{L}])`, "iu").test(template));
   push("personal_data", "hard", personal.length === 0 && forbidden.length === 0, [...personal, ...forbidden.map(() => "student_name")].join(",") || "ok");
 

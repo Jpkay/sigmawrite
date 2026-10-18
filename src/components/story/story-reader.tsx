@@ -94,8 +94,8 @@ export function StoryReader({ initial, actions = DEFAULT_ACTIONS }: { initial: R
     setBusy(true);
     try {
       const result = await actions.answer({ sagaId, chapterId: view.chapter.id, optionIndex });
-      setAnswer({ optionIndex, correct: result.correct, correctIndex: result.correctIndex, definition: result.definition });
-      track("story_task_answered", { saga_id: sagaId, correct: result.correct });
+      setAnswer({ optionIndex, correct: result.correct, correctIndex: result.correctIndex, definition: result.definition, explanation: result.explanation, bonus: result.bonus });
+      track("story_task_answered", { saga_id: sagaId, correct: result.correct, kind: result.kind, bonus: Boolean(result.bonus) });
     } catch (failure) {
       setError(failure instanceof Error && failure.message ? failure.message : copy.error);
     } finally {
