@@ -8,6 +8,7 @@ import { moderateStudentText } from "@/lib/safety/moderate-input";
 import { logAudit } from "@/lib/audit";
 import { trackServer } from "@/lib/analytics-server";
 import { classInviteInputSchema } from "@/lib/invite-config";
+import { STUDENT_VISIBLE_DICTATION_STATUSES } from "@/lib/dictation/tags";
 
 /** Teacher server actions (PRD §23). Auth+role verified before any work. */
 
@@ -197,7 +198,7 @@ export async function setClassGoal(input: unknown) {
 export async function loadAssignableDictations() {
   await requireRole(["teacher"]);
   const supabase = await createClient();
-  const { data } = await supabase.from("dictations").select("id,title_fr,kind,grade_min,grade_max,word_count").eq("review_status", "human_approved").eq("audio_status", "ready").order("grade_min").order("title_fr");
+  const { data } = await supabase.from("dictations").select("id,title_fr,kind,grade_min,grade_max,word_count").in("review_status", [...STUDENT_VISIBLE_DICTATION_STATUSES]).eq("audio_status", "ready").order("grade_min").order("title_fr");
   return (data ?? []).map((row) => ({ id: row.id as string, title: row.title_fr as string, kind: row.kind as string, gradeMin: Number(row.grade_min), gradeMax: Number(row.grade_max), wordCount: Number(row.word_count) }));
 }
 
