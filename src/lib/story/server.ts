@@ -53,7 +53,7 @@ async function studentBasics(db: Db, studentId: string): Promise<{ grade: number
     db.from("students").select("current_grade").eq("id", studentId).maybeSingle(),
     db.from("student_interests").select("interest_key,declared_strength").eq("student_id", studentId),
   ]);
-  const grade = Math.min(9, Math.max(4, Number(student?.current_grade ?? 6) || 6));
+  const grade = Math.min(12, Math.max(4, Number(student?.current_grade ?? 6) || 6));
   const ranked = [...(interests ?? [])].sort((a, b) => Number(b.declared_strength ?? 0) - Number(a.declared_strength ?? 0));
   return { grade, interests: ranked.map((row) => row.interest_key as string).filter((key) => typeof key === "string" && key.length >= 2) };
 }

@@ -3,6 +3,13 @@ import type { LibraryJob, LibraryJobResult } from "./library-runner";
 import { tenseRotation } from "./library-runner";
 import { pickStyle } from "./styles";
 import { gradeBandFor, type GradeBand } from "./types";
+import { interestsInGroup } from "@/lib/content/interests";
+
+/** A group-level cell ("sports") is written for one real interest of the group, rotating, so tags, themes and coverage count it. */
+export function concreteInterest(key: string, turn: number): string {
+  const members = interestsInGroup(key);
+  return members.length ? members[turn % members.length] : key;
+}
 
 /**
  * Library-mode bulk production (roadmap E.3, G.3, H.14): fills the interest
@@ -104,7 +111,7 @@ export async function runBulk(cells: readonly BulkCell[], state: BulkState, deps
       if (deps.maxJobs !== undefined && jobs >= deps.maxJobs) { stoppedBecause = "max_jobs"; break outer; }
       const style = pickStyle(cell.gradeBand, cell.kind === "fallback_chapter" ? "chapter" : cell.kind, styleHistory);
       styleHistory.push(style.key);
-      const job: LibraryJob = { kind: cell.kind, interest: cell.interest, grade: cell.grade, gradeBand: cell.gradeBand, tenses: tenseRotation(cell.gradeBand, cellState.attempts + cell.grade), styleKey: style.key };
+      const job: LibraryJob = { kind: cell.kind, interest: concreteInterest(cell.interest, cellState.attempts + cellState.published), grade: cell.grade, gradeBand: cell.gradeBand, tenses: tenseRotation(cell.gradeBand, cellState.attempts + cell.grade), styleKey: style.key };
       let result: LibraryJobResult;
       try {
         result = await deps.runJob(job, Math.min(deps.perJobCapUsd, remaining));

@@ -72,7 +72,10 @@ export const structureGate: DictationGate = {
       const text = segment.trim();
       if (!text) { problems.push(`segment_${index}_empty`); return; }
       if (text !== segment || /\s{2,}/u.test(segment)) problems.push(`segment_${index}_spacing`);
-      if (!SENTENCE_END.test(text)) problems.push(`segment_${index}_no_final_punctuation`);
+      // A long sentence may be read in several groups: a segment may stop mid-sentence only when the next one visibly continues it.
+      const next = candidate.segments[index + 1]?.trim();
+      const continues = Boolean(next) && /^[\p{Ll}]/u.test(next ?? "");
+      if (!SENTENCE_END.test(text) && !continues) problems.push(`segment_${index}_no_final_punctuation`);
       if (/\d/u.test(text)) problems.push(`segment_${index}_digits`);
       if (/[<>{}\[\]#*_@|\\]/u.test(text)) problems.push(`segment_${index}_markup`);
       if (wordsOf(text).length > 30) problems.push(`segment_${index}_too_long`);

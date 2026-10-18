@@ -64,7 +64,7 @@ async function loadSaga(db: SupabaseClient, sagaId: string): Promise<SagaRow> {
 
 async function studentGrade(db: SupabaseClient, studentId: string): Promise<{ grade: number; displayName: string | null }> {
   const { data } = await db.from("students").select("current_grade,display_name").eq("id", studentId).maybeSingle();
-  const grade = Math.min(9, Math.max(4, Number(data?.current_grade ?? 6) || 6));
+  const grade = Math.min(12, Math.max(4, Number(data?.current_grade ?? 6) || 6));
   return { grade, displayName: (data?.display_name as string | null) ?? null };
 }
 

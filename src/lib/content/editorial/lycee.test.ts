@@ -30,3 +30,15 @@ describe("lycée band (2de–Terminale)", () => {
     expect(wordCountBand({ kind: "flash", gradeMin: 9 })).toEqual({ min: 25, max: 100 });
   });
 });
+
+describe("group-level bulk cells", () => {
+  it("are written for a real interest of the group, rotating", async () => {
+    const { concreteInterest } = await import("./bulk");
+    const { interestsInGroup } = await import("@/lib/content/interests");
+    const members = interestsInGroup("sports");
+    expect(members.length).toBeGreaterThan(1);
+    expect(concreteInterest("sports", 0)).toBe(members[0]);
+    expect(concreteInterest("sports", 1)).toBe(members[1]);
+    expect(concreteInterest("football", 3)).toBe("football");
+  });
+});
