@@ -4,6 +4,7 @@ import type { EditorialBrief } from "./brief";
 import { rubricAnchors, rubricPrompt, rubricScoresSchema } from "./rubric";
 import type { StyleCard } from "./styles";
 import { HERO_PLACEHOLDER, TENSE_LABELS, type GradeBand, type TenseKey } from "./types";
+import { interestPhrase } from "@/lib/content/interests";
 
 /**
  * Versioned prompts and structured outputs of every editorial role (H.10).
@@ -128,7 +129,7 @@ TEMPS CIBLES : ${tenseList(brief.targetTenses)}. Emploie-les là où ils sont na
 
 const SAFETY = `SÉCURITÉ ET RESPECT : public mineur. Pas de violence détaillée, pas de sang, pas de romance au-delà de l'amitié, pas d'alcool, de tabac ni de drogue, pas de peur durable. Pas de personnes réelles (joueurs, artistes, youtubeurs), pas de personnages, titres ou marques existants (mangas, jeux, clubs) : invente des équivalents crédibles. Aucun stéréotype de genre, d'origine ou de handicap. Aucune donnée personnelle, aucune école ou adresse réelle.`;
 
-const UNIVERSE = (interests: string[]) => `UNIVERS DE L'ÉLÈVE : ${interests.join(", ")}. C'est la raison pour laquelle l'élève lit : traite cet univers de l'intérieur, avec le vocabulaire juste et les détails qu'un vrai passionné reconnaîtrait (gestes, objets, sensations, codes), sans jamais l'expliquer comme un documentaire.`;
+const UNIVERSE = (interests: string[]) => `UNIVERS DE L'ÉLÈVE : ${interests.map(interestPhrase).join(", ")}. C'est la raison pour laquelle l'élève lit : traite cet univers de l'intérieur, avec le vocabulaire juste et les détails qu'un vrai passionné reconnaîtrait (gestes, objets, sensations, codes), sans jamais l'expliquer comme un documentaire.`;
 
 // ───────────────────────── Role prompts ─────────────────────────
 

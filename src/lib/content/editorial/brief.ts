@@ -53,8 +53,8 @@ export type EditorialBrief = z.infer<typeof editorialBriefSchema>;
 export const LENGTHS: Record<EditorialKind, Record<GradeBand, { min: number; max: number }>> = {
   chapter: { cm: { min: 150, max: 260 }, "6e-5e": { min: 200, max: 340 }, "4e-3e": { min: 250, max: 400 } },
   passage: { cm: { min: 180, max: 280 }, "6e-5e": { min: 230, max: 360 }, "4e-3e": { min: 280, max: 450 } },
-  // G.7: 15–40 words for CM, longer later (brevet-style dictées are ~120–150 words).
-  dictation: { cm: { min: 15, max: 40 }, "6e-5e": { min: 40, max: 90 }, "4e-3e": { min: 70, max: 140 } },
+  // G.7 / src/lib/dictation/gates.ts wordCountBand: 15–40 words for CM, ≤ 80 in 6e–5e, ≤ 100 in 4e–3e.
+  dictation: { cm: { min: 15, max: 40 }, "6e-5e": { min: 40, max: 80 }, "4e-3e": { min: 60, max: 100 } },
 };
 
 export const READABILITY: Record<GradeBand, z.infer<typeof readabilityTargetSchema>> = {

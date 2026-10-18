@@ -3,17 +3,20 @@ import type { AudioCheckReport } from "./audio-check";
 import type { EditorialBrief } from "./brief";
 import type { LibraryOutcome } from "./library";
 import { TENSE_LABELS, EDITORIAL_PIPELINE_VERSION } from "./types";
+import { RUBRIC_BARS } from "./rubric";
+import { INTEREST_BY_KEY } from "@/lib/content/interests";
+import { autoApproveDictation } from "@/lib/dictation/auto-approve";
+import { dictationText, dictationWordCount, type DictationGate } from "@/lib/dictation/gates";
+import { DICTATION_TENSES, TENSE_NODE_KEYS, THEME_PATTERN, type DictationTense } from "@/lib/dictation/tags";
 
 /**
  * Writes library-mode results (H.16/H.17) into the content tables, always as
  * auto_approved with the pipeline version and gate evidence — never as a
  * human approval.
  *
- * Dictées go to public.dictations through a column-tolerant adapter: the
- * dictée stream adds auto_approved + tag columns in its own migration
- * (202610181200xx). If a column is not there yet, it is dropped from the
- * insert; if auto_approved is not yet allowed, the row is stored as
- * needs_human_review and flagged so it can be promoted once the migration lands.
+ * Dictées go to public.dictations with their tags and are approved by
+ * autoApproveDictation (dictée stream, G.2) with the editorial evidence as an
+ * extra blocking gate.
  */
 
 type Published = Extract<LibraryOutcome, { decision: "publish" }>;
@@ -32,49 +35,48 @@ export async function saveLibraryItem(db: SupabaseClient, input: { kind: "passag
   return data.id as string;
 }
 
-const MISSING_COLUMN = /column "([^"]+)" of relation "dictations" does not exist|Could not find the '([^']+)' column of 'dictations'/u;
-
-/** Inserts a row, dropping columns the database does not have yet (other stream's migration not applied). */
-export async function insertTolerant(db: SupabaseClient, table: string, row: Record<string, unknown>, maxDrops = 12): Promise<{ id: string; dropped: string[] }> {
-  const current = { ...row };
-  const dropped: string[] = [];
-  for (let attempt = 0; attempt <= maxDrops; attempt += 1) {
-    const { data, error } = await db.from(table).insert(current).select("id").single();
-    if (!error && data) return { id: data.id as string, dropped };
-    const match = error?.message.match(MISSING_COLUMN) ?? (error?.code === "PGRST204" ? error.message.match(/'([^']+)' column/u) : null);
-    const column = match?.[1] ?? match?.[2];
-    if (!column || !(column in current)) throw new Error(error?.message ?? "insert_failed");
-    delete current[column];
-    dropped.push(column);
-  }
-  throw new Error("insert_tolerant_exhausted");
+/**
+ * Editorial evidence as a dictée gate (plugs into autoApproveDictation's
+ * extraGates, src/lib/dictation/auto-approve.ts): the library run must have
+ * met the 4.3 rubric bar with every editorial gate passing, the read-aloud
+ * review must have passed, and the TTS round trip must not have failed.
+ */
+export function editorialEvidenceGate(outcome: Published, audioCheck: AudioCheckReport | null): DictationGate {
+  return {
+    name: "editorial_pipeline", version: EDITORIAL_PIPELINE_VERSION, blocking: true,
+    run: () => {
+      const problems: string[] = [];
+      if (!outcome.verdict.meetsBar) problems.push(`verdict:${outcome.verdict.reasons.join(",")}`);
+      if ((outcome.reviews.rubricMean ?? 0) < RUBRIC_BARS.library) problems.push(`rubric:${outcome.reviews.rubricMean}`);
+      if (outcome.gates.hardFailed || outcome.gates.requiredFailed) problems.push("editorial_gates");
+      if (audioCheck?.status === "failed") problems.push(`audio:${audioCheck.reason}`);
+      const details = { rubricMean: outcome.reviews.rubricMean, aiTells: outcome.gates.aiTells.score, readAloud: outcome.reviews.dictation?.readAloudScore ?? null, audioCheck: audioCheck?.status ?? "skipped", problems };
+      return problems.length ? { status: "fail", details } : { status: "pass", details };
+    },
+  };
 }
 
-export async function publishDictation(db: SupabaseClient, input: { brief: EditorialBrief; outcome: Published; libraryItemId: string; runId: string; audioCheck: AudioCheckReport | null }): Promise<{ dictationId: string; reviewStatus: string; dropped: string[] }> {
+const CEFR: Record<EditorialBrief["gradeBand"], "A2" | "B1" | "B2"> = { cm: "A2", "6e-5e": "B1", "4e-3e": "B2" };
+
+/** Inserts the dictée with its tags, then approves it through the dictée stream's gates plus the editorial evidence gate. */
+export async function publishDictation(db: SupabaseClient, input: { brief: EditorialBrief; outcome: Published; libraryItemId: string; runId: string; audioCheck: AudioCheckReport | null }): Promise<{ dictationId: string; status: string }> {
   const { brief, outcome } = input;
-  const key = `editorial-${brief.gradeBand}-${input.libraryItemId.slice(0, 8)}`;
-  const words = outcome.text.body.split(/\s+/u).filter(Boolean).length;
-  const base = {
-    key, title_fr: outcome.text.title, kind: "flash", text_fr: outcome.segments.join(" "),
-    segments: outcome.segments.map((text) => ({ text, audioPath: null })), word_count: words,
-    grade_min: brief.grade, grade_max: Math.min(9, brief.grade + 1), target_node_keys: [],
+  const interests = brief.interests.filter((key) => key in INTEREST_BY_KEY);
+  const tenses = brief.targetTenses.filter((t) => (DICTATION_TENSES as readonly string[]).includes(t)) as DictationTense[];
+  const segments = outcome.segments;
+  const { data, error } = await db.from("dictations").insert({
+    key: `editorial-${brief.gradeBand}-${input.libraryItemId.slice(0, 8)}`, title_fr: outcome.text.title, kind: "flash",
+    text_fr: dictationText(segments), segments: segments.map((text) => ({ text, audioPath: null })), word_count: dictationWordCount(segments),
+    grade_min: brief.grade, grade_max: Math.min(9, brief.grade + 1), target_node_keys: tenses.map((t) => TENSE_NODE_KEYS[t]),
     focus_fr: `Temps : ${brief.targetTenses.map((t) => TENSE_LABELS[t]).join(", ")}`,
     source_note: `Écrite automatiquement par le pipeline éditorial ${EDITORIAL_PIPELINE_VERSION} (run ${input.runId}).`,
-  };
-  const tags = {
-    interests: brief.interests, themes: brief.interests, tenses: brief.targetTenses, target_lemmas: brief.targetLemmas.map((l) => l.lemma),
-    grammar_node_keys: [], pipeline_version: EDITORIAL_PIPELINE_VERSION,
-    gate_results: { runId: input.runId, rubricMean: outcome.reviews.rubricMean, aiTells: outcome.gates.aiTells.score, audioCheck: input.audioCheck?.status ?? "skipped", gates: outcome.gates.results.map((r) => ({ gate: r.gate, passed: r.passed })) },
-  };
-  try {
-    const { id, dropped } = await insertTolerant(db, "dictations", { ...base, ...tags, review_status: "auto_approved" });
-    return { dictationId: id, reviewStatus: "auto_approved", dropped };
-  } catch (error) {
-    // auto_approved not yet accepted by the review_status check (dictée stream migration pending).
-    if (!/review_status|check constraint/iu.test(error instanceof Error ? error.message : "")) throw error;
-    const { id, dropped } = await insertTolerant(db, "dictations", { ...base, ...tags, review_status: "needs_human_review" });
-    return { dictationId: id, reviewStatus: "needs_human_review(awaiting_auto_approved_migration)", dropped };
-  }
+    review_status: "needs_human_review",
+    themes: interests.map((key) => key.replace(/_/gu, " ")).filter((t) => THEME_PATTERN.test(t)).slice(0, 8),
+    interests, tenses, target_lemmas: brief.targetLemmas.map((l) => l.lemma), grammar_node_keys: tenses.map((t) => TENSE_NODE_KEYS[t]), cefr_band: CEFR[brief.gradeBand],
+  }).select("id").single();
+  if (error || !data) throw new Error(error?.message ?? "dictation_not_created");
+  const result = await autoApproveDictation(db, { dictationId: data.id as string, pipelineVersion: EDITORIAL_PIPELINE_VERSION, extraGates: [editorialEvidenceGate(outcome, input.audioCheck)] });
+  return { dictationId: data.id as string, status: result.status };
 }
 
 /**
