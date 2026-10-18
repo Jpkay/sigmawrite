@@ -160,7 +160,12 @@ export async function getStudentStateData(
     );
   }
 
-  const sessions: ReadingSessionResult[] = ((sessionsResult.data ?? []) as SessionRow[]).map((row) => ({
+  // Result history drives completion counts, averages and next-step selection.
+  // Keep unfinished rows below for answer restoration, but never turn their
+  // missing scores into completed results with a zero success rate.
+  const sessions: ReadingSessionResult[] = ((sessionsResult.data ?? []) as SessionRow[])
+    .filter((row) => row.completed_at != null && !row.abandoned)
+    .map((row) => ({
     studentId, textVersionId: versionToKey.get(row.text_version_id) ?? row.text_version_id,
     startedAt: row.started_at, completedAt: row.completed_at ?? undefined, abandoned: row.abandoned,
     successRate: number(row.success_rate), literalScore: number(row.literal_score), inferenceScore: number(row.inference_score),

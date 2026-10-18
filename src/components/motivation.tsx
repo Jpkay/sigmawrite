@@ -11,30 +11,28 @@ export type WeeklyRecap = { since: string; activeDays: number; goalDays: number;
 /** Seven-day activity strip: goal days filled, frozen days marked, today outlined (roadmap 6.2). */
 export function WeekStrip({ week, goalXp, freezeAppliedFor }: { week: WeekDay[]; goalXp: number; freezeAppliedFor: string | null }) {
   return (
-    <Card>
-      <CardContent className="pt-6">
-        <div className="flex items-baseline justify-between gap-3">
-          <h2 className="font-semibold">{MOTIVATION_COPY.week}</h2>
-          <span className="text-xs text-muted-foreground">{weekGoalText(week)}</span>
-        </div>
-        <ol className="mt-4 grid grid-cols-7 gap-2" aria-label={MOTIVATION_COPY.activity}>
-          {week.map((day) => {
-            const ratio = Math.min(1, day.xp / Math.max(1, goalXp));
-            return (
-              <li key={day.date} className="flex flex-col items-center gap-1.5" aria-label={activityDayText(day)}>
-                <div className={cn("relative grid size-10 place-items-center rounded-full border-2 font-display text-sm font-bold", day.goalCompleted ? "border-success bg-success text-white" : day.freezeUsed ? "border-secondary bg-secondary/15 text-secondary" : "border-border bg-muted/40 text-muted-foreground", day.isToday && "ring-2 ring-primary ring-offset-2 ring-offset-background")}>
-                  {day.goalCompleted ? <CheckCircle2 className="size-5" aria-hidden /> : day.freezeUsed ? <Snowflake className="size-4" aria-hidden /> : <span className="tabular-nums">{day.xp > 0 ? day.xp : ""}</span>}
-                  {!day.goalCompleted && !day.freezeUsed && day.xp > 0 && <span className="absolute inset-x-1 bottom-0.5 h-0.5 rounded-full bg-border"><span className="block h-full rounded-full bg-success" style={{ width: `${Math.round(ratio * 100)}%` }} /></span>}
-                </div>
-                <span className={cn("text-[11px] font-medium", day.isToday ? "text-foreground" : "text-muted-foreground")}>{activityDayLabel(day.date)}</span>
-              </li>
-            );
-          })}
-        </ol>
-        {freezeAppliedFor && <p role="status" className="mt-4 flex items-center gap-2 rounded-md bg-secondary/10 px-3 py-2 text-sm text-secondary"><Snowflake className="size-4" />{freezeText(freezeAppliedFor)}</p>}
-        <p className="mt-3 text-xs text-muted-foreground">{MOTIVATION_COPY.freezeHelp}</p>
-      </CardContent>
-    </Card>
+    <section>
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+        <h2 className="font-semibold tracking-tight">{MOTIVATION_COPY.week}</h2>
+        <span className="text-xs text-muted-foreground">{weekGoalText(week)}</span>
+      </div>
+      <ol className="mt-4 grid max-w-md grid-cols-7 gap-2" aria-label={MOTIVATION_COPY.activity}>
+        {week.map((day) => {
+          const ratio = Math.min(1, day.xp / Math.max(1, goalXp));
+          return (
+            <li key={day.date} className="flex flex-col items-center gap-2" aria-label={activityDayText(day)} aria-current={day.isToday ? "date" : undefined}>
+              <div className={cn("relative grid size-8 place-items-center border font-display text-xs font-bold", day.goalCompleted ? "border-success bg-success text-success-foreground" : day.freezeUsed ? "border-secondary bg-secondary/10 text-secondary" : "border-border-strong text-muted-foreground", day.isToday && "ring-1 ring-primary ring-offset-2 ring-offset-background")}>
+                {day.goalCompleted ? <CheckCircle2 className="size-4" aria-hidden /> : day.freezeUsed ? <Snowflake className="size-4" aria-hidden /> : <span className="tabular-nums">{day.xp > 0 ? day.xp : ""}</span>}
+                {!day.goalCompleted && !day.freezeUsed && day.xp > 0 && <span className="absolute inset-x-1 bottom-0.5 h-0.5 bg-border"><span className="block h-full bg-success" style={{ width: `${Math.round(ratio * 100)}%` }} /></span>}
+              </div>
+              <span className={cn("text-[11px] font-medium", day.isToday ? "text-foreground" : "text-muted-foreground")}>{activityDayLabel(day.date)}</span>
+            </li>
+          );
+        })}
+      </ol>
+      {freezeAppliedFor && <p role="status" className="mt-4 flex items-start gap-2 border-l-2 border-secondary pl-3 text-sm leading-6 text-secondary"><Snowflake className="mt-1 size-4 shrink-0" />{freezeText(freezeAppliedFor)}</p>}
+      <p className="mt-3 max-w-lg text-xs leading-5 text-muted-foreground">{MOTIVATION_COPY.freezeHelp}</p>
+    </section>
   );
 }
 
@@ -47,19 +45,17 @@ export function WeeklyRecapCard({ recap }: { recap: WeeklyRecap }) {
     { label: MOTIVATION_COPY.readings, value: recap.readingSessions },
   ];
   return (
-    <Card className="border-primary/30 bg-accent/30">
-      <CardContent className="pt-6">
-        <h2 className="font-semibold">{MOTIVATION_COPY.recap}</h2>
-        <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2">
-          {rows.map((row) => <div key={row.label} className="flex items-baseline justify-between border-b border-border/60 pb-1"><dt className="text-sm text-muted-foreground">{row.label}</dt><dd className="font-display text-lg font-bold tabular-nums">{row.value}</dd></div>)}
-        </dl>
-        <p className="mt-3 text-sm">
-          {recap.securedNodes.length > 0
-            ? <>{MOTIVATION_COPY.secured}<span className="font-medium">{securedNodeText(recap.securedNodes)}</span>.</>
-            : MOTIVATION_COPY.noneSecured}
-        </p>
-      </CardContent>
-    </Card>
+    <section>
+      <h2 className="font-semibold tracking-tight">{MOTIVATION_COPY.recap}</h2>
+      <dl className="mt-4 grid grid-cols-2 gap-x-6 gap-y-4">
+        {rows.map((row) => <div key={row.label} className="border-l border-border pl-3"><dt className="text-xs text-muted-foreground">{row.label}</dt><dd className="mt-1 font-display text-2xl font-bold tracking-tight tabular-nums">{row.value}</dd></div>)}
+      </dl>
+      <p className="mt-4 text-sm leading-6 text-muted-foreground">
+        {recap.securedNodes.length > 0
+          ? <>{MOTIVATION_COPY.secured}<span className="font-medium text-foreground">{securedNodeText(recap.securedNodes)}</span>.</>
+          : MOTIVATION_COPY.noneSecured}
+      </p>
+    </section>
   );
 }
 
@@ -67,23 +63,21 @@ export function WeeklyRecapCard({ recap }: { recap: WeeklyRecap }) {
 export function BadgeShelf({ badges, onSeen }: { badges: { key: string; label: string; description: string; emoji: string; awardedAt: string; isNew: boolean }[]; onSeen: () => void }) {
   const fresh = badges.filter((badge) => badge.isNew);
   return (
-    <Card>
-      <CardContent className="pt-6">
-        <div className="flex items-baseline justify-between gap-3"><h2 className="font-semibold">{MOTIVATION_COPY.badges}</h2><span className="text-xs text-muted-foreground">{badgeCountText(badges.length)}</span></div>
-        {fresh.length > 0 && (
-          <div role="status" className="relative mt-3 overflow-hidden rounded-md border border-primary/40 bg-accent/40 px-3 py-2 text-sm">
-            <Confetti />
-            <p className="relative font-medium">{newBadgeText(badges)}</p>
-            <button type="button" onClick={onSeen} className="relative mt-1 text-xs text-primary underline-offset-4 hover:underline">{MOTIVATION_COPY.seen}</button>
-          </div>
-        )}
-        {badges.length === 0 ? <p className="mt-3 text-sm text-muted-foreground">{MOTIVATION_COPY.noBadges}</p> : (
-          <ul className="mt-3 grid grid-cols-4 gap-2 sm:grid-cols-6">
-            {badges.map((badge) => <li key={badge.key} title={badge.description} className={cn("grid aspect-square place-items-center rounded-lg border text-2xl", badge.isNew ? "border-primary bg-primary/10" : "border-border bg-muted/40")} aria-label={badgeAccessibleText(badge)}>{badge.emoji}</li>)}
-          </ul>
-        )}
-      </CardContent>
-    </Card>
+    <section className="border-t border-border pt-5">
+      <div className="flex items-baseline justify-between gap-3"><h2 className="font-semibold tracking-tight">{MOTIVATION_COPY.badges}</h2><span className="text-xs text-muted-foreground">{badgeCountText(badges.length)}</span></div>
+      {fresh.length > 0 && (
+        <div role="status" className="relative mt-3 overflow-hidden border-l-2 border-brand pl-3 text-sm">
+          <Confetti />
+          <p className="relative font-medium">{newBadgeText(badges)}</p>
+          <button type="button" onClick={onSeen} className="relative mt-1 min-h-8 text-xs text-primary underline underline-offset-4">{MOTIVATION_COPY.seen}</button>
+        </div>
+      )}
+      {badges.length === 0 ? <p className="mt-2 text-sm leading-6 text-muted-foreground">{MOTIVATION_COPY.noBadges}</p> : (
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {badges.map((badge) => <li key={badge.key} title={badge.description} className={cn("grid size-9 shrink-0 place-items-center border text-xl", badge.isNew ? "border-primary bg-accent" : "border-border")} aria-label={badgeAccessibleText(badge)}>{badge.emoji}</li>)}
+        </ul>
+      )}
+    </section>
   );
 }
 

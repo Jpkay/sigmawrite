@@ -150,7 +150,16 @@ export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY
         </div>
       </section>
 
-      {motivation && <section className="mb-8 grid gap-4 lg:grid-cols-[1fr_20rem]"><WeekStrip week={motivation.week} goalXp={motivation.goalXp} freezeAppliedFor={motivation.freezeAppliedFor} /><div className="grid gap-4">{league && <LeagueCard league={league} />}{classGoal && <ClassGoalCard goal={classGoal} />}{recap && <WeeklyRecapCard recap={recap} />}<BadgeShelf badges={motivation.badges} onSeen={() => { setMotivation((current) => current ? { ...current, badges: current.badges.map((badge) => ({ ...badge, isNew: false })) } : current); void markBadgesSeen({}).catch(() => undefined); }} /></div></section>}
+      {motivation && <section className="mb-10 border-b border-border-strong pb-8">
+        <div className="grid items-start gap-7 lg:grid-cols-2 lg:gap-10">
+          <div className="min-w-0 space-y-6">
+            <WeekStrip week={motivation.week} goalXp={motivation.goalXp} freezeAppliedFor={motivation.freezeAppliedFor} />
+            <BadgeShelf badges={motivation.badges} onSeen={() => { setMotivation((current) => current ? { ...current, badges: current.badges.map((badge) => ({ ...badge, isNew: false })) } : current); void markBadgesSeen({}).catch(() => undefined); }} />
+          </div>
+          {recap && <div className="min-w-0 border-t border-border pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0"><WeeklyRecapCard recap={recap} /></div>}
+        </div>
+        {(league || classGoal) && <div className="mt-7 grid items-start gap-6 md:grid-cols-2">{league && <LeagueCard league={league} />}{classGoal && <ClassGoalCard goal={classGoal} />}</div>}
+      </section>}
 
       {plan.length > 0 && <section className="mb-10"><div className="mb-4 flex items-end justify-between"><div><p className="font-display text-xs font-semibold uppercase tracking-[0.16em] text-success">{copy.plan}</p><h2 className="mt-1 text-xl font-semibold">{copy.planHelp}</h2></div><span className="text-sm text-muted-foreground">{homePlanSummary(plan.length,planMinutes)}</span></div><div className="border-y border-border">{plan.map((entry, index) => {const isReview=entry.role==="review";return <div key={entry.cardId ?? entry.nodeId ?? index} className="group grid gap-4 border-b border-border py-4 last:border-0 sm:grid-cols-[3rem_1fr_auto] sm:items-center"><span className={`grid size-10 place-items-center rounded-full border-2 font-display text-sm font-bold ${isReview?"border-secondary bg-secondary/15 text-secondary":"border-primary bg-primary text-primary-foreground"}`}>{index + 1}</span><div><p className="font-semibold">{entry.label}</p>{entry.mastery != null && <div className="mt-2 h-1.5 max-w-sm overflow-hidden rounded-full bg-rail"><div className="h-full rounded-full bg-success" style={{width:`${Math.round(entry.mastery*100)}%`}} /></div>}<p className="mt-1.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{homePlanEntryText(entry)}</p></div><Link href={entry.href} className={buttonVariants({variant:index===0?"default":"outline",size:"sm"})}>{entry.type==="review_card"?copy.memory:entry.type==="dictation"?copy.dictation:entry.type==="production"?copy.write:isReview?copy.revise:copy.practice} <ArrowRight /></Link></div>})}</div></section>}
 

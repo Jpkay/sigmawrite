@@ -26,6 +26,12 @@ it('restricts review to the owner and a completed sitting without an active chec
  f.session.state.phase='learning';f.session.state.learningCheck={id:'check',activityId:'a',itemId:'q',occasionId:'later'};
  await expect(loadDiagnosticAnswerReview(f.store,'owner',id)).rejects.toThrow('activité');expect(f.receipt).not.toHaveBeenCalled();
 });
+it('uses the original approved review release without requiring current assessment delivery rules',async()=>{
+ const f=fixture(),release=vi.fn(async()=>null),releaseForReview=vi.fn(async()=>bundle);
+ const review=await loadDiagnosticAnswerReview({...f.store,release,releaseForReview},'owner',id);
+ expect(review.rows).toHaveLength(1);expect(releaseForReview).toHaveBeenCalledWith('release');
+ expect(release).not.toHaveBeenCalled();
+});
 it('keeps a superseded completed sitting reviewable even when its saved learning check was open',async()=>{
  const f=fixture();f.session.state.learningCheck={id:'check',activityId:'a',itemId:'q',occasionId:'later'};
  expect((await loadDiagnosticAnswerReview(f.store,'owner',id,undefined,true)).sessionId).toBe(id);

@@ -1,4 +1,5 @@
 import type {CoveredMaterialDelivery} from './covered-material-delivery';
+import {loadPublishedReviewRelease} from './review-release';
 import type {PriorDeliveryHistory,PriorDeliveryText} from "./prior-delivery-material";
 import "server-only";
 import {prepareLearningSuccessor} from "./learning-successor";
@@ -26,6 +27,9 @@ export class SupabaseAssessmentStore implements AssessmentStore{
   const {data,error}=await this.db.from("granular_assessment_sessions").select("id,student_id,release_id,state").eq("id",sessionId).eq("student_id",studentId).maybeSingle();
   if(error)throw Error(error.message);
   return data?{id:data.id,studentId:data.student_id,releaseId:data.release_id,state:data.state as AssessmentSession}:null;
+ }
+ async releaseForReview(id:string):Promise<AssessmentBundle|null>{
+  return await this.release(id) ?? loadPublishedReviewRelease(this.db,id);
  }
  async release(id:string):Promise<AssessmentBundle|null>{
   const query=this.db.from("granular_assessment_releases");
