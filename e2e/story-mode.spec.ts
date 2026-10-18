@@ -83,7 +83,11 @@ test.describe("story mode journey", () => {
 
     await page.goto("/student");
     await expect(page.getByRole("link", { name: "Mon aventure" }).first()).toBeAttached();
-    await expect(page.getByText("Une histoire dont tu es le héros")).toBeVisible({ timeout: 15_000 });
+    const homeCard = page.getByText("Une histoire dont tu es le héros");
+    await homeCard.waitFor({ timeout: 15_000 }).catch(async () => {
+      console.log("STORY-E2E home url", page.url(), (await page.locator("main").innerText().catch(() => "")).slice(0, 800));
+    });
+    await expect(homeCard).toBeVisible();
 
     await page.goto("/student/histoire");
     await expect(page.getByRole("heading", { name: "Ton aventure t’attend" })).toBeVisible();
