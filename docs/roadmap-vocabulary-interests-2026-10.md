@@ -423,6 +423,13 @@ how often they read the next chapter, and the "Signaler ce texte" button.
     updates the AI-tells list (H.9), the style cards and the prompts.
   - A rule that alerts when quality scores drop or when reports rise above a set level.
   - A switch to turn story generation off for a class or for everyone (F.4).
+  - **People are never a bottleneck.** The human audit happens after publication and never
+    blocks a text. If nobody does it, content keeps flowing; only the rate of improvement slows.
+    Only automatic mechanisms can stop a text:
+    - failing a gate, in which case a fallback text is shown;
+    - a quality alert, in which case live generation switches to library texts that already
+      passed the stricter checks;
+    - the admin switch, in which case fallback texts are shown.
   **M**.
 - [ ] **H.16** The same pipeline also writes personalised reading passages (E.3) and dictées (G.3)
   from the student's interests. Dictées still need TTS audio after the text is written, so
