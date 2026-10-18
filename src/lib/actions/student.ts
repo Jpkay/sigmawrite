@@ -27,6 +27,7 @@ import { updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
 import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE, type RetrievalResult } from "@/lib/scoring/retrieval";
 import { scheduleFsrs } from "@/lib/scoring/fsrs";
+import { captureDictationEvidence, captureFreeWritingEvidence, captureReadingExposure, captureTypedAnswerEvidence } from "@/lib/vocabulary/capture";
 import { fireImplicitUpdates } from "@/lib/graph/fire";
 import { effectiveMastery } from "@/lib/scoring/decay";
 import { activityMinutes, buildSessionPlan } from "@/lib/learning/session-plan";
@@ -1455,6 +1456,7 @@ export async function submitIndependentProduction(input: unknown) {
     }).select("id").single();
   if (submissionError?.code === "23505") throw new Error("Ce texte a déjà été évalué. Écris un nouveau paragraphe pour démontrer la maîtrise une autre fois.");
   if (submissionError || !submission) throw new Error(submissionError?.message ?? "La production n’a pas pu être enregistrée.");
+  await captureFreeWritingEvidence(service, { studentId, text: data.text, source: "writing", occurrenceKey: `production:${submission.id as string}`, at: submittedAt });
   let mastery: number | null = null;
   if (verified) {
     const result = await recordDirectCompetencyEvidence({
@@ -1593,6 +1595,7 @@ export async function submitNodePractice(input: unknown) {
   await journalStudentPayload(studentId,"legacy:practice-feedback-display",{itemId:item.id,...practiceFeedbackDisplay({correct,feedbackFr,remediation,conjugation:(item.competency_nodes as unknown as {strand?:string}|null)?.strand==="conjugaison"})});
   const { data: attempt, error: attemptError } = await service.from("competency_attempts").insert({ student_id: studentId, item_id: item.id, node_id: data.nodeId, practice_session_id: data.practiceSessionId, exercise_position: data.exercisePosition, learner_mode: item.learner_mode, modality: item.modality, answer_text: data.answerText ?? null, selected_choice_id: data.selectedChoiceId ?? null, is_correct: correct, score: correct ? 1 : 0, latency_ms: Math.max(0, Date.now()-Date.parse(data.startedAt)), hints_used: hintsUsed, context: "practice", attempted_at: now }).select("id").single();
   if (attemptError || !attempt) throw new Error(attemptError?.message ?? "La réponse n’a pas pu être enregistrée.");
+  if (item.validator_type !== "conjugator") await captureTypedAnswerEvidence(service, { studentId, expected: item.correct_answer as string | null, produced: data.answerText, source: "practice", occurrenceKey: `practice:${attempt.id as string}`, at: now, responseMs: Math.max(0, Date.now() - Date.parse(data.startedAt)) });
   const { mastery } = await recordDirectCompetencyEvidence({
     service,
     studentId,
@@ -2199,6 +2202,7 @@ export async function submitAdaptiveDiagnosticProbe(input: unknown) {
     p_mastery_evidence_id: itemSnapshot.masteryEvidenceId,
   });
   if (submission.error) throw new Error(submission.error.message);
+  if (!existingResponse && item.validator_type !== "conjugator") await captureTypedAnswerEvidence(service, { studentId, expected: item.correct_answer as string | null, produced: data.answerText, source: "diagnostic", occurrenceKey: `diagnostic:${data.runItemId}`, at: attemptedAt, responseMs: latencyMs });
   const probeCount = Number((submission.data as { probeCount?: number } | null)?.probeCount ?? run.probe_count);
   const candidate = await nextDiagnosticItem(studentId, data.runId, sectionKey, service);
   const sectionProgress = await refreshSectionProgress({ db: service, runId: data.runId, sectionKey, candidate });
@@ -2319,6 +2323,7 @@ export async function submitSummary(input: unknown) {
   if (error || !summaryRow) throw new Error(error?.message ?? "Résumé non enregistré.");
   const writing = await evaluateAndStoreWriting({ service, studentId, summaryId: summaryRow.id as string, revisionNumber: 0, sourceText: text.body.join("\n\n"), studentText: data.summaryText, keywords: text.concepts, systemPrompt: prompt.promptText, delivery: "rubric" });
   const evaluation = writing.rubric;
+  await captureFreeWritingEvidence(service, { studentId, text: data.summaryText, source: "writing", occurrenceKey: `summary:${summaryRow.id as string}`, at: new Date().toISOString() });
   await service.from("student_summaries").update({ ai_score: evaluation }).eq("id", summaryRow.id);
   await supabase.from("reading_sessions").update({ current_phase: "retrieval" }).eq("id", data.sessionId);
   return { ok: true, evaluation };
@@ -2454,16 +2459,8 @@ export async function completeReadingSession(input: unknown) {
     if (error) throw new Error(error.message);
   }
 
-  const { data: vocabulary } = await supabase.from("vocabulary_items").select("id,display_word").in("display_word", text.targetVocabulary.map((item) => item.word));
-  for (const item of vocabulary ?? []) {
-    const { data: existing } = await supabase.from("student_word_mastery").select("exposures").eq("student_id", studentId).eq("vocabulary_item_id", item.id).maybeSingle();
-    const exposures = Number(existing?.exposures ?? 0) + 1;
-    const { error } = await supabase.from("student_word_mastery").upsert({
-      student_id: studentId, vocabulary_item_id: item.id, exposures,
-      mastery: Math.min(1, exposures / 5), last_seen_at: data.completedAt,
-    }, { onConflict: "student_id,vocabulary_item_id" });
-    if (error) throw new Error(error.message);
-  }
+  // Roadmap 2026-10 A.1/A.3: reading adds exposure evidence (matched by lemma) and never raises mastery.
+  await captureReadingExposure(service, { studentId, sessionId: data.sessionId, textVersionId: ownedSession.text_version_id as string, paragraphs: text.body, interest: text.primaryInterest ?? null, at: data.completedAt });
   const { error: eventError } = await supabase.from("reading_session_events").insert({
     session_id: data.sessionId, student_id: studentId, event_type: "completed",
     event_payload: { success_rate: result.successRate, next_action: result.recommendedNextAction },
@@ -2880,8 +2877,6 @@ export async function submitDictation(input: unknown): Promise<DictationResult> 
   }).eq("id", attempt.id).is("submitted_at", null);
   if (updateError) throw new Error(updateError.message);
 
-  // G.6 hand-over (vocab stream): per-word spelling outcomes for recordWordEvidence are
-  // dictationWordOutcomes(row.segments.map((segment) => segment.text), outcome.errors) from "@/lib/dictation/word-outcomes".
   // Evidence: each targeted node is one controlled-production occasion; nodes with an error fail, the rest succeed.
   const nodeKeys = [...new Set([...row.target_node_keys, ...outcome.errors.map((e) => e.nodeKey)])];
   const { data: nodes } = await service.from("competency_nodes").select("id,key").in("key", nodeKeys);
@@ -2896,6 +2891,8 @@ export async function submitDictation(input: unknown): Promise<DictationResult> 
       pathMastery: (value) => (correct ? value : Math.min(value, 0.84)),
     });
   }
+  // G.6: every dictée word is spelling evidence for its lemma (correct or misspelled), via recordWordEvidence.
+  await captureDictationEvidence(service, { studentId, attemptId: attempt.id as string, segments: row.segments.map((segment) => segment.text), answers, at: submittedAt });
   await recordDailyActivity(service, studentId, submittedAt, "writing");
   const xp = await awardXp(service, { studentId, eventKey: `dictation:${attempt.id as string}`, sourceType: "dictation", sourceId: attempt.id as string, baseXp: mode === "brevet" ? XP_AWARDS.dictationBase * 2 : XP_AWARDS.dictationBase, bonusXp: outcome.errors.length === 0 ? XP_AWARDS.dictationCleanBonus : 0, at: submittedAt });
   await service.from("dictation_attempts").update({ xp_awarded: xp.xp }).eq("id", attempt.id);
