@@ -85,6 +85,10 @@ import { classifyDictation, CATEGORY_LABELS, type DictationError, type ErrorCate
 import { resolveDictationAudioAssets } from "@/lib/dictation/audio-manifest";
 import { signDictationAudio } from "@/lib/dictation/audio";
 import { speakableSegment } from "@/lib/dictation/speech-text";
+import { pickDailyDictation, suggestDictations } from "@/lib/dictation/picker";
+import { loadDictationStudentContext, loadPickerDictations, pickerDictationFromRow } from "@/lib/dictation/picker-data";
+import { dictationChips, STUDENT_VISIBLE_DICTATION_STATUSES } from "@/lib/dictation/tags";
+import { dictationStepByStep } from "@/lib/dictation/presentation";
 import { BADGE_BY_KEY, earnedBadges, type BadgeKey } from "@/lib/badges";
 import { genrePrompt, genreSpec, genresForGrade, isWritingGenre, type WritingGenre } from "@/lib/writing/genres";
 import { scoreProductionWithAI, type ProductionRubric } from "@/lib/scoring/production-ai";
@@ -1330,31 +1334,19 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
 }
 
 /**
- * One flash dictée every second day within the student's grade band, and a
- * Brevet-length dictée once per trimester for 3e. Nothing when no published
- * dictée exists or the student did one yesterday.
+ * Today's dictée (roadmap 2026-10, G.5): the scored picker in
+ * src/lib/dictation/picker.ts keeps the 36 h spacing and the 3e brevet rule.
  */
 async function dictationPlanEntry(service: SupabaseClient, studentId: string, nowMs: number): Promise<SessionPlanEntry | null> {
-  const [{ data: student }, { data: recent }] = await Promise.all([
-    service.from("students").select("current_grade").eq("id", studentId).single(),
-    service.from("dictation_attempts").select("dictation_id,mode,submitted_at").eq("student_id", studentId).not("submitted_at", "is", null).gte("submitted_at", new Date(nowMs - 120 * 86_400_000).toISOString()).order("submitted_at", { ascending: false }),
-  ]);
-  const grade = Math.max(4, Math.min(9, Number(student?.current_grade ?? 7)));
-  const attempts = recent ?? [];
-  const lastAt = attempts[0]?.submitted_at ? Date.parse(attempts[0].submitted_at as string) : 0;
-  if (nowMs - lastAt < 36 * 3_600_000) return null;
-  const brevetDone = attempts.some((a) => a.mode === "brevet" && nowMs - Date.parse(a.submitted_at as string) < 90 * 86_400_000);
-  const done = new Set(attempts.map((a) => a.dictation_id as string));
-  let query = service.from("dictations").select("id,title_fr,kind,word_count").eq("review_status", "human_approved").lte("grade_min", grade).gte("grade_max", grade);
-  if (!browserTtsFallbackAllowed()) query = query.eq("audio_status", "ready");
-  const { data: rows } = await query.order("word_count");
-  const candidates = (rows ?? []) as { id: string; title_fr: string; kind: string; word_count: number }[];
-  if (candidates.length === 0) return null;
-  const brevet = !brevetDone && grade === 9 ? candidates.find((row) => row.kind === "brevet") : undefined;
-  const pick = brevet ?? candidates.find((row) => row.kind !== "brevet" && !done.has(row.id)) ?? candidates.find((row) => row.kind !== "brevet") ?? null;
+  const dictations = await loadPickerDictations(service, !browserTtsFallbackAllowed());
+  if (dictations.length === 0) return null;
+  const pick = pickDailyDictation({ ...(await loadDictationStudentContext(service, studentId, nowMs, dictations)), dictations });
   if (!pick) return null;
-  return { type: "dictation", role: "new", label: `${pick.kind === "brevet" ? "Dictée type brevet" : "Dictée"} : ${pick.title_fr}`, estimatedMinutes: pick.kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(pick.word_count / 8))), href: `/student/dictee/${pick.id}` };
+  const chosen = pick.dictation;
+  return { type: "dictation", role: "new", label: `${chosen.kind === "brevet" ? "Dictée type brevet" : "Dictée"} : ${chosen.title}`, estimatedMinutes: dictationMinutes(chosen.kind, chosen.wordCount), href: `/student/dictee/${chosen.id}` };
 }
+
+const dictationMinutes = (kind: string, wordCount: number) => (kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(wordCount / 8))));
 
 async function independentProductionNode(service: SupabaseClient, studentId: string, nodeId: string) {
   const { data: activePath, error: pathError } = await service.from("student_learning_paths")
@@ -2735,10 +2727,10 @@ export async function markStudentNotificationsRead(input: unknown) {
 const DICTATION_MODES = ["flash", "trous", "choix", "negociee", "brevet"] as const;
 const browserTtsFallbackAllowed = () => process.env.DICTATION_BROWSER_TTS_FALLBACK === "true" && process.env.NODE_ENV !== "production";
 
-type DictationRow = { id: string; key: string; title_fr: string; kind: DictationMode; text_fr: string; segments: { text: string; audioPath: string | null }[]; word_count: number; grade_min: number; grade_max: number; target_node_keys: string[]; focus_fr: string | null; review_status: string; audio_status: string; audio_manifest?: unknown };
+type DictationRow = { id: string; key: string; title_fr: string; kind: DictationMode; text_fr: string; segments: { text: string; audioPath: string | null }[]; word_count: number; grade_min: number; grade_max: number; target_node_keys: string[]; focus_fr: string | null; review_status: string; audio_status: string; audio_manifest?: unknown; grammar_node_keys?: string[] | null; themes?: string[] | null; interests?: string[] | null; target_lemmas?: string[] | null };
 
 async function visibleDictations(service: SupabaseClient, filter?: { id?: string }) {
-  let query = service.from("dictations").select("id,key,title_fr,kind,text_fr,segments,word_count,grade_min,grade_max,target_node_keys,focus_fr,review_status,audio_status,audio_manifest").eq("review_status", "human_approved");
+  let query = service.from("dictations").select("id,key,title_fr,kind,text_fr,segments,word_count,grade_min,grade_max,target_node_keys,focus_fr,review_status,audio_status,audio_manifest,grammar_node_keys,themes,interests,target_lemmas").in("review_status", [...STUDENT_VISIBLE_DICTATION_STATUSES]);
   if (!browserTtsFallbackAllowed()) query = query.eq("audio_status", "ready");
   if (filter?.id) query = query.eq("id", filter.id);
   const { data, error } = await query.order("grade_min").order("word_count");
@@ -2746,7 +2738,7 @@ async function visibleDictations(service: SupabaseClient, filter?: { id?: string
   return (data ?? []) as DictationRow[];
 }
 
-export type DictationCatalogEntry = { id: string; key: string; title: string; kind: DictationMode; wordCount: number; gradeMin: number; gradeMax: number; focus: string | null; estimatedMinutes: number; lastScore: number | null; lastAt: string | null; attempts: number; audioMode: "server" | "browser" };
+export type DictationCatalogEntry = { id: string; key: string; title: string; kind: DictationMode; wordCount: number; gradeMin: number; gradeMax: number; focus: string | null; estimatedMinutes: number; lastScore: number | null; lastAt: string | null; attempts: number; audioMode: "server" | "browser"; chips?: string[]; suggested?: number | null };
 
 export async function loadDictationCatalog(input: unknown): Promise<DictationCatalogEntry[]> {
   checked(emptySchema, input); const { supabase, studentId } = await context();
@@ -2761,20 +2753,49 @@ export async function loadDictationCatalog(input: unknown): Promise<DictationCat
     const id = attempt.dictation_id as string; const existing = byDictation.get(id);
     if (existing) existing.count++; else byDictation.set(id, { score: attempt.score == null ? null : Number(attempt.score), at: attempt.submitted_at as string, count: 1 });
   }
+  // 2–3 suggestions the student chooses from (autonomy rule); never blocks the catalogue.
+  const suggestedRank = await dictationSuggestionRanks(service, studentId, rows);
   const catalog: DictationCatalogEntry[] = rows.map((row) => ({
     id: row.id, key: row.key, title: row.title_fr, kind: row.kind, wordCount: row.word_count, gradeMin: row.grade_min, gradeMax: row.grade_max, focus: row.focus_fr,
-    estimatedMinutes: row.kind === "brevet" ? 20 : Math.max(5, Math.min(10, Math.round(row.word_count / 8))),
+    estimatedMinutes: dictationMinutes(row.kind, row.word_count),
     lastScore: byDictation.get(row.id)?.score ?? null, lastAt: byDictation.get(row.id)?.at ?? null, attempts: byDictation.get(row.id)?.count ?? 0,
     audioMode: row.audio_status === "ready" ? "server" : "browser",
+    chips: dictationChips({ interests: row.interests ?? [], themes: row.themes ?? [] }),
+    suggested: suggestedRank.get(row.id) ?? null,
   }));
   await journalStudentPayload(studentId,"legacy:dictation-catalog",{rows:catalog,display:dictationCatalogDisplay(catalog)});
   return catalog;
+}
+
+async function dictationSuggestionRanks(service: SupabaseClient, studentId: string, rows: DictationRow[]): Promise<Map<string, number>> {
+  try {
+    const dictations = rows.map(pickerDictationFromRow);
+    const context = await loadDictationStudentContext(service, studentId, Date.now(), dictations);
+    return new Map(suggestDictations({ ...context, dictations }, 3).map((entry, index) => [entry.dictation.id, index + 1]));
+  } catch {
+    return new Map();
+  }
+}
+
+async function dictationStepByStepFor(service: SupabaseClient, studentId: string, kind: DictationMode): Promise<boolean> {
+  try {
+    const [{ data: student }, { data: recent }] = await Promise.all([
+      service.from("students").select("current_grade").eq("id", studentId).single(),
+      service.from("dictation_attempts").select("accuracy").eq("student_id", studentId).not("submitted_at", "is", null).order("submitted_at", { ascending: false }).limit(3),
+    ]);
+    const grade = student?.current_grade == null ? null : Number(student.current_grade);
+    return dictationStepByStep({ grade, kind, recentAccuracies: (recent ?? []).map((row) => Number(row.accuracy)) });
+  } catch {
+    return false;
+  }
 }
 
 const startDictationSchema = z.object({ dictationId: z.string().uuid(), mode: z.enum(DICTATION_MODES).optional(), clientRequestId: z.string().uuid() });
 
 export type DictationSession = {
   attemptId: string; dictationId: string; title: string; mode: DictationMode; focus: string | null; wordCount: number; audioMode: "server" | "browser";
+  /** G.7: one sentence at a time, replay freely (CM1–CM2 and struggling students). */
+  stepByStep?: boolean;
   fullAudioUrl: string | null;
   segments: { index: number; audioUrl: string | null; browserText: string | null; template: ReturnType<typeof publicTemplate> | null }[];
 };
@@ -2800,8 +2821,9 @@ export async function startDictation(input: unknown): Promise<DictationSession> 
     await journalStudentPayload(studentId,"legacy:dictation-audio-offered",audioAssets.manifest);
   }
   const withTemplates = mode === "trous" || mode === "choix";
+  const stepByStep = await dictationStepByStepFor(service, studentId, mode);
   const session: DictationSession = {
-    attemptId: attempt.id as string, dictationId: row.id, title: row.title_fr, mode, focus: row.focus_fr, wordCount: row.word_count, audioMode,
+    attemptId: attempt.id as string, dictationId: row.id, title: row.title_fr, mode, focus: row.focus_fr, wordCount: row.word_count, audioMode, stepByStep,
     fullAudioUrl: audioMode === "server" ? urls[urls.length - 1] ?? null : null,
     segments: row.segments.map((segment, index) => ({
       index,
@@ -2858,6 +2880,8 @@ export async function submitDictation(input: unknown): Promise<DictationResult> 
   }).eq("id", attempt.id).is("submitted_at", null);
   if (updateError) throw new Error(updateError.message);
 
+  // G.6 hand-over (vocab stream): per-word spelling outcomes for recordWordEvidence are
+  // dictationWordOutcomes(row.segments.map((segment) => segment.text), outcome.errors) from "@/lib/dictation/word-outcomes".
   // Evidence: each targeted node is one controlled-production occasion; nodes with an error fail, the rest succeed.
   const nodeKeys = [...new Set([...row.target_node_keys, ...outcome.errors.map((e) => e.nodeKey)])];
   const { data: nodes } = await service.from("competency_nodes").select("id,key").in("key", nodeKeys);

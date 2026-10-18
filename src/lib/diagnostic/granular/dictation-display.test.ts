@@ -26,12 +26,12 @@ it("projects exact catalog rows and every catalog state", () => {
   ]);
   expect(display.copy).toEqual({
     loading: "Chargement…",
-    empty: "Aucune dictée publiée pour l’instant. Elles arrivent dès qu’un enseignant les a relues.",
+    empty: "Aucune dictée publiée pour l’instant. Elles arrivent très bientôt.",
     error: "Chargement impossible.",
   });
   expect(display.entries).toEqual([
-    { id: "one", kind: "Dictée type brevet", grade: "6e – 3e", meta: "72 mots · ~20 min", title: "Les chevaux", focus: "Accorder les noms", score: "Dernier score : 8/10", control: "Refaire" },
-    { id: "two", kind: "Dictée flash", grade: "CM2", meta: "32 mots · ~5 min", title: "Au marché", focus: null, score: "Pas encore faite", control: "Commencer" },
+    { id: "one", kind: "Dictée type brevet", grade: "6e – 3e", meta: "72 mots · ~20 min", title: "Les chevaux", focus: "Accorder les noms", score: "Dernier score : 8/10", control: "Refaire", chips: [], suggested: null },
+    { id: "two", kind: "Dictée flash", grade: "CM2", meta: "32 mots · ~5 min", title: "Au marché", focus: null, score: "Pas encore faite", control: "Commencer", chips: [], suggested: null },
   ]);
 });
 

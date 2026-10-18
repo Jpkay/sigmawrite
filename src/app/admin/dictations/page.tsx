@@ -4,5 +4,5 @@ import { DictationReviewTable } from "./review-table";
 
 export default async function Page() {
   const rows = await loadAdminDictations();
-  return <><PageHeader eyebrow="Contenu" title="Dictées" description="Relecture humaine des textes, puis rendu de l’audio. Un texte n’est visible des élèves qu’une fois approuvé et sonorisé." /><DictationReviewTable rows={rows} /></>;
+  return <><PageHeader eyebrow="Contenu" title="Dictées" description="Les dictées sont publiées automatiquement quand elles réussissent les vérifications, puis sonorisées. Cette page sert à l’audit et au retrait immédiat." /><DictationReviewTable rows={rows} /></>;
 }
