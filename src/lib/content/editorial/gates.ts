@@ -59,6 +59,11 @@ const SAFETY_LEXICON: Array<{ category: string; pattern: RegExp }> = [
   { category: "horror_minor", pattern: /\b(?:cadavre d'enfant|enfant mort|kidnapp\w* un enfant)\b/iu },
 ];
 
+/** Safety lexicon categories found in a text (also used by live practice sentences). */
+export function safetyLexiconHits(text: string): string[] {
+  return SAFETY_LEXICON.filter((rule) => unicodeWordBoundaries(rule.pattern).test(text)).map((rule) => rule.category);
+}
+
 const PERSONAL_DATA = [
   { category: "contact", pattern: /\b\+?\d[\d .()-]{7,}\d\b|\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b|https?:\/\//iu },
   { category: "address", pattern: /\b\d{1,4},? (?:rue|avenue|boulevard|impasse|allée|chemin) /iu },
@@ -103,7 +108,29 @@ function corpusNgrams(): Set<string> {
   return corpusGrams;
 }
 
-export async function runGates(input: GateInput, deps: GateDeps = {}): Promise<GateReport> {
+/** Provider moderation must answer within this delay (one retry), else the hard gate fails closed. */
+export const MODERATION_TIMEOUT_MS = Number(process.env.EDITORIAL_MODERATION_TIMEOUT_MS ?? 15_000);
+
+async function moderateWithTimeout(moderate: NonNullable<GateDeps["moderate"]>, text: string, timeoutMs: number): Promise<{ allowed: boolean; categories: string[] }> {
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    try {
+      return await Promise.race([
+        moderate(text),
+        new Promise<never>((_, reject) => { timer = setTimeout(() => reject(new Error("moderation_timeout")), timeoutMs); }),
+      ]);
+    } catch { /* retried once, then fails closed */ } finally { if (timer) clearTimeout(timer); }
+  }
+  return { allowed: false, categories: ["moderation_unavailable"] };
+}
+
+export type GateOptions = {
+  /** false for the line editor's pre-check: findings only, the final text is always moderated. */
+  moderation?: boolean;
+  moderationTimeoutMs?: number;
+};
+
+export async function runGates(input: GateInput, deps: GateDeps = {}, options: GateOptions = {}): Promise<GateReport> {
   const { brief, style } = input;
   const template = input.template;
   const [femaleRender] = textVariants(template);
@@ -114,12 +141,13 @@ export async function runGates(input: GateInput, deps: GateDeps = {}): Promise<G
   // Hard: moderation (deterministic rules first, then the provider; provider errors fail closed).
   const rules = fallbackModeration(plain);
   let moderation = { allowed: rules.allowed, categories: rules.categories };
-  if (moderation.allowed && deps.moderate) {
-    try { moderation = await deps.moderate(plain); } catch { moderation = { allowed: false, categories: ["moderation_unavailable"] }; }
+  const providerModeration = options.moderation !== false;
+  if (moderation.allowed && deps.moderate && providerModeration) {
+    moderation = await moderateWithTimeout(deps.moderate, plain, options.moderationTimeoutMs ?? MODERATION_TIMEOUT_MS);
   }
-  push("moderation", "hard", moderation.allowed, moderation.allowed ? "ok" : moderation.categories.join(","));
+  push("moderation", "hard", moderation.allowed, moderation.allowed ? (providerModeration ? "ok" : "règles locales (pré-contrôle)") : moderation.categories.join(","));
 
-  const safety = SAFETY_LEXICON.filter((rule) => unicodeWordBoundaries(rule.pattern).test(plain)).map((rule) => rule.category);
+  const safety = safetyLexiconHits(plain);
   push("safety_lexicon", "hard", safety.length === 0, safety.join(",") || "ok");
 
   const personal = PERSONAL_DATA.filter((rule) => rule.pattern.test(plain)).map((rule) => rule.category);

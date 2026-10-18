@@ -17,11 +17,13 @@ import type { EditorialRole, Usage } from "./types";
  *   EDITORIAL_MODEL_SUMMARIZER   running story summary
  */
 
-export const DEFAULT_OPENROUTER_MODELS: Record<"writer" | "reviewer" | "chief" | "auditor", string> = {
+export const DEFAULT_OPENROUTER_MODELS: Record<"writer" | "reviewer" | "chief" | "auditor" | "practice", string> = {
   writer: "anthropic/claude-opus-5.5",
   reviewer: "google/gemini-3.8-flash",
   chief: "anthropic/claude-sonnet-5.5",
   auditor: "anthropic/claude-opus-5.5",
+  // Live practice sentences (F.2): one short sentence, checked by code — speed matters most.
+  practice: "anthropic/claude-haiku-5.5",
 };
 
 const ROLE_ENV: Record<EditorialRole, { env: string; tier: keyof typeof DEFAULT_OPENROUTER_MODELS }> = {
@@ -37,7 +39,11 @@ const ROLE_ENV: Record<EditorialRole, { env: string; tier: keyof typeof DEFAULT_
   editor_in_chief: { env: "EDITORIAL_MODEL_CHIEF", tier: "chief" },
   summarizer: { env: "EDITORIAL_MODEL_SUMMARIZER", tier: "reviewer" },
   auditor: { env: "EDITORIAL_MODEL_AUDITOR", tier: "auditor" },
+  practice_writer: { env: "EDITORIAL_MODEL_PRACTICE", tier: "practice" },
 };
+
+/** Default reasoning per tier (see resolveRoleReasoning); measured in README "Cost and latency". */
+export const DEFAULT_REASONING: Record<keyof typeof DEFAULT_OPENROUTER_MODELS, ReasoningSetting> = { writer: "default", reviewer: "default", chief: "default", auditor: "default", practice: "off" };
 
 /** USD per million tokens, used only when the provider does not report the cost itself. */
 const FALLBACK_PRICING: Record<string, [number, number]> = {
@@ -71,6 +77,30 @@ export class CostMeter {
   record(usage: Usage) { this.spent += usage.costUsd; this.inputTokens += usage.inputTokens; this.outputTokens += usage.outputTokens; }
 }
 
+export type ReasoningSetting = "default" | "off" | "minimal" | "low" | "medium" | "high";
+const REASONING_ENV: Record<keyof typeof DEFAULT_OPENROUTER_MODELS, string> = { writer: "EDITORIAL_REASONING_WRITER", reviewer: "EDITORIAL_REASONING_REVIEWER", chief: "EDITORIAL_REASONING_CHIEF", auditor: "EDITORIAL_REASONING_AUDITOR", practice: "EDITORIAL_REASONING_PRACTICE" };
+
+/**
+ * Reasoning effort per role tier (OpenRouter `reasoning` parameter). "default"
+ * sends nothing; "off" disables it (only models that allow it, e.g. Haiku);
+ * other values set the effort. Thinking tokens are billed as output tokens,
+ * so this is the main cost and latency lever after the model choice.
+ */
+export function resolveRoleReasoning(env: Record<string, string | undefined> = process.env): Record<EditorialRole, ReasoningSetting> {
+  const out = {} as Record<EditorialRole, ReasoningSetting>;
+  for (const [role, { tier }] of Object.entries(ROLE_ENV) as Array<[EditorialRole, (typeof ROLE_ENV)[EditorialRole]]>) {
+    const value = (env[REASONING_ENV[tier]] ?? DEFAULT_REASONING[tier]) as ReasoningSetting;
+    out[role] = (["default", "off", "minimal", "low", "medium", "high"] as const).includes(value) ? value : "default";
+  }
+  return out;
+}
+
+export function reasoningParameter(setting: ReasoningSetting): Record<string, unknown> {
+  if (setting === "default") return {};
+  if (setting === "off") return { reasoning: { enabled: false } };
+  return { reasoning: { effort: setting } };
+}
+
 export function resolveRoleModels(env: Record<string, string | undefined> = process.env): Record<EditorialRole, string> {
   let base = "mock-v1";
   let openRouter = false;
@@ -86,10 +116,14 @@ export function resolveRoleModels(env: Record<string, string | undefined> = proc
   return out;
 }
 
-type ChatResponse = { choices?: Array<{ message?: { content?: string } }>; usage?: { prompt_tokens?: number; completion_tokens?: number; cost?: number } };
+type ChatResponse = {
+  choices?: Array<{ message?: { content?: string } }>;
+  usage?: { prompt_tokens?: number; completion_tokens?: number; cost?: number; completion_tokens_details?: { reasoning_tokens?: number }; prompt_tokens_details?: { cached_tokens?: number } };
+};
 
 export class OpenAICompatibleEditorialLLM implements EditorialLLM {
   private readonly models: Record<EditorialRole, string>;
+  private readonly reasoning: Record<EditorialRole, ReasoningSetting>;
   private readonly baseUrl: string;
   private readonly apiKey: string;
   constructor(env: Record<string, string | undefined> = process.env, private readonly fetchImpl: typeof fetch = fetch) {
@@ -98,6 +132,7 @@ export class OpenAICompatibleEditorialLLM implements EditorialLLM {
     this.baseUrl = config.baseUrl;
     this.apiKey = config.apiKey;
     this.models = resolveRoleModels(env);
+    this.reasoning = resolveRoleReasoning(env);
   }
   modelFor(role: EditorialRole) { return this.models[role]; }
 
@@ -110,7 +145,7 @@ export class OpenAICompatibleEditorialLLM implements EditorialLLM {
       temperature: call.temperature ?? 0.7,
       max_tokens: call.maxTokens ?? 2400,
       ...(call.json ? { response_format: { type: "json_object" } } : {}),
-      ...(this.baseUrl.includes("openrouter.ai") ? { usage: { include: true } } : {}),
+      ...(this.baseUrl.includes("openrouter.ai") ? { usage: { include: true }, ...reasoningParameter(this.reasoning[call.role]) } : {}),
     });
     const timeoutMs = call.role === "author" || call.role === "line_editor" || call.role === "architect" ? 90_000 : 45_000;
     for (let attempt = 0; ; attempt += 1) {
@@ -127,7 +162,9 @@ export class OpenAICompatibleEditorialLLM implements EditorialLLM {
         const outputTokens = json.usage?.completion_tokens ?? Math.ceil(text.length / 4);
         const price = FALLBACK_PRICING[model] ?? [5, 25];
         const costUsd = typeof json.usage?.cost === "number" ? json.usage.cost : (inputTokens * price[0] + outputTokens * price[1]) / 1_000_000;
-        return { text, model, usage: { inputTokens, outputTokens, costUsd }, latencyMs: Date.now() - started };
+        const reasoningTokens = json.usage?.completion_tokens_details?.reasoning_tokens;
+        const cachedTokens = json.usage?.prompt_tokens_details?.cached_tokens;
+        return { text, model, usage: { inputTokens, outputTokens, costUsd, ...(reasoningTokens ? { reasoningTokens } : {}), ...(cachedTokens ? { cachedTokens } : {}) }, latencyMs: Date.now() - started };
       } finally {
         clearTimeout(timer);
       }

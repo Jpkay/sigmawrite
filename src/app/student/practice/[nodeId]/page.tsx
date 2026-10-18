@@ -6,12 +6,13 @@ import { practicePlayerDisplay } from "@/lib/diagnostic/granular/practice-player
 import { journalStudentPayload } from "@/lib/diagnostic/granular/server-delivery-journal";
 import { getCurrentStudentId } from "@/lib/db/student";
 import { getNodePractice } from "@/lib/db/practice";
+import { withLiveThemedSentences } from "@/lib/practice/live-sentences-server";
 import { PracticePlayer } from "./practice-player";
 
 export default async function PracticePage({ params }: { params: Promise<{ nodeId: string }> }) {
   await requireRole(["student"]); const { nodeId } = await params; const supabase = await createClient();
   const studentId = await getCurrentStudentId(supabase);
-  const practice = await getNodePractice(nodeId, supabase, studentId);
+  const practice = await withLiveThemedSentences(await getNodePractice(nodeId, supabase, studentId), studentId);
   if (process.env.GRANULAR_DIAGNOSTIC_ENABLED === "true") {
     await recordPracticeMaterialDelivery(new SupabaseAssessmentStore(createServiceClient()), studentId, practice);
     await journalStudentPayload(studentId, "legacy:practice-player", practicePlayerDisplay(practice));

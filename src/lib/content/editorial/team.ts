@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import type { z } from "zod";
-import { runGates, gateNotes, type GateDeps, type GateReport } from "./gates";
+import { runGates, gateNotes, type GateDeps, type GateOptions, type GateReport } from "./gates";
 import { completeJson, type CostMeter, type EditorialLLM, type LlmResult } from "./llm";
 import {
   PROMPT_VERSIONS, authorOutputSchema, authorPrompt, chiefRewritePrompt, dictationReviewSchema, dictationReviewerPrompt,
@@ -32,6 +32,7 @@ export type StepLog = {
   outputTokens: number;
   costUsd: number;
   latencyMs: number;
+  reasoningTokens?: number;
 };
 export interface RunLogger { step(entry: StepLog): Promise<void> }
 export class MemoryLogger implements RunLogger {
@@ -48,6 +49,7 @@ export async function callRole<T>(deps: TeamDeps, role: EditorialRole, prompt: {
   await deps.logger.step({
     role, model: call.result.model, promptVersion: PROMPT_VERSIONS[role], inputDigest: digest(prompt.system + prompt.user), output: call.value, score: null,
     inputTokens: call.result.usage.inputTokens, outputTokens: call.result.usage.outputTokens, costUsd: call.result.usage.costUsd, latencyMs: call.result.latencyMs,
+    ...(call.result.usage.reasoningTokens ? { reasoningTokens: call.result.usage.reasoningTokens } : {}),
   });
   return call;
 }
@@ -62,16 +64,26 @@ export async function rewriteText(deps: TeamDeps, brief: EditorialBrief, style: 
   return { ...value, body: normalizeFrenchTypography(value.body) };
 }
 
-export async function lineEdit(deps: TeamDeps, brief: EditorialBrief, style: StyleCard, draft: AuthorOutput): Promise<AuthorOutput> {
-  const pre = await codeChecks(deps, brief, style, draft);
+/** Pre-check of a draft before the line edit: deterministic findings only (no provider moderation). */
+export function preChecks(deps: TeamDeps, brief: EditorialBrief, style: StyleCard, draft: AuthorOutput): Promise<GateReport> {
+  return codeChecks(deps, brief, style, draft, { moderation: false });
+}
+
+/** The line edit can be skipped when the draft already passes every deterministic check with no AI-tell finding. */
+export function draftIsClean(report: GateReport): boolean {
+  return !report.hardFailed && !report.requiredFailed && report.aiTells.findings.length === 0 && report.results.every((r) => r.level !== "signal" || r.passed || r.gate === "languagetool");
+}
+
+export async function lineEdit(deps: TeamDeps, brief: EditorialBrief, style: StyleCard, draft: AuthorOutput, preReport?: GateReport): Promise<AuthorOutput> {
+  const pre = preReport ?? await preChecks(deps, brief, style, draft);
   const findings = [...gateNotes(pre), ...pre.aiTells.findings.flatMap((f) => f.evidence.slice(0, 2).map((e) => `${f.label} : « ${e} »`))];
   const { value } = await callRole(deps, "line_editor", lineEditorPrompt(brief, style, draft, findings), lineEditOutputSchema, 0.5, 5000);
   return { ...draft, body: normalizeFrenchTypography(value.body), tenseEvidence: value.tenseEvidence.length ? value.tenseEvidence : draft.tenseEvidence };
 }
 
-export async function codeChecks(deps: TeamDeps, brief: EditorialBrief, style: StyleCard, text: AuthorOutput): Promise<GateReport> {
+export async function codeChecks(deps: TeamDeps, brief: EditorialBrief, style: StyleCard, text: AuthorOutput, options: GateOptions = {}): Promise<GateReport> {
   const started = Date.now();
-  const report = await runGates({ template: text.body, brief, style, tenseEvidence: text.tenseEvidence }, deps.gates);
+  const report = await runGates({ template: text.body, brief, style, tenseEvidence: text.tenseEvidence }, deps.gates, options);
   await deps.logger.step({ role: "code_checks", model: null, promptVersion: null, inputDigest: digest(text.body), output: report.results.map((r) => ({ gate: r.gate, level: r.level, passed: r.passed, detail: r.detail })), score: report.aiTells.score, inputTokens: 0, outputTokens: 0, costUsd: 0, latencyMs: Date.now() - started });
   return report;
 }

@@ -4,7 +4,21 @@ import type { GateDeps, GateReport } from "./gates";
 import { RUBRIC_BARS } from "./rubric";
 import type { AuthorOutput, ChapterContext } from "./prompts";
 import type { StyleCard } from "./styles";
-import { codeChecks, draftText, judge, lineEdit, review, rewriteInstructions, rewriteText, type Reviews, type RunLogger, type TeamDeps, type Verdict } from "./team";
+import { codeChecks, draftIsClean, draftText, judge, lineEdit, preChecks, review, rewriteInstructions, rewriteText, type Reviews, type RunLogger, type TeamDeps, type Verdict } from "./team";
+
+/**
+ * When the line editor runs (measured in README "Cost and latency"):
+ *  - always: every draft;
+ *  - conditional: only when the draft's deterministic pre-check finds something
+ *    (AI tells, a failed required gate, a signal) — clean drafts go straight to review;
+ *  - never.
+ */
+export type LineEditMode = "always" | "conditional" | "never";
+export function liveLineEditMode(env: Record<string, string | undefined> = process.env): LineEditMode {
+  const value = env.EDITORIAL_LIVE_LINE_EDIT;
+  return value === "always" || value === "never" || value === "conditional" ? value : DEFAULT_LINE_EDIT;
+}
+export const DEFAULT_LINE_EDIT: LineEditMode = "always";
 
 /**
  * Live orchestrator (roadmap H.10): author → line editor → code checks +
@@ -27,6 +41,7 @@ export type LiveRequest = {
   context: ChapterContext | null;
   gates: GateDeps;
   costCapUsd?: number;
+  lineEdit?: LineEditMode;
 };
 
 export type LiveOutcome =
@@ -45,7 +60,12 @@ export async function runLiveChapter(request: LiveRequest, llm: EditorialLLM, lo
   };
   const work = async (): Promise<LiveOutcome> => {
     const draft = await draftText(deps, request.brief, request.style, request.context);
-    let text = await lineEdit(deps, request.brief, request.style, draft);
+    const mode = request.lineEdit ?? liveLineEditMode();
+    let text = draft;
+    if (mode !== "never") {
+      const pre = await preChecks(deps, request.brief, request.style, draft);
+      if (mode === "always" || !draftIsClean(pre)) text = await lineEdit(deps, request.brief, request.style, draft, pre);
+    }
     for (;;) {
       const [gates, reviews] = await Promise.all([
         codeChecks(deps, request.brief, request.style, text),

@@ -1,6 +1,7 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { getAIProvider } from "@/lib/ai";
+import { getAIEmbeddingInfo, getAIProvider } from "@/lib/ai";
+import type { PassageEmbedder } from "./passage-publisher";
 import { resolveAIRuntimeConfig } from "@/lib/ai/runtime-config";
 import { LanguageToolChecker } from "@/lib/linguistic/languagetool";
 import type { GateDeps } from "./gates";
@@ -31,6 +32,12 @@ export function editorialGateDeps(): Omit<GateDeps, "forbiddenNames" | "allowedN
       }
       : undefined,
   };
+}
+
+/** Embeddings for published passages (semantic duplicate checks); null without a provider. */
+export function editorialEmbedder(): PassageEmbedder | null {
+  if (!editorialProviderConfigured()) return null;
+  try { return { embed: (text) => getAIProvider().embed({ text }), model: getAIEmbeddingInfo().model }; } catch { return null; }
 }
 
 export function storyDeps(db: SupabaseClient): StoryDeps {
