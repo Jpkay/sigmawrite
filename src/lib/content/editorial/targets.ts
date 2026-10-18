@@ -95,8 +95,22 @@ export function textVariants(template: string): string[] {
 export type LemmaPresence = { lemma: string; found: boolean; form?: string };
 
 export function checkLemmaPresence(template: string, lemmas: string[]): LemmaPresence[] {
-  const words = new Set(textVariants(template).flatMap(wordsOf));
+  const variants = textVariants(template).map(wordsOf);
+  const words = new Set(variants.flat());
   return lemmas.map((lemma) => {
+    const parts = wordsOf(lemma);
+    // Multi-word targets ("esprit critique") are found as consecutive words, each in any of its forms.
+    if (parts.length > 1) {
+      const partForms = parts.map((part) => lemmaForms(part));
+      for (const tokens of variants) {
+        for (let start = 0; start + parts.length <= tokens.length; start += 1) {
+          if (partForms.every((forms, offset) => forms.has(tokens[start + offset]))) {
+            return { lemma, found: true, form: tokens.slice(start, start + parts.length).join(" ") };
+          }
+        }
+      }
+      return { lemma, found: false };
+    }
     const form = [...lemmaForms(lemma.toLocaleLowerCase("fr"))].find((candidate) => words.has(candidate));
     return { lemma, found: Boolean(form), form };
   });

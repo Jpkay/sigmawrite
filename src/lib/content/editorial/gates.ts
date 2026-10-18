@@ -113,18 +113,21 @@ function corpusNgrams(): Set<string> {
   return corpusGrams;
 }
 
-/** Provider moderation must answer within this delay (one retry), else the hard gate fails closed. */
+/** Provider moderation must answer within this delay per attempt (3 attempts), else the hard gate fails closed. */
 export const MODERATION_TIMEOUT_MS = Number(process.env.EDITORIAL_MODERATION_TIMEOUT_MS ?? 15_000);
+const MODERATION_ATTEMPTS = 3;
 
 async function moderateWithTimeout(moderate: NonNullable<GateDeps["moderate"]>, text: string, timeoutMs: number): Promise<{ allowed: boolean; categories: string[] }> {
-  for (let attempt = 0; attempt < 2; attempt += 1) {
+  for (let attempt = 0; attempt < MODERATION_ATTEMPTS; attempt += 1) {
+    // Short growing pause between attempts: the model behind moderation has occasional slow or malformed answers.
+    if (attempt > 0) await new Promise((resolve) => setTimeout(resolve, Math.min(2_000, Math.ceil(timeoutMs / 10)) * attempt));
     let timer: ReturnType<typeof setTimeout> | undefined;
     try {
       return await Promise.race([
         moderate(text),
         new Promise<never>((_, reject) => { timer = setTimeout(() => reject(new Error("moderation_timeout")), timeoutMs); }),
       ]);
-    } catch { /* retried once, then fails closed */ } finally { if (timer) clearTimeout(timer); }
+    } catch { /* retried, then fails closed */ } finally { if (timer) clearTimeout(timer); }
   }
   return { allowed: false, categories: ["moderation_unavailable"] };
 }
