@@ -226,12 +226,13 @@ function demoLearningState(studentId: string) {
         dueAt: isoDaysAgo(0),
       },
     ],
+    // First-met sentences feed "Mon trésor de mots" and the word introductions (roadmap 2026-10 D.1, D.7).
     vocab: {
-      migration: { exposures: 2, lastSeenAt: firstCompleted },
-      opportunité: { exposures: 2, lastSeenAt: firstCompleted },
-      biais: { exposures: 2, lastSeenAt: secondCompleted },
-      "esprit critique": { exposures: 1, lastSeenAt: secondCompleted },
-    },
+      migration: { exposures: 2, lastSeenAt: firstCompleted, sentence: "La migration des joueurs vers les grands clubs change le football.", interest: "football" },
+      opportunité: { exposures: 2, lastSeenAt: firstCompleted, sentence: "Chaque match est une opportunité de progresser.", interest: "football" },
+      biais: { exposures: 2, lastSeenAt: secondCompleted, sentence: "Un biais peut déformer ce que l'on voit sur les réseaux.", interest: "social_media" },
+      "esprit critique": { exposures: 1, lastSeenAt: secondCompleted, sentence: null, interest: null },
+    } as Record<string, { exposures: number; lastSeenAt: string; sentence: string | null; interest: string | null }>,
   };
 }
 
@@ -422,9 +423,13 @@ async function seedRelationalLearningData(studentId: string) {
   const masteryRows = (vocabulary ?? []).map((item) => ({
     student_id: studentId,
     vocabulary_item_id: item.id,
-    mastery: Math.min(1, state.vocab[item.display_word].exposures / 5),
+    mastery: 0, // A.1: exposure never raises mastery
     exposures: state.vocab[item.display_word].exposures,
     last_seen_at: state.vocab[item.display_word].lastSeenAt,
+    first_seen_at: state.vocab[item.display_word].lastSeenAt,
+    first_seen_sentence: state.vocab[item.display_word].sentence,
+    first_seen_interest: state.vocab[item.display_word].interest,
+    to_introduce: !!state.vocab[item.display_word].sentence,
   }));
   const { error: masteryError } = await supabase.from("student_word_mastery").insert(masteryRows);
   if (masteryError) fail("Impossible de créer la maîtrise du vocabulaire", masteryError);

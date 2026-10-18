@@ -250,12 +250,14 @@ export type TreasureWord = { itemId: string; word: string; definition: string | 
 export type TreasureGroup = { interest: string | null; words: TreasureWord[] };
 
 export async function loadWordTreasure(): Promise<TreasureGroup[]> {
-  const { supabase, studentId } = await studentContext();
+  const { studentId } = await studentContext();
+  // Service read after authentication: the collection is the student's own rows only.
+  const service = createServiceClient();
   const [{ data, error }, { data: interests }] = await Promise.all([
-    supabase.from("student_word_mastery")
+    service.from("student_word_mastery")
       .select("word_status,first_seen_sentence,first_seen_interest,vocabulary_items!inner(id,display_word,definition_fr)")
       .eq("student_id", studentId).not("vocabulary_items.definition_fr", "is", null).limit(1000),
-    supabase.from("student_interests").select("interest_key,declared_strength").eq("student_id", studentId),
+    service.from("student_interests").select("interest_key,declared_strength").eq("student_id", studentId),
   ]);
   if (error) throw new Error(error.message);
   const order = (interests ?? []).sort((a, b) => Number(b.declared_strength ?? 0) - Number(a.declared_strength ?? 0)).map((row) => row.interest_key as string);
