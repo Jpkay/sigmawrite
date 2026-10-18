@@ -13,6 +13,8 @@ export type DictationCatalogDisplayInput = {
   estimatedMinutes: number;
   lastScore: number | null;
   attempts: number;
+  chips?: string[];
+  suggested?: number | null;
 };
 
 export type DictationSessionDisplayInput = {
@@ -80,7 +82,19 @@ export const DICTATION_GRADE_LABELS: Record<number, string> = {
 
 export const DICTATION_COPY = {
   catalogLoading: "Chargement…",
-  catalogEmpty: "Aucune dictée publiée pour l’instant. Elles arrivent dès qu’un enseignant les a relues.",
+  catalogEmpty: "Aucune dictée publiée pour l’instant. Elles arrivent très bientôt.",
+  suggestionsTitle: "Choisis ta dictée du jour",
+  suggestionsHelp: "Quelques idées choisies pour toi. Prends celle qui te plaît.",
+  allTitle: "Toutes les dictées",
+  stepIntroSteps: [
+    "On écrit une phrase à la fois.",
+    "Tu peux réécouter la phrase autant que tu veux, et même plus lentement.",
+    "Tu peux revenir à une phrase avant de valider.",
+  ],
+  replaySlow: "Plus lentement",
+  replaySentence: "Réécouter la phrase",
+  nextSentence: "Phrase suivante",
+  sentenceNoted: "Phrase notée !",
   catalogError: "Chargement impossible.",
   lastScore: "Dernier score :",
   notAttempted: "Pas encore faite",
@@ -140,6 +154,13 @@ export const dictationCatalogMeta = (row: Pick<DictationCatalogDisplayInput, "wo
 
 export const dictationLastScore = (score: number) => `${DICTATION_COPY.lastScore} ${score}/10`;
 
+/** Suggested dictées in rank order (the student chooses among 2–3). */
+export function suggestedDictations<T extends Pick<DictationCatalogDisplayInput, "suggested">>(rows: readonly T[]): T[] {
+  return rows.filter((row) => row.suggested != null).sort((a, b) => (a.suggested ?? 0) - (b.suggested ?? 0));
+}
+
+export const dictationSentencePosition = (position: number, total: number) => `Phrase ${position + 1} / ${total}`;
+
 export function dictationCatalogDisplay(rows: DictationCatalogDisplayInput[]) {
   return {
     copy: {
@@ -156,7 +177,10 @@ export function dictationCatalogDisplay(rows: DictationCatalogDisplayInput[]) {
       focus: row.focus,
       score: row.lastScore == null ? DICTATION_COPY.notAttempted : dictationLastScore(row.lastScore),
       control: row.attempts > 0 ? DICTATION_COPY.retry : DICTATION_COPY.start,
+      chips: row.chips ?? [],
+      suggested: row.suggested ?? null,
     })),
+    suggestions: suggestedDictations(rows).length >= 2 ? { title: DICTATION_COPY.suggestionsTitle, help: DICTATION_COPY.suggestionsHelp, ids: suggestedDictations(rows).map((row) => row.id) } : null,
   };
 }
 

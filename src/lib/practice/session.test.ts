@@ -74,3 +74,39 @@ it("uses interests among similarly suitable exercises and never crosses a diffic
   expect(selectOptimalPracticeItems(items, 0, 3, ["football"]).map((item) => item.id)).toEqual(["football", "neutral", "too-hard"]);
   expect(selectOptimalPracticeItems(items, 0, 1, []).map((item) => item.id)).toEqual(["neutral"]);
 });
+
+describe("interest weight in the practice picker (E.4)", () => {
+  it("prefers a themed item a little further from the target over a neutral one", () => {
+    // Both in the 75–85% zone: neutral sits on 82%, themed is ~4 points away.
+    const neutral = { id: "neutral", difficultyRating: -Math.log(0.82 / 0.18), interestKeys: [] as string[] };
+    const themed = { id: "themed", difficultyRating: -Math.log(0.78 / 0.22), interestKeys: ["manga"] };
+    expect(selectOptimalPracticeItems([neutral, themed], 0, 1, ["manga"]).map((item) => item.id)).toEqual(["themed"]);
+    expect(selectOptimalPracticeItems([neutral, themed], 0, 1, []).map((item) => item.id)).toEqual(["neutral"]);
+  });
+
+  it("gives the closest interest group a smaller but real weight", () => {
+    const neutral = { id: "neutral", difficultyRating: -Math.log(0.82 / 0.18), interestKeys: [] as string[] };
+    const sameGroup = { id: "anime", difficultyRating: -Math.log(0.8 / 0.2), interestKeys: ["anime"] };
+    const farGroup = { id: "anime-far", difficultyRating: -Math.log(0.76 / 0.24), interestKeys: ["anime"] };
+    expect(selectOptimalPracticeItems([neutral, sameGroup], 0, 1, ["manga"])[0].id).toBe("anime");
+    expect(selectOptimalPracticeItems([neutral, farGroup], 0, 1, ["manga"])[0].id).toBe("neutral");
+  });
+
+  it("never lifts an out-of-zone themed item above an in-zone one", () => {
+    const inZone = { id: "in-zone", difficultyRating: -Math.log(0.84 / 0.16), interestKeys: [] as string[] };
+    const tooHard = { id: "too-hard", difficultyRating: -Math.log(0.74 / 0.26), interestKeys: ["manga"] };
+    const tooEasy = { id: "too-easy", difficultyRating: -Math.log(0.86 / 0.14), interestKeys: ["manga"] };
+    for (const item of [tooHard, tooEasy]) {
+      expect(predictedSuccess(0, item.difficultyRating) < OPTIMAL_SUCCESS_ZONE.min || predictedSuccess(0, item.difficultyRating) > OPTIMAL_SUCCESS_ZONE.max).toBe(true);
+    }
+    expect(selectOptimalPracticeItems([tooHard, tooEasy, inZone], 0, 3, ["manga"])[0].id).toBe("in-zone");
+  });
+
+  it("opens the session on a themed in-zone item when one is selected", () => {
+    const neutral = { id: "neutral", difficultyRating: -Math.log(0.82 / 0.18), interestKeys: [] as string[] };
+    // Same-group item ranks second on fit, but the session still opens on it.
+    const themed = { id: "themed", difficultyRating: -Math.log(0.755 / 0.245), interestKeys: ["anime"] };
+    expect(selectOptimalPracticeItems([neutral, themed], 0, 2, []).map((item) => item.id)).toEqual(["neutral", "themed"]);
+    expect(selectOptimalPracticeItems([neutral, themed], 0, 2, ["manga"]).map((item) => item.id)).toEqual(["themed", "neutral"]);
+  });
+});

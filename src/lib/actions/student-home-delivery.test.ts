@@ -12,7 +12,7 @@ import {loadStudentHome} from './student';
 beforeEach(()=>{vi.resetAllMocks();const query:unknown=new Proxy({}, {get:(_target,key)=>key==='then'?(resolve:unknown,reject:unknown)=>Promise.reject(Error('section unavailable')).then(resolve as never,reject as never):()=>query});f.queries.mockReturnValue(query);f.journal.mockImplementation(async(_owner,_boundary,payload)=>payload);});
 it('records the combined fallback response when optional sections are unavailable',async()=>{
  const result=await loadStudentHome({});
- expect(result).toEqual({texts:null,plan:null,fallbackPlan:null,motivation:null,resume:null,assessment:null,recap:null,classGoal:null,league:null});
+ expect(result).toEqual({texts:null,plan:null,fallbackPlan:null,motivation:null,resume:null,assessment:null,recap:null,classGoal:null,league:null,interestNote:null});
  expect(f.journal).toHaveBeenLastCalledWith('authenticated-owner','student:home',{...result,displayText:homeDynamicDisplay(result),motivationDisplay:null,leagueDisplay:null});
 });
 it('does not swallow failure of the final recording step',async()=>{

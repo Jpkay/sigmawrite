@@ -13,7 +13,7 @@ const row={id:'dictation',key:'horses',title_fr:'Les chevaux dans le pré',kind:
 beforeEach(()=>{
  vi.resetAllMocks();f.error=null;
  f.journal.mockImplementation(async(_owner,_boundary,payload)=>payload);
- f.from.mockImplementation((table:string)=>{const q={select:()=>q,eq:(...args:unknown[])=>{f.eq(...args);return q;},not:()=>q,order:()=>q,then:(resolve:(value:unknown)=>unknown)=>Promise.resolve(resolve({data:table==='dictations'?[row]:[],error:f.error}))};return q;});
+ f.from.mockImplementation((table:string)=>{const q={select:()=>q,eq:(...args:unknown[])=>{f.eq(...args);return q;},in:()=>q,gte:()=>q,not:()=>q,order:()=>q,limit:()=>q,single:async()=>({data:null,error:null}),then:(resolve:(value:unknown)=>unknown)=>Promise.resolve(resolve({data:table==='dictations'?[row]:[],error:f.error}))};return q;});
 });
 it('records only the delivered catalog and scopes prior attempts to the authenticated owner',async()=>{
  const result=await loadDictationCatalog({});

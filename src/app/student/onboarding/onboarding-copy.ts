@@ -20,7 +20,7 @@ export const onboardingCopy = {
   "diagnosticScope": "Le diagnostic porte sur la lecture et l’écriture. Il n’évalue pas encore l’oral.",
   "continue": "Continuer",
   "interestsQuestion": "Qu'est-ce qui t'intéresse ?",
-  "interestsHelp": "Choisis au moins 3 sujets. Tes textes partiront de là.",
+  "interestsHelp": "Choisis au moins 3 sujets. On s’en inspire pour choisir tes textes.",
   "back": "Retour",
   "start": "Commencer le diagnostic"
 } as const;
@@ -92,13 +92,24 @@ export const onboardingPayload = {
  interests:INTERESTS.map(({key,labelFr,emoji})=>({key,labelFr,emoji})),
  remaining:["", "Encore 1 sujet.", "Encore 2 sujets.", "Encore 3 sujets."],
 };
-export type OnboardingPayload = typeof onboardingPayload;
+/**
+ * Roadmap E.6: the strong promise only once every interest offered has its
+ * minimum content (E.2); the modest line in `onboardingCopy` until then.
+ */
+export const INTERESTS_HELP_PROMISE = "Choisis au moins 3 sujets. Tes textes partiront de là.";
+export type OnboardingPayload = Omit<typeof onboardingPayload, "copy"> & { copy: Omit<typeof onboardingCopy, "interestsHelp"> & { interestsHelp: string } };
+export function onboardingPayloadFor(interestPromiseKept: boolean): OnboardingPayload {
+ return interestPromiseKept ? { ...onboardingPayload, copy: { ...onboardingCopy, interestsHelp: INTERESTS_HELP_PROMISE } } : onboardingPayload;
+}
 /** Only delivered display copy, not routing metadata or a student's choices. */
-export const onboardingDisplayText = {
- copy:onboardingPayload.copy,
- grades:onboardingPayload.grades.map(option=>option.label),
- backgrounds:onboardingPayload.backgrounds.map(option=>option.label),
- exposures:onboardingPayload.exposures.map(option=>option.label),
- interests:onboardingPayload.interests.map(({labelFr,emoji})=>({labelFr,emoji})),
- remaining:onboardingPayload.remaining,
-};
+export function onboardingDisplayTextFor(payload: OnboardingPayload) {
+ return {
+  copy:payload.copy,
+  grades:payload.grades.map(option=>option.label),
+  backgrounds:payload.backgrounds.map(option=>option.label),
+  exposures:payload.exposures.map(option=>option.label),
+  interests:payload.interests.map(({labelFr,emoji})=>({labelFr,emoji})),
+  remaining:payload.remaining,
+ };
+}
+export const onboardingDisplayText = onboardingDisplayTextFor(onboardingPayload);
