@@ -228,8 +228,8 @@ function demoLearningState(studentId: string) {
     ],
     // First-met sentences feed "Mon trésor de mots" and the word introductions (roadmap 2026-10 D.1, D.7).
     vocab: {
-      migration: { exposures: 2, lastSeenAt: firstCompleted, sentence: "La migration des joueurs vers les grands clubs change le football.", interest: "football" },
-      opportunité: { exposures: 2, lastSeenAt: firstCompleted, sentence: "Chaque match est une opportunité de progresser.", interest: "football" },
+      migration: { exposures: 2, lastSeenAt: firstCompleted, sentence: "Ce déplacement de personnes d'un endroit vers un autre porte un nom : la migration.", interest: "football" },
+      opportunité: { exposures: 2, lastSeenAt: firstCompleted, sentence: "La raison principale est l'opportunité économique.", interest: "football" },
       biais: { exposures: 2, lastSeenAt: secondCompleted, sentence: "Un biais peut déformer ce que l'on voit sur les réseaux.", interest: "social_media" },
       "esprit critique": { exposures: 1, lastSeenAt: secondCompleted, sentence: null, interest: null },
     } as Record<string, { exposures: number; lastSeenAt: string; sentence: string | null; interest: string | null }>,

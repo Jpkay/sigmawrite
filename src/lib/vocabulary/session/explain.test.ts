@@ -56,3 +56,31 @@ describe("explain grading fails closed", () => {
     ]);
   });
 });
+
+describe("model check behind the provider layer", () => {
+  const ref = GOLDEN_REFERENCES["vaste"];
+  const provider = (summary: { score: number; capturedMainIdea: boolean } | Error) => ({
+    scoreSummary: vi.fn(async () => { if (summary instanceof Error) throw summary; return { ...summary, keptCauseEffect: false, omittedDetails: false, feedbackFr: "" }; }),
+  }) as unknown as import("@/lib/ai/provider").AIProvider;
+  it("maps a confident model score to a verdict and passes only the vetted definition", async () => {
+    const { judgeFromProvider, EXPLAIN_SYSTEM_PROMPT } = await import("./explain-judge");
+    const fake = provider({ score: 92, capturedMainIdea: true });
+    const grade = await gradeExplanation("ça prend beaucoup de place partout", ref, judgeFromProvider(fake));
+    expect(grade).toMatchObject({ verdict: "correct", source: "model" });
+    const call = (fake.scoreSummary as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(call[0].textBody).toContain(ref.definition);
+    expect(call[1]).toEqual({ systemPrompt: EXPLAIN_SYSTEM_PROMPT });
+  });
+  it("an unsure or failing model never makes an answer wrong", async () => {
+    const { judgeFromProvider } = await import("./explain-judge");
+    expect((await gradeExplanation("ça prend beaucoup de place partout", ref, judgeFromProvider(provider({ score: 50, capturedMainIdea: false })))).verdict).toBe("uncertain");
+    expect((await gradeExplanation("ça prend beaucoup de place partout", ref, judgeFromProvider(provider(new Error("timeout"))))).verdict).toBe("uncertain");
+  });
+  it("the mock provider is never used as a judge", async () => {
+    vi.resetModules();
+    vi.doMock("server-only", () => ({}));
+    vi.doMock("@/lib/ai", () => ({ getAIProvider: vi.fn(), getAIProviderInfo: () => ({ provider: "mock", model: null }) }));
+    const { providerJudge } = await import("./explain-server");
+    expect(providerJudge()).toBeNull();
+  });
+});

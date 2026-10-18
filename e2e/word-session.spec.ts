@@ -27,7 +27,7 @@ test.describe("student words", () => {
     await expect(page.getByRole("heading", { name: "Mon trésor de mots" })).toBeVisible();
     await expect(page.getByText("Rappel éclair", { exact: true })).toBeVisible();
     await expect(page.getByRole("heading", { name: /Football/ })).toBeVisible();
-    await expect(page.getByText("Chaque match est une opportunité de progresser.")).toBeVisible();
+    await expect(page.getByText("La raison principale est l'opportunité économique.")).toBeVisible();
     await expect(page.locator("body")).not.toContainText(/\d+ à réviser/);
     await accessible(page);
 

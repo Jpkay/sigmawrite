@@ -11,6 +11,7 @@ import { getAIProvider, getAIProviderInfo } from "@/lib/ai";
 import { logAudit } from "@/lib/audit";
 import { moderateStudentText } from "@/lib/safety/moderate-input";
 import type { Judge } from "./explain";
+import { judgeFromProvider } from "./explain-judge";
 
 export async function moderateWordExplanation(input: { supabase: SupabaseClient; studentId: string; text: string }): Promise<void> {
   const { data: limit, error: limitError } = await input.supabase.rpc("consume_student_action", { p_scope: "free_text" });
@@ -30,29 +31,9 @@ export async function moderateWordExplanation(input: { supabase: SupabaseClient;
   throw new Error("Ta réponse n'a pas pu être enregistrée.");
 }
 
-export const EXPLAIN_SYSTEM_PROMPT = [
-  "Tu vérifies si un élève de 9 à 15 ans a compris le sens d’un mot français.",
-  "Tu reçois le mot, sa définition validée, des reformulations acceptées et la réponse de l’élève.",
-  "Juge uniquement le SENS, jamais l’orthographe ni la grammaire de l’élève.",
-  "score : 80 à 100 si la réponse dit l’essentiel de la définition validée (même avec d’autres mots ou un synonyme juste) ;",
-  "40 à 79 si elle est en partie juste (une partie du sens, un sens voisin, trop vague) ; 0 à 39 si elle est fausse ou contraire.",
-  "capturedMainIdea : true seulement si tu es sûr de ton jugement. En cas de doute, mets false.",
-  "feedbackFr : une courte phrase neutre. N’invente aucune autre définition que la définition validée.",
-].join("\n");
-
 /** The real model check, or null when only the mock provider is configured. */
 export function providerJudge(): Judge | null {
   if (process.env.WORD_EXPLAIN_MODEL_ENABLED === "false") return null;
   if (getAIProviderInfo().provider === "mock") return null;
-  return async (input) => {
-    const result = await getAIProvider().scoreSummary({
-      textBody: `Mot : ${input.word}\nDéfinition validée : ${input.definition}\nReformulations acceptées : ${input.accepted.join(" ; ") || "aucune"}`,
-      studentSummary: input.answer,
-      rubric: "Sens du mot uniquement.",
-    }, { systemPrompt: EXPLAIN_SYSTEM_PROMPT });
-    const verdict = result.score >= 80 ? "correct" : result.score >= 40 ? "partial" : "wrong";
-    // The model must say it is sure; a borderline score is never decisive.
-    const margin = verdict === "correct" ? (result.score - 80) / 20 : verdict === "wrong" ? (39 - result.score) / 39 : 0.5;
-    return { verdict, confidence: result.capturedMainIdea || verdict === "wrong" ? 0.7 + 0.3 * Math.max(0, Math.min(1, margin)) : 0.5 };
-  };
+  return judgeFromProvider(getAIProvider());
 }
