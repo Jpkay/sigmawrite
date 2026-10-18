@@ -4,6 +4,7 @@ import type { DifficultyBand, ReviewStatus, TextType } from "@/lib/types";
 import type { SeedText } from "@/lib/content/types";
 import { SEED_TEXT_BY_ID } from "@/lib/content/texts";
 import { paragraphsFromText } from "@/lib/content/text-format";
+import { pickClosestByInterest } from "@/lib/content/interest-matching";
 import { createClient } from "@/lib/supabase/server";
 
 type CandidateRow = {
@@ -244,6 +245,8 @@ export async function recommendPublishedTextKey(
   client?: SupabaseClient
 ): Promise<string> {
   const library = await getContentLibrary(client);
-  const match = library.find((row) => row.primaryInterest && interests.includes(row.primaryInterest));
-  return (match ?? library[0])?.slug ?? Object.keys(SEED_TEXT_BY_ID)[0];
+  // Roadmap E.5: closest interest group, not silently library[0]. With no
+  // close match the first item is still served; the home says what we are
+  // preparing (see loadInterestPreparingNote).
+  return pickClosestByInterest(library, interests).item?.slug ?? Object.keys(SEED_TEXT_BY_ID)[0];
 }
