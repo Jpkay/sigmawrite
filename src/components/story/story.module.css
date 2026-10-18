@@ -1,0 +1,82 @@
+/* "Tu es le héros" — a calm book page. Motion is decorative only and
+   disappears under prefers-reduced-motion and Plume's own reduced-motion
+   setting (globals.css also neutralises durations). */
+
+.page {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 1.1875rem;
+  line-height: 1.8;
+  font-feature-settings: "kern", "liga", "onum";
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  .page { font-size: 1.25rem; }
+}
+
+.page p + p { text-indent: 1.4em; }
+
+.dropCap::first-letter {
+  float: left;
+  margin: 0.08em 0.12em 0 0;
+  font-size: 3.4em;
+  line-height: 0.82;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.serif {
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+}
+
+.ornament {
+  letter-spacing: 0.6em;
+  color: var(--secondary);
+  text-align: center;
+  user-select: none;
+}
+
+.fadeIn { animation: storyFadeIn 520ms ease-out both; }
+
+@keyframes storyFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.quill {
+  display: inline-block;
+  transform-origin: 20% 90%;
+  animation: storyQuill 1.6s ease-in-out infinite;
+}
+
+@keyframes storyQuill {
+  0%, 100% { transform: rotate(-8deg) translateX(0); }
+  50% { transform: rotate(6deg) translateX(10px); }
+}
+
+.inkLine {
+  height: 2px;
+  background: linear-gradient(90deg, var(--brand), transparent);
+  transform-origin: left center;
+  animation: storyInk 1.6s ease-in-out infinite;
+}
+
+@keyframes storyInk {
+  0% { transform: scaleX(0.05); opacity: 0.4; }
+  60% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeIn, .quill, .inkLine { animation: none; }
+}
+
+:global(html[data-reduced-motion="true"]) .fadeIn,
+:global(html[data-reduced-motion="true"]) .quill,
+:global(html[data-reduced-motion="true"]) .inkLine { animation: none; }
+
+@media print {
+  .noPrint { display: none; }
+}

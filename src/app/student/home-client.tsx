@@ -19,8 +19,10 @@ import type {Assignment} from "@/lib/diagnostic/granular/assignment-display";
 import { track } from "@/lib/analytics";
 import { interestEmoji } from "@/lib/content/interest-matching";
 import { studentSchoolGradeLabel } from "@/lib/school-grade";
+import { StoryHomeCard } from "@/components/story/story-home-card";
+import type { StoryHomeCard as StoryHomeCardData } from "@/lib/story/server";
 
-export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY;assignments?:Assignment[]}) {
+export default function StudentHome({copy,assignments=[],story=null}:{copy:typeof HOME_COPY;assignments?:Assignment[];story?:StoryHomeCardData}) {
   const state = useStudentState();
   const fallback = homeFallbackText(state.interests);
   const recommendationKey=JSON.stringify(state.interests);
@@ -151,6 +153,8 @@ export default function StudentHome({copy,assignments=[]}:{copy:typeof HOME_COPY
           <div className="flex flex-col justify-center border-l border-border pl-6 lg:border-l-0 lg:border-t lg:pl-0 lg:pt-5"><p className="font-display text-3xl font-bold tracking-[-0.04em]">{completed}</p><p className="mt-2 text-xs text-muted-foreground">{copy.finished}</p></div>
         </div>
       </section>
+
+      <StoryHomeCard card={story} />
 
       {motivation && <section className="mb-10 border-b border-border-strong pb-8">
         <div className="grid items-start gap-7 lg:grid-cols-2 lg:gap-10">
