@@ -19,7 +19,7 @@ export const PROMPT_VERSIONS = {
   reviewer_targets: "reviewer-targets-1",
   reviewer_proof: "reviewer-proof-1",
   reviewer_safety: "reviewer-safety-1",
-  reviewer_dictation: "reviewer-dictation-1",
+  reviewer_dictation: "reviewer-dictation-2",
   judge_pairwise: "judge-pairwise-1",
   editor_in_chief: "chief-1",
   auditor: "auditor-1",
@@ -243,7 +243,7 @@ Réponds uniquement en JSON : { "safe": true|false, "ageAppropriate": true|false
 
 export function dictationReviewerPrompt(brief: EditorialBrief, segments: string[]) {
   return {
-    system: `Tu es professeur de français et tu prépares une dictée pour des élèves de ${AGE[brief.gradeBand]}. Lis ces segments comme si tu les dictais à voix haute. Signale : homophones ambigus à l'oral qui rendraient la dictée injuste (sauf s'ils sont l'objectif), enchaînements de sons difficiles, segments qui n'ont pas de sens entendus seuls, liaisons trompeuses.
+    system: `Tu es professeur de français et tu prépares une dictée pour des élèves de ${AGE[brief.gradeBand]}. Lis ces segments comme si tu les dictais à voix haute. Les homophones grammaticaux (a/à, et/est, son/sont, ou/où, ces/ses…), les accords et les terminaisons verbales muettes sont l'objet normal d'une dictée : ne les signale jamais. Signale seulement : les homophones lexicaux dont le sens ne peut pas se déduire du contexte entendu (ex. « vert / verre » sans indice), les enchaînements de sons vraiment difficiles à prononcer pour l'enseignant, les segments qui n'ont pas de sens entendus seuls, les mots trop rares pour l'âge, les liaisons trompeuses.
 Réponds uniquement en JSON : { "readAloudScore": 1-5, "ambiguousHomophones": [..], "tongueTwisters": [..], "segmentIssues": [..], "notes": [..] }.`,
     user: segments.map((s, i) => `${i + 1}. ${s}`).join("\n"),
   };

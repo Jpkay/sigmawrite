@@ -90,8 +90,18 @@ export type Reviews = {
 /** Reviewers run in parallel; a reviewer failure is recorded, never silently treated as a pass. */
 export async function review(deps: TeamDeps, brief: EditorialBrief, style: StyleCard, text: AuthorOutput, options: { auditorRole?: boolean } = {}): Promise<Reviews> {
   const errors: string[] = [];
+  // One retry per reviewer; a reviewer that still fails is recorded (and blocks where it matters), never treated as a pass.
   const guard = async <T>(name: string, run: () => Promise<T>): Promise<T | null> => {
-    try { return await run(); } catch (error) { errors.push(`${name}:${error instanceof Error ? error.message : "error"}`); return null; }
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      try { return await run(); } catch (error) {
+        if (attempt === 1) {
+          const message = `${name}:${error instanceof Error ? error.message.slice(0, 200) : "error"}`;
+          errors.push(message);
+          await deps.logger.step({ role: "code_checks", model: null, promptVersion: null, inputDigest: null, output: { reviewerError: message }, score: null, inputTokens: 0, outputTokens: 0, costUsd: 0, latencyMs: 0 });
+        }
+      }
+    }
+    return null;
   };
   const segments = brief.kind === "dictation" ? segmentDictation(text.body, brief.gradeBand) : [];
   const [style_, targets, proof, safety, dictation] = await Promise.all([

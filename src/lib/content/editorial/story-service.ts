@@ -10,6 +10,8 @@ import type { SagaOutline } from "./prompts";
 import { allowedCastNames, appendToSummary, architectSaga, chapterCountFor, tensesForChapter } from "./saga";
 import { finishRun, startRun, SupabaseRunLogger } from "./store";
 import { getStyleCard, pickStyle, studentExcerpt } from "./styles";
+import { getDueWordCards } from "@/lib/vocabulary/server";
+import { captureReadingExposure } from "@/lib/vocabulary/capture";
 import { EDITORIAL_PIPELINE_VERSION, TENSES_BY_BAND, gradeBandFor, type GradeBand, type TargetLemma, type TenseKey } from "./types";
 
 /**
@@ -22,19 +24,20 @@ export type TargetWordSource = (db: SupabaseClient, studentId: string, grade: nu
 
 const SIMPLE_LEMMA = /^[\p{L}][\p{L}' -]{1,38}$/u;
 
-/** Default target words: due words by review date (Phase B/C tables), plus up to 2 unseen words. */
+/**
+ * Default target words: today's due cards and words to introduce from the
+ * word-memory interface (src/lib/vocabulary, getDueWordCards), caps applied.
+ * Failures return no targets: a chapter is still written.
+ */
 export const defaultTargetWords: TargetWordSource = async (db, studentId) => {
   try {
-    const { data: due } = await db.from("student_word_mastery").select("next_review_at,vocabulary_items!inner(lemma,definition_fr)")
-      .eq("student_id", studentId).lte("next_review_at", new Date().toISOString()).order("next_review_at", { ascending: true }).limit(8);
-    const dueLemmas = ((due ?? []) as unknown as Array<{ vocabulary_items: { lemma: string; definition_fr: string | null } }>)
-      .map((row) => ({ lemma: row.vocabulary_items.lemma, kind: "due" as const, definition: row.vocabulary_items.definition_fr ?? undefined }))
-      .filter((l) => SIMPLE_LEMMA.test(l.lemma)).slice(0, 5);
-    const { data: seen } = await db.from("student_word_mastery").select("vocabulary_item_id").eq("student_id", studentId).limit(2000);
-    const seenIds = new Set((seen ?? []).map((r) => r.vocabulary_item_id as string));
-    const { data: fresh } = await db.from("vocabulary_items").select("id,lemma,definition_fr").not("definition_fr", "is", null).order("difficulty", { ascending: true }).limit(60);
-    const newLemmas = (fresh ?? []).filter((v) => !seenIds.has(v.id as string) && SIMPLE_LEMMA.test(v.lemma as string))
-      .slice(0, 2).map((v) => ({ lemma: v.lemma as string, kind: "new" as const, definition: (v.definition_fr as string | null) ?? undefined }));
+    const plan = await getDueWordCards(db, studentId);
+    const dueLemmas = plan.reviews
+      .filter((r) => r.word && SIMPLE_LEMMA.test(r.word))
+      .map((r) => ({ lemma: r.word as string, kind: "due" as const, definition: r.definition ?? undefined }))
+      .filter((l, i, all) => all.findIndex((x) => x.lemma === l.lemma) === i).slice(0, 5);
+    const newLemmas = plan.toIntroduce.filter((w) => SIMPLE_LEMMA.test(w.word)).slice(0, Math.min(2, plan.newWordAllowance))
+      .map((w) => ({ lemma: w.word, kind: "new" as const, definition: w.definition ?? undefined }));
     return { newLemmas, dueLemmas };
   } catch {
     return { newLemmas: [], dueLemmas: [] };
@@ -252,6 +255,9 @@ export async function choose(deps: StoryDeps, input: { sagaId: string; chapterId
     if (!data) throw new Error("choice_not_found");
     choice = { id: data.id as string, label: data.label as string };
   }
+  // D.6: words met in the chapter count as embedded exposure (best effort, never blocks the student).
+  const { data: body } = await deps.db.from("story_chapters").select("body_template").eq("id", chapter.id).maybeSingle();
+  if (body?.body_template) await captureReadingExposure(deps.db, { studentId: saga.student_id, sessionId: `story:${chapter.id}`, textVersionId: chapter.id as string, paragraphs: renderHero(body.body_template as string, { name: saga.hero_name, gender: saga.hero_gender }).split(/\n{2,}/u), interest: saga.interest, at: new Date().toISOString(), source: "story" });
   await deps.db.from("story_chapter_reads").upsert({ student_id: saga.student_id, chapter_id: chapter.id, choice_id: choice?.id ?? null, rating: input.rating ?? null, read_at: new Date().toISOString() }, { onConflict: "student_id,chapter_id" });
   const summary = appendToSummary(saga.running_summary, Number(chapter.chapter_index), (chapter.chapter_summary as string | null) ?? "", choice?.label ?? null);
   if (isLast) {

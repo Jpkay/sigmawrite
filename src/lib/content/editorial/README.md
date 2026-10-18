@@ -62,6 +62,8 @@ Tables (migration `20261018130000_editorial_pipeline.sql`): `story_sagas`
 `story_chapter_reads` (choice + 😀/😐/🙁 rating), `editorial_text_reports`.
 Students read their own rows; writes go through the service role.
 
+Target words of a live chapter come from `getDueWordCards` (src/lib/vocabulary: due cards ≤ 5, words to introduce ≤ 2 within the daily allowance). When the student finishes a chapter, `captureReadingExposure(source: "story")` records the words met (D.6, best effort).
+
 ## Configuration
 
 | Env | Default | Meaning |

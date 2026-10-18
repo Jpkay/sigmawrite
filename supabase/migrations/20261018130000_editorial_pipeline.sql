@@ -263,6 +263,11 @@ create policy story_choices_read on public.story_choices for select to authentic
   exists (select 1 from public.story_chapters c join public.story_sagas s on s.id = c.saga_id where c.id = chapter_id and public.can_view_student(s.student_id))
 );
 
+-- Clients only read; every write goes through the service role or the guarded RPCs below.
+revoke all on public.editorial_settings, public.editorial_class_controls, public.editorial_runs, public.editorial_run_steps,
+  public.story_sagas, public.story_chapters, public.story_choices, public.story_progress, public.story_chapter_reads,
+  public.editorial_library_items, public.editorial_text_reports, public.editorial_audits, public.editorial_alerts,
+  public.editorial_panel_scores from anon, authenticated;
 grant select on public.editorial_settings, public.editorial_class_controls, public.editorial_runs, public.editorial_run_steps,
   public.story_sagas, public.story_chapters, public.story_choices, public.story_progress, public.story_chapter_reads,
   public.editorial_library_items, public.editorial_text_reports, public.editorial_audits, public.editorial_alerts,
