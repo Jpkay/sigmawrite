@@ -63,6 +63,8 @@ export async function getContentCandidates(
   const { data, error } = await supabase
     .from("ai_generated_candidates")
     .select("id,payload,review_status,approved_text_version_id,created_at,updated_at")
+    // Editorial library passages (H.16) carry their own evidence and are published by the pipeline, not this workflow.
+    .or("candidate_type.is.null,candidate_type.neq.editorial_reading_text")
     .order("updated_at", { ascending: false });
   if (error) throw new Error(error.message);
   return ((data ?? []) as CandidateRow[]).map(candidateFromRow);

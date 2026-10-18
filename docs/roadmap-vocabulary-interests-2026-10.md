@@ -238,6 +238,7 @@ parameters, a complete history, and planning around school holidays.
 - [ ] **E.3** Fill each interest with no content using the editorial pipeline in **library mode**
   (H.17), fully automatic. Order: interests by popularity, then grade. Each text states its target
   words and its target tense or tenses. **L** (mostly compute; the pipeline does the work).
+  *Tooling landed:* `scripts/editorial-bulk.mts` (cell by cell from `missingInterestCoverage`, total budget, resumable). Running it on the live database is an operator step.
 - [x] **E.4** Use interests outside reading:
   - The practice item picker gives interest a real weight, not just a tie-breaker
     (`src/lib/practice/session.ts:35-38`). It still never picks an item outside the success
@@ -270,7 +271,7 @@ and spelling come from the vetted base and are checked deterministically.
     for reading passages and dictées.
   Both go through the same pipeline and gates. People audit samples (H.15), with no approval
   before publication. **M**.
-  *Landed:* `live.ts` (stories) and `library.ts` (passages, dictées, fallback chapters) share the gates. Live single practice sentences are not generated here.
+  *Landed:* `live.ts` (stories) and `library.ts` (passages, dictées, fallback chapters) share the gates. Live single practice sentences: `src/lib/practice/live-sentence*.ts` (behind `PRACTICE_LIVE_SENTENCES`, off by default) theme bank conjugation items in the student's interest; the form comes from the conjugation engine and is checked by code, bank prompt on any failure.
 - [x] **F.3** Automatic checks before a student sees anything: moderation, linguistic validator,
   LanguageTool, readability band, presence of the target words and tenses (deterministic check on
   lemmas and conjugation), no names of real minors, and a cap on length. If a check fails, the
@@ -476,7 +477,7 @@ how often they read the next chapter, and the "Signaler ce texte" button.
 - [x] **H.16** The same pipeline also writes personalised reading passages (E.3) and dictées (G.3)
   from the student's interests. Dictées still need TTS audio after the text is written, so
   personalised dictées are generated the day before the session. **L**.
-  *Partly:* library dictées go to `dictations` via `autoApproveDictation`; library passages land as `auto_approved` `ai_generated_candidates` (`editorial_reading_text`) awaiting materialisation into `text_versions`. Day-before personalised dictées are not scheduled yet.
+  *Landed:* library dictées go to `dictations` via `autoApproveDictation`; library passages are published as reading passages served to every student (`publish_editorial_passage`, migration `20261018180000`); day-before personalised dictées run daily (`/api/jobs/editorial-dictees`, off unless `EDITORIAL_DICTEE_JOB=true`, daily budget, skipped when the pool fits).
 - [x] **H.17** **Library mode** for passages and dictées that are not live. There is no time
   pressure, so it uses more computing time to aim for the best literary quality:
   - **Best of 4**: 4 drafts from the author agent. The reviewers compare them in pairs, and the
