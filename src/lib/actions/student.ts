@@ -21,6 +21,7 @@ import { onboardingSchema, onboardingTarget } from "@/lib/onboarding";
 import { getContentLibrary, getPublishedReadingText, recommendPublishedTextKey } from "@/lib/db/content";
 import { rankInterestSignals } from "@/lib/content/recommend";
 import { rankByInterestAndVocabulary } from "@/lib/content/vocabulary-fit";
+import { loadInterestPreparingNote, withInterestReasons } from "@/lib/content/interest-note";
 import { scoreSession } from "@/lib/scoring/session";
 import { updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
@@ -720,7 +721,7 @@ export async function recommendReadingTexts(input: unknown) {
     captureError(error, { operation: "calibrated_reuse_recommendation", studentId });
   }
   return Promise.all(selected.map((item) => getPublishedReadingText(item.slug, supabase)))
-    .then((rows) => journalStudentPayload(studentId,"legacy:reading-recommendations",rows.filter((row): row is NonNullable<typeof row> => !!row)));
+    .then((rows) => journalStudentPayload(studentId,"legacy:reading-recommendations",withInterestReasons(rows.filter((row): row is NonNullable<typeof row> => !!row),ranked.map((item) => item.interestKey))));
 }
 
 export async function selectInterests(input: unknown) {
@@ -2670,9 +2671,9 @@ export async function updateStudentPassword(input:unknown){const data=checked(st
  */
 export async function loadStudentHome(input: unknown) {
   checked(emptySchema, input);
-  const {studentId}=await context();
+  const {supabase,studentId}=await context();
   const settle = async <T,>(promise: Promise<T>): Promise<T | null> => { try { return await promise; } catch { return null; } };
-  const [texts, plan, motivation, resume, assessment, recap, classGoal, league] = await Promise.all([
+  const [texts, plan, motivation, resume, assessment, recap, classGoal, league, interestNote] = await Promise.all([
     settle(recommendReadingTexts({})),
     settle(loadStudentSessionPlan({})),
     settle(loadStudentMotivation({})),
@@ -2681,9 +2682,10 @@ export async function loadStudentHome(input: unknown) {
     settle(loadStudentWeeklyRecap({})),
     settle(loadStudentClassGoal({})),
     settle(loadStudentLeague({})),
+    settle(loadInterestPreparingNote(supabase,studentId)),
   ]);
   const fallbackPlan = plan ? null : await settle(loadStudentCatchUpPlan({}));
-  const result={texts,plan,fallbackPlan,motivation,resume,assessment,recap,classGoal,league};
+  const result={texts,plan,fallbackPlan,motivation,resume,assessment,recap,classGoal,league,interestNote};
   await journalStudentPayload(studentId,"student:home",{...result,displayText:homeDynamicDisplay(result),motivationDisplay:motivationDisplay(result),leagueDisplay:result.motivation?leagueDisplay(result.league):null});
   return result;
 }
