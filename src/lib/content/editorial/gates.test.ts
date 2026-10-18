@@ -73,3 +73,15 @@ describe("moderation latency guard", () => {
     expect(report.results.find((r) => r.gate === "moderation")?.passed).toBe(true);
   });
 });
+
+describe("dictée length", () => {
+  it("allows no overshoot for dictées, unlike chapters", async () => {
+    const dictationBrief = { ...buildEditorialBrief({ kind: "dictation", mode: "library", interests: ["football"], grade: 11, gradeBand: "lycee", styleKey: "verne", targetTenses: ["passe_simple"] }), lengthWords: { min: 100, max: 120 }, targetLemmas: [] };
+    const report = await runGates({ template: GOOD, brief: dictationBrief, style }, deps, { moderation: false });
+    const words = report.wordCount;
+    const tight = await runGates({ template: GOOD, brief: { ...dictationBrief, lengthWords: { min: 50, max: words - 2 } }, style }, deps, { moderation: false });
+    expect(tight.results.find((r) => r.gate === "length_band")?.passed).toBe(false);
+    const chapter = await runGates({ template: GOOD, brief: { ...brief, lengthWords: { min: 50, max: words - 2 } }, style }, deps, { moderation: false });
+    expect(chapter.results.find((r) => r.gate === "length_band")?.passed).toBe(true);
+  });
+});
