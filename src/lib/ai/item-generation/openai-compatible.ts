@@ -29,7 +29,13 @@ export type ChatConfig = {
   maxRetries?: number;
   /** Minimum ms between any two calls (proactive rate limiting). Env: LLM_MIN_INTERVAL_MS. */
   minIntervalMs?: number;
+  /** Extra provider-specific body fields (e.g. OpenRouter `usage: { include: true }`, `reasoning`). */
+  extraBody?: Record<string, unknown>;
+  /** Called with the response usage block (tokens, and cost when the provider reports it). */
+  onUsage?: (usage: ChatUsage, model: string) => void;
 };
+
+export type ChatUsage = { prompt_tokens?: number; completion_tokens?: number; total_tokens?: number; cost?: number };
 
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
 
@@ -47,7 +53,7 @@ async function spaceCalls(minMs: number) {
 
 export const DEFAULT_MODEL = "@cf/zai-org/glm-5.2";
 
-export function resolveConfig(cfg: ChatConfig = {}): Required<Omit<ChatConfig, "temperature" | "jsonMode" | "responseFormat" | "requireParameters" | "maxRetries" | "minIntervalMs">> & Pick<ChatConfig, "temperature" | "jsonMode" | "responseFormat"> {
+export function resolveConfig(cfg: ChatConfig = {}): Required<Omit<ChatConfig, "temperature" | "jsonMode" | "responseFormat" | "requireParameters" | "maxRetries" | "minIntervalMs" | "extraBody" | "onUsage">> & Pick<ChatConfig, "temperature" | "jsonMode" | "responseFormat"> {
   const baseUrl = (cfg.baseUrl ?? process.env.LLM_BASE_URL ?? "").replace(/\/$/, "");
   const apiKey = cfg.apiKey ?? process.env.LLM_API_KEY ?? "";
   const model = cfg.model ?? process.env.LLM_MODEL ?? DEFAULT_MODEL;
@@ -65,7 +71,7 @@ export function resolveConfig(cfg: ChatConfig = {}): Required<Omit<ChatConfig, "
   };
 }
 
-type ChatResponse = { choices?: { message?: { content?: string } }[] };
+type ChatResponse = { choices?: { message?: { content?: string } }[]; usage?: ChatUsage; model?: string };
 
 /** Returns the assistant message content (raw text). */
 export async function chatComplete(
@@ -84,6 +90,7 @@ export async function chatComplete(
     ...(c.responseFormat
       ? { response_format: c.responseFormat }
       : c.jsonMode ? { response_format: { type: "json_object" } } : {}),
+    ...(cfg.extraBody ?? {}),
   });
 
   for (let attempt = 0; ; attempt++) {
@@ -110,6 +117,7 @@ export async function chatComplete(
         throw new Error(`LLM ${res.status} ${res.statusText} at ${c.baseUrl}`);
       }
       const json = (await res.json()) as ChatResponse;
+      if (json.usage && cfg.onUsage) cfg.onUsage(json.usage, json.model ?? c.model);
       const content = json.choices?.[0]?.message?.content;
       if (typeof content !== "string") throw new Error("LLM response had no content");
       return content;

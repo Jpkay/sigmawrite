@@ -71,3 +71,29 @@ by `(1 − R) × importance` (+ urgency for learning cards more than one interva
 - `/api/jobs/fsrs-calibration` (Sundays): calibration report (log-loss, RMSE by bin;
   default vs stored) → `fsrs_calibration_reports`. Fitting uses `FsrsOptimizer`; none is
   installed yet (TODO C.3: `@open-spaced-repetition/binding`).
+
+## Word content: automatic definitions (`src/lib/lexicon/definitions`)
+
+Only words with an approved sense are tracked. Senses for the licensed lexical
+release come from an automatic pipeline (no per-item human approval):
+
+- `npm run lexicon:generate-definitions` (needs the gitignored release artifact,
+  optionally `--lexique Lexique400.tsv` to vet spellings; models
+  `LEXICON_GENERATOR_MODEL` / `LEXICON_VERIFIER_MODEL`, must differ). Generator →
+  deterministic gates (`gates.ts`: ≤ 20 words, no word-family term, French
+  typography, every example contains an inflected form, interest-tagged example,
+  validation shape) → independent verifier (sense, age, circularity, examples,
+  validation) → up to 2 regenerations → accepted / discarded. Resumable per-lemma
+  cache, usage and cost in the manifest.
+- Output: `generated/lexicon-definitions-v1.json` + `generated/lexicon-definitions-v1/shard-NN.json`.
+- `npm run lexicon:import-definitions [--dry-run]` upserts `lexical_senses`
+  (`sense_key = 'auto_core'`, `review_status = 'auto_approved'`, pipeline version,
+  gate results, `examples_fr`, `definition_validation`, `close_words`, `grade_level`),
+  fills `vocabulary_items` and links synonym / antonym / orthographic neighbours in
+  `lexical_relationships`. Never overwrites a definition written by a person, never
+  adds a sense next to a human one, never revives a `retired` (taken-down) sense.
+
+Shapes for Phase D: `examples_fr = [{ text, interest | null }]`;
+`definition_validation = [{ kind: 'key_idea', idea, keywords[], required } | { kind: 'accepted_paraphrase', text } | { kind: 'misconception', text }]`;
+`close_words = { synonyms[], antonyms[], semantic[], orthographic[] }` (semantic
+neighbours are same-field words that are *not* correct answers: D.4 distractors).

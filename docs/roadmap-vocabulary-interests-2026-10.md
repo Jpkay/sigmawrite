@@ -213,6 +213,7 @@ parameters, a complete history, and planning around school holidays.
   If the check is unsure, the answer is never graded as wrong: the student moves to a multiple
   choice instead. **M**. *Accept:* a golden set of 60 student definitions graded correctly at
   least 90% of the time.
+  *Content landed 2026-10-18 (D.1, D.4, D.5 prerequisites):* `npm run lexicon:generate-definitions` writes, for every lemma of the licensed lexical release, a child-friendly definition, interest examples, `definition_validation` criteria and close words (synonyms, antonyms, semantic and orthographic neighbours, spellings vetted against Lexique), with deterministic gates + an independent model verification and no per-item human approval; committed as `generated/lexicon-definitions-v1*`, imported by `npm run lexicon:import-definitions` as `auto_approved` senses (migration `20261018160000`). Word memory resolves `auto_approved` senses like human ones.
 - [ ] **D.6** Reviews woven into other activities. When a due word appears in today's reading
   passage, story chapter or dictée, a correct use there counts as the review (marked as
   `source = embedded`) and is removed from the separate review list. This is the main way
