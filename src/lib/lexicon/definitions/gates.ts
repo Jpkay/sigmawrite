@@ -352,7 +352,7 @@ export function runDeterministicGates(generated: GeneratedDefinition, context: G
   const closeWords: CloseWords = {
     synonyms: vetCloseWords(generated.synonyms, { knownLemmas: context.knownLemmas, isFamily }),
     antonyms: vetCloseWords(generated.antonyms, { knownLemmas: context.knownLemmas, isFamily }),
-    semantic: vetCloseWords(generated.semanticNeighbors, { knownLemmas: context.knownLemmas, isFamily }),
+    semantic: vetCloseWords(generated.semanticNeighbors, { knownLemmas: context.knownLemmas, isFamily, rejected: [...generated.synonyms, ...generated.antonyms] }),
     orthographic: context.orthographic.filter((word) => !isFamily(word)),
   };
   return {

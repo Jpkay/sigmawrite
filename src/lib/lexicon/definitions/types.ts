@@ -112,6 +112,7 @@ export type LexiconDefinitionEntry = {
     gates: GateResult[];
     verifier?: { model: string; verdict: "pass" | "fail"; issues: string[] };
     history?: Array<{ attempt: number; failures: string[] }>;
+    models?: { generator: string; verifier: string };
   };
   pipelineVersion: string;
 };
@@ -121,7 +122,7 @@ export type LexiconDefinitionsManifest = {
   pipelineVersion: string;
   release: { key: string; version: string; contentChecksum: string };
   attribution: string;
-  models: { generator: string; verifier: string };
+  models: { generator: string[]; verifier: string[] };
   stats: Record<string, number>;
   usage: Record<string, { calls: number; promptTokens: number; completionTokens: number; costUsd: number }>;
   shards: Array<{ path: string; count: number; checksum: string }>;

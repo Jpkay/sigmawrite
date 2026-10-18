@@ -12,8 +12,9 @@
  * The committed output is generated/lexicon-definitions-v1.json (manifest) and
  * generated/lexicon-definitions-v1/shard-NN.json. No database is touched.
  *
- * Models: LEXICON_GENERATOR_MODEL / LEXICON_VERIFIER_MODEL (OpenRouter ids),
- * provider and key from the app's AI runtime config (AI_PROVIDER + keys).
+ * Models: LEXICON_GENERATOR_MODEL / LEXICON_VERIFIER_MODEL (OpenRouter ids, or
+ * "@cf/…" Cloudflare Workers AI ids), keys from the app's AI runtime config.
+ * Each entry records the models that produced it.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync, appendFileSync, readdirSync, unlinkSync } from "node:fs";
 import { createHash } from "node:crypto";
@@ -137,34 +138,57 @@ function readCached(lemma: ReleaseLemma): LexiconDefinitionEntry | null {
 const writeCached = (lemma: ReleaseLemma, entry: LexiconDefinitionEntry) => writeFileSync(cachePath(lemma), `${JSON.stringify(entry, null, 1)}\n`);
 
 // ---------------------------------------------------------------- models
+// Both endpoints come from the app's AI runtime config: OpenRouter ids go to
+// OpenRouter, "@cf/…" ids to Cloudflare Workers AI (LLM_API_KEY + CLOUDFLARE_ACCOUNT_ID).
 const runtime = resolveAIRuntimeConfig(process.env);
+const cloudflare = (() => {
+  try { return resolveAIRuntimeConfig({ ...process.env, AI_PROVIDER: "glm", OPENROUTER_API_KEY: "" }); } catch { return null; }
+})();
+function endpointFor(model: string) {
+  if (!model.startsWith("@cf/")) return runtime;
+  if (!cloudflare) throw new Error(`${model} needs LLM_API_KEY and CLOUDFLARE_ACCOUNT_ID (or LLM_BASE_URL).`);
+  return cloudflare;
+}
+/** USD per million tokens, used only when the provider does not report cost (Workers AI). */
+const PRICE_ESTIMATES: Record<string, [number, number]> = {
+  "@cf/zai-org/glm-5.3": [0.6, 2.2],
+  "@cf/zai-org/glm-5.2": [0.6, 2.2],
+  "@cf/moonshotai/kimi-k2.6": [0.6, 2.5],
+  "@cf/deepseek-ai/deepseek-v4-pro-0813": [0.66, 1.98],
+  "@cf/openai/gpt-oss-120b": [0.35, 0.75],
+};
 let runCost = 0;
+let fatal: string | null = null;
 const maxCost = Number(args["max-cost"]);
 async function callModel(model: string, system: string, user: string, json: boolean): Promise<unknown> {
+  const endpoint = endpointFor(model);
+  const openRouter = endpoint.baseUrl.includes("openrouter.ai");
   for (let attempt = 0; ; attempt++) {
     try {
       const content = await chatComplete(
         [{ role: "system", content: system }, { role: "user", content: user }],
         {
-          baseUrl: runtime.baseUrl,
-          apiKey: runtime.apiKey,
+          baseUrl: endpoint.baseUrl,
+          apiKey: endpoint.apiKey,
           model,
           temperature: model === VERIFIER_MODEL ? 0 : 0.5,
-          timeoutMs: 240_000,
+          timeoutMs: 300_000,
           jsonMode: json,
-          extraBody: {
-            usage: { include: true },
-            // Low effort keeps cost modest; the independent verifier and the gates carry quality.
-            reasoning: { effort: "low" },
-          },
+          // Low effort keeps cost modest; the independent verifier and the gates carry quality.
+          extraBody: openRouter ? { usage: { include: true }, reasoning: { effort: "low" } } : { reasoning_effort: "low" },
           onUsage: (usage: ChatUsage) => {
-            runCost += usage.cost ?? 0;
-            appendFileSync(usageLog, `${JSON.stringify({ model, promptTokens: usage.prompt_tokens ?? 0, completionTokens: usage.completion_tokens ?? 0, costUsd: usage.cost ?? 0 })}\n`);
+            const price = PRICE_ESTIMATES[model];
+            const cost = usage.cost ?? (price ? ((usage.prompt_tokens ?? 0) * price[0] + (usage.completion_tokens ?? 0) * price[1]) / 1e6 : 0);
+            runCost += cost;
+            appendFileSync(usageLog, `${JSON.stringify({ model, promptTokens: usage.prompt_tokens ?? 0, completionTokens: usage.completion_tokens ?? 0, costUsd: cost, estimated: usage.cost == null })}\n`);
           },
         },
       );
       return extractJson(content);
     } catch (error) {
+      const message = (error as Error).message;
+      // Billing or auth failures must stop the run, never turn into discarded words.
+      if (/LLM (401|402|403)\b/.test(message)) { fatal = message; throw error; }
       if (attempt >= 2) throw error;
     }
   }
@@ -204,7 +228,7 @@ async function processBatch(batch: ReleaseLemma[]) {
   const lastGates = new Map<string, GateResult[]>();
   let pending = batch;
   for (let attempt = 1; attempt <= MAX_REGENERATIONS + 1 && pending.length > 0; attempt++) {
-    if (runCost > maxCost) break;
+    if (runCost > maxCost || fatal) break;
     const promptLemmas = pending.map((lemma) => ({ ...lemma, gradeLevel: gradeFromFrequency(lemma.frequencyPerMillion), sampleForms: lemma.forms.slice(0, 8) }));
     let generated = new Map<string, GeneratedDefinition>();
     try {
@@ -212,6 +236,7 @@ async function processBatch(batch: ReleaseLemma[]) {
     } catch (error) {
       appendFileSync(errorLog, `${JSON.stringify({ stage: "generator_call", error: (error as Error).message.slice(0, 500) })}\n`);
     }
+    if (fatal) return;
     const toVerify: Array<{ lemma: ReleaseLemma; item: GeneratedDefinition; gated: ReturnType<typeof runDeterministicGates> }> = [];
     const failed: Array<{ lemma: ReleaseLemma; failures: string[]; item?: GeneratedDefinition }> = [];
     for (const lemma of pending) {
@@ -248,6 +273,7 @@ async function processBatch(batch: ReleaseLemma[]) {
         appendFileSync(errorLog, `${JSON.stringify({ stage: "verifier_call", error: (error as Error).message.slice(0, 500) })}\n`);
       }
     }
+    if (fatal) return;
     for (const { lemma, item, gated } of toVerify) {
       const verdict = verdicts.get(normalizeForMatch(lemma.lemma));
       const examplesOk = verdict ? verdict.examplesCorrect.length === gated.examples.length && verdict.examplesCorrect.every(Boolean) : false;
@@ -279,6 +305,7 @@ async function processBatch(batch: ReleaseLemma[]) {
           attempts: attempt,
           gates: [...gated.gates, { gate: "independent_verification", status: "pass" }],
           verifier: { model: VERIFIER_MODEL, verdict: "pass", issues: verdict!.issues },
+          models: { generator: GENERATOR_MODEL, verifier: VERIFIER_MODEL },
           ...(history.get(lemma.normalizedLemma)?.length ? { history: history.get(lemma.normalizedLemma) } : {}),
         },
       });
@@ -289,7 +316,7 @@ async function processBatch(batch: ReleaseLemma[]) {
     }
     pending = failed.map(({ lemma }) => lemma);
   }
-  if (runCost > maxCost && pending.length > 0) return; // left uncached: resumes on the next run
+  if ((runCost > maxCost || fatal) && pending.length > 0) return; // left uncached: resumes on the next run
   for (const lemma of pending) {
     writeCached(lemma, {
       ...baseEntry(lemma),
@@ -299,6 +326,7 @@ async function processBatch(batch: ReleaseLemma[]) {
         attempts: MAX_REGENERATIONS + 1,
         gates: lastGates.get(lemma.normalizedLemma) ?? [],
         history: history.get(lemma.normalizedLemma),
+        models: { generator: GENERATOR_MODEL, verifier: VERIFIER_MODEL },
       },
     });
   }
@@ -321,7 +349,7 @@ if (!args["assemble-only"]) {
   let done = 0;
   const started = Date.now();
   const worker = async () => {
-    while (next < batches.length && runCost <= maxCost) {
+    while (next < batches.length && runCost <= maxCost && !fatal) {
       const batch = batches[next++];
       await processBatch(batch);
       done += batch.length;
@@ -330,6 +358,7 @@ if (!args["assemble-only"]) {
   };
   await Promise.all(Array.from({ length: Math.max(1, Number(args.concurrency)) }, worker));
   if (runCost > maxCost) process.stdout.write(`Stopped at the cost cap ($${maxCost}); rerun to resume.\n`);
+  if (fatal) process.stdout.write(`Stopped: provider refused the request (${fatal}); rerun to resume.\n`);
 }
 
 // ---------------------------------------------------------------- assemble
@@ -345,6 +374,9 @@ for (const entry of entries) {
   for (const key of ["synonyms", "antonyms", "semantic", "orthographic"] as const) {
     entry.closeWords[key] = entry.closeWords[key].filter((word) => !unsuitable.has(normalizeForMatch(word)));
   }
+  // A semantic distractor must not also be a listed synonym or antonym.
+  const related = new Set([...entry.closeWords.synonyms, ...entry.closeWords.antonyms].map(normalizeForMatch));
+  entry.closeWords.semantic = entry.closeWords.semantic.filter((word) => !related.has(normalizeForMatch(word)));
 }
 const usage: LexiconDefinitionsManifest["usage"] = {};
 if (existsSync(usageLog)) {
@@ -386,7 +418,10 @@ const manifest: LexiconDefinitionsManifest = {
   pipelineVersion: LEXICON_DEFINITIONS_PIPELINE_VERSION,
   release: { key: release.release.key, version: release.release.version, contentChecksum: release.manifest.contentChecksum },
   attribution: `${release.source.attribution} Definitions, examples and validation criteria generated by the SigmaWrite ${LEXICON_DEFINITIONS_PIPELINE_VERSION} pipeline (automatic gates, no per-item human review); lexical material shared under CC BY-SA 4.0.`,
-  models: { generator: GENERATOR_MODEL, verifier: VERIFIER_MODEL },
+  models: {
+    generator: [...new Set(entries.flatMap((entry) => entry.gateResults.models?.generator ?? []))].sort(),
+    verifier: [...new Set(entries.flatMap((entry) => entry.gateResults.models?.verifier ?? []))].sort(),
+  },
   stats,
   usage,
   shards,
