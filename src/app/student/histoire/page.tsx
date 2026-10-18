@@ -23,7 +23,9 @@ export default async function StoryLibraryPage() {
   // Never show a broken feature: no live generation and no fallback chapters → back home.
   if (!library.availability.visible) redirect("/student");
   const suggestedName = session.displayName?.trim().split(/\s+/u)[0] ?? null;
-  await journalStudentPayload(studentId, "student:story-library", { proposals: library.proposals, active: library.active, completed: library.completed, shelf: library.shelf, copy });
+  // The journal takes plain JSON only: keep the copy's fixed strings, not its template functions.
+  const deliveredCopy = Object.fromEntries(Object.entries(copy).filter(([, value]) => typeof value === "string"));
+  await journalStudentPayload(studentId, "student:story-library", { proposals: library.proposals, active: library.active, completed: library.completed, shelf: library.shelf, copy: deliveredCopy });
   return (
     <>
       <PageHeader boundary="student:story-header" eyebrow={copy.eyebrow} title={copy.libraryTitle} description={copy.libraryDescription} />
