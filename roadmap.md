@@ -70,6 +70,13 @@ This app should be different because it is:
 
 > **secondary-first, interest-led, assessment-aware, memory-based, and knowledge-transfer driven.**
 
+Interactive stories where the student is the hero are part of the product ("Tu es le héros",
+see `docs/roadmap-vocabulary-interests-2026-10.md`, Phase H). They are not generic AI stories.
+An editorial team of agents (authors, editors and reviewers) writes them live for each student,
+in the styles of real French authors for each age group. Quality and safety checks are
+automatic. People audit samples of the output, not each story. Each chapter carries target
+words, tenses and comprehension tasks.
+
 ---
 
 # 3. Target users
@@ -254,7 +261,8 @@ Avoid:
 
 > "AI stories for kids."
 
-That sounds too shallow.
+That sounds too shallow as a pitch. The story mode is in the product, but we describe it by its
+quality and purpose: "des aventures dont tu es le héros, écrites à la manière des grands auteurs".
 
 Avoid:
 
