@@ -77,9 +77,9 @@ function sealItemTree(draft: DraftItem, base: { sub: string; sid: string }): Wor
   } as WordItem;
 }
 
-/** Strips tokens (secrets) before journaling what the student was shown. */
-function journalView(items: WordItem[]) {
-  return JSON.parse(JSON.stringify(items, (key, value) => (key === "token" || key === "audioUrl" ? undefined : value)));
+/** JSON data for the delivery journal: no tokens (secrets), no signed URLs, no copy functions. */
+function journalView(value: unknown) {
+  return JSON.parse(JSON.stringify(value, (key, entry) => (key === "token" || key === "audioUrl" || typeof entry === "function" ? undefined : entry)));
 }
 
 export async function loadWordSession(input: unknown): Promise<WordSession> {
@@ -91,7 +91,7 @@ export async function loadWordSession(input: unknown): Promise<WordSession> {
     const loaded = await loadWordSessionData(createServiceClient(), studentId, { units: data.units, newWords: data.newWords, offset: data.offset });
     const drafts = buildWordSession(loaded.input);
     const items = drafts.map((draft) => sealItemTree(draft, { sub: studentId, sid: sessionId }));
-    await journalStudentPayload(studentId, "words:session", { copy, items: journalView(items) });
+    await journalStudentPayload(studentId, "words:session", { copy: journalView(copy), items: journalView(items) });
     return { sessionId, items, holiday: loaded.plan.paused, unavailable: false };
   } catch (error) {
     // Never a broken page: the daily session simply has no words right now.
