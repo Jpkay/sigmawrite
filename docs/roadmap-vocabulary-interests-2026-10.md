@@ -339,7 +339,7 @@ individual stories.
 
 ### Story mode for the student
 
-- [ ] **H.1** Story structure:
+- [x] **H.1** Story structure:
   - Each saga has 7–10 chapters of 150–400 words, written for the student's interest and age, in
     **one author's style**.
   - Each chapter ends with 2 choices. The student's choice shapes the next chapter, but within the
@@ -347,26 +347,32 @@ individual stories.
   - Each chapter's target words are *today's* due and new words for that student (Phase D), and
     it states its target tense.
   **M** (schema + player).
-- [ ] **H.2** The student as hero: first name (optional, the student can choose a nickname),
+  *Landed:* `/student/histoire` picker + reader (`src/components/story/`, `src/lib/story/`, `src/lib/actions/story-ui.ts`). Target words come from the editorial backend (`getDueWordCards`).
+- [x] **H.2** The student as hero: first name (optional, the student can choose a nickname),
   a chosen avatar, and second-person narration ("Tu…") for some sagas. No surname, school or real
   places. **The student's name is never sent to the model.** The text is written with a placeholder,
   and the name is inserted afterwards, with the correct agreements. **S**.
-- [ ] **H.3** Choices are learning moments: to open the next chapter, the student does one
+  *Landed:* `story_hero_profiles` (nickname moderated, 12 avatars); name inserted at read time only (`hero-privacy.test.ts` checks every model call).
+- [x] **H.3** Choices are learning moments: to open the next chapter, the student does one
   comprehension or vocabulary task (for example "Le capitaine est *intrépide* : que fait-il ?").
   The answer to the task chooses the branch, or unlocks a bonus branch. Words reviewed in
   chapters count as reviews woven into content (D.6). **M**.
-- [ ] **H.4** The student writes the ending: at the end of the saga, the student writes an
+  *Landed:* deterministic vocabulary task (no AI comprehension questions yet); the answer opens the chosen branch, never blocks; due words recorded as `embedded` evidence. No bonus branch.
+- [x] **H.4** The student writes the ending: at the end of the saga, the student writes an
   alternative ending (genre `recit`, `src/lib/writing/genres.ts`), using 3 target words,
   and can try writing *in the style of* the saga's author. It goes into the printable book of the
   student's writing (`/student/recueil`). **M**.
-- [ ] **H.5** Engagement hooks: the next chapter is unlocked by the daily session, a cliffhanger at
+  *Landed:* `story_endings`, shown in `/student/recueil`; 3 words checked leniently (inflections), récit length from `genres.ts`.
+- [x] **H.5** Engagement hooks: the next chapter is unlocked by the daily session, a cliffhanger at
   the end of each chapter, and no penalty for skipping a day. **S**.
-- [ ] **H.6** Exposure to several styles: the saga picker rotates authors' styles, so a student
+  *Landed:* one chapter a day (+1 bonus when the daily XP goal is met), home card; not inserted into `buildSessionPlan` itself (kept separate to avoid clashing with Phase D).
+- [x] **H.6** Exposure to several styles: the saga picker rotates authors' styles, so a student
   meets at least 4 different styles per term. At the end of a saga a card explains the style:
   "Cette aventure était écrite *à la manière de* Jules Verne : de longues phrases pleines de
   détails techniques…". Where the author is in the public domain, it also gives a short real
   excerpt ("Lis le vrai Jules Verne"). This builds literary culture for the brevet. Track which
   styles each student has read. **M**.
+  *Landed:* picker rotation (new styles this term first) and shelf; styles read are derived from `story_sagas` + `story_progress` (no extra table); style card + public-domain excerpt at the end.
 
 ### The editorial team (live, for each chapter)
 

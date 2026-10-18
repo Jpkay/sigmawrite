@@ -36,6 +36,7 @@ import { eloUpdate, itemRatingFromDifficulty } from "@/lib/scoring/elo";
 import { nextScaffoldState } from "@/lib/practice/scaffolding";
 import { fallbackModeration, moderateStudentText } from "@/lib/safety/moderate-input";
 import { logAudit } from "@/lib/audit";
+import { loadRecueilEndings } from "@/lib/story/recueil";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getActivePrompt } from "@/lib/db/ai";
 import { loadCompletedDiagnostic } from "@/lib/diagnostic/completed";
@@ -2979,7 +2980,7 @@ export async function loadStudentClassGoal(input: unknown) {
   return null;
 }
 
-export type RecueilEntry = { kind: "production" | "summary"; id: string; at: string; title: string; text: string; note: string | null };
+export type RecueilEntry = { kind: "production" | "summary" | "story"; id: string; at: string; title: string; text: string; note: string | null };
 
 /** Final drafts of the trimester for the printable recueil (roadmap 5.6): demonstrated productions and last summary revisions. */
 export async function loadStudentRecueil(input: unknown): Promise<{ since: string; entries: RecueilEntry[] }> {
@@ -2987,9 +2988,10 @@ export async function loadStudentRecueil(input: unknown): Promise<{ since: strin
   // French school trimesters: September–December, January–March, April–August.
   const now = new Date(); const month = now.getUTCMonth();
   const since = new Date(Date.UTC(now.getUTCFullYear(), month >= 8 ? 8 : month >= 3 ? 3 : 0, 1)).toISOString();
-  const [{ data: productions }, { data: evaluations }] = await Promise.all([
+  const [{ data: productions }, { data: evaluations }, storyEndings] = await Promise.all([
     supabase.from("independent_production_submissions").select("id,content,submitted_at,demonstrated,competency_nodes!inner(label_fr)").eq("student_id", studentId).gte("submitted_at", since).order("submitted_at", { ascending: true }),
     supabase.from("writing_evaluations").select("id,student_summary_id,submitted_text,revision_number,rubric,created_at").eq("student_id", studentId).gte("created_at", since).order("created_at", { ascending: true }),
+    loadRecueilEndings(supabase, studentId, since).catch(() => []), // H.4 alternative endings (story mode)
   ]);
   const lastBySummary = new Map<string, { id: string; text: string; at: string; revision: number; score: number | null }>();
   for (const row of evaluations ?? []) {
@@ -2999,6 +3001,7 @@ export async function loadStudentRecueil(input: unknown): Promise<{ since: strin
   const entries: RecueilEntry[] = [
     ...(productions ?? []).filter((row) => row.demonstrated).map((row) => ({ kind: "production" as const, id: row.id as string, at: row.submitted_at as string, title: (row.competency_nodes as unknown as { label_fr: string }).label_fr, text: row.content as string, note: "Production libre · maîtrise démontrée" })),
     ...[...lastBySummary.values()].map((entry) => ({ kind: "summary" as const, id: entry.id, at: entry.at, title: `Résumé de lecture (version ${entry.revision + 1})`, text: entry.text, note: entry.score != null ? `Rubrique ${entry.score}/100` : null })),
+    ...storyEndings.map((entry) => ({ kind: "story" as const, ...entry })),
   ].sort((a, b) => Date.parse(a.at) - Date.parse(b.at));
   return journalStudentPayload(studentId, "legacy:recueil", { since: since.slice(0, 10), entries });
 }
