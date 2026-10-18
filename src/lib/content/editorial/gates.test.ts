@@ -54,11 +54,17 @@ describe("deterministic gates (F.3)", () => {
 });
 
 describe("moderation latency guard", () => {
-  it("fails closed when the provider never answers, after one retry", async () => {
+  it("fails closed when the provider never answers, after two retries", async () => {
     let calls = 0;
     const report = await runGates({ template: GOOD, brief, style }, { ...deps, moderate: () => { calls += 1; return new Promise(() => {}); } }, { moderationTimeoutMs: 5 });
     expect(report.results.find((r) => r.gate === "moderation")).toMatchObject({ passed: false, detail: "moderation_unavailable" });
-    expect(calls).toBe(2);
+    expect(calls).toBe(3);
+  });
+  it("passes when a retry succeeds after a provider error", async () => {
+    let calls = 0;
+    const moderate = async () => { calls += 1; if (calls < 3) throw new Error("malformed"); return { allowed: true, categories: [] }; };
+    const report = await runGates({ template: GOOD, brief, style }, { ...deps, moderate }, { moderationTimeoutMs: 5 });
+    expect(report.results.find((r) => r.gate === "moderation")).toMatchObject({ passed: true, detail: "ok" });
   });
   it("the line editor's pre-check skips provider moderation but keeps the local rules", async () => {
     let calls = 0;
