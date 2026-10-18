@@ -1,6 +1,6 @@
 # Roadmap: vocabulary memory, interests, dictées and story mode (2026-10-18)
 
-> Scope: written French, students from CM1 to 3e. This roadmap follows the audit of
+> Scope: written French, students from CM1 to 3e, extended on 2026-10-18 to lycée (2de–Terminale, band `lycee`, grades 10–12). This roadmap follows the audit of
 > 2026-10-18 and goes alongside
 > [`roadmap-engagement-rigor-2026-09.md`](./roadmap-engagement-rigor-2026-09.md), which is
 > mostly done. Item **6.7** of that roadmap (the story arc) is replaced by Phase H below.

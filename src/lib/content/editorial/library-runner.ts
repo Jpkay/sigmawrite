@@ -22,7 +22,8 @@ import { TENSES_BY_BAND, gradeBandFor, type GradeBand, type TargetLemma, type Te
 export type CoverageGap = { interest: string; type: "passage" | "practice" | "dictation"; cell: string; missing: number };
 export type LibraryJob = { kind: "passage" | "dictation" | "fallback_chapter"; interest: string; grade: number; gradeBand: GradeBand; tenses: TenseKey[]; styleKey: string };
 
-const BAND_FROM_CELL: Record<string, { band: GradeBand; grade: number }> = { cm: { band: "cm", grade: 5 }, "6e_5e": { band: "6e-5e", grade: 6 }, "4e_3e": { band: "4e-3e", grade: 8 } };
+const BAND_FROM_CELL: Record<string, { band: GradeBand; grade: number }> = { cm: { band: "cm", grade: 5 }, "6e_5e": { band: "6e-5e", grade: 6 }, "4e_3e": { band: "4e-3e", grade: 8 }, lycee: { band: "lycee", grade: 10 } };
+const FALLBACK_GRADE_FOR_BAND: Record<GradeBand, number> = { cm: 5, "6e-5e": 6, "4e-3e": 8, lycee: 10 };
 
 /** Rotates tenses through the band's curriculum so every tense gets coverage (G.4). */
 export function tenseRotation(band: GradeBand, index: number): TenseKey[] {
@@ -52,13 +53,13 @@ export function planLibraryJobs(gaps: CoverageGap[], options: { limit: number; s
 export function planFallbackJobs(interests: string[], existing: Array<{ interest: string; gradeBand: string }>, perCell = 3, limit = 10): LibraryJob[] {
   const jobs: LibraryJob[] = [];
   const history: string[] = [];
-  for (const band of ["cm", "6e-5e", "4e-3e"] as GradeBand[]) {
+  for (const band of ["cm", "6e-5e", "4e-3e", "lycee"] as GradeBand[]) {
     for (const interest of interests) {
       const have = existing.filter((e) => e.interest === interest && e.gradeBand === band).length;
       for (let i = have; i < perCell && jobs.length < limit; i += 1) {
         const style = pickStyle(band, "chapter", history);
         history.push(style.key);
-        jobs.push({ kind: "fallback_chapter", interest, grade: band === "cm" ? 5 : band === "6e-5e" ? 6 : 8, gradeBand: band, tenses: tenseRotation(band, i), styleKey: style.key });
+        jobs.push({ kind: "fallback_chapter", interest, grade: FALLBACK_GRADE_FOR_BAND[band], gradeBand: band, tenses: tenseRotation(band, i), styleKey: style.key });
       }
     }
   }

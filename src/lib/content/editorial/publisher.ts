@@ -58,7 +58,7 @@ export function editorialEvidenceGate(outcome: Published, audioCheck: AudioCheck
   };
 }
 
-const CEFR: Record<EditorialBrief["gradeBand"], "A2" | "B1" | "B2"> = { cm: "A2", "6e-5e": "B1", "4e-3e": "B2" };
+const CEFR: Record<EditorialBrief["gradeBand"], "A2" | "B1" | "B2" | "C1"> = { cm: "A2", "6e-5e": "B1", "4e-3e": "B2", lycee: "C1" };
 
 /** Inserts the dictée with its tags, then approves it through the dictée stream's gates plus the editorial evidence gate. */
 export async function publishDictation(db: SupabaseClient, input: { brief: EditorialBrief; outcome: Published; libraryItemId: string; runId: string; audioCheck: AudioCheckReport | null }): Promise<{ dictationId: string; status: string }> {

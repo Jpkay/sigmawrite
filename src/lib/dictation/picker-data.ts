@@ -70,7 +70,7 @@ export async function loadDictationStudentContext(service: SupabaseClient, stude
     safe(() => loadDueWordsForDictation(service, studentId, nowMs), []),
   ]);
   if (attempts.error) throw new Error(attempts.error.message);
-  const grade = Math.max(4, Math.min(9, Number(student.data?.current_grade ?? 7)));
+  const grade = Math.max(4, Math.min(12, Number(student.data?.current_grade ?? 7)));
   return {
     nowMs, grade, interests, masteryByNodeKey: mastery, knownLemmas, dueWords,
     attempts: (attempts.data ?? []).map((row): PickerAttempt => ({ dictationId: row.dictation_id as string, mode: row.mode as string, submittedAt: row.submitted_at as string })),

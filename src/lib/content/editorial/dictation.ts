@@ -6,7 +6,7 @@ import type { GradeBand } from "./types";
  * Segments are the replay units stored in dictations.segments.
  */
 
-const MAX_SEGMENT_WORDS: Record<GradeBand, number> = { cm: 8, "6e-5e": 12, "4e-3e": 16 };
+const MAX_SEGMENT_WORDS: Record<GradeBand, number> = { cm: 8, "6e-5e": 12, "4e-3e": 16, lycee: 20 };
 
 /** Homophone families that are unfair at the ear unless they are the point of the dictée. */
 export const RISKY_HOMOPHONES: string[][] = [

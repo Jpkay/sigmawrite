@@ -27,7 +27,7 @@ export const PROMPT_VERSIONS = {
   practice_writer: "live-sentence-1",
 } as const;
 
-const AGE: Record<GradeBand, string> = { cm: "9 à 11 ans (CM1–CM2)", "6e-5e": "11 à 13 ans (6e–5e)", "4e-3e": "13 à 15 ans (4e–3e)" };
+const AGE: Record<GradeBand, string> = { cm: "9 à 11 ans (CM1–CM2)", "6e-5e": "11 à 13 ans (6e–5e)", "4e-3e": "13 à 15 ans (4e–3e)", lycee: "15 à 18 ans (2de–Terminale)" };
 const tenseList = (tenses: TenseKey[]) => tenses.map((t) => TENSE_LABELS[t]).join(", ");
 
 // ───────────────────────── Output schemas ─────────────────────────

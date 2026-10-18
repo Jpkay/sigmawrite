@@ -55,7 +55,8 @@ export function wordCountBand(candidate: Pick<DictationCandidate, "kind" | "grad
   if (candidate.kind === "brevet") return { min: 60, max: 200 };
   if (candidate.gradeMin <= 5) return { min: 15, max: 40 };
   if (candidate.gradeMin <= 7) return { min: 20, max: 80 };
-  return { min: 25, max: 100 };
+  if (candidate.gradeMin <= 9) return { min: 25, max: 100 };
+  return { min: 30, max: 130 };
 }
 
 const SENTENCE_END = /[.!?…](?:\s*[»”"])?$/u;
@@ -76,7 +77,7 @@ export const structureGate: DictationGate = {
       if (/[<>{}\[\]#*_@|\\]/u.test(text)) problems.push(`segment_${index}_markup`);
       if (wordsOf(text).length > 30) problems.push(`segment_${index}_too_long`);
     });
-    if (candidate.gradeMin > candidate.gradeMax || candidate.gradeMin < 4 || candidate.gradeMax > 9) problems.push("grade_range");
+    if (candidate.gradeMin > candidate.gradeMax || candidate.gradeMin < 4 || candidate.gradeMax > 12) problems.push("grade_range");
     else if (candidate.gradeMax - candidate.gradeMin > 2) problems.push("grade_span_too_wide");
     return problems.length ? { status: "fail", details: { problems } } : { status: "pass" };
   },

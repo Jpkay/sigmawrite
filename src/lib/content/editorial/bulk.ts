@@ -23,8 +23,8 @@ export type BulkCell = { key: string; kind: BulkCellKind; interest: string; grad
 export type BulkCellState = { attempts: number; published: number; discarded: number; spentUsd: number; lastReason?: string; refs: unknown[] };
 export type BulkState = { version: 1; budgetUsd: number; spentUsd: number; startedAt: string; updatedAt: string; cells: Record<string, BulkCellState>; stoppedBecause?: string };
 
-const PASSAGE_CELL: Record<string, { band: GradeBand; grade: number }> = { cm: { band: "cm", grade: 5 }, "6e_5e": { band: "6e-5e", grade: 6 }, "4e_3e": { band: "4e-3e", grade: 8 } };
-const FALLBACK_GRADE: Record<GradeBand, number> = { cm: 5, "6e-5e": 6, "4e-3e": 8 };
+const PASSAGE_CELL: Record<string, { band: GradeBand; grade: number }> = { cm: { band: "cm", grade: 5 }, "6e_5e": { band: "6e-5e", grade: 6 }, "4e_3e": { band: "4e-3e", grade: 8 }, lycee: { band: "lycee", grade: 10 } };
+const FALLBACK_GRADE: Record<GradeBand, number> = { cm: 5, "6e-5e": 6, "4e-3e": 8, lycee: 10 };
 
 /**
  * Cells in production order: the coverage order (most-demanded interest first,
@@ -40,11 +40,11 @@ export function planBulkCells(gaps: readonly InterestCoverageGap[], options: { f
       if (target) cells.push({ key: `passage:${gap.interest}:${gap.cell}`, kind: "passage", interest: gap.interest, grade: target.grade, gradeBand: target.band, missing: gap.missing });
     } else if (gap.type === "dictation" && kinds.has("dictation")) {
       const grade = Number(gap.cell);
-      if (Number.isInteger(grade) && grade >= 4 && grade <= 9) cells.push({ key: `dictation:${gap.interest}:${grade}`, kind: "dictation", interest: gap.interest, grade, gradeBand: gradeBandFor(grade), missing: gap.missing });
+      if (Number.isInteger(grade) && grade >= 4 && grade <= 12) cells.push({ key: `dictation:${gap.interest}:${grade}`, kind: "dictation", interest: gap.interest, grade, gradeBand: gradeBandFor(grade), missing: gap.missing });
     }
   }
   if (options.fallback && kinds.has("fallback_chapter")) {
-    for (const band of ["cm", "6e-5e", "4e-3e"] as GradeBand[]) {
+    for (const band of ["cm", "6e-5e", "4e-3e", "lycee"] as GradeBand[]) {
       for (const interest of options.fallback.interests) {
         const have = options.fallback.existing.filter((e) => e.interest === interest && e.gradeBand === band).length;
         if (have < options.fallback.perCell) cells.push({ key: `fallback_chapter:${interest}:${band}`, kind: "fallback_chapter", interest, grade: FALLBACK_GRADE[band], gradeBand: band, missing: options.fallback.perCell - have });

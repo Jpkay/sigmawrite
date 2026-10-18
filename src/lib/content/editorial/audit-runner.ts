@@ -36,7 +36,7 @@ export async function runDailyAudit(db: SupabaseClient, llm: EditorialLLM | null
     let model: string | null = null;
     if (llm) {
       try {
-        const brief = buildEditorialBrief({ kind: "chapter", mode: "live", interests: [saga.interest], grade: saga.grade_band === "cm" ? 5 : saga.grade_band === "6e-5e" ? 6 : 8, gradeBand: saga.grade_band ?? gradeBandFor(6), targetTenses: ["present"], styleKey: saga.style_key });
+        const brief = buildEditorialBrief({ kind: "chapter", mode: "live", interests: [saga.interest], grade: saga.grade_band === "cm" ? 5 : saga.grade_band === "6e-5e" ? 6 : saga.grade_band === "lycee" ? 10 : 8, gradeBand: saga.grade_band ?? gradeBandFor(6), targetTenses: ["present"], styleKey: saga.style_key });
         const { value, result } = await callRole({ llm, logger: new MemoryLogger(), meter: new CostMeter(0.5), gates: {} }, "auditor", auditorPrompt(brief, getStyleCard(saga.style_key), chapter.body_template as string), styleReviewSchema, 0.1);
         rubric = value.rubric;
         notes = value.notes;

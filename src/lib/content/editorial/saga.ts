@@ -12,7 +12,7 @@ import { TENSES_BY_BAND, type GradeBand, type TenseKey } from "./types";
  */
 
 export function chapterCountFor(band: GradeBand): number {
-  return band === "cm" ? 7 : band === "6e-5e" ? 8 : 9;
+  return band === "cm" ? 7 : band === "6e-5e" ? 8 : band === "4e-3e" ? 9 : 10;
 }
 
 export async function architectSaga(brief: EditorialBrief, style: StyleCard, llm: EditorialLLM, logger: RunLogger, costCapUsd = 0.4): Promise<SagaOutline> {

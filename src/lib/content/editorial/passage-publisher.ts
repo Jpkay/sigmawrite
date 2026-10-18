@@ -20,7 +20,7 @@ import type { DifficultyBand } from "@/lib/types";
  * follows the brief's grade, not the readability estimate.
  */
 export const PASSAGE_BAND_FOR_GRADE: Record<number, DifficultyBand> = {
-  4: "Foundation 5A", 5: "Foundation 5B", 6: "Foundation 6A", 7: "Secondary 7A", 8: "Secondary 8A", 9: "Secondary 9A",
+  4: "Foundation 5A", 5: "Foundation 5B", 6: "Foundation 6A", 7: "Secondary 7A", 8: "Secondary 8A", 9: "Secondary 9A", 10: "Secondary 10A", 11: "Advanced 11-12", 12: "Advanced 11-12",
 };
 
 export type EditorialPassagePayload = {
