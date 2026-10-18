@@ -66,6 +66,17 @@ describe("hard filters", () => {
     expect(ranked.map((entry) => entry.dictation.id)).toEqual(["eight"]);
   });
 
+  it("gives lycée students 3e dictées until lycée ones exist, and only then", () => {
+    const third = dictation("third", { gradeMin: 8, gradeMax: 9 });
+    const fallback = rankDictations(input({ grade: 11, dictations: [dictation("six"), third] }));
+    expect(fallback.ranked.map((entry) => entry.dictation.id)).toEqual(["third"]);
+    expect(fallback.relaxed).toContain("grade");
+    const own = rankDictations(input({ grade: 11, dictations: [third, dictation("lycee", { gradeMin: 10, gradeMax: 12 })] }));
+    expect(own.ranked.map((entry) => entry.dictation.id)).toEqual(["lycee"]);
+    expect(own.relaxed).not.toContain("grade");
+    expect(rankDictations(input({ grade: 8, dictations: [dictation("six")] })).ranked).toEqual([]);
+  });
+
   it("keeps CM1–CM2 dictées at 40 words or fewer", () => {
     const { ranked } = rankDictations(input({ grade: 5, dictations: [dictation("long", { gradeMin: 5, wordCount: 55 }), dictation("short", { gradeMin: 5, wordCount: 30 })] }));
     expect(ranked.map((entry) => entry.dictation.id)).toEqual(["short"]);

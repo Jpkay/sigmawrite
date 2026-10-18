@@ -71,7 +71,7 @@ export type PickerInput = {
 };
 
 export type ScoreParts = { interest: number; weakSkill: number; dueWords: number; newWordOverload: number; recentTheme: number; fallback: number };
-export type Relaxation = "error_band" | "recency";
+export type Relaxation = "grade" | "error_band" | "recency";
 export type ScoredDictation = { dictation: PickerDictation; score: number; parts: ScoreParts; expectedErrorRate: number };
 export type Ranking = { ranked: ScoredDictation[]; relaxed: Relaxation[] };
 
@@ -151,6 +151,8 @@ export function recentThemePenalty(d: PickerDictation, input: Pick<PickerInput, 
   return Math.min(DICTATION_PICKER.caps.recentTheme, hits * DICTATION_PICKER.weights.recentTheme);
 }
 
+const LYCEE_FALLBACK_FLOOR = 9;
+
 function eligibleForGrade(d: PickerDictation, grade: number) {
   if (grade < d.gradeMin || grade > d.gradeMax) return false;
   if (grade <= DICTATION_PICKER.youngMaxGrade && d.wordCount > DICTATION_PICKER.youngMaxWords) return false;
@@ -168,7 +170,14 @@ export function rankDictations(input: PickerInput, options: { kinds?: (kind: Dic
     const at = Date.parse(attempt.submittedAt);
     if (Number.isFinite(at) && at > (lastDone.get(attempt.dictationId) ?? -Infinity)) lastDone.set(attempt.dictationId, at);
   }
-  const pool = input.dictations.filter((d) => eligibleForGrade(d, input.grade) && (options.kinds ? options.kinds(d.kind) : true));
+  const relaxed: Relaxation[] = [];
+  const kindOk = (d: PickerDictation) => (options.kinds ? options.kinds(d.kind) : true);
+  let pool = input.dictations.filter((d) => eligibleForGrade(d, input.grade) && kindOk(d));
+  // Lycée (grades 10–12) falls back to the closest lower grade until its own dictées are published.
+  for (let grade = input.grade - 1; pool.length === 0 && grade >= LYCEE_FALLBACK_FLOOR; grade -= 1) {
+    pool = input.dictations.filter((d) => eligibleForGrade(d, grade) && kindOk(d));
+    if (pool.length) relaxed.push("grade");
+  }
   const scored = pool.map((d) => {
     const parts: ScoreParts = {
       interest: interestMatch(d, input.interests),
@@ -182,7 +191,6 @@ export function rankDictations(input: PickerInput, options: { kinds?: (kind: Dic
   });
   const fresh = (entry: (typeof scored)[number]) => entry.doneAt === undefined || input.nowMs - entry.doneAt >= DICTATION_PICKER.recencyDays * DAY;
 
-  const relaxed: Relaxation[] = [];
   let candidates = scored.filter((entry) => fresh(entry) && inErrorBand(entry.expectedErrorRate));
   if (candidates.length === 0) {
     relaxed.push("error_band");
