@@ -191,34 +191,41 @@ parameters, a complete history, and planning around school holidays.
 
 ## Phase D: Retrieval practice inside the daily session
 
-- [ ] **D.1** Introducing a word (the first time is *learning*, not testing). The student meets the
+- [x] **D.1** Introducing a word (the first time is *learning*, not testing). The student meets the
   word in context in an interest text, then a child-friendly definition, an example sentence about
   their interest, and one very easy first recall right away (for example, rebuild the word from its
   letters). This creates the two cards. **M**.
-- [ ] **D.2** Add an activity type `review_word` to `buildSessionPlan`. Due word cards are pulled
+  *Landed 2026-10-18:* introduction item in the word burst (`src/lib/vocabulary/session/builder.ts`): first-met sentence (interest first), vetted definition, an example from another interest sentence, rebuild-the-letters recall (a wrong order just starts again) → `introduceWord` with the context. Not a test: nothing is graded.
+- [x] **D.2** Add an activity type `review_word` to `buildSessionPlan`. Due word cards are pulled
   in by lowest retrievability, interleaved between other activities and never in one block, and
   stay inside the vocabulary budget (about 4 min). **M**. *Accept:* `session-plan.test.ts` cases
   for budget, interleaving and the backlog cap.
-- [ ] **D.3** Spelling recall activities: hear and type (TTS audio per word, cached), type from the
+  *Landed 2026-10-18:* `review_word` bursts (`planWordBursts`, `weaveWordBursts` in `session-plan.ts`; budget 4 min, ≤16 cards, lowest retrievability first, new words only in the remaining time; never first or adjacent). Home shows "Tes mots, en un éclair" with no word count; `/student/vocabulary/rappel` plays a burst. Tests in `session-plan.test.ts`.
+- [x] **D.3** Spelling recall activities: hear and type (TTS audio per word, cached), type from the
   definition, fill a gap by typing (the sentence comes from the student's interest), and a
   4–6 word mini-dictée. Each activity shows feedback right after the answer, with the part of the
   word where the mistake is highlighted. **M**.
-- [ ] **D.4** Meaning recall activities: type the word from its definition, judge "Is the word used
+  *Landed 2026-10-18:* hear and type (per-lemma TTS cached in `lexical_word_audio`, rendered by the dictation-audio job; no audio → type from definition), type from definition, typed gap in an interest sentence (expects the form used there), 4–6 word mini-dictée; feedback highlights wrong/missing letters and accents (`feedback.ts`), accent = Hard.
+- [x] **D.4** Meaning recall activities: type the word from its definition, judge "Is the word used
   correctly?" (one correct sentence and one incorrect), choose a synonym or antonym in context, and
   "odd one out". The wrong options are built from words close in meaning and spelling, so the
   student cannot get it right by elimination. **M**.
-- [ ] **D.5** "Explain it in your own words" (meaning, full credit). The student's text goes
+  *Landed 2026-10-18:* judge usage (a correct new sentence vs. the word put into a close word's sentence), synonym/antonym in context, odd one out, definition → word; wrong options ranked by confusable relations, part of speech, domain and spelling similarity, synonyms excluded (`distractors.ts`). Formats only appear when the lexical data supports them.
+- [x] **D.5** "Explain it in your own words" (meaning, full credit). The student's text goes
   through `moderateOrReject`, then a constrained check against the vetted definition and its
   `definition_validation` entries (`0092`). Possible verdicts: correct, partly correct, or wrong.
   If the check is unsure, the answer is never graded as wrong: the student moves to a multiple
   choice instead. **M**. *Accept:* a golden set of 60 student definitions graded correctly at
   least 90% of the time.
-- [ ] **D.6** Reviews woven into other activities. When a due word appears in today's reading
+  *Landed 2026-10-18:* `explain.ts` (rules) + `explain-judge.ts` (provider `scoreSummary`, confidence floor) + `explainWordAnswer` (moderation first). Uncertain → multiple choice, never wrong; partly right = Hard. Golden set of 60 in `explain-golden.fixture.ts`: rules alone decide ~90 % of it with ≥ 95 % agreement and never grade a right answer wrong; the full ≥ 90 % bar with the real model is checked offline by `scripts/eval-word-explanations.mts` (not run in CI: needs a key).
+- [x] **D.6** Reviews woven into other activities. When a due word appears in today's reading
   passage, story chapter or dictée, a correct use there counts as the review (marked as
   `source = embedded`) and is removed from the separate review list. This is the main way
   vocabulary is learned "without noticing". **M**.
-- [ ] **D.7** Remove the stand-alone Vocabulaire page from the main path. It stays as an optional
+  *Landed 2026-10-18:* `markEmbedded` in `capture.ts`: a due card (not yet reviewed today) whose word is used correctly in a dictée or a story chapter, or answered correctly in the passage's vocabulary-in-context question (recognition, Hard at best), is reviewed with `source = embedded` and leaves the queue. Misses keep their own source; reading quiz misses are not recorded.
+- [x] **D.7** Remove the stand-alone Vocabulaire page from the main path. It stays as an optional
   "Rappel éclair" mode and as "Mon trésor de mots". **S**.
+  *Landed 2026-10-18:* `/student/vocabulary` = optional "Rappel éclair" + "Mon trésor de mots" (grouped by interest, status chips, first-met sentence). The old "N à réviser" page is gone; the "Mots" tab stays as the way to the collection.
 
 ## Phase E: Interest content coverage
 

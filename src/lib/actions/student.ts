@@ -27,10 +27,11 @@ import { updateSkillsFromSession } from "@/lib/scoring/skill-estimate";
 import { buildRetrievalCards } from "@/lib/content/retrieval-cards";
 import { dueAtFrom, gradeRetrieval, INITIAL_SCHEDULE, type RetrievalResult } from "@/lib/scoring/retrieval";
 import { scheduleFsrs } from "@/lib/scoring/fsrs";
-import { captureDictationEvidence, captureFreeWritingEvidence, captureReadingExposure, captureTypedAnswerEvidence } from "@/lib/vocabulary/capture";
+import { captureDictationEvidence, captureFreeWritingEvidence, captureReadingExposure, captureReadingVocabularyAnswers, captureTypedAnswerEvidence } from "@/lib/vocabulary/capture";
 import { fireImplicitUpdates } from "@/lib/graph/fire";
 import { effectiveMastery } from "@/lib/scoring/decay";
 import { activityMinutes, buildSessionPlan } from "@/lib/learning/session-plan";
+import { loadDueWordsForPlan, WORD_PLAN_LABEL, wordBurstHref, weaveWordEntries } from "@/lib/vocabulary/session/plan-entries";
 import { eloUpdate, itemRatingFromDifficulty } from "@/lib/scoring/elo";
 import { nextScaffoldState } from "@/lib/practice/scaffolding";
 import { fallbackModeration, moderateStudentText } from "@/lib/safety/moderate-input";
@@ -1166,7 +1167,7 @@ export async function loadStudentCatchUpPlan(input: unknown) {
 }
 
 export type SessionPlanEntry = {
-  type: "practice" | "production" | "review_node" | "review_card" | "dictation";
+  type: "practice" | "production" | "review_node" | "review_card" | "dictation" | "review_word";
   role: "new" | "compression" | "review";
   nodeId?: string;
   cardId?: string;
@@ -1258,7 +1259,10 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
   const progressMastery = unfinishedMasteries.length
     ? unfinishedMasteries.reduce((sum, mastery) => sum + mastery, 0) / unfinishedMasteries.length
     : 0.5;
+  // Roadmap 2026-10 D.2: due words woven into the itinerary (best effort).
+  const wordPlan = await loadDueWordsForPlan(service, studentId, new Date(nowMs).toISOString());
   const plan = buildSessionPlan({
+    ...wordPlan,
     dueNodeReviews: dueNodeReviews.filter((review) => schedulable.has(review.nodeId)),
     dueCards,
     newSteps: availableSteps.map((step, index) => ({ nodeId: step.nodeId, position: index })),
@@ -1281,7 +1285,11 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
   const masteryByNode = estimateMasteryByNode;
 
   const dictationEntry = await dictationPlanEntry(service, studentId, nowMs);
+  let wordBurst = 0;
   const entries = plan.map((activity): SessionPlanEntry => {
+    if (activity.type === "review_word") {
+      return { type: "review_word", role: "review", label: WORD_PLAN_LABEL, estimatedMinutes: activityMinutes(activity), href: wordBurstHref(activity, wordBurst++) };
+    }
     if (activity.type === "review_card") {
       return {
         type: "review_card",
@@ -1326,7 +1334,7 @@ export async function loadStudentSessionPlan(input: unknown): Promise<SessionPla
       }));
       // Broad node exercises must not replace missing facet-specific activities.
       // Retain due reading retrieval alongside the precise granular targets.
-      const candidates = [...entries.filter(entry => entry.type === "review_card").slice(0, 1), ...targeted];
+      const candidates = weaveWordEntries([...entries.filter(entry => entry.type === "review_card").slice(0, 1), ...targeted], entries.filter(entry => entry.type === "review_word"));
       let minutes = 0;
       return candidates.filter(entry => { if (minutes + entry.estimatedMinutes > 28) return false; minutes += entry.estimatedMinutes; return true; });
     }
@@ -2461,6 +2469,8 @@ export async function completeReadingSession(input: unknown) {
 
   // Roadmap 2026-10 A.1/A.3: reading adds exposure evidence (matched by lemma) and never raises mastery.
   await captureReadingExposure(service, { studentId, sessionId: data.sessionId, textVersionId: ownedSession.text_version_id as string, paragraphs: text.body, interest: text.primaryInterest ?? null, at: data.completedAt });
+  // D.6: a due word answered correctly in the passage's vocabulary questions counts as its review.
+  await captureReadingVocabularyAnswers(service, { studentId, sessionId: data.sessionId, questions: text.questions, answers: data.answers, at: data.completedAt });
   const { error: eventError } = await supabase.from("reading_session_events").insert({
     session_id: data.sessionId, student_id: studentId, event_type: "completed",
     event_payload: { success_rate: result.successRate, next_action: result.recommendedNextAction },
