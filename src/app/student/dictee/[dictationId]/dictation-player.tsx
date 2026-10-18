@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, CheckCircle2, Headphones, Play, RotateCcw, Sparkles, XCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, Headphones, Play, RotateCcw, Snail, Sparkles, XCircle } from "lucide-react";
 import { AccentTextarea } from "@/components/accent-textarea";
 import { FRENCH_ACCENTS } from "@/components/accent-input";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -21,6 +21,7 @@ import {
   dictationRuleLabel,
   dictationSegmentLabel,
   dictationSegmentPosition,
+  dictationSentencePosition,
 } from "@/lib/diagnostic/granular/dictation-display";
 import { cn } from "@/lib/utils";
 import { unassistedInputProps } from "@/lib/unassisted-input";
@@ -31,6 +32,8 @@ type Phase = "loading" | "intro" | "write" | "scoring" | "justify" | "result";
  * Dictée player (roadmap 1.4–1.6): listen to the whole text, then replay and
  * transcribe segment by segment. After scoring, the learner justifies each
  * error before the correction is revealed (dictée négociée).
+ * Step-by-step mode (G.7, CM1–CM2 and struggling students): one sentence at a
+ * time, free and slower replays, no replay counter.
  */
 export function DictationPlayer({ dictationId }: { dictationId: string }) {
   const [session, setSession] = useState<DictationSession | null>(null);
@@ -45,6 +48,7 @@ export function DictationPlayer({ dictationId }: { dictationId: string }) {
   const [justificationOutcome, setJustificationOutcome] = useState<{ correct: number; total: number } | null>(null);
   const [busy, setBusy] = useState(false);
   const [focusedBlank, setFocusedBlank] = useState<number | null>(null);
+  const [noted, setNoted] = useState(false);
   const requestId = useMemo(() => crypto.randomUUID(), []);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -57,13 +61,13 @@ export function DictationPlayer({ dictationId }: { dictationId: string }) {
     return () => { active = false; };
   }, [dictationId, requestId]);
 
-  const play = useCallback((url: string | null, browserText: string | null) => {
+  const play = useCallback((url: string | null, browserText: string | null, rate = 1) => {
     if (url) {
       if (!audioRef.current) audioRef.current = new Audio();
-      audioRef.current.src = url; void audioRef.current.play().catch(() => undefined);
+      audioRef.current.src = url; audioRef.current.playbackRate = rate; void audioRef.current.play().catch(() => undefined);
     } else if (browserText && typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(browserText); utterance.lang = "fr-FR"; utterance.rate = 0.85;
+      const utterance = new SpeechSynthesisUtterance(browserText); utterance.lang = "fr-FR"; utterance.rate = 0.85 * rate;
       window.speechSynthesis.speak(utterance);
     }
   }, []);
@@ -75,6 +79,8 @@ export function DictationPlayer({ dictationId }: { dictationId: string }) {
 
   const current = session.segments[segment];
   const total = session.segments.length;
+  const stepByStep = session.stepByStep === true;
+  const currentFilled = current.template ? current.template.blanks.every((blank) => (fills[segment]?.[blank.index] ?? "").trim().length > 0) : (answers[segment] ?? "").trim().length > 0;
   const withTemplate = current.template !== null;
   const canSubmit = session.segments.every((entry, index) => entry.template ? entry.template.blanks.every((blank) => (fills[index]?.[blank.index] ?? "").trim().length > 0) : answers[index].trim().length > 0);
 
@@ -111,7 +117,7 @@ export function DictationPlayer({ dictationId }: { dictationId: string }) {
         <div className="rounded-xl border border-border bg-card p-6">
           <p className="text-lg leading-8">{dictationIntro(session, total)}</p>
           <ol className="mt-4 list-decimal space-y-1 pl-5 text-sm text-muted-foreground">
-            {DICTATION_COPY.introSteps.map((step) => <li key={step}>{step}</li>)}
+            {(stepByStep ? DICTATION_COPY.stepIntroSteps : DICTATION_COPY.introSteps).map((step) => <li key={step}>{step}</li>)}
           </ol>
           {session.audioMode === "browser" && <p className="mt-4 rounded-md bg-amber-500/10 px-3 py-2 text-xs text-amber-700 dark:text-amber-300">{DICTATION_COPY.browserVoice}</p>}
           <div className="mt-6 flex flex-wrap gap-3">
@@ -127,11 +133,12 @@ export function DictationPlayer({ dictationId }: { dictationId: string }) {
     return (
       <div className="mx-auto max-w-2xl pb-28 sm:pb-0">
         {header}
-        <div className="mb-4 flex items-center justify-between text-sm text-muted-foreground"><span>{dictationSegmentPosition(segment, total)}</span><span aria-live="polite">{dictationReplayCount(replays)}</span></div>
-        <div className="mb-4 h-1.5 overflow-hidden rounded-full bg-muted"><div className="h-full rounded-full bg-primary transition-[width]" style={{ width: `${Math.round(((segment + 1) / total) * 100)}%` }} /></div>
+        <div className="mb-4 flex items-center justify-between text-sm text-muted-foreground"><span>{stepByStep ? dictationSentencePosition(segment, total) : dictationSegmentPosition(segment, total)}</span><span aria-live="polite">{stepByStep ? (noted ? DICTATION_COPY.sentenceNoted : "") : dictationReplayCount(replays)}</span></div>
+        <div className="mb-4 h-1.5 overflow-hidden rounded-full bg-muted"><div className="h-full rounded-full bg-primary transition-[width] motion-reduce:transition-none" style={{ width: `${Math.round(((segment + 1) / total) * 100)}%` }} /></div>
         <div className="rounded-xl border border-border bg-card p-5">
           <div className="flex flex-wrap gap-2">
-            <Button type="button" variant="outline" onClick={() => { setReplays((n) => n + 1); play(current.audioUrl, current.browserText); }}><Play className="size-4" />{DICTATION_COPY.replaySegment}</Button>
+            <Button type="button" variant="outline" onClick={() => { setReplays((n) => n + 1); play(current.audioUrl, current.browserText); }}><Play className="size-4" />{stepByStep ? DICTATION_COPY.replaySentence : DICTATION_COPY.replaySegment}</Button>
+            {stepByStep && <Button type="button" variant="ghost" onClick={() => { setReplays((n) => n + 1); play(current.audioUrl, current.browserText, 0.75); }}><Snail className="size-4" />{DICTATION_COPY.replaySlow}</Button>}
           </div>
           {withTemplate ? (
             <p className="mt-5 flex flex-wrap items-baseline gap-x-1.5 gap-y-3 text-lg leading-9">
@@ -161,7 +168,7 @@ export function DictationPlayer({ dictationId }: { dictationId: string }) {
           <div className="mx-auto flex max-w-2xl items-center justify-between gap-3">
               <Button type="button" variant="ghost" disabled={segment === 0} onClick={() => setSegment((n) => n - 1)}><ArrowLeft className="size-4" />{DICTATION_COPY.previous}</Button>
             {segment + 1 < total
-              ? <Button type="button" onClick={() => { const next = segment + 1; setSegment(next); play(session.segments[next].audioUrl, session.segments[next].browserText); }}>{DICTATION_COPY.nextSegment} <ArrowRight /></Button>
+              ? <Button type="button" disabled={stepByStep && !currentFilled} onClick={() => { const next = segment + 1; setSegment(next); if (stepByStep) { setNoted(true); window.setTimeout(() => setNoted(false), 1800); } play(session.segments[next].audioUrl, session.segments[next].browserText); }}>{stepByStep ? DICTATION_COPY.nextSentence : DICTATION_COPY.nextSegment} <ArrowRight /></Button>
               : <Button type="button" disabled={!canSubmit || busy} onClick={() => void submit()}>{busy ? DICTATION_COPY.correcting : DICTATION_COPY.validate} <CheckCircle2 className="size-4" /></Button>}
           </div>
         </div>

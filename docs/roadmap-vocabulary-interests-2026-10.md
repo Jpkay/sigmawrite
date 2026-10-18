@@ -278,10 +278,11 @@ and spelling come from the vetted base and are checked deterministically.
 
 ## Phase G: Dictées (bank, tags, picker)
 
-- [ ] **G.1** Add tags to `dictations` (migration): `themes[]`, `interests[]`, `tenses[]`,
+- [x] **G.1** Add tags to `dictations` (migration): `themes[]`, `interests[]`, `tenses[]`,
   `target_lemmas[]`, `grammar_node_keys[]` (keep `target_node_keys`), `word_count`, `cefr_band`.
   Tag the 9 existing dictées. **S**.
-- [ ] **G.2** Switch dictées from human approval to automatic approval:
+  *Landed:* migration `20261018120000_dictation_tags.sql` (`word_count` already existed); the 8 authored dictées (not 9) are tagged in `generated/dictations-v1.json` and the seed script.
+- [x] **G.2** Switch dictées from human approval to automatic approval:
   - Run the 9 existing dictées through the pipeline gates, then render their audio.
   - Change `dictations` so that `auto_approved` (with the pipeline version and the gate results)
     is enough for students to see a dictée. Today the access rule in migration `0113:69-74`
@@ -289,6 +290,7 @@ and spelling come from the vetted base and are checked deterministically.
   - Do the same for reading passages in the content workflow (`src/lib/content/workflow.ts`) and
     the review portal. The portal stays as an audit and takedown tool.
   **M**.
+  *Landed:* `auto_approved`/`taken_down` statuses, `auto_approve_dictation` (service-only, gate results bound to the text hash), `take_down_dictation`, `npm run dictations:auto-approve`, portal as audit + takedown. Running it on the hosted bank is an operator step. Reading passages already had `auto_approved` through the selective passage automation (`0135`–`0140`); not changed.
 - [ ] **G.3** Dictée generation, using the editorial pipeline in library mode (H.17): writing →
   gates → automatic TTS → audio check (H.18) → published. Target: **at least 30 short dictées per grade** from CM1 to 3e,
   covering every interest kept. **L**.
@@ -296,15 +298,18 @@ and spelling come from the vetted base and are checked deterministically.
   futur (CM1–CM2); plus passé simple at 3rd person, conditionnel présent and impératif (6e–5e);
   plus plus-que-parfait, subjonctif présent and the full passé simple (4e–3e). At least 5 dictées
   per tense per grade where it applies. **L** (content).
-- [ ] **G.5** Picker score (`student.ts:1336-1356`), replacing "shortest remaining":
+- [x] **G.5** Picker score (`student.ts:1336-1356`), replacing "shortest remaining":
   `score = interest_match + weak_skill_match (target_node_keys ∩ weak nodes) + due_word_overlap −
   new_word_overload − recent_theme_penalty`. Hard filters: grade, not done in the last 120 days,
   and the expected error rate (estimated from skill estimates) inside the 15–30% band. **M**.
   *Accept:* unit tests for each part of the score and the hard filters.
+  *Landed:* pure `src/lib/dictation/picker.ts` (+ tests), used by the session plan and the catalogue suggestions; relaxes the error band, then recency, when the pool is tiny. Due words are injected (`src/lib/dictation/due-words.ts`, empty for now).
 - [ ] **G.6** Dictée errors feed word traces: each segment updates the **spelling** trace of the
   words in it (A.4) and the grammar nodes it maps to (already done for nodes). **S**.
-- [ ] **G.7** Shorter dictées for young students and beginners: 15–40 words for CM1–CM2, one
+  *Hand-over (dictées stream):* per-word outcomes come from `dictationWordOutcomes(segments, outcome.errors)` (`src/lib/dictation/word-outcomes.ts`); call site marked in `submitDictation`.
+- [x] **G.7** Shorter dictées for young students and beginners: 15–40 words for CM1–CM2, one
   sentence at a time, and replay allowed. **S**.
+  *Landed:* 15–40 words enforced by the gates and the picker for CM1–CM2; step-by-step player mode (one sentence at a time, slower replay, no counter) for CM1–CM2 and students below 60% accuracy.
 
 ## Phase H: "Tu es le héros" story mode (replaces item 6.7)
 
