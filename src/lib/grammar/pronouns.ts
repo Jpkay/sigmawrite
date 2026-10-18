@@ -58,10 +58,10 @@ const MODULES: Record<PronounModuleKey, Omit<PronounLesson, "eyebrow">> = {
   },
   double_pronouns: {
     family: "Deux pronoms",
-    explanation: "Quand deux compléments deviennent pronoms, le COD le, la ou les se place avant lui ou leur.",
+    explanation: "Quand deux compléments deviennent pronoms, ils suivent un classement fixe hérité de l’histoire : me/te/nous/vous, puis le/la/les, puis lui/leur, puis y, puis en. D’où il me le donne mais il le lui donne : me passe avant le, lui après.",
     pattern: "sujet + le/la/les + lui/leur + verbe",
     examples: ["Il donne le livre à Nora. → Il le lui donne.", "Il montre les clés aux voisins. → Il les leur montre."],
-    exceptions: ["À l’impératif affirmatif : donne-le-lui.", "À l’impératif négatif, l’ordre habituel revient : ne le lui donne pas."],
+    exceptions: ["Astuce : entre deux pronoms en l, c’est l’ordre du dictionnaire : la, le, les avant leur, lui.", "À l’impératif affirmatif : donne-le-lui.", "À l’impératif négatif, l’ordre habituel revient : ne le lui donne pas."],
   },
 };
 

@@ -22,10 +22,17 @@ export type DueNodeReview = { nodeId: string; overdueDays: number };
 export type DueCardReview = { cardId: string; nodeId: string | null; overdueDays: number };
 export type NewStep = { nodeId: string; position: number };
 
+/** A due word card (roadmap 2026-10 D.2): one FSRS trace of one sense. */
+export type DueWordReview = { cardId: string; senseId: string; facet: "spelling" | "meaning"; retrievability: number };
+
+export type WordBurstCard = { cardId: string; senseId: string; facet: "spelling" | "meaning" };
+
 export type SessionActivity =
   | { type: "practice"; nodeId: string; role: "compression" | "new" }
   | { type: "review_node"; nodeId: string }
-  | { type: "review_card"; cardId: string; nodeId: string | null };
+  | { type: "review_card"; cardId: string; nodeId: string | null }
+  /** A short "rappel éclair": a few words, woven between other activities. */
+  | { type: "review_word"; cards: WordBurstCard[]; senses: number; newWords: number; seconds: number };
 
 export type SessionPlanInput = {
   dueNodeReviews: DueNodeReview[];
@@ -44,6 +51,12 @@ export type SessionPlanInput = {
   durationBudgetMinutes?: number;
   /** Per-node override for longer activities such as independent production. */
   minutesByNode?: ReadonlyMap<string, number>;
+  /** Due word cards, already capped by the daily word plan (C.5). */
+  dueWords?: DueWordReview[];
+  /** Words the daily word plan allows to introduce today (D.1). */
+  newWords?: number;
+  /** Vocabulary time inside the session (default about 4 minutes, rule 3). */
+  wordBudgetMinutes?: number;
 };
 
 const DEFAULT_BUDGET = 6;
@@ -81,7 +94,7 @@ function encompassingClosure(
 }
 
 const nodeOf = (a: SessionActivity): string | null =>
-  a.type === "review_card" ? a.nodeId : a.nodeId;
+  a.type === "review_word" ? null : a.nodeId;
 
 /** Greedy reorder so neighbours avoid same strand / same_family pairs. */
 function interleave(
@@ -195,14 +208,120 @@ export function buildSessionPlan(input: SessionPlanInput): SessionActivity[] {
     plannedNew += 1;
   }
 
-  // 4. Space confusable skills apart, then fit the actual daily time promise.
+  // 4. Space confusable skills apart, then fit the actual daily time promise
+  //    (minus the vocabulary time), then weave the word bursts in.
   const ordered = interleave(activities, input.familyPairs, input.strandByNode);
-  return input.durationBudgetMinutes == null
+  const bursts = planWordBursts(input.dueWords ?? [], input.newWords ?? 0, input.wordBudgetMinutes ?? WORD_SESSION.budgetMinutes);
+  const wordMinutes = Math.ceil(bursts.reduce((total, burst) => total + burst.seconds, 0) / 60);
+  const fitted = input.durationBudgetMinutes == null
     ? ordered
-    : fitDurationBudget(ordered, newTarget, input.durationBudgetMinutes, input.minutesByNode);
+    : fitDurationBudget(ordered, newTarget, Math.max(1, input.durationBudgetMinutes - wordMinutes), input.minutesByNode);
+  return weaveWordBursts(fitted, bursts);
+}
+
+/**
+ * Vocabulary inside the daily session (roadmap 2026-10 D.2, rules 3–4):
+ * about 4 minutes, a few words at a time, never one block of word drills.
+ */
+export const WORD_SESSION = {
+  budgetMinutes: 4,
+  /** One trace of one word (about 12 s); both traces of a word share one item. */
+  secondsPerCard: 12,
+  secondsPerBothTraces: 16,
+  secondsPerNewWord: 30,
+  /** Backlog cap: never more cards than this in one session, whatever is due. */
+  maxCards: 16,
+  burstMin: 3,
+  burstMax: 6,
+} as const;
+
+/**
+ * Picks the word work that fits the vocabulary budget and cuts it into
+ * bursts. Due cards are taken lowest retrievability first (the most at risk
+ * of being forgotten), both traces of one word count as one item, and new
+ * words only take the time reviews leave. Pure.
+ */
+export function planWordBursts(dueWords: DueWordReview[], newWords: number, budgetMinutes: number = WORD_SESSION.budgetMinutes): Array<Extract<SessionActivity, { type: "review_word" }>> {
+  const budget = Math.max(0, budgetMinutes) * 60;
+  const bySense = new Map<string, { cards: WordBurstCard[]; retrievability: number }>();
+  for (const card of [...dueWords].sort((a, b) => a.retrievability - b.retrievability || a.cardId.localeCompare(b.cardId))) {
+    const entry = bySense.get(card.senseId) ?? { cards: [], retrievability: card.retrievability };
+    if (!entry.cards.some((existing) => existing.cardId === card.cardId)) entry.cards.push({ cardId: card.cardId, senseId: card.senseId, facet: card.facet });
+    entry.retrievability = Math.min(entry.retrievability, card.retrievability);
+    bySense.set(card.senseId, entry);
+  }
+  type Unit = { cards: WordBurstCard[]; newWord: boolean; seconds: number };
+  const units: Unit[] = [];
+  let used = 0;
+  let cards = 0;
+  for (const entry of bySense.values()) {
+    const seconds = entry.cards.length > 1 ? WORD_SESSION.secondsPerBothTraces : WORD_SESSION.secondsPerCard;
+    if (used + seconds > budget || cards + entry.cards.length > WORD_SESSION.maxCards) break;
+    units.push({ cards: entry.cards, newWord: false, seconds });
+    used += seconds;
+    cards += entry.cards.length;
+  }
+  for (let index = 0; index < Math.max(0, Math.floor(newWords)); index++) {
+    if (used + WORD_SESSION.secondsPerNewWord > budget) break;
+    units.push({ cards: [], newWord: true, seconds: WORD_SESSION.secondsPerNewWord });
+    used += WORD_SESSION.secondsPerNewWord;
+  }
+  if (!units.length) return [];
+  // Small bursts (3–5 words); weaveWordBursts merges them when gaps are few.
+  const burstCount = Math.max(1, Math.floor(units.length / WORD_SESSION.burstMin));
+  const size = Math.ceil(units.length / burstCount);
+  const bursts: Array<Extract<SessionActivity, { type: "review_word" }>> = [];
+  for (let start = 0; start < units.length; start += size) {
+    const slice = units.slice(start, start + size);
+    bursts.push({
+      type: "review_word",
+      cards: slice.flatMap((unit) => unit.cards),
+      senses: slice.filter((unit) => !unit.newWord).length,
+      newWords: slice.filter((unit) => unit.newWord).length,
+      seconds: slice.reduce((total, unit) => total + unit.seconds, 0),
+    });
+  }
+  return bursts;
+}
+
+/**
+ * Places word bursts between other activities: after the first one (the
+ * session opens on content, rule 2), never two bursts side by side. Extra
+ * bursts are merged into their neighbour when there are too few gaps, so the
+ * words never form one long block in the middle of the plan.
+ */
+export function weaveWordBursts(activities: SessionActivity[], bursts: Array<Extract<SessionActivity, { type: "review_word" }>>): SessionActivity[] {
+  if (!bursts.length) return activities;
+  const others = activities.filter((activity) => activity.type !== "review_word");
+  if (!others.length) return [mergeBursts(bursts)];
+  const gaps = others.length; // after each other activity
+  const groups: Array<Array<Extract<SessionActivity, { type: "review_word" }>>> = Array.from({ length: Math.min(gaps, bursts.length) }, () => []);
+  bursts.forEach((burst, index) => groups[Math.floor((index * groups.length) / bursts.length)].push(burst));
+  const placed = groups.map(mergeBursts);
+  // Spread the bursts evenly over the gaps.
+  const at = new Map<number, Extract<SessionActivity, { type: "review_word" }>>();
+  placed.forEach((burst, index) => at.set(Math.min(gaps - 1, Math.floor((index * gaps) / placed.length)), burst));
+  const out: SessionActivity[] = [];
+  others.forEach((activity, index) => {
+    out.push(activity);
+    const burst = at.get(index);
+    if (burst) out.push(burst);
+  });
+  return out;
+}
+
+function mergeBursts(bursts: Array<Extract<SessionActivity, { type: "review_word" }>>): Extract<SessionActivity, { type: "review_word" }> {
+  return {
+    type: "review_word",
+    cards: bursts.flatMap((burst) => burst.cards),
+    senses: bursts.reduce((total, burst) => total + burst.senses, 0),
+    newWords: bursts.reduce((total, burst) => total + burst.newWords, 0),
+    seconds: bursts.reduce((total, burst) => total + burst.seconds, 0),
+  };
 }
 
 export function activityMinutes(activity: SessionActivity, minutesByNode?: ReadonlyMap<string, number>): number {
+  if (activity.type === "review_word") return Math.max(1, Math.ceil(activity.seconds / 60));
   const nodeId = nodeOf(activity);
   if (nodeId && minutesByNode?.has(nodeId)) return minutesByNode.get(nodeId) as number;
   return activity.type === "review_card" ? 3 : 7;

@@ -13,6 +13,8 @@ export const generateTextInputSchema = z.object({
   targetReadingBand: z.string(),
   topic: z.string().min(1),
   primaryInterest: z.string().min(1),
+  /** All of the student's interests (F.1); passed into the system prompt, not only the JSON input. */
+  interests: z.array(z.string().min(1)).max(3).optional(),
   knowledgeDomains: z.array(z.string()),
   targetConcepts: z.array(z.string()),
   groundingPackets: z.array(generationGroundingPacketSchema).max(12).optional(),

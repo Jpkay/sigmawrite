@@ -97,3 +97,21 @@ Shapes for Phase D: `examples_fr = [{ text, interest | null }]`;
 `definition_validation = [{ kind: 'key_idea', idea, keywords[], required } | { kind: 'accepted_paraphrase', text } | { kind: 'misconception', text }]`;
 `close_words = { synonyms[], antonyms[], semantic[], orthographic[] }` (semantic
 neighbours are same-field words that are *not* correct answers: D.4 distractors).
+
+## Phase D: word sessions (`session/`)
+
+| Piece | File |
+| --- | --- |
+| Bursts in the daily plan (`review_word`, ≈4 min, ≤16 cards, woven between activities) | `src/lib/learning/session-plan.ts` (`planWordBursts`, `weaveWordBursts`), `session/plan-entries.ts` |
+| Items of one burst (formats, variants, wrong options, easiest last) | `session/builder.ts`, `session/distractors.ts`, `session/sentences.ts` |
+| Loading cards, sentences, relations, neighbours, audio | `session/loader.ts` (server-only) |
+| Order of play: relearning (C.4), ZPD (rule 1), end on a win (rule 3) | `session/flow.ts`, `session/zpd.ts` (client-safe) |
+| Spelling feedback (wrong letters highlighted) | `session/feedback.ts` |
+| "Explique avec tes mots" (rules → model → uncertain = QCM) | `session/explain.ts`, `session/explain-judge.ts`, `session/explain-server.ts`, golden set `session/explain-golden.fixture.ts` |
+| Cached word TTS (`lexical_word_audio`, dictation-audio job) | `session/audio.ts` |
+| Signed item tokens (answers never reach the client) | `session/token.ts` |
+| Server actions | `src/lib/actions/words.ts` (`loadWordSession`, `introduceSessionWord`, `submitWordAnswer`, `explainWordAnswer`, `loadWordTreasure`) |
+| Embedded reviews (D.6) | `capture.ts` (`markEmbedded`, `captureReadingVocabularyAnswers`) |
+
+Flags (default on): `WORD_SESSION_ENABLED`, `WORD_EXPLAIN_ENABLED`, `WORD_EXPLAIN_MODEL_ENABLED`.
+Optional `WORD_ITEM_SIGNING_SECRET` (falls back to `CRON_SECRET`, then the service key).

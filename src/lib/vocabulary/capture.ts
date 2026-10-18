@@ -7,8 +7,9 @@ import "server-only";
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { alignProduction, dictationWordOutcomes, freeWritingUses, normalizeWord, sentenceContaining, wordTokens, type ProducedWord } from "./matching";
-import { recordWordEvidence, resolveFormTargets, resolveItemTargets, safely, type WordEvidenceInput, type WordTarget } from "./server";
-import type { WordActivityFormat, WordEvidenceSource } from "./types";
+import { loadWordCards, recordWordEvidence, resolveFormTargets, resolveItemTargets, safely, type WordEvidenceInput, type WordTarget } from "./server";
+import { localDay } from "./days";
+import { FORMAT_CREDIT, type WordActivityFormat, type WordEvidenceSource } from "./types";
 
 type Db = SupabaseClient;
 
@@ -69,13 +70,70 @@ function producedEvidence(words: Array<ProducedWord & { key: string }>, targets:
   return inputs;
 }
 
+/**
+ * D.6 "reviews woven into other activities": a word whose card is due today
+ * (and not yet reviewed today) and that the student used correctly inside
+ * other content counts as that card's review, marked `embedded`. Because the
+ * card is then reviewed today, it drops out of the separate review queue
+ * (planWordDay skips cards touched today). Misses keep their own source.
+ */
+export async function markEmbedded(db: Db, studentId: string, inputs: WordEvidenceInput[], at: string): Promise<WordEvidenceInput[]> {
+  const candidates = inputs.filter((input) => input.correct && !input.accentOnly && FORMAT_CREDIT[input.format].credit !== "none");
+  if (!candidates.length) return inputs;
+  const cards = await loadWordCards(db, studentId, [...new Set(candidates.flatMap((input) => input.target.senseIds))]);
+  const today = localDay(at);
+  const due = new Set(cards
+    .filter((card) => Date.parse(card.dueAt) <= Date.parse(at) && (!card.lastReviewedAt || localDay(card.lastReviewedAt) !== today))
+    .map((card) => `${card.senseId}:${card.facet}`));
+  return inputs.map((input) => {
+    if (!candidates.includes(input)) return input;
+    const facets = FORMAT_CREDIT[input.format].facets.filter((facet) => !input.facets || input.facets.includes(facet));
+    const senses = (facet: string) => (facet === "spelling" ? input.target.senseIds : input.target.senseId ? [input.target.senseId] : []);
+    const isDue = facets.some((facet) => senses(facet).some((senseId) => due.has(`${senseId}:${facet}`)));
+    return isDue ? { ...input, source: "embedded" as const } : input;
+  });
+}
+
 /** G.6 / A.4: each dictée segment is spelling evidence for every tracked word in it, correct or misspelled. */
 export async function captureDictationEvidence(db: Db, input: { studentId: string; attemptId: string; segments: string[]; answers: string[]; at: string }) {
   return safely("dictation", async () => {
     const outcomes = dictationWordOutcomes(input.segments, input.answers);
     const targets = await resolveFormTargets(db, outcomes.map((word) => word.normalized));
     const words = outcomes.map((word, index) => ({ ...word, key: `${word.segment}:${index}` }));
-    return recordWordEvidence(db, input.studentId, producedEvidence(words, targets, { format: "dictation", source: "dictation", at: input.at, occurrence: `dictation:${input.attemptId}` }));
+    const inputs = producedEvidence(words, targets, { format: "dictation", source: "dictation", at: input.at, occurrence: `dictation:${input.attemptId}` });
+    return recordWordEvidence(db, input.studentId, await markEmbedded(db, input.studentId, inputs, input.at));
+  });
+}
+
+/**
+ * D.6 for reading: a "vocabulary in context" question answered correctly
+ * about a word whose meaning card is due counts as that card's review
+ * (recognition in a new sentence, so graded Hard at best), marked embedded.
+ * Wrong answers are not recorded here: a quiz slip never lapses a word.
+ */
+export async function captureReadingVocabularyAnswers(db: Db, input: {
+  studentId: string;
+  sessionId: string;
+  questions: Array<{ id: string; type: string; prompt: string; correctIndex: number }>;
+  answers: Record<string, number>;
+  at: string;
+}) {
+  const answered = input.questions.filter((question) => question.type === "vocabulary_in_context" && input.answers[question.id] === question.correctIndex);
+  const words = answered.flatMap((question) => {
+    const quoted = /«\s*([^»]{1,60}?)\s*»/u.exec(question.prompt)?.[1];
+    const normalized = quoted ? normalizeWord(quoted.split(/\s+/u).at(-1) ?? quoted) : "";
+    return normalized ? [{ question, normalized }] : [];
+  });
+  if (!words.length) return null;
+  return safely("reading_vocabulary", async () => {
+    const targets = await resolveFormTargets(db, words.map((word) => word.normalized));
+    const inputs: WordEvidenceInput[] = words.flatMap(({ question, normalized }) => {
+      const target = targets.get(normalized);
+      if (!target?.senseId) return [];
+      return [{ target, format: "pick_definition" as const, source: "reading" as const, correct: true, novelContext: true, occurrenceKey: `reading:${input.sessionId}:${question.id}`, at: input.at }];
+    });
+    const embedded = (await markEmbedded(db, input.studentId, inputs, input.at)).filter((entry) => entry.source === "embedded");
+    return embedded.length ? recordWordEvidence(db, input.studentId, embedded) : [];
   });
 }
 
@@ -95,7 +153,9 @@ export async function captureTypedAnswerEvidence(db: Db, input: {
     const targets = await resolveFormTargets(db, outcomes.map((word) => word.normalized));
     const words = outcomes.map((word, index) => ({ ...word, key: String(index) }));
     const format: WordActivityFormat = input.source === "diagnostic" ? "diagnostic_item" : input.source === "story" ? "gap_fill_typed" : "practice_item";
-    return recordWordEvidence(db, input.studentId, producedEvidence(words, targets, { format, source: input.source, at: input.at, occurrence: input.occurrenceKey, responseMs: input.responseMs }));
+    const inputs = producedEvidence(words, targets, { format, source: input.source, at: input.at, occurrence: input.occurrenceKey, responseMs: input.responseMs });
+    // D.6: due words used correctly in a story chapter count as their review.
+    return recordWordEvidence(db, input.studentId, input.source === "story" ? await markEmbedded(db, input.studentId, inputs, input.at) : inputs);
   });
 }
 
