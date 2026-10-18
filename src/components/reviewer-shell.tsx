@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { CircleHelp, Feather, History, LayoutDashboard, ListChecks } from "lucide-react";
+import { CircleHelp, History, LayoutDashboard, ListChecks } from "lucide-react";
 import { useEffect } from "react";
 import { SignOutButton } from "@/components/sign-out-button";
+import { PlumeWordmark } from "@/components/plume-wordmark";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { identifyAnalytics } from "@/lib/analytics";
 
@@ -18,13 +19,12 @@ export function ReviewerShell({
     if (user.analyticsId) identifyAnalytics(user.analyticsId, user.role);
   }, [user.analyticsId, user.role]);
 
-  return <div lang="fr" className="min-h-screen bg-background">
+  return <div lang="fr" className="learning-app min-h-screen bg-background">
     <a href="#review-content" className="sr-only z-[100] rounded bg-background p-3 focus:not-sr-only focus:fixed focus:left-3 focus:top-3">Aller au texte</a>
     <header className="sticky top-0 z-40 border-b border-border/80 bg-background/92 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4 sm:px-6">
-        <Link href="/review" className="flex items-center gap-2 font-display text-base font-bold text-foreground hover:text-foreground">
-          <span className="grid size-8 place-items-center rounded-full bg-primary text-primary-foreground"><Feather className="size-4" /></span>
-          <span>Plume<span className="text-primary">.</span></span>
+        <Link href="/review" className="flex min-h-11 items-center gap-2 font-display text-base font-bold text-foreground hover:text-foreground">
+          <PlumeWordmark className="text-[1.75rem]" />
         </Link>
         <span className="hidden text-sm text-muted-foreground sm:inline">Espace d’évaluation</span>
         <div className="ml-auto flex items-center gap-1">
