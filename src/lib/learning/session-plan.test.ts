@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildSessionPlan, newLearningSlots, type SessionActivity } from "./session-plan";
+import { activityMinutes, buildSessionPlan, newLearningSlots, planWordBursts, weaveWordBursts, WORD_SESSION, type DueWordReview, type SessionActivity } from "./session-plan";
 import type { EncompassingEdge } from "@/lib/graph/fire";
 
 const edges: EncompassingEdge[] = [
@@ -10,7 +10,7 @@ const edges: EncompassingEdge[] = [
 ];
 
 const nodesOf = (plan: SessionActivity[]) =>
-  plan.map((a) => (a.type === "review_card" ? a.cardId : a.nodeId));
+  plan.map((a) => (a.type === "review_card" ? a.cardId : a.type === "review_word" ? "words" : a.nodeId));
 
 describe("buildSessionPlan — repetition compression", () => {
   it("prefers a task whose encompassing closure clears multiple due reviews", () => {
@@ -239,5 +239,87 @@ describe("mastery-weighted spiral", () => {
     expect(newLearningSlots(0.55, 6)).toBe(2);
     expect(newLearningSlots(0.75, 6)).toBe(3);
     expect(newLearningSlots(0.9, 6)).toBe(4);
+  });
+});
+
+describe("buildSessionPlan — review_word (roadmap 2026-10 D.2)", () => {
+  const due = (count: number, both = false): DueWordReview[] => Array.from({ length: count }, (_, i) => [
+    { cardId: `s${i}`, senseId: `w${i}`, facet: "spelling" as const, retrievability: 0.5 + i / 100 },
+    ...(both ? [{ cardId: `m${i}`, senseId: `w${i}`, facet: "meaning" as const, retrievability: 0.6 + i / 100 }] : []),
+  ]).flat();
+  const base = {
+    dueNodeReviews: [{ nodeId: "a", overdueDays: 3 }, { nodeId: "b", overdueDays: 2 }],
+    dueCards: [],
+    newSteps: [{ nodeId: "n1", position: 1 }, { nodeId: "n2", position: 2 }],
+    encompassingEdges: [],
+    familyPairs: [],
+  };
+  const words = (plan: SessionActivity[]) => plan.filter((activity): activity is Extract<SessionActivity, { type: "review_word" }> => activity.type === "review_word");
+
+  it("keeps vocabulary inside the ~4 minute budget", () => {
+    const plan = buildSessionPlan({ ...base, dueWords: due(30), newWords: 3 });
+    const seconds = words(plan).reduce((total, burst) => total + burst.seconds, 0);
+    expect(seconds).toBeGreaterThan(0);
+    expect(seconds).toBeLessThanOrEqual(WORD_SESSION.budgetMinutes * 60);
+    expect(words(plan).reduce((total, burst) => total + activityMinutes(burst), 0)).toBeLessThanOrEqual(WORD_SESSION.budgetMinutes + words(plan).length);
+  });
+
+  it("caps the backlog: never more than the session card cap, lowest retrievability first", () => {
+    const backlog = due(200).map((card, i) => ({ ...card, retrievability: (i * 37 % 200) / 200 }));
+    const plan = buildSessionPlan({ ...base, dueWords: backlog, wordBudgetMinutes: 60 });
+    const cards = words(plan).flatMap((burst) => burst.cards);
+    expect(cards.length).toBe(WORD_SESSION.maxCards);
+    const chosen = new Set(cards.map((card) => card.cardId));
+    const lowest = [...backlog].sort((a, b) => a.retrievability - b.retrievability).slice(0, WORD_SESSION.maxCards);
+    expect(lowest.every((card) => chosen.has(card.cardId))).toBe(true);
+  });
+
+  it("drops new words before reviews when time is short", () => {
+    const [burst] = planWordBursts(due(19), 4, 3);
+    const all = planWordBursts(due(19), 4, 3);
+    expect(all.reduce((total, entry) => total + entry.newWords, 0)).toBe(0);
+    expect(burst.senses).toBeGreaterThan(0);
+  });
+
+  it("introduces new words when reviews leave time", () => {
+    const bursts = planWordBursts(due(3), 3);
+    expect(bursts.reduce((total, entry) => total + entry.newWords, 0)).toBe(3);
+  });
+
+  it("counts both traces of one word as one item", () => {
+    const bursts = planWordBursts(due(4, true), 0);
+    expect(bursts.reduce((total, entry) => total + entry.cards.length, 0)).toBe(8);
+    expect(bursts.reduce((total, entry) => total + entry.senses, 0)).toBe(4);
+    expect(bursts.reduce((total, entry) => total + entry.seconds, 0)).toBe(4 * WORD_SESSION.secondsPerBothTraces);
+  });
+
+  it("interleaves words between other activities, never first and never two bursts side by side", () => {
+    const plan = buildSessionPlan({ ...base, dueWords: due(16) });
+    expect(words(plan).length).toBeGreaterThan(1);
+    expect(plan[0].type).not.toBe("review_word");
+    for (let i = 1; i < plan.length; i++) expect(plan[i].type === "review_word" && plan[i - 1].type === "review_word").toBe(false);
+    for (const burst of words(plan)) expect(burst.senses + burst.newWords).toBeLessThanOrEqual(WORD_SESSION.burstMax * 2);
+  });
+
+  it("merges bursts when there are fewer gaps than bursts", () => {
+    const bursts = planWordBursts(due(12), 0);
+    expect(bursts.length).toBeGreaterThan(1);
+    const woven = weaveWordBursts([{ type: "practice", nodeId: "only", role: "new" }], bursts);
+    expect(woven).toHaveLength(2);
+    expect(woven[0].type).toBe("practice");
+    expect(words(woven)[0].cards).toHaveLength(12);
+  });
+
+  it("leaves the plan unchanged with no due words", () => {
+    const withWords = buildSessionPlan({ ...base, dueWords: [], newWords: 0 });
+    const without = buildSessionPlan(base);
+    expect(withWords).toEqual(without);
+  });
+
+  it("reserves word minutes inside a wall-clock budget", () => {
+    const plan = buildSessionPlan({ ...base, dueWords: due(10), durationBudgetMinutes: 15 });
+    const total = plan.reduce((sum, activity) => sum + activityMinutes(activity), 0);
+    expect(total).toBeLessThanOrEqual(15 + words(plan).length);
+    expect(words(plan).length).toBeGreaterThan(0);
   });
 });

@@ -1,8 +1,8 @@
 import {difficultyBandLabel} from '@/lib/scoring/band';
 import type {SeedText} from '@/lib/content/types';
-type Plan={role:string;estimatedMinutes:number;mastery?:number|null};
+type Plan={role:string;estimatedMinutes:number;mastery?:number|null;type?:string};
 export const homePlanSummary=(count:number,minutes:number)=>`${count} activité(s) · environ ${minutes} min`;
-export const homePlanEntryText=(entry:Plan)=>entry.role==='review'?`Révision · ${entry.estimatedMinutes} min`:entry.role==='compression'?`Réactive plusieurs notions · ${entry.estimatedMinutes} min`:entry.mastery!=null?`Nouvelle étape · ${entry.estimatedMinutes} min · maîtrise ${Math.round(entry.mastery*100)}%`:`Nouvelle étape · ${entry.estimatedMinutes} min`;
+export const homePlanEntryText=(entry:Plan)=>entry.type==='review_word'?`Tes mots · ${entry.estimatedMinutes} min`:entry.role==='review'?`Révision · ${entry.estimatedMinutes} min`:entry.role==='compression'?`Réactive plusieurs notions · ${entry.estimatedMinutes} min`:entry.mastery!=null?`Nouvelle étape · ${entry.estimatedMinutes} min · maîtrise ${Math.round(entry.mastery*100)}%`:`Nouvelle étape · ${entry.estimatedMinutes} min`;
 export const homeStreakText=(days:number)=>`${days} jour(s)`;
 export const homeXpText=(xp:number)=>`${xp} XP`;
 export const homeGoalText=(today:number,goal:number)=>`${Math.min(today,goal)} / ${goal} XP`;

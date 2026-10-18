@@ -7,6 +7,7 @@ import { runLibraryText } from "./library";
 import type { EditorialLLM } from "./llm";
 import type { ChapterContext } from "./prompts";
 import { publishDictation, saveLibraryItem, submitPassageCandidate } from "./publisher";
+import { publishEditorialPassage, type PassageEmbedder } from "./passage-publisher";
 import { finishRun, startRun, SupabaseRunLogger } from "./store";
 import { getStyleCard, pickStyle } from "./styles";
 import { TENSES_BY_BAND, gradeBandFor, type GradeBand, type TargetLemma, type TenseKey } from "./types";
@@ -82,15 +83,15 @@ const FALLBACK_CONTEXT: ChapterContext = {
 
 export type LibraryJobResult = { job: LibraryJob; decision: "publish" | "discard"; reason?: string; libraryItemId?: string; ref?: unknown; costUsd: number; rubricMean?: number | null };
 
-export async function runLibraryJob(db: SupabaseClient, job: LibraryJob, deps: { llm: EditorialLLM; gates: GateDeps; speech?: Pick<AIProvider, "synthesizeSpeechPlan"> | null; stt?: SpeechToText | null; targetWords?: TargetLemma[] }): Promise<LibraryJobResult> {
+export async function runLibraryJob(db: SupabaseClient, job: LibraryJob, deps: { llm: EditorialLLM; gates: GateDeps; speech?: Pick<AIProvider, "synthesizeSpeechPlan"> | null; stt?: SpeechToText | null; targetWords?: TargetLemma[]; embedder?: PassageEmbedder | null; runTag?: string; costCapUsd?: number }): Promise<LibraryJobResult> {
   const lemmas = deps.targetWords ?? await libraryTargetWords(db, job.grade * 7 + job.interest.length);
   const brief = buildEditorialBrief({
     kind: job.kind === "fallback_chapter" ? "chapter" : job.kind, mode: "library", interests: [job.interest], grade: job.grade, gradeBand: job.gradeBand,
     newLemmas: lemmas.filter((l) => l.kind === "new"), dueLemmas: lemmas.filter((l) => l.kind === "due"), targetTenses: job.tenses, styleKey: job.styleKey,
     narration: job.kind === "fallback_chapter" ? "tu" : "il",
   });
-  const runId = await startRun(db, { mode: "library", kind: job.kind, brief });
-  const outcome = await runLibraryText({ brief, style: getStyleCard(job.styleKey), gates: deps.gates, context: job.kind === "fallback_chapter" ? FALLBACK_CONTEXT : null }, deps.llm, new SupabaseRunLogger(db, runId));
+  const runId = await startRun(db, { mode: "library", kind: job.kind, brief: deps.runTag ? { ...brief, runTag: deps.runTag } : brief });
+  const outcome = await runLibraryText({ brief, style: getStyleCard(job.styleKey), gates: deps.gates, context: job.kind === "fallback_chapter" ? FALLBACK_CONTEXT : null, costCapUsd: deps.costCapUsd }, deps.llm, new SupabaseRunLogger(db, runId));
   if (outcome.decision === "discard") {
     await finishRun(db, runId, { status: "discarded", reasons: [outcome.reason], costUsd: outcome.costUsd });
     return { job, decision: "discard", reason: outcome.reason, costUsd: outcome.costUsd };
@@ -106,7 +107,13 @@ export async function runLibraryJob(db: SupabaseClient, job: LibraryJob, deps: {
   const libraryItemId = await saveLibraryItem(db, { kind: job.kind, brief, outcome, runId, audioCheck });
   let ref: unknown = null;
   if (job.kind === "dictation") ref = await publishDictation(db, { brief, outcome, libraryItemId, runId, audioCheck });
-  if (job.kind === "passage") ref = { candidateId: await submitPassageCandidate(db, { brief, outcome, libraryItemId, runId, authorModel: deps.llm.modelFor("author") }) };
+  if (job.kind === "passage") {
+    const candidateId = await submitPassageCandidate(db, { brief, outcome, libraryItemId, runId, authorModel: deps.llm.modelFor("author") });
+    // H.16: materialise it as a reading passage at once; a failure leaves it for the job's sweep.
+    let textVersionId: string | null = null;
+    try { textVersionId = (await publishEditorialPassage(db, candidateId, deps.embedder)).textVersionId; } catch { /* swept later by publishPendingEditorialPassages */ }
+    ref = { candidateId, textVersionId };
+  }
   if (ref) await db.from("editorial_library_items").update({ published_ref: ref }).eq("id", libraryItemId);
   await finishRun(db, runId, { status: "published", reasons: outcome.verdict.reasons, rubricMean: outcome.reviews.rubricMean, aiTells: outcome.gates.aiTells.score, gates: outcome.gates.results.map((r) => ({ gate: r.gate, passed: r.passed })), costUsd: outcome.costUsd });
   return { job, decision: "publish", libraryItemId, ref, costUsd: outcome.costUsd, rubricMean: outcome.reviews.rubricMean };

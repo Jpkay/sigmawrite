@@ -21,7 +21,8 @@ export type EditorialRole =
   | "judge_pairwise"
   | "editor_in_chief"
   | "summarizer"
-  | "auditor";
+  | "auditor"
+  | "practice_writer";
 
 export type TenseKey =
   | "present"
@@ -67,4 +68,4 @@ export type TargetLemma = {
   partOfSpeech?: "nom" | "verbe" | "adjectif" | "adverbe" | "autre";
 };
 
-export type Usage = { inputTokens: number; outputTokens: number; costUsd: number };
+export type Usage = { inputTokens: number; outputTokens: number; costUsd: number; reasoningTokens?: number; cachedTokens?: number };

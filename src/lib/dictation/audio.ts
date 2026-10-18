@@ -66,7 +66,7 @@ export async function renderPendingDictationAudio(db: SupabaseClient, options: {
   return { rendered, failed, considered: rows?.length ?? 0 };
 }
 
-async function ensureBucket(db: SupabaseClient) {
+export async function ensureBucket(db: SupabaseClient) {
   const { data } = await db.storage.getBucket(DICTATION_AUDIO_BUCKET);
   if (data) return;
   const { error } = await db.storage.createBucket(DICTATION_AUDIO_BUCKET, { public: false, fileSizeLimit: 5 * 1024 * 1024, allowedMimeTypes: ["audio/mpeg", "audio/mp4", "audio/ogg", "audio/wav"] });

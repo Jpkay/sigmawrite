@@ -61,6 +61,33 @@ describe("live orchestrator (H.10)", () => {
   });
 });
 
+describe("live line-edit modes (cost and latency)", () => {
+  const goodReview = { reviewer_style: [{ rubric: GOOD_RUBRIC, strengths: [], notes: [] }], ...reviewers };
+  it("never: publishes the author's draft without a line edit", async () => {
+    const llm = new ScriptedLLM({ author: [author], ...goodReview });
+    const outcome = await runLiveChapter({ brief, style: getStyleCard("verne"), context: null, gates, lineEdit: "never" }, llm, new MemoryLogger());
+    expect(outcome.decision).toBe("publish");
+    expect(llm.calls.some((c) => c.role === "line_editor")).toBe(false);
+  });
+  it("conditional: skips the line edit for a clean draft, runs it when the pre-check finds AI tells", async () => {
+    const clean = new ScriptedLLM({ author: [author], line_editor: [lineEdit], ...goodReview });
+    await runLiveChapter({ brief, style: getStyleCard("verne"), context: null, gates, lineEdit: "conditional" }, clean, new MemoryLogger());
+    const tells = `${BODY}
+
+Dans un monde où tout semblait possible, une aventure inoubliable commençait, un véritable voyage au cœur de l'émotion.`;
+    const flagged = new ScriptedLLM({ author: [{ ...author, body: tells }], line_editor: [lineEdit], ...goodReview });
+    await runLiveChapter({ brief, style: getStyleCard("verne"), context: null, gates, lineEdit: "conditional" }, flagged, new MemoryLogger());
+    expect(flagged.calls.some((c) => c.role === "line_editor")).toBe(true);
+    expect(clean.calls.filter((c) => c.role === "line_editor").length).toBeLessThanOrEqual(1);
+  });
+  it("the pre-check never calls provider moderation; the final text always does", async () => {
+    let moderations = 0;
+    const llm = new ScriptedLLM({ author: [author], line_editor: [lineEdit], ...goodReview });
+    await runLiveChapter({ brief, style: getStyleCard("verne"), context: null, gates: { moderate: async () => { moderations += 1; return { allowed: true, categories: [] }; } }, lineEdit: "always" }, llm, new MemoryLogger());
+    expect(moderations).toBe(1);
+  });
+});
+
 describe("library mode (H.17)", () => {
   const libraryBrief = { ...brief, mode: "library" as const };
   it("runs best-of-4 with pairwise judging and publishes at ≥ 4.3", async () => {

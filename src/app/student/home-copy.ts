@@ -9,6 +9,6 @@ export const HOME_COPY={
  lessons:'Mes leçons',results:'Voir mes résultats',updateTitle:'Mets ton profil à jour',updateHelp:'Quelques questions ciblées suffisent. Tes progrès précédents sont conservés.',update:'Mettre à jour',
  mission:'Mission du jour',resumeTitle:'Continue là où tu t’es arrêté.',goalDone:'Objectif du jour atteint. Bien joué !',step:'Une étape suffit pour avancer.',missionHelp:'Lis un texte ou entraîne une compétence. Ton parcours s’ajuste après chaque réponse.',resume:'Reprendre la lecture',beginToday:'Commencer aujourd’hui',
  dailyGoal:'Objectif quotidien',modify:'modifier',finished:'Textes terminés',plan:'Plan du jour',planHelp:'Révisions et nouvelles étapes, dans le bon ordre',
- memory:'Mémoire',dictation:'Dictée',write:'Écrire',revise:'Réviser',practice:'S’entraîner',
+ memory:'Mémoire',words:'Rappel éclair',dictation:'Dictée',write:'Écrire',revise:'Réviser',practice:'S’entraîner',
  reading:'Choisis ta prochaine lecture',recommended:'Recommandée pour toi',alternative:'Autre piste',choose:'Choisir ce texte',profile:'Ton profil en bref',
 } as const;
