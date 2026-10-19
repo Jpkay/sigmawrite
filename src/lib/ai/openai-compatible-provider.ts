@@ -40,7 +40,9 @@ const speechProviderName = (kind: string, model: string) => (isPocket(model) ? "
  * "virgule" → "bienvenue" in a speech-to-text round trip) but reads it
  * reliably at the end of its phrase. So each punctuation word closes the
  * phrase before it ("Au fond de la boutique, virgule."), the comma replaces
- * the silence before it, and the silence after it is kept.
+ * the silence before it, and the silence after it is kept. A one-word mark
+ * with no words before it joins the previous phrase ("Pas de bruit, fermez les
+ * guillemets, virgule.").
  */
 export function pocketPhrases(parts: SpeechPart[]): SpeechPart[] {
   const out: SpeechPart[] = [];
@@ -59,6 +61,15 @@ export function pocketPhrases(parts: SpeechPart[]): SpeechPart[] {
     if (part.kind === "text") {
       phrase = phrase ? `${phrase} ${part.text}` : part.text;
       continue;
+    }
+    if (!phrase && !/\s/u.test(part.text)) {
+      // A one-word mark right after another ("« Pas de bruit », murmura…") joins the previous phrase rather than being said alone.
+      const previous = out.findLastIndex((entry) => entry.kind !== "silence");
+      const last = out[previous];
+      if (last?.kind === "text") {
+        out.splice(previous, out.length - previous, { kind: "text", text: `${last.text.replace(/[.!?…\s]+$/u, "")}, ${part.text}.` });
+        continue;
+      }
     }
     phrase = phrase ? `${phrase.replace(/[,\s]+$/u, "")}, ${part.text}` : capital(part.text);
     flush();

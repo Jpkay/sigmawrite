@@ -21,6 +21,11 @@ describe("Pocket TTS phrases", () => {
     expect(texts).toEqual(["Ouvrez les guillemets.", "Vous cherchez, point d’interrogation.", "Fermez les guillemets.", "demanda-t-il, point.", "Point final. La dictée est terminée."]);
     expect(pocketPhrases(plan).some((part) => part.kind === "phonemes")).toBe(false);
   });
+  it("never leaves a punctuation word alone after a closing mark", () => {
+    const plan = buildSpeechPlan(speakableSegment("« Pas de bruit », murmura-t-il.", { final: false }));
+    const texts = pocketPhrases(plan).flatMap((part) => (part.kind === "text" ? [part.text] : []));
+    expect(texts).toEqual(["Ouvrez les guillemets.", "Pas de bruit, fermez les guillemets, virgule.", "murmura-t-il, point."]);
+  });
 });
 
 describe("Pocket TTS backend", () => {
