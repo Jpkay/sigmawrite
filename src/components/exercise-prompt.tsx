@@ -10,7 +10,7 @@ export function ExercisePrompt({ promptFr, instructionsFr }: { promptFr: string;
       <p className="mb-1 text-xs font-semibold tracking-wide text-primary">{copy.instruction}</p>
       {instructions.map((instruction) => <p key={instruction} className="whitespace-pre-line text-base leading-7">{instruction}</p>)}
     </section>}
-    {content.passage.length > 0 && <section aria-label={copy.passage} className="rounded-lg border border-border bg-card px-5 py-6 sm:px-6">
+    {content.passage.length > 0 && <section aria-label={copy.passage} className="border-y border-border bg-card px-5 py-6 sm:px-6">
       <p className="mb-4 text-xs font-semibold tracking-wide text-muted-foreground">{copy.passage}</p>
       <div className="space-y-4 text-base font-normal leading-8">{content.passage.map((paragraph, index) => <p key={index} className="whitespace-pre-line">{paragraph}</p>)}</div>
     </section>}

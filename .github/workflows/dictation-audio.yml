@@ -1,0 +1,62 @@
+name: Dictation audio (Pocket TTS)
+# Renders pending dictée audio and "hear and type" word audio with Kyutai
+# Pocket TTS (French model, voice "estelle", CC0) on the runner's CPU, and
+# stores it in Supabase exactly like the Vercel job would. No paid speech key:
+# the voice runs here, next to the renderer, never on the public internet.
+# Every phrase is the best of up to 3 takes, checked by Whisper on the same
+# CPU (infra/pocket-tts/server.py), so a dictée takes several minutes.
+on:
+  schedule:
+    - cron: "25 * * * *"
+  workflow_dispatch:
+    inputs:
+      rounds:
+        description: Batches of 5 dictées + 25 words
+        default: "4"
+permissions:
+  contents: read
+concurrency:
+  group: sigmawrite-dictation-audio
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ vars.SIGMAWRITE_SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SIGMAWRITE_SUPABASE_SERVICE_ROLE_KEY }}
+      AI_PROVIDER: mock
+      TTS_BASE_URL: http://127.0.0.1:8880/v1
+      TTS_API_KEY: local
+      TTS_MODEL: pocket-tts
+      TTS_VOICE: estelle
+      HF_HUB_DISABLE_TELEMETRY: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/uv
+            ~/.cache/huggingface
+          key: pocket-tts-3.3.0-whisper-turbo-${{ runner.os }}
+      - name: Install the voice (CPU only)
+        run: |
+          curl -LsSf https://astral.sh/uv/0.11.4/install.sh | sh
+          command -v ffmpeg || (sudo apt-get update -q && sudo apt-get install -yq ffmpeg)
+          export PATH="$HOME/.local/bin:$PATH"
+          uv venv --python 3.12 .pocket
+          uv pip install --python .pocket/bin/python --torch-backend cpu "pocket-tts==3.3.0" "faster-whisper==1.2.1"
+      - name: Start the voice
+        run: |
+          nohup .pocket/bin/python infra/pocket-tts/server.py --port 8880 > pocket.log 2>&1 &
+          for i in $(seq 1 300); do curl -sf http://127.0.0.1:8880/health && exit 0; sleep 2; done
+          cat pocket.log; exit 1
+      - run: npm ci --no-audit --no-fund
+      - name: Render pending audio
+        run: node --conditions=react-server --import tsx scripts/render-audio.mts --rounds "${{ inputs.rounds || '4' }}"
+      - if: always()
+        run: tail -80 pocket.log || true

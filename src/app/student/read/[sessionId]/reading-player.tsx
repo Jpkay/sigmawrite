@@ -199,10 +199,10 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
       </div>
 
       {phase === "read" && (
-        <Card>
+        <Card className="max-w-4xl">
           <CardContent className="space-y-4 pt-6">
-            <div className="flex flex-wrap gap-2 rounded-md border border-border p-3 text-sm"><button aria-pressed={readerMode.friendly} onClick={()=>setReaderMode(value=>({...value,friendly:!value.friendly}))} className="min-h-11 rounded-md border border-border px-3">{copy.readableFont}</button><button aria-pressed={readerMode.spacing} onClick={()=>setReaderMode(value=>({...value,spacing:!value.spacing}))} className="min-h-11 rounded-md border border-border px-3">{copy.spacing}</button><button aria-pressed={readerMode.lineFocus} onClick={()=>setReaderMode(value=>({...value,lineFocus:!value.lineFocus}))} className="min-h-11 rounded-md border border-border px-3">{copy.lineFocus}</button><button aria-pressed={readerMode.syllables} onClick={()=>setReaderMode(value=>({...value,syllables:!value.syllables}))} className="min-h-11 rounded-md border border-border px-3">{copy.syllables}</button></div>
-            <div className={`space-y-4 leading-relaxed ${readerMode.friendly?"font-[family-name:var(--font-legible)]":""} ${readerMode.spacing?"text-lg leading-9 tracking-wide":""}`}>
+            <div className="flex flex-wrap gap-2 border-b border-border pb-4 text-sm"><button aria-pressed={readerMode.friendly} onClick={()=>setReaderMode(value=>({...value,friendly:!value.friendly}))} className="min-h-11 rounded-md border border-input px-3 transition-colors hover:bg-muted aria-pressed:border-primary aria-pressed:bg-accent aria-pressed:text-primary">{copy.readableFont}</button><button aria-pressed={readerMode.spacing} onClick={()=>setReaderMode(value=>({...value,spacing:!value.spacing}))} className="min-h-11 rounded-md border border-input px-3 transition-colors hover:bg-muted aria-pressed:border-primary aria-pressed:bg-accent aria-pressed:text-primary">{copy.spacing}</button><button aria-pressed={readerMode.lineFocus} onClick={()=>setReaderMode(value=>({...value,lineFocus:!value.lineFocus}))} className="min-h-11 rounded-md border border-input px-3 transition-colors hover:bg-muted aria-pressed:border-primary aria-pressed:bg-accent aria-pressed:text-primary">{copy.lineFocus}</button><button aria-pressed={readerMode.syllables} onClick={()=>setReaderMode(value=>({...value,syllables:!value.syllables}))} className="min-h-11 rounded-md border border-input px-3 transition-colors hover:bg-muted aria-pressed:border-primary aria-pressed:bg-accent aria-pressed:text-primary">{copy.syllables}</button></div>
+            <div className={`space-y-4 text-[17px] leading-8 ${readerMode.friendly?"font-[family-name:var(--font-legible)]":""} ${readerMode.spacing?"text-lg leading-9 tracking-wide":""}`}>
               {activeText.body.map((p, i) => (
                 <div key={i} className={`group flex items-start gap-2 rounded-md p-2 ${readerMode.lineFocus&&focusedParagraph!==null&&focusedParagraph!==i?"opacity-30":""}`}><p tabIndex={readerMode.lineFocus?0:undefined} onClick={()=>setFocusedParagraph(i)} onKeyDown={event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();setFocusedParagraph(i);}}} className="flex-1"><SyllableText text={p} syllables={readerMode.syllables} spokenCharIndex={spoken?.paragraph===i?spoken.char:null} /></p><button aria-label={readingParagraphLabel(i)} onClick={()=>readAloud(p,i)} className="min-h-11 min-w-11 rounded-md border border-border p-2 opacity-70 hover:opacity-100"><Volume2 className="size-4"/></button></div>
               ))}
@@ -232,7 +232,7 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
           <p className="mb-3 text-sm text-muted-foreground">
             {questionDisplay.position}
           </p>
-          <Card>
+          <Card className="max-w-4xl">
             <CardContent className="pt-6">
               <ChoiceList
                 prompt={question.prompt}
@@ -253,7 +253,7 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
                       <div>
                         <p className="text-sm font-medium">{copy.evidenceQuestion}</p>
                         <div role="radiogroup" aria-label={copy.evidenceLabel} className="mt-2 grid gap-2">
-                          {challenge.displayedCandidates.map((sentence, index) => <button key={index} type="button" role="radio" aria-checked={picked === index} onClick={() => setEvidencePick((current) => ({ ...current, [question.id]: index }))} className={`rounded-md border px-3 py-2 text-left text-sm leading-6 ${picked === index ? "border-primary bg-primary/10" : "border-border hover:border-primary/50"}`}>{sentence}</button>)}
+                          {challenge.displayedCandidates.map((sentence, index) => <button key={index} type="button" role="radio" aria-checked={picked === index} onClick={() => setEvidencePick((current) => ({ ...current, [question.id]: index }))} className={`rounded-md border px-3 py-2 text-left text-sm leading-6 ${picked === index ? "border-primary bg-accent ring-1 ring-primary" : "border-input bg-card hover:border-primary/60 hover:bg-accent/30"}`}>{sentence}</button>)}
                         </div>
                         <Button className="mt-3" variant="outline" disabled={picked === undefined} onClick={() => { const correct = picked === challenge.answerIndex; setEvidenceDone((current) => ({ ...current, [question.id]: true })); if (hasStudentBackend && dbSessionId) void recordReadingJustification({ sessionId: dbSessionId, questionKey: question.id, correct, answerCorrect }).catch(() => undefined); }}>{copy.validateEvidence}</Button>
                       </div>
@@ -278,7 +278,7 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
       )}
 
       {phase === "summary" && (
-        <Card>
+        <Card className="max-w-4xl">
           <CardContent className="space-y-4 pt-6">
             <p className="text-sm text-muted-foreground">{text.summaryPrompt}</p>
             <AccentTextarea
@@ -296,7 +296,7 @@ export function ReadingPlayer({textKey, text}: {textKey: string; text: SeedText 
       )}
 
       {phase === "retrieval" && (
-        <Card>
+        <Card className="max-w-4xl">
           <CardContent className="space-y-4 pt-6">
             <p className="text-sm font-medium">{copy.retrievalHeading}</p>
             <p className="text-sm text-muted-foreground">{text.retrievalPrompt}</p>

@@ -2,6 +2,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { getAIProvider } from "@/lib/ai";
 import { buildSpeechPlan, guardLiaisons, speakableFullText, speakableSegment } from "./speech-text";
 
+import { STUDENT_VISIBLE_DICTATION_STATUSES } from "./tags";
 import {buildDictationAudioManifest,describeDictationAudio,type DictationAudioAsset} from './audio-manifest';
 import {storeImmutableDictationAudio} from './immutable-audio-storage';
 
@@ -10,7 +11,7 @@ export const DICTATION_AUDIO_BUCKET = "dictation-audio";
 type Segment = { text: string; audioPath: string | null };
 
 /**
- * Renders server-side audio for approved dictées whose audio is pending or
+ * Renders server-side audio for published (human- or auto-approved) dictées whose audio is pending or
  * failed (roadmap 1.2). One file per segment plus one for the whole text,
  * stored in the private bucket. Fails closed: without a speech backend the
  * dictée stays unpublished rather than falling back to browser synthesis.
@@ -19,7 +20,7 @@ export async function renderPendingDictationAudio(db: SupabaseClient, options: {
   const limit = options.limit ?? 5;
   let query = db.from("dictations")
     .select("id,key,segments,audio_status,updated_at")
-    .eq("review_status", "human_approved").in("audio_status", ["pending", "failed"]);
+    .in("review_status", [...STUDENT_VISIBLE_DICTATION_STATUSES]).in("audio_status", ["pending", "failed"]);
   if(options.dictationId)query=query.eq("id",options.dictationId);
   const { data: rows, error } = await query.order("updated_at", { ascending: true }).limit(limit);
   if (error) throw new Error(error.message);
@@ -65,7 +66,7 @@ export async function renderPendingDictationAudio(db: SupabaseClient, options: {
   return { rendered, failed, considered: rows?.length ?? 0 };
 }
 
-async function ensureBucket(db: SupabaseClient) {
+export async function ensureBucket(db: SupabaseClient) {
   const { data } = await db.storage.getBucket(DICTATION_AUDIO_BUCKET);
   if (data) return;
   const { error } = await db.storage.createBucket(DICTATION_AUDIO_BUCKET, { public: false, fileSizeLimit: 5 * 1024 * 1024, allowedMimeTypes: ["audio/mpeg", "audio/mp4", "audio/ogg", "audio/wav"] });

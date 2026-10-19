@@ -4,6 +4,7 @@ import {learningSeenQuestionIds} from "./learning-exposure";
 import {verifiedWritingEvidence,type WritingEvidence} from "./writing-evidence";
 import { assessSkills, DEFAULT_POLICY, selectProbe, type Observation, type Policy, type Probe, type Skill } from "./engine";
 import { buildGranularPriorities } from "./pathway";
+import {policyWithStartProfile,type StartProfile} from "./start-profile";
 
 export type Release = { taxonomyId: string; bankId: string; checksum: string };
 export type AssessmentSession = {
@@ -26,6 +27,9 @@ export type AssessmentSession = {
   priorDiagnosticItemIds?:string[];
   /** Immediate predecessor of a separately persisted learning successor. */
   learningPredecessor?: {sessionId:string;releaseId:string;revision:number};
+  /** Server-resolved starting points and routing version. Absent on sessions
+   * created before start profiles; those keep a single start and old routing. */
+  startProfile?: StartProfile;
   refinements: Observation[];
   /** Submitted texts with no assessable target evidence. Never scoring observations. */
   unassessedWritingResponses?: Array<{itemId:string;skillId:string;text:string;firstDraft?:string;afterRefinementCount:number}>;
@@ -67,11 +71,12 @@ export type SessionView = {
  * A visible, unpaused client sends a heartbeat at least every 15 seconds. Gaps beyond
  * 30 seconds are not charged, so disconnected/closed tabs cannot consume a sitting.
  */
-export function createSession(release: Release): AssessmentSession {
+export function createSession(release: Release,startProfile?:StartProfile): AssessmentSession {
   if (!release.taxonomyId || !release.bankId || !release.checksum) throw new Error("A pinned release is required");
   return { version: 1, release: { ...release }, revision: 0, occasionId: "initial-diagnostic", phase: "assessing", paused: true,
     activeSeconds: 0, lastPulseAt: null, pendingItemId: null, pendingActiveSeconds: 0,
-    observations: [], refinements: [], exposedLearningItemIds: [], completionReason: null };
+    observations: [], refinements: [], exposedLearningItemIds: [], completionReason: null,
+    ...(startProfile?{startProfile:structuredClone(startProfile)}:{}) };
 }
 
 export function transitionSession(input: {
@@ -79,7 +84,8 @@ export function transitionSession(input: {
   skills: readonly Skill[]; bank: readonly Probe[]; policy?: Policy; releaseScope?:ReleaseScope;
 }): AssessmentSession {
   const { state, release, event, skills, bank } = input;
-  const policy = input.policy ?? DEFAULT_POLICY;
+  // The stored profile, not the caller, fixes starting points on every event.
+  const policy = policyWithStartProfile(input.policy ?? DEFAULT_POLICY,state.startProfile);
   const scope=input.releaseScope===undefined?undefined:inspectReleaseScope(skills,input.releaseScope);
   if (state.release.taxonomyId !== release.taxonomyId || state.release.bankId !== release.bankId || state.release.checksum !== release.checksum) {
     throw new Error("Assessment release changed; resume against the pinned release");

@@ -18,6 +18,8 @@
     "lexicon:build": "tsx scripts/build-baseline-lexicon.mts",
     "lexicon:build:lexique4": "tsx scripts/build-lexique4-release.mts",
     "lexicon:import": "tsx scripts/import-baseline-lexicon.mts",
+    "lexicon:generate-definitions": "tsx scripts/generate-lexicon-definitions.mts",
+    "lexicon:import-definitions": "tsx scripts/import-lexicon-definitions.mts",
     "taxonomy:build:v1": "tsx scripts/build-french-taxonomy-v1.mts",
     "taxonomy:build:v2": "tsx scripts/build-french-taxonomy-v2.mts",
     "taxonomy:build:v3": "tsx scripts/build-french-taxonomy-v3.mts",
@@ -34,6 +36,7 @@
     "seed:demo": "tsx scripts/seed-demo.mts",
     "seed:dictations": "tsx --tsconfig ./tsconfig.json scripts/seed-dictations.mts",
     "dictations:render-audio": "tsx --tsconfig ./tsconfig.json scripts/render-dictation-audio.mts",
+    "dictations:auto-approve": "tsx --tsconfig ./tsconfig.json scripts/auto-approve-dictations.mts",
     "verify:deletion": "tsx --tsconfig ./tsconfig.json scripts/verify-deletion-job.mts",
     "graph:smoke": "tsx --tsconfig ./tsconfig.json scripts/verify-student-graph.mts",
     "seed:item-banks": "tsx --tsconfig ./tsconfig.json scripts/seed-item-bank.mts generated/past-narration-items.json && tsx --tsconfig ./tsconfig.json scripts/seed-item-bank.mts generated/present-agreement-items.json",
@@ -54,6 +57,7 @@
     "test:e2e": "playwright test",
     "launch:verify-env": "tsx scripts/verify-launch-env.mts",
     "launch:audit-content": "tsx scripts/audit-launch-content.mts",
+    "content:interest-demand": "tsx scripts/report-interest-demand.mts",
     "launch:generate-library": "tsx scripts/generate-pilot-library.mts"
   },
   "dependencies": {
@@ -63,7 +67,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.18.0",
-    "next": "16.3.4",
+    "next": "16.3.8",
     "posthog-js": "^1.399.1",
     "posthog-node": "^5.40.0",
     "react": "19.2.4",
@@ -82,7 +86,8 @@
     "@types/react-dom": "^19",
     "dotenv": "^17.4.2",
     "eslint": "^9",
-    "eslint-config-next": "16.3.4",
+    "eslint-config-next": "16.3.8",
+    "fast-glob": "file:vendor/next-eslint-glob",
     "tailwindcss": "^4",
     "tsx": "^4.23.0",
     "typescript": "^5",
@@ -90,6 +95,9 @@
   },
   "overrides": {
     "postcss": "8.5.23",
-    "nanoid": "3.3.18"
+    "nanoid": "3.3.18",
+    "@next/eslint-plugin-next": {
+      "fast-glob": "$fast-glob"
+    }
   }
 }

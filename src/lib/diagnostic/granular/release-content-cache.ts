@@ -7,13 +7,16 @@ function freeze(value:unknown):void{
  Object.freeze(value);
 }
 /** Immutable content only. Callers must recheck release/parent status and exact
- * permission before using a hit. No sessions, identities or permission decisions. */
+ * permission before using a hit. No sessions, identities or permission decisions.
+ * Keys pin the exact content checksum, so the TTL only bounds idle memory: each
+ * hit extends it, and an active diagnostic never pays the multi-second reload. */
 export class ReleaseContentCache{
  private readonly entries=new Map<string,{content:ValidatedReleaseContent;expires:number;bytes:number}>();
- constructor(private readonly now:()=>number=Date.now,private readonly maxEntries=2,private readonly maxBytes=32*1024*1024,private readonly ttlMs=60000){}
+ constructor(private readonly now:()=>number=Date.now,private readonly maxEntries=2,private readonly maxBytes=32*1024*1024,private readonly ttlMs=60*60*1000){}
  private prune(){for(const [key,entry] of this.entries)if(entry.expires<=this.now())this.entries.delete(key);}
  get(key:readonly string[]):ValidatedReleaseContent|undefined{
   this.prune();const id=JSON.stringify(key),entry=this.entries.get(id);if(!entry)return;
+  entry.expires=this.now()+this.ttlMs;
   this.entries.delete(id);this.entries.set(id,entry);return entry.content;
  }
  set(key:readonly string[],content:ValidatedReleaseContent):void{

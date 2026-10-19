@@ -31,6 +31,15 @@ export const DIAGNOSTIC_COPY = {
   "progressSaved": "Ta progression est enregistrée",
   "ready": "Prêt à commencer ?",
   "pauseHelp": "Prends ton temps. Tu peux quitter cette page et revenir plus tard.",
+  "celebrateQuestionsTitle": "Bravo, continue comme ça !",
+  "celebrateHalfTitle": "La moitié du parcours est faite !",
+  "celebrateThreeQuartersTitle": "Plus que le dernier quart !",
+  "celebrateEffort": "Merci pour tes efforts. Chaque réponse, même « Je ne sais pas », nous aide à préparer la suite pour toi.",
+  "breakTitle": "Une petite pause ?",
+  "breakSuggestion": "Tu travailles depuis un moment. Une pause de quelques minutes aide à rester concentré. Ta progression est enregistrée.",
+  "breakTip": "Lève-toi, bois un peu d’eau, regarde au loin. Reviens quand tu veux.",
+  "clockStopped": "Le temps est arrêté pendant cet écran.",
+  "continue": "Continuer",
   "resume": "Reprendre",
   "begin": "Commencer",
   "newCheck": "Une nouvelle vérification",
@@ -122,6 +131,8 @@ export const DIAGNOSTIC_COPY = {
 } as const;
 
 export const diagnosticProgressText=(answered:number,skipped:number,remainingSeconds:number)=>`${answered} réponse${answered===1?"":"s"} enregistrée${answered===1?"":"s"}${skipped>0?` · ${skipped} question${skipped===1?"":"s"} passée${skipped===1?"":"s"}`:""} · environ ${Math.ceil(remainingSeconds/60)} min restantes`;
+export const diagnosticRemainingQuestionsText=(remaining:number)=>remaining<=1?"Encore environ une question":`Encore environ ${remaining} questions`;
+export const diagnosticMilestoneText=(done:number)=>`Tu as déjà fait ${done} questions.`;
 export const diagnosticProgressPercent=(remainingSeconds:number,totalSeconds=35*60)=>Math.max(0,Math.min(100,Math.round((1-remainingSeconds/totalSeconds)*100)));
 export const diagnosticQuestionText=(answered:number,skipped:number)=>`Question ${answered+skipped+1}`;
 export const diagnosticAnswerCountText=(count:number)=>`${count} réponse(s)`;

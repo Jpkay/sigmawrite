@@ -49,8 +49,8 @@ export function ChoiceList({
                 "flex w-full cursor-pointer items-center justify-between gap-3 rounded-md border px-3 py-2.5 text-left text-sm transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring",
                 isCorrect && "border-[color:var(--success)] bg-[color:var(--success)]/10",
                 isWrongPick && "border-destructive bg-destructive/10",
-                !reveal && selected && "border-primary bg-primary/10",
-                !reveal && !selected && "border-border hover:border-primary/40",
+                !reveal && selected && "border-primary bg-accent ring-1 ring-primary",
+                !reveal && !selected && "border-input bg-card hover:border-primary/60 hover:bg-accent/30",
                 reveal && !isCorrect && !isWrongPick && "border-border opacity-70"
               )}
             >

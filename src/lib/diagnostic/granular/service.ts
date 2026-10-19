@@ -55,7 +55,9 @@ const commandSchema=z.discriminatedUnion("type",[
  z.object({type:z.enum(["pulse","pause","resume"]),sessionId:z.uuid(),revision:z.number().int().nonnegative()}).strict(),
 ]);
 /** studentId is resolved by the authenticated action, never read from input. */
-export async function runAssessmentCommand(store:AssessmentStore,studentId:string,input:unknown,now:()=>number=Date.now,receivedAt:number=now()){
+/** Typed answers, reported after the answer is saved so word evidence (roadmap 2026-10 A.4) can be captured. */
+export type TypedAnswerObserver=(answer:{itemId:string;sessionId:string;expected:string|null;produced:string;validatorType:string;correct:boolean;at:number})=>Promise<unknown>;
+export async function runAssessmentCommand(store:AssessmentStore,studentId:string,input:unknown,now:()=>number=Date.now,receivedAt:number=now(),onTypedAnswer?:TypedAnswerObserver){
  const parsed=commandSchema.safeParse(input);if(!parsed.success)return {error:"Données invalides."} as const;
  const command=parsed.data;
  let session=await store.load(studentId,command.sessionId);if(!session)return {error:"Diagnostic introuvable."} as const;
@@ -69,6 +71,7 @@ export async function runAssessmentCommand(store:AssessmentStore,studentId:strin
  if(session.state.revision!==command.revision)return {conflict:true,view:publicAssessmentView(session,bundle,receivedAt)} as const;
  if((command.type==="answer"||command.type==="skip")&&(session.state.paused||session.state.pendingItemId!==command.itemId))return {error:"Cette question n’est plus active.",view:publicAssessmentView(session,bundle,receivedAt)} as const;
  let correct=false;
+ let typedAnswer:{expected:string|null;produced:string;validatorType:string}|null=null;
  let materialReceipt:Awaited<ReturnType<typeof readQuestionMaterialReceipt>>;
  if(command.type==="answer"){
   const entry=bundle.bank.items.find(i=>i.itemKey===command.itemId);
@@ -83,6 +86,7 @@ export async function runAssessmentCommand(store:AssessmentStore,studentId:strin
    try{
     const result=await span("grade",()=>validateAnswer(command.answer,{validatorType:item.validatorType,correctAnswer:item.correctAnswer,acceptableAnswers:item.acceptableAnswers,config:item.validatorConfig,assessment:assessmentFromGeneratedItem(item)}));
     correct=result.pass;
+    typedAnswer={expected:typeof item.correctAnswer==="string"?item.correctAnswer:null,produced:command.answer,validatorType:String(item.validatorType)};
    }catch(error){if(error instanceof ReadingAssessmentError)return {error:error.message} as const;throw error;}
   }
   correct=correct&&support.correct;
@@ -109,6 +113,7 @@ export async function runAssessmentCommand(store:AssessmentStore,studentId:strin
   const latest=await store.load(studentId,session.id);
   return {conflict:true,...(latest?{view:publicAssessmentView(latest,bundle,receivedAt)}:{})} as const;
  }
+ if(onTypedAnswer&&typedAnswer&&command.type==="answer")await onTypedAnswer({itemId:command.itemId,sessionId:session.id,...typedAnswer,correct,at:receivedAt});
  const saved={...session,state};
  return {view:await span("view",()=>publicAssessmentView(saved,bundle,receivedAt))} as const;
 }

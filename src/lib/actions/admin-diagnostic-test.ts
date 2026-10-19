@@ -12,13 +12,22 @@ import {runTeachingCommand} from '@/lib/diagnostic/granular/teaching-service';
 import {createWritingEvaluator} from '@/lib/diagnostic/granular/writing-evaluator';
 import {span,timedStore,traceCommandDetailed} from '@/lib/diagnostic/granular/latency-trace';
 import type {AssessmentResponse} from '@/lib/diagnostic/granular/client-state';
+import {startProfileForAssessment,type StartProfile} from '@/lib/diagnostic/granular/start-profile';
+import {z} from 'zod';
 
 const releaseKey=()=>process.env.GRANULAR_DIAGNOSTIC_RELEASE_KEY??'french-granular-diagnostic-v1';
 const previewError=(error:unknown)=>({error:error instanceof Error?error.message:'Le test a échoué.'});
 function releases(){return timedStore(new SupabaseAssessmentStore(createServiceClient(),{cache:sharedReleaseContentCache,namespace:process.env.NEXT_PUBLIC_SUPABASE_URL!}));}
-export type AdminDiagnosticTestResult=AssessmentResponse&{token?:string;releaseKey?:string;server?:{command:string;totalMs:number;spans:{name:string;startMs:number;ms:number}[]}};
+export type AdminDiagnosticTestResult=AssessmentResponse&{token?:string;releaseKey?:string;startProfile?:Pick<StartProfile,'band'|'gradeTier'|'levels'>;server?:{command:string;totalMs:number;spans:{name:string;startMs:number;ms:number}[]}};
+// The admin has no student row: the preview starts from a simulated profile.
+const simulatedProfileSchema=z.object({
+ grade:z.number().int().min(5).max(12),
+ studentType:z.enum(['french_first_language','french_second_language','heritage','bilingual','allophone','immersion']),
+ exposures:z.array(z.enum(['home','school','class_only','immersion','self_study'])).max(5),
+}).strict();
+export type SimulatedStartProfile=z.infer<typeof simulatedProfileSchema>;
 
-export async function startAdminDiagnosticTest():Promise<AdminDiagnosticTestResult>{
+export async function startAdminDiagnosticTest(simulated?:SimulatedStartProfile):Promise<AdminDiagnosticTestResult>{
  const {result,server}=await traceCommandDetailed('test:start',async()=>{
   const admin=await span('auth.role',()=>requireRole(['platform_admin']));
   try{
@@ -27,8 +36,12 @@ export async function startAdminDiagnosticTest():Promise<AdminDiagnosticTestResu
    if(!id)return {error:'Aucun diagnostic publié n’est disponible.'};
    const bundle=await span('release.load',()=>store.release(id));
    if(!bundle)return {error:'Le diagnostic publié est indisponible.'};
-   const state=newPreviewState(admin.id,id,createSession(bindAssessmentRelease(bundle.assessment,bundle)));
-   return {view:await span('view',()=>publicAssessmentView(state.session,bundle)),token:signPreviewState(state),releaseKey:releaseKey()};
+   const parsed=simulated===undefined?null:simulatedProfileSchema.safeParse(simulated);
+   if(parsed&&!parsed.success)return {error:'Profil simulé invalide.'};
+   const profile=startProfileForAssessment(bundle.assessment,parsed?.data??null);
+   const state=newPreviewState(admin.id,id,createSession(bindAssessmentRelease(bundle.assessment,bundle),profile));
+   return {view:await span('view',()=>publicAssessmentView(state.session,bundle)),token:signPreviewState(state),releaseKey:releaseKey(),
+    startProfile:{band:profile.band,gradeTier:profile.gradeTier,levels:profile.levels}};
   }catch(error){return previewError(error);}
  });
  return {...result,server};

@@ -7,17 +7,22 @@ import type {MaterialPresentation} from "./material-delivery";
 import {questionMaterialKeys} from "./material-annotations";
 import {materialIdentity} from "./material-identity";
 import {publicQuestion} from "./service";
+import type {AssessmentBundle} from "./service";
 import {publicTextualSupport,readTextualSupport} from "./textual-support";
+
+export class DiagnosticReviewUnavailableError extends Error {
+ constructor(){super("Les réponses de ce diagnostic ne sont plus disponibles. Ton bilan reste accessible.");}
+}
 
 /** Only the authenticated student's completed initial sitting can be reviewed.
  * Corrections are delivered only after their material receipts have succeeded. */
-export async function loadDiagnosticAnswerReview(store:CoveredMaterialDeliveryStore,studentId:string,input:unknown,captureContractKey?:string,allowSupersededBusy=false){
+export async function loadDiagnosticAnswerReview(store:CoveredMaterialDeliveryStore & {releaseForReview?(id:string):Promise<AssessmentBundle|null>},studentId:string,input:unknown,captureContractKey?:string,allowSupersededBusy=false){
  const id=z.uuid().parse(input),session=await store.load(studentId,id);
  if(!session)throw Error("Diagnostic introuvable.");
  if(session.state.phase!=="learning")throw Error("Termine le diagnostic avant de consulter les réponses.");
  if(!allowSupersededBusy&&(session.state.learningCheck||session.state.teaching))throw Error("Termine ou quitte l’activité en cours avant de consulter les réponses.");
- const bundle=await store.release(session.releaseId);
- if(!bundle)throw Error("Ce diagnostic n’est plus disponible.");
+ const bundle=await (store.releaseForReview?.(session.releaseId)??store.release(session.releaseId));
+ if(!bundle)throw new DiagnosticReviewUnavailableError();
  const materials=new Set<string>();
  const rows=session.state.observations.map((observation,index)=>{
   const entry=bundle.bank.items.find(entry=>entry.itemKey===observation.itemId);

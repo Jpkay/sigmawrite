@@ -18,6 +18,7 @@ vi.mock("@/lib/diagnostic/granular/store", () => ({ SupabaseAssessmentStore: cla
 vi.mock("@/lib/diagnostic/granular/practice-material-delivery", () => ({ recordPracticeMaterialDelivery: f.material }));
 vi.mock("@/lib/diagnostic/granular/server-delivery-journal", () => ({ journalStudentPayload: f.journal }));
 vi.mock("./practice-player", () => ({ PracticePlayer: () => null }));
+vi.mock("@/lib/practice/live-sentences-server", () => ({ withLiveThemedSentences: async (practice: unknown) => practice }));
 
 import { practicePlayerDisplay } from "@/lib/diagnostic/granular/practice-player-display";
 import Page from "./page";

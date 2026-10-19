@@ -24,6 +24,15 @@ export function getAIProviderInfo() {
   return { provider: config.kind, model: config.model };
 }
 
+/** True when a speech backend is configured (TTS_API_KEY + TTS_BASE_URL, or the OpenAI key). */
+export function speechConfigured(env: Record<string, string | undefined> = process.env): boolean {
+  try {
+    return Boolean(resolveAIRuntimeConfig(env).speech);
+  } catch {
+    return false;
+  }
+}
+
 export function getAIEmbeddingInfo() {
   const config = resolveAIRuntimeConfig();
   return { provider: config.kind, model: config.embeddingModel };

@@ -13,6 +13,14 @@ import {
   type ModerationResult,
   type EmbeddingInput,
 } from "./schemas";
+import { OpenAICompatibleAIProvider } from "./openai-compatible-provider";
+import { resolveAIRuntimeConfig } from "./runtime-config";
+
+function speechBackend(): OpenAICompatibleAIProvider {
+  const config = resolveAIRuntimeConfig();
+  if (!config.speech) throw new Error("Speech synthesis is unavailable on the mock provider; configure TTS_API_KEY.");
+  return new OpenAICompatibleAIProvider(config);
+}
 
 /**
  * Deterministic, key-free AI provider for local dev and tests.
@@ -93,14 +101,13 @@ export class MockAIProvider implements AIProvider {
     return { passed: true, flaggedCategories: [], needsHumanReview: false };
   }
 
+  /** Speech is never simulated: it goes to the configured voice (TTS_BASE_URL) or fails closed. */
   async synthesizeSpeech(input: SpeechInput): Promise<SpeechResult> {
-    void input;
-    throw new Error("Speech synthesis is unavailable on the mock provider; configure TTS_API_KEY.");
+    return speechBackend().synthesizeSpeech(input);
   }
 
-  async synthesizeSpeechPlan(parts: SpeechPart[]): Promise<SpeechResult> {
-    void parts;
-    throw new Error("Speech synthesis is unavailable on the mock provider; configure TTS_API_KEY.");
+  async synthesizeSpeechPlan(parts: SpeechPart[], input: Omit<SpeechInput, "text"> = {}): Promise<SpeechResult> {
+    return speechBackend().synthesizeSpeechPlan(parts, input);
   }
 
   async embed(_input: EmbeddingInput): Promise<number[]> {
